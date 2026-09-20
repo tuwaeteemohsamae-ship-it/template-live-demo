@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChinaTours — Discover Authentic China</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+                    colors: {
+                        accent: '#47278C',
+                        'accent-light': '#E7E1F5',
+                        'text-main': '#0C0914',
+                        'text-muted': '#5D527A',
+                        border: '#CFC8E3',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background: #fff; color: #0C0914; overflow-x: hidden; }
+        .hero-title { font-size: clamp(32px, 5vw, 48px); line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; }
+        .section-title { font-size: clamp(26px, 3.5vw, 34px); line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; }
+        .card-title { font-size: 20px; line-height: 1.25; font-weight: 600; }
+        .label-text { font-size: 12px; line-height: 1.3; font-weight: 600; }
+        .card-shadow { box-shadow: 0 12px 35px rgba(0,0,0,0.06); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(71,39,140,0.12); }
+        .btn-primary { background: #47278C; color: #fff; transition: all 0.25s ease; }
+        .btn-primary:hover { background: #3a1f75; transform: translateY(-1px); box-shadow: 0 8px 25px rgba(71,39,140,0.3); }
+        .chip { transition: all 0.2s ease; cursor: pointer; }
+        .chip:hover, .chip.active { background: #47278C; color: #fff; border-color: #47278C; }
+        .modal-overlay { opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        .modal-content { transform: scale(0.95) translateY(10px); transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+        .modal-overlay.open .modal-content { transform: scale(1) translateY(0); }
+        .chat-window { transform: translateY(20px); opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .chat-window.open { transform: translateY(0); opacity: 1; visibility: visible; }
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        .carousel-track { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+        .carousel-item { scroll-snap-align: start; }
+        .input-field { transition: all 0.2s ease; border: 1px solid #CFC8E3; }
+        .input-field:focus { border-color: #47278C; box-shadow: 0 0 0 3px rgba(71,39,140,0.1); outline: none; }
+        .nav-link { position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #47278C; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .badge-verified { background: #E7E1F5; color: #47278C; }
+        .star-rating { color: #f59e0b; }
+        .gradient-accent { background: linear-gradient(135deg, #47278C 0%, #5a3aa8 100%); }
+        .floating-btn { transition: all 0.3s ease; }
+        .floating-btn:hover { transform: scale(1.05); }
+        .message-bubble { animation: msgPop 0.3s ease; }
+        @keyframes msgPop { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .pulse-ring { animation: pulseR 2s infinite; }
+        @keyframes pulseR { 0% { box-shadow: 0 0 0 0 rgba(71,39,140,0.4); } 70% { box-shadow: 0 0 0 12px rgba(71,39,140,0); } 100% { box-shadow: 0 0 0 0 rgba(71,39,140,0); } }
+        .dest-card { position: relative; overflow: hidden; }
+        .dest-card img { transition: transform 0.6s ease; }
+        .dest-card:hover img { transform: scale(1.08); }
+        .dest-overlay { background: linear-gradient(to top, rgba(12,9,20,0.7) 0%, transparent 60%); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .hero-bg { background: linear-gradient(135deg, #FFFFFF 0%, #F8F7FB 50%, #FFFFFF 100%); }
+        .hero-pattern { background-image: radial-gradient(#47278C 1px, transparent 1px); background-size: 40px 40px; opacity: 0.04; }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- Header -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#CFC8E3]/50 transition-all duration-300">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-lg bg-[#47278C] flex items-center justify-center text-white">
+                    <i class="fa-solid fa-mountain-sun text-lg"></i>
+                </div>
+                <span class="text-xl font-bold text-[#0C0914] tracking-tight">ChinaTours</span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#tours" class="nav-link text-sm font-medium text-[#0C0914] hover:text-[#47278C]">Tours</a>
+                <a href="#destinations" class="nav-link text-sm font-medium text-[#0C0914] hover:text-[#47278C]">Destinations</a>
+                <a href="#guides" class="nav-link text-sm font-medium text-[#0C0914] hover:text-[#47278C]">Travel Guides</a>
+                <a href="#" class="nav-link text-sm font-medium text-[#0C0914] hover:text-[#47278C]">Suppliers</a>
+            </nav>
+            <div class="hidden lg:flex items-center gap-3">
+                <button onclick="openModal('login')" class="px-5 py-2 text-sm font-semibold text-[#47278C] border border-[#47278C] rounded-full hover:bg-[#47278C] hover:text-white transition-all duration-300">Log In</button>
+                <button onclick="openModal('register')" class="px-5 py-2 text-sm font-semibold text-white bg-[#47278C] rounded-full hover:bg-[#3a1f75] transition-all duration-300 shadow-lg shadow-[#47278C]/20">Sign Up</button>
+            </div>
+            <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center text-[#0C0914]">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+    <div id="mobileMenu" class="lg:hidden hidden bg-white border-t border-[#CFC8E3]">
+        <div class="px-4 py-4 space-y-3">
+            <a href="#tours" class="block py-2 text-[#0C0914] font-medium">Tours</a>
+            <a href="#destinations" class="block py-2 text-[#0C0914] font-medium">Destinations</a>
+            <a href="#guides" class="block py-2 text-[#0C0914] font-medium">Travel Guides</a>
+            <a href="#" class="block py-2 text-[#0C0914] font-medium">Suppliers</a>
+            <div class="pt-3 flex gap-3">
+                <button onclick="openModal('login')" class="flex-1 py-2.5 text-sm font-semibold text-[#47278C] border border-[#47278C] rounded-full">Log In</button>
+                <button onclick="openModal('register')" class="flex-1 py-2.5 text-sm font-semibold text-white bg-[#47278C] rounded-full">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="hero" class="relative pt-20 lg:pt-24 hero-bg min-h-[85vh] flex items-center">
+    <div class="absolute inset-0 hero-pattern"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 lg:py-20 relative z-10">
+        <div class="max-w-3xl mx-auto text-center mb-10 lg:mb-14 scroll-reveal">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E7E1F5] text-[#47278C] text-xs font-semibold mb-6">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Verified Suppliers Only</span>
+            </div>
+            <h1 class="hero-title text-[#0C0914] mb-5">
+                Discover the Real<br>
+                <span class="text-[#47278C]">China</span> with Confidence
+            </h1>
+            <p class="text-base lg:text-lg text-[#5D527A] max-w-xl mx-auto leading-relaxed">
+                Curated tours from trusted local suppliers. Compare, book, and explore China's wonders your way.
+            </p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="max-w-4xl mx-auto rounded-2xl border border-[#CFC8E3] shadow-xl shadow-[#47278C]/5 p-4 lg:p-5 scroll-reveal bg-white/95 backdrop-blur-md">
+            <div class="flex flex-col lg:flex-row gap-3">
+                <div class="flex-1 relative">
+                    <label class="label-text text-[#5D527A] mb-1.5 block ml-1">Destination</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-location-dot absolute left-3.5 top-1/2 -translate-y-1/2 text-[#5D527A]"></i>
+                        <input type="text" id="destinationInput" placeholder="Where to? (e.g. Beijing)" class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm bg-white" autocomplete="off">
+                        <div id="autocompleteList" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-xl border border-[#CFC8E3] shadow-lg z-50 overflow-hidden"></div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <label class="label-text text-[#5D527A] mb-1.5 block ml-1">Dates</label>
+                    <div class="relative">
+                        <i class="fa-regular fa-calendar absolute left-3.5 top-1/2 -translate-y-1/2 text-[#5D527A]"></i>
+                        <input type="text" placeholder="Add dates" class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm bg-white" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <label class="label-text text-[#5D527A] mb-1.5 block ml-1">Travelers</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user-group absolute left-3.5 top-1/2 -translate-y-1/2 text-[#5D527A]"></i>
+                        <select class="input-field w-full pl-10 pr-4 py-3 rounded-xl text-sm bg-white appearance-none cursor-pointer">
+                            <option>2 Adults</option>
+                            <option>1 Adult</option>
+                            <option>2 Adults, 1 Child</option>
+                            <option>Family (4+)</option>
+                            <option>Group (6+)</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-[#5D527A] text-xs pointer-events-none"></i>
+                    </div>
+                </div>
+                <div class="flex items-end">
+                    <button class="btn-primary w-full lg:w-auto px-8 py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 mt-6 lg:mt-0">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Filter Chips -->
+<section class="py-8 lg:py-10 bg-white border-b border-[#CFC8E3]/50">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide scroll-reveal" id="filterChips">
+            <span class="text-sm font-semibold text-[#5D527A] whitespace-nowrap mr-1">Trending:</span>
+            <button class="chip active px-4 py-2 rounded-full border border-[#CFC8E3] text-sm font-medium whitespace-nowrap bg-[#47278C] text-white">All Tours</button>
+            <button class="chip px-4 py-2 rounded-full border border-[#CFC8E3] text-sm font-medium whitespace-nowrap bg-white text-[#0C0914]">
+                <i class="fa-solid fa-monument mr-1.5 text-xs"></i>Great Wall
+            </button>
+            <button class="chip px-4 py-2 rounded-full border border-[#CFC8E3] text-sm font-medium whitespace-nowrap bg-white text-[#0C0914]">
+                <i class="fa-solid fa-route mr-1.5 text-xs"></i>Silk Road
+            </button>
+            <button class="chip px-4 py-2 rounded-full border border-[#CFC8E3] text-sm font-medium whitespace-nowrap bg-white text-[#0C0914]">
+                <i class="fa-solid fa-ship mr-1.5 text-xs"></i>Cruise
+            </button>
+            <button class="chip px-4 py-2 rounded-full border border-[#CFC8E3] text-sm font-medium whitespace-nowrap bg-white text-[#0C0914]">
+                <i class="fa-solid fa-paw mr-1.5 text-xs"></i>Panda
+            </button>
+            <button class="chip px-4 py-2 rounded-full border border-[#CFC8E3] text-sm font-medium whitespace-nowrap bg-white text-[#0C0914]">
+                <i class="fa-solid fa-people-roof mr-1.5 text-xs"></i>Family
+            </button>
+            <button class="chip px-4 py-2 rounded-full border border-[#CFC8E3] text-sm font-medium whitespace-nowrap bg-white text-[#0C0914]">
+                <i class="fa-solid fa-gem mr-1.5 text-xs"></i>Luxury
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Tours Carousel -->
+<section id="tours" class="py-14 lg:py-20 bg-white">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-8 lg:mb-10 scroll-reveal">
+            <div>
+                <span class="label-text text-[#47278C] uppercase tracking-wider">Handpicked for You</span>
+                <h2 class="section-title text-[#0C0914] mt-1">Featured Tours</h2>
+            </div>
+            <div class="hidden sm:flex gap-2">
+                <button id="prevTour" class="w-10 h-10 rounded-full border border-[#CFC8E3] flex items-center justify-center text-[#5D527A] hover:bg-[#47278C] hover:text-white hover:border-[#47278C] transition-all">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </button>
+                <button id="nextTour" class="w-10 h-10 rounded-full border border-[#CFC8E3] flex items-center justify-center text-[#5D527A] hover:bg-[#47278C] hover:text-white hover:border-[#47278C] transition-all">
+                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="relative scroll-reveal">
+            <div id="tourCarousel" class="carousel-track flex gap-5 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+                <!-- Tour Card 1 -->
+                <div class="carousel-item flex-shrink-0 w-[300px] sm:w-[340px] bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&h=400&fit=crop" alt="Great Wall" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3">
+                            <span class="badge-verified px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-[10px]"></i> Verified
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-[#0C0914]">8 Days</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fa-solid fa-star star-rating text-xs"></i>
+                            <span class="text-sm font-semibold text-[#0C0914]">4.9</span>
+                            <span class="text-xs text-[#5D527A]">(128 reviews)</span>
+                        </div>
+                        <h3 class="card-title text-[#0C0914] mb-2 line-clamp-2">Beijing &amp; Great Wall Immersive Experience</h3>
+                        <p class="text-xs text-[#5D527A] mb-4"><i class="fa-solid fa-location-dot mr-1"></i>Beijing &rarr; Mutianyu &rarr; Forbidden City</p>
+                        <div class="flex items-center justify-between pt-3 border-t border-[#CFC8E3]">
+                            <div>
+                                <span class="text-xs text-[#5D527A]">From</span>
+                                <div class="text-lg font-bold text-[#47278C]">&#3647;24,500 <span class="text-xs font-normal text-[#5D527A]">/person</span></div>
+                            </div>
+                            <button class="px-4 py-2 rounded-full bg-[#E7E1F5] text-[#47278C] text-sm font-semibold hover:bg-[#47278C] hover:text-white transition-all">View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tour Card 2 -->
+                <div class="carousel-item flex-shrink-0 w-[300px] sm:w-[340px] bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1548919973-5cef591cdbc9?w=600&h=400&fit=crop" alt="Shanghai" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3">
+                            <span class="badge-verified px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-[10px]"></i> Verified
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-[#0C0914]">5 Days</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fa-solid fa-star star-rating text-xs"></i>
+                            <span class="text-sm font-semibold text-[#0C0914]">4.8</span>
+                            <span class="text-xs text-[#5D527A]">(96 reviews)</span>
+                        </div>
+                        <h3 class="card-title text-[#0C0914] mb-2 line-clamp-2">Shanghai Modern &amp; Ancient Contrast Tour</h3>
+                        <p class="text-xs text-[#5D527A] mb-4"><i class="fa-solid fa-location-dot mr-1"></i>Shanghai &rarr; Zhujiajiao &rarr; The Bund</p>
+                        <div class="flex items-center justify-between pt-3 border-t border-[#CFC8E3]">
+                            <div>
+                                <span class="text-xs text-[#5D527A]">From</span>
+                                <div class="text-lg font-bold text-[#47278C]">&#3647;18,900 <span class="text-xs font-normal text-[#5D527A]">/person</span></div>
+                            </div>
+                            <button class="px-4 py-2 rounded-full bg-[#E7E1F5] text-[#47278C] text-sm font-semibold hover:bg-[#47278C] hover:text-white transition-all">View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tour Card 3 -->
+                <div class="carousel-item flex-shrink-0 w-[300px] sm:w-[340px] bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&h=400&fit=crop" alt="Guilin" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3">
+                            <span class="badge-verified px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-[10px]"></i> Verified
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-[#0C0914]">6 Days</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fa-solid fa-star star-rating text-xs"></i>
+                            <span class="text-sm font-semibold text-[#0C0914]">4.9</span>
+                            <span class="text-xs text-[#5D527A]">(215 reviews)</span>
+                        </div>
+                        <h3 class="card-title text-[#0C0914] mb-2 line-clamp-2">Guilin &amp; Yangshuo Karst Landscape Escape</h3>
+                        <p class="text-xs text-[#5D527A] mb-4"><i class="fa-solid fa-location-dot mr-1"></i>Guilin &rarr; Li River &rarr; Yangshuo</p>
+                        <div class="flex items-center justify-between pt-3 border-t border-[#CFC8E3]">
+                            <div>
+                                <span class="text-xs text-[#5D527A]">From</span>
+                                <div class="text-lg font-bold text-[#47278C]">&#3647;21,300 <span class="text-xs font-normal text-[#5D527A]">/person</span></div>
+                            </div>
+                            <button class="px-4 py-2 rounded-full bg-[#E7E1F5] text-[#47278C] text-sm font-semibold hover:bg-[#47278C] hover:text-white transition-all">View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tour Card 4 -->
+                <div class="carousel-item flex-shrink-0 w-[300px] sm:w-[340px] bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=600&h=400&fit=crop" alt="Xi'an" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3">
+                            <span class="badge-verified px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-[10px]"></i> Verified
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-[#0C0914]">4 Days</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fa-solid fa-star star-rating text-xs"></i>
+                            <span class="text-sm font-semibold text-[#0C0914]">4.7</span>
+                            <span class="text-xs text-[#5D527A]">(84 reviews)</span>
+                        </div>
+                        <h3 class="card-title text-[#0C0914] mb-2 line-clamp-2">Xi'an Terracotta Warriors Deep Dive</h3>
+                        <p class="text-xs text-[#5D527A] mb-4"><i class="fa-solid fa-location-dot mr-1"></i>Xi'an &rarr; Terracotta Army &rarr; City Wall</p>
+                        <div class="flex items-center justify-between pt-3 border-t border-[#CFC8E3]">
+                            <div>
+                                <span class="text-xs text-[#5D527A]">From</span>
+                                <div class="text-lg font-bold text-[#47278C]">&#3647;16,800 <span class="text-xs font-normal text-[#5D527A]">/person</span></div>
+                            </div>
+                            <button class="px-4 py-2 rounded-full bg-[#E7E1F5] text-[#47278C] text-sm font-semibold hover:bg-[#47278C] hover:text-white transition-all">View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tour Card 5 -->
+                <div class="carousel-item flex-shrink-0 w-[300px] sm:w-[340px] bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1564602990062-348691002c5b?w=600&h=400&fit=crop" alt="Chengdu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-3 left-3">
+                            <span class="badge-verified px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check text-[10px]"></i> Verified
+                            </span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-[#0C0914]">5 Days</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fa-solid fa-star star-rating text-xs"></i>
+                            <span class="text-sm font-semibold text-[#0C0914]">4.9</span>
+                            <span class="text-xs text-[#5D527A]">(167 reviews)</span>
+                        </div>
+                        <h3 class="card-title text-[#0C0914] mb-2 line-clamp-2">Chengdu Panda &amp; Sichuan Culture Tour</h3>
+                        <p class="text-xs text-[#5D527A] mb-4"><i class="fa-solid fa-location-dot mr-1"></i>Chengdu &rarr; Panda Base &rarr; Leshan</p>
+                        <div class="flex items-center justify-between pt-3 border-t border-[#CFC8E3]">
+                            <div>
+                                <span class="text-xs text-[#5D527A]">From</span>
+                                <div class="text-lg font-bold text-[#47278C]">&#3647;19,600 <span class="text-xs font-normal text-[#5D527A]">/person</span></div>
+                            </div>
+                            <button class="px-4 py-2 rounded-full bg-[#E7E1F5] text-[#47278C] text-sm font-semibold hover:bg-[#47278C] hover:text-white transition-all">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Destinations Grid -->
+<section id="destinations" class="py-14 lg:py-20 bg-white">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 lg:mb-12 scroll-reveal">
+            <span class="label-text text-[#47278C] uppercase tracking-wider">Explore Regions</span>
+            <h2 class="section-title text-[#0C0914] mt-1">Popular Destinations</h2>
+            <p class="text-[#5D527A] mt-3 max-w-lg mx-auto">From ancient capitals to modern metropolises, find your perfect Chinese adventure.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 scroll-reveal">
+            <div class="dest-card rounded-2xl overflow-hidden card-shadow card-hover cursor-pointer group">
+                <div class="relative h-64">
+                    <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&h=500&fit=crop" alt="Beijing" class="w-full h-full object-cover">
+                    <div class="dest-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">Beijing</h3>
+                        <p class="text-white/80 text-sm"><i class="fa-solid fa-map mr-1.5"></i>42 Tours Available</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dest-card rounded-2xl overflow-hidden card-shadow card-hover cursor-pointer group">
+                <div class="relative h-64">
+                    <img src="https://images.unsplash.com/photo-1548919973-5cef591cdbc9?w=600&h=500&fit=crop" alt="Shanghai" class="w-full h-full object-cover">
+                    <div class="dest-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">Shanghai</h3>
+                        <p class="text-white/80 text-sm"><i class="fa-solid fa-map mr-1.5"></i>38 Tours Available</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dest-card rounded-2xl overflow-hidden card-shadow card-hover cursor-pointer group">
+                <div class="relative h-64">
+                    <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&h=500&fit=crop" alt="Guilin" class="w-full h-full object-cover">
+                    <div class="dest-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">Guilin</h3>
+                        <p class="text-white/80 text-sm"><i class="fa-solid fa-map mr-1.5"></i>24 Tours Available</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dest-card rounded-2xl overflow-hidden card-shadow card-hover cursor-pointer group">
+                <div class="relative h-64">
+                    <img src="https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=600&h=500&fit=crop" alt="Xi'an" class="w-full h-full object-cover">
+                    <div class="dest-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">Xi'an</h3>
+                        <p class="text-white/80 text-sm"><i class="fa-solid fa-map mr-1.5"></i>19 Tours Available</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dest-card rounded-2xl overflow-hidden card-shadow card-hover cursor-pointer group">
+                <div class="relative h-64">
+                    <img src="https://images.unsplash.com/photo-1564602990062-348691002c5b?w=600&h=500&fit=crop" alt="Chengdu" class="w-full h-full object-cover">
+                    <div class="dest-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">Chengdu</h3>
+                        <p class="text-white/80 text-sm"><i class="fa-solid fa-map mr-1.5"></i>27 Tours Available</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dest-card rounded-2xl overflow-hidden card-shadow card-hover cursor-pointer group">
+                <div class="relative h-64">
+                    <img src="https://images.unsplash.com/photo-1537531383496-f4749b8032cf?w=600&h=500&fit=crop" alt="Zhangjiajie" class="w-full h-full object-cover">
+                    <div class="dest-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5">
+                        <h3 class="text-xl font-bold text-white mb-1">Zhangjiajie</h3>
+                        <p class="text-white/80 text-sm"><i class="fa-solid fa-map mr-1.5"></i>15 Tours Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Compare Suppliers Banner -->
+<section class="py-14 lg:py-20 bg-white">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 scroll-reveal">
+        <div class="gradient-accent rounded-3xl p-8 lg:p-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-semibold mb-4">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Smart Feature</span>
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-bold text-white mb-3">Compare Suppliers Side-by-Side</h2>
+                    <p class="text-white/80 max-w-lg">See prices, inclusions, and real reviews from multiple verified suppliers for the same destination. Make informed decisions effortlessly.</p>
+                </div>
+                <div class="flex-shrink-0">
+                    <button class="px-8 py-3.5 bg-white text-[#47278C] rounded-full font-bold text-sm hover:bg-[#E7E1F5] transition-all shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-code-compare"></i>
+                        Try Compare Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Section -->
+<section class="py-14 lg:py-20 bg-white border-y border-[#CFC8E3]/50">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 lg:mb-12 scroll-reveal">
+            <span class="label-text text-[#47278C] uppercase tracking-wider">Why Travelers Trust Us</span>
+            <h2 class="section-title text-[#0C0914] mt-1">Book with Confidence</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 scroll-reveal">
+            <div class="text-center p-6 lg:p-8 rounded-2xl bg-white border border-[#CFC8E3] card-shadow card-hover">
+                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E7E1F5] flex items-center justify-center text-[#47278C]">
+                    <i class="fa-solid fa-shield-halved text-2xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-[#47278C] mb-1">240+</div>
+                <h3 class="font-semibold text-[#0C0914] mb-2">Verified Suppliers</h3>
+                <p class="text-sm text-[#5D527A]">Every supplier is vetted for quality, licensing, and service standards.</p>
+            </div>
+
+            <div class="text-center p-6 lg:p-8 rounded-2xl bg-white border border-[#CFC8E3] card-shadow card-hover">
+                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E7E1F5] flex items-center justify-center text-[#47278C]">
+                    <i class="fa-solid fa-comments text-2xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-[#47278C] mb-1">12,400+</div>
+                <h3 class="font-semibold text-[#0C0914] mb-2">Authentic Reviews</h3>
+                <p class="text-sm text-[#5D527A]">Real feedback from verified travelers who booked through our platform.</p>
+            </div>
+
+            <div class="text-center p-6 lg:p-8 rounded-2xl bg-white border border-[#CFC8E3] card-shadow card-hover">
+                <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E7E1F5] flex items-center justify-center text-[#47278C]">
+                    <i class="fa-solid fa-rotate-left text-2xl"></i>
+                </div>
+                <div class="text-3xl font-bold text-[#47278C] mb-1">100%</div>
+                <h3 class="font-semibold text-[#0C0914] mb-2">Money-Back Guarantee</h3>
+                <p class="text-sm text-[#5D527A]">Full refund if your tour is cancelled by the supplier. No questions asked.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Travel Guide Preview -->
+<section id="guides" class="py-14 lg:py-20 bg-white">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-8 lg:mb-10 scroll-reveal">
+            <div>
+                <span class="label-text text-[#47278C] uppercase tracking-wider">Travel Smarter</span>
+                <h2 class="section-title text-[#0C0914] mt-1">Travel Guides</h2>
+            </div>
+            <a href="#" class="hidden sm:flex items-center gap-1 text-sm font-semibold text-[#47278C] hover:underline">
+                View All <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 scroll-reveal">
+            <article class="bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group cursor-pointer">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=600&h=400&fit=crop" alt="Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-xs font-bold text-[#47278C]">Tips</span>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-semibold text-[#0C0914] mb-2 group-hover:text-[#47278C] transition-colors">Best Time to Visit the Great Wall</h3>
+                    <p class="text-sm text-[#5D527A] mb-3 line-clamp-2">Avoid crowds and catch the perfect light with our month-by-month breakdown of the ultimate Great Wall experience.</p>
+                    <div class="flex items-center gap-2 text-xs text-[#5D527A]">
+                        <span><i class="fa-regular fa-clock mr-1"></i>6 min read</span>
+                        <span>&bull;</span>
+                        <span>Updated Aug 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group cursor-pointer">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?w=600&h=400&fit=crop" alt="Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-xs font-bold text-[#47278C]">Food</span>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-semibold text-[#0C0914] mb-2 group-hover:text-[#47278C] transition-colors">A Foodie's Guide to Sichuan Cuisine</h3>
+                    <p class="text-sm text-[#5D527A] mb-3 line-clamp-2">From street-side hotpot to Michelin-starred mapo tofu, discover the bold flavors that define Chengdu's culinary scene.</p>
+                    <div class="flex items-center gap-2 text-xs text-[#5D527A]">
+                        <span><i class="fa-regular fa-clock mr-1"></i>8 min read</span>
+                        <span>&bull;</span>
+                        <span>Updated Jul 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-white rounded-2xl border border-[#CFC8E3] card-shadow card-hover overflow-hidden group cursor-pointer">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?w=600&h=400&fit=crop" alt="Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 text-xs font-bold text-[#47278C]">Visa</span>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-semibold text-[#0C0914] mb-2 group-hover:text-[#47278C] transition-colors">China Visa Guide for 2026</h3>
+                    <p class="text-sm text-[#5D527A] mb-3 line-clamp-2">Everything you need to know about the latest visa-free transit policies and application requirements.</p>
+                    <div class="flex items-center gap-2 text-xs text-[#5D527A]">
+                        <span><i class="fa-regular fa-clock mr-1"></i>5 min read</span>
+                        <span>&bull;</span>
+                        <span>Updated Aug 2026</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="py-14 lg:py-20 bg-white">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 scroll-reveal">
+        <div class="max-w-2xl mx-auto text-center p-8 lg:p-10 rounded-3xl border-2 border-[#47278C]/10 bg-white">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[#E7E1F5] flex items-center justify-center text-[#47278C]">
+                <i class="fa-regular fa-bell text-2xl"></i>
+            </div>
+            <h2 class="section-title text-[#0C0914] mb-3">Get Deal Alerts</h2>
+            <p class="text-[#5D527A] mb-6">Subscribe to receive exclusive early-bird discounts and seasonal flash sales directly to your inbox.</p>
+            <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); showToast('Subscribed successfully!');">
+                <input type="email" placeholder="Enter your email" required class="input-field flex-1 px-5 py-3 rounded-full text-sm">
+                <button type="submit" class="btn-primary px-6 py-3 rounded-full font-semibold text-sm whitespace-nowrap">Subscribe</button>
+            </form>
+            <p class="text-xs text-[#5D527A] mt-4"><i class="fa-solid fa-lock mr-1"></i>No spam. Unsubscribe anytime.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white border-t border-[#CFC8E3]">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+            <div class="col-span-2 md:col-span-1">
+                <a href="#" class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 rounded-lg bg-[#47278C] flex items-center justify-center text-white">
+                        <i class="fa-solid fa-mountain-sun text-sm"></i>
+                    </div>
+                    <span class="text-lg font-bold text-[#0C0914]">ChinaTours</span>
+                </a>
+                <p class="text-sm text-[#5D527A] mb-4">Connecting travelers with verified local suppliers for authentic China experiences since 2020.</p>
+                <div class="flex gap-3">
+                    <a href="#" class="w-9 h-9 rounded-full bg-[#E7E1F5] flex items-center justify-center text-[#47278C] hover:bg-[#47278C] hover:text-white transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-[#E7E1F5] flex items-center justify-center text-[#47278C] hover:bg-[#47278C] hover:text-white transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-[#E7E1F5] flex items-center justify-center text-[#47278C] hover:bg-[#47278C] hover:text-white transition-all"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-semibold text-[#0C0914] mb-4">Destinations</h4>
+                <ul class="space-y-2.5">
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Beijing</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Shanghai</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Guilin</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Xi'an</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Chengdu</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold text-[#0C0914] mb-4">Company</h4>
+                <ul class="space-y-2.5">
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">For Suppliers</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Careers</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Press</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold text-[#0C0914] mb-4">Support</h4>
+                <ul class="space-y-2.5">
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Help Center</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Cancellation Policy</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-sm text-[#5D527A] hover:text-[#47278C] transition-colors">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-[#CFC8E3] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-[#5D527A]">&copy; 2026 ChinaTours Platform. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <span class="text-xs text-[#5D527A]"><i class="fa-solid fa-globe mr-1"></i>English</span>
+                <span class="text-xs text-[#5D527A]"><i class="fa-solid fa-coins mr-1"></i>THB &#3647;</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Login/Register Modal -->
+<div id="authModal" class="modal-overlay fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div class="modal-content bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl">
+        <div class="p-6 lg:p-8">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-[#47278C] flex items-center justify-center text-white">
+                        <i class="fa-solid fa-mountain-sun text-sm"></i>
+                    </div>
+                    <span class="font-bold text-[#0C0914]">ChinaTours</span>
+                </div>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-[#E7E1F5] flex items-center justify-center text-[#5D527A] hover:bg-[#47278C] hover:text-white transition-all">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <div class="flex gap-2 p-1 bg-[#E7E1F5]/50 rounded-xl mb-6">
+                <button id="loginTab" onclick="switchTab('login')" class="flex-1 py-2.5 text-sm font-semibold rounded-lg bg-[#47278C] text-white transition-all">Log In</button>
+                <button id="registerTab" onclick="switchTab('register')" class="flex-1 py-2.5 text-sm font-semibold rounded-lg text-[#5D527A] hover:text-[#0C0914] transition-all">Sign Up</button>
+            </div>
+
+            <form id="loginForm" onsubmit="event.preventDefault(); showToast('Welcome back!'); closeModal();">
+                <div class="space-y-4">
+                    <div>
+                        <label class="label-text text-[#5D527A] mb-1.5 block">Email</label>
+                        <input type="email" required class="input-field w-full px-4 py-3 rounded-xl text-sm" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label class="label-text text-[#5D527A] mb-1.5 block">Password</label>
+                        <input type="password" required class="input-field w-full px-4 py-3 rounded-xl text-sm" placeholder="Enter your password">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 rounded border-[#CFC8E3] text-[#47278C] focus:ring-[#47278C]">
+                            <span class="text-xs text-[#5D527A]">Remember me</span>
+                        </label>
+                        <a href="#" class="text-xs font-semibold text-[#47278C] hover:underline">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-sm">Log In</button>
+                </div>
+            </form>
+
+            <form id="registerForm" class="hidden" onsubmit="event.preventDefault(); showToast('Account created!'); closeModal();">
+                <div class="space-y-4">
+                    <div>
+                        <label class="label-text text-[#5D527A] mb-1.5 block">Full Name</label>
+                        <input type="text" required class="input-field w-full px-4 py-3 rounded-xl text-sm" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="label-text text-[#5D527A] mb-1.5 block">Email</label>
+                        <input type="email" required class="input-field w-full px-4 py-3 rounded-xl text-sm" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label class="label-text text-[#5D527A] mb-1.5 block">Password</label>
+                        <input type="password" required class="input-field w-full px-4 py-3 rounded-xl text-sm" placeholder="Create a password">
+                    </div>
+                    <label class="flex items-start gap-2 cursor-pointer">
+                        <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded border-[#CFC8E3] text-[#47278C] focus:ring-[#47278C]">
+                        <span class="text-xs text-[#5D527A]">I agree to the <a href="#" class="text-[#47278C] font-semibold hover:underline">Terms</a> and <a href="#" class="text-[#47278C] font-semibold hover:underline">Privacy Policy</a></span>
+                    </label>
+                    <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-semibold text-sm">Create Account</button>
+                </div>
+            </form>
+
+            <div class="mt-6 pt-6 border-t border-[#CFC8E3]">
+                <p class="text-center text-xs text-[#5D527A] mb-3">Or continue with</p>
+                <div class="flex gap-3">
+                    <button class="flex-1 py-2.5 border border-[#CFC8E3] rounded-xl text-sm font-medium text-[#0C0914] hover:bg-[#E7E1F5] transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-google text-red-500"></i> Google
+                    </button>
+                    <button class="flex-1 py-2.5 border border-[#CFC8E3] rounded-xl text-sm font-medium text-[#0C0914] hover:bg-[#E7E1F5] transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-apple text-[#0C0914]"></i> Apple
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 z-[70] px-6 py-3 bg-[#47278C] text-white rounded-full text-sm font-semibold shadow-lg opacity-0 -translate-y-2.5 transition-all duration-300 pointer-events-none">
+    <span id="toastMessage"></span>
+</div>
+
+<!-- Floating Buttons -->
+<div class="fixed bottom-6 right-6 z-50 flex items-end gap-[5px]">
+    <button id="backToTop" onclick="scrollToTop()" class="hidden w-12 h-12 rounded-full bg-white border border-[#CFC8E3] card-shadow items-center justify-center text-[#47278C] hover:bg-[#47278C] hover:text-white hover:border-[#47278C] transition-all floating-btn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div class="relative">
+        <div id="chatWindow" class="chat-window absolute bottom-16 right-0 w-[340px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-[#CFC8E3] card-shadow overflow-hidden">
+            <div class="gradient-accent p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white">China Guide</h4>
+                        <p class="text-xs text-white/70">Online now</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-all">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                </button>
+            </div>
+            <div id="chatMessages" class="h-80 overflow-y-auto p-4 space-y-3 bg-[#FAFAFC]">
+                <div class="flex gap-2 message-bubble">
+                    <div class="w-7 h-7 rounded-full bg-[#E7E1F5] flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-robot text-[10px] text-[#47278C]"></i>
+                    </div>
+                    <div class="bg-white border border-[#CFC8E3] rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm text-[#0C0914] max-w-[80%]">
+                        Hi there! I can help you find the perfect China tour. Where would you like to go?
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 border-t border-[#CFC8E3] bg-white">
+                <form onsubmit="event.preventDefault(); sendMessage();" class="flex gap-2">
+                    <input type="text" id="chatInput" placeholder="Type a message..." class="input-field flex-1 px-4 py-2.5 rounded-full text-sm">
+                    <button type="submit" class="w-10 h-10 rounded-full bg-[#47278C] text-white flex items-center justify-center hover:bg-[#3a1f75] transition-all flex-shrink-0">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <button id="chatBtn" onclick="toggleChat()" class="w-14 h-14 rounded-full bg-[#47278C] text-white card-shadow flex items-center justify-center floating-btn pulse-ring">
+            <i class="fa-solid fa-comments text-xl"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+// Mobile Menu
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Scroll Reveal
+const revealElements = document.querySelectorAll('.scroll-reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Header shadow on scroll
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 50) header.classList.add('shadow-md');
+    else header.classList.remove('shadow-md');
+});
+
+// Back to Top
+const backToTop = document.getElementById('backToTop');
+const heroSection = document.getElementById('hero');
+window.addEventListener('scroll', () => {
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    if (heroBottom < 0) {
+        backToTop.classList.remove('hidden');
+        backToTop.classList.add('flex');
+    } else {
+        backToTop.classList.add('hidden');
+        backToTop.classList.remove('flex');
+    }
+});
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Modal
+const authModal = document.getElementById('authModal');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const loginTab = document.getElementById('loginTab');
+const registerTab = document.getElementById('registerTab');
+
+function openModal(type) {
+    authModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    switchTab(type);
+}
+function closeModal() {
+    authModal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+function switchTab(type) {
+    if (type === 'login') {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        loginTab.classList.add('bg-[#47278C]', 'text-white');
+        loginTab.classList.remove('text-[#5D527A]');
+        registerTab.classList.remove('bg-[#47278C]', 'text-white');
+        registerTab.classList.add('text-[#5D527A]');
+    } else {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        registerTab.classList.add('bg-[#47278C]', 'text-white');
+        registerTab.classList.remove('text-[#5D527A]');
+        loginTab.classList.remove('bg-[#47278C]', 'text-white');
+        loginTab.classList.add('text-[#5D527A]');
+    }
+}
+authModal.addEventListener('click', (e) => {
+    if (e.target === authModal) closeModal();
+});
+
+// Toast
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    toastMessage.textContent = message;
+    toast.classList.remove('opacity-0', '-translate-y-2.5');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+        toast.classList.add('opacity-0', '-translate-y-2.5');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 3000);
+}
+
+// Chatbot
+const chatWindow = document.getElementById('chatWindow');
+const chatBtn = document.getElementById('chatBtn');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+let isChatOpen = false;
+
+function toggleChat() {
+    isChatOpen = !isChatOpen;
+    if (isChatOpen) {
+        chatWindow.classList.add('open');
+        chatBtn.innerHTML = '<i class="fa-solid fa-xmark text-xl"></i>';
+        chatBtn.classList.remove('pulse-ring');
+        setTimeout(() => chatInput.focus(), 300);
+    } else {
+        chatWindow.classList.remove('open');
+        chatBtn.innerHTML = '<i class="fa-solid fa-comments text-xl"></i>';
+        chatBtn.classList.add('pulse-ring');
+    }
+}
+
+function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    const userBubble = document.createElement('div');
+    userBubble.className = 'flex gap-2 message-bubble justify-end';
+    userBubble.innerHTML = '<div class="bg-[#47278C] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm max-w-[80%]">' + escapeHtml(text) + '</div>';
+    chatMessages.appendChild(userBubble);
+    chatInput.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    setTimeout(() => {
+        const botBubble = document.createElement('div');
+        botBubble.className = 'flex gap-2 message-bubble';
+        botBubble.innerHTML = '<div class="w-7 h-7 rounded-full bg-[#E7E1F5] flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-robot text-[10px] text-[#47278C]"></i></div><div class="bg-white border border-[#CFC8E3] rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm text-[#0C0914] max-w-[80%]">' + getBotResponse(text) + '</div>';
+        chatMessages.appendChild(botBubble);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 800);
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function getBotResponse(text) {
+    const lower = text.toLowerCase();
+    if (lower.includes('beijing') || lower.includes('wall')) {
+        return 'Beijing is amazing! I recommend the 8-day immersive Great Wall tour starting at &#3647;24,500. Would you like me to show more details?';
+    } else if (lower.includes('price') || lower.includes('cost') || lower.includes('baht')) {
+        return 'Our tours range from &#3647;16,800 to &#3647;45,000 depending on duration and inclusions. What is your budget range?';
+    } else if (lower.includes('hello') || lower.includes('hi')) {
+        return 'Hello! Ready to plan your China adventure? Tell me your preferred destination or travel dates!';
+    } else if (lower.includes('panda') || lower.includes('chengdu')) {
+        return 'The Chengdu Panda & Sichuan Culture Tour is a traveler favorite! 5 days from &#3647;19,600. Shall I send you the full itinerary?';
+    } else if (lower.includes('visa')) {
+        return 'Many nationalities now enjoy 144-hour visa-free transit in major Chinese cities. Would you like our 2026 visa guide?';
+    } else {
+        return 'That sounds exciting! I can help you compare tours and find verified suppliers. What destination interests you most?';
+    }
+}
+
+// Carousel Navigation
+const carousel = document.getElementById('tourCarousel');
+document.getElementById('prevTour').addEventListener('click', () => {
+    carousel.scrollBy({ left: -360, behavior: 'smooth' });
+});
+document.getElementById('nextTour').addEventListener('click', () => {
+    carousel.scrollBy({ left: 360, behavior: 'smooth' });
+});
+
+// Filter Chips
+const chips = document.querySelectorAll('.chip');
+chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+        chips.forEach(c => {
+            c.classList.remove('active', 'bg-[#47278C]', 'text-white');
+            c.classList.add('bg-white', 'text-[#0C0914]');
+        });
+        chip.classList.add('active', 'bg-[#47278C]', 'text-white');
+        chip.classList.remove('bg-white', 'text-[#0C0914]');
+    });
+});
+
+// Destination Autocomplete
+const destinations = ['Beijing', 'Shanghai', 'Guilin', 'Xi\'an', 'Chengdu', 'Zhangjiajie', 'Hangzhou', 'Suzhou', 'Lhasa', 'Harbin'];
+const destInput = document.getElementById('destinationInput');
+const autoList = document.getElementById('autocompleteList');
+
+destInput.addEventListener('input', (e) => {
+    const val = e.target.value.toLowerCase();
+    if (val.length < 1) {
+        autoList.classList.add('hidden');
+        return;
+    }
+    const matches = destinations.filter(d => d.toLowerCase().includes(val));
+    if (matches.length > 0) {
+        autoList.innerHTML = matches.map(d => '<div class="px-4 py-2.5 hover:bg-[#E7E1F5] cursor-pointer text-sm text-[#0C0914] flex items-center gap-2" onclick="selectDest(\'' + d + '\')"><i class="fa-solid fa-location-dot text-[#5D527A] text-xs"></i>' + d + '</div>').join('');
+        autoList.classList.remove('hidden');
+    } else {
+        autoList.classList.add('hidden');
+    }
+});
+
+function selectDest(dest) {
+    destInput.value = dest;
+    autoList.classList.add('hidden');
+}
+
+document.addEventListener('click', (e) => {
+    if (!destInput.contains(e.target) && !autoList.contains(e.target)) {
+        autoList.classList.add('hidden');
+    }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+            const offset = 80;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+            mobileMenu.classList.add('hidden');
+        }
+    });
+});
+</script>
+</body>
+</html>
