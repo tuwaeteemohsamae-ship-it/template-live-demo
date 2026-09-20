@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wanderli — Curated China Tours from Verified Local Operators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --accent: #47278C;
+    --accent-soft: #E7E1F5;
+    --text: #0C0914;
+    --muted: #5D527A;
+    --border: #CFC8E3;
+  }
+  * { font-family: 'Space Grotesk', sans-serif; -webkit-font-smoothing: antialiased; }
+  body { color: var(--text); background: #FFFFFF; overflow-x: hidden; }
+  html { scroll-behavior: smooth; }
+  .container-max { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 640px) { .container-max { padding: 0 16px; } }
+
+  /* Buttons */
+  .btn-primary { background: var(--accent); color: #FFFFFF; transition: all 0.25s cubic-bezier(0.4,0,0.2,1); }
+  .btn-primary:hover { background: #3A1F73; transform: translateY(-1px); box-shadow: 0 10px 25px rgba(71,39,140,0.28); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary { background: var(--accent-soft); color: var(--accent); transition: all 0.2s ease; }
+  .btn-secondary:hover { background: #DDD5F0; }
+
+  /* Hero subtle background pattern */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 80% 50% at 90% 10%, rgba(231,225,245,0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 10% 90%, rgba(231,225,245,0.35) 0%, transparent 60%),
+      #FFFFFF;
+  }
+
+  /* Card hover */
+  .tour-card { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .tour-card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(12,9,20,0.10); }
+  .tour-card:hover .tour-img { transform: scale(1.06); }
+  .tour-img { transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+
+  /* Chip */
+  .chip { transition: all 0.2s ease; cursor: pointer; }
+  .chip:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .chip.active { background: var(--accent); color: #FFFFFF; border-color: var(--accent); }
+  .chip.active i { color: #FFFFFF !important; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Modal */
+  .modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal-content { transform: scale(0.95) translateY(20px); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
+
+  /* Chatbot panel */
+  .chatbot-panel { transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1); transform-origin: bottom right; }
+  .chatbot-panel.active { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+
+  /* Back to top */
+  .back-to-top { opacity: 0; pointer-events: none; transform: translateY(10px) scale(0.8); transition: all 0.3s ease; }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+
+  /* Header search pill */
+  .header-search { opacity: 0; transform: translateY(-8px); pointer-events: none; transition: all 0.3s ease; }
+  .header-search.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+  /* Chat scrollbar */
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Carousel */
+  .carousel-track { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+
+  /* Typing dots */
+  @keyframes typing { 0%,60%,100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 1; } }
+  .typing-dot { animation: typing 1.4s infinite ease-in-out; }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  /* Floating */
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .floating { animation: float 4s ease-in-out infinite; }
+  .floating-delay { animation: float 4s ease-in-out infinite; animation-delay: 1.5s; }
+
+  /* Gradient text */
+  .gradient-text { background: linear-gradient(135deg, #47278C 0%, #7B4FBE 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* Verified badge */
+  .verified-badge { background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); }
+
+  /* Input reset */
+  input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.5; cursor: pointer; }
+  input:focus { outline: none; }
+
+  /* Hide number arrows */
+  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+  /* Section transition */
+  section { scroll-margin-top: 80px; }
+
+  /* Line clamp */
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* Pulse dot */
+  @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
+  .pulse-ring::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #22C55E; animation: pulse-ring 2s infinite; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#CFC8E3]/60">
+  <div class="container-max">
+    <div class="flex items-center justify-between h-16 gap-4">
+      <a href="#" class="flex items-center gap-2 flex-shrink-0">
+        <div class="w-9 h-9 rounded-xl bg-[#47278C] flex items-center justify-center">
+          <i class="fa-solid fa-mountain-sun text-white text-sm"></i>
+        </div>
+        <span class="font-bold text-xl tracking-tight">Wanderli</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        <a href="#destinations" class="text-sm font-medium text-[#0C0914] hover:text-[#47278C] transition">Destinations</a>
+        <a href="#tours" class="text-sm font-medium text-[#0C0914] hover:text-[#47278C] transition">Tours</a>
+        <a href="#suppliers" class="text-sm font-medium text-[#0C0914] hover:text-[#47278C] transition">Suppliers</a>
+        <a href="#guides" class="text-sm font-medium text-[#0C0914] hover:text-[#47278C] transition">Travel Guides</a>
+        <a href="#" class="text-sm font-medium text-[#0C0914] hover:text-[#47278C] transition">About</a>
+      </nav>
+
+      <div class="flex items-center gap-2 md:gap-3">
+        <div id="header-search" class="header-search hidden md:flex items-center gap-3 border border-[#CFC8E3] rounded-full py-1.5 pl-4 pr-1.5 hover:shadow-md cursor-pointer transition" onclick="scrollToSearch()">
+          <span class="text-xs font-medium text-[#0C0914]">Search tours</span>
+          <span class="text-[10px] text-[#5D527A] hidden xl:inline">·</span>
+          <span class="text-[10px] text-[#5D527A] hidden xl:inline">Any dates</span>
+          <div class="bg-[#47278C] w-8 h-8 rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-magnifying-glass text-white text-xs"></i>
+          </div>
+        </div>
+        <button class="hidden md:flex items-center gap-1 text-sm font-medium text-[#5D527A] hover:text-[#0C0914] transition px-2">
+          <i class="fa-solid fa-globe text-xs"></i>
+          <span>EN</span>
+        </button>
+        <button onclick="openAuth('login')" class="text-sm font-medium text-[#0C0914] hover:text-[#47278C] transition px-2">Sign in</button>
+        <button onclick="openAuth('register')" class="btn-primary text-sm font-medium px-4 py-2 rounded-full">Get started</button>
+        <button class="lg:hidden p-2 -mr-2" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-[#CFC8E3]/60 bg-white">
+    <div class="container-max py-4 flex flex-col gap-1">
+      <a href="#destinations" class="text-sm font-medium py-2.5 hover:text-[#47278C]">Destinations</a>
+      <a href="#tours" class="text-sm font-medium py-2.5 hover:text-[#47278C]">Tours</a>
+      <a href="#suppliers" class="text-sm font-medium py-2.5 hover:text-[#47278C]">Suppliers</a>
+      <a href="#guides" class="text-sm font-medium py-2.5 hover:text-[#47278C]">Travel Guides</a>
+      <a href="#" class="text-sm font-medium py-2.5 hover:text-[#47278C]">About</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero-bg relative overflow-hidden">
+  <div class="container-max py-12 lg:py-20">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#E7E1F5] rounded-full text-xs font-semibold text-[#47278C] mb-6">
+          <span class="relative flex w-1.5 h-1.5">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-[#47278C] opacity-75 animate-ping"></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#47278C]"></span>
+          </span>
+          Now serving 200+ destinations across China
+        </div>
+        <h1 class="text-[44px] sm:text-5xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
+          The China you<br/>
+          came for. <span class="gradient-text">And the</span><br/>
+          <span class="gradient-text">China you didn't</span><br/>
+          know to ask for.
+        </h1>
+        <p class="text-base lg:text-lg text-[#5D527A] max-w-xl mb-8 leading-relaxed">
+          Compare verified local operators across Beijing, Chengdu, the Silk Road, and beyond. No middlemen, no markups, no surprises — just real journeys from people who actually live there.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="bg-white rounded-2xl border border-[#CFC8E3] shadow-[0_12px_40px_rgba(12,9,20,0.08)] p-2 flex flex-col md:flex-row gap-1.5 md:gap-0">
+          <div class="flex-1 relative">
+            <div class="px-4 py-2.5 cursor-text" onclick="document.getElementById('dest-input').focus()">
+              <div class="text-[10px] font-semibold text-[#5D527A] uppercase tracking-wider mb-0.5">Destination</div>
+              <input type="text" id="dest-input" placeholder="Where to in China?" class="w-full text-sm font-medium outline-none bg-transparent placeholder:text-[#A99FC0]" autocomplete="off"/>
+            </div>
+            <div id="dest-suggestions" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border border-[#CFC8E3] rounded-xl shadow-xl z-50 max-h-60 overflow-auto"></div>
+          </div>
+          <div class="hidden md:block w-px bg-[#CFC8E3] my-2"></div>
+          <div class="flex-1">
+            <div class="px-4 py-2.5">
+              <div class="text-[10px] font-semibold text-[#5D527A] uppercase tracking-wider mb-0.5">Dates</div>
+              <div class="flex items-center gap-2">
+                <input type="date" id="date-from" class="text-sm font-medium outline-none bg-transparent w-full text-[#0C0914]"/>
+                <i class="fa-solid fa-arrow-right text-[#CFC8E3] text-[10px]"></i>
+                <input type="date" id="date-to" class="text-sm font-medium outline-none bg-transparent w-full text-[#0C0914]"/>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block w-px bg-[#CFC8E3] my-2"></div>
+          <div class="flex-1 relative">
+            <div class="px-4 py-2.5 cursor-pointer" onclick="toggleTravelers(event)">
+              <div class="text-[10px] font-semibold text-[#5D527A] uppercase tracking-wider mb-0.5">Travelers</div>
+              <div class="flex items-center justify-between">
+                <span id="travelers-label" class="text-sm font-medium">2 adults</span>
+                <i class="fa-solid fa-chevron-down text-[#5D527A] text-[10px]"></i>
+              </div>
+            </div>
+            <div id="travelers-popover" class="hidden absolute top-full right-0 mt-1 bg-white border border-[#CFC8E3] rounded-xl shadow-xl z-50 p-4 w-72"></div>
+          </div>
+          <button onclick="handleSearch()" class="btn-primary px-5 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            <span>Search</span>
+          </button>
+        </div>
+
+        <!-- Quick filter chips -->
+        <div class="flex flex-wrap gap-2 mt-5 items-center">
+          <span class="text-xs font-semibold text-[#5D527A] mr-1">Popular:</span>
+          <button class="chip border border-[#CFC8E3] px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-[#0C0914]">
+            <i class="fa-solid fa-mountain text-[#47278C]"></i> Great Wall
+          </button>
+          <button class="chip border border-[#CFC8E3] px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-[#0C0914]">
+            <i class="fa-solid fa-road text-[#47278C]"></i> Silk Road
+          </button>
+          <button class="chip border border-[#CFC8E3] px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-[#0C0914]">
+            <i class="fa-solid fa-ship text-[#47278C]"></i> Yangtze Cruise
+          </button>
+          <button class="chip border border-[#CFC8E3] px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-[#0C0914]">
+            <i class="fa-solid fa-paw text-[#47278C]"></i> Panda
+          </button>
+          <button class="chip border border-[#CFC8E3] px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-[#0C0914]">
+            <i class="fa-solid fa-people-roof text-[#47278C]"></i> Family
+          </button>
+          <button class="chip border border-[#CFC8E3] px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-[#0C0914]">
+            <i class="fa-solid fa-crown text-[#47278C]"></i> Luxury
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 relative hidden lg:block">
+        <div class="relative">
+          <img src="https://picsum.photos/seed/china-mountain-temple/800/900" class="rounded-3xl object-cover w-full aspect-[4/5] shadow-2xl" alt="China landscape"/>
+          <div class="absolute -left-6 top-12 bg-white rounded-2xl shadow-xl p-4 border border-[#CFC8E3] floating">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#E7E1F5] flex items-center justify-center">
+                <i class="fa-solid fa-shield-halved text-[#47278C]"></i>
+              </div>
+              <div>
+                <div class="text-[10px] text-[#5D527A] uppercase tracking-wide">Verified suppliers</div>
+                <div class="font-bold text-lg leading-tight">1,247</div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -right-4 bottom-16 bg-white rounded-2xl shadow-xl p-4 border border-[#CFC8E3] floating-delay">
+            <div class="flex items-center gap-3">
+              <div class="flex -space-x-2">
+                <img src="https://picsum.photos/seed/u1/40/40" class="w-8 h-8 rounded-full border-2 border-white object-cover"/>
+                <img src="https://picsum.photos/seed/u2/40/40" class="w-8 h-8 rounded-full border-2 border-white object-cover"/>
+                <img src="https://picsum.photos/seed/u3/40/40" class="w-8 h-8 rounded-full border-2 border-white object-cover"/>
+              </div>
+              <div>
+                <div class="flex items-center gap-1">
+                  <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                  <span class="font-bold text-sm">4.9</span>
+                </div>
+                <div class="text-[10px] text-[#5D527A]">38,420 reviews</div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 left-8 bg-[#47278C] text-white rounded-2xl shadow-xl p-3 floating" style="animation-delay: 0.7s;">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-bolt text-yellow-300"></i>
+              <span class="text-xs font-semibold">Avg. response 2h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED TOURS -->
+<section id="tours" class="py-16 lg:py-24 bg-white">
+  <div class="container-max">
+    <div class="flex items-end justify-between mb-10 gap-4">
+      <div class="reveal">
+        <div class="text-xs font-semibold text-[#47278C] uppercase tracking-wider mb-2">Featured tours</div>
+        <h2 class="text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.1]">Hand-picked journeys,<br/>verified by people who've been.</h2>
+      </div>
+      <div class="hidden md:flex items-center gap-2 reveal">
+        <button onclick="prevSlide()" class="w-11 h-11 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] hover:border-[#47278C] transition">
+          <i class="fa-solid fa-arrow-left text-sm"></i>
+        </button>
+        <button onclick="nextSlide()" class="w-11 h-11 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] hover:border-[#47278C] transition">
+          <i class="fa-solid fa-arrow-right text-sm"></i>
+        </button>
+      </div>
+    </div>
+    <div class="overflow-hidden -mx-6 px-6 md:mx-0 md:px-0">
+      <div id="carousel-track" class="carousel-track flex gap-5"></div>
+    </div>
+    <div class="flex md:hidden items-center gap-2 mt-6 justify-center">
+      <button onclick="prevSlide()" class="w-11 h-11 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] transition">
+        <i class="fa-solid fa-arrow-left text-sm"></i>
+      </button>
+      <button onclick="nextSlide()" class="w-11 h-11 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] transition">
+        <i class="fa-solid fa-arrow-right text-sm"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR DESTINATIONS -->
+<section id="destinations" class="py-16 lg:py-24 bg-white border-t border-[#CFC8E3]/60">
+  <div class="container-max">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <div class="text-xs font-semibold text-[#47278C] uppercase tracking-wider mb-2">Popular destinations</div>
+      <h2 class="text-3xl lg:text-[40px] font-bold tracking-tight mb-3 leading-[1.1]">Where China happens.</h2>
+      <p class="text-[#5D527A]">From imperial capitals to karst valleys — explore the destinations our travelers keep coming back to.</p>
+    </div>
+    <div id="dest-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-4"></div>
+  </div>
+</section>
+
+<!-- COMPARE SUPPLIERS -->
+<section id="suppliers" class="py-16 lg:py-20 bg-white border-t border-[#CFC8E3]/60">
+  <div class="container-max">
+    <div class="bg-[#47278C] rounded-3xl p-8 lg:p-12 relative overflow-hidden reveal">
+      <div class="absolute top-0 right-0 w-72 h-72 bg-[#6B3FA0] rounded-full -mr-32 -mt-32 opacity-50"></div>
+      <div class="absolute bottom-0 left-1/3 w-48 h-48 bg-[#6B3FA0] rounded-full -mb-24 opacity-30"></div>
+      <div class="relative grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-semibold text-white mb-5 backdrop-blur-sm">
+            <i class="fa-solid fa-scale-balanced"></i> Supplier comparison
+          </div>
+          <h3 class="text-3xl lg:text-4xl font-bold text-white leading-[1.1] mb-4 tracking-tight">
+            Don't just book.<br/>Compare the people<br/>behind the tour.
+          </h3>
+          <p class="text-white/80 mb-7 max-w-md leading-relaxed">
+            See verified supplier profiles side-by-side: response time, language support, cancellation flexibility, and 38,000+ honest reviews from real travelers.
+          </p>
+          <button class="bg-white text-[#47278C] px-6 py-3 rounded-full font-semibold hover:bg-[#E7E1F5] transition flex items-center gap-2 group">
+            Try supplier comparison
+            <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition"></i>
+          </button>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-2xl">
+          <div class="text-xs font-semibold text-[#5D527A] uppercase tracking-wide mb-3">Comparing 2 of 12 suppliers · Beijing</div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="border border-[#CFC8E3] rounded-xl p-3">
+              <div class="w-8 h-8 rounded-full bg-[#E7E1F5] mb-2 flex items-center justify-center">
+                <i class="fa-solid fa-building text-[#47278C] text-xs"></i>
+              </div>
+              <div class="text-xs font-semibold leading-tight">Beijing Heritage Tours</div>
+              <div class="flex items-center gap-1 mt-1.5">
+                <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i>
+                <span class="text-xs font-bold">4.9</span>
+                <span class="text-[10px] text-[#5D527A]">· 2,341 reviews</span>
+              </div>
+              <div class="text-[10px] text-[#5D527A] mt-1.5 flex items-center gap-1"><i class="fa-regular fa-clock"></i> Responds in 2h</div>
+              <div class="text-sm font-bold mt-2">$899</div>
+            </div>
+            <div class="border-2 border-[#47278C] rounded-xl p-3 relative bg-[#FAF9FE]">
+              <div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-[#47278C] text-white text-[9px] px-2 py-0.5 rounded-full font-semibold whitespace-nowrap">BEST MATCH</div>
+              <div class="w-8 h-8 rounded-full bg-[#E7E1F5] mb-2 flex items-center justify-center">
+                <i class="fa-solid fa-landmark text-[#47278C] text-xs"></i>
+              </div>
+              <div class="text-xs font-semibold leading-tight">Imperial Walks Co.</div>
+              <div class="flex items-center gap-1 mt-1.5">
+                <i class="fa-solid fa-star text-yellow-400 text-[10px]"></i>
+                <span class="text-xs font-bold">4.8</span>
+                <span class="text-[10px] text-[#5D527A]">· 1,887 reviews</span>
+              </div>
+              <div class="text-[10px] text-[#5D527A] mt-1.5 flex items-center gap-1"><i class="fa-regular fa-clock"></i> Responds in 1h</div>
+              <div class="text-sm font-bold mt-2 text-[#47278C]">$659</div>
+            </div>
+          </div>
+          <div class="mt-3 pt-3 border-t border-[#CFC8E3] flex items-center justify-between">
+            <span class="text-xs text-[#5D527A]">Price difference</span>
+            <span class="text-xs font-bold text-[#47278C] flex items-center gap-1"><i class="fa-solid fa-arrow-down text-[10px]"></i> Save $240</span>
+          </div>
+          <div class="mt-2 flex items-center justify-between">
+            <span class="text-xs text-[#5D527A]">Language support</span>
+            <span class="text-xs font-medium">EN · CN · FR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST SECTION -->
+<section class="py-16 lg:py-20 bg-white border-t border-[#CFC8E3]/60">
+  <div class="container-max">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <div class="reveal text-center lg:text-left">
+        <div class="text-4xl lg:text-5xl font-bold text-[#47278C] mb-2 tracking-tight">1,247</div>
+        <div class="text-sm text-[#5D527A] leading-snug">Verified local suppliers across 31 provinces</div>
+      </div>
+      <div class="reveal text-center lg:text-left" style="transition-delay: 0.1s;">
+        <div class="text-4xl lg:text-5xl font-bold text-[#47278C] mb-2 tracking-tight">38,420</div>
+        <div class="text-sm text-[#5D527A] leading-snug">Reviews from real travelers, none removed</div>
+      </div>
+      <div class="reveal text-center lg:text-left" style="transition-delay: 0.2s;">
+        <div class="text-4xl lg:text-5xl font-bold text-[#47278C] mb-2 tracking-tight">100%</div>
+        <div class="text-sm text-[#5D527A] leading-snug">Money-back guarantee on every booking</div>
+      </div>
+      <div class="reveal text-center lg:text-left" style="transition-delay: 0.3s;">
+        <div class="text-4xl lg:text-5xl font-bold text-[#47278C] mb-2 tracking-tight">24/7</div>
+        <div class="text-sm text-[#5D527A] leading-snug">On-trip support, every timezone, every language</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVEL GUIDES -->
+<section id="guides" class="py-16 lg:py-24 bg-white border-t border-[#CFC8E3]/60">
+  <div class="container-max">
+    <div class="flex items-end justify-between mb-10 gap-4">
+      <div class="reveal">
+        <div class="text-xs font-semibold text-[#47278C] uppercase tracking-wider mb-2">Travel guides</div>
+        <h2 class="text-3xl lg:text-[40px] font-bold tracking-tight leading-[1.1]">Read this before you book.</h2>
+      </div>
+      <a href="#" class="hidden md:flex items-center gap-2 text-sm font-medium text-[#47278C] hover:gap-3 transition-all whitespace-nowrap">
+        All guides <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+    <div id="guides-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-16 lg:py-20 bg-white border-t border-[#CFC8E3]/60">
+  <div class="container-max">
+    <div class="bg-[#E7E1F5]/40 rounded-3xl p-8 lg:p-14 text-center relative overflow-hidden reveal">
+      <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#47278C]/5 rounded-full"></div>
+      <div class="absolute -bottom-10 -left-10 w-56 h-56 bg-[#47278C]/5 rounded-full"></div>
+      <div class="relative max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-white rounded-full text-xs font-semibold text-[#47278C] mb-5 border border-[#CFC8E3]">
+          <i class="fa-solid fa-bell"></i> Deal alerts
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-3 leading-[1.1]">Get the deals before they're gone.</h2>
+        <p class="text-[#5D527A] mb-7 max-w-md mx-auto">Join 84,000+ travelers. One email a week, curated China deals under $1,000. Unsubscribe anytime.</p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="handleNewsletter(event)">
+          <input type="email" required placeholder="you@email.com" class="flex-1 px-5 py-3 rounded-full border border-[#CFC8E3] bg-white text-sm font-medium outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition"/>
+          <button type="submit" class="btn-primary px-6 py-3 rounded-full font-semibold whitespace-nowrap">Subscribe</button>
+        </form>
+        <div id="newsletter-msg" class="text-sm text-[#47278C] mt-4 h-5 font-medium"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-[#CFC8E3]">
+  <div class="container-max py-12 lg:py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
+      <div class="lg:col-span-2">
+        <a href="#" class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 rounded-xl bg-[#47278C] flex items-center justify-center">
+            <i class="fa-solid fa-mountain-sun text-white text-sm"></i>
+          </div>
+          <span class="font-bold text-xl tracking-tight">Wanderli</span>
+        </a>
+        <p class="text-sm text-[#5D527A] max-w-xs mb-5 leading-relaxed">The marketplace for verified, locally-operated China tours. No middlemen, no markups — just real journeys from real locals.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] hover:border-[#47278C] transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] hover:border-[#47278C] transition"><i class="fa-brands fa-weixin text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] hover:border-[#47278C] transition"><i class="fa-brands fa-youtube text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] hover:border-[#47278C] transition"><i class="fa-brands fa-tiktok text-sm"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="text-sm font-semibold mb-4">Explore</div>
+        <ul class="space-y-2.5 text-sm text-[#5D527A]">
+          <li><a href="#" class="hover:text-[#47278C] transition">All tours</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Destinations</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Themes</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Travel guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-sm font-semibold mb-4">For suppliers</div>
+        <ul class="space-y-2.5 text-sm text-[#5D527A]">
+          <li><a href="#" class="hover:text-[#47278C] transition">List your tours</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Supplier dashboard</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Verification process</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-sm font-semibold mb-4">Company</div>
+        <ul class="space-y-2.5 text-sm text-[#5D527A]">
+          <li><a href="#" class="hover:text-[#47278C] transition">About us</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Careers</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Press</a></li>
+          <li><a href="#" class="hover:text-[#47278C] transition">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-[#CFC8E3] flex flex-col md:flex-row justify-between items-center gap-3">
+      <div class="text-xs text-[#5D527A]">© 2026 Wanderli Inc. All rights reserved.</div>
+      <div class="flex gap-5 text-xs text-[#5D527A]">
+        <a href="#" class="hover:text-[#47278C] transition">Privacy</a>
+        <a href="#" class="hover:text-[#47278C] transition">Terms</a>
+        <a href="#" class="hover:text-[#47278C] transition">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="fixed bottom-6 right-6 z-40 flex items-end gap-[5px]">
+  <button id="back-to-top" onclick="scrollToTop()" class="back-to-top w-12 h-12 rounded-full bg-white border border-[#CFC8E3] shadow-lg flex items-center justify-center hover:bg-[#E7E1F5] hover:border-[#47278C] transition" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up text-[#47278C]"></i>
+  </button>
+  <button id="chatbot-toggle" onclick="toggleChatbot()" class="w-14 h-14 rounded-full bg-[#47278C] text-white shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition" aria-label="Open chat">
+    <i class="fa-solid fa-comment-dots text-xl"></i>
+  </button>
+</div>
+
+<!-- CHATBOT PANEL -->
+<div id="chatbot-panel" class="chatbot-panel fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] bg-white rounded-2xl shadow-2xl border border-[#CFC8E3] overflow-hidden flex flex-col" style="height: 520px;">
+  <div class="bg-[#47278C] text-white p-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-[#47278C]"></div>
+      </div>
+      <div>
+        <div class="font-semibold text-sm">Lili · Wanderli Assistant</div>
+        <div class="text-[11px] text-white/70 flex items-center gap-1"><i class="fa-solid fa-bolt text-[9px]"></i> Avg. reply under 1 min</div>
+      </div>
+    </div>
+    <button onclick="toggleChatbot()" class="text-white/70 hover:text-white transition w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div id="chat-messages" class="chat-messages flex-1 overflow-y-auto p-4 space-y-3 bg-[#FAFAFC]"></div>
+  <div id="quick-replies" class="px-3 py-2 flex gap-2 overflow-x-auto no-scrollbar bg-[#FAFAFC] border-t border-[#CFC8E3]/60">
+    <button onclick="sendQuickReply('Show me Great Wall tours')" class="text-xs px-3 py-1.5 rounded-full bg-[#E7E1F5] text-[#47278C] font-medium whitespace-nowrap hover:bg-[#DDD5F0] transition flex-shrink-0">Great Wall tours</button>
+    <button onclick="sendQuickReply('Visa requirements for China')" class="text-xs px-3 py-1.5 rounded-full bg-[#E7E1F5] text-[#47278C] font-medium whitespace-nowrap hover:bg-[#DDD5F0] transition flex-shrink-0">Visa help</button>
+    <button onclick="sendQuickReply('Best season to visit China')" class="text-xs px-3 py-1.5 rounded-full bg-[#E7E1F5] text-[#47278C] font-medium whitespace-nowrap hover:bg-[#DDD5F0] transition flex-shrink-0">Best season</button>
+    <button onclick="sendQuickReply('Family-friendly tours')" class="text-xs px-3 py-1.5 rounded-full bg-[#E7E1F5] text-[#47278C] font-medium whitespace-nowrap hover:bg-[#DDD5F0] transition flex-shrink-0">Family tours</button>
+  </div>
+  <div class="p-3 bg-white border-t border-[#CFC8E3]">
+    <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-2">
+      <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 px-4 py-2.5 text-sm bg-[#FAFAFC] border border-[#CFC8E3] rounded-full outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition"/>
+      <button type="submit" class="w-10 h-10 rounded-full bg-[#47278C] text-white flex items-center justify-center hover:bg-[#3A1F73] active:scale-95 transition flex-shrink-0">
+        <i class="fa-solid fa-paper-plane text-sm"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="auth-modal" class="modal-overlay fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeAuthOnOverlay(event)">
+  <div class="modal-content bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden relative" onclick="event.stopPropagation()">
+    <button onclick="closeAuth()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full hover:bg-[#E7E1F5] flex items-center justify-center transition">
+      <i class="fa-solid fa-xmark text-[#5D527A]"></i>
+    </button>
+    <div class="flex border-b border-[#CFC8E3]">
+      <button id="tab-login" onclick="switchAuth('login')" class="flex-1 py-4 text-sm font-semibold text-[#47278C] border-b-2 border-[#47278C] transition">Sign in</button>
+      <button id="tab-register" onclick="switchAuth('register')" class="flex-1 py-4 text-sm font-semibold text-[#5D527A] border-b-2 border-transparent transition">Create account</button>
+    </div>
+    <div class="p-6 lg:p-8">
+      <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <h3 class="text-2xl font-bold mb-1 tracking-tight">Welcome back.</h3>
+          <p class="text-sm text-[#5D527A]">Sign in to continue your journey.</p>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-[#5D527A] uppercase tracking-wider">Email</label>
+          <input type="email" required placeholder="you@email.com" class="w-full mt-1.5 px-4 py-3 border border-[#CFC8E3] rounded-xl outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition text-sm"/>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-[#5D527A] uppercase tracking-wider">Password</label>
+          <input type="password" required placeholder="••••••••" class="w-full mt-1.5 px-4 py-3 border border-[#CFC8E3] rounded-xl outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition text-sm"/>
+        </div>
+        <div class="flex items-center justify-between text-xs">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" class="rounded accent-[#47278C]"/>
+            <span class="text-[#5D527A]">Remember me</span>
+          </label>
+          <a href="#" class="text-[#47278C] font-medium hover:underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-primary w-full py-3 rounded-xl font-semibold">Sign in</button>
+        <div class="relative my-2">
+          <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-[#CFC8E3]"></div></div>
+          <div class="relative text-center"><span class="bg-white px-3 text-xs text-[#5D527A]">or continue with</span></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" onclick="socialAuth('Google')" class="border border-[#CFC8E3] rounded-xl py-2.5 hover:bg-[#E7E1F5] transition flex items-center justify-center gap-1.5 text-xs font-medium">
+            <i class="fa-brands fa-google text-[#47278C]"></i> Google
+          </button>
+          <button type="button" onclick="socialAuth('WeChat')" class="border border-[#CFC8E3] rounded-xl py-2.5 hover:bg-[#E7E1F5] transition flex items-center justify-center gap-1.5 text-xs font-medium">
+            <i class="fa-brands fa-weixin text-[#47278C]"></i> WeChat
+          </button>
+          <button type="button" onclick="socialAuth('Apple')" class="border border-[#CFC8E3] rounded-xl py-2.5 hover:bg-[#E7E1F5] transition flex items-center justify-center gap-1.5 text-xs font-medium">
+            <i class="fa-brands fa-apple text-[#47278C]"></i> Apple
+          </button>
+        </div>
+      </form>
+      <form id="register-form" onsubmit="handleRegister(event)" class="space-y-4 hidden">
+        <div>
+          <h3 class="text-2xl font-bold mb-1 tracking-tight">Start your journey.</h3>
+          <p class="text-sm text-[#5D527A]">Create an account in 30 seconds.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-semibold text-[#5D527A] uppercase tracking-wider">First name</label>
+            <input type="text" required placeholder="Alex" class="w-full mt-1.5 px-4 py-3 border border-[#CFC8E3] rounded-xl outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition text-sm"/>
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold text-[#5D527A] uppercase tracking-wider">Last name</label>
+            <input type="text" required placeholder="Chen" class="w-full mt-1.5 px-4 py-3 border border-[#CFC8E3] rounded-xl outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition text-sm"/>
+          </div>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-[#5D527A] uppercase tracking-wider">Email</label>
+          <input type="email" required placeholder="you@email.com" class="w-full mt-1.5 px-4 py-3 border border-[#CFC8E3] rounded-xl outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition text-sm"/>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-[#5D527A] uppercase tracking-wider">Password</label>
+          <input type="password" required placeholder="••••••••" class="w-full mt-1.5 px-4 py-3 border border-[#CFC8E3] rounded-xl outline-none focus:border-[#47278C] focus:ring-2 focus:ring-[#47278C]/10 transition text-sm"/>
+          <div class="text-[11px] text-[#5D527A] mt-1.5">Min. 8 characters, 1 number</div>
+        </div>
+        <label class="flex items-start gap-2 cursor-pointer text-xs text-[#5D527A]">
+          <input type="checkbox" required class="mt-0.5 rounded accent-[#47278C]"/>
+          <span>I agree to Wanderli's <a href="#" class="text-[#47278C] underline">Terms</a> and <a href="#" class="text-[#47278C] underline">Privacy Policy</a>.</span>
+        </label>
+        <button type="submit" class="btn-primary w-full py-3 rounded-xl font-semibold">Create account</button>
+        <div class="text-center text-xs text-[#5D527A]">Already have an account? <button type="button" onclick="switchAuth('login')" class="text-[#47278C] font-semibold hover:underline">Sign in</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container" class="fixed top-20 right-6 z-[200] space-y-2 pointer-events-none"></div>
+
+<script>
+// ============ DATA ============
+const destinations = [
+  { name: 'Beijing', tours: 142, image: 'https://picsum.photos/seed/beijing-city/600/800' },
+  { name: 'Shanghai', tours: 128, image: 'https://picsum.photos/seed/shanghai-skyline/600/800' },
+  { name: 'Guilin', tours: 76, image: 'https://picsum.photos/seed/guilin-karst/600/800' },
+  { name: "Xi'an", tours: 94, image: 'https://picsum.photos/seed/xian-terracotta/600/800' },
+  { name: 'Chengdu', tours: 68, image: 'https://picsum.photos/seed/chengdu-panda/600/800' },
+  { name: 'Hangzhou', tours: 52, image: 'https://picsum.photos/seed/hangzhou-westlake/600/800' }
+];
+
+const tours = [
+  { name: 'Forbidden City & Great Wall Discovery', location: 'Beijing', duration: '5D · 4N', price: 899, rating: 4.9, reviews: 1247, supplier: 'Beijing Heritage Tours', badge: 'Bestseller', image: 'https://picsum.photos/seed/tour-greatwall/800/600' },
+  { name: "Silk Road Odyssey: Xi'an to Dunhuang", location: "Xi'an · Dunhuang", duration: '8D · 7N', price: 1499, rating: 4.8, reviews: 887, supplier: 'Silk Road Experts', badge: "Editor's pick", image: 'https://picsum.photos/seed/tour-silkroad/800/600' },
+  { name: 'Yangtze River Cruise & Three Gorges', location: 'Chongqing · Yichang', duration: '7D · 6N', price: 1299, rating: 4.9, reviews: 642, supplier: 'Victoria Cruises', badge: 'Verified', image: 'https://picsum.photos/seed/tour-yangtze/800/600' },
+  { name: 'Giant Panda & Sichuan Cuisine Trail', location: 'Chengdu', duration: '4D · 3N', price: 649, rating: 4.7, reviews: 1532, supplier: 'Sichuan Local Guides', badge: 'Family favorite', image: 'https://picsum.photos/seed/tour-panda/800/600' },
+  { name: 'Shanghai Skyline & Water Towns', location: 'Shanghai', duration: '3D · 2N', price: 549, rating: 4.8, reviews: 2104, supplier: 'Shanghai Urban Tours', badge: 'Bestseller', image: 'https://picsum.photos/seed/tour-shanghai/800/600' },
+  { name: 'Guilin Karst & Li River Drift', location: 'Guilin · Yangshuo', duration: '6D · 5N', price: 999, rating: 4.9, reviews: 768, supplier: 'Karst Adventure Co.', badge: 'Verified', image: 'https://picsum.photos/seed/tour-guilin/800/600' }
+];
+
+const guides = [
+  { category: 'Planning', title: 'Best time to visit the Great Wall: season by season', read: '8 min read', image: 'https://picsum.photos/seed/guide-wall/600/400' },
+  { category: 'Visa', title: 'China visa made simple: 2026 application walkthrough', read: '12 min read', image: 'https://picsum.photos/seed/guide-visa/600/400' },
+  { category: 'Food', title: "What to eat in Chengdu: beyond hot pot", read: '6 min read', image: 'https://picsum.photos/seed/guide-food/600/400' },
+  { category: 'Packing', title: "Silk Road packing list: 12 essentials you'll forget", read: '5 min read', image: 'https://picsum.photos/seed/guide-pack/600/400' }
+];
+
+const destinationSuggestions = ['Beijing', 'Shanghai', 'Guilin', "Xi'an", 'Chengdu', 'Hangzhou', 'Suzhou', 'Lhasa', 'Dunhuang', 'Zhangjiajie', 'Harbin', 'Lijiang', 'Yangshuo', 'Pingyao'];
+
+// ============ RENDER TOURS ============
+function renderTours() {
+  const track = document.getElementById('carousel-track');
+  track.innerHTML = tours.map(t => `
+    <div class="tour-card flex-shrink-0 w-[280px] md:w-[340px] bg-white rounded-2xl border border-[#CFC8E3] overflow-hidden group cursor-pointer">
+      <div class="relative aspect-[4/3] overflow-hidden">
+        <img src="${t.image}" class="tour-img w-full h-full object-cover" alt="${t.name}"/>
+        <div class="absolute top-3 left-3">
+          <span class="verified-badge px-2.5 py-1 rounded-full text-[10px] font-semibold text-[#47278C] flex items-center gap-1 border border-[#CFC8E3]/30">
+            <i class="fa-solid fa-circle-check"></i> Verified Supplier
+          </span>
+        </div>
+        <div class="absolute top-3 right-3">
+          <span class="bg-[#47278C] text-white px-2.5 py-1 rounded-full text-[10px] font-semibold">${t.badge}</span>
+        </div>
+      </div>
+      <div class="p-4">
+        <div class="flex items-center gap-1 mb-2 flex-wrap">
+          <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+          <span class="text-xs font-bold">${t.rating}</span>
+          <span class="text-xs text-[#5D527A]">(${t.reviews.toLocaleString()})</span>
+          <span class="text-xs text-[#5D527A] mx-0.5">·</span>
+          <span class="text-xs text-[#5D527A] flex items-center gap-0.5"><i class="fa-solid fa-location-dot text-[9px]"></i> ${t.location}</span>
+        </div>
+        <h3 class="font-semibold text-[15px] leading-snug mb-2 line-clamp-2 min-h-[44px]">${t.name}</h3>
+        <div class="text-xs text-[#5D527A] mb-3">by ${t.supplier}</div>
+        <div class="flex items-center justify-between pt-3 border-t border-[#CFC8E3]">
+          <div>
+            <div class="text-[10px] text-[#5D527A] uppercase tracking-wide font-semibold">${t.duration}</div>
+            <div class="text-xs text-[#5D527A]">from <span class="text-lg font-bold text-[#0C0914]">$${t.price}</span></div>
+          </div>
+          <button class="btn-secondary px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+            View <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ============ RENDER DESTINATIONS ============
+function renderDestinations() {
+  const grid = document.getElementById('dest-grid');
+  grid.innerHTML = destinations.map(d => `
+    <a href="#" class="group relative aspect-[3/4] rounded-2xl overflow-hidden block">
+      <img src="${d.image}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="${d.name}"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-3 lg:p-4 text-white">
+        <div class="font-bold text-base lg:text-lg leading-tight">${d.name}</div>
+        <div class="text-[11px] lg:text-xs text-white/85 mt-0.5">${d.tours} tours available</div>
+      </div>
+      <div class="absolute top-3 right-3 w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-0 translate-y-1">
+        <i class="fa-solid fa-arrow-up-right-from-square text-white text-[10px] lg:text-xs"></i>
+      </div>
+    </a>
+  `).join('');
+}
+
+// ============ RENDER GUIDES ============
+function renderGuides() {
+  const grid = document.getElementById('guides-grid');
+  grid.innerHTML = guides.map(g => `
+    <a href="#" class="tour-card bg-white rounded-2xl border border-[#CFC8E3] overflow-hidden group block">
+      <div class="aspect-[3/2] overflow-hidden">
+        <img src="${g.image}" class="tour-img w-full h-full object-cover" alt="${g.title}"/>
+      </div>
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-2.5">
+          <span class="text-[10px] font-semibold text-[#47278C] bg-[#E7E1F5] px-2 py-1 rounded-full uppercase tracking-wide">${g.category}</span>
+          <span class="text-[11px] text-[#5D527A] flex items-center gap-1"><i class="fa-regular fa-clock text-[9px]"></i> ${g.read}</span>
+        </div>
+        <h3 class="font-semibold text-[15px] leading-snug line-clamp-2">${g.title}</h3>
+      </div>
+    </a>
+  `).join('');
+}
+
+// ============ CAROUSEL ============
+let currentSlide = 0;
+const getVisibleCount = () => window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+const getCardWidth = () => {
+  if (window.innerWidth >= 1024) return 340 + 20;
+  if (window.innerWidth >= 768) return 340 + 20;
+  return 280 + 20;
+};
+function updateCarousel() {
+  const track = document.getElementById('carousel-track');
+  const w = getCardWidth();
+  const max = Math.max(0, tours.length - getVisibleCount());
+  if (currentSlide > max) currentSlide = max;
+  if (currentSlide < 0) currentSlide = 0;
+  track.style.transform = `translateX(-${currentSlide * w}px)`;
+}
+function nextSlide() {
+  const max = Math.max(0, tours.length - getVisibleCount());
+  currentSlide = currentSlide >= max ? 0 : currentSlide + 1;
+  updateCarousel();
+}
+function prevSlide() {
+  const max = Math.max(0, tours.length - getVisibleCount());
+  currentSlide = currentSlide <= 0 ? max : currentSlide - 1;
+  updateCarousel();
+}
+
+// ============ DESTINATION AUTOCOMPLETE ============
+const destInput = document.getElementById('dest-input');
+const destSuggestions = document.getElementById('dest-suggestions');
+destInput.addEventListener('input', (e) => {
+  const val = e.target.value.toLowerCase().trim();
+  if (val.length < 1) { destSuggestions.classList.add('hidden'); return; }
+  const matches = destinationSuggestions.filter(d => d.toLowerCase().includes(val)).slice(0, 6);
+  if (matches.length === 0) {
+    destSuggestions.innerHTML = '<div class="px-4 py-3 text-sm text-[#5D527A] flex items-center gap-2"><i class="fa-solid fa-circle-info text-xs"></i> No matches — try "Beijing" or "Shanghai"</div>';
+  } else {
+    destSuggestions.innerHTML = matches.map(m => `
+      <button onclick="selectDest('${m.replace(/'/g, "\\'")}')" class="w-full text-left px-4 py-2.5 hover:bg-[#E7E1F5] transition flex items-center gap-2.5 text-sm border-b border-[#CFC8E3]/40 last:border-0">
+        <i class="fa-solid fa-location-dot text-[#47278C] text-xs w-4"></i>
+        <span class="font-medium">${m}</span>
+        <span class="ml-auto text-[10px] text-[#5D527A]">China</span>
+      </button>
+    `).join('');
+  }
+  destSuggestions.classList.remove('hidden');
+});
+function selectDest(name) {
+  destInput.value = name;
+  destSuggestions.classList.add('hidden');
+}
+document.addEventListener('click', (e) => {
+  if (!destInput.contains(e.target) && !destSuggestions.contains(e.target)) {
+    destSuggestions.classList.add('hidden');
+  }
+});
+
+// ============ TRAVELERS POPOVER ============
+let travelers = { adults: 2, children: 0, infants: 0 };
+function toggleTravelers(e) {
+  e && e.stopPropagation();
+  const pop = document.getElementById('travelers-popover');
+  if (pop.classList.contains('hidden')) {
+    pop.innerHTML = renderTravelers();
+    pop.classList.remove('hidden');
+  } else {
+    pop.classList.add('hidden');
+  }
+}
+function renderTravelers() {
+  const config = [
+    { key: 'adults', label: 'Adults', age: '12+ yrs', min: 1 },
+    { key: 'children', label: 'Children', age: '2–11 yrs', min: 0 },
+    { key: 'infants', label: 'Infants', age: 'under 2', min: 0 }
+  ];
+  return `
+    <div class="space-y-3">
+      ${config.map(c => `
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-sm font-semibold">${c.label}</div>
+            <div class="text-[11px] text-[#5D527A]">${c.age}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="updateTravelers('${c.key}', -1, ${c.min})" class="w-8 h-8 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] transition disabled:opacity-30 disabled:cursor-not-allowed" ${travelers[c.key] <= c.min ? 'disabled' : ''}>
+              <i class="fa-solid fa-minus text-[10px]"></i>
+            </button>
+            <span class="w-6 text-center text-sm font-bold">${travelers[c.key]}</span>
+            <button onclick="updateTravelers('${c.key}', 1, ${c.min})" class="w-8 h-8 rounded-full border border-[#CFC8E3] flex items-center justify-center hover:bg-[#E7E1F5] transition">
+              <i class="fa-solid fa-plus text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+      `).join('')}
+      <button onclick="toggleTravelers()" class="w-full btn-primary py-2 rounded-lg text-sm font-semibold mt-2">Done</button>
+    </div>
+  `;
+}
+function updateTravelers(key, delta, min) {
+  travelers[key] = Math.max(min, travelers[key] + delta);
+  document.getElementById('travelers-popover').innerHTML = renderTravelers();
+  const total = travelers.adults + travelers.children + travelers.infants;
+  let label = '';
+  if (total === 1) label = `${total} traveler`;
+  else if (travelers.adults >= 1 && (travelers.children || travelers.infants)) label = `${travelers.adults} adults, ${travelers.children + travelers.infants} kids`;
+  else label = `${total} travelers`;
+  document.getElementById('travelers-label').textContent = label;
+}
+document.addEventListener('click', (e) => {
+  const pop = document.getElementById('travelers-popover');
+  const trigger = e.target.closest('[onclick*="toggleTravelers"]');
+  if (pop && !pop.contains(e.target) && !trigger) pop.classList.add('hidden');
+});
+
+// ============ SEARCH ============
+function handleSearch() {
+  const dest = destInput.value || 'any destination';
+  const dateFrom = document.getElementById('date-from').value;
+  showToast(`Searching tours in ${dest}${dateFrom ? ' from ' + dateFrom : ''}...`, 'search');
+}
+function scrollToSearch() {
+  document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => destInput.focus(), 600);
+}
+
+// ============ MOBILE MENU ============
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+}
+
+// ============ AUTH MODAL ============
+function openAuth(tab) {
+  switchAuth(tab);
+  document.getElementById('auth-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth() {
+  document.getElementById('auth-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeAuthOnOverlay(e) {
+  if (e.target.id === 'auth-modal') closeAuth();
+}
+function switchAuth(tab) {
+  const login = document.getElementById('login-form');
+  const register = document.getElementById('register-form');
+  const tabLogin = document.getElementById('tab-login');
+  const tabRegister = document.getElementById('tab-register');
+  if (tab === 'login') {
+    login.classList.remove('hidden');
+    register.classList.add('hidden');
+    tabLogin.classList.add('text-[#47278C]', 'border-[#47278C]');
+    tabLogin.classList.remove('text-[#5D527A]', 'border-transparent');
+    tabRegister.classList.add('text-[#5D527A]', 'border-transparent');
+    tabRegister.classList.remove('text-[#47278C]', 'border-[#47278C]');
+  } else {
+    register.classList.remove('hidden');
+    login.classList.add('hidden');
+    tabRegister.classList.add('text-[#47278C]', 'border-[#47278C]');
+    tabRegister.classList.remove('text-[#5D527A]', 'border-transparent');
+    tabLogin.classList.add('text-[#5D527A]', 'border-transparent');
+    tabLogin.classList.remove('text-[#47278C]', 'border-[#47278C]');
+  }
+}
+function handleLogin(e) {
+  e.preventDefault();
+  closeAuth();
+  setTimeout(() => showToast('Welcome back! Redirecting to your dashboard...', 'success'), 200);
+}
+function handleRegister(e) {
+  e.preventDefault();
+  closeAuth();
+  setTimeout(() => showToast('Account created! Check your email to verify.', 'success'), 200);
+}
+function socialAuth(provider) {
+  showToast(`Connecting with ${provider}...`, 'info');
+}
+
+// ============ CHATBOT ============
+let chatOpen = false;
+let chatInitialized = false;
+function toggleChatbot() {
+  chatOpen = !chatOpen;
+  const panel = document.getElementById('chatbot-panel');
+  const toggle = document.getElementById('chatbot-toggle');
+  if (chatOpen) {
+    if (!chatInitialized) {
+      addMessage("Hi! I'm Lili, your Wanderli assistant. I can help you find the perfect China tour, compare suppliers, or answer visa questions. What brings you here today?", 'bot');
+      chatInitialized = true;
+    }
+    panel.classList.add('active');
+    toggle.querySelector('i').className = 'fa-solid fa-xmark text-xl';
+    setTimeout(() => document.getElementById('chat-input').focus(), 350);
+  } else {
+    panel.classList.remove('active');
+    toggle.querySelector('i').className = 'fa-solid fa-comment-dots text-xl';
+  }
+}
+function addMessage(text, sender) {
+  const messages = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = sender === 'user' ? 'flex gap-2 justify-end' : 'flex gap-2';
+  if (sender === 'user') {
+    div.innerHTML = `<div class="bg-[#47278C] text-white rounded-2xl rounded-tr-sm p-3 max-w-[80%]"><p class="text-sm leading-relaxed">${text}</p></div>`;
+  } else {
+    div.innerHTML = `
+      <div class="w-7 h-7 rounded-full bg-[#47278C] flex items-center justify-center flex-shrink-0">
+        <i class="fa-solid fa-robot text-white text-[10px]"></i>
+      </div>
+      <div class="bg-white border border-[#CFC8E3] rounded-2xl rounded-tl-sm p-3 max-w-[80%]">
+        <p class="text-sm leading-relaxed">${text}</p>
+      </div>
+    `;
+  }
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+function showTyping() {
+  const messages = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.id = 'typing-indicator';
+  div.className = 'flex gap-2';
+  div.innerHTML = `
+    <div class="w-7 h-7 rounded-full bg-[#47278C] flex items-center justify-center flex-shrink-0">
+      <i class="fa-solid fa-robot text-white text-[10px]"></i>
+    </div>
+    <div class="bg-white border border-[#CFC8E3] rounded-2xl rounded-tl-sm p-4 flex gap-1.5 items">
+      <div class="typing-dot w-1.5 h-1.5 bg-[#5D527A] rounded-full"></div>
+      <div class="typing-dot w-1.5 h-1.5 bg-[#5D527A] rounded-full"></div>
+      <div class="typing-dot w-1.5 h-1.5 bg-[#5D527A] rounded-full"></div>
+    </div>
+  `;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+function removeTyping() {
+  const t = document.getElementById('typing-indicator');
+  if (t) t.remove();
+}
+const responses = [
+  { keys: ['great wall', 'wall'], reply: "The Great Wall is best experienced at <strong>Mutianyu</strong> (less crowded, restored) or <strong>Jinshanling</strong> (for serious hiking). Our 'Forbidden City & Great Wall Discovery' is 5 days from $899 with a verified local operator. Want me to show you 2-3 more options?" },
+  { keys: ['visa', 'passport'], reply: "Most travelers need a tourist visa (L visa), but in 2026 it's easier than ever:<br>• 54 countries qualify for <strong>144-hour transit-free entry</strong><br>• E-visas available for 12+ countries<br>• Full process takes 4-7 business days<br>Check our complete visa guide in Travel Guides — want me to link it?" },
+  { keys: ['season', 'when', 'weather', 'best time'], reply: "Best times to visit China:<br>🌸 <strong>Spring</strong> (Apr–May): Mild, cherry blossoms in Beijing<br>🍂 <strong>Autumn</strong> (Sep–Oct): Crisp air, gold leaves at the Wall<br>☀️ Summer: Hot & crowded but lively<br>❄️ Winter: Fewer crowds, snow scenes at the Wall, Harbin Ice Festival!<br>What season works for you?" },
+  { keys: ['family', 'kids', 'children'], reply: "For families, I love the <strong>'Giant Panda & Sichuan Cuisine Trail'</strong> in Chengdu — kids adore the pandas and the cooking class is hands-on (4 days, $649). Or our Shanghai Water Towns tour (3 days, $549) — very relaxed pace. How old are the kids traveling?" },
+  { keys: ['silk road'], reply: "The Silk Road is incredible — Xi'an's Terracotta Army, Dunhuang's Mogao Caves, and the Gobi Desert. Our 8-day 'Silk Road Odyssey' covers it all from $1,499 with a verified specialist. Best months: May, June, September. Want a custom itinerary?" },
+  { keys: ['price', 'cost', 'budget', 'cheap'], reply: "Tours on Wanderli start at <strong>$349</strong> for a 2-day Shanghai essentials package. Median price is around $899 for 5-day premium tours. All prices include verified local guides, accommodation, and 24/7 support. What's your budget range?" },
+  { keys: ['panda'], reply: "Pandas! 🐼 Chengdu is your spot — the Research Base has over 80 giant pandas. Best visiting time is 8-10am when they're most active. Our 4-day Sichuan tour includes a panda volunteer experience. Should I show you the itinerary?" },
+  { keys: ['hello', 'hi', 'hey'], reply: "Hi there! 👋 I'm Lili. Are you dreaming about a specific part of China, or just starting to explore? I can recommend tours based on your interests, dates, and budget." }
+];
+function botReply(text) {
+  showTyping();
+  setTimeout(() => {
+    removeTyping();
+    const lower = text.toLowerCase();
+    let reply = "Great question! Let me help with that. You can browse our <strong>featured tours</strong> above, or I can connect you with a human specialist. Meanwhile — what destination or theme interests you most?";
+    for (const r of responses) {
+      if (r.keys.some(k => lower.includes(k))) { reply = r.reply; break; }
+    }
+    addMessage(reply, 'bot');
+  }, 700 + Math.random() * 700);
+}
+function handleChatSubmit(e) {
+  e.preventDefault();
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  addMessage(text, 'user');
+  input.value = '';
+  botReply(text);
+}
+function sendQuickReply(text) {
+  addMessage(text, 'user');
+  botReply(text);
+}
+
+// ============ NEWSLETTER ============
+function handleNewsletter(e) {
+  e.preventDefault();
+  const msg = document.getElementById('newsletter-msg');
+  msg.textContent = "✓ You're in! Check your inbox for a welcome deal.";
+  e.target.reset();
+  setTimeout(() => { msg.textContent = ''; }, 5000);
+}
+
+// ============ BACK TO TOP + HEADER SEARCH ============
+const backToTop = document.getElementById('back-to-top');
+const headerSearch = document.getElementById('header-search');
+const heroEl = document.getElementById('hero');
+window.addEventListener('scroll', () => {
+  const heroBottom = heroEl.offsetTop + heroEl.offsetHeight - 100;
+  if (window.scrollY > heroBottom) {
+    backToTop.classList.add('visible');
+    headerSearch.classList.add('visible');
+    headerSearch.classList.remove('hidden');
+  } else {
+    backToTop.classList.remove('visible');
+    headerSearch.classList.remove('visible');
+  }
+}, { passive: true });
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ============ TOAST ============
+function showToast(message, type = 'info') {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  const icons = {
+    success: '<i class="fa-solid fa-check text-[#47278C] text-sm"></i>',
+    info: '<i class="fa-solid fa-circle-info text-[#47278C] text-sm"></i>',
+    search: '<i class="fa-solid fa-magnifying-glass text-[#47278C] text-sm"></i>'
+  };
+  toast.className = 'bg-white border border-[#CFC8E3] shadow-xl rounded-xl px-4 py-3 flex items-center gap-3 max-w-sm transform translate-x-[120%] transition-transform duration-300 pointer-events-auto';
+  toast.innerHTML = `
+    <div class="w-8 h-8 rounded-full bg-[#E7E1F5] flex items-center justify-center flex-shrink-0">${icons[type] || icons.info}</div>
+    <span class="text-sm font-medium">${message}</span>
+  `;
+  container.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.remove('translate-x-[120%]'));
+  setTimeout(() => {
+    toast.classList.add('translate-x-[120%]');
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
+
+// ============ SCROLL REVEAL ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ============ CHIP TOGGLE ============
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const wasActive = chip.classList.contains('active');
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    if (!wasActive) {
+      chip.classList.add('active');
+      const label = chip.textContent.trim();
+      showToast(`Filtering by: ${label}`, 'info');
+    }
+  });
+});
+
+// ============ KEYBOARD ============
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('auth-modal').classList.contains('active')) closeAuth();
+    else if (chatOpen) toggleChatbot();
+  }
+});
+
+// ============ INIT ============
+renderTours();
+renderDestinations();
+renderGuides();
+window.addEventListener('resize', updateCarousel);
+setTimeout(updateCarousel, 100);
+</script>
+</body>
+</html>
