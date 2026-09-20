@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cathay Trail — Compare Verified China Tours</title>
+<meta name="description" content="Search, compare and book verified China tour suppliers in one place.">
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icon font (Font Awesome) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'brand-bg': '#A69BC4',
+          'brand-surface': '#FFFFFF',
+          'brand-primary': '#47278C',
+          'brand-primary-dark': '#341D68',
+          'brand-secondary': '#E7E1F5',
+          'brand-text': '#0C0914',
+          'brand-muted': '#5D527A',
+          'brand-border': '#CFC8E3',
+        },
+        fontFamily: {
+          sans: ['Space Grotesk', 'sans-serif'],
+        },
+        maxWidth: {
+          'container': '1280px',
+        },
+        boxShadow: {
+          'card': '0 12px 35px rgba(12,9,20,0.06)',
+          'card-hover': '0 20px 45px rgba(71,39,140,0.14)',
+          'float': '0 18px 40px rgba(12,9,20,0.18)',
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --color-bg:#A69BC4; --color-surface:#FFFFFF; --color-accent-primary:#47278C;
+    --color-accent-secondary:#E7E1F5; --color-text:#0C0914; --color-text-muted:#5D527A;
+    --color-border:#CFC8E3; --color-dark:#0C0914;
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'Space Grotesk', sans-serif; -webkit-font-smoothing:antialiased;}
+
+  .hero-title{font-size:48px;line-height:1.05;font-weight:700;letter-spacing:-0.03em;}
+  .section-title{font-size:34px;line-height:1.1;font-weight:700;letter-spacing:-0.02em;}
+  .card-title{font-size:20px;line-height:1.25;font-weight:600;}
+  .body-text{font-size:14px;line-height:1.6;font-weight:400;color:#0C0914;}
+  .label-text{font-size:12px;line-height:1.3;font-weight:600;letter-spacing:.04em;}
+
+  @media (max-width:640px){
+    .hero-title{font-size:34px;}
+    .section-title{font-size:26px;}
+  }
+
+  .no-scrollbar::-webkit-scrollbar{display:none;}
+  .no-scrollbar{-ms-overflow-style:none; scrollbar-width:none;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  /* route dashed line signature motif */
+  .route-path{stroke-dasharray:2 12; animation:dash-flow 26s linear infinite;}
+  @keyframes dash-flow{to{stroke-dashoffset:-1000;}}
+  .route-dot{animation:pulse-dot 2.6s ease-in-out infinite;}
+  @keyframes pulse-dot{0%,100%{opacity:.35; transform:scale(1);}50%{opacity:1; transform:scale(1.35);}}
+
+  /* chip */
+  .chip{transition:all .25s ease;}
+  .chip.active{background:#47278C; color:#fff; border-color:#47278C;}
+  .chip.active i{color:#fff;}
+
+  /* tour card lift */
+  .tour-card{transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;}
+  .tour-card:hover{transform:translateY(-6px); box-shadow:0 20px 45px rgba(71,39,140,0.14);}
+  .tour-card .card-img{transition:transform .6s cubic-bezier(.2,.7,.2,1);}
+  .tour-card:hover .card-img{transform:scale(1.06);}
+
+  .dest-card{transition:transform .5s cubic-bezier(.2,.7,.2,1);}
+  .dest-card:hover{transform:translateY(-4px);}
+  .dest-card .dest-img{transition:transform .7s ease;}
+  .dest-card:hover .dest-img{transform:scale(1.08);}
+
+  /* buttons */
+  .btn-primary{background:#47278C;color:#fff; transition:background .25s ease, transform .2s ease, box-shadow .25s ease;}
+  .btn-primary:hover{background:#341D68; transform:translateY(-1px); box-shadow:0 10px 24px rgba(71,39,140,.28);}
+  .btn-primary:active{transform:translateY(0);}
+
+  .icon-btn{transition:transform .2s ease, background .2s ease;}
+  .icon-btn:hover{transform:translateY(-2px);}
+
+  /* wishlist heart */
+  .wish-btn i{transition:transform .3s cubic-bezier(.34,1.56,.64,1), color .2s ease;}
+  .wish-btn.active i{color:#47278C; transform:scale(1.15);}
+  .wish-btn.active .fa-regular{display:none;}
+  .wish-btn .fa-solid{display:none; color:#47278C;}
+  .wish-btn.active .fa-solid{display:inline-block;}
+
+  /* modal */
+  #auth-modal{transition:opacity .3s ease;}
+  #auth-modal .modal-card{transition:transform .35s cubic-bezier(.2,.7,.2,1), opacity .35s ease;}
+  .auth-tab{transition:all .25s ease;}
+  .auth-tab.active{color:#47278C; border-color:#47278C;}
+  .auth-panel{transition:opacity .25s ease;}
+
+  /* spinner */
+  .spinner{width:16px;height:16px;border-radius:9999px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .7s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* chatbot */
+  #chatbot-panel{transition:transform .3s cubic-bezier(.2,.7,.2,1), opacity .3s ease;}
+  .typing-dot{width:6px;height:6px;border-radius:9999px;background:#5D527A;animation:typing 1.2s infinite ease-in-out;}
+  .typing-dot:nth-child(2){animation-delay:.15s;}
+  .typing-dot:nth-child(3){animation-delay:.3s;}
+  @keyframes typing{0%,60%,100%{opacity:.3; transform:translateY(0);}30%{opacity:1; transform:translateY(-3px);}}
+
+  .chat-bubble-in{animation:bubble-in .35s cubic-bezier(.2,.7,.2,1);}
+  @keyframes bubble-in{from{opacity:0; transform:translateY(8px) scale(.98);}to{opacity:1; transform:translateY(0) scale(1);}}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible{outline:2px solid #47278C; outline-offset:2px; border-radius:6px;}
+
+  #back-to-top{transition:opacity .3s ease, transform .3s ease;}
+
+  input[type="date"]{color-scheme:light;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+
+<body class="bg-white text-brand-text antialiased">
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-brand-border transition-shadow duration-300">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="h-20 flex items-center justify-between gap-6">
+
+      <a href="#top" class="flex items-center gap-2 shrink-0 group">
+        <span class="w-9 h-9 rounded-xl bg-brand-primary flex items-center justify-center text-white group-hover:rotate-6 transition-transform duration-300">
+          <i class="fa-solid fa-route text-sm"></i>
+        </span>
+        <span class="font-bold text-lg tracking-tight">Cathay Trail</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 label-text uppercase text-brand-muted">
+        <a href="#destinations" class="hover:text-brand-primary transition-colors">Destinations</a>
+        <a href="#tours" class="hover:text-brand-primary transition-colors">Tours</a>
+        <a href="#guides" class="hover:text-brand-primary transition-colors">Guides</a>
+        <a href="#compare" class="hover:text-brand-primary transition-colors">Compare Suppliers</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-4">
+        <button id="currency-toggle" class="flex items-center gap-1.5 text-sm font-semibold text-brand-muted hover:text-brand-primary border border-brand-border rounded-full px-3 py-1.5 transition-colors">
+          <i class="fa-solid fa-coins text-xs"></i>
+          <span id="currency-label">THB ฿</span>
+        </button>
+        <button data-auth-open="login" class="text-sm font-semibold text-brand-text hover:text-brand-primary transition-colors">Log In</button>
+        <button data-auth-open="register" class="btn-primary text-sm font-semibold rounded-full px-5 py-2.5">Sign Up</button>
+      </div>
+
+      <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full border border-brand-border">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-brand-border bg-white px-5 py-5 space-y-4">
+    <a href="#destinations" class="block font-semibold">Destinations</a>
+    <a href="#tours" class="block font-semibold">Tours</a>
+    <a href="#guides" class="block font-semibold">Guides</a>
+    <a href="#compare" class="block font-semibold">Compare Suppliers</a>
+    <div class="flex items-center gap-3 pt-3 border-t border-brand-border">
+      <button data-auth-open="login" class="flex-1 text-sm font-semibold border border-brand-border rounded-full px-4 py-2.5">Log In</button>
+      <button data-auth-open="register" class="flex-1 btn-primary text-sm font-semibold rounded-full px-4 py-2.5">Sign Up</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative bg-white overflow-hidden pt-14 md:pt-20">
+  <!-- decorative route motif -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none hidden md:block" viewBox="0 0 1280 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="route-path" d="M -50 480 C 250 380, 350 560, 620 420 S 980 250, 1330 320" stroke="#CFC8E3" stroke-width="2" fill="none"/>
+    <circle class="route-dot" cx="250" cy="410" r="4" fill="#47278C"/>
+    <circle class="route-dot" cx="620" cy="420" r="4" fill="#47278C" style="animation-delay:.6s"/>
+    <circle class="route-dot" cx="980" cy="250" r="4" fill="#47278C" style="animation-delay:1.2s"/>
+  </svg>
+
+  <div class="relative max-w-container mx-auto px-5 md:px-6">
+    <div class="max-w-2xl reveal">
+      <span class="inline-flex items-center gap-2 bg-brand-secondary text-brand-primary label-text uppercase rounded-full px-4 py-2">
+        <i class="fa-solid fa-shield-halved text-xs"></i> 520+ Verified China Tour Suppliers
+      </span>
+      <h1 class="hero-title mt-5">Explore China through <span class="text-brand-primary">verified</span> local experts.</h1>
+      <p class="body-text text-brand-muted mt-5 max-w-lg text-base">Search real itineraries, compare supplier prices side by side, and book with a money-back guarantee — no guesswork, no middlemen surprises.</p>
+    </div>
+  </div>
+
+  <!-- Sticky search bar -->
+  <div id="search-wrap" class="sticky top-20 z-40 mt-8 md:mt-10">
+    <div class="max-w-container mx-auto px-5 md:px-6">
+      <div class="bg-white border border-brand-border rounded-3xl shadow-float p-3 md:p-3 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr_1fr_auto] gap-2">
+
+          <!-- Destination -->
+          <div class="relative border border-transparent md:border-r md:border-brand-border px-4 py-2.5">
+            <label class="label-text text-brand-muted uppercase block mb-0.5">Destination</label>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-brand-primary text-sm"></i>
+              <input id="dest-input" type="text" placeholder="Where in China?" autocomplete="off"
+                class="w-full outline-none text-sm font-semibold placeholder:text-brand-muted placeholder:font-normal bg-transparent">
+            </div>
+            <div id="dest-dropdown" class="hidden absolute left-0 right-0 top-full mt-2 bg-white border border-brand-border rounded-2xl shadow-float p-2 z-50 max-h-64 overflow-y-auto"></div>
+          </div>
+
+          <!-- Check-in -->
+          <div class="border border-transparent md:border-r md:border-brand-border px-4 py-2.5">
+            <label class="label-text text-brand-muted uppercase block mb-0.5">Depart</label>
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-calendar text-brand-primary text-sm"></i>
+              <input id="date-start" type="date" class="w-full outline-none text-sm font-semibold bg-transparent">
+            </div>
+          </div>
+
+          <!-- Check-out -->
+          <div class="border border-transparent md:border-r md:border-brand-border px-4 py-2.5">
+            <label class="label-text text-brand-muted uppercase block mb-0.5">Return</label>
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-calendar text-brand-primary text-sm"></i>
+              <input id="date-end" type="date" class="w-full outline-none text-sm font-semibold bg-transparent">
+            </div>
+          </div>
+
+          <!-- Travelers -->
+          <div class="relative border border-transparent px-4 py-2.5">
+            <label class="label-text text-brand-muted uppercase block mb-0.5">Travelers</label>
+            <button id="traveler-btn" type="button" class="w-full flex items-center gap-2 text-left">
+              <i class="fa-solid fa-user-group text-brand-primary text-sm"></i>
+              <span id="traveler-count" class="text-sm font-semibold">2 Travelers</span>
+            </button>
+            <div id="traveler-dropdown" class="hidden absolute left-0 right-0 top-full mt-2 bg-white border border-brand-border rounded-2xl shadow-float p-4 z-50 w-56">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-semibold">Travelers</span>
+                <div class="flex items-center gap-3">
+                  <button id="traveler-minus" class="w-7 h-7 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary transition-colors"><i class="fa-solid fa-minus text-xs"></i></button>
+                  <span id="traveler-num" class="w-4 text-center font-semibold">2</span>
+                  <button id="traveler-plus" class="w-7 h-7 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary transition-colors"><i class="fa-solid fa-plus text-xs"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search button -->
+          <button id="search-submit" class="btn-primary rounded-2xl px-7 py-3.5 font-semibold text-sm flex items-center justify-center gap-2 m-1">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span class="md:hidden">Search Tours</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-16 md:h-20"></div>
+</section>
+
+<!-- ============ QUICK FILTER CHIPS ============ -->
+<section class="bg-white pt-10 pb-4">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div id="chip-row" class="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2">
+      <button data-filter="all" class="chip active flex items-center gap-2 border border-brand-border rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap shrink-0">
+        <i class="fa-solid fa-layer-group text-brand-primary"></i> All Tours
+      </button>
+      <button data-filter="great-wall" class="chip flex items-center gap-2 border border-brand-border rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap shrink-0">
+        <i class="fa-solid fa-mountain text-brand-primary"></i> Great Wall
+      </button>
+      <button data-filter="silk-road" class="chip flex items-center gap-2 border border-brand-border rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap shrink-0">
+        <i class="fa-solid fa-compass text-brand-primary"></i> Silk Road
+      </button>
+      <button data-filter="cruise" class="chip flex items-center gap-2 border border-brand-border rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap shrink-0">
+        <i class="fa-solid fa-ship text-brand-primary"></i> Cruise
+      </button>
+      <button data-filter="panda" class="chip flex items-center gap-2 border border-brand-border rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap shrink-0">
+        <i class="fa-solid fa-paw text-brand-primary"></i> Panda
+      </button>
+      <button data-filter="family" class="chip flex items-center gap-2 border border-brand-border rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap shrink-0">
+        <i class="fa-solid fa-people-roof text-brand-primary"></i> Family
+      </button>
+      <button data-filter="luxury" class="chip flex items-center gap-2 border border-brand-border rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap shrink-0">
+        <i class="fa-solid fa-gem text-brand-primary"></i> Luxury
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED TOURS ============ -->
+<section id="tours" class="bg-white py-14 md:py-20">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="flex items-end justify-between gap-4 mb-8 reveal">
+      <div>
+        <span class="label-text uppercase text-brand-primary">Handpicked</span>
+        <h2 class="section-title mt-1">Featured Tours</h2>
+        <p class="body-text text-brand-muted mt-2">Top-rated itineraries from verified suppliers this month.</p>
+      </div>
+      <div class="hidden md:flex items-center gap-2 shrink-0">
+        <button id="tour-prev" class="icon-btn w-11 h-11 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+        <button id="tour-next" class="icon-btn w-11 h-11 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary"><i class="fa-solid fa-chevron-right text-sm"></i></button>
+      </div>
+    </div>
+
+    <div id="tour-track" class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4">
+      <!-- Tour Card 1 -->
+      <article data-theme="great-wall" class="tour-card snap-start shrink-0 w-[300px] md:w-[340px] bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card reveal">
+        <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-border">
+          <div class="card-img absolute inset-0 flex items-center justify-center"><i class="fa-solid fa-torii-gate text-6xl text-brand-primary/25"></i></div>
+          <span class="absolute top-3 left-3 bg-white/95 text-brand-primary label-text uppercase rounded-full px-3 py-1.5 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Verified</span>
+          <button class="wish-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-sm"></i><i class="fa-solid fa-heart text-sm"></i>
+          </button>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-1 text-sm text-brand-muted mb-1"><i class="fa-solid fa-star text-brand-primary text-xs"></i><span class="font-semibold text-brand-text">4.9</span> (612 reviews)</div>
+          <h3 class="card-title">Great Wall &amp; Forbidden City Explorer</h3>
+          <p class="text-sm text-brand-muted mt-1">Beijing · 5 Days / 4 Nights</p>
+          <div class="flex items-center justify-between mt-4">
+            <div><span class="font-bold text-lg">฿32,900</span><span class="text-brand-muted text-xs"> / $940</span></div>
+            <span class="text-xs text-brand-muted">by Beijing Heritage Tours</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tour Card 2 -->
+      <article data-theme="silk-road" class="tour-card snap-start shrink-0 w-[300px] md:w-[340px] bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card reveal">
+        <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-border">
+          <div class="card-img absolute inset-0 flex items-center justify-center"><i class="fa-solid fa-compass text-6xl text-brand-primary/25"></i></div>
+          <span class="absolute top-3 left-3 bg-white/95 text-brand-primary label-text uppercase rounded-full px-3 py-1.5 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Verified</span>
+          <button class="wish-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-sm"></i><i class="fa-solid fa-heart text-sm"></i>
+          </button>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-1 text-sm text-brand-muted mb-1"><i class="fa-solid fa-star text-brand-primary text-xs"></i><span class="font-semibold text-brand-text">4.8</span> (389 reviews)</div>
+          <h3 class="card-title">Ancient Silk Road Odyssey</h3>
+          <p class="text-sm text-brand-muted mt-1">Xi'an → Dunhuang · 8 Days</p>
+          <div class="flex items-center justify-between mt-4">
+            <div><span class="font-bold text-lg">฿68,500</span><span class="text-brand-muted text-xs"> / $1,960</span></div>
+            <span class="text-xs text-brand-muted">by Silk Road Journeys Co.</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tour Card 3 -->
+      <article data-theme="cruise luxury" class="tour-card snap-start shrink-0 w-[300px] md:w-[340px] bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card reveal">
+        <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-border">
+          <div class="card-img absolute inset-0 flex items-center justify-center"><i class="fa-solid fa-ship text-6xl text-brand-primary/25"></i></div>
+          <span class="absolute top-3 left-3 bg-white/95 text-brand-primary label-text uppercase rounded-full px-3 py-1.5 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Verified</span>
+          <button class="wish-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-sm"></i><i class="fa-solid fa-heart text-sm"></i>
+          </button>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-1 text-sm text-brand-muted mb-1"><i class="fa-solid fa-star text-brand-primary text-xs"></i><span class="font-semibold text-brand-text">5.0</span> (214 reviews)</div>
+          <h3 class="card-title">Yangtze River Luxury Cruise</h3>
+          <p class="text-sm text-brand-muted mt-1">Chongqing → Yichang · 6D/5N</p>
+          <div class="flex items-center justify-between mt-4">
+            <div><span class="font-bold text-lg">฿89,900</span><span class="text-brand-muted text-xs"> / $2,570</span></div>
+            <span class="text-xs text-brand-muted">by Victoria Cruises</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tour Card 4 -->
+      <article data-theme="panda family" class="tour-card snap-start shrink-0 w-[300px] md:w-[340px] bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card reveal">
+        <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-border">
+          <div class="card-img absolute inset-0 flex items-center justify-center"><i class="fa-solid fa-paw text-6xl text-brand-primary/25"></i></div>
+          <span class="absolute top-3 left-3 bg-white/95 text-brand-primary label-text uppercase rounded-full px-3 py-1.5 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Verified</span>
+          <button class="wish-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-sm"></i><i class="fa-solid fa-heart text-sm"></i>
+          </button>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-1 text-sm text-brand-muted mb-1"><i class="fa-solid fa-star text-brand-primary text-xs"></i><span class="font-semibold text-brand-text">4.9</span> (801 reviews)</div>
+          <h3 class="card-title">Chengdu Panda Discovery</h3>
+          <p class="text-sm text-brand-muted mt-1">Chengdu · 3 Days</p>
+          <div class="flex items-center justify-between mt-4">
+            <div><span class="font-bold text-lg">฿18,400</span><span class="text-brand-muted text-xs"> / $525</span></div>
+            <span class="text-xs text-brand-muted">by Panda Base Experiences</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tour Card 5 -->
+      <article data-theme="family" class="tour-card snap-start shrink-0 w-[300px] md:w-[340px] bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card reveal">
+        <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-border">
+          <div class="card-img absolute inset-0 flex items-center justify-center"><i class="fa-solid fa-water text-6xl text-brand-primary/25"></i></div>
+          <span class="absolute top-3 left-3 bg-white/95 text-brand-primary label-text uppercase rounded-full px-3 py-1.5 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Verified</span>
+          <button class="wish-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-sm"></i><i class="fa-solid fa-heart text-sm"></i>
+          </button>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-1 text-sm text-brand-muted mb-1"><i class="fa-solid fa-star text-brand-primary text-xs"></i><span class="font-semibold text-brand-text">4.7</span> (456 reviews)</div>
+          <h3 class="card-title">Guilin Family Adventure</h3>
+          <p class="text-sm text-brand-muted mt-1">Guilin &amp; Yangshuo · 4 Days</p>
+          <div class="flex items-center justify-between mt-4">
+            <div><span class="font-bold text-lg">฿24,600</span><span class="text-brand-muted text-xs"> / $700</span></div>
+            <span class="text-xs text-brand-muted">by Li River Travel</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Tour Card 6 -->
+      <article data-theme="luxury" class="tour-card snap-start shrink-0 w-[300px] md:w-[340px] bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card reveal">
+        <div class="relative h-44 overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-border">
+          <div class="card-img absolute inset-0 flex items-center justify-center"><i class="fa-solid fa-city text-6xl text-brand-primary/25"></i></div>
+          <span class="absolute top-3 left-3 bg-white/95 text-brand-primary label-text uppercase rounded-full px-3 py-1.5 flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> Verified</span>
+          <button class="wish-btn absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 flex items-center justify-center">
+            <i class="fa-regular fa-heart text-sm"></i><i class="fa-solid fa-heart text-sm"></i>
+          </button>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center gap-1 text-sm text-brand-muted mb-1"><i class="fa-solid fa-star text-brand-primary text-xs"></i><span class="font-semibold text-brand-text">4.8</span> (298 reviews)</div>
+          <h3 class="card-title">Shanghai Luxury Skyline Escape</h3>
+          <p class="text-sm text-brand-muted mt-1">Shanghai · 4 Days / 3 Nights</p>
+          <div class="flex items-center justify-between mt-4">
+            <div><span class="font-bold text-lg">฿45,200</span><span class="text-brand-muted text-xs"> / $1,290</span></div>
+            <span class="text-xs text-brand-muted">by Bund Elite Travel</span>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p id="no-tours-msg" class="hidden text-center text-brand-muted py-10">No tours match this theme yet — try “All Tours”.</p>
+  </div>
+</section>
+
+<!-- ============ POPULAR DESTINATIONS ============ -->
+<section id="destinations" class="bg-white py-14 md:py-20">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal">
+      <span class="label-text uppercase text-brand-primary">Where travelers go</span>
+      <h2 class="section-title mt-1">Popular Destinations</h2>
+      <p class="body-text text-brand-muted mt-2">Six regions, hundreds of verified itineraries.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+      <a href="#tours" class="dest-card reveal relative rounded-3xl overflow-hidden h-44 md:h-56 group bg-gradient-to-br from-brand-primary to-brand-primary-dark flex items-end p-4">
+        <div class="dest-img absolute inset-0 flex items-center justify-center opacity-20"><i class="fa-solid fa-landmark text-7xl text-white"></i></div>
+        <div class="relative text-white">
+          <h3 class="font-semibold text-lg">Beijing</h3>
+          <p class="text-xs opacity-80">312 tours</p>
+        </div>
+      </a>
+      <a href="#tours" class="dest-card reveal relative rounded-3xl overflow-hidden h-44 md:h-56 group bg-gradient-to-br from-brand-primary to-brand-primary-dark flex items-end p-4">
+        <div class="dest-img absolute inset-0 flex items-center justify-center opacity-20"><i class="fa-solid fa-city text-7xl text-white"></i></div>
+        <div class="relative text-white">
+          <h3 class="font-semibold text-lg">Shanghai</h3>
+          <p class="text-xs opacity-80">198 tours</p>
+        </div>
+      </a>
+      <a href="#tours" class="dest-card reveal relative rounded-3xl overflow-hidden h-44 md:h-56 group bg-gradient-to-br from-brand-primary to-brand-primary-dark flex items-end p-4">
+        <div class="dest-img absolute inset-0 flex items-center justify-center opacity-20"><i class="fa-solid fa-mountain-sun text-7xl text-white"></i></div>
+        <div class="relative text-white">
+          <h3 class="font-semibold text-lg">Guilin</h3>
+          <p class="text-xs opacity-80">145 tours</p>
+        </div>
+      </a>
+      <a href="#tours" class="dest-card reveal relative rounded-3xl overflow-hidden h-44 md:h-56 group bg-gradient-to-br from-brand-primary to-brand-primary-dark flex items-end p-4">
+        <div class="dest-img absolute inset-0 flex items-center justify-center opacity-20"><i class="fa-solid fa-torii-gate text-7xl text-white"></i></div>
+        <div class="relative text-white">
+          <h3 class="font-semibold text-lg">Xi'an</h3>
+          <p class="text-xs opacity-80">167 tours</p>
+        </div>
+      </a>
+      <a href="#tours" class="dest-card reveal relative rounded-3xl overflow-hidden h-44 md:h-56 group bg-gradient-to-br from-brand-primary to-brand-primary-dark flex items-end p-4">
+        <div class="dest-img absolute inset-0 flex items-center justify-center opacity-20"><i class="fa-solid fa-paw text-7xl text-white"></i></div>
+        <div class="relative text-white">
+          <h3 class="font-semibold text-lg">Chengdu</h3>
+          <p class="text-xs opacity-80">203 tours</p>
+        </div>
+      </a>
+      <a href="#tours" class="dest-card reveal relative rounded-3xl overflow-hidden h-44 md:h-56 group bg-gradient-to-br from-brand-primary to-brand-primary-dark flex items-end p-4">
+        <div class="dest-img absolute inset-0 flex items-center justify-center opacity-20"><i class="fa-solid fa-building text-7xl text-white"></i></div>
+        <div class="relative text-white">
+          <h3 class="font-semibold text-lg">Hong Kong</h3>
+          <p class="text-xs opacity-80">134 tours</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARE SUPPLIERS BANNER ============ -->
+<section id="compare" class="bg-white py-6 md:py-10">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="reveal rounded-3xl bg-brand-primary text-white px-8 py-10 md:px-14 md:py-14 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative">
+      <i class="fa-solid fa-scale-balanced absolute -right-6 -bottom-8 text-[160px] text-white/10 hidden md:block"></i>
+      <div class="relative max-w-lg">
+        <span class="label-text uppercase text-brand-secondary">Save time, book smarter</span>
+        <h2 class="section-title mt-1 text-white">Compare suppliers side by side</h2>
+        <p class="body-text text-white/80 mt-3">See pricing, inclusions and verified ratings from up to 4 suppliers at once — no repeat quote requests.</p>
+      </div>
+      <button class="relative bg-white text-brand-primary font-semibold text-sm rounded-full px-7 py-3.5 flex items-center gap-2 hover:bg-brand-secondary transition-colors shrink-0">
+        Compare Suppliers Now <i class="fa-solid fa-arrow-right text-xs"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST SECTION ============ -->
+<section class="bg-white py-14 md:py-20">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div class="reveal text-center md:text-left">
+        <i class="fa-solid fa-shield-halved text-brand-primary text-2xl"></i>
+        <p class="text-3xl font-bold mt-3">520+</p>
+        <p class="text-sm text-brand-muted mt-1">Verified Suppliers</p>
+      </div>
+      <div class="reveal text-center md:text-left">
+        <i class="fa-solid fa-users text-brand-primary text-2xl"></i>
+        <p class="text-3xl font-bold mt-3">48,000+</p>
+        <p class="text-sm text-brand-muted mt-1">Travelers Served</p>
+      </div>
+      <div class="reveal text-center md:text-left">
+        <i class="fa-solid fa-star text-brand-primary text-2xl"></i>
+        <p class="text-3xl font-bold mt-3">4.8 / 5</p>
+        <p class="text-sm text-brand-muted mt-1">Average Rating</p>
+      </div>
+      <div class="reveal text-center md:text-left">
+        <i class="fa-solid fa-hand-holding-dollar text-brand-primary text-2xl"></i>
+        <p class="text-3xl font-bold mt-3">100%</p>
+        <p class="text-sm text-brand-muted mt-1">Money-Back Guarantee</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAVEL GUIDES ============ -->
+<section id="guides" class="bg-white py-14 md:py-20">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="mb-8 reveal">
+      <span class="label-text uppercase text-brand-primary">From the journal</span>
+      <h2 class="section-title mt-1">Travel Guides</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <a href="#" class="reveal group block bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow">
+        <div class="h-40 bg-brand-secondary flex items-center justify-center"><i class="fa-solid fa-magnifying-glass-dollar text-4xl text-brand-primary/40"></i></div>
+        <div class="p-5">
+          <span class="label-text uppercase text-brand-muted">6 min read</span>
+          <h3 class="card-title mt-1 group-hover:text-brand-primary transition-colors">How to Choose a Verified China Tour Supplier</h3>
+        </div>
+      </a>
+      <a href="#" class="reveal group block bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow">
+        <div class="h-40 bg-brand-secondary flex items-center justify-center"><i class="fa-solid fa-sun text-4xl text-brand-primary/40"></i></div>
+        <div class="p-5">
+          <span class="label-text uppercase text-brand-muted">4 min read</span>
+          <h3 class="card-title mt-1 group-hover:text-brand-primary transition-colors">Best Time to Visit the Great Wall</h3>
+        </div>
+      </a>
+      <a href="#" class="reveal group block bg-white border border-brand-border rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow">
+        <div class="h-40 bg-brand-secondary flex items-center justify-center"><i class="fa-solid fa-map text-4xl text-brand-primary/40"></i></div>
+        <div class="p-5">
+          <span class="label-text uppercase text-brand-muted">8 min read</span>
+          <h3 class="card-title mt-1 group-hover:text-brand-primary transition-colors">First-Timer's Guide to the Silk Road</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="bg-white py-14 md:py-20">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="reveal rounded-3xl bg-brand-secondary px-8 py-10 md:px-14 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="max-w-md text-center md:text-left">
+        <h3 class="card-title text-2xl">Get deal alerts before they sell out</h3>
+        <p class="body-text text-brand-muted mt-2">Fresh verified-supplier deals, once a week. No spam.</p>
+      </div>
+      <form id="newsletter-form" class="w-full md:w-auto flex flex-col sm:flex-row gap-3">
+        <input id="newsletter-email" type="email" required placeholder="you@email.com"
+          class="rounded-full px-5 py-3 border border-brand-border outline-none text-sm w-full sm:w-64 bg-white">
+        <button type="submit" class="btn-primary rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap">Subscribe</button>
+      </form>
+    </div>
+    <p id="newsletter-success" class="hidden text-center md:text-left text-brand-primary text-sm font-semibold mt-3 reveal in-view">
+      <i class="fa-solid fa-circle-check"></i> You're on the list — welcome aboard!
+    </p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-brand-border pt-16 pb-8">
+  <div class="max-w-container mx-auto px-5 md:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+      <div class="col-span-2">
+        <a href="#top" class="flex items-center gap-2 mb-4">
+          <span class="w-9 h-9 rounded-xl bg-brand-primary flex items-center justify-center text-white"><i class="fa-solid fa-route text-sm"></i></span>
+          <span class="font-bold text-lg">Cathay Trail</span>
+        </a>
+        <p class="text-sm text-brand-muted max-w-xs">A marketplace to search and compare verified China tour suppliers, all in one place.</p>
+        <div class="flex items-center gap-3 mt-5">
+          <a href="#" class="icon-btn w-9 h-9 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+          <a href="#" class="icon-btn w-9 h-9 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary"><i class="fa-brands fa-instagram text-sm"></i></a>
+          <a href="#" class="icon-btn w-9 h-9 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+          <a href="#" class="icon-btn w-9 h-9 rounded-full border border-brand-border flex items-center justify-center hover:bg-brand-secondary"><i class="fa-brands fa-tiktok text-sm"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="label-text uppercase text-brand-muted mb-4">Destinations</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Beijing</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Shanghai</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Guilin</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Xi'an</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="label-text uppercase text-brand-muted mb-4">Support</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Help Center</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Refund Policy</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Supplier Verification</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="label-text uppercase text-brand-muted mb-4">Legal</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-brand-primary transition-colors">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 mt-12 pt-6 border-t border-brand-border">
+      <p class="text-xs text-brand-muted">© 2026 Cathay Trail. All rights reserved.</p>
+      <div class="flex items-center gap-3 text-brand-muted text-xl">
+        <i class="fa-brands fa-cc-visa"></i>
+        <i class="fa-brands fa-cc-mastercard"></i>
+        <i class="fa-brands fa-cc-paypal"></i>
+        <i class="fa-brands fa-alipay"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ AUTH MODAL (LOGIN / REGISTER) ============ -->
+<div id="auth-modal" class="fixed inset-0 z-[100] hidden opacity-0">
+  <div id="auth-backdrop" class="absolute inset-0 bg-brand-text/50 backdrop-blur-sm"></div>
+  <div class="relative min-h-full flex items-center justify-center p-4">
+    <div class="modal-card opacity-0 translate-y-4 scale-95 bg-white rounded-3xl shadow-float w-full max-w-md p-7 md:p-9">
+
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center text-white"><i class="fa-solid fa-route text-xs"></i></span>
+          <span class="font-bold">Cathay Trail</span>
+        </div>
+        <button id="auth-close" class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-brand-secondary transition-colors"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="flex border-b border-brand-border mb-6">
+        <button data-auth-tab="login" class="auth-tab active flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent">Log In</button>
+        <button data-auth-tab="register" class="auth-tab flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent">Sign Up</button>
+      </div>
+
+      <!-- Login panel -->
+      <form id="login-panel" class="auth-panel space-y-4">
+        <div>
+          <label class="label-text uppercase text-brand-muted block mb-1.5">Email</label>
+          <input type="email" required placeholder="you@email.com" class="w-full border border-brand-border rounded-xl px-4 py-3 text-sm outline-none focus:border-brand-primary">
+        </div>
+        <div>
+          <label class="label-text uppercase text-brand-muted block mb-1.5">Password</label>
+          <input type="password" required placeholder="••••••••" class="w-full border border-brand-border rounded-xl px-4 py-3 text-sm outline-none focus:border-brand-primary">
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2 text-brand-muted"><input type="checkbox" class="rounded"> Remember me</label>
+          <a href="#" class="text-brand-primary font-semibold">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-primary w-full rounded-full py-3.5 text-sm font-semibold flex items-center justify-center gap-2">
+          <span class="btn-label">Log In</span>
+        </button>
+        <p class="auth-success hidden text-center text-brand-primary text-sm font-semibold"><i class="fa-solid fa-circle-check"></i> Welcome back! Logging you in…</p>
+        <div class="flex items-center gap-3 text-brand-muted text-xs"><span class="flex-1 h-px bg-brand-border"></span>OR<span class="flex-1 h-px bg-brand-border"></span></div>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" class="flex items-center justify-center gap-2 border border-brand-border rounded-full py-2.5 text-sm font-semibold hover:bg-brand-secondary transition-colors"><i class="fa-brands fa-google"></i> Google</button>
+          <button type="button" class="flex items-center justify-center gap-2 border border-brand-border rounded-full py-2.5 text-sm font-semibold hover:bg-brand-secondary transition-colors"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
+        </div>
+        <p class="text-center text-sm text-brand-muted">New here? <button type="button" data-auth-tab="register" class="text-brand-primary font-semibold">Create an account</button></p>
+      </form>
+
+      <!-- Register panel -->
+      <form id="register-panel" class="auth-panel hidden space-y-4">
+        <div>
+          <label class="label-text uppercase text-brand-muted block mb-1.5">Full Name</label>
+          <input type="text" required placeholder="Jane Traveler" class="w-full border border-brand-border rounded-xl px-4 py-3 text-sm outline-none focus:border-brand-primary">
+        </div>
+        <div>
+          <label class="label-text uppercase text-brand-muted block mb-1.5">Email</label>
+          <input type="email" required placeholder="you@email.com" class="w-full border border-brand-border rounded-xl px-4 py-3 text-sm outline-none focus:border-brand-primary">
+        </div>
+        <div>
+          <label class="label-text uppercase text-brand-muted block mb-1.5">Password</label>
+          <input type="password" required placeholder="Min. 8 characters" class="w-full border border-brand-border rounded-xl px-4 py-3 text-sm outline-none focus:border-brand-primary">
+        </div>
+        <label class="flex items-start gap-2 text-xs text-brand-muted">
+          <input type="checkbox" required class="rounded mt-0.5"> I agree to the Terms of Service and Privacy Policy.
+        </label>
+        <button type="submit" class="btn-primary w-full rounded-full py-3.5 text-sm font-semibold flex items-center justify-center gap-2">
+          <span class="btn-label">Create Account</span>
+        </button>
+        <p class="auth-success hidden text-center text-brand-primary text-sm font-semibold"><i class="fa-solid fa-circle-check"></i> Account created — welcome to Cathay Trail!</p>
+        <p class="text-center text-sm text-brand-muted">Already a member? <button type="button" data-auth-tab="login" class="text-brand-primary font-semibold">Log in</button></p>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ CHATBOT PANEL ============ -->
+<div id="chatbot-panel" class="hidden fixed bottom-24 right-5 md:right-6 z-[90] w-[92vw] max-w-[360px] h-[480px] max-h-[70vh] bg-white border border-brand-border rounded-3xl shadow-float flex flex-col overflow-hidden opacity-0 translate-y-4">
+  <div class="bg-brand-primary text-white px-5 py-4 flex items-center justify-between shrink-0">
+    <div class="flex items-center gap-2.5">
+      <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center"><i class="fa-solid fa-route text-sm"></i></span>
+      <div>
+        <p class="text-sm font-semibold leading-tight">Cathay Trail Assistant</p>
+        <p class="text-xs text-white/70 leading-tight">Usually replies in minutes</p>
+      </div>
+    </div>
+    <button id="chatbot-close" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"><i class="fa-solid fa-xmark text-sm"></i></button>
+  </div>
+
+  <div id="chatbot-messages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-white">
+    <div class="chat-bubble-in flex gap-2">
+      <span class="w-7 h-7 rounded-full bg-brand-secondary flex items-center justify-center shrink-0"><i class="fa-solid fa-route text-brand-primary text-xs"></i></span>
+      <div class="bg-brand-secondary rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm max-w-[80%]">Hi! I'm the Cathay Trail assistant 👋 Ask me about tours, pricing, or verified suppliers.</div>
+    </div>
+  </div>
+
+  <div id="chatbot-typing" class="hidden px-4 pb-2">
+    <div class="flex gap-2 items-center">
+      <span class="w-7 h-7 rounded-full bg-brand-secondary flex items-center justify-center shrink-0"><i class="fa-solid fa-route text-brand-primary text-xs"></i></span>
+      <div class="bg-brand-secondary rounded-2xl rounded-tl-sm px-4 py-3 flex gap-1"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>
+    </div>
+  </div>
+
+  <form id="chatbot-form" class="border-t border-brand-border p-3 flex items-center gap-2 shrink-0 bg-white">
+    <input id="chatbot-input" type="text" placeholder="Type a message…" autocomplete="off"
+      class="flex-1 border border-brand-border rounded-full px-4 py-2.5 text-sm outline-none focus:border-brand-primary">
+    <button type="submit" class="btn-primary w-10 h-10 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+  </form>
+</div>
+
+<!-- ============ FLOATING ACTIONS: BACK-TO-TOP + CHATBOT ============ -->
+<div class="fixed bottom-5 right-5 md:bottom-6 md:right-6 z-[95] flex items-center gap-[5px]">
+  <button id="back-to-top" aria-label="Back to top" class="opacity-0 pointer-events-none translate-y-2 w-12 h-12 rounded-full bg-white border border-brand-border shadow-float flex items-center justify-center hover:bg-brand-secondary">
+    <i class="fa-solid fa-arrow-up text-brand-primary"></i>
+  </button>
+  <button id="chatbot-toggle" aria-label="Open chat" class="w-14 h-14 rounded-full btn-primary shadow-float flex items-center justify-center relative">
+    <i id="chatbot-icon-open" class="fa-solid fa-comment-dots text-lg"></i>
+    <i id="chatbot-icon-close" class="fa-solid fa-xmark text-lg hidden"></i>
+  </button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- Header shadow on scroll ---------- */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('shadow-md', window.scrollY > 8);
+  });
+
+  /* ---------- Mobile menu ---------- */
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+  /* ---------- Currency toggle ---------- */
+  const currencyBtn = document.getElementById('currency-toggle');
+  const currencyLabel = document.getElementById('currency-label');
+  let isThb = true;
+  currencyBtn.addEventListener('click', () => {
+    isThb = !isThb;
+    currencyLabel.textContent = isThb ? 'THB ฿' : 'USD $';
+  });
+
+  /* ---------- Destination autocomplete ---------- */
+  const cities = [
+    {name:'Beijing', tag:'Great Wall · Forbidden City'},
+    {name:'Shanghai', tag:'The Bund · Skyline'},
+    {name:'Guilin', tag:'Li River · Karst Hills'},
+    {name:"Xi'an", tag:'Terracotta Army'},
+    {name:'Chengdu', tag:'Panda Base'},
+    {name:'Hong Kong', tag:'Victoria Harbour'},
+    {name:'Chongqing', tag:'Yangtze Cruise Start'},
+    {name:'Dunhuang', tag:'Silk Road · Mogao Caves'},
+    {name:'Yangshuo', tag:'Countryside · Cycling'},
+    {name:'Zhangjiajie', tag:'Avatar Mountains'},
+  ];
+  const destInput = document.getElementById('dest-input');
+  const destDropdown = document.getElementById('dest-dropdown');
+
+  function renderCityList(list){
+    if(!list.length){ destDropdown.classList.add('hidden'); return; }
+    destDropdown.innerHTML = list.map(c => `
+      <button type="button" data-city="${c.name}" class="city-option w-full text-left px-3 py-2.5 rounded-xl hover:bg-brand-secondary transition-colors flex items-center gap-2.5">
+        <i class="fa-solid fa-location-dot text-brand-primary text-xs"></i>
+        <span><span class="text-sm font-semibold block">${c.name}</span><span class="text-xs text-brand-muted">${c.tag}</span></span>
+      </button>`).join('');
+    destDropdown.classList.remove('hidden');
+    destDropdown.querySelectorAll('.city-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        destInput.value = btn.getAttribute('data-city');
+        destDropdown.classList.add('hidden');
+      });
+    });
+  }
+
+  destInput.addEventListener('focus', () => renderCityList(cities));
+  destInput.addEventListener('input', () => {
+    const q = destInput.value.trim().toLowerCase();
+    renderCityList(q ? cities.filter(c => c.name.toLowerCase().includes(q)) : cities);
+  });
+  document.addEventListener('click', (e) => {
+    if(!destInput.contains(e.target) && !destDropdown.contains(e.target)) destDropdown.classList.add('hidden');
+  });
+
+  /* ---------- Date inputs default/min ---------- */
+  const dateStart = document.getElementById('date-start');
+  const dateEnd = document.getElementById('date-end');
+  const today = new Date().toISOString().split('T')[0];
+  dateStart.min = today;
+  dateEnd.min = today;
+  dateStart.addEventListener('change', () => { dateEnd.min = dateStart.value; });
+
+  /* ---------- Traveler stepper ---------- */
+  const travelerBtn = document.getElementById('traveler-btn');
+  const travelerDropdown = document.getElementById('traveler-dropdown');
+  const travelerNum = document.getElementById('traveler-num');
+  const travelerCount = document.getElementById('traveler-count');
+  let travelers = 2;
+
+  travelerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    travelerDropdown.classList.toggle('hidden');
+  });
+  document.getElementById('traveler-plus').addEventListener('click', () => {
+    if(travelers < 12){ travelers++; updateTravelers(); }
+  });
+  document.getElementById('traveler-minus').addEventListener('click', () => {
+    if(travelers > 1){ travelers--; updateTravelers(); }
+  });
+  function updateTravelers(){
+    travelerNum.textContent = travelers;
+    travelerCount.textContent = travelers + (travelers === 1 ? ' Traveler' : ' Travelers');
+  }
+  document.addEventListener('click', (e) => {
+    if(!travelerBtn.contains(e.target) && !travelerDropdown.contains(e.target)) travelerDropdown.classList.add('hidden');
+  });
+
+  /* ---------- Search submit (scrolls to tours, simple UX feedback) ---------- */
+  document.getElementById('search-submit').addEventListener('click', () => {
+    document.getElementById('tours').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  /* ---------- Quick filter chips ---------- */
+  const chips = document.querySelectorAll('#chip-row .chip');
+  const tourCards = document.querySelectorAll('#tour-track [data-theme]');
+  const noToursMsg = document.getElementById('no-tours-msg');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.getAttribute('data-filter');
+      let visibleCount = 0;
+      tourCards.forEach(card => {
+        const themes = card.getAttribute('data-theme').split(' ');
+        const show = filter === 'all' || themes.includes(filter);
+        card.style.display = show ? '' : 'none';
+        if(show) visibleCount++;
+      });
+      noToursMsg.classList.toggle('hidden', visibleCount !== 0);
+    });
+  });
+
+  /* ---------- Tour carousel controls ---------- */
+  const track = document.getElementById('tour-track');
+  document.getElementById('tour-next').addEventListener('click', () => track.scrollBy({left: 356, behavior:'smooth'}));
+  document.getElementById('tour-prev').addEventListener('click', () => track.scrollBy({left: -356, behavior:'smooth'}));
+
+  /* ---------- Wishlist hearts ---------- */
+  document.querySelectorAll('.wish-btn').forEach(btn => {
+    btn.addEventListener('click', () => btn.classList.toggle('active'));
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  /* ---------- Back to top ---------- */
+  const backToTop = document.getElementById('back-to-top');
+  const heroSection = document.getElementById('top');
+  function toggleBackToTop(){
+    const past = window.scrollY > heroSection.offsetHeight;
+    backToTop.classList.toggle('opacity-0', !past);
+    backToTop.classList.toggle('pointer-events-none', !past);
+    backToTop.classList.toggle('translate-y-2', !past);
+  }
+  window.addEventListener('scroll', toggleBackToTop);
+  toggleBackToTop();
+  backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  /* ---------- Auth modal ---------- */
+  const authModal = document.getElementById('auth-modal');
+  const authBackdrop = document.getElementById('auth-backdrop');
+  const modalCard = authModal.querySelector('.modal-card');
+  const authTabs = document.querySelectorAll('[data-auth-tab]');
+  const loginPanel = document.getElementById('login-panel');
+  const registerPanel = document.getElementById('register-panel');
+
+  function openAuth(tab){
+    authModal.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      authModal.classList.remove('opacity-0');
+      modalCard.classList.remove('opacity-0','translate-y-4','scale-95');
+    });
+    document.body.style.overflow = 'hidden';
+    switchAuthTab(tab || 'login');
+    if(mobileMenu) mobileMenu.classList.add('hidden');
+  }
+  function closeAuth(){
+    authModal.classList.add('opacity-0');
+    modalCard.classList.add('opacity-0','translate-y-4','scale-95');
+    document.body.style.overflow = '';
+    setTimeout(() => authModal.classList.add('hidden'), 300);
+  }
+  function switchAuthTab(tab){
+    authTabs.forEach(t => {
+      if(t.hasAttribute('data-auth-tab')) t.classList.toggle('active', t.getAttribute('data-auth-tab') === tab);
+    });
+    loginPanel.classList.toggle('hidden', tab !== 'login');
+    registerPanel.classList.toggle('hidden', tab !== 'register');
+  }
+
+  document.querySelectorAll('[data-auth-open]').forEach(btn => {
+    btn.addEventListener('click', () => openAuth(btn.getAttribute('data-auth-open')));
+  });
+  authTabs.forEach(t => t.addEventListener('click', () => switchAuthTab(t.getAttribute('data-auth-tab'))));
+  document.getElementById('auth-close').addEventListener('click', closeAuth);
+  authBackdrop.addEventListener('click', closeAuth);
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeAuth(); });
+
+  [loginPanel, registerPanel].forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const label = btn.querySelector('.btn-label');
+      const success = form.querySelector('.auth-success');
+      const originalText = label.textContent;
+      btn.disabled = true;
+      label.innerHTML = '';
+      btn.insertAdjacentHTML('beforeend', '');
+      btn.querySelector('.spinner')?.remove();
+      const spinner = document.createElement('span');
+      spinner.className = 'spinner';
+      btn.prepend(spinner);
+      label.textContent = '';
+      setTimeout(() => {
+        form.querySelectorAll('input, .flex.items-center.justify-between, .grid, .text-center').forEach(el => {
+          if(!el.classList.contains('auth-success')) el.style.display = 'none';
+        });
+        btn.style.display = 'none';
+        success.classList.remove('hidden');
+        setTimeout(closeAuth, 1400);
+      }, 1100);
+    });
+  });
+
+  /* ---------- Newsletter ---------- */
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterSuccess = document.getElementById('newsletter-success');
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    newsletterForm.classList.add('hidden');
+    newsletterSuccess.classList.remove('hidden');
+  });
+
+  /* ---------- Chatbot ---------- */
+  const chatToggle = document.getElementById('chatbot-toggle');
+  const chatPanel = document.getElementById('chatbot-panel');
+  const chatClose = document.getElementById('chatbot-close');
+  const iconOpen = document.getElementById('chatbot-icon-open');
+  const iconClose = document.getElementById('chatbot-icon-close');
+  const chatMessages = document.getElementById('chatbot-messages');
+  const chatForm = document.getElementById('chatbot-form');
+  const chatInput = document.getElementById('chatbot-input');
+  const chatTyping = document.getElementById('chatbot-typing');
+  let chatOpen = false;
+
+  function setChatOpen(open){
+    chatOpen = open;
+    if(open){
+      chatPanel.classList.remove('hidden');
+      requestAnimationFrame(() => chatPanel.classList.remove('opacity-0','translate-y-4'));
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+    } else {
+      chatPanel.classList.add('opacity-0','translate-y-4');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      setTimeout(() => chatPanel.classList.add('hidden'), 300);
+    }
+  }
+  chatToggle.addEventListener('click', () => setChatOpen(!chatOpen));
+  chatClose.addEventListener('click', () => setChatOpen(false));
+
+  function addBubble(text, from){
+    const wrap = document.createElement('div');
+    wrap.className = 'chat-bubble-in flex gap-2' + (from === 'user' ? ' justify-end' : '');
+    if(from === 'bot'){
+      wrap.innerHTML = `<span class="w-7 h-7 rounded-full bg-brand-secondary flex items-center justify-center shrink-0"><i class="fa-solid fa-route text-brand-primary text-xs"></i></span>
+        <div class="bg-brand-secondary rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm max-w-[80%]">${text}</div>`;
+    } else {
+      wrap.innerHTML = `<div class="bg-brand-primary text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm max-w-[80%]">${text}</div>`;
+    }
+    chatMessages.appendChild(wrap);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function botReply(userText){
+    const t = userText.toLowerCase();
+    let reply = "Got it! You can browse verified tours above, or tell me a destination and I'll point you the right way.";
+    if(t.includes('price') || t.includes('cost') || t.includes('ราคา')){
+      reply = "Prices range from ฿18,400 for a short Chengdu trip up to ฿89,900 for a luxury Yangtze cruise. Want me to filter by budget?";
+    } else if(t.includes('great wall')){
+      reply = "Our Great Wall & Forbidden City Explorer (5 Days, Beijing) starts at ฿32,900 — rated 4.9 by 612 travelers.";
+    } else if(t.includes('panda')){
+      reply = "The Chengdu Panda Discovery tour is 3 days from ฿18,400, great for families!";
+    } else if(t.includes('cancel') || t.includes('refund')){
+      reply = "All bookings are covered by our 100% money-back guarantee — you can request a refund from your account any time.";
+    } else if(t.includes('supplier') || t.includes('verify') || t.includes('trust')){
+      reply = "Every supplier goes through a verification check before listing. Use the Compare Suppliers tool to see them side by side.";
+    } else if(t.includes('human') || t.includes('agent')){
+      reply = "Sure — I'll connect you with a travel specialist. They typically respond within a few hours.";
+    } else if(t.includes('hi') || t.includes('hello') || t.includes('สวัสดี')){
+      reply = "Hey there! 👋 Looking for a destination, a budget, or a specific date range?";
+    }
+    chatTyping.classList.remove('hidden');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    setTimeout(() => {
+      chatTyping.classList.add('hidden');
+      addBubble(reply, 'bot');
+    }, 900);
+  }
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = chatInput.value.trim();
+    if(!val) return;
+    addBubble(val.replace(/</g,'&lt;'), 'user');
+    chatInput.value = '';
+    botReply(val);
+  });
+
+});
+</script>
+
+</body>
+</html>
