@@ -1,0 +1,364 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const repoEnv = process.env.GITHUB_REPOSITORY || "tuwaeteemohsamae-ship-it/template-live-demo";
+const [repoOwner, repoName] = repoEnv.split("/");
+const rootDir = process.cwd();
+
+const files = [];
+
+function scanDir(dir, relPath = "") {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.name.startsWith(".") || entry.name === "node_modules") continue;
+    const fullPath = path.join(dir, entry.name);
+    const entryRelPath = relPath ? `${relPath}/${entry.name}` : entry.name;
+
+    if (entry.isDirectory()) {
+      scanDir(fullPath, entryRelPath);
+    } else if (entry.isFile() && /\.html?$/i.test(entry.name)) {
+      if (entryRelPath.toLowerCase() === "index.html") continue;
+
+      const content = fs.readFileSync(fullPath, "utf-8");
+      const titleMatch = content.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+      let title = titleMatch ? titleMatch[1].trim() : "";
+      if (title) {
+        title = title.replace(/\s+/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+      } else {
+        title = entry.name.replace(/\.html?$/i, "").replace(/[-_]+/g, " ");
+      }
+
+      const descMatch = content.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>/i);
+      const description = descMatch ? descMatch[1].trim() : "";
+
+      const stats = fs.statSync(fullPath);
+      const folder = relPath || "root";
+      const sizeKb = (stats.size / 1024).toFixed(1);
+
+      files.push({
+        name: entry.name,
+        title,
+        description,
+        path: entryRelPath.replace(/\\/g, "/"),
+        folder,
+        sizeKb: Number(sizeKb),
+        updatedAt: stats.mtime.toISOString(),
+      });
+    }
+  }
+}
+
+scanDir(rootDir);
+files.sort((a, b) => a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: "base" }));
+
+const categories = Array.from(new Set(files.map((f) => f.folder)));
+const templateDataJson = JSON.stringify(files);
+const categoriesJson = JSON.stringify(categories);
+
+console.log(`[generate-index] Found ${files.length} templates across ${categories.length} categories.`);
+
+const html = `<!DOCTYPE html>
+<html lang="th" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Templates Live Demo Gallery — ${repoName}</title>
+  <meta name="description" content="คลังรวม Live Demo สำหรับพรีวิวเทมเพลตเว็บไซต์ อัปเดตอัตโนมัติจาก GitHub Repository" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Prompt', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      box-shadow: 0 12px 30px -10px rgba(14, 165, 233, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col font-sans selection:bg-brand-500 selection:text-white antialiased">
+  
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-4 sm:px-8 py-3.5 flex items-center justify-between transition-all">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25">
+        <i class="bi bi-collection-play-fill text-lg"></i>
+      </div>
+      <div>
+        <h1 class="font-bold text-base sm:text-lg text-white tracking-tight flex items-center gap-2">
+          <span>Live Demo Gallery</span>
+          <span class="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">Auto-Sync</span>
+        </h1>
+        <p class="text-xs text-slate-400 hidden sm:block">${repoOwner}/${repoName}</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="https://github.com/${repoOwner}/${repoName}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+        <i class="bi bi-github text-sm"></i>
+        <span class="hidden sm:inline">View on GitHub</span>
+      </a>
+      <span id="stat-badge" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="stat-count">${files.length}</span> Templates
+      </span>
+    </div>
+  </header>
+
+  <!-- Hero Header & Search Section -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
+    <div class="text-center max-w-2xl mx-auto space-y-3">
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-400 tracking-tight">
+        คลังแสดงผลเทมเพลตเว็บไซต์
+      </h2>
+      <p class="text-sm sm:text-base text-slate-400 font-normal leading-relaxed">
+        คลิกเปิดดู Live Demo ได้ทันทีทุกเทมเพลตใน Repository พร้อมระบบค้นหาและอัปเดตให้อัตโนมัติเมื่อมีไฟล์ใหม่
+      </p>
+    </div>
+
+    <!-- Search & Filters Container -->
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="relative">
+        <i class="bi bi-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-base"></i>
+        <input 
+          id="search-input" 
+          type="text" 
+          placeholder="ค้นหาตามชื่อเทมเพลต, โฟลเดอร์, หรือคีย์เวิร์ด..." 
+          class="w-full pl-11 pr-10 py-3.5 rounded-2xl glass-card text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition shadow-inner"
+        />
+        <button id="clear-search" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 hidden">
+          <i class="bi bi-x-circle-fill text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Categories Filter Chips -->
+      <div id="category-chips" class="flex flex-wrap items-center justify-center gap-2 pt-1">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- Templates Grid Container -->
+    <section>
+      <div id="templates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-16 space-y-3">
+        <div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto text-slate-500 text-2xl">
+          <i class="bi bi-folder-x"></i>
+        </div>
+        <h3 class="text-base font-bold text-slate-200">ไม่พบเทมเพลตที่ตรงกับคำค้นหา</h3>
+        <p class="text-xs text-slate-400">ลองล้างคำค้นหา หรือค้นหาด้วยชื่ออื่น</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-900/95 border border-brand-500/30 text-white text-xs font-semibold shadow-2xl shadow-black/50 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none">
+    <i class="bi bi-check-circle-fill text-emerald-400 text-sm"></i>
+    <span id="toast-text">คัดลอกลิงก์สำเร็จ!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-slate-800/80 glass-card py-6 px-4 text-center text-xs text-slate-500 space-y-1">
+    <p>⚡ Automatically deployed with <a href="https://pages.github.com" target="_blank" class="text-slate-400 hover:text-brand-400 underline decoration-slate-700">GitHub Pages</a> & Actions</p>
+    <p class="text-[11px] text-slate-600">Generated: ${new Date().toISOString().replace("T", " ").slice(0, 19)} UTC</p>
+  </footer>
+
+  <script>
+    const templates = ${templateDataJson};
+    const categories = ${categoriesJson};
+    let activeCategory = "all";
+    let searchQuery = "";
+
+    const searchInput = document.getElementById("search-input");
+    const clearSearchBtn = document.getElementById("clear-search");
+    const categoryChips = document.getElementById("category-chips");
+    const templatesGrid = document.getElementById("templates-grid");
+    const emptyState = document.getElementById("empty-state");
+    const statCount = document.getElementById("stat-count");
+
+    function renderCategoryChips() {
+      if (!categoryChips) return;
+      let html = \`
+        <button onclick="setCategory('all')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition \${activeCategory === 'all' ? 'bg-brand-600 text-white shadow-md shadow-brand-600/25' : 'bg-slate-900/90 text-slate-400 hover:text-white border border-slate-800'}">
+          ทั้งหมด (\${templates.length})
+        </button>
+      \`;
+      categories.forEach(cat => {
+        const count = templates.filter(t => t.folder === cat).length;
+        const isActive = activeCategory === cat;
+        html += \`
+          <button onclick="setCategory('\${cat}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition \${isActive ? 'bg-brand-600 text-white shadow-md shadow-brand-600/25' : 'bg-slate-900/90 text-slate-400 hover:text-white border border-slate-800'}">
+            \${cat} (\${count})
+          </button>
+        \`;
+      });
+      categoryChips.innerHTML = html;
+    }
+
+    function setCategory(cat) {
+      activeCategory = cat;
+      renderCategoryChips();
+      filterAndRender();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      const text = document.getElementById("toast-text");
+      if (!toast || !text) return;
+      text.innerText = msg;
+      toast.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+      setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+      }, 2400);
+    }
+
+    function copyTemplateLink(path) {
+      const url = new URL(path, window.location.href).href;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast("📋 คัดลอกลิงก์ Live Demo แล้ว: " + path);
+      }).catch(() => {
+        prompt("คัดลอกลิงก์นี้:", url);
+      });
+    }
+
+    function filterAndRender() {
+      const q = searchQuery.toLowerCase().trim();
+      const filtered = templates.filter(t => {
+        const matchCat = activeCategory === "all" || t.folder === activeCategory;
+        const matchQuery = !q || 
+          t.title.toLowerCase().includes(q) || 
+          t.name.toLowerCase().includes(q) || 
+          t.folder.toLowerCase().includes(q) ||
+          (t.description && t.description.toLowerCase().includes(q));
+        return matchCat && matchQuery;
+      });
+
+      if (statCount) statCount.innerText = filtered.length;
+
+      if (filtered.length === 0) {
+        templatesGrid.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+      templatesGrid.innerHTML = filtered.map(t => {
+        const fullUrl = t.path;
+        return \`
+          <article class="glass-card rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1">
+            <div class="space-y-3">
+              <!-- Top tags -->
+              <div class="flex items-center justify-between gap-2">
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
+                  <i class="bi bi-folder2 text-brand-400"></i> \${t.folder}
+                </span>
+                <span class="text-[11px] font-medium text-slate-500">
+                  \${t.sizeKb} KB
+                </span>
+              </div>
+
+              <!-- Title & Name -->
+              <div>
+                <h3 class="font-bold text-base text-slate-100 group-hover:text-brand-400 transition-colors line-clamp-2" title="\${t.title}">
+                  \${t.title}
+                </h3>
+                <p class="text-xs text-slate-500 font-mono mt-1 truncate" title="\${t.name}">
+                  \${t.name}
+                </p>
+              </div>
+
+              \${t.description ? \`<p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">\${t.description}</p>\` : ''}
+            </div>
+
+            <!-- Action buttons -->
+            <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <a 
+                href="\${fullUrl}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-xs font-bold shadow-lg shadow-brand-600/20 transition active:scale-[0.98]"
+              >
+                <span>เปิด Live Demo</span>
+                <i class="bi bi-box-arrow-up-right text-[11px]"></i>
+              </a>
+
+              <button 
+                onclick="copyTemplateLink('\${t.path}')" 
+                title="คัดลอกลิงก์ตรง" 
+                class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition active:scale-95"
+              >
+                <i class="bi bi-link-45deg text-base"></i>
+              </button>
+            </div>
+          </article>
+        \`;
+      }).join("");
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery) {
+        clearSearchBtn.classList.remove("hidden");
+      } else {
+        clearSearchBtn.classList.add("hidden");
+      }
+      filterAndRender();
+    });
+
+    clearSearchBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      searchQuery = "";
+      clearSearchBtn.classList.add("hidden");
+      filterAndRender();
+      searchInput.focus();
+    });
+
+    // Init
+    renderCategoryChips();
+    filterAndRender();
+  </script>
+</body>
+</html>`;
+
+const outputPath = path.join(rootDir, "index.html");
+fs.writeFileSync(outputPath, html, "utf-8");
+console.log(`[generate-index] Successfully wrote index.html to ${outputPath} (${html.length} bytes)`);
