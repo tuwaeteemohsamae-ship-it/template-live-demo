@@ -58,7 +58,7 @@ const categoriesJson = JSON.stringify(categories);
 console.log(`[generate-index] Found ${files.length} templates across ${categories.length} categories.`);
 
 const html = `<!DOCTYPE html>
-<html lang="th" class="h-full bg-slate-950 text-slate-100">
+<html lang="th" class="h-full bg-slate-50 text-slate-800">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -92,48 +92,45 @@ const html = `<!DOCTYPE html>
   </script>
   <style>
     body {
+      background-color: #f8fafc;
       background-image: 
-        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-        radial-gradient(at 50% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.06) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(241, 245, 249, 0.9) 0px, transparent 50%);
       background-attachment: fixed;
     }
     .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
     }
     .glass-card:hover {
-      border-color: rgba(14, 165, 233, 0.4);
-      box-shadow: 0 12px 30px -10px rgba(14, 165, 233, 0.2);
+      border-color: #cbd5e1;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
     }
   </style>
 </head>
 <body class="min-h-full flex flex-col font-sans selection:bg-brand-500 selection:text-white antialiased">
   
   <!-- Top Navigation Bar -->
-  <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-4 sm:px-8 py-3.5 flex items-center justify-between transition-all">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-8 py-3.5 flex items-center justify-between transition-all shadow-xs">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
         <i class="bi bi-collection-play-fill text-lg"></i>
       </div>
       <div>
-        <h1 class="font-bold text-base sm:text-lg text-white tracking-tight flex items-center gap-2">
+        <h1 class="font-extrabold text-base sm:text-lg text-slate-900 tracking-tight flex items-center gap-2">
           <span>Live Demo Gallery</span>
-          <span class="text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20">Auto-Sync</span>
         </h1>
-        <p class="text-xs text-slate-400 hidden sm:block">${repoOwner}/${repoName}</p>
       </div>
     </div>
 
     <div class="flex items-center gap-2 sm:gap-3">
-      <a href="https://github.com/${repoOwner}/${repoName}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+      <a href="https://github.com/${repoOwner}/${repoName}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80 transition">
         <i class="bi bi-github text-sm"></i>
         <span class="hidden sm:inline">View on GitHub</span>
       </a>
-      <span id="stat-badge" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span id="stat-badge" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
         <span id="stat-count">${files.length}</span> Templates
       </span>
     </div>
@@ -142,10 +139,10 @@ const html = `<!DOCTYPE html>
   <!-- Hero Header & Search Section -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
     <div class="text-center max-w-2xl mx-auto space-y-3">
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-400 tracking-tight">
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
         คลังแสดงผลเทมเพลตเว็บไซต์
       </h2>
-      <p class="text-sm sm:text-base text-slate-400 font-normal leading-relaxed">
+      <p class="text-sm sm:text-base text-slate-500 font-normal leading-relaxed">
         คลิกเปิดดู Live Demo ได้ทันทีทุกเทมเพลตใน Repository พร้อมระบบค้นหาและอัปเดตให้อัตโนมัติเมื่อมีไฟล์ใหม่
       </p>
     </div>
@@ -158,9 +155,9 @@ const html = `<!DOCTYPE html>
           id="search-input" 
           type="text" 
           placeholder="ค้นหาตามชื่อเทมเพลต, โฟลเดอร์, หรือคีย์เวิร์ด..." 
-          class="w-full pl-11 pr-10 py-3.5 rounded-2xl glass-card text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition shadow-inner"
+          class="w-full pl-11 pr-10 py-3.5 rounded-2xl bg-white border border-slate-200/90 text-slate-800 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition shadow-xs"
         />
-        <button id="clear-search" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 hidden">
+        <button id="clear-search" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 hidden">
           <i class="bi bi-x-circle-fill text-sm"></i>
         </button>
       </div>
@@ -179,25 +176,25 @@ const html = `<!DOCTYPE html>
 
       <!-- Empty State -->
       <div id="empty-state" class="hidden text-center py-16 space-y-3">
-        <div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto text-slate-500 text-2xl">
+        <div class="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center mx-auto text-slate-400 text-2xl">
           <i class="bi bi-folder-x"></i>
         </div>
-        <h3 class="text-base font-bold text-slate-200">ไม่พบเทมเพลตที่ตรงกับคำค้นหา</h3>
-        <p class="text-xs text-slate-400">ลองล้างคำค้นหา หรือค้นหาด้วยชื่ออื่น</p>
+        <h3 class="text-base font-bold text-slate-800">ไม่พบเทมเพลตที่ตรงกับคำค้นหา</h3>
+        <p class="text-xs text-slate-500">ลองล้างคำค้นหา หรือค้นหาด้วยชื่ออื่น</p>
       </div>
     </section>
   </main>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-900/95 border border-brand-500/30 text-white text-xs font-semibold shadow-2xl shadow-black/50 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none">
+  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-900/95 border border-slate-700 text-white text-xs font-semibold shadow-2xl shadow-black/50 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none">
     <i class="bi bi-check-circle-fill text-emerald-400 text-sm"></i>
     <span id="toast-text">คัดลอกลิงก์สำเร็จ!</span>
   </div>
 
   <!-- Footer -->
-  <footer class="mt-auto border-t border-slate-800/80 glass-card py-6 px-4 text-center text-xs text-slate-500 space-y-1">
-    <p>⚡ Automatically deployed with <a href="https://pages.github.com" target="_blank" class="text-slate-400 hover:text-brand-400 underline decoration-slate-700">GitHub Pages</a> & Actions</p>
-    <p class="text-[11px] text-slate-600">Generated: ${new Date().toISOString().replace("T", " ").slice(0, 19)} UTC</p>
+  <footer class="mt-auto border-t border-slate-200/80 bg-white py-6 px-4 text-center text-xs text-slate-400 space-y-1">
+    <p>⚡ Automatically deployed with <a href="https://pages.github.com" target="_blank" class="text-slate-500 hover:text-brand-600 underline decoration-slate-300">GitHub Pages</a> & Actions</p>
+    <p class="text-[11px] text-slate-400">Generated: ${new Date().toISOString().replace("T", " ").slice(0, 19)} UTC</p>
   </footer>
 
   <script>
@@ -216,7 +213,7 @@ const html = `<!DOCTYPE html>
     function renderCategoryChips() {
       if (!categoryChips) return;
       let html = \`
-        <button onclick="setCategory('all')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition \${activeCategory === 'all' ? 'bg-brand-600 text-white shadow-md shadow-brand-600/25' : 'bg-slate-900/90 text-slate-400 hover:text-white border border-slate-800'}">
+        <button onclick="setCategory('all')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition \${activeCategory === 'all' ? 'bg-brand-600 text-white shadow-sm shadow-brand-600/25' : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50 shadow-2xs'}">
           ทั้งหมด (\${templates.length})
         </button>
       \`;
@@ -224,7 +221,7 @@ const html = `<!DOCTYPE html>
         const count = templates.filter(t => t.folder === cat).length;
         const isActive = activeCategory === cat;
         html += \`
-          <button onclick="setCategory('\${cat}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition \${isActive ? 'bg-brand-600 text-white shadow-md shadow-brand-600/25' : 'bg-slate-900/90 text-slate-400 hover:text-white border border-slate-800'}">
+          <button onclick="setCategory('\${cat}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition \${isActive ? 'bg-brand-600 text-white shadow-md shadow-brand-600/25' : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-50 shadow-2xs'}">
             \${cat} (\${count})
           </button>
         \`;
@@ -288,34 +285,34 @@ const html = `<!DOCTYPE html>
             <div class="space-y-3">
               <!-- Top tags -->
               <div class="flex items-center justify-between gap-2">
-                <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60">
-                  <i class="bi bi-folder2 text-brand-400"></i> \${t.folder}
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200/60">
+                  <i class="bi bi-folder2 text-brand-600"></i> \${t.folder}
                 </span>
-                <span class="text-[11px] font-medium text-slate-500">
+                <span class="text-[11px] font-medium text-slate-400">
                   \${t.sizeKb} KB
                 </span>
               </div>
 
               <!-- Title & Name -->
               <div>
-                <h3 class="font-bold text-base text-slate-100 group-hover:text-brand-400 transition-colors line-clamp-2" title="\${t.title}">
+                <h3 class="font-bold text-base text-slate-900 group-hover:text-brand-600 transition-colors line-clamp-2" title="\${t.title}">
                   \${t.title}
                 </h3>
-                <p class="text-xs text-slate-500 font-mono mt-1 truncate" title="\${t.name}">
+                <p class="text-xs text-slate-400 font-mono mt-1 truncate" title="\${t.name}">
                   \${t.name}
                 </p>
               </div>
 
-              \${t.description ? \`<p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">\${t.description}</p>\` : ''}
+              \${t.description ? \`<p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">\${t.description}</p>\` : ''}
             </div>
 
             <!-- Action buttons -->
-            <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center justify-between gap-2">
+            <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between gap-2">
               <a 
                 href="\${fullUrl}" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-xs font-bold shadow-lg shadow-brand-600/20 transition active:scale-[0.98]"
+                class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white text-xs font-bold shadow-sm shadow-brand-600/20 transition active:scale-[0.98]"
               >
                 <span>เปิด Live Demo</span>
                 <i class="bi bi-box-arrow-up-right text-[11px]"></i>
@@ -324,7 +321,7 @@ const html = `<!DOCTYPE html>
               <button 
                 onclick="copyTemplateLink('\${t.path}')" 
                 title="คัดลอกลิงก์ตรง" 
-                class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition active:scale-95"
+                class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200/80 transition active:scale-95"
               >
                 <i class="bi bi-link-45deg text-base"></i>
               </button>
