@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitalis Wellness — Premium Supplements in Thailand | Shop Authentic Health Products</title>
+<meta name="description" content="Vitalis Wellness is a trusted Thai supplement front shop with immunity, beauty, energy, digestive, heart and sleep support products. Order easily through LINE, Messenger, or online checkout.">
+<meta name="keywords" content="supplements Thailand, vitamin shop Thailand, LINE supplement store, Facebook Messenger supplement, Thai FDA supplement, wellness products, health supplements">
+<meta property="og:title" content="Vitalis Wellness — Premium Supplements in Thailand">
+<meta property="og:description" content="Browse authentic daily wellness supplements across six categories. Chat with our team on LINE or Messenger before ordering.">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+tailwind.config={theme:{extend:{colors:{cream:'#F9F4EA',ivory:'#F5EFE2',sage:'#C1BFAA',olive:'#A8A58F',taupe:'#D9D0B8',bluegray:'#DDE3E6',stone:'#B7B59F',ink:'#1C1C1C',body:'#3A3A3A',muted:'#6B6B6B'},fontFamily:{display:['"Playfair Display"','serif'],sans:['Inter','sans-serif']},maxWidth:{shell:'1280px'}}}}
+</script>
+<style>
+body{font-family:Inter,sans-serif;color:#3A3A3A;background:#fff}
+h1,h2,h3{font-family:'Playfair Display',serif;color:#1C1C1C}
+.shell{max-width:1280px;margin-inline:auto;padding-inline:20px}
+.reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.card-hover{transition:.35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.card-hover:hover{transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(28,28,28,.25)}
+.btn{transition:.25s}
+.btn:hover{transform:translateY(-2px)}
+.pill.active{background:#1C1C1C;color:#fff;border-color:#1C1C1C}
+.marquee{display:flex;gap:48px;width:max-content;animation:slide 28s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+.chat-panel{transform:translateY(16px) scale(.98);opacity:0;pointer-events:none;transition:.35s}
+.chat-panel.open{transform:none;opacity:1;pointer-events:auto}
+.float-btn:hover{transform:translateY(-3px)}
+.hide{display:none!important}
+</style>
+</head>
+<body class="antialiased">
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-neutral-100">
+<div class="shell flex items-center justify-between h-[72px] gap-4">
+<a href="#top" class="flex items-center gap-3"><span class="w-10 h-10 rounded-xl bg-ink text-cream grid place-items-center"><i class="fa-solid fa-leaf"></i></span><span><span class="block font-display font-bold text-lg">Vitalis</span><span class="block text-[10px] tracking-[.18em] uppercase text-muted">Wellness Thailand</span></span></a>
+<nav class="hidden lg:flex gap-7 text-sm font-medium"><a href="#categories">Categories</a><a href="#bestsellers">Best Sellers</a><a href="#catalog">All Products</a><a href="#trust">Why Vitalis</a><a href="#contact">Contact</a></nav>
+<div class="flex items-center gap-2">
+<a href="https://line.me/R/ti/p/@vitaliswellness" target="_blank" class="btn hidden sm:inline-flex items-center gap-2 px-4 h-10 rounded-full bg-ink text-white text-sm"><i class="fa-brands fa-line"></i> Order via LINE</a>
+<button id="cartBtn" class="btn relative w-10 h-10 rounded-full border grid place-items-center"><i class="fa-solid fa-bag-shopping"></i><span id="cartCount" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-olive text-white text-[10px] grid place-items-center">0</span></button>
+<button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full border grid place-items-center"><i class="fa-solid fa-bars"></i></button>
+</div></div>
+<div id="mobileMenu" class="lg:hidden hidden border-t bg-white"><div class="shell py-4 grid text-sm"><a href="#categories" class="py-2">Categories</a><a href="#bestsellers" class="py-2">Best Sellers</a><a href="#catalog" class="py-2">All Products</a><a href="#trust" class="py-2">Why Vitalis</a><a href="#contact" class="py-2">Contact</a></div></div>
+</header>
+
+<section id="top" class="pt-10 md:pt-16 pb-14">
+<div class="shell grid lg:grid-cols-12 gap-6">
+<div class="lg:col-span-7 reveal rounded-[28px] bg-cream p-7 md:p-12 relative overflow-hidden">
+<div class="absolute -top-20 -right-16 w-64 h-64 rounded-full bg-sage/30 blur-3xl"></div>
+<p class="inline-flex items-center gap-2 text-[11px] bg-white rounded-full px-3 py-1.5 border"><i class="fa-brands fa-facebook-messenger text-olive"></i> Continued from Facebook Chat</p>
+<h1 class="mt-6 text-[42px] md:text-[64px] font-black leading-[1.03]">Daily wellness,<br><span class="text-olive font-normal">carefully selected.</span></h1>
+<p class="mt-5 max-w-xl text-sm md:text-base">Vitalis Wellness curates over 18 supplement products across immunity, beauty, energy, digestion, heart health, and sleep. Every item is sourced from registered suppliers.</p>
+<div class="mt-8 flex flex-wrap gap-3"><a href="#catalog" class="btn h-12 px-6 rounded-full bg-ink text-white font-medium inline-flex items-center gap-2">Browse Products <i class="fa-solid fa-arrow-right text-xs"></i></a><a href="https://line.me/R/ti/p/@vitaliswellness" target="_blank" class="btn h-12 px-6 rounded-full bg-ivory border font-medium inline-flex items-center gap-2"><i class="fa-brands fa-line"></i> Ask a Product Question</a></div>
+<div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="rounded-2xl bg-white p-4 border"><i class="fa-solid fa-shield-halved text-olive"></i><p class="mt-2 text-xs font-semibold">Authentic Stock</p></div>
+<div class="rounded-2xl bg-white p-4 border"><i class="fa-solid fa-truck-fast text-olive"></i><p class="mt-2 text-xs font-semibold">Thailand Delivery</p></div>
+<div class="rounded-2xl bg-white p-4 border"><i class="fa-solid fa-comment-dots text-olive"></i><p class="mt-2 text-xs font-semibold">LINE Support</p></div>
+<div class="rounded-2xl bg-white p-4 border"><i class="fa-solid fa-rotate-left text-olive"></i><p class="mt-2 text-xs font-semibold">7-Day Returns</p></div>
+</div></div>
+<div class="lg:col-span-5 grid grid-rows-2 gap-6 reveal">
+<div class="rounded-[28px] overflow-hidden relative bg-ivory min-h-[220px]"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Wellness routine"><div class="absolute inset-0 bg-gradient-to-t from-ink/55"></div><div class="absolute bottom-5 left-5 text-white"><p class="text-[11px] uppercase opacity-80">Featured Routine</p><h3 class="text-2xl font-bold">Start with the Essentials</h3></div></div>
+<div class="rounded-[28px] bg-ink text-cream p-7 flex flex-col justify-between"><div><p class="text-[11px] uppercase text-sage">Facebook Chat Offer</p><h3 class="text-2xl font-bold mt-3">Free wellness consultation before you order</h3><p class="text-sm text-cream/80 mt-3">Send us your goal and current routine. Our team will suggest suitable products.</p></div><button onclick="openChat()" class="btn mt-6 self-start h-11 px-5 rounded-full bg-cream text-ink text-sm font-semibold"><i class="fa-solid fa-comments mr-2"></i>Chat Now</button></div>
+</div></div></div>
+</section>
+
+<section class="border-y py-4 overflow-hidden"><div class="marquee text-[11px] uppercase tracking-[.2em] text-muted font-medium"><span>Immunity Support</span><span>•</span><span>Beauty & Skin</span><span>•</span><span>Energy & Fitness</span><span>•</span><span>Digestive Health</span><span>•</span><span>Heart & Metabolism</span><span>•</span><span>Sleep & Stress</span><span>•</span><span>Immunity Support</span><span>•</span><span>Beauty & Skin</span><span>•</span><span>Energy & Fitness</span><span>•</span><span>Digestive Health</span><span>•</span><span>Heart & Metabolism</span><span>•</span><span>Sleep & Stress</span><span>•</span></div></section>
+
+<section id="categories" class="py-16 md:py-24"><div class="shell">
+<div class="flex flex-wrap justify-between gap-6 reveal"><div><p class="text-[11px] text-muted">Shop by wellness goal</p><h2 class="text-[32px] md:text-[44px] font-bold mt-2">Choose your <span class="text-olive font-normal">category</span></h2></div><a href="#catalog" class="btn text-sm font-medium">View all products <i class="fa-solid fa-arrow-right text-xs"></i></a></div>
+<div class="mt-10 grid md:grid-cols-6 gap-4 reveal">
+<a href="#catalog" data-cat="immunity" class="cat-card card-hover md:col-span-3 rounded-[24px] bg-cream p-7 min-h-[190px] flex flex-col justify-between"><div class="w-12 h-12 rounded-2xl bg-white grid place-items-center text-olive"><i class="fa-solid fa-shield-virus"></i></div><div><h3 class="text-2xl font-bold">Immunity Support</h3><p class="text-sm mt-2">Vitamin C, zinc, elderberry and antioxidant formulas.</p></div></a>
+<a href="#catalog" data-cat="beauty" class="cat-card card-hover md:col-span-3 rounded-[24px] bg-ivory p-7 min-h-[190px] flex flex-col justify-between"><div class="w-12 h-12 rounded-2xl bg-white grid place-items-center text-olive"><i class="fa-solid fa-spa"></i></div><div><h3 class="text-2xl font-bold">Beauty & Skin</h3><p class="text-sm mt-2">Collagen, glutathione, biotin and skin blends.</p></div></a>
+<a href="#catalog" data-cat="energy" class="cat-card card-hover md:col-span-2 rounded-[24px] bg-bluegray p-7 min-h-[180px] flex flex-col justify-between"><div class="w-12 h-12 rounded-2xl bg-white grid place-items-center text-olive"><i class="fa-solid fa-bolt"></i></div><div><h3 class="text-xl font-bold">Energy & Fitness</h3><p class="text-sm mt-2">Protein, BCAA and creatine.</p></div></a>
+<a href="#catalog" data-cat="digestive" class="cat-card card-hover md:col-span-2 rounded-[24px] bg-taupe p-7 min-h-[180px] flex flex-col justify-between"><div class="w-12 h-12 rounded-2xl bg-white grid place-items-center text-olive"><i class="fa-solid fa-seedling"></i></div><div><h3 class="text-xl font-bold">Digestive Health</h3><p class="text-sm mt-2">Probiotics, fiber and enzymes.</p></div></a>
+<a href="#catalog" data-cat="heart" class="cat-card card-hover md:col-span-2 rounded-[24px] bg-sage p-7 min-h-[180px] flex flex-col justify-between"><div class="w-12 h-12 rounded-2xl bg-white grid place-items-center text-olive"><i class="fa-solid fa-heart-pulse"></i></div><div><h3 class="text-xl font-bold">Heart & Metabolism</h3><p class="text-sm mt-2">Omega-3 and CoQ10.</p></div></a>
+<a href="#catalog" data-cat="sleep" class="cat-card card-hover md:col-span-6 rounded-[24px] bg-ink text-cream p-7 min-h-[150px] flex flex-col md:flex-row justify-between gap-6"><div class="flex items-center gap-5"><div class="w-12 h-12 rounded-2xl bg-cream/10 grid place-items-center text-sage"><i class="fa-solid fa-moon"></i></div><div><h3 class="text-2xl font-bold">Sleep & Stress</h3><p class="text-sm text-cream/75 mt-1">Magnesium, L-theanine and relaxation blends.</p></div></div><span class="btn h-11 px-5 rounded-full bg-cream text-ink text-sm font-semibold inline-flex items-center">Explore <i class="fa-solid fa-arrow-right text-xs ml-2"></i></span></a>
+</div></div></section>
+
+<section id="bestsellers" class="pb-16"><div class="shell"><div class="reveal"><p class="text-[11px] text-muted">Most requested in Facebook chat</p><h2 class="text-[32px] md:text-[44px] font-bold mt-2">This week’s <span class="text-olive font-normal">best sellers</span></h2></div><div id="bestsellerTrack" class="mt-10 flex gap-5 overflow-x-auto pb-4 snap-x reveal"></div></div></section>
+
+<section id="catalog" class="pb-16"><div class="shell">
+<div class="grid lg:grid-cols-12 gap-8 items-end reveal"><div class="lg:col-span-7"><p class="text-[11px] text-muted">18 products available</p><h2 class="text-[32px] md:text-[44px] font-bold mt-2">Full product <span class="text-olive font-normal">catalog</span></h2></div><div class="lg:col-span-5 relative"><i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-muted text-sm"></i><input id="searchInput" placeholder="Search collagen, vitamin C, omega-3..." class="w-full h-12 rounded-full border bg-cream pl-11 pr-4 text-sm outline-none"></div></div>
+<div id="filterBar" class="mt-8 flex flex-wrap gap-2 reveal"></div>
+<div id="productGrid" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+<p id="emptyState" class="hide text-center text-muted py-16">No products match your search.</p>
+</div></section>
+
+<section id="trust" class="pb-16"><div class="shell grid lg:grid-cols-12 gap-6 reveal">
+<div class="lg:col-span-5 rounded-[28px] bg-cream p-8 md:p-10"><p class="text-[11px] text-muted">Why customers choose us</p><h2 class="text-[30px] md:text-[38px] font-bold mt-3">A supplement shop built around clarity</h2><p class="mt-4 text-sm">We focus on transparent product information, real stock availability, and human support through LINE and Messenger.</p><div class="mt-8 rounded-2xl bg-white border p-5"><p class="text-[11px] uppercase text-muted">Compliance note</p><p class="text-sm mt-2">This website does not claim that supplements diagnose, treat, cure, or prevent disease.</p></div></div>
+<div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+<div class="card-hover rounded-[24px] bg-ivory p-7"><i class="fa-solid fa-certificate text-olive text-xl"></i><h3 class="text-xl font-bold mt-4">Registered Products</h3><p class="text-sm mt-2">Each listing includes Thai FDA registration details where applicable.</p></div>
+<div class="card-hover rounded-[24px] bg-bluegray p-7"><i class="fa-solid fa-box-open text-olive text-xl"></i><h3 class="text-xl font-bold mt-4">Real Inventory</h3><p class="text-sm mt-2">Stock is updated daily and alternatives are suggested in chat.</p></div>
+<div class="card-hover rounded-[24px] bg-taupe p-7"><i class="fa-solid fa-user-check text-olive text-xl"></i><h3 class="text-xl font-bold mt-4">Human Guidance</h3><p class="text-sm mt-2">Our team helps match products to your routine.</p></div>
+<div class="card-hover rounded-[24px] bg-sage p-7"><i class="fa-solid fa-wallet text-ink text-xl"></i><h3 class="text-xl font-bold mt-4">Simple Payment</h3><p class="text-sm mt-2">Bank transfer, PromptPay, card, or COD in selected areas.</p></div>
+</div></div></section>
+
+<section class="pb-16"><div class="shell"><div class="rounded-[32px] bg-ink text-cream p-8 md:p-14 reveal grid lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-5"><p class="text-[11px] uppercase text-sage">Order in 3 steps</p><h2 class="text-[32px] md:text-[44px] font-bold mt-3">From Facebook chat to your door</h2><p class="text-sm text-cream/75 mt-4">Choose products here, then continue in the channel you already use.</p></div>
+<div class="lg:col-span-7 grid sm:grid-cols-3 gap-4">
+<div class="rounded-2xl bg-cream/10 p-6"><span class="font-display text-3xl text-sage">01</span><h3 class="text-lg font-bold mt-3">Select products</h3><p class="text-sm text-cream/75 mt-2">Add items to your cart or send a product link.</p></div>
+<div class="rounded-2xl bg-cream/10 p-6"><span class="font-display text-3xl text-sage">02</span><h3 class="text-lg font-bold mt-3">Confirm on LINE</h3><p class="text-sm text-cream/75 mt-2">Our staff confirms stock, delivery, and payment.</p></div>
+<div class="rounded-2xl bg-cream/10 p-6"><span class="font-display text-3xl text-sage">03</span><h3 class="text-lg font-bold mt-3">Receive delivery</h3><p class="text-sm text-cream/75 mt-2">Nationwide delivery in 1–3 working days.</p></div>
+</div></div></div></section>
+
+<section class="pb-16"><div class="shell grid lg:grid-cols-12 gap-10"><div class="lg:col-span-4 reveal"><p class="text-[11px] text-muted">Support</p><h2 class="text-[32px] md:text-[42px] font-bold mt-2">Frequently asked questions</h2></div><div class="lg:col-span-8 reveal"><div id="faq" class="divide-y border-y"></div></div></div></section>
+
+<section id="contact" class="pb-20"><div class="shell grid lg:grid-cols-12 gap-6 reveal">
+<div class="lg:col-span-5 rounded-[28px] bg-cream p-8 md:p-10"><p class="text-[11px] text-muted">Talk to a real person</p><h2 class="text-[30px] md:text-[38px] font-bold mt-3">Contact & store location</h2>
+<div class="mt-7 space-y-3">
+<a href="https://line.me/R/ti/p/@vitaliswellness" target="_blank" class="btn flex justify-between rounded-2xl bg-white border p-4"><span class="flex gap-3 items-center"><i class="fa-brands fa-line text-olive"></i><span><span class="block text-sm font-semibold">LINE Official</span><span class="block text-xs text-muted">@vitaliswellness</span></span></span><i class="fa-solid fa-arrow-right text-xs"></i></a>
+<a href="https://m.me/vitaliswellness" target="_blank" class="btn flex justify-between rounded-2xl bg-white border p-4"><span class="flex gap-3 items-center"><i class="fa-brands fa-facebook-messenger text-olive"></i><span><span class="block text-sm font-semibold">Messenger</span><span class="block text-xs text-muted">Vitalis Wellness Thailand</span></span></span><i class="fa-solid fa-arrow-right text-xs"></i></a>
+<a href="tel:+66760000000" class="btn flex justify-between rounded-2xl bg-white border p-4"><span class="flex gap-3 items-center"><i class="fa-solid fa-phone text-olive"></i><span><span class="block text-sm font-semibold">Call the shop</span><span class="block text-xs text-muted">+66 76 000 0000</span></span></span><i class="fa-solid fa-arrow-right text-xs"></i></a>
+</div><p class="text-xs text-muted mt-5">Open daily: 09:00–20:00 ICT</p></div>
+<div class="lg:col-span-7 rounded-[28px] overflow-hidden bg-ivory min-h-[380px] relative"><iframe title="Location" class="absolute inset-0 w-full h-full border-0" src="https://www.google.com/maps?q=Hat+Yai,+Songkhla,+Thailand&output=embed" loading="lazy"></iframe></div>
+</div></section>
+
+<footer class="border-t py-12"><div class="shell grid md:grid-cols-12 gap-8"><div class="md:col-span-4"><div class="flex gap-3 items-center"><span class="w-10 h-10 rounded-xl bg-ink text-cream grid place-items-center"><i class="fa-solid fa-leaf"></i></span><span class="font-display font-bold text-lg">Vitalis Wellness</span></div><p class="text-sm mt-4 max-w-xs">A Thailand-based wellness supplement front shop connecting Facebook chat visitors with selected health products.</p></div><div class="md:col-span-8 text-sm"><p>© 2026 Vitalis Wellness Thailand.</p><p class="text-muted mt-2">Supplements are food products, not medicines. Read labels before use.</p></div></div></footer>
+
+<div class="fixed bottom-5 left-5 z-50 flex items-center gap-[5px]">
+<button id="backToTop" class="float-btn hide w-12 h-12 rounded-full bg-ink text-white shadow-lg grid place-items-center"><i class="fa-solid fa-arrow-up"></i></button>
+<button id="chatToggle" class="float-btn w-14 h-14 rounded-full bg-olive text-white shadow-xl grid place-items-center"><i class="fa-solid fa-comment-dots text-lg"></i></button>
+</div>
+
+<div id="chatPanel" class="chat-panel fixed bottom-24 right-5 z-50 w-[min(92vw,360px)] rounded-3xl bg-white border shadow-2xl overflow-hidden">
+<div class="bg-ink text-cream p-4 flex justify-between items-center"><div class="flex gap-3 items-center"><span class="w-9 h-9 rounded-full bg-sage text-ink grid place-items-center"><i class="fa-solid fa-leaf"></i></span><div><p class="text-sm font-semibold">Vitalis Assistant</p><p class="text-[11px] text-cream/70">Usually replies within minutes</p></div></div><button id="chatClose" class="w-8 h-8 rounded-full bg-cream/10"><i class="fa-solid fa-xmark text-xs"></i></button></div>
+<div id="chatMessages" class="h-[300px] overflow-y-auto p-4 space-y-3 bg-cream"></div>
+<div id="quickReplies" class="px-4 pb-2 flex flex-wrap gap-2 bg-cream"></div>
+<form id="chatForm" class="p-3 border-t flex gap-2 bg-white"><input id="chatInput" placeholder="Ask about a product..." class="flex-1 h-11 rounded-full bg-cream px-4 text-sm outline-none"><button class="btn w-11 h-11 rounded-full bg-ink text-white grid place-items-center"><i class="fa-solid fa-paper-plane text-xs"></i></button></form>
+</div>
+
+<div id="cartDrawer" class="fixed inset-0 z-50 hide"><div id="cartOverlay" class="absolute inset-0 bg-ink/40"></div><aside class="absolute right-0 top-0 h-full w-[min(92vw,400px)] bg-white shadow-2xl p-6 flex flex-col"><div class="flex justify-between"><h3 class="text-xl font-bold">Your Selection</h3><button id="cartClose" class="w-9 h-9 rounded-full bg-cream"><i class="fa-solid fa-xmark"></i></button></div><div id="cartItems" class="flex-1 overflow-y-auto mt-6 space-y-3"></div><div class="border-t pt-4 mt-4"><div class="flex justify-between text-sm"><span class="text-muted">Subtotal</span><span id="cartTotal" class="font-semibold">฿0 / $0</span></div><a href="https://line.me/R/ti/p/@vitaliswellness" target="_blank" class="btn mt-4 w-full h-12 rounded-full bg-ink text-white grid place-items-center"><i class="fa-brands fa-line mr-2"></i>Confirm Order on LINE</a></div></aside></div>
+
+<div id="quickView" class="fixed inset-0 z-50 hide"><div id="qvOverlay" class="absolute inset-0 bg-ink/45"></div><div class="absolute inset-0 grid place-items-center p-4"><div id="qvCard" class="w-full max-w-3xl bg-white rounded-[28px] overflow-hidden grid md:grid-cols-2 shadow-2xl"></div></div></div>
+
+<script>
+const products=[
+{id:1,name:"Vitalis Vitamin C 1000mg",cat:"immunity",price:390,usd:11,rating:4.8,reviews:214,badge:"Best Seller",img:"https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80",desc:"Daily vitamin C tablet for a balanced wellness routine."},
+{id:2,name:"Zinc Plus Immune Blend",cat:"immunity",price:450,usd:13,rating:4.7,reviews:132,badge:"New",img:"https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=900&q=80",desc:"Zinc with botanical ingredients for daily wellness."},
+{id:3,name:"Elderberry Daily Gummies",cat:"immunity",price:520,usd:15,rating:4.6,reviews:98,badge:"",img:"https://images.unsplash.com/photo-1610917090906-d9283f7f3ff1?auto=format&fit=crop&w=900&q=80",desc:"Fruit-flavored elderberry gummies."},
+{id:4,name:"Marine Collagen Peptides",cat:"beauty",price:890,usd:25,rating:4.9,reviews:341,badge:"Top Rated",img:"https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=900&q=80",desc:"Hydrolyzed marine collagen powder with vitamin C."},
+{id:5,name:"Glutathione Skin Complex",cat:"beauty",price:1190,usd:34,rating:4.7,reviews:187,badge:"",img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=80",desc:"Beauty complex with glutathione and vitamin C."},
+{id:6,name:"Biotin Hair & Nail Formula",cat:"beauty",price:490,usd:14,rating:4.5,reviews:156,badge:"",img:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=80",desc:"Biotin formula for hair and nail care routines."},
+{id:7,name:"Whey Protein Isolate Vanilla",cat:"energy",price:1490,usd:42,rating:4.8,reviews:412,badge:"Best Seller",img:"https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=80",desc:"Low-sugar whey isolate for recovery."},
+{id:8,name:"BCAA Recovery Drink",cat:"energy",price:690,usd:20,rating:4.6,reviews:143,badge:"",img:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80",desc:"Amino acid drink mix for training days."},
+{id:9,name:"Creatine Monohydrate 300g",cat:"energy",price:790,usd:23,rating:4.9,reviews:268,badge:"",img:"https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=900&q=80",desc:"Micronized unflavored creatine."},
+{id:10,name:"Pre-Workout Focus Blend",cat:"energy",price:950,usd:27,rating:4.4,reviews:87,badge:"Limited",img:"https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=80",desc:"Pre-training blend with caffeine."},
+{id:11,name:"Daily Probiotic 20 Billion CFU",cat:"digestive",price:740,usd:21,rating:4.7,reviews:226,badge:"Best Seller",img:"https://images.unsplash.com/photo-1610917090906-d9283f7f3ff1?auto=format&fit=crop&w=900&q=80",desc:"Multi-strain probiotic capsules."},
+{id:12,name:"Psyllium Fiber Powder",cat:"digestive",price:420,usd:12,rating:4.5,reviews:112,badge:"",img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",desc:"Plant-based fiber powder."},
+{id:13,name:"Digestive Enzyme Complex",cat:"digestive",price:560,usd:16,rating:4.6,reviews:94,badge:"",img:"https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=900&q=80",desc:"Enzyme blend for larger meals."},
+{id:14,name:"Omega-3 Fish Oil 1000mg",cat:"heart",price:680,usd:19,rating:4.8,reviews:305,badge:"Top Rated",img:"https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=900&q=80",desc:"Fish oil softgels with EPA and DHA."},
+{id:15,name:"CoQ10 Heart Support",cat:"heart",price:990,usd:28,rating:4.7,reviews:141,badge:"",img:"https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=900&q=80",desc:"Coenzyme Q10 daily formula."},
+{id:16,name:"Magnesium Glycinate 400mg",cat:"sleep",price:620,usd:18,rating:4.8,reviews:198,badge:"Best Seller",img:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=80",desc:"Gentle magnesium for evening routines."},
+{id:17,name:"L-Theanine Calm Capsules",cat:"sleep",price:540,usd:15,rating:4.6,reviews:126,badge:"",img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=80",desc:"L-theanine for calm focus."},
+{id:18,name:"Night Relax Herbal Blend",cat:"sleep",price:720,usd:21,rating:4.5,reviews:103,badge:"New",img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",desc:"Chamomile and passionflower blend."}
+];
+const cats=[{id:"all",label:"All Products"},{id:"immunity",label:"Immunity"},{id:"beauty",label:"Beauty & Skin"},{id:"energy",label:"Energy & Fitness"},{id:"digestive",label:"Digestive"},{id:"heart",label:"Heart & Metabolism"},{id:"sleep",label:"Sleep & Stress"}];
+let cart=[],activeCat="all",query="";
+const baht=n=>"฿"+n.toLocaleString(),usd=n=>"$"+n.toLocaleString();
+const stars=r=>{let s="";for(let i=1;i<=5;i++)s+=`<i class="fa-${i<=Math.round(r)?"solid":"regular"} fa-star"></i>`;return s};
+function card(p){return `<article class="card-hover group bg-white border rounded-[24px] overflow-hidden flex flex-col"><div class="relative h-52 overflow-hidden bg-cream"><img src="${p.img}" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="${p.name}">${p.badge?`<span class="absolute top-4 left-4 bg-ink text-white text-[10px] uppercase px-3 py-1 rounded-full">${p.badge}</span>`:""}</div><div class="p-5 flex flex-col flex-1"><div class="flex justify-between text-[11px] text-muted"><span class="capitalize">${p.cat}</span><span>${stars(p.rating)} ${p.rating}</span></div><h3 class="text-lg font-semibold mt-2">${p.name}</h3><p class="text-xs text-muted mt-2">${p.desc}</p><div class="mt-4 flex justify-between items-end"><div><p class="font-display font-bold text-xl">${baht(p.price)}</p><p class="text-[11px] text-muted">approx. ${usd(p.usd)}</p></div><div class="flex gap-2"><button onclick="quickView(${p.id})" class="btn w-10 h-10 rounded-full bg-cream grid place-items-center"><i class="fa-solid fa-eye text-xs"></i></button><button onclick="addToCart(${p.id})" class="btn h-10 px-4 rounded-full bg-ink text-white text-xs font-semibold">Add</button></div></div></div></article>`}
+function renderCatalog(){const l=products.filter(p=>(activeCat==="all"||p.cat===activeCat)&&(p.name+p.desc+p.cat).toLowerCase().includes(query));document.getElementById("productGrid").innerHTML=l.map(card).join("");document.getElementById("emptyState").classList.toggle("hide",l.length>0)}
+function renderFilters(){document.getElementById("filterBar").innerHTML=cats.map(c=>`<button class="pill px-4 h-10 rounded-full border text-sm ${activeCat===c.id?"active":""}" onclick="setCat('${c.id}')">${c.label}</button>`).join("")}
+function setCat(id){activeCat=id;renderFilters();renderCatalog();document.getElementById("catalog").scrollIntoView({behavior:"smooth"})}
+function renderBest(){const b=products.filter(p=>["Best Seller","Top Rated","New"].includes(p.badge)).slice(0,8);document.getElementById("bestsellerTrack").innerHTML=b.map(p=>`<div class="snap-start shrink-0 w-[280px] md:w-[320px]">${card(p)}</div>`).join("")}
+function addToCart(id){const p=products.find(x=>x.id===id);const f=cart.find(x=>x.id===id);f?f.qty++:cart.push({...p,qty:1});renderCart();document.getElementById("cartCount").textContent=cart.reduce((s,i)=>s+i.qty,0)}
+function renderCart(){document.getElementById("cartItems").innerHTML=cart.length?cart.map(i=>`<div class="flex gap-3 items-center bg-cream rounded-2xl p-3"><img src="${i.img}" class="w-14 h-14 rounded-xl object-cover"><div class="flex-1"><p class="text-sm font-semibold">${i.name}</p><p class="text-xs text-muted">${baht(i.price*i.qty)}</p></div><button onclick="removeFromCart(${i.id})" class="text-muted"><i class="fa-solid fa-trash text-xs"></i></button></div>`).join(""):`<p class="text-sm text-muted text-center py-10">Your selection is empty.</p>`;const t=cart.reduce((s,i)=>s+i.price*i.qty,0);document.getElementById("cartTotal").textContent=`${baht(t)} / ${usd(Math.round(t/35))}`}
+function removeFromCart(id){cart=cart.filter(i=>i.id!==id);renderCart();document.getElementById("cartCount").textContent=cart.reduce((s,i)=>s+i.qty,0)}
+function quickView(id){const p=products.find(x=>x.id===id);document.getElementById("qvCard").innerHTML=`<img src="${p.img}" class="w-full h-64 md:h-full object-cover"><div class="p-7 md:p-9"><p class="text-[11px] uppercase text-muted">${p.cat}</p><h3 class="text-2xl md:text-3xl font-bold mt-2">${p.name}</h3><p class="text-sm mt-4">${p.desc}</p><div class="mt-4 text-sm text-muted">${stars(p.rating)} ${p.rating} · ${p.reviews} reviews</div><div class="mt-6 flex items-end gap-3"><span class="font-display text-3xl font-bold">${baht(p.price)}</span><span class="text-sm text-muted mb-1">approx. ${usd(p.usd)}</span></div><div class="mt-6 flex flex-wrap gap-3"><button onclick="addToCart(${p.id});closeQV()" class="btn h-12 px-6 rounded-full bg-ink text-white">Add to Selection</button><a href="https://line.me/R/ti/p/@vitaliswellness" target="_blank" class="btn h-12 px-6 rounded-full bg-ivory border font-medium inline-flex items-center gap-2"><i class="fa-brands fa-line"></i> Ask on LINE</a></div></div>`;document.getElementById("quickView").classList.remove("hide")}
+function closeQV(){document.getElementById("quickView").classList.add("hide")}
+const faqs=[["Are the products authentic?","Yes. We source from registered suppliers and display Thai FDA registration details where applicable."],["How do I order through LINE?","Add products, then tap Confirm Order on LINE. Our team confirms availability and delivery."],["Do you deliver across Thailand?","Yes, typically within 1–3 working days after confirmation."],["Can I get product advice?","Yes. Message our team on LINE or Messenger for general product information."],["What is your return policy?","Unopened products can be returned within 7 days under our return conditions."]];
+document.getElementById("faq").innerHTML=faqs.map(([q,a],i)=>`<div class="py-5"><button class="w-full flex justify-between text-left" onclick="toggleFaq(${i})"><span class="font-display text-lg font-semibold">${q}</span><i id="fi${i}" class="fa-solid fa-plus text-olive"></i></button><p id="fb${i}" class="hide text-sm mt-3">${a}</p></div>`).join("");
+function toggleFaq(i){document.getElementById("fb"+i).classList.toggle("hide");const ic=document.getElementById("fi"+i);ic.classList.toggle("fa-plus");ic.classList.toggle("fa-minus")}
+const chat=document.getElementById("chatPanel"),msgs=document.getElementById("chatMessages"),quick=document.getElementById("quickReplies");
+function openChat(){chat.classList.add("open");if(!msgs.children.length)addMsg("Hi! I’m Vitalis Assistant. How can I help?","bot");showQuick(["Recommend a product","Delivery information","Talk to a human"])}
+function closeChat(){chat.classList.remove("open")}
+document.getElementById("chatToggle").onclick=()=>chat.classList.contains("open")?closeChat():openChat();
+document.getElementById("chatClose").onclick=closeChat;
+function addMsg(t,w="bot"){const d=document.createElement("div");d.className=w==="user"?"ml-auto max-w-[80%] bg-ink text-white text-sm rounded-2xl px-4 py-2.5":"max-w-[85%] bg-white border text-sm rounded-2xl px-4 py-2.5";d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+function showQuick(a){quick.innerHTML=a.map(q=>`<button class="pill text-xs px-3 py-2 rounded-full bg-white border" onclick="handleQuick('${q}')">${q}</button>`).join("")}
+function handleQuick(q){addMsg(q,"user");if(q.includes("Recommend")){addMsg("What is your main goal?","bot");showQuick(["Immunity","Beauty & skin","Energy & fitness","Sleep & stress"])}else if(q.includes("Delivery")){addMsg("We deliver nationwide in Thailand, usually within 1–3 working days after confirmation.","bot")}else if(q.includes("human")){addMsg("Reach our team on LINE at @vitaliswellness or Messenger.","bot");showQuick(["Open LINE","Open Messenger"])}else if(q==="Open LINE"){window.open("https://line.me/R/ti/p/@vitaliswellness","_blank")}else if(q==="Open Messenger"){window.open("https://m.me/vitaliswellness","_blank")}else{addMsg("Great choice. You can browse the matching category above or ask our team on LINE.","bot")}}
+document.getElementById("chatForm").onsubmit=e=>{e.preventDefault();const v=document.getElementById("chatInput").value.trim();if(!v)return;addMsg(v,"user");document.getElementById("chatInput").value="";setTimeout(()=>addMsg("Thanks! For personalized guidance, continue on LINE or Messenger.","bot"),450);showQuick(["Open LINE","Open Messenger"])};
+document.getElementById("searchInput").oninput=e=>{query=e.target.value.toLowerCase();renderCatalog()};
+document.getElementById("cartBtn").onclick=()=>document.getElementById("cartDrawer").classList.remove("hide");
+document.getElementById("cartClose").onclick=()=>document.getElementById("cartDrawer").classList.add("hide");
+document.getElementById("cartOverlay").onclick=()=>document.getElementById("cartDrawer").classList.add("hide");
+document.getElementById("qvOverlay").onclick=closeQV;
+document.getElementById("menuBtn").onclick=()=>document.getElementById("mobileMenu").classList.toggle("hidden");
+const bt=document.getElementById("backToTop");window.addEventListener("scroll",()=>bt.classList.toggle("hide",scrollY<=innerHeight*.8));bt.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
+document.querySelectorAll(".cat-card").forEach(a=>a.addEventListener("click",()=>setCat(a.dataset.cat)));
+renderFilters();renderCatalog();renderBest();renderCart();
+</script>
+</body>
+</html>
