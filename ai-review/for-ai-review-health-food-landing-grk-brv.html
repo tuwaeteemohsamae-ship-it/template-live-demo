@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PureVital Thailand | Premium Dietary Supplements for Everyday Wellness</title>
+  <meta name="description" content="Discover PureVital – science-backed dietary supplements for immunity, beauty, energy, joint health and more. Trusted by thousands of Thais. Shop or chat with us on LINE today." />
+  <meta name="keywords" content="dietary supplements Thailand, vitamin, collagen, omega-3, immunity, beauty from within, energy, joint health, PureVital, natural supplements Bangkok" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css" />
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F9F4EA',
+            ivory: '#F5EFE2',
+            sage: '#C1BFAA',
+            olive: '#A8A58F',
+            taupe: '#D9D0B8',
+            'blue-gray': '#DDE3E6',
+            stone: '#B7B59F',
+            charcoal: '#1C1C1C',
+            text: '#3A3A3A',
+            muted: '#6B6B6B',
+            canvas: '#E8E8E8'
+          },
+          fontFamily: {
+            playfair: ['Playfair Display', 'serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          maxWidth: {
+            content: '1280px'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; color: #3A3A3A; }
+    h1, h2, h3, .hero-title, .section-title, .card-title { font-family: 'Playfair Display', serif; }
+    
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+    
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp 0.7s ease-out forwards; }
+    
+    .product-card { transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(28,28,28,0.12); }
+    
+    .chatbot-panel { transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+    
+    .back-to-top, .chat-toggle {
+      transition: all 0.25s ease;
+    }
+    
+    /* Asymmetrical slight rotation for imperfect feel */
+    .imperfect-1 { transform: rotate(-0.8deg); }
+    .imperfect-2 { transform: rotate(0.6deg); }
+    .imperfect-3 { transform: rotate(-0.4deg); }
+  </style>
+</head>
+<body class="bg-white text-text antialiased">
+
+  <!-- ========== HEADER ========== -->
+  <header class="sticky top-0 z-50 bg-white border-b border-canvas/80">
+    <div class="max-w-content mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full bg-sage flex items-center justify-center">
+          <i class="bi bi-heart-pulse-fill text-charcoal text-lg"></i>
+        </div>
+        <span class="font-playfair font-bold text-xl tracking-tight text-charcoal">PureVital</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
+        <a href="#categories" class="hover:text-charcoal transition">Categories</a>
+        <a href="#products" class="hover:text-charcoal transition">Shop</a>
+        <a href="#why" class="hover:text-charcoal transition">Why Us</a>
+        <a href="#contact" class="hover:text-charcoal transition">Contact</a>
+      </nav>
+      
+      <div class="flex items-center gap-3">
+        <a href="https://line.me/R/ti/p/@purevital" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-[#06C755] text-white text-sm font-medium px-4 py-2.5 rounded-full hover:bg-[#05b34c] transition">
+          <i class="bi bi-chat-dots-fill"></i> LINE
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-charcoal">
+          <i class="bi bi-list text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="bg-white pt-12 pb-16 md:pt-20 md:pb-24">
+    <div class="max-w-content mx-auto px-5 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <!-- Left content - asymmetrical -->
+        <div class="lg:col-span-6 xl:col-span-5 order-2 lg:order-1 animate-fade-up">
+          <p class="label text-[11px] tracking-wide text-muted mb-4 uppercase">Science-Backed Wellness</p>
+          <h1 class="hero-title text-[42px] sm:text-5xl lg:text-[56px] font-black leading-[1.05] text-charcoal mb-5">
+            Feel Stronger.<br>
+            <span class="text-sage font-normal">Look Better.</span><br>
+            Live Fully.
+          </h1>
+          <p class="body-text text-base text-muted max-w-md mb-8 leading-relaxed">
+            Premium dietary supplements trusted by thousands of Thais. Clean ingredients, lab-tested, formulated for real results — immunity, beauty, energy & longevity.
+          </p>
+          
+          <div class="flex flex-wrap gap-3 mb-10">
+            <a href="#products" class="inline-flex items-center gap-2 bg-charcoal text-white font-medium px-6 py-3.5 rounded-full hover:bg-olive transition">
+              Shop Best Sellers <i class="bi bi-arrow-right"></i>
+            </a>
+            <a href="https://line.me/R/ti/p/@purevital" target="_blank" class="inline-flex items-center gap-2 border border-sage text-charcoal font-medium px-6 py-3.5 rounded-full hover:bg-ivory transition">
+              <i class="bi bi-chat-dots"></i> Chat on LINE
+            </a>
+          </div>
+          
+          <div class="flex items-center gap-6 text-sm text-muted">
+            <div class="flex items-center gap-1.5">
+              <i class="bi bi-shield-check text-sage"></i>
+              <span>Thai FDA</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i class="bi bi-flask text-sage"></i>
+              <span>Lab Tested</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i class="bi bi-truck text-sage"></i>
+              <span>Fast Delivery</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right visual - imperfect placement -->
+        <div class="lg:col-span-6 xl:col-span-7 order-1 lg:order-2 relative">
+          <div class="relative imperfect-1">
+            <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?w=900&q=80" 
+                 alt="Premium dietary supplements and vitamins" 
+                 class="w-full h-[340px] sm:h-[420px] lg:h-[480px] object-cover rounded-2xl shadow-sm" />
+            <div class="absolute -bottom-5 -left-4 sm:left-6 bg-ivory px-5 py-3.5 rounded-xl shadow-md imperfect-2">
+              <p class="text-xs text-muted">Trusted by</p>
+              <p class="font-playfair font-bold text-xl text-charcoal">12,800+</p>
+              <p class="text-xs text-muted">happy customers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORIES (Bento) ========== -->
+  <section id="categories" class="bg-white py-16 md:py-20">
+    <div class="max-w-content mx-auto px-5 sm:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div>
+          <p class="label text-[11px] text-muted mb-2">Explore by Goal</p>
+          <h2 class="section-title text-3xl md:text-[32px] font-bold text-charcoal">Shop by Category</h2>
+        </div>
+        <a href="#products" class="text-sm font-medium text-olive hover:text-charcoal transition">View all products →</a>
+      </div>
+      
+      <div class="bento-grid">
+        <!-- Large card -->
+        <a href="#products" class="col-span-12 md:col-span-5 row-span-2 bg-ivory rounded-2xl p-7 flex flex-col justify-between group hover:bg-cream transition imperfect-1">
+          <div>
+            <i class="bi bi-stars text-3xl text-sage mb-4"></i>
+            <h3 class="card-title text-2xl font-semibold text-charcoal mb-2">Beauty & Skin</h3>
+            <p class="text-sm text-muted">Collagen, Glutathione, Biotin & more for radiant skin from within.</p>
+          </div>
+          <span class="mt-6 text-sm font-medium text-charcoal group-hover:underline">Explore →</span>
+        </a>
+        
+        <a href="#products" class="col-span-6 md:col-span-3 bg-cream rounded-2xl p-6 hover:bg-ivory transition imperfect-2">
+          <i class="bi bi-shield-plus text-2xl text-sage mb-3"></i>
+          <h3 class="card-title text-lg font-semibold text-charcoal">Immunity</h3>
+          <p class="text-xs text-muted mt-1">Vitamin C, Zinc, Elderberry</p>
+        </a>
+        
+        <a href="#products" class="col-span-6 md:col-span-4 bg-sage/30 rounded-2xl p-6 hover:bg-sage/40 transition">
+          <i class="bi bi-lightning-charge text-2xl text-olive mb-3"></i>
+          <h3 class="card-title text-lg font-semibold text-charcoal">Energy & Focus</h3>
+          <p class="text-xs text-muted mt-1">B-Complex, Ashwagandha</p>
+        </a>
+        
+        <a href="#products" class="col-span-6 md:col-span-4 bg-ivory rounded-2xl p-6 hover:bg-cream transition imperfect-3">
+          <i class="bi bi-activity text-2xl text-sage mb-3"></i>
+          <h3 class="card-title text-lg font-semibold text-charcoal">Joint & Bone</h3>
+          <p class="text-xs text-muted mt-1">Glucosamine, Calcium, MSM</p>
+        </a>
+        
+        <a href="#products" class="col-span-6 md:col-span-3 bg-cream rounded-2xl p-6 hover:bg-ivory transition">
+          <i class="bi bi-heart-pulse text-2xl text-sage mb-3"></i>
+          <h3 class="card-title text-lg font-semibold text-charcoal">Heart & Omega</h3>
+          <p class="text-xs text-muted mt-1">Fish Oil, CoQ10</p>
+        </a>
+        
+        <a href="#products" class="col-span-12 md:col-span-5 bg-charcoal text-white rounded-2xl p-6 flex items-center justify-between group">
+          <div>
+            <h3 class="card-title text-xl font-semibold mb-1">Weight & Digestion</h3>
+            <p class="text-sm text-sage">Probiotics, Green Tea Extract</p>
+          </div>
+          <i class="bi bi-arrow-right-circle text-2xl group-hover:translate-x-1 transition"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTS ========== -->
+  <section id="products" class="bg-white py-16 md:py-24">
+    <div class="max-w-content mx-auto px-5 sm:px-8">
+      <div class="text-center mb-12">
+        <p class="label text-[11px] text-muted mb-2">Curated Selection</p>
+        <h2 class="section-title text-3xl md:text-[32px] font-bold text-charcoal mb-3">Best Sellers & Essentials</h2>
+        <p class="text-muted max-w-lg mx-auto text-sm">Over 15 carefully selected formulas. Every product is third-party tested and manufactured under strict quality standards.</p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
+        <!-- Product 1 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden imperfect-1">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=80" alt="Collagen Peptides" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Beauty & Skin</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Marine Collagen Peptides</h3>
+            <p class="text-sm font-medium text-charcoal">฿1,290 <span class="text-muted text-xs font-normal">(~$37)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?w=500&q=80" alt="Vitamin C" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Immunity</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Liposomal Vitamin C 1000mg</h3>
+            <p class="text-sm font-medium text-charcoal">฿890 <span class="text-muted text-xs font-normal">(~$25)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden imperfect-2">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=500&q=80" alt="Omega-3" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Heart & Omega</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Ultra Omega-3 Fish Oil</h3>
+            <p class="text-sm font-medium text-charcoal">฿1,150 <span class="text-muted text-xs font-normal">(~$33)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500&q=80" alt="Multivitamin" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Daily Essentials</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Daily Multivitamin Complex</h3>
+            <p class="text-sm font-medium text-charcoal">฿790 <span class="text-muted text-xs font-normal">(~$23)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 5 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden imperfect-3">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=500&q=80" alt="Probiotic" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Digestion</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Probiotic 50 Billion CFU</h3>
+            <p class="text-sm font-medium text-charcoal">฿1,050 <span class="text-muted text-xs font-normal">(~$30)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 6 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?w=500&q=80" alt="Ashwagandha" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Energy & Focus</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">KSM-66 Ashwagandha</h3>
+            <p class="text-sm font-medium text-charcoal">฿980 <span class="text-muted text-xs font-normal">(~$28)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 7 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=500&q=80" alt="Glucosamine" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Joint & Bone</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Glucosamine + MSM</h3>
+            <p class="text-sm font-medium text-charcoal">฿1,190 <span class="text-muted text-xs font-normal">(~$34)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 8 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden imperfect-1">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512069772995-ec65ed6660de?w=500&q=80" alt="Glutathione" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Beauty & Skin</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Liposomal Glutathione</h3>
+            <p class="text-sm font-medium text-charcoal">฿1,450 <span class="text-muted text-xs font-normal">(~$41)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 9 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=500&q=80" alt="Vitamin D" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Immunity</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Vitamin D3 5000 IU</h3>
+            <p class="text-sm font-medium text-charcoal">฿650 <span class="text-muted text-xs font-normal">(~$19)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 10 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden imperfect-2">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=80" alt="Biotin" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Beauty & Skin</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Biotin 10,000 mcg</h3>
+            <p class="text-sm font-medium text-charcoal">฿720 <span class="text-muted text-xs font-normal">(~$21)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 11 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?w=500&q=80" alt="Zinc" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Immunity</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Zinc Picolinate 50mg</h3>
+            <p class="text-sm font-medium text-charcoal">฿580 <span class="text-muted text-xs font-normal">(~$17)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 12 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden imperfect-3">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=500&q=80" alt="CoQ10" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Heart & Energy</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">CoQ10 Ubiquinol 100mg</h3>
+            <p class="text-sm font-medium text-charcoal">฿1,350 <span class="text-muted text-xs font-normal">(~$39)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 13 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=500&q=80" alt="Magnesium" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Sleep & Relax</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Magnesium Glycinate</h3>
+            <p class="text-sm font-medium text-charcoal">฿870 <span class="text-muted text-xs font-normal">(~$25)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 14 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden imperfect-1">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512069772995-ec65ed6660de?w=500&q=80" alt="Green Tea" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Weight Support</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">EGCG Green Tea Extract</h3>
+            <p class="text-sm font-medium text-charcoal">฿920 <span class="text-muted text-xs font-normal">(~$26)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 15 -->
+        <div class="product-card bg-ivory rounded-2xl overflow-hidden">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=500&q=80" alt="Calcium" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Joint & Bone</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Calcium + Vitamin K2</h3>
+            <p class="text-sm font-medium text-charcoal">฿1,050 <span class="text-muted text-xs font-normal">(~$30)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+        
+        <!-- Product 16 -->
+        <div class="product-card bg-cream rounded-2xl overflow-hidden imperfect-2">
+          <div class="aspect-square overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?w=500&q=80" alt="B-Complex" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-4">
+            <p class="text-[11px] text-muted mb-1">Energy</p>
+            <h3 class="card-title text-base font-semibold text-charcoal mb-1">Active B-Complex</h3>
+            <p class="text-sm font-medium text-charcoal">฿780 <span class="text-muted text-xs font-normal">(~$22)</span></p>
+            <button class="mt-3 w-full text-sm bg-charcoal text-white py-2 rounded-full hover:bg-olive transition">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="https://line.me/R/ti/p/@purevital" target="_blank" class="inline-flex items-center gap-2 bg-[#06C755] text-white font-medium px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition">
+          <i class="bi bi-chat-dots-fill"></i> Need help choosing? Chat on LINE
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY US ========== -->
+  <section id="why" class="bg-white py-16 md:py-20">
+    <div class="max-w-content mx-auto px-5 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-5">
+          <p class="label text-[11px] text-muted mb-2">Our Promise</p>
+          <h2 class="section-title text-3xl font-bold text-charcoal mb-4">Why PureVital?</h2>
+          <p class="text-muted text-sm leading-relaxed mb-6">We source only premium ingredients, test every batch, and formulate for real Thai lifestyles — humidity, diet, and busy urban schedules.</p>
+          
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <div class="w-8 h-8 rounded-full bg-sage/40 flex items-center justify-center flex-shrink-0">
+                <i class="bi bi-check2 text-charcoal"></i>
+              </div>
+              <div>
+                <p class="font-medium text-charcoal text-sm">Third-party lab tested</p>
+                <p class="text-xs text-muted">Every batch verified for purity & potency</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <div class="w-8 h-8 rounded-full bg-sage/40 flex items-center justify-center flex-shrink-0">
+                <i class="bi bi-check2 text-charcoal"></i>
+              </div>
+              <div>
+                <p class="font-medium text-charcoal text-sm">Thai FDA registered</p>
+                <p class="text-xs text-muted">Fully compliant with local regulations</p>
+              </div>
+            </li>
+            <li class="flex gap-3">
+              <div class="w-8 h-8 rounded-full bg-sage/40 flex items-center justify-center flex-shrink-0">
+                <i class="bi bi-check2 text-charcoal"></i>
+              </div>
+              <div>
+                <p class="font-medium text-charcoal text-sm">Clean label formulas</p>
+                <p class="text-xs text-muted">No unnecessary fillers or artificial colors</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="md:col-span-7 grid grid-cols-2 gap-4">
+          <div class="bg-ivory rounded-2xl p-6 imperfect-1">
+            <p class="font-playfair text-3xl font-bold text-charcoal">98%</p>
+            <p class="text-sm text-muted mt-1">Customer satisfaction rate</p>
+          </div>
+          <div class="bg-cream rounded-2xl p-6 imperfect-2">
+            <p class="font-playfair text-3xl font-bold text-charcoal">4.9</p>
+            <p class="text-sm text-muted mt-1">Average product rating</p>
+          </div>
+          <div class="bg-sage/30 rounded-2xl p-6 col-span-2">
+            <p class="font-playfair text-2xl font-bold text-charcoal mb-1">Free shipping over ฿1,500</p>
+            <p class="text-sm text-muted">Nationwide delivery within 1–3 business days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="bg-white py-16">
+    <div class="max-w-content mx-auto px-5 sm:px-8">
+      <div class="text-center mb-10">
+        <p class="label text-[11px] text-muted mb-2">Real Results</p>
+        <h2 class="section-title text-3xl font-bold text-charcoal">What Our Customers Say</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-ivory rounded-2xl p-6 imperfect-1">
+          <div class="flex gap-1 text-sage mb-3">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p class="text-sm text-text leading-relaxed mb-4">“My skin has never looked better. The collagen is now a non-negotiable part of my morning routine.”</p>
+          <p class="text-xs font-medium text-charcoal">— Naree, Bangkok</p>
+        </div>
+        <div class="bg-cream rounded-2xl p-6">
+          <div class="flex gap-1 text-sage mb-3">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p class="text-sm text-text leading-relaxed mb-4">“I used to get sick every few months. Since taking the immunity stack I haven’t had a cold in almost a year.”</p>
+          <p class="text-xs font-medium text-charcoal">— Pong, Chiang Mai</p>
+        </div>
+        <div class="bg-ivory rounded-2xl p-6 imperfect-2">
+          <div class="flex gap-1 text-sage mb-3">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+          </div>
+          <p class="text-sm text-text leading-relaxed mb-4">“Fast delivery and the LINE support team is incredibly helpful. They helped me choose the right products for my goals.”</p>
+          <p class="text-xs font-medium text-charcoal">— May, Phuket</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT / HOW TO ORDER ========== -->
+  <section id="contact" class="bg-white py-16 md:py-20">
+    <div class="max-w-content mx-auto px-5 sm:px-8">
+      <div class="bg-charcoal rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p class="text-sage text-sm mb-2">Ready to start?</p>
+            <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-4">Order via LINE — fastest & easiest</h2>
+            <p class="text-sage/90 text-sm mb-8 max-w-md">Most customers prefer chatting with us on LINE. We help you choose the right products, confirm stock, and arrange delivery within minutes.</p>
+            
+            <div class="flex flex-wrap gap-3">
+              <a href="https://line.me/R/ti/p/@purevital" target="_blank" class="inline-flex items-center gap-2 bg-[#06C755] text-white font-medium px-6 py-3.5 rounded-full hover:bg-[#05b34c] transition">
+                <i class="bi bi-chat-dots-fill"></i> Add LINE @purevital
+              </a>
+              <a href="https://m.me/purevitalthailand" target="_blank" class="inline-flex items-center gap-2 bg-white/10 text-white font-medium px-6 py-3.5 rounded-full hover:bg-white/20 transition">
+                <i class="bi bi-messenger"></i> Facebook Messenger
+              </a>
+            </div>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+              <div class="w-11 h-11 rounded-full bg-sage/20 flex items-center justify-center">
+                <i class="bi bi-telephone text-sage"></i>
+              </div>
+              <div>
+                <p class="text-xs text-sage">Call us</p>
+                <a href="tel:+6621234567" class="font-medium">02-123-4567</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+              <div class="w-11 h-11 rounded-full bg-sage/20 flex items-center justify-center">
+                <i class="bi bi-clock text-sage"></i>
+              </div>
+              <div>
+                <p class="text-xs text-sage">Support hours</p>
+                <p class="font-medium">Mon–Sat 9:00 – 20:00</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 bg-white/5 rounded-xl p-4">
+              <div class="w-11 h-11 rounded-full bg-sage/20 flex items-center justify-center">
+                <i class="bi bi-geo-alt text-sage"></i>
+              </div>
+              <div>
+                <p class="text-xs text-sage">Warehouse & pickup</p>
+                <p class="font-medium text-sm">Sukhumvit Rd, Bangkok (by appointment)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-white border-t border-canvas py-12">
+    <div class="max-w-content mx-auto px-5 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div class="md:col-span-1">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-full bg-sage flex items-center justify-center">
+              <i class="bi bi-heart-pulse-fill text-charcoal"></i>
+            </div>
+            <span class="font-playfair font-bold text-lg text-charcoal">PureVital</span>
+          </div>
+          <p class="text-sm text-muted leading-relaxed">Premium dietary supplements for modern Thai lifestyles. Clean, effective, trusted.</p>
+        </div>
+        
+        <div>
+          <p class="font-medium text-charcoal mb-3 text-sm">Shop</p>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a href="#categories" class="hover:text-charcoal">Categories</a></li>
+            <li><a href="#products" class="hover:text-charcoal">Best Sellers</a></li>
+            <li><a href="#products" class="hover:text-charcoal">New Arrivals</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <p class="font-medium text-charcoal mb-3 text-sm">Support</p>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a href="#contact" class="hover:text-charcoal">Contact Us</a></li>
+            <li><a href="#" class="hover:text-charcoal">Shipping Info</a></li>
+            <li><a href="#" class="hover:text-charcoal">Returns</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <p class="font-medium text-charcoal mb-3 text-sm">Connect</p>
+          <div class="flex gap-3">
+            <a href="https://line.me/R/ti/p/@purevital" class="w-9 h-9 rounded-full bg-ivory flex items-center justify-center text-charcoal hover:bg-sage transition"><i class="bi bi-chat-dots"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-ivory flex items-center justify-center text-charcoal hover:bg-sage transition"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-ivory flex items-center justify-center text-charcoal hover:bg-sage transition"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pt-6 border-t border-canvas flex flex-col sm:flex-row justify-between gap-3 text-xs text-muted">
+        <p>© 2026 PureVital Thailand. All rights reserved.</p>
+        <p>Made with care in Bangkok</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== FLOATING BUTTONS (Back to top + Chatbot) ========== -->
+  <div class="fixed bottom-6 right-5 z-50 flex items-center gap-[5px]">
+    <!-- Back to top (appears after hero) -->
+    <button id="back-to-top" class="back-to-top hidden w-12 h-12 rounded-full bg-charcoal text-white shadow-lg flex items-center justify-center hover:bg-olive transition" aria-label="Back to top">
+      <i class="bi bi-arrow-up text-lg"></i>
+    </button>
+    
+    <!-- Chatbot toggle (always visible, stays in place) -->
+    <button id="chat-toggle" class="chat-toggle w-12 h-12 rounded-full bg-charcoal text-white shadow-lg flex items-center justify-center hover:bg-olive transition" aria-label="Open chat">
+      <i class="bi bi-chat-dots-fill text-lg" id="chat-icon"></i>
+    </button>
+  </div>
+
+  <!-- ========== CHATBOT PANEL ========== -->
+  <div id="chatbot" class="chatbot-panel fixed bottom-24 right-5 w-[340px] max-w-[calc(100vw-40px)] bg-white rounded-2xl shadow-2xl border border-canvas overflow-hidden z-50 translate-y-4 opacity-0 pointer-events-none">
+    <div class="bg-charcoal text-white px-5 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-sage flex items-center justify-center">
+          <i class="bi bi-heart-pulse-fill text-charcoal"></i>
+        </div>
+        <div>
+          <p class="font-medium text-sm">PureVital Support</p>
+          <p class="text-[11px] text-sage">Usually replies in minutes</p>
+        </div>
+      </div>
+      <button id="chat-close" class="text-white/70 hover:text-white">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    
+    <div id="chat-messages" class="h-72 overflow-y-auto p-4 space-y-3 bg-cream/30">
+      <div class="flex gap-2">
+        <div class="w-7 h-7 rounded-full bg-sage flex items-center justify-center flex-shrink-0 text-xs">PV</div>
+        <div class="bg-white rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-sm shadow-sm max-w-[80%]">
+          Hello! 👋 Welcome to PureVital. How can I help you today?
+        </div>
+      </div>
+    </div>
+    
+    <div class="p-3 border-t border-canvas bg-white">
+      <div class="flex gap-2 mb-2">
+        <button class="quick-reply text-xs bg-ivory hover:bg-sage/30 text-charcoal px-3 py-1.5 rounded-full transition">Product advice</button>
+        <button class="quick-reply text-xs bg-ivory hover:bg-sage/30 text-charcoal px-3 py-1.5 rounded-full transition">Shipping</button>
+        <button class="quick-reply text-xs bg-ivory hover:bg-sage/30 text-charcoal px-3 py-1.5 rounded-full transition">Talk to LINE</button>
+      </div>
+      <div class="flex gap-2">
+        <input id="chat-input" type="text" placeholder="Type a message..." class="flex-1 text-sm border border-canvas rounded-full px-4 py-2.5 focus:outline-none focus:border-sage" />
+        <button id="chat-send" class="w-10 h-10 rounded-full bg-charcoal text-white flex items-center justify-center hover:bg-olive transition">
+          <i class="bi bi-send-fill text-sm"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Back to top visibility
+    const backToTop = document.getElementById('back-to-top');
+    const heroHeight = 600;
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > heroHeight) {
+        backToTop.classList.remove('hidden');
+      } else {
+        backToTop.classList.add('hidden');
+      }
+    });
+    
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Chatbot
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatClose = document.getElementById('chat-close');
+    const chatbot = document.getElementById('chatbot');
+    const chatIcon = document.getElementById('chat-icon');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    let chatOpen = false;
+    
+    function openChat() {
+      chatOpen = true;
+      chatbot.classList.remove('translate-y-4', 'opacity-0', 'pointer-events-none');
+      chatbot.classList.add('translate-y-0', 'opacity-100');
+      chatIcon.className = 'bi bi-x-lg text-lg';
+    }
+    
+    function closeChat() {
+      chatOpen = false;
+      chatbot.classList.add('translate-y-4', 'opacity-0', 'pointer-events-none');
+      chatbot.classList.remove('translate-y-0', 'opacity-100');
+      chatIcon.className = 'bi bi-chat-dots-fill text-lg';
+    }
+    
+    chatToggle.addEventListener('click', () => {
+      chatOpen ? closeChat() : openChat();
+    });
+    
+    chatClose.addEventListener('click', closeChat);
+    
+    function addMessage(text, isUser = false) {
+      const div = document.createElement('div');
+      div.className = `flex gap-2 ${isUser ? 'justify-end' : ''}`;
+      if (isUser) {
+        div.innerHTML = `<div class="bg-charcoal text-white rounded-2xl rounded-tr-sm px-3.5 py-2.5 text-sm max-w-[80%]">${text}</div>`;
+      } else {
+        div.innerHTML = `
+          <div class="w-7 h-7 rounded-full bg-sage flex items-center justify-center flex-shrink-0 text-xs">PV</div>
+          <div class="bg-white rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-sm shadow-sm max-w-[80%]">${text}</div>
+        `;
+      }
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    function botReply(userText) {
+      const lower = userText.toLowerCase();
+      setTimeout(() => {
+        if (lower.includes('line') || lower.includes('talk')) {
+          addMessage('Great! Click the green LINE button or add us at @purevital. Our team is ready to help you choose the perfect products 💚');
+        } else if (lower.includes('ship') || lower.includes('delivery')) {
+          addMessage('We offer free shipping on orders over ฿1,500. Standard delivery takes 1–3 business days across Thailand. Express options available!');
+        } else if (lower.includes('product') || lower.includes('advice') || lower.includes('recommend')) {
+          addMessage('I’d love to help! Tell me your main goal — beauty, immunity, energy, joints, or weight support — and I’ll suggest the best options.');
+        } else {
+          addMessage('Thank you for your message! For faster personalized help, please chat with us on LINE @purevital. We’re here Mon–Sat 9:00–20:00.');
+        }
+      }, 600);
+    }
+    
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, true);
+      chatInput.value = '';
+      botReply(text);
+    }
+    
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+    
+    document.querySelectorAll('.quick-reply').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.textContent;
+        addMessage(text, true);
+        botReply(text);
+      });
+    });
+  </script>
+</body>
+</html>
