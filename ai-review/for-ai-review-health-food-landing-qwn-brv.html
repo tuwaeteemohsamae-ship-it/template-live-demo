@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NutraVita Thailand — Premium Supplements, Vitamins & Wellness | FDA Approved</title>
+<meta name="description" content="Shop 15+ premium dietary supplements, collagen, vitamins and wellness products from NutraVita Thailand. Thai FDA approved, GMP certified. Free shipping over ฿1,500. Chat with us on Line or Messenger." />
+<meta name="keywords" content="supplements Thailand, collagen peptides, vitamin C, multivitamin, glutathione, weight loss supplement, immune support, ashwagandha, Thai FDA approved supplements, NutraVita" />
+<meta name="author" content="NutraVita Thailand" />
+<meta property="og:title" content="NutraVita Thailand — Premium Supplements" />
+<meta property="og:description" content="Premium dietary supplements, FDA approved. Chat with us to order." />
+<meta property="og:type" content="website" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  :root{
+    --color-cream:#F9F4EA;
+    --color-ivory:#F5EFE2;
+    --color-sage:#C1BFAA;
+    --color-olive:#A8A58F;
+    --color-taupe:#D9D0B8;
+    --color-blue-gray:#DDE3E6;
+    --color-stone:#B7B59F;
+    --color-black:#1C1C1C;
+    --color-text:#3A3A3A;
+    --color-muted:#6B6B6B;
+    --color-canvas:#E8E8E8;
+    --color-line:#06C755;
+    --color-messenger:#0084FF;
+  }
+  *{ -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--color-text);
+    background:#ffffff;
+  }
+  .font-display{ font-family:'Playfair Display',serif; }
+  .container-x{ max-width:1280px; margin:0 auto; padding:0 24px; }
+  @media (max-width:640px){ .container-x{ padding:0 16px; } }
+
+  /* Hero title */
+  .hero-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(40px, 7vw, 76px);
+    line-height:1.02;
+    font-weight:900;
+    letter-spacing:-0.02em;
+    color:var(--color-black);
+  }
+  .hero-title .sub{ color:var(--color-sage); font-weight:400; font-style:italic; }
+
+  .section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(28px, 4vw, 44px);
+    line-height:1.1;
+    font-weight:700;
+    color:var(--color-black);
+    letter-spacing:-0.01em;
+  }
+  .section-title .light{ color:var(--color-olive); font-weight:400; font-style:italic; }
+
+  .card-title{
+    font-family:'Playfair Display',serif;
+    font-size:22px;
+    font-weight:600;
+    color:var(--color-black);
+  }
+
+  .label{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--color-muted);
+  }
+
+  .body-text{
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    line-height:1.65;
+    color:var(--color-text);
+  }
+
+  /* Reveal animation */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* Card hover */
+  .lift{ transition:transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s; }
+  .lift:hover{ transform:translateY(-6px); box-shadow:0 20px 40px -20px rgba(28,28,28,.18); }
+
+  /* Product card image zoom */
+  .product-img{ transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .product-card:hover .product-img{ transform:scale(1.08); }
+
+  /* Bento tiles */
+  .bento-tile{ position:relative; overflow:hidden; border-radius:4px; transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+  .bento-tile:hover{ transform:translateY(-4px); }
+  .bento-tile img{ transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
+  .bento-tile:hover img{ transform:scale(1.08); }
+
+  /* Marquee */
+  .marquee{ display:flex; gap:64px; animation:scroll 40s linear infinite; }
+  @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Floating buttons row */
+  .float-row{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    z-index:90;
+  }
+  .fab{
+    height:56px;
+    width:56px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    box-shadow:0 10px 30px -5px rgba(0,0,0,.25);
+    cursor:pointer;
+    transition:transform .3s, box-shadow .3s;
+  }
+  .fab:hover{ transform:translateY(-3px) scale(1.05); }
+  .fab-line{ background:var(--color-line); }
+  .fab-chat{ background:var(--color-black); }
+  .fab-top{ background:var(--color-ivory); color:var(--color-black); opacity:0; pointer-events:none; transform:translateY(10px); transition:all .4s; }
+  .fab-top.show{ opacity:1; pointer-events:auto; transform:none; }
+
+  /* Chatbot */
+  .chatbot{
+    position:fixed;
+    bottom:88px;
+    right:20px;
+    width:360px;
+    max-width:calc(100vw - 32px);
+    height:520px;
+    max-height:calc(100vh - 120px);
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.35);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    z-index:95;
+    opacity:0;
+    transform:translateY(20px) scale(.96);
+    pointer-events:none;
+    transition:all .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .chatbot.open{ opacity:1; transform:none; pointer-events:auto; }
+
+  .chat-msg{
+    padding:10px 14px;
+    border-radius:14px;
+    font-size:14px;
+    line-height:1.5;
+    max-width:85%;
+    animation:pop .4s cubic-bezier(.2,.7,.2,1);
+  }
+  @keyframes pop{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+  .msg-bot{ background:var(--color-ivory); color:var(--color-black); align-self:flex-start; border-bottom-left-radius:4px; }
+  .msg-user{ background:var(--color-black); color:#fff; align-self:flex-end; border-bottom-right-radius:4px; }
+
+  .quick-btn{
+    border:1px solid var(--color-sage);
+    color:var(--color-black);
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:12.5px;
+    font-weight:500;
+    background:#fff;
+    cursor:pointer;
+    transition:all .3s;
+    white-space:nowrap;
+  }
+  .quick-btn:hover{ background:var(--color-sage); color:#fff; }
+
+  /* FAQ */
+  .faq-item{ border-bottom:1px solid var(--color-canvas); }
+  .faq-q{ cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:22px 0; font-weight:500; color:var(--color-black); }
+  .faq-q i{ transition:transform .4s; color:var(--color-olive); }
+  .faq-item.open .faq-q i{ transform:rotate(45deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .5s ease; color:var(--color-muted); font-size:14.5px; line-height:1.7; }
+  .faq-item.open .faq-a{ max-height:300px; padding-bottom:22px; }
+
+  /* Category tab */
+  .cat-tab{ padding:10px 20px; border-radius:999px; font-size:13px; font-weight:500; color:var(--color-text); cursor:pointer; transition:all .3s; white-space:nowrap; border:1px solid transparent; }
+  .cat-tab:hover{ color:var(--color-black); }
+  .cat-tab.active{ background:var(--color-black); color:#fff; }
+
+  /* Top bar scroll */
+  .topbar{ transition:transform .4s; }
+  .topbar.hide{ transform:translateY(-100%); }
+
+  /* Ticker dot */
+  .dot-live{ width:8px; height:8px; border-radius:50%; background:#00C66F; box-shadow:0 0 0 0 rgba(0,198,111,.6); animation:pulse 1.8s infinite; }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(0,198,111,.6)} 70%{box-shadow:0 0 0 8px rgba(0,198,111,0)} 100%{box-shadow:0 0 0 0 rgba(0,198,111,0)} }
+
+  /* Price badge */
+  .price{ font-family:'Playfair Display',serif; font-weight:700; color:var(--color-black); font-size:18px; letter-spacing:-0.01em; }
+  .price-old{ text-decoration:line-through; color:var(--color-muted); font-size:13px; font-weight:400; margin-left:6px; }
+
+  /* Ribbon */
+  .ribbon{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:var(--color-black);
+    color:#fff;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    padding:5px 10px;
+    text-transform:uppercase;
+    z-index:2;
+  }
+  .ribbon.sage{ background:var(--color-sage); color:var(--color-black); }
+  .ribbon.olive{ background:var(--color-olive); color:#fff; }
+
+  /* Star */
+  .star{ color:#E6B800; }
+
+  /* Custom scrollbar for chat */
+  .chat-scroll::-webkit-scrollbar{ width:6px; }
+  .chat-scroll::-webkit-scrollbar-thumb{ background:var(--color-sage); border-radius:3px; }
+
+  @media (max-width:768px){
+    .chatbot{ right:12px; bottom:84px; width:calc(100vw - 24px); }
+    .float-row{ right:12px; bottom:14px; }
+  }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ TOP BAR ============ -->
+<div id="topbar" class="topbar bg-[#1C1C1C] text-white text-[12.5px]">
+  <div class="container-x flex items-center justify-between h-10">
+    <div class="flex items-center gap-3 overflow-hidden">
+      <span class="dot-live"></span>
+      <span class="hidden sm:inline text-[#C1BFAA]">Customer Care Online</span>
+      <span class="font-medium">Free shipping on orders over ฿1,500</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://line.me/R/ti/p/@nutravita" class="hover:text-[#C1BFAA] transition hidden md:inline-flex items-center gap-1.5"><i class="fa-brands fa-line"></i> Line OA</a>
+      <a href="https://m.me/nutravita" class="hover:text-[#C1BFAA] transition hidden md:inline-flex items-center gap-1.5"><i class="fa-brands fa-facebook-messenger"></i> Messenger</a>
+      <a href="tel:+6620001234" class="hover:text-[#C1BFAA] transition inline-flex items-center gap-1.5"><i class="fa-solid fa-phone"></i><span class="hidden sm:inline">02-000-1234</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-[#E8E8E8]">
+  <div class="container-x flex items-center justify-between h-[72px]">
+    <a href="#" class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-full bg-[#1C1C1C] flex items-center justify-center text-white font-display font-black text-lg">N</div>
+      <div class="leading-tight">
+        <div class="font-display font-bold text-[18px] text-[#1C1C1C] tracking-tight">NutraVita</div>
+        <div class="label text-[9px] !text-[#A8A58F] -mt-0.5">THAILAND · EST. 2018</div>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-[#3A3A3A]">
+      <a href="#categories" class="hover:text-[#1C1C1C] transition">Shop</a>
+      <a href="#bestsellers" class="hover:text-[#1C1C1C] transition">Bestsellers</a>
+      <a href="#why" class="hover:text-[#1C1C1C] transition">Why Us</a>
+      <a href="#reviews" class="hover:text-[#1C1C1C] transition">Reviews</a>
+      <a href="#faq" class="hover:text-[#1C1C1C] transition">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button class="w-10 h-10 rounded-full hover:bg-[#F5EFE2] flex items-center justify-center transition" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass text-[15px] text-[#1C1C1C]"></i>
+      </button>
+      <button id="openChat" class="w-10 h-10 rounded-full hover:bg-[#F5EFE2] flex items-center justify-center transition relative" aria-label="Chat">
+        <i class="fa-regular fa-comment-dots text-[16px] text-[#1C1C1C]"></i>
+        <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#06C755]"></span>
+      </button>
+      <a href="#bestsellers" class="hidden sm:inline-flex items-center gap-2 bg-[#1C1C1C] text-white px-5 h-10 rounded-full text-[13px] font-medium hover:bg-[#3A3A3A] transition">
+        Shop Now <i class="fa-solid fa-arrow-right text-[11px]"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="bg-white pt-8 md:pt-14 pb-16 md:pb-24">
+  <div class="container-x">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <!-- Left -->
+      <div class="lg:col-span-6 reveal">
+        <div class="flex items-center gap-3 mb-7">
+          <span class="label">Premium Wellness · Since 2018</span>
+          <span class="w-8 h-px bg-[#C1BFAA]"></span>
+        </div>
+        <h1 class="hero-title">
+          Science-led<br/>
+          supplements for<br/>
+          <span class="sub">real, daily life.</span>
+        </h1>
+        <p class="body-text text-[15.5px] mt-7 max-w-md">
+          Clean-label vitamins, collagen and functional nutrition — Thai FDA approved, GMP manufactured, and trusted by over 180,000 customers across Thailand.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mt-9">
+          <a href="#bestsellers" class="bg-[#1C1C1C] text-white h-12 px-7 rounded-full inline-flex items-center gap-2 text-[14px] font-medium hover:bg-[#3A3A3A] transition">
+            Shop Bestsellers <i class="fa-solid fa-arrow-right text-[12px]"></i>
+          </a>
+          <a href="https://line.me/R/ti/p/@nutravita" class="bg-[#06C755] text-white h-12 px-6 rounded-full inline-flex items-center gap-2 text-[14px] font-medium hover:opacity-90 transition">
+            <i class="fa-brands fa-line text-[16px]"></i> Chat on Line
+          </a>
+        </div>
+
+        <!-- Trust row -->
+        <div class="grid grid-cols-3 gap-6 mt-14 pt-10 border-t border-[#E8E8E8]">
+          <div>
+            <div class="font-display text-[32px] font-bold text-[#1C1C1C] leading-none">180K<span class="text-[#C1BFAA]">+</span></div>
+            <div class="label mt-2">Happy Customers</div>
+          </div>
+          <div>
+            <div class="font-display text-[32px] font-bold text-[#1C1C1C] leading-none">4.9<span class="text-[#C1BFAA]">/5</span></div>
+            <div class="label mt-2">23,000+ Reviews</div>
+          </div>
+          <div>
+            <div class="font-display text-[32px] font-bold text-[#1C1C1C] leading-none">6<span class="text-[#C1BFAA]">yr</span></div>
+            <div class="label mt-2">Trusted Brand</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — Asymmetrical image composition -->
+      <div class="lg:col-span-6 reveal relative">
+        <div class="relative aspect-[4/5] rounded-sm overflow-hidden bg-[#F5EFE2]">
+          <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=900&auto=format&fit=crop&q=70" alt="Premium supplements bottle" class="w-full h-full object-cover" />
+        </div>
+        <!-- Floating card -->
+        <div class="absolute -left-4 md:-left-10 top-10 bg-white rounded-sm shadow-[0_20px_60px_-20px_rgba(0,0,0,0.2)] p-5 max-w-[240px] hidden sm:block">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="star text-[12px]">★★★★★</div>
+          </div>
+          <p class="text-[13px] text-[#1C1C1C] font-medium leading-snug">"My skin actually glows now. The collagen is the only one that worked for me."</p>
+          <p class="text-[11px] text-[#A8A58F] mt-2 font-medium">— K. Pim, Bangkok</p>
+        </div>
+        <!-- Sage tag bottom -->
+        <div class="absolute -right-2 md:-right-6 bottom-10 bg-[#C1BFAA] text-[#1C1C1C] px-5 py-4 rounded-sm shadow-lg">
+          <div class="label !text-[#1C1C1C]">Thai FDA</div>
+          <div class="font-display font-bold text-[18px] mt-1">Approved ✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="mt-20 md:mt-28 py-5 border-y border-[#E8E8E8] overflow-hidden">
+    <div class="marquee whitespace-nowrap font-display text-[26px] md:text-[34px] text-[#A8A58F]">
+      <span>GMP Certified</span><span>✦</span>
+      <span>HACCP Approved</span><span>✦</span>
+      <span>Thai FDA อย.</span><span>✦</span>
+      <span>ISO 22000</span><span>✦</span>
+      <span>Halal Certified</span><span>✦</span>
+      <span>No Artificial Fillers</span><span>✦</span>
+      <span>GMP Certified</span><span>✦</span>
+      <span>HACCP Approved</span><span>✦</span>
+      <span>Thai FDA อย.</span><span>✦</span>
+      <span>ISO 22000</span><span>✦</span>
+      <span>Halal Certified</span><span>✦</span>
+      <span>No Artificial Fillers</span><span>✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORIES BENTO ============ -->
+<section id="categories" class="bg-white py-20 md:py-28">
+  <div class="container-x">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+      <div>
+        <span class="label">Shop by Concern</span>
+        <h2 class="section-title mt-3">Six paths to <span class="light">feeling better.</span></h2>
+      </div>
+      <p class="body-text max-w-md">Not sure where to start? Pick the outcome you want — we'll guide you to the right formula.</p>
+    </div>
+
+    <!-- Bento grid: 6 tiles with asymmetric spans -->
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4 reveal">
+      <!-- Big feature -->
+      <a href="#bestsellers" data-cat="beauty" class="bento-tile md:col-span-3 md:row-span-2 aspect-[4/5] md:aspect-auto bg-[#F5EFE2] block">
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=900&auto=format&fit=crop&q=70" alt="Beauty & Collagen" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6 text-white">
+          <div class="label !text-white/80 mb-1">01 · Best Seller</div>
+          <div class="font-display text-[28px] md:text-[36px] font-bold leading-tight">Beauty &<br/>Collagen</div>
+          <div class="text-[13px] mt-2 text-white/90">12 products · From ฿690</div>
+        </div>
+      </a>
+
+      <a href="#bestsellers" data-cat="immunity" class="bento-tile md:col-span-3 aspect-square md:aspect-[16/10] bg-[#C1BFAA] block relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1584308972272-9e4e7685e807?w=700&auto=format&fit=crop&q=70" alt="Immune Support" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-[#C1BFAA]/30"></div>
+        <div class="relative p-5 h-full flex flex-col justify-between text-white">
+          <div class="label !text-white/90">02</div>
+          <div>
+            <div class="font-display text-[24px] font-bold">Immunity</div>
+            <div class="text-[12px] text-white/80 mt-1">8 products</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#bestsellers" data-cat="vitamins" class="bento-tile md:col-span-2 aspect-square bg-[#F5EFE2] block relative">
+        <img src="https://images.unsplash.com/photo-1550572130-29f5bcc1d2c6?w=600&auto=format&fit=crop&q=70" alt="Daily Vitamins" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute bottom-4 left-4 right-4 text-white">
+          <div class="label !text-white/80">03</div>
+          <div class="font-display text-[18px] font-bold">Daily Vitamins</div>
+        </div>
+      </a>
+
+      <a href="#bestsellers" data-cat="weight" class="bento-tile md:col-span-1 aspect-square bg-[#A8A58F] text-white p-4 flex flex-col justify-between">
+        <div class="label !text-white/80">04</div>
+        <div>
+          <div class="font-display text-[17px] font-bold leading-tight">Weight<br/>Care</div>
+        </div>
+      </a>
+
+      <a href="#bestsellers" data-cat="sleep" class="bento-tile md:col-span-2 aspect-square bg-[#1C1C1C] text-white p-5 flex flex-col justify-between">
+        <div class="label !text-[#C1BFAA]">05</div>
+        <div>
+          <div class="font-display text-[20px] font-bold leading-tight">Sleep &<br/>Calm</div>
+          <div class="text-[11px] text-white/70 mt-1">Ashwagandha · Magnesium</div>
+        </div>
+      </a>
+
+      <a href="#bestsellers" data-cat="joint" class="bento-tile md:col-span-2 aspect-square bg-[#F9F4EA] block relative">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=70" alt="Joints & Bones" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute bottom-4 left-4 right-4 text-white">
+          <div class="label !text-white/80">06</div>
+          <div class="font-display text-[18px] font-bold">Joints & Bone</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PRODUCTS ============ -->
+<section id="bestsellers" class="bg-white py-20 md:py-28 border-t border-[#E8E8E8]">
+  <div class="container-x">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 reveal">
+      <div>
+        <span class="label">The Edit · 16 Products</span>
+        <h2 class="section-title mt-3">Bestsellers <span class="light">worth the hype.</span></h2>
+      </div>
+      <p class="body-text max-w-md">Every formula is third-party tested and dosed at clinically effective levels — no fairy-dusting.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-2 overflow-x-auto pb-4 mb-8 -mx-4 px-4 reveal" id="tabs">
+      <button class="cat-tab active" data-filter="all">All</button>
+      <button class="cat-tab" data-filter="beauty">Beauty & Collagen</button>
+      <button class="cat-tab" data-filter="vitamins">Vitamins</button>
+      <button class="cat-tab" data-filter="immunity">Immunity</button>
+      <button class="cat-tab" data-filter="weight">Weight Care</button>
+      <button class="cat-tab" data-filter="sleep">Sleep & Calm</button>
+      <button class="cat-tab" data-filter="joint">Joints</button>
+    </div>
+
+    <!-- Product grid -->
+    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 reveal">
+      <!-- Products injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US — Anti-grid ============ -->
+<section id="why" class="bg-white py-20 md:py-28 border-t border-[#E8E8E8]">
+  <div class="container-x">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-5 reveal">
+        <span class="label">Why NutraVita</span>
+        <h2 class="section-title mt-3">We don't sell<br/>"miracles." <span class="light">We sell honesty.</span></h2>
+        <p class="body-text mt-6">Every bottle you receive has been batch-tested in an independent lab, formulated by a registered Thai nutritionist, and shipped from our Bangkok warehouse within 24 hours.</p>
+
+        <div class="mt-10 space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-full bg-[#F5EFE2] flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-flask text-[#A8A58F]"></i>
+            </div>
+            <div>
+              <div class="font-display text-[18px] font-semibold text-[#1C1C1C]">Clinically dosed</div>
+              <div class="body-text text-[13.5px] mt-0.5">Every ingredient at the dose used in published studies — not marketing dust.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-full bg-[#C1BFAA] flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-certificate text-[#1C1C1C]"></i>
+            </div>
+            <div>
+              <div class="font-display text-[18px] font-semibold text-[#1C1C1C]">Thai FDA + GMP</div>
+              <div class="body-text text-[13.5px] mt-0.5">Registered under อย. number on every label. Factory audited yearly.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-full bg-[#F5EFE2] flex items-center justify-center flex-shrink-0">
+              <i class="fa-solid fa-truck-fast text-[#A8A58F]"></i>
+            </div>
+            <div>
+              <div class="font-display text-[18px] font-semibold text-[#1C1C1C]">Bangkok same-day</div>
+              <div class="body-text text-[13.5px] mt-0.5">Order before 12pm, get it tonight. Nationwide in 1–2 days.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Asymmetric right -->
+      <div class="lg:col-span-7 reveal grid grid-cols-3 gap-3 md:gap-4">
+        <div class="col-span-2 aspect-[4/5] rounded-sm overflow-hidden bg-[#F5EFE2] relative">
+          <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&auto=format&fit=crop&q=70" alt="Lab testing" class="w-full h-full object-cover" />
+          <div class="absolute bottom-4 left-4 bg-white/95 px-3 py-2 rounded-sm">
+            <div class="label !text-[10px]">Lab Tested</div>
+            <div class="text-[12px] font-medium text-[#1C1C1C]">Every batch</div>
+          </div>
+        </div>
+        <div class="col-span-1 flex flex-col gap-3 md:gap-4">
+          <div class="aspect-square rounded-sm overflow-hidden bg-[#A8A58F] relative">
+            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=500&auto=format&fit=crop&q=70" alt="Herbal ingredients" class="w-full h-full object-cover" />
+          </div>
+          <div class="aspect-square rounded-sm bg-[#1C1C1C] text-white p-5 flex flex-col justify-between">
+            <div class="label !text-[#C1BFAA]">Est. 2018</div>
+            <div>
+              <div class="font-display text-[40px] font-bold leading-none">6</div>
+              <div class="text-[11px] text-[#C1BFAA] mt-1">YEARS OF TRUST</div>
+            </div>
+          </div>
+          <div class="aspect-square rounded-sm overflow-hidden bg-[#C1BFAA] relative">
+            <img src="https://images.unsplash.com/photo-1471864190842-1b3ea8b21fa0?w=500&auto=format&fit=crop&q=70" alt="Manufacturing" class="w-full h-full object-cover" />
+          </div>
+        </div>
+        <div class="col-span-3 aspect-[16/7] rounded-sm bg-[#F5EFE2] p-6 md:p-8 flex flex-col justify-between">
+          <div class="label">As seen in</div>
+          <div class="flex flex-wrap items-center gap-x-8 gap-y-3 font-display text-[18px] md:text-[22px] text-[#A8A58F]">
+            <span class="italic">Vogue Thailand</span>
+            <span>·</span>
+            <span>GQ</span>
+            <span>·</span>
+            <span class="italic">Elle</span>
+            <span>·</span>
+            <span>Bangkok Post</span>
+            <span>·</span>
+            <span class="italic">Cleo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS — Asymmetric ============ -->
+<section id="reviews" class="bg-white py-20 md:py-28 border-t border-[#E8E8E8]">
+  <div class="container-x">
+    <div class="mb-12 reveal">
+      <span class="label">23,418 Verified Reviews</span>
+      <h2 class="section-title mt-3">Real people. <span class="light">Real results.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+      <!-- Big review -->
+      <div class="md:col-span-2 bg-[#F9F4EA] p-8 md:p-12 rounded-sm reveal">
+        <div class="star text-[16px] mb-4">★★★★★</div>
+        <p class="font-display text-[24px] md:text-[32px] leading-[1.25] text-[#1C1C1C] font-medium">
+          "I've tried collagen from Japan, from the US, from Korea. NutraVita's marine collagen is the first one where I actually saw my hair stop falling out — around week 5. The Line team also answered me at 11pm on a Sunday. That's service."
+        </p>
+        <div class="flex items-center gap-3 mt-8">
+          <div class="w-11 h-11 rounded-full bg-[#C1BFAA] flex items-center justify-center font-display font-bold text-[#1C1C1C]">NP</div>
+          <div>
+            <div class="text-[14px] font-semibold text-[#1C1C1C]">Nattaya P.</div>
+            <div class="label !text-[10px]">Bangkok · Verified Buyer · Marine Collagen 30 days</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small stacked -->
+      <div class="flex flex-col gap-4 md:gap-6">
+        <div class="bg-[#F5EFE2] p-6 rounded-sm reveal">
+          <div class="star text-[13px] mb-3">★★★★★</div>
+          <p class="text-[14.5px] text-[#1C1C1C] leading-relaxed">"Ashwagandha actually calmed my racing thoughts. Sleep came back within 10 days."</p>
+          <div class="mt-4 text-[12px] text-[#A8A58F] font-medium">— Somchai T. · Chiang Mai</div>
+        </div>
+        <div class="bg-[#1C1C1C] text-white p-6 rounded-sm reveal">
+          <div class="star text-[13px] mb-3">★★★★★</div>
+          <p class="text-[14.5px] leading-relaxed">"The Vitamin D3+K2 is the only one that didn't give me stomach upset. My doctor actually noticed my levels up."</p>
+          <div class="mt-4 text-[12px] text-[#C1BFAA] font-medium">— K. Aom · Phuket</div>
+        </div>
+        <div class="bg-[#C1BFAA] p-6 rounded-sm reveal">
+          <div class="star text-[13px] mb-3">★★★★★</div>
+          <p class="text-[14.5px] text-[#1C1C1C] leading-relaxed">"Ordered on Line at 9am, got it same evening. Packaging felt premium."</p>
+          <div class="mt-4 text-[12px] text-[#1C1C1C]/70 font-medium">— Waraporn · Bangkok</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUNDLE PROMO — Bento ============ -->
+<section class="bg-white py-20 md:py-28 border-t border-[#E8E8E8]">
+  <div class="container-x">
+    <div class="mb-10 reveal">
+      <span class="label">This Week Only</span>
+      <h2 class="section-title mt-3">Smart bundles, <span class="light">better price.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 md:gap-5 reveal">
+      <div class="md:col-span-2 bg-[#F5EFE2] p-8 md:p-10 rounded-sm relative overflow-hidden flex flex-col md:flex-row items-start justify-between gap-8">
+        <div class="ribbon">Save ฿790</div>
+        <div class="mt-6 md:mt-0">
+          <div class="label">Starter Ritual</div>
+          <div class="font-display text-[28px] md:text-[34px] font-bold text-[#1C1C1C] mt-2">Collagen + Multivitamin + Vitamin C</div>
+          <p class="body-text mt-3 max-w-md">The 30-day foundation. Everything you need, nothing you don't.</p>
+          <div class="mt-5 flex items-center gap-3">
+            <span class="price text-[24px]">฿2,490</span>
+            <span class="price-old text-[15px]">฿3,280</span>
+          </div>
+          <a href="#" class="mt-6 inline-flex items-center gap-2 bg-[#1C1C1C] text-white h-11 px-6 rounded-full text-[13px] font-medium hover:bg-[#3A3A3A] transition">
+            Order via Line <i class="fa-brands fa-line"></i>
+          </a>
+        </div>
+        <div class="w-full md:w-52 aspect-square bg-white rounded-sm overflow-hidden flex-shrink-0">
+          <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=500&auto=format&fit=crop&q=70" alt="Bundle" class="w-full h-full object-cover" />
+        </div>
+      </div>
+
+      <div class="bg-[#1C1C1C] text-white p-8 rounded-sm flex flex-col justify-between">
+        <div>
+          <div class="label !text-[#C1BFAA]">Members Only</div>
+          <div class="font-display text-[24px] font-bold mt-2 leading-tight">Subscribe<br/>& save 20%<br/>for life.</div>
+          <p class="text-[13px] text-[#C1BFAA] mt-4 leading-relaxed">Auto-ship every 30, 60 or 90 days. Cancel anytime.</p>
+        </div>
+        <a href="#" class="mt-6 inline-flex items-center justify-center gap-2 bg-[#C1BFAA] text-[#1C1C1C] h-11 rounded-full text-[13px] font-semibold hover:bg-[#D9D0B8] transition">
+          Join the Club <i class="fa-solid fa-arrow-right text-[11px]"></i>
+        </a>
+      </div>
+
+      <div class="bg-[#A8A58F] text-white p-8 rounded-sm flex flex-col justify-between">
+        <div>
+          <div class="label !text-white/80">Gift Set</div>
+          <div class="font-display text-[24px] font-bold mt-2 leading-tight">The Wellness Box</div>
+          <p class="text-[13px] text-white/90 mt-4">Curated for someone you care about. Free handwritten card.</p>
+        </div>
+        <div class="mt-6">
+          <span class="price text-white text-[22px]">฿3,990</span>
+          <a href="#" class="mt-3 block text-[13px] underline underline-offset-4 text-white/90">View what's inside →</a>
+        </div>
+      </div>
+
+      <div class="bg-[#C1BFAA] p-8 rounded-sm flex flex-col justify-between text-[#1C1C1C]">
+        <div>
+          <div class="label !text-[#1C1C1C]">Free Gift</div>
+          <div class="font-display text-[24px] font-bold mt-2 leading-tight">Orders over ฿2,500</div>
+          <p class="text-[13px] text-[#1C1C1C]/80 mt-4">Receive a travel-size Vitamin C serum (฿590 value), while stocks last.</p>
+        </div>
+        <div class="mt-6 font-display text-[54px] font-bold text-[#1C1C1C] leading-none">+ ฿0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="bg-white py-20 md:py-28 border-t border-[#E8E8E8]">
+  <div class="container-x grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4 reveal">
+      <span class="label">FAQ</span>
+      <h2 class="section-title mt-3">Before you <span class="light">ask…</span></h2>
+      <p class="body-text mt-5">Still curious? Our Thai-speaking care team replies on Line in under 5 minutes, 8am–11pm.</p>
+      <a href="https://line.me/R/ti/p/@nutravita" class="mt-6 inline-flex items-center gap-2 bg-[#06C755] text-white h-11 px-5 rounded-full text-[13px] font-medium hover:opacity-90 transition">
+        <i class="fa-brands fa-line"></i> Chat with us
+      </a>
+    </div>
+    <div class="lg:col-span-8 reveal">
+      <div class="faq-item">
+        <div class="faq-q"><span>Are these supplements Thai FDA approved?</span><i class="fa-solid fa-plus"></i></div>
+        <div class="faq-a"><div class="pt-1">Yes. Every NutraVita product carries a Thai FDA (อย.) registration number printed on the label. You can verify each number on the official Thai FDA website.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>How long until I see results?</span><i class="fa-solid fa-plus"></i></div>
+        <div class="faq-a"><div class="pt-1">Most customers report noticeable changes within 4–8 weeks of daily use. Collagen and skin formulas typically show first signs around week 4, while sleep and mood support can be felt as early as week 2.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Can I take more than one product together?</span><i class="fa-solid fa-plus"></i></div>
+        <div class="faq-a"><div class="pt-1">Yes — most of our formulas are designed to stack. Message us on Line with your current routine and we'll build a personalized protocol for you, free of charge.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Do you ship across Thailand?</span><i class="fa-solid fa-plus"></i></div>
+        <div class="faq-a"><div class="pt-1">Yes. Same-day delivery in Bangkok (order before 12pm), 1–2 days nationwide via Kerry Express and Flash Express. Free shipping on orders over ฿1,500.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>What is your return policy?</span><i class="fa-solid fa-plus"></i></div>
+        <div class="faq-a"><div class="pt-1">30-day happiness guarantee. If you're not satisfied, return the unused portion for a full refund — no questions asked. Just message us on Line or Messenger.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white pt-20 pb-8 border-t border-[#E8E8E8]">
+  <div class="container-x">
+    <div class="grid md:grid-cols-12 gap-10 mb-14">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-[#1C1C1C] flex items-center justify-center text-white font-display font-black">N</div>
+          <div>
+            <div class="font-display font-bold text-[20px] text-[#1C1C1C]">NutraVita</div>
+            <div class="label !text-[9px] !text-[#A8A58F]">THAILAND · EST. 2018</div>
+          </div>
+        </div>
+        <p class="body-text mt-5 max-w-sm">Premium, science-led dietary supplements formulated for the Thai lifestyle. Proudly made, lab-tested, and delivered nationwide.</p>
+
+        <div class="mt-6 space-y-2 text-[13.5px]">
+          <a href="tel:+6620001234" class="flex items-center gap-3 text-[#3A3A3A] hover:text-[#1C1C1C]"><i class="fa-solid fa-phone w-4 text-[#A8A58F]"></i> 02-000-1234</a>
+          <a href="mailto:care@nutravita.co.th" class="flex items-center gap-3 text-[#3A3A3A] hover:text-[#1C1C1C]"><i class="fa-solid fa-envelope w-4 text-[#A8A58F]"></i> care@nutravita.co.th</a>
+          <a href="#" class="flex items-start gap-3 text-[#3A3A3A] hover:text-[#1C1C1C]"><i class="fa-solid fa-location-dot w-4 mt-1 text-[#A8A58F]"></i> 88 Sukhumvit 24, Khlong Toei, Bangkok 10110</a>
+        </div>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="label mb-4">Shop</div>
+        <ul class="space-y-2.5 text-[14px] text-[#3A3A3A]">
+          <li><a href="#" class="hover:text-[#1C1C1C]">Beauty & Collagen</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Daily Vitamins</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Immunity</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Weight Care</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Sleep & Calm</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Joints & Bone</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <div class="label mb-4">Support</div>
+        <ul class="space-y-2.5 text-[14px] text-[#3A3A3A]">
+          <li><a href="#" class="hover:text-[#1C1C1C]">Contact Us</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Shipping</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Returns</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">Track Order</a></li>
+          <li><a href="#" class="hover:text-[#1C1C1C]">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <div class="label mb-4">Chat with us · We reply in under 5 min</div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <a href="https://line.me/R/ti/p/@nutravita" class="bg-[#06C755] text-white h-12 rounded-sm flex items-center justify-center gap-2 text-[13px] font-medium hover:opacity-90 transition">
+            <i class="fa-brands fa-line text-[16px]"></i> Line OA
+          </a>
+          <a href="https://m.me/nutravita" class="bg-[#0084FF] text-white h-12 rounded-sm flex items-center justify-center gap-2 text-[13px] font-medium hover:opacity-90 transition">
+            <i class="fa-brands fa-facebook-messenger text-[15px]"></i> Messenger
+          </a>
+          <a href="https://facebook.com/nutravita" class="bg-[#1C1C1C] text-white h-12 rounded-sm flex items-center justify-center gap-2 text-[13px] font-medium hover:bg-[#3A3A3A] transition">
+            <i class="fa-brands fa-facebook-f text-[14px]"></i> Facebook
+          </a>
+          <a href="https://tiktok.com/@nutravita" class="bg-[#1C1C1C] text-white h-12 rounded-sm flex items-center justify-center gap-2 text-[13px] font-medium hover:bg-[#3A3A3A] transition">
+            <i class="fa-brands fa-tiktok text-[14px]"></i> TikTok Shop
+          </a>
+        </div>
+
+        <!-- Mini map placeholder -->
+        <div class="mt-4 aspect-[16/7] rounded-sm bg-[#F5EFE2] overflow-hidden relative">
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=100.565%2C13.720%2C100.585%2C13.740&layer=mapnik" class="w-full h-full border-0" loading="lazy"></iframe>
+          <div class="absolute top-2 left-2 bg-white/95 px-2.5 py-1 rounded-sm text-[11px] font-medium text-[#1C1C1C]">
+            <i class="fa-solid fa-location-dot text-[#A8A58F] mr-1"></i> HQ & Warehouse
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-[#E8E8E8] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="text-[12px] text-[#6B6B6B]">© 2026 NutraVita Thailand Co., Ltd. All rights reserved. อย. Reg. No. 10-1-00000-0-0000</div>
+      <div class="flex items-center gap-5 text-[12px] text-[#6B6B6B]">
+        <a href="#" class="hover:text-[#1C1C1C]">Privacy</a>
+        <a href="#" class="hover:text-[#1C1C1C]">Terms</a>
+        <a href="#" class="hover:text-[#1C1C1C]">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING ROW: BACK TO TOP + CHATBOT ============ -->
+<div class="float-row">
+  <button id="backTop" class="fab fab-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up text-[16px]"></i>
+  </button>
+  <button id="chatFab" class="fab fab-chat" aria-label="Open chat">
+    <i class="fa-regular fa-comment-dots text-[20px]"></i>
+  </button>
+</div>
+
+<!-- ============ CHATBOT ============ -->
+<div id="chatbot" class="chatbot">
+  <div class="bg-[#1C1C1C] text-white px-5 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center font-display font-bold text-[#1C1C1C]">N</div>
+      <div>
+        <div class="text-[14px] font-semibold">NutraVita Care</div>
+        <div class="text-[11px] text-[#C1BFAA] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#00C66F]"></span> Online · Replies instantly</div>
+      </div>
+    </div>
+    <button id="closeChat" class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center">
+      <i class="fa-solid fa-xmark text-[14px]"></i>
+    </button>
+  </div>
+
+  <div id="chatBody" class="chat-scroll flex-1 overflow-y-auto p-5 flex flex-col gap-3 bg-white">
+    <!-- Messages injected by JS -->
+  </div>
+
+  <div class="border-t border-[#E8E8E8] p-3 bg-white">
+    <form id="chatForm" class="flex items-center gap-2">
+      <input id="chatInput" type="text" placeholder="Type a message…" class="flex-1 h-10 px-4 bg-[#F5EFE2] rounded-full text-[13.5px] outline-none focus:ring-2 focus:ring-[#C1BFAA]" />
+      <button type="submit" class="w-10 h-10 rounded-full bg-[#1C1C1C] text-white flex items-center justify-center hover:bg-[#3A3A3A] transition">
+        <i class="fa-solid fa-paper-plane text-[13px]"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ===== PRODUCTS (16 items across 6 categories) ===== */
+const PRODUCTS = [
+  { id:1, name:"Marine Collagen Peptides", cat:"beauty", price:1590, old:1890, tag:"Bestseller", img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&auto=format&fit=crop&q=70", rating:4.9, reviews:4820 },
+  { id:2, name:"Glutathione + Vitamin C", cat:"beauty", price:1890, tag:"New", img:"https://images.unsplash.com/photo-1585435557343-3b092031a831?w=600&auto=format&fit=crop&q=70", rating:4.8, reviews:1203 },
+  { id:3, name:"Biotin Hair & Nails", cat:"beauty", price:690, img:"https://images.unsplash.com/photo-1626781054019-3a88cf4d02d1?w=600&auto=format&fit=crop&q=70", rating:4.7, reviews:892 },
+  { id:4, name:"Daily Multivitamin", cat:"vitamins", price:1290, tag:"Editor's Pick", img:"https://images.unsplash.com/photo-1550572130-29f5bcc1d2c6?w=600&auto=format&fit=crop&q=70", rating:4.9, reviews:3104 },
+  { id:5, name:"Vitamin C 1000mg", cat:"vitamins", price:890, img:"https://images.unsplash.com/photo-1584308972272-9e4e7685e807?w=600&auto=format&fit=crop&q=70", rating:4.8, reviews:2451 },
+  { id:6, name:"Vitamin D3 + K2", cat:"vitamins", price:790, img:"https://images.unsplash.com/photo-1628773822503-930a7eaecb85?w=600&auto=format&fit=crop&q=70", rating:4.9, reviews:1877 },
+  { id:7, name:"Zinc + Elderberry", cat:"immunity", price:850, tag:"Seasonal", img:"https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&auto=format&fit=crop&q=70", rating:4.8, reviews:934 },
+  { id:8, name:"Echinacea Complex", cat:"immunity", price:790, img:"https://images.unsplash.com/photo-1471864190842-1b3ea8b21fa0?w=600&auto=format&fit=crop&q=70", rating:4.7, reviews:612 },
+  { id:9, name:"Beta Glucan 500mg", cat:"immunity", price:1290, img:"https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&auto=format&fit=crop&q=70", rating:4.8, reviews:508 },
+  { id:10, name:"Garcinia Cambogia", cat:"weight", price:990, img:"https://images.unsplash.com/photo-1559757148-5c350d0d96c9?w=600&auto=format&fit=crop&q=70", rating:4.6, reviews:741 },
+  { id:11, name:"L-Carnitine 1000", cat:"weight", price:890, img:"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=70", rating:4.7, reviews:623 },
+  { id:12, name:"Green Tea Extract", cat:"weight", price:750, img:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop&q=70", rating:4.8, reviews:1102 },
+  { id:13, name:"Ashwagandha KSM-66", cat:"sleep", price:1390, tag:"Bestseller", img:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&auto=format&fit=crop&q=70", rating:4.9, reviews:2804 },
+  { id:14, name:"Magnesium Glycinate", cat:"sleep", price:890, img:"https://images.unsplash.com/photo-1512290923902-8c9f2c9b3a1c?w=600&auto=format&fit=crop&q=70", rating:4.8, reviews:1450 },
+  { id:15, name:"UC-II Collagen Type 2", cat:"joint", price:1690, img:"https://images.unsplash.com/photo-1607064254607-9e0e3d0b5c84?w=600&auto=format&fit=crop&q=70", rating:4.8, reviews:492 },
+  { id:16, name:"Calcium + Vitamin D", cat:"joint", price:690, img:"https://images.unsplash.com/photo-1626717667234-1c28c3a9d0b5?w=600&auto=format&fit=crop&q=70", rating:4.7, reviews:834 },
+];
+
+const grid = document.getElementById('productGrid');
+
+function renderProducts(filter='all'){
+  const list = filter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===filter);
+  grid.innerHTML = list.map(p=>`
+    <div class="product-card bg-white lift group cursor-pointer" data-cat="${p.cat}">
+      <div class="relative aspect-[4/5] bg-[#F5EFE2] overflow-hidden rounded-sm">
+        ${p.tag ? `<span class="ribbon ${p.tag==='Bestseller'?'':'sage'}">${p.tag}</span>` : ''}
+        <img src="${p.img}" alt="${p.name}" class="product-img absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600'"/>
+        <button class="absolute bottom-3 left-3 right-3 h-10 bg-[#1C1C1C] text-white rounded-full text-[12.5px] font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400 inline-flex items-center justify-center gap-1.5">
+          <i class="fa-brands fa-line"></i> Order on Line
+        </button>
+      </div>
+      <div class="pt-4">
+        <div class="flex items-center gap-1 text-[11px] text-[#A8A58F] mb-1">
+          <span class="star">★</span>
+          <span class="text-[#3A3A3A] font-medium">${p.rating}</span>
+          <span class="text-[#A8A58F]">(${p.reviews.toLocaleString()})</span>
+        </div>
+        <div class="card-title !text-[16px] md:!text-[18px] leading-tight">${p.name}</div>
+        <div class="mt-2 flex items-baseline">
+          <span class="price">฿${p.price.toLocaleString()}</span>
+          ${p.old?`<span class="price-old">฿${p.old.toLocaleString()}</span>`:''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // attach order click → open chat with product name
+  grid.querySelectorAll('.product-card button').forEach((btn,i)=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      openChatWith(`I'd like to order ${list[i].name} (฿${list[i].price}).`);
+    });
+  });
+}
+
+renderProducts();
+
+/* ===== TABS ===== */
+document.querySelectorAll('.cat-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    renderProducts(tab.dataset.filter);
+  });
+});
+
+/* Bento tile → filter */
+document.querySelectorAll('.bento-tile[data-cat]').forEach(t=>{
+  t.addEventListener('click', e=>{
+    e.preventDefault();
+    const cat = t.dataset.cat;
+    document.querySelector(`.cat-tab[data-filter="${cat}"]`)?.click();
+    document.getElementById('bestsellers').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+/* ===== REVEAL ON SCROLL ===== */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{ threshold:0.12 });
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== HEADER / TOPBAR on scroll + BACK TO TOP ===== */
+const topbar = document.getElementById('topbar');
+const backTop = document.getElementById('backTop');
+const hero = document.querySelector('section'); // first section = hero
+let lastY = 0;
+
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  // back to top: show after hero
+  const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 600;
+  if(y > heroBottom - 200) backTop.classList.add('show'); else backTop.classList.remove('show');
+
+  // hide topbar on scroll down
+  if(y > 80 && y > lastY) topbar.classList.add('hide'); else topbar.classList.remove('hide');
+  lastY = y;
+});
+
+backTop.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ===== FAQ ACCORDION ===== */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click', ()=>{
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+
+/* ===== CHATBOT ===== */
+const chatbot = document.getElementById('chatbot');
+const chatBody = document.getElementById('chatBody');
+const chatForm = document.getElementById('chatForm');
+const chatInput = document.getElementById('chatInput');
+
+function addMsg(text, who='bot', quickReplies=null){
+  const el = document.createElement('div');
+  el.className = 'chat-msg ' + (who==='bot'?'msg-bot':'msg-user');
+  el.textContent = text;
+  chatBody.appendChild(el);
+
+  if(who==='bot' && quickReplies && quickReplies.length){
+    const row = document.createElement('div');
+    row.className = 'flex flex-wrap gap-2 mt-1';
+    quickReplies.forEach(q=>{
+      const b = document.createElement('button');
+      b.type='button';
+      b.className='quick-btn';
+      b.textContent = q;
+      b.addEventListener('click', ()=>{
+        addMsg(q,'user');
+        handleUser(q);
+      });
+      row.appendChild(b);
+    });
+    chatBody.appendChild(row);
+  }
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function handleUser(text){
+  const lower = text.toLowerCase();
+  setTimeout(()=>{
+    if(/ship|delivery|ส่ง|จัดส่ง/.test(lower)){
+      addMsg("We offer same-day delivery in Bangkok (order before 12pm) and 1–2 days nationwide. Free shipping on orders over ฿1,500.", 'bot',
+        ['Track my order', 'Shipping cost']);
+    } else if(/collagen|skin|beauty|ผิว/.test(lower)){
+      addMsg("Our Marine Collagen Peptides (฿1,590) is the #1 choice — 10,000mg per serving, hydrolyzed for fast absorption. Want me to send you the link on Line?", 'bot',
+        ['Yes, send on Line', 'Tell me more', 'See other beauty products']);
+    } else if(/price|ราคา|cost|บาท/.test(lower)){
+      addMsg("Our products range from ฿590 to ฿1,890. Most customers spend around ฿1,500–2,500 on their first order to unlock free shipping.", 'bot',
+        ['Show bestsellers', 'Any discounts?']);
+    } else if(/discount|promo|ลด|โปร/.test(lower)){
+      addMsg("Right now we have a Starter Ritual bundle at ฿2,490 (save ฿790) and 20% off when you subscribe.", 'bot',
+        ['See bundles', 'Subscribe & save']);
+    } else if(/line|ไลน์/.test(lower)){
+      addMsg("You can reach our Thai care team directly on Line OA — we reply in under 5 minutes.", 'bot');
+      setTimeout(()=>window.open('https://line.me/R/ti/p/@nutravita','_blank'), 900);
+    } else {
+      addMsg("Thanks for your message! Our Thai-speaking care team will take it from here. Would you like to continue on Line or Messenger?", 'bot',
+        ['Continue on Line', 'Continue on Messenger', 'Keep chatting here']);
+    }
+  }, 700);
+}
+
+function openChat(){
+  chatbot.classList.add('open');
+  if(!chatbot.dataset.init){
+    chatbot.dataset.init='1';
+    addMsg("Hi 👋 Welcome to NutraVita. I can help you pick the right supplement, place an order, or connect you with our care team on Line.", 'bot',
+      ['Shop bestsellers', 'I need help choosing', 'Talk to a human', 'Track my order']);
+  }
+  setTimeout(()=>chatInput.focus(), 400);
+}
+function openChatWith(text){
+  openChat();
+  setTimeout(()=>{
+    addMsg(text,'user');
+    handleUser(text);
+  }, 500);
+}
+function closeChat(){ chatbot.classList.remove('open'); }
+
+document.getElementById('chatFab').addEventListener('click', openChat);
+document.getElementById('openChat').addEventListener('click', openChat);
+document.getElementById('closeChat').addEventListener('click', closeChat);
+
+chatForm.addEventListener('submit', e=>{
+  e.preventDefault();
+  const v = chatInput.value.trim();
+  if(!v) return;
+  addMsg(v,'user');
+  chatInput.value='';
+  handleUser(v);
+});
+
+/* ===== Product card click → open chat ===== */
+document.addEventListener('click', e=>{
+  const card = e.target.closest('.product-card');
+  if(card && !e.target.closest('button')){
+    const name = card.querySelector('.card-title').textContent.trim();
+    const price = card.querySelector('.price').textContent.trim();
+    openChatWith(`I'm interested in ${name} (${price}). Can you tell me more?`);
+  }
+});
+</script>
+
+</body>
+</html>
