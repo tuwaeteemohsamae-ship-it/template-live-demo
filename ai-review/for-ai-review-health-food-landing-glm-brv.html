@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  ============================================================================
+  VELORA — Supplement Front-Shop Landing Page (Thailand market)
+  ----------------------------------------------------------------------------
+  Traffic source: Facebook Page chat (quick reply / persistent menu / card /
+  carousel / chatbot) → this page acts as the brand's front shop.
+
+  CUSTOMIZE BEFORE GOING LIVE — search & replace:
+  · LINE OA      : @velorath  → https://line.me/R/ti/p/@velorath
+  · Messenger    : https://m.me/velorath
+  · Facebook     : https://facebook.com/velorath
+  · Instagram    : https://instagram.com/velorath
+  · Phone / tel  : +66 2 114 8899
+  · Address      : 88/8 Sukhumvit 31, Watthana, Bangkok 10110
+  · Google Maps  : iframe src in the Contact section
+  · Product data : window.PRODUCTS array in the script at the bottom
+  ============================================================================
+-->
+<title>Velora | Supplements That Keep Their Promises — Free Delivery Over ฿999</title>
+<meta name="description" content="Pharmacist-formulated supplements made in Thailand — marine collagen, daily multivitamins, metabolism, sleep and gut support. Thai FDA registered, GMP certified. Free delivery over ฿999. Order via LINE, Messenger or COD.">
+<meta name="keywords" content="supplements Thailand, อาหารเสริม, collagen supplement Bangkok, marine collagen, best multivitamin Thailand, weight management supplement, sleep support, gut health probiotic, Thai FDA approved supplements, GMP certified, order supplements on LINE, supplement COD Thailand, chat to order">
+<meta name="author" content="Velora Nutrition Co.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#C1BFAA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Velora — Supplements That Keep Their Promises">
+<meta property="og:description" content="Pharmacist-formulated in Bangkok. Thai FDA registered, GMP certified, delivered in 1–3 days. Order via LINE, Messenger or COD.">
+<meta property="og:image" content="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/066ce96c1581.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23C1BFAA'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='36' font-weight='700' text-anchor='middle' fill='%231C1C1C'%3EV%3C/text%3E%3C/svg%3E">
+
+<!-- Fonts: Playfair Display (display) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font icons (Bootstrap Icons + Font Awesome 6 brands) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Tailwind CSS (Play CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream:   '#F9F4EA',
+        ivory:   '#F5EFE2',
+        sage:    '#C1BFAA',
+        olive:   '#A8A58F',
+        taupe:   '#D9D0B8',
+        bluegray:'#DDE3E6',
+        stone:   '#B7B59F',
+        ink:     '#1C1C1C',
+        graphite:'#3A3A3A',
+        muted:   '#6B6B6B',
+        hairline:'#E8E8E8',
+        star:    '#D9A441'
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans:    ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      },
+      maxWidth: { wrap: '1280px' },
+      boxShadow: {
+        soft: '0 20px 50px -20px rgba(28,28,28,0.14)',
+        lift: '0 14px 34px -14px rgba(28,28,28,0.22)'
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  :root{--cream:#F9F4EA;--ivory:#F5EFE2;--sage:#C1BFAA;--olive:#A8A58F;--taupe:#D9D0B8;--ink:#1C1C1C;--graphite:#3A3A3A;--muted:#6B6B6B;--hairline:#E8E8E8}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:#3A3A3A;background:#FFFFFF;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .font-display{font-family:'Playfair Display',Georgia,serif}
+  section[id]{scroll-margin-top:88px}
+  h1,h2{text-wrap:balance}
+  ::selection{background:#C1BFAA;color:#1C1C1C}
+  a:focus-visible,button:focus-visible,input:focus-visible,iframe:focus-visible{outline:2px solid #A8A58F;outline-offset:2px}
+
+  /* hero entrance */
+  @keyframes heroUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  .hero-in{opacity:0;animation:heroUp .9s cubic-bezier(.22,1,.36,1) forwards}
+
+  /* scroll reveal */
+  [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .9s cubic-bezier(.22,1,.36,1)}
+  [data-reveal].in{opacity:1;transform:translateY(0)}
+
+  /* horizontal overflow guards — "clip" does NOT create a scroll container,
+     so the sticky header keeps working (unlike overflow:hidden) */
+  html{overflow-x:clip}
+  @supports not (overflow:clip){html{overflow-x:hidden}}
+  .marquee-clip{overflow-x:clip}
+  @supports not (overflow:clip){.marquee-clip{overflow-x:hidden}}
+
+  /* marquee ribbon */
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+
+  /* slow spin (rotating badge) */
+  @keyframes spinSlow{to{transform:rotate(360deg)}}
+  .spin-slow{animation:spinSlow 18s linear infinite}
+
+  /* cart badge pop */
+  @keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.4)}to{transform:scale(1)}}
+  .pop{animation:pop .45s cubic-bezier(.22,1,.36,1)}
+
+  /* filtered grid entrance */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .fade-up{animation:fadeUp .55s cubic-bezier(.22,1,.36,1) both}
+
+  /* chatbot typing dots */
+  @keyframes blink{0%,60%,100%{opacity:.2;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  .typing i{width:6px;height:6px;border-radius:50%;background:#A8A58F;display:inline-block;animation:blink 1.1s infinite}
+  .typing i:nth-child(2){animation-delay:.18s}
+  .typing i:nth-child(3){animation-delay:.36s}
+
+  /* FAQ accordion */
+  .acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)}
+  .acc-body.open{grid-template-rows:1fr}
+  .acc-body>div{overflow:hidden}
+
+  /* scrollbars */
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+  .chat-scroll::-webkit-scrollbar{width:5px}
+  .chat-scroll::-webkit-scrollbar-thumb{background:#E8E8E8;border-radius:99px}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HealthStore",
+  "name":"Velora Nutrition Co.",
+  "description":"Pharmacist-formulated supplements made in Thailand. Thai FDA registered, GMP certified.",
+  "telephone":"+66-2-114-8899",
+  "priceRange":"฿290 - ฿1,290",
+  "address":{"@type":"PostalAddress","streetAddress":"88/8 Sukhumvit 31, Watthana","addressLocality":"Bangkok","postalCode":"10110","addressCountry":"TH"},
+  "sameAs":["https://facebook.com/velorath","https://instagram.com/velorath","https://line.me/R/ti/p/@velorath"],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"12400"}
+}
+</script>
+</head>
+
+<body class="bg-white font-sans text-graphite antialiased">
+<noscript>
+  <div class="bg-ink px-4 py-3 text-center text-sm text-cream">Enable JavaScript to browse the full shop, cart and chat assistant.</div>
+</noscript>
+
+<!-- ══════════════════ ANNOUNCEMENT BAR ══════════════════ -->
+<div class="bg-ink text-cream">
+  <div class="mx-auto flex max-w-wrap items-center justify-between gap-4 px-5 py-2 sm:px-8">
+    <p class="flex items-center gap-2 text-[11px] font-medium tracking-wide">
+      <i class="bi bi-truck"></i><span class="hidden sm:inline">Free nationwide delivery over ฿999 ·</span> COD &amp; PromptPay welcome
+    </p>
+    <a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" class="flex items-center gap-1.5 text-[11px] font-medium transition hover:text-sage">
+      Fastest reply on LINE <span class="font-semibold">@velorath</span> <i class="bi bi-arrow-right text-[10px]"></i>
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header id="siteHeader" class="sticky top-0 z-40 border-b border-transparent bg-white/90 backdrop-blur-md transition-all duration-300">
+  <div class="mx-auto flex max-w-wrap items-center justify-between gap-6 px-5 py-4 sm:px-8" id="headerInner">
+    <!-- Brand lockup -->
+    <a href="#hero" class="group flex items-center gap-2.5" aria-label="Velora — back to top">
+      <span class="grid h-10 w-10 place-items-center rounded-full bg-sage font-display text-xl font-black text-ink transition-transform duration-500 group-hover:rotate-[350deg]">V</span>
+      <span class="leading-none">
+        <span class="block font-display text-[26px] font-black tracking-tight text-ink">Velora</span>
+        <span class="mt-1 block text-[8.5px] font-semibold tracking-[0.28em] text-muted">NUTRITION&nbsp;CO.</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-7 text-sm font-medium text-graphite lg:flex" aria-label="Primary">
+      <a href="#bestsellers" class="transition hover:text-ink">Best Sellers</a>
+      <a href="#shop" class="transition hover:text-ink">Shop All</a>
+      <a href="#why" class="transition hover:text-ink">Why Velora</a>
+      <a href="#reviews" class="transition hover:text-ink">Reviews</a>
+      <a href="#faq" class="transition hover:text-ink">FAQ</a>
+      <a href="#contact" class="transition hover:text-ink">Contact</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-2.5">
+      <button id="cartBtn" class="relative grid h-11 w-11 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink" aria-label="Open cart">
+        <i class="bi bi-bag text-lg"></i>
+        <span id="cartBadge" class="absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-ink px-1 text-[10px] font-bold text-cream opacity-0 transition-opacity duration-300">0</span>
+      </button>
+      <a href="https://m.me/velorath" target="_blank" rel="noopener" class="hidden items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-cream transition-all duration-300 hover:bg-olive hover:shadow-lift active:scale-95 sm:inline-flex">
+        <i class="bi bi-chat-dots"></i> Chat to Order
+      </a>
+      <button id="menuBtn" class="grid h-11 w-11 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink lg:hidden" aria-label="Open menu" aria-expanded="false">
+        <i class="bi bi-list text-xl"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden border-t border-hairline bg-white lg:hidden">
+    <nav class="space-y-1 px-5 py-4" aria-label="Mobile">
+      <a href="#bestsellers" class="mobile-link block rounded-xl px-3 py-2.5 text-[15px] font-medium transition hover:bg-cream">Best Sellers</a>
+      <a href="#shop" class="mobile-link block rounded-xl px-3 py-2.5 text-[15px] font-medium transition hover:bg-cream">Shop All</a>
+      <a href="#why" class="mobile-link block rounded-xl px-3 py-2.5 text-[15px] font-medium transition hover:bg-cream">Why Velora</a>
+      <a href="#reviews" class="mobile-link block rounded-xl px-3 py-2.5 text-[15px] font-medium transition hover:bg-cream">Reviews</a>
+      <a href="#faq" class="mobile-link block rounded-xl px-3 py-2.5 text-[15px] font-medium transition hover:bg-cream">FAQ</a>
+      <a href="#contact" class="mobile-link block rounded-xl px-3 py-2.5 text-[15px] font-medium transition hover:bg-cream">Contact</a>
+    </nav>
+    <div class="flex gap-3 border-t border-hairline px-5 py-4">
+      <a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" class="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#06C755] px-4 py-3 text-sm font-semibold text-white active:scale-95"><i class="fa-brands fa-line"></i> LINE</a>
+      <a href="https://m.me/velorath" target="_blank" rel="noopener" class="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#0084FF] px-4 py-3 text-sm font-semibold text-white active:scale-95"><i class="fa-brands fa-facebook-messenger"></i> Messenger</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="hero" class="relative overflow-hidden">
+  <!-- ghost editorial word (anti-grid ornament) -->
+  <span aria-hidden="true" class="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display text-[24vw] font-black italic leading-none text-cream">velora</span>
+
+  <div class="relative mx-auto grid max-w-wrap grid-cols-1 items-center gap-16 px-5 pb-28 pt-12 sm:px-8 md:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-36">
+    <!-- Copy column -->
+    <div class="lg:col-span-6">
+      <div class="hero-in inline-flex items-center gap-2.5 rounded-full border border-hairline bg-cream px-4 py-2" style="animation-delay:.05s">
+        <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-olive opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-olive"></span></span>
+        <span class="text-xs font-medium text-graphite">Bangkok-formulated · Thai FDA registered</span>
+      </div>
+
+      <h1 class="hero-in mt-7 font-display text-[2.7rem] font-black leading-[1.03] tracking-tight text-ink sm:text-6xl xl:text-[4.4rem]" style="animation-delay:.15s">
+        Supplements that keep their <em class="font-medium italic text-olive">promises.</em>
+      </h1>
+
+      <p class="hero-in mt-6 max-w-xl text-[15px] leading-relaxed text-graphite sm:text-base" style="animation-delay:.25s">
+        Pharmacist-designed formulas, third-party tested and made in a GMP-certified facility right here in Thailand.
+        Clean labels, honest dosages, delivered to your door in 1–3 days — COD welcome.
+      </p>
+
+      <div class="hero-in mt-8 flex flex-wrap items-center gap-3.5" style="animation-delay:.35s">
+        <a href="#bestsellers" class="group inline-flex items-center gap-2.5 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream shadow-soft transition-all duration-300 hover:bg-olive hover:shadow-lift active:scale-95">
+          Shop best sellers <i class="bi bi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+        </a>
+        <a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 rounded-full border border-hairline bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:border-sage hover:bg-cream active:scale-95">
+          <i class="fa-brands fa-line text-[#06C755]"></i> Chat on LINE
+        </a>
+      </div>
+
+      <div class="hero-in mt-9 flex flex-wrap gap-x-6 gap-y-2.5 text-xs font-medium text-muted" style="animation-delay:.45s">
+        <span class="flex items-center gap-1.5"><i class="bi bi-patch-check-fill text-olive"></i> Thai FDA registered</span>
+        <span class="flex items-center gap-1.5"><i class="bi bi-patch-check-fill text-olive"></i> GMP certified facility</span>
+        <span class="flex items-center gap-1.5"><i class="bi bi-patch-check-fill text-olive"></i> 15-day money-back</span>
+        <span class="flex items-center gap-1.5"><i class="bi bi-patch-check-fill text-olive"></i> Free delivery ฿999+</span>
+      </div>
+
+      <div class="hero-in mt-8 flex items-center gap-3" style="animation-delay:.55s">
+        <div class="flex -space-x-2.5">
+          <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b6372ecf99a6.jpeg" alt="Velora customer" class="h-9 w-9 rounded-full border-2 border-white object-cover">
+          <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b0adc6f8de05.jpeg" alt="Velora customer" class="h-9 w-9 rounded-full border-2 border-white object-cover">
+          <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/536699762d2d.jpeg" alt="Velora customer" class="h-9 w-9 rounded-full border-2 border-white object-cover">
+          <span class="grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-sage text-[10px] font-bold text-ink">+2.3k</span>
+        </div>
+        <p class="text-xs leading-snug text-muted">joined by <b class="text-ink">2,300+ customers</b><br>this month</p>
+      </div>
+    </div>
+
+    <!-- Visual column (asymmetric, imperfect offsets) -->
+    <div class="hero-in relative lg:col-span-6" style="animation-delay:.3s">
+      <div class="relative mx-auto max-w-[500px] lg:ml-auto lg:mr-0">
+        <div class="absolute -right-4 -top-4 h-full w-full rotate-[2.5deg] rounded-[2.5rem] bg-taupe" aria-hidden="true"></div>
+        <div class="absolute -bottom-4 -left-4 h-full w-full -rotate-[1.2deg] rounded-[2.5rem] border-2 border-sage" aria-hidden="true"></div>
+
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/066ce96c1581.png"
+             alt="Woman with naturally glowing skin — the result Velora beauty formulas are built for"
+             class="relative aspect-[4/5] w-full rounded-[2.5rem] object-cover shadow-soft" fetchpriority="high">
+
+        <!-- rotating trust badge -->
+        <div class="absolute -left-7 -top-9 hidden h-32 w-32 sm:block" aria-hidden="true">
+          <svg viewBox="0 0 100 100" class="spin-slow h-full w-full">
+            <defs><path id="veloraCircle" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
+            <text style="font:600 7.6px Inter,sans-serif;letter-spacing:2px" fill="#1C1C1C">
+              <textPath href="#veloraCircle">THAI FDA • GMP CERTIFIED • EST. 2016 •</textPath>
+            </text>
+          </svg>
+          <span class="absolute inset-0 grid place-items-center"><i class="bi bi-leaf text-2xl text-olive"></i></span>
+        </div>
+
+        <!-- social-proof sticker -->
+        <div class="absolute -right-2 top-14 rotate-6 rounded-full bg-sage px-4 py-2 text-[11px] font-bold tracking-wide text-ink shadow-lift sm:-right-5">
+          2,300+ sold this month
+        </div>
+
+        <!-- floating review card -->
+        <div class="absolute -bottom-10 -left-2 w-64 -rotate-2 rounded-2xl border border-hairline bg-white/95 p-4 shadow-lift backdrop-blur sm:-left-10">
+          <div class="flex items-center gap-1 text-star">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <span class="ml-1.5 font-display text-lg font-bold text-ink">4.9</span>
+          </div>
+          <p class="mt-1.5 text-xs leading-snug text-graphite">from <b class="text-ink">12,400+</b> verified reviews</p>
+          <p class="mt-2.5 flex items-center gap-1.5 text-[10.5px] font-medium text-muted"><i class="bi bi-patch-check-fill text-olive"></i> 96% would recommend us</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ STATS STRIP ══════════════════ -->
+<section class="relative border-y border-hairline" aria-label="Velora in numbers">
+  <div class="mx-auto grid max-w-wrap grid-cols-2 gap-y-10 px-5 py-12 sm:px-8 md:grid-cols-4 md:py-14">
+    <div class="px-2 text-center md:border-r md:border-hairline" data-reveal>
+      <p class="font-display text-4xl font-bold text-ink md:text-5xl"><span data-countup="50000" data-format="comma">0</span><span class="text-olive">+</span></p>
+      <p class="mt-2 text-xs font-medium leading-snug text-muted">Orders delivered nationwide</p>
+    </div>
+    <div class="px-2 text-center" data-reveal style="transition-delay:.1s">
+      <p class="font-display text-4xl font-bold text-ink md:text-5xl"><span data-countup="4.9" data-decimals="1">0</span><span class="text-olive">★</span></p>
+      <p class="mt-2 text-xs font-medium leading-snug text-muted">Average rating · 12,400+ reviews</p>
+    </div>
+    <div class="px-2 text-center md:border-r md:border-hairline" data-reveal style="transition-delay:.2s">
+      <p class="font-display text-4xl font-bold text-ink md:text-5xl"><span data-countup="98">0</span><span class="text-olive">%</span></p>
+      <p class="mt-2 text-xs font-medium leading-snug text-muted">Customers who reorder</p>
+    </div>
+    <div class="px-2 text-center" data-reveal style="transition-delay:.3s">
+      <p class="font-display text-4xl font-bold text-ink md:text-5xl"><span data-countup="18">0</span></p>
+      <p class="mt-2 text-xs font-medium leading-snug text-muted">Formulas across 6 categories</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ MARQUEE RIBBON (anti-grid, tilted) ══════════════════ -->
+<!-- .marquee-clip: the tilted strip intentionally bleeds past both edges; the
+     wrapper clips that bleed so it never creates a horizontal page scrollbar -->
+<div class="marquee-clip">
+<div class="marquee relative -ml-[1%] w-[102%] -rotate-1 overflow-hidden bg-sage py-3.5" aria-hidden="true">
+  <div class="marquee-track items-center">
+    <div class="flex items-center gap-10 pr-10">
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>Free delivery over ฿999</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>COD &amp; PromptPay welcome</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>Thai FDA registered formulas</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>GMP certified facility</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>15-day money-back guarantee</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>Next-day delivery in Bangkok</span>
+    </div>
+    <div class="flex items-center gap-10 pr-10">
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>Free delivery over ฿999</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>COD &amp; PromptPay welcome</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>Thai FDA registered formulas</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>GMP certified facility</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>15-day money-back guarantee</span>
+      <span class="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-ink"><i class="bi bi-asterisk text-[9px]"></i>Next-day delivery in Bangkok</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════ CATEGORIES — BENTO GRID ══════════════════ -->
+<section id="categories" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div class="max-w-xl">
+        <p class="text-[11px] font-medium tracking-[0.03em] text-muted">Shop by concern</p>
+        <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">Find your <em class="font-medium italic text-olive">ritual</em></h2>
+        <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+        <p class="mt-4 text-[15px] leading-relaxed text-graphite">Six categories, eighteen formulas — each one built around a single promise, and none of them trying to do everything at once.</p>
+      </div>
+      <a href="#shop" class="group inline-flex items-center gap-2 text-sm font-semibold text-ink">
+        Browse all 18 formulas <i class="bi bi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+      </a>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-4 md:gap-5 lg:grid-cols-12" data-reveal style="transition-delay:.1s">
+
+      <!-- Collagen & Beauty — hero cell -->
+      <a href="#shop" data-cat-jump="beauty" class="group relative block col-span-2 h-64 overflow-hidden rounded-[1.75rem] sm:h-72 lg:col-span-5 lg:row-span-2 lg:h-auto lg:min-h-[540px]">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f6a71a8057cc.jpg" alt="Woman with radiant, glowing skin — Collagen and Beauty category" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-ink/5 to-transparent"></div>
+        <span class="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1.5 text-[10px] font-bold tracking-wide text-ink backdrop-blur">5 formulas</span>
+        <span class="absolute right-4 top-4 -rotate-3 rounded-full bg-sage px-3 py-1.5 text-[10px] font-bold text-ink shadow-lift">from ฿450</span>
+        <div class="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl bg-white/95 px-4 py-3.5 backdrop-blur transition-colors duration-300 group-hover:bg-white">
+          <div>
+            <h3 class="font-display text-lg font-semibold text-ink">Collagen &amp; Beauty</h3>
+            <p class="mt-0.5 text-[11px] text-muted">Glow from within</p>
+          </div>
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-cream"><i class="bi bi-arrow-right text-sm"></i></span>
+        </div>
+      </a>
+
+      <!-- Immunity & Vitamins -->
+      <a href="#shop" data-cat-jump="immunity" class="group relative block h-48 overflow-hidden rounded-[1.75rem] sm:h-56 lg:col-span-4 lg:h-auto lg:min-h-[260px]">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f5462a6f3a61.jpg" alt="Fresh citrus fruits rich in vitamin C — Immunity and Vitamins category" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-ink/5 to-transparent"></div>
+        <span class="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1.5 text-[10px] font-bold tracking-wide text-ink backdrop-blur">4 formulas</span>
+        <div class="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl bg-white/95 px-4 py-3 backdrop-blur">
+          <div>
+            <h3 class="font-display text-base font-semibold text-ink">Immunity &amp; Vitamins</h3>
+            <p class="mt-0.5 text-[11px] text-muted">Everyday defense</p>
+          </div>
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-cream"><i class="bi bi-arrow-right text-xs"></i></span>
+        </div>
+      </a>
+
+      <!-- Weight Management (offset for imperfect rhythm) -->
+      <a href="#shop" data-cat-jump="weight" class="group relative block h-48 overflow-hidden rounded-[1.75rem] sm:h-56 lg:col-span-3 lg:h-auto lg:min-h-[260px] lg:translate-y-4">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/70fc283867ec.png" alt="Woman jogging outdoors — Weight Management category" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-ink/5 to-transparent"></div>
+        <span class="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1.5 text-[10px] font-bold tracking-wide text-ink backdrop-blur">3 formulas</span>
+        <div class="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl bg-white/95 px-4 py-3 backdrop-blur">
+          <div>
+            <h3 class="font-display text-base font-semibold text-ink">Weight Management</h3>
+            <p class="mt-0.5 text-[11px] text-muted">Metabolism, supported</p>
+          </div>
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-cream"><i class="bi bi-arrow-right text-xs"></i></span>
+        </div>
+      </a>
+
+      <!-- Sleep & Stress -->
+      <a href="#shop" data-cat-jump="sleep" class="group relative block h-48 overflow-hidden rounded-[1.75rem] sm:h-56 lg:col-span-3 lg:h-auto lg:min-h-[240px] lg:translate-y-4">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/feb02aa68913.jpeg" alt="Cozy bedroom at dusk — Sleep and Stress category" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-ink/5 to-transparent"></div>
+        <span class="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1.5 text-[10px] font-bold tracking-wide text-ink backdrop-blur">2 formulas</span>
+        <div class="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl bg-white/95 px-4 py-3 backdrop-blur">
+          <div>
+            <h3 class="font-display text-base font-semibold text-ink">Sleep &amp; Stress</h3>
+            <p class="mt-0.5 text-[11px] text-muted">Calm nights, clear days</p>
+          </div>
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-cream"><i class="bi bi-arrow-right text-xs"></i></span>
+        </div>
+      </a>
+
+      <!-- Joint & Bone -->
+      <a href="#shop" data-cat-jump="joint" class="group relative block h-48 overflow-hidden rounded-[1.75rem] sm:h-56 lg:col-span-4 lg:h-auto lg:min-h-[240px]">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/c574665486f8.jpg" alt="Active senior couple hiking — Joint and Bone category" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/40 via-ink/5 to-transparent"></div>
+        <span class="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1.5 text-[10px] font-bold tracking-wide text-ink backdrop-blur">2 formulas</span>
+        <div class="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-2xl bg-white/95 px-4 py-3 backdrop-blur">
+          <div>
+            <h3 class="font-display text-base font-semibold text-ink">Joint &amp; Bone</h3>
+            <p class="mt-0.5 text-[11px] text-muted">Move freely, live fully</p>
+          </div>
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-cream"><i class="bi bi-arrow-right text-xs"></i></span>
+        </div>
+      </a>
+
+      <!-- Digestion & Detox — wide banner cell -->
+      <a href="#shop" data-cat-jump="digestion" class="group relative block col-span-2 h-52 overflow-hidden rounded-[1.75rem] sm:h-64 lg:col-span-12 lg:h-56">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/04b14130b092.jpg" alt="Yogurt breakfast bowl with granola and berries — Digestion and Detox category" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-ink/50 via-ink/15 to-transparent"></div>
+        <span class="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1.5 text-[10px] font-bold tracking-wide text-ink backdrop-blur">2 formulas</span>
+        <div class="absolute left-3 top-1/2 w-64 -translate-y-1/2 rounded-2xl bg-white/95 px-4 py-3 backdrop-blur sm:left-6 sm:w-72">
+          <h3 class="font-display text-lg font-semibold text-ink">Digestion &amp; Detox</h3>
+          <p class="mt-0.5 text-[11px] text-muted">Happy gut, happy you</p>
+        </div>
+        <span class="absolute right-4 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-cream text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-cream sm:grid"><i class="bi bi-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BEST SELLERS ══════════════════ -->
+<section id="bestsellers" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div class="max-w-xl">
+        <p class="text-[11px] font-medium tracking-[0.03em] text-muted">Community favorites</p>
+        <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">The <em class="font-medium italic text-olive">hard-to-keep-in-stock</em> list</h2>
+        <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+        <p class="mt-4 text-[15px] leading-relaxed text-graphite">These four leave our warehouse fastest — restocked every Tuesday, gone by Friday more often than we'd like to admit.</p>
+      </div>
+      <a href="#shop" class="group inline-flex items-center gap-2 text-sm font-semibold text-ink">
+        View all 18 formulas <i class="bi bi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+      </a>
+    </div>
+    <div id="bestsellerGrid" class="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ SHOP ALL — FILTERABLE CATALOG ══════════════════ -->
+<section id="shop" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <p class="text-[11px] font-medium tracking-[0.03em] text-muted">The full shelf</p>
+      <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">Every formula, <em class="font-medium italic text-olive">one page</em></h2>
+      <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+      <p class="mt-4 text-[15px] leading-relaxed text-graphite">Filter by what you're working on. Every label, every dosage and every price — out in the open.</p>
+    </div>
+
+    <!-- filter pills (populated by JS) -->
+    <div id="filterBar" class="no-scrollbar mt-10 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Filter products by category"></div>
+
+    <div class="mt-5 flex items-center justify-between gap-4">
+      <p id="shopCount" class="text-xs font-medium text-muted">Showing 18 of 18 formulas</p>
+      <p class="hidden items-center gap-1.5 text-xs font-medium text-muted sm:flex"><i class="bi bi-info-circle text-olive"></i> Prices include VAT · COD available</p>
+    </div>
+
+    <div id="productGrid" class="mt-8 grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-6 md:grid-cols-3 xl:grid-cols-4"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ BUNDLE OFFER + COUNTDOWN ══════════════════ -->
+<section id="bundle" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="relative overflow-hidden rounded-[2.5rem] bg-cream shadow-soft" data-reveal>
+      <div class="grid lg:grid-cols-2">
+        <!-- visual -->
+        <div class="relative min-h-[280px] lg:min-h-[560px]">
+          <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/146dc9a5ac25.jpg" alt="The Glow Starter Kit gift box with supplement bottles and dried flowers" loading="lazy" class="absolute inset-0 h-full w-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/25 to-transparent lg:bg-gradient-to-r"></div>
+          <span class="absolute left-5 top-5 -rotate-6 rounded-full bg-ink px-4 py-2 text-[11px] font-bold tracking-wide text-cream shadow-lift">SAVE ฿510</span>
+          <span class="absolute bottom-5 left-5 rounded-full bg-white/90 px-3.5 py-1.5 text-[10.5px] font-semibold text-ink backdrop-blur">Gift-boxed, ready to give</span>
+        </div>
+
+        <!-- details -->
+        <div class="p-7 sm:p-10 lg:p-12">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-ink">
+            <i class="bi bi-lightning-charge-fill text-olive"></i> Limited time · ends tonight
+          </span>
+          <h2 class="mt-5 font-display text-3xl font-bold leading-[1.1] tracking-tight text-ink md:text-4xl">The Glow <em class="font-medium italic text-olive">Starter</em> Kit</h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-graphite">Three of our best-loved beauty formulas, boxed together at a price that makes starting (or gifting) very easy to say yes to.</p>
+
+          <!-- what's inside -->
+          <ul class="mt-7 space-y-3.5">
+            <li class="flex items-center gap-3.5">
+              <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/30af5b6a0d5f.webp" alt="LumiSkin Marine Collagen" loading="lazy" class="h-14 w-14 rounded-xl bg-white object-cover">
+              <div class="flex-1"><p class="text-sm font-semibold text-ink">LumiSkin Marine Collagen</p><p class="text-[11px] text-muted">30 daily scoops · 10,000mg peptides</p></div>
+              <span class="text-sm text-muted line-through">฿1,590</span>
+            </li>
+            <li class="flex items-center gap-3.5">
+              <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d4d8a079837a.jpg" alt="Radiance C+ 1000" loading="lazy" class="h-14 w-14 rounded-xl bg-white object-cover">
+              <div class="flex-1"><p class="text-sm font-semibold text-ink">Radiance C+ 1000</p><p class="text-[11px] text-muted">60 tablets · 2-month supply</p></div>
+              <span class="text-sm text-muted line-through">฿450</span>
+            </li>
+            <li class="flex items-center gap-3.5">
+              <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f6560aeba7ad.png" alt="Biotin Bloom" loading="lazy" class="h-14 w-14 rounded-xl bg-white object-cover">
+              <div class="flex-1"><p class="text-sm font-semibold text-ink">Biotin Bloom Hair &amp; Nails</p><p class="text-[11px] text-muted">90 gummies · strawberry-vanilla</p></div>
+              <span class="text-sm text-muted line-through">฿660</span>
+            </li>
+          </ul>
+
+          <!-- price + countdown -->
+          <div class="mt-8 flex flex-wrap items-end justify-between gap-6 border-t border-dashed border-stone pt-7">
+            <div>
+              <div class="flex items-baseline gap-3">
+                <p class="font-display text-5xl font-black text-ink">฿2,190</p>
+                <p class="text-lg text-muted line-through">฿2,700</p>
+              </div>
+              <p class="mt-2 flex items-center gap-1.5 text-xs font-semibold text-[#B5544B]"><i class="bi bi-fire"></i> Only 23 kits left at this price</p>
+            </div>
+            <div>
+              <p class="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted">Offer ends tonight</p>
+              <div class="flex items-center gap-1.5" role="timer" aria-label="Time remaining today">
+                <div class="w-14 rounded-xl bg-white px-1 py-2 text-center shadow-sm"><span id="cdH" class="font-display text-2xl font-bold tabular-nums text-ink">00</span><p class="text-[9px] font-semibold uppercase tracking-wider text-muted">hrs</p></div>
+                <span class="font-display text-xl text-olive">:</span>
+                <div class="w-14 rounded-xl bg-white px-1 py-2 text-center shadow-sm"><span id="cdM" class="font-display text-2xl font-bold tabular-nums text-ink">00</span><p class="text-[9px] font-semibold uppercase tracking-wider text-muted">min</p></div>
+                <span class="font-display text-xl text-olive">:</span>
+                <div class="w-14 rounded-xl bg-white px-1 py-2 text-center shadow-sm"><span id="cdS" class="font-display text-2xl font-bold tabular-nums text-ink">00</span><p class="text-[9px] font-semibold uppercase tracking-wider text-muted">sec</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <button data-add="100" class="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-full bg-ink px-7 py-4 text-sm font-semibold text-cream transition-all duration-300 hover:bg-olive hover:shadow-lift active:scale-95 sm:flex-none">
+              <i class="bi bi-bag-plus"></i> Add bundle to cart
+            </button>
+            <button data-open-chat class="text-sm font-semibold text-ink underline decoration-sage decoration-2 underline-offset-4 transition hover:decoration-olive">or ask us in chat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ WHY VELORA — BENTO ══════════════════ -->
+<section id="why" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <p class="text-[11px] font-medium tracking-[0.03em] text-muted">Why Velora</p>
+      <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">No miracle claims. Just <em class="font-medium italic text-olive">measured</em> results.</h2>
+      <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+      <p class="mt-4 text-[15px] leading-relaxed text-graphite">The supplement aisle runs on hype. We run on formulas we can defend line by line — and a standards list we're happy to put our name on.</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-12" data-reveal style="transition-delay:.1s">
+      <!-- A: lab image tile -->
+      <div class="group relative overflow-hidden rounded-[1.75rem] sm:col-span-2 lg:col-span-7 lg:min-h-[360px]">
+        <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/04ff0259e82b.png" alt="Scientist testing supplement samples in a quality-control laboratory" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent"></div>
+        <div class="absolute inset-x-4 bottom-4 flex flex-wrap items-end justify-between gap-3 rounded-2xl bg-white/95 px-5 py-4 backdrop-blur">
+          <div>
+            <h3 class="font-display text-xl font-semibold text-ink">Every batch, third-party tested</h3>
+            <p class="mt-1 text-xs leading-relaxed text-muted">Potency, purity and heavy metals — verified before anything ships. Certificates available on request, in chat.</p>
+          </div>
+          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sage text-ink"><i class="bi bi-eye"></i></span>
+        </div>
+      </div>
+
+      <!-- B: sage trust tile -->
+      <div class="flex flex-col justify-between rounded-[1.75rem] bg-sage p-7 sm:col-span-2 lg:col-span-5 lg:min-h-[360px] lg:p-8">
+        <div class="flex items-center gap-2.5">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-white/70 text-ink"><i class="bi bi-patch-check-fill text-lg"></i></span>
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-white/70 text-ink"><i class="bi bi-award-fill text-lg"></i></span>
+        </div>
+        <div class="mt-8">
+          <h3 class="font-display text-2xl font-bold text-ink">Thai FDA &amp; GMP, no shortcuts</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink/80">All 18 formulas are registered with the Thai FDA and produced in a GMP-certified facility. Registration numbers are printed on every label.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px] font-bold">
+            <span class="rounded-full bg-white/70 px-3 py-1.5 text-ink">18 registered formulas</span>
+            <span class="rounded-full bg-white/70 px-3 py-1.5 text-ink">HACCP certified</span>
+            <span class="rounded-full bg-white/70 px-3 py-1.5 text-ink">ISO 22000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- C -->
+      <div class="rounded-[1.75rem] border border-hairline p-7 lg:col-span-3">
+        <span class="grid h-11 w-11 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-list-check text-lg"></i></span>
+        <h3 class="mt-5 font-display text-lg font-semibold text-ink">Clean, honest labels</h3>
+        <p class="mt-2 text-[13px] leading-relaxed text-graphite">No proprietary blends. Every active ingredient and its full dosage, printed in plain English.</p>
+      </div>
+
+      <!-- D -->
+      <div class="rounded-[1.75rem] bg-ink p-7 text-cream lg:col-span-3">
+        <span class="grid h-11 w-11 place-items-center rounded-full bg-cream/15 text-cream"><i class="bi bi-shield-check text-lg"></i></span>
+        <h3 class="mt-5 font-display text-lg font-semibold text-cream">15-day money-back</h3>
+        <p class="mt-2 text-[13px] leading-relaxed text-cream/75">Opened bottle? Still fine. Message us and the refund lands within 3 working days — no interrogation.</p>
+      </div>
+
+      <!-- E -->
+      <div class="rounded-[1.75rem] border border-hairline p-7 lg:col-span-3">
+        <span class="grid h-11 w-11 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-truck text-lg"></i></span>
+        <h3 class="mt-5 font-display text-lg font-semibold text-ink">Free delivery over ฿999</h3>
+        <p class="mt-2 text-[13px] leading-relaxed text-graphite">Flash, Kerry or J&amp;T with live tracking. Next-day in Bangkok, 1–3 days upcountry.</p>
+      </div>
+
+      <!-- F -->
+      <div class="rounded-[1.75rem] border border-hairline p-7 lg:col-span-3">
+        <span class="grid h-11 w-11 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-clipboard2-pulse text-lg"></i></span>
+        <h3 class="mt-5 font-display text-lg font-semibold text-ink">Pharmacist-formulated</h3>
+        <p class="mt-2 text-[13px] leading-relaxed text-graphite">Designed by licensed Thai pharmacists. Every formula reviewed against current research once a year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ HOW TO ORDER ══════════════════ -->
+<section id="how" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="max-w-2xl" data-reveal>
+      <p class="text-[11px] font-medium tracking-[0.03em] text-muted">How ordering works</p>
+      <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">From chat to doorstep in <em class="font-medium italic text-olive">four steps</em></h2>
+      <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="relative border-t-2 border-dashed border-stone pt-7" data-reveal>
+        <span class="absolute -top-[5px] left-0 h-2.5 w-2.5 rounded-full bg-olive"></span>
+        <div class="flex items-center justify-between">
+          <span class="font-display text-5xl font-bold italic text-taupe">01</span>
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-bag text-lg"></i></span>
+        </div>
+        <h3 class="mt-5 font-display text-xl font-semibold text-ink">Fill your cart</h3>
+        <p class="mt-2.5 text-sm leading-relaxed text-graphite">Browse by concern, add what resonates. Quick view shows the full label — no surprises, ever.</p>
+      </div>
+      <div class="relative border-t-2 border-dashed border-stone pt-7" data-reveal style="transition-delay:.1s">
+        <span class="absolute -top-[5px] left-0 h-2.5 w-2.5 rounded-full bg-olive"></span>
+        <div class="flex items-center justify-between">
+          <span class="font-display text-5xl font-bold italic text-taupe">02</span>
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-chat-dots text-lg"></i></span>
+        </div>
+        <h3 class="mt-5 font-display text-xl font-semibold text-ink">Checkout via chat</h3>
+        <p class="mt-2.5 text-sm leading-relaxed text-graphite">Hit checkout and continue in Messenger or LINE — wherever you already are. A human confirms stock in minutes.</p>
+      </div>
+      <div class="relative border-t-2 border-dashed border-stone pt-7" data-reveal style="transition-delay:.2s">
+        <span class="absolute -top-[5px] left-0 h-2.5 w-2.5 rounded-full bg-olive"></span>
+        <div class="flex items-center justify-between">
+          <span class="font-display text-5xl font-bold italic text-taupe">03</span>
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-wallet2 text-lg"></i></span>
+        </div>
+        <h3 class="mt-5 font-display text-xl font-semibold text-ink">Pay your way</h3>
+        <p class="mt-2.5 text-sm leading-relaxed text-graphite">PromptPay, bank transfer — or cash on delivery if you'd rather see the box first. Card payments coming soon.</p>
+      </div>
+      <div class="relative border-t-2 border-dashed border-stone pt-7" data-reveal style="transition-delay:.3s">
+        <span class="absolute -top-[5px] left-0 h-2.5 w-2.5 rounded-full bg-olive"></span>
+        <div class="flex items-center justify-between">
+          <span class="font-display text-5xl font-bold italic text-taupe">04</span>
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-box-seam text-lg"></i></span>
+        </div>
+        <h3 class="mt-5 font-display text-xl font-semibold text-ink">Track to your door</h3>
+        <p class="mt-2.5 text-sm leading-relaxed text-graphite">Flash, Kerry or J&amp;T with live tracking links. Next-day in Bangkok, 1–3 working days upcountry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ REVIEWS ══════════════════ -->
+<section id="reviews" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="flex flex-wrap items-center justify-between gap-8" data-reveal>
+      <div class="max-w-xl">
+        <p class="text-[11px] font-medium tracking-[0.03em] text-muted">Word of mouth</p>
+        <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">Don't take <em class="font-medium italic text-olive">our</em> word for it</h2>
+        <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="flex items-center gap-5 rounded-[1.75rem] bg-cream px-7 py-5">
+        <p class="font-display text-5xl font-black text-ink">4.9</p>
+        <div>
+          <div class="flex gap-0.5 text-star"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p class="mt-1.5 text-xs font-medium text-graphite">12,400+ verified reviews</p>
+          <p class="mt-0.5 text-[11px] text-muted">Collected via LINE &amp; Messenger after delivery</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 md:gap-6 xl:grid-cols-4">
+      <figure class="flex h-full flex-col rounded-[1.75rem] bg-cream p-6" data-reveal>
+        <div class="flex gap-0.5 text-star"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <blockquote class="mt-4 flex-1 text-[14.5px] leading-relaxed text-graphite">"Three weeks of LumiSkin and my colleagues asked which clinic I'd been to. None — just this and actually sleeping. Half my LINE group ordered after seeing my photos."</blockquote>
+        <figcaption class="mt-5 border-t border-ink/10 pt-4">
+          <div class="flex items-center gap-3">
+            <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b6372ecf99a6.jpeg" alt="Portrait of Ploy R." loading="lazy" class="h-11 w-11 rounded-full object-cover">
+            <div>
+              <p class="text-sm font-semibold text-ink">Ploy R. <i class="bi bi-patch-check-fill text-olive" aria-label="Verified buyer"></i></p>
+              <p class="text-[11px] text-muted">Bangkok · Verified buyer</p>
+            </div>
+          </div>
+          <p class="mt-3 inline-flex rounded-full bg-white px-3 py-1 text-[10.5px] font-medium text-muted">LumiSkin Marine Collagen</p>
+        </figcaption>
+      </figure>
+
+      <figure class="flex h-full flex-col rounded-[1.75rem] bg-cream p-6 xl:mt-9" data-reveal style="transition-delay:.08s">
+        <div class="flex gap-0.5 text-star"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <blockquote class="mt-4 flex-1 text-[14.5px] leading-relaxed text-graphite">"Ordered through Messenger at 9pm. Flash Express knocked at 10am the next morning. Paid COD, zero friction. Daily Shield is now a breakfast fixture."</blockquote>
+        <figcaption class="mt-5 border-t border-ink/10 pt-4">
+          <div class="flex items-center gap-3">
+            <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/b0adc6f8de05.jpeg" alt="Portrait of Tanapon C." loading="lazy" class="h-11 w-11 rounded-full object-cover">
+            <div>
+              <p class="text-sm font-semibold text-ink">Tanapon C. <i class="bi bi-patch-check-fill text-olive" aria-label="Verified buyer"></i></p>
+              <p class="text-[11px] text-muted">Chiang Mai · Verified buyer</p>
+            </div>
+          </div>
+          <p class="mt-3 inline-flex rounded-full bg-white px-3 py-1 text-[10.5px] font-medium text-muted">Daily Shield Multivitamin</p>
+        </figcaption>
+      </figure>
+
+      <figure class="flex h-full flex-col rounded-[1.75rem] rotate-[0.6deg] bg-cream p-6" data-reveal style="transition-delay:.16s">
+        <div class="flex gap-0.5 text-star"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></div>
+        <blockquote class="mt-4 flex-1 text-[14.5px] leading-relaxed text-graphite">"MetaBurn doesn't do magic — it does consistency. Steady energy through 6am runs, no 3pm crash. Took about two weeks to really feel it. Worth it."</blockquote>
+        <figcaption class="mt-5 border-t border-ink/10 pt-4">
+          <div class="flex items-center gap-3">
+            <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/536699762d2d.jpeg" alt="Portrait of Mint S." loading="lazy" class="h-11 w-11 rounded-full object-cover">
+            <div>
+              <p class="text-sm font-semibold text-ink">Mint S. <i class="bi bi-patch-check-fill text-olive" aria-label="Verified buyer"></i></p>
+              <p class="text-[11px] text-muted">Phuket · Verified buyer</p>
+            </div>
+          </div>
+          <p class="mt-3 inline-flex rounded-full bg-white px-3 py-1 text-[10.5px] font-medium text-muted">MetaBurn L-Carnitine</p>
+        </figcaption>
+      </figure>
+
+      <figure class="flex h-full flex-col rounded-[1.75rem] bg-cream p-6 xl:mt-9" data-reveal style="transition-delay:.24s">
+        <div class="flex gap-0.5 text-star"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <blockquote class="mt-4 flex-1 text-[14.5px] leading-relaxed text-graphite">"At 55, my knees complained on every morning walk. MoveWell took about a month, then… quiet. The pharmacist on their LINE answered every question patiently."</blockquote>
+        <figcaption class="mt-5 border-t border-ink/10 pt-4">
+          <div class="flex items-center gap-3">
+            <img src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/55730e804059.jpg" alt="Portrait of Kanya W." loading="lazy" class="h-11 w-11 rounded-full object-cover">
+            <div>
+              <p class="text-sm font-semibold text-ink">Kanya W. <i class="bi bi-patch-check-fill text-olive" aria-label="Verified buyer"></i></p>
+              <p class="text-[11px] text-muted">Khon Kaen · Verified buyer</p>
+            </div>
+          </div>
+          <p class="mt-3 inline-flex rounded-full bg-white px-3 py-1 text-[10.5px] font-medium text-muted">MoveWell Glucosamine + MSM</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section id="faq" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="text-[11px] font-medium tracking-[0.03em] text-muted">Good questions</p>
+        <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">Asked, <em class="font-medium italic text-olive">answered</em></h2>
+        <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+        <p class="mt-4 text-[15px] leading-relaxed text-graphite">The questions we hear most in chat, answered honestly. Something else on your mind? Vira — our chat assistant — is one tap away.</p>
+        <button data-open-chat class="group mt-7 inline-flex items-center gap-2.5 rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-cream transition-all duration-300 hover:bg-olive hover:shadow-lift active:scale-95">
+          <i class="bi bi-chat-dots"></i> Ask Vira in chat
+        </button>
+      </div>
+
+      <div class="lg:col-span-7" data-reveal style="transition-delay:.1s">
+        <div class="border-t border-hairline">
+          <div class="faq-item border-b border-hairline">
+            <button class="faq-q flex w-full items-center justify-between gap-6 py-5 text-left" aria-expanded="false">
+              <span class="font-display text-lg font-semibold text-ink">Are Velora products registered with the Thai FDA?</span>
+              <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full border border-hairline text-ink transition-all duration-300"><i class="bi bi-plus-lg text-xs"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="pb-6 pr-8 text-sm leading-relaxed text-graphite">Yes — every formula is produced in a GMP-certified facility and registered with the Thai FDA (อย.). Registration numbers are printed on each label, and batch certificates are available on request in chat. We publish them rather than make you ask twice.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-hairline">
+            <button class="faq-q flex w-full items-center justify-between gap-6 py-5 text-left" aria-expanded="false">
+              <span class="font-display text-lg font-semibold text-ink">How do I order and pay?</span>
+              <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full border border-hairline text-ink transition-all duration-300"><i class="bi bi-plus-lg text-xs"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="pb-6 pr-8 text-sm leading-relaxed text-graphite">Add to cart and checkout — we continue in Messenger or LINE, wherever you're comfortable. Pay via PromptPay, bank transfer, or cash on delivery. First order over ฿500? Use code <b class="text-ink">WELCOME10</b> for 10% off.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-hairline">
+            <button class="faq-q flex w-full items-center justify-between gap-6 py-5 text-left" aria-expanded="false">
+              <span class="font-display text-lg font-semibold text-ink">How fast is delivery, and is it really free?</span>
+              <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full border border-hairline text-ink transition-all duration-300"><i class="bi bi-plus-lg text-xs"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="pb-6 pr-8 text-sm leading-relaxed text-graphite">Orders before 2pm ship the same day via Flash Express, Kerry or J&amp;T — next-day in Greater Bangkok, 1–3 working days upcountry. Free nationwide on orders over ฿999; a flat ฿60 below that. Tracking links land in your chat.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-hairline">
+            <button class="faq-q flex w-full items-center justify-between gap-6 py-5 text-left" aria-expanded="false">
+              <span class="font-display text-lg font-semibold text-ink">What if it doesn't work for me?</span>
+              <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full border border-hairline text-ink transition-all duration-300"><i class="bi bi-plus-lg text-xs"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="pb-6 pr-8 text-sm leading-relaxed text-graphite">15-day money-back guarantee, opened bottle included. Message us on LINE or Messenger and the refund is processed within 3 working days. No forms, no interrogation — we'd rather lose a sale than a customer's trust.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-hairline">
+            <button class="faq-q flex w-full items-center justify-between gap-6 py-5 text-left" aria-expanded="false">
+              <span class="font-display text-lg font-semibold text-ink">How long until I see results?</span>
+              <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full border border-hairline text-ink transition-all duration-300"><i class="bi bi-plus-lg text-xs"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="pb-6 pr-8 text-sm leading-relaxed text-graphite">Honestly? It depends on you. Most customers report noticeable changes in 2–6 weeks of consistent daily use — collagen tends to show around week four, energy formulas within days. Consistency beats intensity, every time.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-hairline">
+            <button class="faq-q flex w-full items-center justify-between gap-6 py-5 text-left" aria-expanded="false">
+              <span class="font-display text-lg font-semibold text-ink">Can I take these with my medication?</span>
+              <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full border border-hairline text-ink transition-all duration-300"><i class="bi bi-plus-lg text-xs"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="pb-6 pr-8 text-sm leading-relaxed text-graphite">If you're pregnant, nursing, or on prescription medication, please check with your physician first. You can also send us your medication list in chat — our pharmacist reviews it for interactions, free of charge, usually within the hour.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CTA BAND ══════════════════ -->
+<section class="py-16 md:py-20" aria-label="Get started">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="relative overflow-hidden rounded-[2.5rem] bg-ink px-7 py-12 text-cream sm:px-10 md:px-14 md:py-16" data-reveal>
+      <span aria-hidden="true" class="pointer-events-none absolute -right-8 -top-10 select-none font-display text-[11rem] font-black italic leading-none text-cream/5">hi</span>
+      <div class="relative flex flex-col items-start justify-between gap-9 lg:flex-row lg:items-center">
+        <div class="max-w-xl">
+          <p class="text-[11px] font-medium tracking-[0.03em] text-cream/60">Still deciding?</p>
+          <h2 class="mt-3 font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-[2.6rem]">Start a conversation. <em class="font-medium italic text-sage">It's free.</em></h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-cream/70">Tell us your goal in chat and our pharmacist will build your stack in minutes — no upselling, no pressure, and you can walk away anytime.</p>
+        </div>
+        <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <a href="https://m.me/velorath" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#0084FF] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110 hover:shadow-lift active:scale-95"><i class="fa-brands fa-facebook-messenger"></i> Messenger</a>
+          <a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#06C755] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:brightness-110 hover:shadow-lift active:scale-95"><i class="fa-brands fa-line"></i> LINE</a>
+          <a href="tel:+6621148899" class="inline-flex items-center justify-center gap-2.5 rounded-full border border-cream/25 px-7 py-3.5 text-sm font-semibold text-cream transition-all duration-300 hover:border-cream/60 hover:bg-cream/10 active:scale-95"><i class="bi bi-telephone"></i> 02-114-8899</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT + MAP ══════════════════ -->
+<section id="contact" class="py-16 md:py-24">
+  <div class="mx-auto max-w-wrap px-5 sm:px-8">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <!-- contact cards -->
+      <div class="lg:col-span-5" data-reveal>
+        <p class="text-[11px] font-medium tracking-[0.03em] text-muted">We're around</p>
+        <h2 class="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-ink md:text-[2.8rem]">Talk to a <em class="font-medium italic text-olive">human</em></h2>
+        <svg class="mt-5" width="96" height="12" viewBox="0 0 96 12" fill="none" aria-hidden="true"><path d="M2 8.5Q 16 2, 30 7T 58 7T 86 6T 94 7.5" stroke="#A8A58F" stroke-width="3" stroke-linecap="round"/></svg>
+        <p class="mt-4 text-[15px] leading-relaxed text-graphite">Real people, Bangkok-based, replying in Thai or English — whichever you type first.</p>
+
+        <div class="mt-8 space-y-3.5">
+          <!-- LINE (featured) -->
+          <a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-2xl bg-sage p-5 transition-all duration-300 hover:shadow-lift">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-2xl text-[#06C755]"><i class="fa-brands fa-line"></i></span>
+            <span class="flex-1">
+              <span class="block text-sm font-bold text-ink">Velora on LINE</span>
+              <span class="mt-0.5 block text-xs text-ink/70">@velorath · typically replies within minutes</span>
+            </span>
+            <i class="bi bi-arrow-right text-ink transition-transform duration-300 group-hover:translate-x-1"></i>
+          </a>
+          <!-- Messenger -->
+          <a href="https://m.me/velorath" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-2xl border border-hairline bg-white p-5 transition-all duration-300 hover:border-stone hover:shadow-lift">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-cream text-2xl text-[#0084FF]"><i class="fa-brands fa-facebook-messenger"></i></span>
+            <span class="flex-1">
+              <span class="block text-sm font-bold text-ink">Messenger</span>
+              <span class="mt-0.5 block text-xs text-muted">m.me/velorath · continues where the chat left off</span>
+            </span>
+            <i class="bi bi-arrow-right text-ink transition-transform duration-300 group-hover:translate-x-1"></i>
+          </a>
+          <!-- Phone -->
+          <a href="tel:+6621148899" class="group flex items-center gap-4 rounded-2xl border border-hairline bg-white p-5 transition-all duration-300 hover:border-stone hover:shadow-lift">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-telephone-fill"></i></span>
+            <span class="flex-1">
+              <span class="block text-sm font-bold text-ink">02-114-8899</span>
+              <span class="mt-0.5 block text-xs text-muted">Hotline · Mon–Sat 9:00–20:00</span>
+            </span>
+            <i class="bi bi-arrow-right text-ink transition-transform duration-300 group-hover:translate-x-1"></i>
+          </a>
+          <!-- Facebook -->
+          <a href="https://facebook.com/velorath" target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-2xl border border-hairline bg-white p-5 transition-all duration-300 hover:border-stone hover:shadow-lift">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-cream text-ink"><i class="fa-brands fa-facebook-f"></i></span>
+            <span class="flex-1">
+              <span class="block text-sm font-bold text-ink">Facebook Page</span>
+              <span class="mt-0.5 block text-xs text-muted">facebook.com/velorath · daily wellness tips</span>
+            </span>
+            <i class="bi bi-arrow-right text-ink transition-transform duration-300 group-hover:translate-x-1"></i>
+          </a>
+          <!-- Visit -->
+          <div class="flex items-center gap-4 rounded-2xl border border-hairline bg-white p-5">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-cream text-ink"><i class="bi bi-geo-alt-fill"></i></span>
+            <div class="flex-1">
+              <p class="text-sm font-bold text-ink">Visit the flagship store</p>
+              <p class="mt-0.5 text-xs leading-relaxed text-muted">88/8 Sukhumvit 31, Watthana, Bangkok 10110 · Mon–Sat 10:00–19:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- map -->
+      <div class="relative lg:col-span-7" data-reveal style="transition-delay:.1s">
+        <div class="h-full overflow-hidden rounded-[2rem] border border-hairline shadow-soft">
+          <iframe
+            title="Velora flagship store location — Sukhumvit 31, Bangkok"
+            src="https://maps.google.com/maps?q=Sukhumvit%2031%2C%20Khlongtoei%20Nuea%2C%20Watthana%2C%20Bangkok&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            class="h-[380px] w-full md:h-full md:min-h-[520px]"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="absolute bottom-5 left-5 flex max-w-[calc(100%-2.5rem)] items-center gap-3.5 rounded-2xl bg-white/95 px-5 py-4 shadow-lift backdrop-blur">
+          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-sage text-ink"><i class="bi bi-shop"></i></span>
+          <div class="min-w-0">
+            <p class="text-sm font-bold text-ink">Velora Flagship Store</p>
+            <p class="truncate text-xs text-muted">Sukhumvit 31 · 4 min from Phrom Phong BTS</p>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Sukhumvit+31+Bangkok" target="_blank" rel="noopener" class="shrink-0 rounded-full bg-ink px-4 py-2 text-xs font-semibold text-cream transition hover:bg-olive">Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="border-t border-hairline bg-white">
+  <div class="mx-auto max-w-wrap px-5 pb-10 pt-16 sm:px-8">
+    <div class="grid gap-12 md:grid-cols-12">
+      <!-- brand -->
+      <div class="md:col-span-4">
+        <a href="#hero" class="flex items-center gap-2.5">
+          <span class="grid h-10 w-10 place-items-center rounded-full bg-sage font-display text-xl font-black text-ink">V</span>
+          <span class="leading-none">
+            <span class="block font-display text-2xl font-black tracking-tight text-ink">Velora</span>
+            <span class="mt-1 block text-[8.5px] font-semibold tracking-[0.28em] text-muted">NUTRITION&nbsp;CO.</span>
+          </span>
+        </a>
+        <p class="mt-5 max-w-xs text-[13px] leading-relaxed text-graphite">Supplements formulated in Bangkok, made in Thailand, and shipped from our little warehouse on Sukhumvit 31 since 2016.</p>
+        <div class="mt-6 flex gap-2.5">
+          <a href="https://facebook.com/velorath" target="_blank" rel="noopener" aria-label="Velora on Facebook" class="grid h-10 w-10 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink hover:bg-cream"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com/velorath" target="_blank" rel="noopener" aria-label="Velora on Instagram" class="grid h-10 w-10 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink hover:bg-cream"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" aria-label="Velora on LINE" class="grid h-10 w-10 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink hover:bg-cream"><i class="fa-brands fa-line"></i></a>
+          <a href="https://m.me/velorath" target="_blank" rel="noopener" aria-label="Velora on Messenger" class="grid h-10 w-10 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink hover:bg-cream"><i class="fa-brands fa-facebook-messenger"></i></a>
+          <a href="https://www.tiktok.com/@velorath" target="_blank" rel="noopener" aria-label="Velora on TikTok" class="grid h-10 w-10 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink hover:bg-cream"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- shop links -->
+      <nav class="md:col-span-2" aria-label="Shop categories">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-ink">Shop</p>
+        <ul class="mt-4 space-y-2.5 text-[13px] text-graphite">
+          <li><a href="#shop" data-cat-jump="beauty" class="transition hover:text-ink">Collagen &amp; Beauty</a></li>
+          <li><a href="#shop" data-cat-jump="immunity" class="transition hover:text-ink">Immunity &amp; Vitamins</a></li>
+          <li><a href="#shop" data-cat-jump="weight" class="transition hover:text-ink">Weight Management</a></li>
+          <li><a href="#shop" data-cat-jump="sleep" class="transition hover:text-ink">Sleep &amp; Stress</a></li>
+          <li><a href="#shop" data-cat-jump="joint" class="transition hover:text-ink">Joint &amp; Bone</a></li>
+          <li><a href="#shop" data-cat-jump="digestion" class="transition hover:text-ink">Digestion &amp; Detox</a></li>
+        </ul>
+      </nav>
+
+      <!-- support links -->
+      <nav class="md:col-span-2" aria-label="Support">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-ink">Support</p>
+        <ul class="mt-4 space-y-2.5 text-[13px] text-graphite">
+          <li><a href="#bestsellers" class="transition hover:text-ink">Best sellers</a></li>
+          <li><a href="#reviews" class="transition hover:text-ink">Reviews</a></li>
+          <li><a href="#faq" class="transition hover:text-ink">FAQ</a></li>
+          <li><a href="#faq" class="transition hover:text-ink">Shipping &amp; returns</a></li>
+          <li><a href="#contact" class="transition hover:text-ink">Contact us</a></li>
+        </ul>
+      </nav>
+
+      <!-- contact summary -->
+      <div class="md:col-span-4">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-ink">Reach us</p>
+        <ul class="mt-4 space-y-3 text-[13px] text-graphite">
+          <li class="flex items-center gap-3"><i class="bi bi-telephone text-olive"></i><a href="tel:+6621148899" class="transition hover:text-ink">02-114-8899 · Mon–Sat 9:00–20:00</a></li>
+          <li class="flex items-center gap-3"><i class="bi bi-line text-olive"></i><a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" class="transition hover:text-ink">LINE @velorath</a></li>
+          <li class="flex items-center gap-3"><i class="bi bi-chat-dots text-olive"></i><a href="https://m.me/velorath" target="_blank" rel="noopener" class="transition hover:text-ink">Messenger m.me/velorath</a></li>
+          <li class="flex items-center gap-3"><i class="bi bi-geo-alt text-olive"></i><span>88/8 Sukhumvit 31, Watthana, Bangkok 10110</span></li>
+        </ul>
+        <div class="mt-5 rounded-2xl bg-cream p-4">
+          <p class="text-xs font-semibold text-ink">First order over ฿500?</p>
+          <p class="mt-0.5 text-xs text-graphite">Use code <b class="text-ink">WELCOME10</b> for 10% off — mention it in chat.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- payments + shipping -->
+    <div class="mt-14 flex flex-col justify-between gap-6 border-y border-hairline py-7 lg:flex-row lg:items-center">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+        <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">We accept</p>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="bi bi-qr-code text-lg text-olive"></i> PromptPay</span>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="fa-brands fa-cc-visa text-xl text-olive"></i> Visa</span>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="fa-brands fa-cc-mastercard text-xl text-olive"></i> Mastercard</span>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="bi bi-cash-coin text-lg text-olive"></i> COD</span>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="bi bi-building-columns text-lg text-olive"></i> Bank transfer</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+        <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">We ship with</p>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="bi bi-box-seam text-olive"></i> Flash Express</span>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="bi bi-box-seam text-olive"></i> Kerry Express</span>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="bi bi-box-seam text-olive"></i> J&amp;T Express</span>
+        <span class="flex items-center gap-2 text-sm font-semibold text-ink"><i class="bi bi-box-seam text-olive"></i> Thailand Post</span>
+      </div>
+    </div>
+
+    <!-- bottom bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+      <p class="text-xs text-muted">© 2026 Velora Nutrition Co., Ltd. · Made with care in Bangkok</p>
+      <div class="flex gap-5 text-xs text-muted">
+        <a href="#" class="transition hover:text-ink">Privacy</a>
+        <a href="#" class="transition hover:text-ink">Terms</a>
+        <a href="#faq" class="transition hover:text-ink">Returns</a>
+      </div>
+    </div>
+    <p class="mt-6 max-w-4xl text-[11px] leading-relaxed text-muted">These statements have not been evaluated by the Food and Drug Administration. Velora products are not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Consult your physician before use if you are pregnant, nursing, taking medication, or have a medical condition.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════ CART DRAWER ══════════════════ -->
+<div id="cartOverlay" class="fixed inset-0 z-[60] bg-ink/40 opacity-0 pointer-events-none backdrop-blur-[2px] transition-opacity duration-300"></div>
+<aside id="cartDrawer" class="fixed right-0 top-0 z-[61] flex h-full w-[min(100vw,420px)] translate-x-full flex-col bg-white shadow-2xl transition-transform duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)]" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="flex items-center justify-between border-b border-hairline px-6 py-5">
+    <h3 class="font-display text-xl font-bold text-ink">Your cart <span id="cartCountLabel" class="text-olive">(0)</span></h3>
+    <button id="cartClose" class="grid h-9 w-9 place-items-center rounded-full border border-hairline text-ink transition hover:border-ink" aria-label="Close cart"><i class="bi bi-x-lg text-sm"></i></button>
+  </div>
+
+  <div class="border-b border-hairline px-6 py-4">
+    <p id="shipMsg" class="text-xs font-medium text-graphite">Add <b>฿999</b> more for <b>free delivery</b></p>
+    <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-cream"><div id="shipBar" class="h-full w-0 rounded-full bg-olive transition-all duration-500"></div></div>
+  </div>
+
+  <div id="cartItems" class="chat-scroll flex-1 overflow-y-auto px-6 py-5"></div>
+
+  <div id="cartFooter" class="border-t border-hairline px-6 py-5">
+    <div class="flex items-center justify-between">
+      <p class="text-sm font-medium text-graphite">Subtotal</p>
+      <p id="cartSubtotal" class="font-display text-2xl font-bold text-ink">฿0</p>
+    </div>
+    <p class="mt-1.5 text-[11px] text-muted">Delivery calculated at checkout · COD &amp; PromptPay available</p>
+    <button id="checkoutBtn" disabled class="mt-4 flex w-full items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-4 text-sm font-semibold text-cream transition-all duration-300 hover:bg-olive active:scale-[.98] disabled:cursor-not-allowed disabled:opacity-40">
+      <i class="bi bi-chat-dots"></i> Checkout via chat
+    </button>
+    <p class="mt-3 text-center text-[11px] text-muted">or <button data-goto="#shop" class="font-semibold text-ink underline decoration-sage decoration-2 underline-offset-2 transition hover:text-olive">continue shopping</button></p>
+  </div>
+
+  <div id="checkoutView" class="hidden border-t border-hairline px-6 py-6">
+    <p class="flex items-center gap-2 text-sm font-bold text-ink"><i class="bi bi-check-circle-fill text-olive"></i> Order <span id="orderNo" class="font-display">VL-000000</span> prepared</p>
+    <p class="mt-2.5 text-xs leading-relaxed text-muted">Pick a channel below — our team confirms stock, payment (PromptPay, transfer or COD) and your address in chat. Nothing is charged yet.</p>
+    <p id="checkoutTotal" class="mt-4 rounded-2xl bg-cream px-4 py-3 text-sm font-semibold text-ink"></p>
+    <div class="mt-4 grid gap-2.5">
+      <a href="https://m.me/velorath" target="_blank" rel="noopener" class="flex items-center justify-center gap-2.5 rounded-full bg-[#0084FF] px-5 py-3.5 text-sm font-semibold text-white transition hover:brightness-110 active:scale-[.98]"><i class="fa-brands fa-facebook-messenger"></i> Continue in Messenger</a>
+      <a href="https://line.me/R/ti/p/@velorath" target="_blank" rel="noopener" class="flex items-center justify-center gap-2.5 rounded-full bg-[#06C755] px-5 py-3.5 text-sm font-semibold text-white transition hover:brightness-110 active:scale-[.98]"><i class="fa-brands fa-line"></i> Continue on LINE</a>
+      <a href="tel:+6621148899" class="flex items-center justify-center gap-2.5 rounded-full border border-hairline px-5 py-3.5 text-sm font-semibold text-ink transition hover:border-ink active:scale-[.98]"><i class="bi bi-telephone"></i> Call to order · 02-114-8899</a>
+    </div>
+    <button id="backToCart" class="mt-5 w-full text-center text-xs font-medium text-muted underline underline-offset-4 transition hover:text-ink">← Back to cart</button>
+  </div>
+</aside>
+
+<!-- ══════════════════ QUICK VIEW MODAL ══════════════════ -->
+<div id="qvOverlay" class="fixed inset-0 z-[70] overflow-y-auto bg-ink/50 p-4 opacity-0 pointer-events-none backdrop-blur-sm transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Product quick view">
+  <div class="flex min-h-full items-center justify-center">
+    <div id="qvPanel" class="relative my-6 w-full max-w-3xl scale-95 overflow-hidden rounded-[2rem] bg-white shadow-2xl transition-transform duration-300">
+      <button id="qvClose" class="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white/90 text-ink shadow-lift backdrop-blur transition hover:bg-ink hover:text-cream" aria-label="Close quick view"><i class="bi bi-x-lg"></i></button>
+      <div class="grid md:grid-cols-2">
+        <div class="relative bg-cream">
+          <img id="qvImg" src="" alt="" class="aspect-square h-full w-full object-cover">
+          <span id="qvBadge" class="absolute left-4 top-4 hidden -rotate-2 rounded-full bg-ink px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-cream"></span>
+        </div>
+        <div class="flex flex-col p-7 md:p-9">
+          <span id="qvCat" class="self-start rounded-full bg-cream px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ink"></span>
+          <h3 id="qvName" class="mt-4 font-display text-3xl font-bold leading-tight text-ink"></h3>
+          <div id="qvRating" class="mt-3 flex items-center gap-2"></div>
+          <p id="qvBlurb" class="mt-4 text-sm leading-relaxed text-graphite"></p>
+          <ul id="qvBullets" class="mt-5 space-y-2.5"></ul>
+          <p id="qvMeta" class="mt-5 text-xs text-muted"></p>
+          <div class="mt-auto pt-6">
+            <div class="flex items-end justify-between border-t border-hairline pt-5">
+              <div>
+                <div class="flex items-baseline gap-2">
+                  <p id="qvPrice" class="font-display text-3xl font-bold text-ink"></p>
+                  <p id="qvCompare" class="text-sm text-muted line-through"></p>
+                </div>
+                <p id="qvStock" class="mt-1 text-[11px] font-medium"></p>
+              </div>
+              <div class="flex items-center gap-3 rounded-full border border-hairline px-3 py-2">
+                <button id="qvMinus" class="grid h-7 w-7 place-items-center rounded-full text-ink transition hover:bg-cream" aria-label="Decrease quantity"><i class="bi bi-dash-lg text-xs"></i></button>
+                <span id="qvQty" class="min-w-[20px] text-center text-sm font-bold text-ink">1</span>
+                <button id="qvPlus" class="grid h-7 w-7 place-items-center rounded-full text-ink transition hover:bg-cream" aria-label="Increase quantity"><i class="bi bi-plus-lg text-xs"></i></button>
+              </div>
+            </div>
+            <button id="qvAdd" class="mt-4 flex w-full items-center justify-center gap-2.5 rounded-full bg-ink px-6 py-4 text-sm font-semibold text-cream transition-all duration-300 hover:bg-olive active:scale-[.98]"><i class="bi bi-bag-plus"></i> Add to cart</button>
+            <p class="mt-4 flex items-center justify-center gap-2 text-[11px] text-muted"><i class="bi bi-truck text-olive"></i> Free delivery over ฿999 · COD welcome · 15-day guarantee</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CHATBOT — VIRA ══════════════════ -->
+<div id="chatPanel" class="pointer-events-none fixed bottom-[86px] right-5 z-50 w-[min(92vw,380px)] origin-bottom-right scale-95 opacity-0 transition-all duration-300 ease-out" role="dialog" aria-label="Chat with Vira">
+  <div class="flex h-[540px] max-h-[calc(100vh-115px)] flex-col overflow-hidden rounded-[1.75rem] border border-hairline bg-white shadow-2xl">
+    <!-- header -->
+    <div class="flex items-center gap-3 bg-ink px-5 py-4 text-cream">
+      <span class="relative grid h-10 w-10 place-items-center rounded-full bg-sage text-ink"><i class="bi bi-leaf"></i><span class="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-ink bg-[#4CD964]"></span></span>
+      <div class="flex-1">
+        <p class="text-sm font-bold">Vira · Velora Assistant</p>
+        <p class="text-[11px] text-cream/60">Online — replies instantly</p>
+      </div>
+      <button id="chatClose" class="grid h-8 w-8 place-items-center rounded-full text-cream/70 transition hover:bg-cream/10 hover:text-cream" aria-label="Minimize chat"><i class="bi bi-dash-lg"></i></button>
+    </div>
+    <!-- messages -->
+    <div id="chatBody" class="chat-scroll flex-1 space-y-3 overflow-y-auto bg-ivory p-4" aria-live="polite"></div>
+    <!-- quick replies -->
+    <div id="chatQuick" class="flex flex-wrap gap-2 bg-ivory px-4 pb-3"></div>
+    <!-- input -->
+    <form id="chatForm" class="flex items-center gap-2 border-t border-hairline p-3">
+      <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off" class="h-11 flex-1 rounded-full border border-hairline bg-white px-4 text-sm text-graphite placeholder:text-muted focus:border-olive focus:outline-none">
+      <button type="submit" class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ink text-cream transition hover:bg-olive active:scale-90" aria-label="Send message"><i class="bi bi-send-fill"></i></button>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════ FLOATING: BACK-TO-TOP (left) + CHATBOT (right) — same row, 5px gap ══════════════════ -->
+<div class="fixed bottom-5 right-5 z-50 flex items-center gap-[5px]">
+  <button id="backToTop" aria-label="Back to top" class="pointer-events-none grid h-11 w-11 translate-y-3 place-items-center rounded-full border border-hairline bg-white text-ink opacity-0 shadow-lift transition-all duration-300 hover:bg-ink hover:text-cream">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+  <span class="relative">
+    <button id="chatToggle" aria-label="Chat with Vira" class="grid h-14 w-14 place-items-center rounded-full bg-ink text-cream shadow-lift transition-transform duration-300 hover:scale-105 active:scale-95">
+      <i id="chatToggleIcon" class="bi bi-chat-dots-fill text-xl"></i>
+    </button>
+    <span id="chatNudge" class="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 translate-x-2 whitespace-nowrap rounded-full bg-ink px-3.5 py-2 text-[11px] font-semibold text-cream opacity-0 shadow-lift transition-all duration-500">Need help? Chat with Vira</span>
+    <span class="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-[#4CD964]" aria-hidden="true"></span>
+  </span>
+</div>
+
+<!-- ══════════════════ TOASTS ══════════════════ -->
+<div id="toastWrap" class="pointer-events-none fixed bottom-24 left-1/2 z-[90] flex w-full max-w-sm -translate-x-1/2 flex-col items-center gap-2 px-4"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ════════════════ helpers ════════════════ */
+var $ = function(s,c){ return (c||document).querySelector(s); };
+var $$ = function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
+function THB(n){ return '฿' + n.toLocaleString('en-US'); }
+function esc(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+/* ════════════════ data ════════════════ */
+var CDN = 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/';
+var CATS = {
+  beauty:    { label:'Collagen & Beauty' },
+  immunity:  { label:'Immunity & Vitamins' },
+  weight:    { label:'Weight Management' },
+  sleep:     { label:'Sleep & Stress' },
+  joint:     { label:'Joint & Bone' },
+  digestion: { label:'Digestion & Detox' }
+};
+
+var PRODUCTS = [
+  { id:1,  name:'LumiSkin Marine Collagen', cat:'beauty', price:1290, compare:1590, rating:4.9, reviews:2341, badge:'bestseller', img:CDN+'30af5b6a0d5f.webp', meta:'30 daily scoops · 10,000mg marine peptides',
+    blurb:'10,000mg Japanese marine peptides with vitamin C and hyaluronic acid for visibly firmer, dewier skin.',
+    bullets:['10,000mg hydrolyzed marine peptides per scoop','Vitamin C supports natural collagen synthesis','Dissolves instantly — no fishy aftertaste','Tropical-citrus flavor, stevia-sweetened'] },
+  { id:2,  name:'Radiance C+ 1000', cat:'beauty', price:450, compare:0, rating:4.8, reviews:1102, badge:null, img:CDN+'d4d8a079837a.jpg', meta:'60 tablets · 2-month supply',
+    blurb:'Gentle, buffered vitamin C 1,000mg with rosehip and bioflavonoids for daily brightening and immune backup.',
+    bullets:['Buffered — kind on sensitive stomachs','Rosehip + citrus bioflavonoids for uptake','Vegan, no artificial colors'] },
+  { id:3,  name:'HyaluHydrate Capsules', cat:'beauty', price:690, compare:0, rating:4.7, reviews:689, badge:null, img:CDN+'38278128f28d.png', meta:'60 capsules · 30-day supply',
+    blurb:'120mg hyaluronic acid with plant ceramides that hydrate skin from the inside out — where creams cannot reach.',
+    bullets:['120mg high-molecular hyaluronic acid','Plant ceramides lock moisture in','Pairs beautifully with LumiSkin collagen'] },
+  { id:4,  name:'Biotin Bloom Hair & Nails', cat:'beauty', price:520, compare:0, rating:4.8, reviews:943, badge:null, img:CDN+'f6560aeba7ad.png', meta:'90 gummies · strawberry-vanilla',
+    blurb:'5,000mcg biotin with bamboo silica for stronger hair and nails — as a treat you will actually remember to take.',
+    bullets:['5,000mcg biotin per gummy','Bamboo-derived silica, 75mg','Strawberry-vanilla, 3 calories each'] },
+  { id:5,  name:'Ceramide Barrier Glow', cat:'beauty', price:790, compare:0, rating:4.7, reviews:512, badge:'new', img:CDN+'834858ec51c7.jpg', meta:'30 capsules · 30-day supply',
+    blurb:'Plant ceramides with astaxanthin to rebuild a calm, resilient skin barrier.',
+    bullets:['Plant-derived ceramide complex','Astaxanthin — a potent carotenoid','Made for redness-prone, city-stressed skin'] },
+  { id:6,  name:'Daily Shield Multivitamin', cat:'immunity', price:390, compare:0, rating:4.8, reviews:1876, badge:'bestseller', img:CDN+'8c0ea939131d.jpg', meta:'60 capsules · 2-month supply',
+    blurb:'23 vitamins and minerals in one daily capsule — the easiest healthy habit you will ever keep.',
+    bullets:['23 actives at meaningful doses','Once daily, with or without food','Iron-free — gentle on the stomach'] },
+  { id:7,  name:'C1000 Zinc Shield', cat:'immunity', price:290, compare:0, rating:4.9, reviews:2058, badge:null, img:CDN+'7fc76d207e36.jpg', meta:'20 effervescent tablets · orange',
+    blurb:'Effervescent vitamin C 1,000mg with zinc — for the weeks when everyone around you is sneezing.',
+    bullets:['1,000mg vitamin C + 10mg zinc per tablet','Fizzes into a fresh orange drink','pH-balanced, kind on enamel'] },
+  { id:8,  name:'Sunshine D3 2000 + K2', cat:'immunity', price:350, compare:0, rating:4.8, reviews:1240, badge:null, img:CDN+'057e18957bb1.jpg', meta:'90 softgels · 3-month supply',
+    blurb:'Vitamin D3 2,000 IU with K2 — the sunshine vitamin, made for people stuck in traffic and offices.',
+    bullets:['2,000 IU cholecalciferol (D3)','MK-7 vitamin K2 for direction','Olive-oil base for absorption'] },
+  { id:9,  name:'Propolis Throat Shield', cat:'immunity', price:480, compare:590, rating:4.7, reviews:433, badge:'sale', img:CDN+'367dad17f745.jpg', meta:'30ml · alcohol-free',
+    blurb:'Brazilian green propolis extract that soothes scratchy throats — a handbag essential in air-con season.',
+    bullets:['Brazilian green propolis extract','Alcohol-free spray, naturally sweet','Pocket-size 30ml'] },
+  { id:10, name:'MetaBurn L-Carnitine 3000', cat:'weight', price:890, compare:0, rating:4.8, reviews:1567, badge:'bestseller', stock:8, img:CDN+'87317cbf4578.jpg', meta:'20 ready-to-drink shots · peach',
+    blurb:'3,000mg L-carnitine in ready-to-drink shots — twenty mornings of steady, clean energy.',
+    bullets:['3,000mg L-carnitine tartrate per shot','Zero sugar, 5 calories','Drink 30 minutes before movement'] },
+  { id:11, name:'FiberFull Cleanse Drink', cat:'weight', price:650, compare:780, rating:4.6, reviews:728, badge:'sale', img:CDN+'4b19d85244a1.png', meta:'14 sticks · green apple',
+    blurb:'Psyllium, inulin and probiotics in a mild green-apple drink that keeps things, well — regular.',
+    bullets:['5g dual-action fiber per stick','2 billion CFU probiotic blend','Gentle enough for daily use'] },
+  { id:12, name:'KetoLean MCT Oil', cat:'weight', price:720, compare:0, rating:4.7, reviews:615, badge:null, img:CDN+'4c8f43f3e107.jpg', meta:'350ml · unflavored',
+    blurb:'C8+C10 MCT oil for steady ketone energy — no flavor, no jitters, no crash.',
+    bullets:['100% C8 + C10 triglycerides','Unflavored — coffee, shakes, salads','Odorless and heat-stable'] },
+  { id:13, name:'CalmMind KSM-66 Ashwagandha', cat:'sleep', price:620, compare:0, rating:4.9, reviews:1024, badge:'new', img:CDN+'790d29732d43.jpg', meta:'60 capsules · 30-day supply',
+    blurb:'600mg clinical-dose KSM-66 ashwagandha — stress you can feel settling.',
+    bullets:['600mg KSM-66, the most-studied ashwagandha','Take morning or night','Non-drowsy by design'] },
+  { id:14, name:'Night Ritual Magnesium', cat:'sleep', price:540, compare:0, rating:4.8, reviews:866, badge:null, img:CDN+'18dadf16ad6c.webp', meta:'120 capsules · 60-day supply',
+    blurb:'Magnesium glycinate 400mg that helps you fall asleep faster — and stay that way.',
+    bullets:['400mg magnesium bisglycinate','Glycinate — gentle, highly absorbable','Two capsules, an hour before bed'] },
+  { id:15, name:'MoveWell Glucosamine + MSM', cat:'joint', price:850, compare:0, rating:4.7, reviews:594, badge:null, img:CDN+'422df6eaf979.jpg', meta:'120 tablets · 2-month supply',
+    blurb:'1,500mg glucosamine with 1,000mg MSM — for knees that keep up with your plans.',
+    bullets:['1,500mg glucosamine sulfate','1,000mg MSM for flexibility','Split dose: morning and evening'] },
+  { id:16, name:'FlexCurc Turmeric Complex', cat:'joint', price:690, compare:0, rating:4.8, reviews:981, badge:null, img:CDN+'5c023ac70d75.jpg', meta:'60 capsules · 30-day supply',
+    blurb:'Curcumin 95% with black pepper extract — absorption that actually works.',
+    bullets:['500mg curcuminoids, 95% extract','Black pepper extract for uptake','No turmeric aftertaste'] },
+  { id:17, name:'Greens Daily 21', cat:'digestion', price:950, compare:1150, rating:4.8, reviews:1388, badge:'bestseller', img:CDN+'fbbb785fa82b.jpeg', meta:'300g · 30 servings',
+    blurb:'21 superfoods in one green glass — the vegetable-intake insurance policy.',
+    bullets:['21 greens, fruits and adaptogens','Matcha-forward, only 2g sugar','Dissolves in cold water — no clumps'] },
+  { id:18, name:'Biotic Balance 50B', cat:'digestion', price:780, compare:0, rating:4.7, reviews:756, badge:null, img:CDN+'02ce1680d39d.jpg', meta:'30 capsules · 30-day supply',
+    blurb:'12 strains and 50 billion CFUs in delayed-release capsules that survive stomach acid.',
+    bullets:['50 billion CFU, 12 researched strains','Delayed-release capsules','Shelf-stable — no fridge needed'] }
+];
+
+var BUNDLE = { id:100, name:'The Glow Starter Kit', cat:'bundle', price:2190, compare:2700, rating:4.9, reviews:86, badge:'bestseller', img:CDN+'146dc9a5ac25.jpg', meta:'3 full-size formulas · gift-boxed',
+  blurb:'LumiSkin Collagen, Radiance C+ and Biotin Bloom — the full glow routine at a starter price.',
+  bullets:['Save ฿510 versus buying separately','Covers skin, brightness, hair and nails','Gift-boxed with optional handwritten note'] };
+
+var ALL = PRODUCTS.concat([BUNDLE]);
+var FREE_SHIP = 999;
+
+/* state */
+var cart = {};             // id -> qty
+var filter = 'all';
+var chatState = { open:false, greeted:false, awaitingOrder:false };
+var qvId = null, qvQty = 1;
+
+/* ════════════════ rendering: cards ════════════════ */
+function stars(r){
+  var h = '';
+  for(var i=1;i<=5;i++){
+    if(r >= i-0.25) h += '<i class="bi bi-star-fill"></i>';
+    else if(r >= i-0.75) h += '<i class="bi bi-star-half"></i>';
+    else h += '<i class="bi bi-star"></i>';
+  }
+  return '<span class="flex gap-0.5 text-star" aria-label="'+r+' out of 5 stars">'+h+'</span>';
+}
+function badgeHTML(p){
+  if(p.badge==='bestseller') return '<span class="absolute left-3 top-3 z-10 -rotate-2 rounded-full bg-ink px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-cream">Best seller</span>';
+  if(p.badge==='new') return '<span class="absolute left-3 top-3 z-10 -rotate-2 rounded-full bg-sage px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-ink">New</span>';
+  if(p.badge==='sale' && p.compare) return '<span class="absolute left-3 top-3 z-10 -rotate-2 rounded-full bg-taupe px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-ink">Save '+THB(p.compare-p.price)+'</span>';
+  return '';
+}
+function cardHTML(p, i, opts){
+  opts = opts || {};
+  var stock = p.stock ? '<p class="mt-1 text-[10.5px] font-semibold text-[#B5544B]"><i class="bi bi-fire"></i> Only '+p.stock+' left</p>' : '';
+  var blurb = opts.blurb ? '<p class="mt-2 line-clamp-2 text-xs leading-relaxed text-muted">'+p.blurb+'</p>' : '';
+  var catLabel = p.cat==='bundle' ? 'Bundle & Save' : (CATS[p.cat] ? CATS[p.cat].label : '');
+  return '<article class="fade-up group" style="animation-delay:'+Math.min(i,10)*35+'ms">'
+    + '<div class="relative overflow-hidden rounded-[1.5rem] bg-cream">'
+    +   badgeHTML(p)
+    +   '<button class="qv-btn absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-ink shadow-sm backdrop-blur transition hover:bg-ink hover:text-cream md:opacity-0 md:group-hover:opacity-100" data-qv="'+p.id+'" aria-label="Quick view '+esc(p.name)+'"><i class="bi bi-eye text-sm"></i></button>'
+    +   '<img src="'+p.img+'" alt="'+esc(p.name)+'" loading="lazy" class="aspect-[4/5] w-full cursor-pointer object-cover transition-transform duration-700 ease-out group-hover:scale-105" data-qv="'+p.id+'">'
+    +   '<button class="absolute inset-x-3 bottom-3 z-10 hidden translate-y-3 items-center justify-center gap-2 rounded-full bg-white/95 py-2.5 text-xs font-semibold text-ink opacity-0 shadow-sm backdrop-blur transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 md:flex" data-qv="'+p.id+'"><i class="bi bi-eye text-[13px]"></i> Quick view</button>'
+    + '</div>'
+    + '<div class="pt-4">'
+    +   '<p class="text-[10px] font-semibold uppercase tracking-wider text-muted">'+catLabel+'</p>'
+    +   '<h3 class="mt-1.5 cursor-pointer font-display text-[17px] font-semibold leading-snug text-ink transition-colors hover:text-olive" data-qv="'+p.id+'">'+esc(p.name)+'</h3>'
+    +   '<div class="mt-1.5 flex items-center gap-1.5">'+stars(p.rating)+'<span class="text-[11px] text-muted">'+p.rating.toFixed(1)+' ('+p.reviews.toLocaleString()+')</span></div>'
+    +   blurb
+    +   '<div class="mt-3 flex items-end justify-between gap-2">'
+    +     '<div><div class="flex items-baseline gap-2"><p class="font-display text-xl font-bold text-ink">'+THB(p.price)+'</p>'
+    +     (p.compare ? '<p class="text-xs text-muted line-through">'+THB(p.compare)+'</p>' : '')+'</div>'+stock+'</div>'
+    +     '<button class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-cream transition-all duration-300 hover:bg-olive hover:shadow-lift active:scale-90" data-add="'+p.id+'" aria-label="Add '+esc(p.name)+' to cart"><i class="bi bi-bag-plus"></i></button>'
+    +   '</div>'
+    + '</div></article>';
+}
+function renderBestsellers(){
+  var list = PRODUCTS.filter(function(p){ return p.badge==='bestseller'; });
+  $('#bestsellerGrid').innerHTML = list.map(function(p,i){ return cardHTML(p,i,{blurb:true}); }).join('');
+}
+function renderFilters(){
+  var counts = { all: PRODUCTS.length };
+  PRODUCTS.forEach(function(p){ counts[p.cat] = (counts[p.cat]||0)+1; });
+  var html = pill('all','All · '+counts.all);
+  Object.keys(CATS).forEach(function(k){ html += pill(k, CATS[k].label+' · '+(counts[k]||0)); });
+  $('#filterBar').innerHTML = html;
+}
+function pill(k,label){
+  var active = filter===k;
+  return '<button role="tab" aria-selected="'+active+'" data-filter="'+k+'" class="shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-300 '+(active?'border-ink bg-ink text-cream':'border-hairline bg-white text-graphite hover:border-stone')+'">'+label+'</button>';
+}
+function renderProducts(){
+  var list = filter==='all' ? PRODUCTS : PRODUCTS.filter(function(p){ return p.cat===filter; });
+  $('#productGrid').innerHTML = list.map(function(p,i){ return cardHTML(p,i,{}); }).join('');
+  $('#shopCount').textContent = 'Showing '+list.length+' of '+PRODUCTS.length+' formulas';
+}
+function setFilter(k){ filter = k; renderFilters(); renderProducts(); }
+
+/* ════════════════ cart ════════════════ */
+function cartCount(){ return Object.keys(cart).reduce(function(a,id){ return a+cart[id]; },0); }
+function cartSubtotal(){
+  return Object.keys(cart).reduce(function(s,id){
+    var p = ALL.find(function(x){ return x.id === Number(id); });
+    return s + (p ? p.price*cart[id] : 0);
+  },0);
+}
+function findP(id){ return ALL.find(function(x){ return x.id===Number(id); }); }
+
+function updateCartUI(){
+  var n = cartCount(), st = cartSubtotal();
+  var badge = $('#cartBadge');
+  badge.textContent = n;
+  badge.classList.toggle('opacity-0', n===0);
+  badge.classList.remove('pop'); void badge.offsetWidth; if(n>0) badge.classList.add('pop');
+  $('#cartCountLabel').textContent = '('+n+')';
+  $('#cartSubtotal').textContent = THB(st);
+  var pct = Math.min(st/FREE_SHIP*100, 100);
+  $('#shipBar').style.width = pct+'%';
+  $('#shipMsg').innerHTML = st>=FREE_SHIP
+    ? '<i class="bi bi-check-circle-fill text-olive"></i> You have unlocked <b>free nationwide delivery</b>'
+    : 'Add <b>'+THB(FREE_SHIP-st)+'</b> more for <b>free delivery</b>';
+  renderCartItems();
+  $('#checkoutBtn').disabled = n===0;
+  if(n===0) resetCheckout();
+}
+function renderCartItems(){
+  var box = $('#cartItems');
+  var entries = Object.keys(cart);
+  if(!entries.length){
+    box.innerHTML = '<div class="flex h-full flex-col items-center justify-center py-16 text-center">'
+      + '<span class="grid h-20 w-20 place-items-center rounded-full bg-cream text-3xl text-olive"><i class="bi bi-bag"></i></span>'
+      + '<p class="mt-5 font-display text-xl font-semibold text-ink">Light as air</p>'
+      + '<p class="mt-1.5 max-w-[230px] text-xs leading-relaxed text-muted">Your cart is empty — let\'s fix that. Best sellers are one tap away.</p>'
+      + '<button data-goto="#bestsellers" class="mt-6 rounded-full bg-ink px-6 py-3 text-xs font-semibold text-cream transition hover:bg-olive active:scale-95">Browse best sellers</button>'
+      + '</div>';
+    return;
+  }
+  box.innerHTML = entries.map(function(id){
+    var p = findP(id); if(!p) return '';
+    var q = cart[id];
+    return '<div class="flex gap-4 border-b border-hairline py-4 first:pt-0 last:border-0">'
+      + '<img src="'+p.img+'" alt="" class="h-20 w-20 shrink-0 rounded-xl bg-cream object-cover">'
+      + '<div class="min-w-0 flex-1">'
+      +   '<div class="flex items-start justify-between gap-2">'
+      +     '<div class="min-w-0"><p class="truncate text-sm font-semibold text-ink">'+esc(p.name)+'</p><p class="mt-0.5 text-[11px] text-muted">'+esc(p.meta||'')+'</p></div>'
+      +     '<button class="shrink-0 text-muted transition hover:text-ink" data-remove="'+id+'" aria-label="Remove '+esc(p.name)+'"><i class="bi bi-trash3"></i></button>'
+      +   '</div>'
+      +   '<div class="mt-2.5 flex items-center justify-between">'
+      +     '<div class="flex items-center gap-3 rounded-full border border-hairline px-2 py-1">'
+      +       '<button class="grid h-6 w-6 place-items-center rounded-full text-ink transition hover:bg-cream" data-qty="-1" data-id="'+id+'" aria-label="Decrease quantity"><i class="bi bi-dash-lg text-[10px]"></i></button>'
+      +       '<span class="min-w-[16px] text-center text-xs font-bold text-ink">'+q+'</span>'
+      +       '<button class="grid h-6 w-6 place-items-center rounded-full text-ink transition hover:bg-cream" data-qty="1" data-id="'+id+'" aria-label="Increase quantity"><i class="bi bi-plus-lg text-[10px]"></i></button>'
+      +     '</div>'
+      +     '<p class="font-display text-lg font-bold text-ink">'+THB(p.price*q)+'</p>'
+      +   '</div>'
+      + '</div></div>';
+  }).join('');
+}
+function addToCart(id, qty){
+  qty = qty || 1;
+  var p = findP(id); if(!p) return;
+  cart[id] = (cart[id]||0) + qty;
+  updateCartUI();
+  toast('<i class="bi bi-check-circle-fill text-sage"></i><span class="truncate">Added — '+esc(p.name)+'</span>');
+}
+function openCart(){
+  $('#cartOverlay').classList.remove('opacity-0','pointer-events-none');
+  $('#cartDrawer').classList.remove('translate-x-full');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart(){
+  $('#cartOverlay').classList.add('opacity-0','pointer-events-none');
+  $('#cartDrawer').classList.add('translate-x-full');
+  document.body.style.overflow = '';
+  resetCheckout();
+}
+function resetCheckout(){
+  $('#cartFooter').classList.remove('hidden');
+  $('#checkoutView').classList.add('hidden');
+}
+
+/* ════════════════ toasts ════════════════ */
+function toast(html){
+  var wrap = $('#toastWrap');
+  var t = document.createElement('div');
+  t.className = 'pointer-events-auto flex max-w-full items-center gap-2.5 rounded-full bg-ink px-5 py-3 text-xs font-semibold text-cream shadow-lift transition-all duration-300';
+  t.style.opacity = '0'; t.style.transform = 'translateY(12px)';
+  t.innerHTML = html;
+  wrap.appendChild(t);
+  while(wrap.children.length > 3) wrap.removeChild(wrap.firstChild);
+  requestAnimationFrame(function(){ t.style.opacity='1'; t.style.transform='translateY(0)'; });
+  setTimeout(function(){
+    t.style.opacity='0'; t.style.transform='translateY(12px)';
+    setTimeout(function(){ t.remove(); }, 350);
+  }, 2600);
+}
+
+/* ════════════════ quick view ════════════════ */
+function openQV(id){
+  var p = findP(id); if(!p) return;
+  qvId = id; qvQty = 1; $('#qvQty').textContent = '1';
+  $('#qvImg').src = p.img; $('#qvImg').alt = p.name;
+  $('#qvCat').textContent = p.cat==='bundle' ? 'Bundle & Save' : CATS[p.cat].label;
+  $('#qvName').textContent = p.name;
+  $('#qvRating').innerHTML = stars(p.rating) + '<span class="text-xs text-muted">'+p.rating.toFixed(1)+' · '+p.reviews.toLocaleString()+' reviews</span>';
+  $('#qvBlurb').textContent = p.blurb;
+  $('#qvBullets').innerHTML = (p.bullets||[]).map(function(b){
+    return '<li class="flex gap-2.5 text-[13px] leading-snug text-graphite"><i class="bi bi-check2-circle mt-0.5 shrink-0 text-olive"></i>'+esc(b)+'</li>';
+  }).join('');
+  $('#qvMeta').textContent = p.meta || '';
+  $('#qvPrice').textContent = THB(p.price);
+  $('#qvCompare').textContent = p.compare ? THB(p.compare) : '';
+  $('#qvCompare').style.display = p.compare ? '' : 'none';
+  $('#qvStock').innerHTML = p.stock
+    ? '<span class="font-semibold text-[#B5544B]"><i class="bi bi-fire"></i> Only '+p.stock+' left</span>'
+    : '<span class="text-muted"><i class="bi bi-box-seam"></i> In stock — ships today before 2pm</span>';
+  var b = $('#qvBadge');
+  if(p.badge){
+    b.textContent = p.badge==='bestseller' ? 'Best seller' : (p.badge==='new' ? 'New' : 'Save '+THB(p.compare-p.price));
+    b.className = 'absolute left-4 top-4 z-10 -rotate-2 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider '+(p.badge==='new' ? 'bg-sage text-ink' : (p.badge==='sale' ? 'bg-taupe text-ink' : 'bg-ink text-cream'));
+  } else { b.className = 'hidden'; }
+  $('#qvOverlay').classList.remove('opacity-0','pointer-events-none');
+  $('#qvPanel').classList.remove('scale-95');
+  document.body.style.overflow = 'hidden';
+}
+function closeQV(){
+  $('#qvOverlay').classList.add('opacity-0','pointer-events-none');
+  $('#qvPanel').classList.add('scale-95');
+  if($('#cartDrawer').classList.contains('translate-x-full')) document.body.style.overflow = '';
+}
+
+/* ════════════════ chatbot — Vira ════════════════ */
+function scrollChat(){ var b = $('#chatBody'); b.scrollTop = b.scrollHeight; }
+function chatMsg(html, who){
+  var d = document.createElement('div');
+  if(who==='user'){
+    d.className = 'flex justify-end';
+    d.innerHTML = '<div class="max-w-[82%] rounded-2xl rounded-br-md bg-ink px-4 py-3 text-[13px] leading-relaxed text-cream">'+html+'</div>';
+  } else {
+    d.className = 'flex gap-2.5';
+    d.innerHTML = '<span class="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-sage text-[10px] text-ink"><i class="bi bi-leaf"></i></span>'
+      + '<div class="max-w-[82%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-[13px] leading-relaxed text-graphite shadow-sm">'+html+'</div>';
+  }
+  $('#chatBody').appendChild(d);
+  scrollChat();
+}
+function cbtn(act, label, icon){
+  return '<button data-cact="'+act+'" class="mt-1 mr-2 inline-flex items-center gap-1.5 rounded-full bg-cream px-3.5 py-1.5 text-[11px] font-semibold text-ink transition hover:bg-sage active:scale-95">'+(icon||'')+' '+label+'</button>';
+}
+function botSay(html, delay){
+  delay = delay || 850;
+  var t = document.createElement('div');
+  t.className = 'flex gap-2.5';
+  t.innerHTML = '<span class="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-sage text-[10px] text-ink"><i class="bi bi-leaf"></i></span>'
+    + '<div class="flex items-center gap-1.5 rounded-2xl rounded-bl-md bg-white px-4 py-3.5 shadow-sm typing"><i></i><i></i><i></i></div>';
+  $('#chatBody').appendChild(t);
+  scrollChat();
+  setTimeout(function(){ t.remove(); chatMsg(html,'bot'); }, delay);
+}
+function userSay(text){ chatMsg(esc(text),'user'); }
+
+function greet(){
+  chatState.greeted = true;
+  botSay("Hi there — I'm <b>Vira</b>, Velora's wellness assistant. I can help you pick a formula, explain delivery and payment, or track an order.", 750);
+}
+var QUICK = ['Track my order','Best sellers','Delivery & payment','Talk to a human'];
+function renderQuick(){
+  $('#chatQuick').innerHTML = QUICK.map(function(q){
+    return '<button data-cact="quick:'+q+'" class="rounded-full border border-hairline bg-white px-3.5 py-1.5 text-[11px] font-semibold text-graphite transition hover:border-olive hover:bg-cream active:scale-95">'+q+'</button>';
+  }).join('');
+}
+
+function respond(text){
+  var t = text.toLowerCase();
+
+  if(chatState.awaitingOrder){
+    chatState.awaitingOrder = false;
+    var no = (text.trim().toUpperCase().replace(/[^A-Z0-9-]/g,'').slice(0,12)) || 'VL-000000';
+    botSay('Got it — order <b>'+esc(no)+'</b> shipped yesterday via <b>Flash Express</b> and should arrive <b>tomorrow before 6 PM</b>.'
+      + '<div class="mt-2.5">'+cbtn('link:https://www.flashexpress.co.th/tracking/','Open Flash tracking','<i class="bi bi-box-seam"></i>')+cbtn('quick:Talk to a human','Something else')+'</div>', 1000);
+    return;
+  }
+  if(/(track|status|parcel|package|where.*(order|stuff))/.test(t)){
+    chatState.awaitingOrder = true;
+    botSay('Happy to check! What\'s your order number? It starts with <b>VL-</b> — you\'ll find it in your chat receipt.', 800);
+    return;
+  }
+  if(/(best|popular|sell|recommend|top|famous)/.test(t)){
+    botSay('Right now the community is loving these:<br>1. <b>LumiSkin Marine Collagen</b> — ฿1,290<br>2. <b>Daily Shield Multivitamin</b> — ฿390<br>3. <b>MetaBurn L-Carnitine</b> — ฿890<br>4. <b>Greens Daily 21</b> — ฿950'
+      + '<div class="mt-2.5">'+cbtn('scroll:#bestsellers','See best sellers','<i class="bi bi-star"></i>')+cbtn('add:1','Add collagen','<i class="bi bi-bag-plus"></i>')+'</div>', 950);
+    return;
+  }
+  if(/(deliver|shipping|ship\b|cod|pay|payment|promptpay|transfer|fee)/.test(t)){
+    botSay('We ship nationwide with <b>Flash, Kerry and J&amp;T</b> — next-day in Bangkok, 1–3 days upcountry. Free over <b>฿999</b> (flat ฿60 below). Pay by <b>PromptPay, bank transfer or COD</b>.'
+      + '<div class="mt-2.5">'+cbtn('scroll:#faq','Shipping details','<i class="bi bi-info-circle"></i>')+cbtn('quick:Talk to a human','Ask a human')+'</div>', 950);
+    return;
+  }
+  if(/(price|cost|how much|expensive|cheap)/.test(t)){
+    botSay('Formulas run <b>฿290–฿1,290</b>, most around ฿500–800. The <b>Glow Starter Kit</b> bundles three best-sellers for <b>฿2,190</b> (saves ฿510).'
+      + '<div class="mt-2.5">'+cbtn('scroll:#shop','Browse the shelf','<i class="bi bi-shop"></i>')+cbtn('add:100','Add the bundle','<i class="bi bi-bag-plus"></i>')+'</div>', 900);
+    return;
+  }
+  if(/(collagen|skin|beauty|glow|hair|face)/.test(t)){
+    botSay('For glow, start with <b>LumiSkin Marine Collagen</b> — 10,000mg peptides + vitamin C. Most people see firmer skin around <b>week four</b>. Add <b>Biotin Bloom</b> if hair and nails matter too.'
+      + '<div class="mt-2.5">'+cbtn('add:1','Add LumiSkin — ฿1,290','<i class="bi bi-bag-plus"></i>')+cbtn('quick:Talk to a human','Build me a routine')+'</div>', 950);
+    return;
+  }
+  if(/(sleep|stress|anxi|insomnia|relax|tired|calm)/.test(t)){
+    botSay('Two options, both well-loved: <b>CalmMind KSM-66</b> for daytime stress (600mg clinical dose) and <b>Night Ritual Magnesium</b> for deeper sleep.'
+      + '<div class="mt-2.5">'+cbtn('add:13','Add CalmMind — ฿620','<i class="bi bi-bag-plus"></i>')+cbtn('add:14','Add Night Ritual — ฿540','<i class="bi bi-bag-plus"></i>')+'</div>', 950);
+    return;
+  }
+  if(/(weight|fat|burn|metabol|diet|slim|carnitine)/.test(t)){
+    botSay('For metabolism: <b>MetaBurn L-Carnitine 3000</b> before movement, plus <b>FiberFull</b> to stay full between meals. Honest note — they support consistency, they don\'t replace it.'
+      + '<div class="mt-2.5">'+cbtn('add:10','Add MetaBurn — ฿890','<i class="bi bi-bag-plus"></i>')+cbtn('scroll:#shop','See all three','<i class="bi bi-shop"></i>')+'</div>', 950);
+    return;
+  }
+  if(/(gut|digest|probiotic|bloat|detox|green|bowel|regular)/.test(t)){
+    botSay('For gut health: <b>Biotic Balance 50B</b> (12 strains, delayed-release) and <b>Greens Daily 21</b> for fiber and micronutrients.'
+      + '<div class="mt-2.5">'+cbtn('add:18','Add Biotic Balance — ฿780','<i class="bi bi-bag-plus"></i>')+cbtn('add:17','Add Greens Daily — ฿950','<i class="bi bi-bag-plus"></i>')+'</div>', 950);
+    return;
+  }
+  if(/(joint|knee|bone|glucosamine|turmeric|curcum|back pain)/.test(t)){
+    botSay('<b>MoveWell Glucosamine + MSM</b> for joints and <b>FlexCurc Turmeric</b> for everyday comfort — give them 4–6 weeks of consistency.'
+      + '<div class="mt-2.5">'+cbtn('add:15','Add MoveWell — ฿850','<i class="bi bi-bag-plus"></i>')+cbtn('add:16','Add FlexCurc — ฿690','<i class="bi bi-bag-plus"></i>')+'</div>', 950);
+    return;
+  }
+  if(/(fda|safe|safety|side|quality|gmp|test|certif)/.test(t)){
+    botSay('Every formula is made in a <b>GMP-certified facility</b>, registered with the <b>Thai FDA</b>, and third-party tested per batch. If you\'re pregnant, nursing or on medication, check with your doctor first — or send your med list here and our pharmacist reviews it free.'
+      + '<div class="mt-2.5">'+cbtn('scroll:#why','Our standards','<i class="bi bi-patch-check"></i>')+cbtn('quick:Talk to a human','Pharmacist review')+'</div>', 950);
+    return;
+  }
+  if(/(discount|promo|coupon|code|first order|sale|cheap)/.test(t)){
+    botSay('Welcome gift: code <b>WELCOME10</b> takes <b>10% off your first order</b> over ฿500 — just mention it when you check out in chat.'
+      + '<div class="mt-2.5">'+cbtn('scroll:#bundle','See the bundle','<i class="bi bi-gift"></i>')+cbtn('quick:Best sellers','Best sellers')+'</div>', 850);
+    return;
+  }
+  if(/(human|agent|staff|person|admin|someone|pharmacist)/.test(t)){
+    botSay('Of course — our team replies in minutes, 9:00–20:00 daily. Pick your channel:'
+      + '<div class="mt-2.5">'+cbtn('link:https://line.me/R/ti/p/@velorath','Chat on LINE','<i class="fa-brands fa-line"></i>')+cbtn('link:https://m.me/velorath','Chat on Messenger','<i class="fa-brands fa-facebook-messenger"></i>')+cbtn('link:tel:+6621148899','Call 02-114-8899','<i class="bi bi-telephone"></i>')+'</div>', 850);
+    return;
+  }
+  if(/^(hi|hello|hey|yo|hiya|good (morning|afternoon|evening))/.test(t)){
+    botSay('Hello! Ask me anything — formulas, delivery, COD, tracking. Or tap a topic below.', 750);
+    return;
+  }
+  if(/(thank|thx|appreciate|cheers)/.test(t)){
+    botSay('Anytime — that\'s what I\'m here for. Anything else on your mind?', 750);
+    return;
+  }
+  if(/line/.test(t)){
+    botSay('Find us on LINE at <b>@velorath</b> — fastest replies, order updates and restock alerts.'
+      + '<div class="mt-2.5">'+cbtn('link:https://line.me/R/ti/p/@velorath','Open LINE','<i class="fa-brands fa-line"></i>')+'</div>', 750);
+    return;
+  }
+  if(/(cart|checkout|order now|buy)/.test(t)){
+    botSay('Your call — I can open your cart, or you can add something first.'
+      + '<div class="mt-2.5">'+cbtn('cart','Open my cart','<i class="bi bi-bag"></i>')+cbtn('quick:Best sellers','Best sellers')+'</div>', 800);
+    return;
+  }
+  /* fallback */
+  botSay('I want to get this right rather than guess — our human team replies in minutes (9:00–20:00):'
+    + '<div class="mt-2.5">'+cbtn('link:https://line.me/R/ti/p/@velorath','Chat on LINE','<i class="fa-brands fa-line"></i>')+cbtn('link:https://m.me/velorath','Chat on Messenger','<i class="fa-brands fa-facebook-messenger"></i>')+'</div>'
+    + '<div class="mt-2">Or try asking about <b>best sellers</b>, <b>delivery</b>, <b>collagen</b>, <b>sleep</b> or <b>tracking</b>.</div>', 900);
+}
+function openChat(){
+  if(chatState.open) return;
+  chatState.open = true;
+  $('#chatPanel').classList.remove('pointer-events-none','scale-95','opacity-0');
+  $('#chatToggleIcon').className = 'bi bi-x-lg text-xl';
+  hideNudge();
+  if(!chatState.greeted) greet();
+  setTimeout(function(){ var i = $('#chatInput'); if(i) i.focus(); }, 400);
+}
+function closeChat(){
+  chatState.open = false;
+  $('#chatPanel').classList.add('pointer-events-none','scale-95','opacity-0');
+  $('#chatToggleIcon').className = 'bi bi-chat-dots-fill text-xl';
+}
+function hideNudge(){
+  var n = $('#chatNudge');
+  if(!n) return;
+  n.classList.add('opacity-0','translate-x-2');
+  setTimeout(function(){ n.classList.add('hidden'); }, 500);
+}
+function doCact(act){
+  var i = act.indexOf(':');
+  var type = i<0 ? act : act.slice(0,i);
+  var val  = i<0 ? ''   : act.slice(i+1);
+  if(type==='scroll'){
+    var el = document.querySelector(val);
+    if(el) el.scrollIntoView({ behavior:'smooth' });
+    closeChat();
+  } else if(type==='link'){
+    window.open(val, '_blank', 'noopener');
+  } else if(type==='add'){
+    addToCart(Number(val), 1);
+    botSay('Added to your cart. Want to keep browsing or check out?', 700);
+  } else if(type==='quick'){
+    userSay(val); respond(val);
+  } else if(type==='cart'){
+    closeChat(); openCart();
+  }
+}
+
+/* ════════════════ countdown (to midnight) ════════════════ */
+function tickCountdown(){
+  var now = new Date();
+  var end = new Date(); end.setHours(23,59,59,999);
+  var s = Math.max(0, Math.floor((end-now)/1000));
+  var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), sec = s%60;
+  var p2 = function(x){ return String(x).padStart(2,'0'); };
+  $('#cdH').textContent = p2(h);
+  $('#cdM').textContent = p2(m);
+  $('#cdS').textContent = p2(sec);
+}
+
+/* ════════════════ init ════════════════ */
+renderFilters();
+renderProducts();
+renderBestsellers();
+renderQuick();
+updateCartUI();
+tickCountdown();
+setInterval(tickCountdown, 1000);
+
+/* reveal on scroll */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+$$('[data-reveal]').forEach(function(el){ io.observe(el); });
+
+/* count-up stats */
+var cuIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting) return;
+    var el = e.target; cuIO.unobserve(el);
+    var target = parseFloat(el.dataset.countup);
+    var dec = parseInt(el.dataset.decimals||'0',10);
+    var comma = el.dataset.format==='comma';
+    var t0 = performance.now(), dur = 1400;
+    function step(t){
+      var k = Math.min(1,(t-t0)/dur);
+      var ease = 1 - Math.pow(1-k,3);
+      var v = target*ease;
+      el.textContent = comma ? Math.round(v).toLocaleString('en-US') : v.toFixed(dec);
+      if(k<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}, { threshold: 0.4 });
+$$('[data-countup]').forEach(function(el){ cuIO.observe(el); });
+
+/* header + back-to-top on scroll */
+var bttShown = false;
+function heroBottom(){ var h = $('#hero'); return h.offsetTop + h.offsetHeight; }
+function onScroll(){
+  var y = window.scrollY || window.pageYOffset;
+  var past = y > heroBottom() - 150;
+  if(past && !bttShown){
+    bttShown = true;
+    $('#backToTop').classList.remove('opacity-0','translate-y-3','pointer-events-none');
+  } else if(!past && bttShown){
+    bttShown = false;
+    $('#backToTop').classList.add('opacity-0','translate-y-3','pointer-events-none');
+  }
+  var header = $('#siteHeader');
+  header.classList.toggle('shadow-soft', y>10);
+  header.classList.toggle('border-hairline', y>10);
+}
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+/* FAQ accordion */
+$$('.faq-item').forEach(function(item){
+  var q = item.querySelector('.faq-q');
+  var body = item.querySelector('.acc-body');
+  var icon = item.querySelector('.faq-icon');
+  q.addEventListener('click', function(){
+    var wasOpen = body.classList.contains('open');
+    $$('.acc-body').forEach(function(b){ b.classList.remove('open'); });
+    $$('.faq-icon').forEach(function(i){ i.classList.remove('rotate-45','bg-sage'); });
+    $$('.faq-q').forEach(function(x){ x.setAttribute('aria-expanded','false'); });
+    if(!wasOpen){
+      body.classList.add('open');
+      icon.classList.add('rotate-45','bg-sage');
+      q.setAttribute('aria-expanded','true');
+    }
+  });
+});
+
+/* mobile menu */
+$('#menuBtn').addEventListener('click', function(){
+  var m = $('#mobileMenu');
+  var open = !m.classList.contains('hidden');
+  m.classList.toggle('hidden');
+  this.setAttribute('aria-expanded', String(!open));
+});
+$$('.mobile-link').forEach(function(a){
+  a.addEventListener('click', function(){ $('#mobileMenu').classList.add('hidden'); });
+});
+
+/* ════════════════ global click delegation ════════════════ */
+document.addEventListener('click', function(e){
+  var add = e.target.closest('[data-add]');
+  if(add){ addToCart(Number(add.dataset.add), 1); return; }
+
+  var qv = e.target.closest('[data-qv]');
+  if(qv){ openQV(Number(qv.dataset.qv)); return; }
+
+  var jump = e.target.closest('[data-cat-jump]');
+  if(jump){ setFilter(jump.dataset.catJump); return; }
+
+  var gt = e.target.closest('[data-goto]');
+  if(gt){
+    var sel = gt.dataset.goto;
+    closeCart(); closeQV();
+    var el = document.querySelector(sel);
+    if(el) el.scrollIntoView({ behavior:'smooth' });
+    return;
+  }
+
+  var oc = e.target.closest('[data-open-chat]');
+  if(oc){ openChat(); return; }
+
+  var rm = e.target.closest('[data-remove]');
+  if(rm){ delete cart[rm.dataset.remove]; updateCartUI(); return; }
+
+  var qty = e.target.closest('[data-qty]');
+  if(qty){
+    var id = qty.dataset.id, d = Number(qty.dataset.qty);
+    cart[id] = Math.max(0, (cart[id]||0) + d);
+    if(!cart[id]) delete cart[id];
+    updateCartUI();
+    return;
+  }
+
+  var fl = e.target.closest('[data-filter]');
+  if(fl){ setFilter(fl.dataset.filter); return; }
+
+  var ca = e.target.closest('[data-cact]');
+  if(ca){ doCact(ca.dataset.cact); return; }
+});
+
+/* cart open/close */
+$('#cartBtn').addEventListener('click', openCart);
+$('#cartClose').addEventListener('click', closeCart);
+$('#cartOverlay').addEventListener('click', closeCart);
+
+/* checkout */
+$('#checkoutBtn').addEventListener('click', function(){
+  if(!cartCount()) return;
+  $('#orderNo').textContent = 'VL-' + Math.floor(100000 + Math.random()*900000);
+  $('#checkoutTotal').innerHTML = '<i class="bi bi-bag-check text-olive"></i> '+cartCount()+' item'+(cartCount()>1?'s':'')+' · <b>'+THB(cartSubtotal())+'</b> ready to confirm';
+  $('#cartFooter').classList.add('hidden');
+  $('#checkoutView').classList.remove('hidden');
+});
+$('#backToCart').addEventListener('click', resetCheckout);
+
+/* quick view controls */
+$('#qvClose').addEventListener('click', closeQV);
+$('#qvOverlay').addEventListener('click', function(e){ if(e.target === this) closeQV(); });
+$('#qvMinus').addEventListener('click', function(){ qvQty = Math.max(1, qvQty-1); $('#qvQty').textContent = qvQty; });
+$('#qvPlus').addEventListener('click', function(){ qvQty = Math.min(20, qvQty+1); $('#qvQty').textContent = qvQty; });
+$('#qvAdd').addEventListener('click', function(){
+  if(qvId===null) return;
+  addToCart(qvId, qvQty);
+  closeQV();
+  setTimeout(openCart, 250);
+});
+
+/* chatbot controls */
+$('#chatToggle').addEventListener('click', function(){ chatState.open ? closeChat() : openChat(); });
+$('#chatClose').addEventListener('click', closeChat);
+$('#chatForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var input = $('#chatInput');
+  var v = input.value.trim();
+  if(!v) return;
+  input.value = '';
+  userSay(v);
+  respond(v);
+});
+
+/* nudge tooltip */
+setTimeout(function(){
+  if(chatState.open) return;
+  var n = $('#chatNudge');
+  n.classList.remove('hidden');
+  requestAnimationFrame(function(){ n.classList.remove('opacity-0','translate-x-2'); });
+  setTimeout(hideNudge, 8000);
+}, 2600);
+
+/* back-to-top click */
+$('#backToTop').addEventListener('click', function(){
+  window.scrollTo({ top:0, behavior:'smooth' });
+});
+
+/* ESC closes topmost layer */
+document.addEventListener('keydown', function(e){
+  if(e.key !== 'Escape') return;
+  if(!$('#qvOverlay').classList.contains('pointer-events-none')) closeQV();
+  else if(!$('#cartDrawer').classList.contains('translate-x-full')) closeCart();
+  else if(chatState.open) closeChat();
+});
+
+})();
+</script>
+</body>
+</html>
