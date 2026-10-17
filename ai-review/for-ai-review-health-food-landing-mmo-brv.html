@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MOTEGA | Premium Wellness Supplements — FDA Registered, Shop via LINE</title>
+<meta name="description" content="MOTEGA crafts premium, Thai FDA-registered supplements — daily vitamins, marine collagen, metabolism, sleep & gut health. GMP & HACCP certified, third-party lab tested. Order via LINE or Messenger, cash on delivery available. Free shipping over ฿1,500.">
+<meta name="keywords" content="supplement thailand, อาหารเสริม, marine collagen, vitamin c, fda registered supplement, gmp supplement, line oa shop, cash on delivery supplement, motega, wellness supplements bangkok, buy supplements bangkok, protein, probiotic, ashwagandha">
+<meta name="author" content="MOTEGA Wellness Co., Ltd.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MOTEGA | Premium Wellness Supplements from Bangkok">
+<meta property="og:description" content="Clinically dosed, Thai FDA-registered supplements. Order via LINE — pay on delivery. Free shipping over ฿1,500.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200&q=80">
+<link rel="canonical" href="https://motega.co.th/">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+<link rel="stylesheet" href="https://cdn.boxicons.com/3.0.4/fonts/basic/boxicons.min.css">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F9F4EA', ivory: '#F5EFE2', sage: '#C1BFAA', olive: '#A8A58F',
+          taupe: '#D9D0B8', bluegray: '#DDE3E6', stone: '#B7B59F',
+          ink: '#1C1C1C', body: '#3A3A3A', muted: '#6B6B6B', canvas: '#E8E8E8',
+          linegreen: '#06C755', msgblue: '#0084FF'
+        },
+        fontFamily: {
+          display: ['"Playfair Display"', 'Georgia', 'serif'],
+          sans: ['Inter', 'sans-serif']
+        },
+        maxWidth: { container: '1280px' }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --color-cream:#F9F4EA; --color-ivory:#F5EFE2; --color-sage:#C1BFAA; --color-olive:#A8A58F;
+    --color-taupe:#D9D0B8; --color-blue-gray:#DDE3E6; --color-stone:#B7B59F;
+    --color-black:#1C1C1C; --color-text:#3A3A3A; --color-text-muted:#6B6B6B; --color-canvas:#E8E8E8;
+  }
+  html{ -webkit-font-smoothing:antialiased; }
+  body{ background:#FFFFFF; font-family:'Inter',sans-serif; color:var(--color-text); overflow-x:hidden; }
+  .hero-title{ font-family:'Playfair Display',serif; font-weight:900; letter-spacing:-.015em; line-height:1.04; color:var(--color-black); }
+  .hero-title .sub{ color:var(--color-sage); font-weight:400; font-style:italic; }
+  .section-title{ font-family:'Playfair Display',serif; font-weight:700; line-height:1.18; color:var(--color-black); }
+  .section-title span{ color:var(--color-olive); font-weight:400; font-style:italic; }
+  .card-title{ font-family:'Playfair Display',serif; font-weight:600; color:var(--color-black); }
+  .label{ font-family:'Inter',sans-serif; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--color-text-muted); }
+
+  /* ===== Reveal on scroll ===== */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); transition-delay:var(--d,0s); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal-l{ opacity:0; transform:translateX(-30px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); transition-delay:var(--d,0s); }
+  .reveal-l.in{ opacity:1; transform:none; }
+  .reveal-r{ opacity:0; transform:translateX(30px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); transition-delay:var(--d,0s); }
+  .reveal-r.in{ opacity:1; transform:none; }
+
+  /* ===== Marquee ===== */
+  .marquee{ display:flex; width:max-content; animation:scrollX 38s linear infinite; }
+  .marquee:hover{ animation-play-state:paused; }
+  @keyframes scrollX{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ===== Hero floating tiles ===== */
+  .float-a{ animation:floatA 7s ease-in-out infinite; }
+  .float-b{ animation:floatA 9s ease-in-out infinite reverse; }
+  @keyframes floatA{ 0%,100%{transform:translateY(0) rotate(-1.2deg)} 50%{transform:translateY(-13px) rotate(1.1deg)} }
+
+  /* ===== Buttons ===== */
+  .btn-ink{ position:relative; overflow:hidden; transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, letter-spacing .35s ease, background .3s ease; }
+  .btn-ink:hover{ transform:translateY(-3px); box-shadow:0 18px 34px -14px rgba(28,28,28,.55); letter-spacing:.045em; }
+  .btn-ink::after{ content:''; position:absolute; inset:0; background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.32) 48%,transparent 62%); transform:translateX(-120%); transition:transform .7s ease; }
+  .btn-ink:hover::after{ transform:translateX(120%); }
+  .btn-line{ transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, filter .3s; }
+  .btn-line:hover{ transform:translateY(-3px); box-shadow:0 18px 30px -14px rgba(6,199,85,.65); filter:saturate(1.15); }
+  .btn-ghost{ transition:background .3s ease, color .3s ease, border-color .3s, transform .3s; }
+  .btn-ghost:hover{ background:var(--color-ink); color:#fff; border-color:var(--color-ink); transform:translateY(-3px); }
+
+  /* ===== Cards ===== */
+  .tile{ transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease, background .4s ease; }
+  .tile:hover{ transform:translateY(-8px); box-shadow:0 30px 60px -30px rgba(107,107,107,.5); }
+  .tile img{ transition:transform 1s cubic-bezier(.22,1,.36,1); }
+  .tile:hover img{ transform:scale(1.07); }
+
+  .product-card{ transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s ease, border-color .35s; }
+  .product-card:hover{ transform:translateY(-7px); box-shadow:0 34px 60px -32px rgba(75,70,60,.55); border-color:var(--color-sage); }
+  .product-card:hover .pc-img{ transform:scale(1.09) rotate(-1deg); }
+  .pc-img{ transition:transform .9s cubic-bezier(.22,1,.36,1); }
+  .product-card .pc-cta{ opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
+  .product-card:hover .pc-cta{ opacity:1; transform:none; }
+  @media (hover:none){ .product-card .pc-cta{ opacity:1; transform:none; } }
+
+  /* ===== Tabs ===== */
+  .tab-btn{ transition:all .32s cubic-bezier(.22,1,.36,1); }
+  .tab-btn.active{ background:var(--color-ink); color:#fff; border-color:var(--color-ink); }
+
+  /* ===== Accordion ===== */
+  .acc-body{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1); }
+  .acc-item.open .acc-body{ grid-template-rows:1fr; }
+  .acc-body > div{ overflow:hidden; }
+  .acc-item .acc-icon{ transition:transform .45s cubic-bezier(.22,1,.36,1); }
+  .acc-item.open .acc-icon{ transform:rotate(45deg); }
+  .acc-item{ transition:background .4s ease; }
+
+  /* ===== Sticky header ===== */
+  #siteHeader{ transition:box-shadow .4s ease, padding .4s ease, background .4s ease; }
+  #siteHeader.scrolled{ box-shadow:0 12px 34px -22px rgba(28,28,28,.42); }
+
+  /* ===== Mobile nav ===== */
+  #mobileNav{ max-height:0; overflow:hidden; transition:max-height .55s cubic-bezier(.22,1,.36,1); }
+  #mobileNav.open{ max-height:420px; }
+
+  /* ===== Floating dock (back-to-top + chatbot, same row, 5px gap) ===== */
+  #dock{ position:fixed; right:18px; bottom:18px; display:flex; align-items:center; gap:5px; z-index:70; }
+  #backTop{ opacity:0; transform:translateY(16px) scale(.85); pointer-events:none;
+    transition:opacity .45s ease, transform .45s cubic-bezier(.22,1,.36,1), background .3s, color .3s; }
+  #backTop.show{ opacity:1; transform:none; pointer-events:auto; }
+  #chatToggle{ transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, background .35s ease; }
+  #chatToggle:hover{ transform:translateY(-4px) scale(1.04); box-shadow:0 22px 44px -16px rgba(28,28,28,.55); }
+  #chatToggle .pulse{ position:absolute; inset:0; border-radius:9999px; border:2px solid rgba(28,28,28,.35); animation:pulseRing 2.6s cubic-bezier(.22,1,.36,1) infinite; }
+  @keyframes pulseRing{ 0%{transform:scale(1); opacity:.7} 70%{transform:scale(1.55); opacity:0} 100%{opacity:0} }
+  #chatToggle.opened .pulse{ display:none; }
+
+  /* ===== Chat panel ===== */
+  #chatPanel{ position:fixed; right:18px; bottom:84px; width:344px; max-width:calc(100vw - 32px);
+    max-height:min(560px, calc(100vh - 110px)); display:flex; flex-direction:column;
+    opacity:0; transform:translateY(18px) scale(.96); transform-origin:bottom right; pointer-events:none;
+    transition:opacity .38s cubic-bezier(.22,1,.36,1), transform .38s cubic-bezier(.22,1,.36,1);
+    box-shadow:0 40px 90px -30px rgba(28,28,28,.5); }
+  #chatPanel.open{ opacity:1; transform:none; pointer-events:auto; }
+  #chatBody::-webkit-scrollbar{ width:5px; }
+  #chatBody::-webkit-scrollbar-thumb{ background:var(--color-sage); border-radius:99px; }
+  .bubble-bot{ background:#fff; border:1px solid var(--color-canvas); border-radius:16px 16px 16px 5px; }
+  .bubble-user{ background:var(--color-ink); color:#fff; border-radius:16px 16px 5px 16px; }
+  .chip{ transition:all .28s ease; }
+  .chip:hover{ background:var(--color-ink); color:#fff; transform:translateY(-2px); }
+  .typing-dot{ width:6px; height:6px; border-radius:99px; background:var(--color-olive); display:inline-block; animation:typing 1.1s infinite; }
+  .typing-dot:nth-child(2){ animation-delay:.18s } .typing-dot:nth-child(3){ animation-delay:.36s }
+  @keyframes typing{ 0%,60%,100%{ transform:translateY(0); opacity:.45 } 30%{ transform:translateY(-5px); opacity:1 } }
+
+  /* ===== Misc ===== */
+  .underline-grow{ position:relative; }
+  .underline-grow::after{ content:''; position:absolute; left:0; bottom:-3px; width:100%; height:2px; background:var(--color-ink);
+    transform:scaleX(0); transform-origin:right; transition:transform .42s cubic-bezier(.22,1,.36,1); }
+  .underline-grow:hover::after{ transform:scaleX(1); transform-origin:left; }
+  .noise{ position:relative; }
+  .noise::before{ content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; border-radius:inherit;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .tilt-1{ transform:rotate(-1.6deg); } .tilt-2{ transform:rotate(1.4deg); }
+  .badge-float{ animation:floatA 6s ease-in-out infinite; }
+  .filter-item{ transition:opacity .45s ease, transform .45s cubic-bezier(.22,1,.36,1); }
+  .filter-item.hide{ opacity:0; transform:scale(.94); position:absolute; pointer-events:none; visibility:hidden; }
+  ::selection{ background:var(--color-sage); color:var(--color-black); }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition-duration:.01ms !important; }
+    .reveal,.reveal-l,.reveal-r{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+
+<body class="bg-white">
+
+<!-- ================= HEADER ================= -->
+<header id="siteHeader" class="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b border-canvas">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+    <div class="flex items-center justify-between h-[68px] lg:h-[78px]">
+
+      <!-- Logo -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <span class="w-10 h-10 rounded-[13px] bg-ink text-cream grid place-items-center font-display font-black text-lg
+                     transition-transform duration-500 group-hover:rotate-[8deg]">M</span>
+        <span class="leading-none">
+          <span class="block font-display font-black text-[19px] tracking-[.02em] text-ink">MOTEGA</span>
+          <span class="block label mt-[3px] text-[9px]">Wellness Apothecary</span>
+        </span>
+      </a>
+
+      <!-- Nav -->
+      <nav class="hidden lg:flex items-center gap-9 text-[13.5px] font-medium text-body">
+        <a href="#categories" class="underline-grow hover:text-ink transition-colors">Categories</a>
+        <a href="#shop" class="underline-grow hover:text-ink transition-colors">Shop</a>
+        <a href="#quality" class="underline-grow hover:text-ink transition-colors">Our Standard</a>
+        <a href="#reviews" class="underline-grow hover:text-ink transition-colors">Reviews</a>
+        <a href="#how" class="underline-grow hover:text-ink transition-colors">How to Order</a>
+        <a href="#faq" class="underline-grow hover:text-ink transition-colors">FAQ</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="flex items-center gap-2.5">
+        <a href="tel:+66955550188" class="hidden sm:grid place-items-center w-10 h-10 rounded-full border border-canvas text-ink hover:bg-cream transition-colors duration-300" aria-label="Call us">
+          <i class="fa-solid fa-phone text-[13px]"></i>
+        </a>
+        <a href="https://line.me/R/ti/p/@motega" target="_blank" rel="noopener"
+           class="btn-line inline-flex items-center gap-2 rounded-full bg-linegreen text-white px-5 py-[11px] text-[13px] font-semibold">
+          <i class="fa-brands fa-line text-[16px]"></i><span class="hidden sm:inline">Order on LINE</span><span class="sm:hidden">LINE</span>
+        </a>
+        <button id="menuBtn" class="lg:hidden w-10 h-10 rounded-full border border-canvas grid place-items-center text-ink" aria-label="Menu">
+          <i class="fa-solid fa-bars text-[14px]"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="lg:hidden">
+      <nav class="flex flex-col gap-1 pb-5 pt-1">
+        <a href="#categories" class="mob-link py-2.5 border-b border-canvas text-[15px] text-body">Categories</a>
+        <a href="#shop" class="mob-link py-2.5 border-b border-canvas text-[15px] text-body">Shop</a>
+        <a href="#quality" class="mob-link py-2.5 border-b border-canvas text-[15px] text-body">Our Standard</a>
+        <a href="#reviews" class="mob-link py-2.5 border-b border-canvas text-[15px] text-body">Reviews</a>
+        <a href="#how" class="mob-link py-2.5 border-b border-canvas text-[15px] text-body">How to Order</a>
+        <a href="#faq" class="mob-link py-2.5 text-[15px] text-body">FAQ</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<main id="top">
+<section class="pt-[104px] lg:pt-[130px] pb-16 lg:pb-24">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <!-- Messenger context chip -->
+    <div class="reveal inline-flex items-center gap-2.5 rounded-full bg-cream border border-taupe/60 pl-2 pr-4 py-[7px] mb-7">
+      <span class="w-6 h-6 rounded-full bg-msgblue text-white grid place-items-center text-[10px]"><i class="fa-brands fa-facebook-messenger"></i></span>
+      <span class="text-[11.5px] text-body"><span class="font-semibold text-ink">Welcome from our chat.</span> Use code <span class="font-semibold text-ink">MESSENGER10</span> for ฿100 off your first order.</span>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-7 items-start">
+
+      <!-- LEFT -->
+      <div class="lg:col-span-5 xl:col-span-5">
+        <p class="reveal label mb-4" style="--d:.05s">Small-batch supplements · Bangkok</p>
+
+        <h1 class="reveal hero-title text-[42px] sm:text-[54px] lg:text-[58px] xl:text-[64px]" style="--d:.12s">
+          Dosed properly.<br>
+          <span class="sub">Nothing</span> hidden.
+        </h1>
+
+        <p class="reveal mt-6 text-[15.5px] leading-[1.72] text-body max-w-[470px]" style="--d:.2s">
+          Every MOTEGA formula is built around clinically meaningful dosages — not sprinkle-dusting.
+          Registered with the Thai FDA, produced in GMP &amp; HACCP certified facilities, and batch-tested
+          by independent labs. Your order ships from Bangkok in 1–2 days, and you can pay cash on delivery.
+        </p>
+
+        <!-- CTA -->
+        <div class="reveal mt-8 flex flex-wrap items-center gap-3" style="--d:.28s">
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20with%20code%20MESSENGER10" target="_blank" rel="noopener"
+             class="btn-line inline-flex items-center gap-2.5 rounded-full bg-linegreen text-white px-7 py-[15px] text-[14.5px] font-semibold">
+            <i class="fa-brands fa-line text-[19px]"></i> Order via LINE
+          </a>
+          <a href="#shop"
+             class="btn-ghost inline-flex items-center gap-2.5 rounded-full border border-ink/20 px-7 py-[15px] text-[14.5px] font-semibold text-ink">
+            Browse 16 formulas <i class="fa-solid fa-arrow-down text-[11px]"></i>
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="reveal mt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-3.5 max-w-[520px]" style="--d:.36s">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-shield-halved text-olive text-[15px]"></i>
+            <div><p class="text-[11.5px] font-semibold text-ink leading-tight">Thai FDA</p><p class="text-[10px] text-muted leading-tight">Reg. 11-1-05857</p></div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-industry text-olive text-[15px]"></i>
+            <div><p class="text-[11.5px] font-semibold text-ink leading-tight">GMP &amp; HACCP</p><p class="text-[10px] text-muted leading-tight">Certified facility</p></div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-flask-vial text-olive text-[15px]"></i>
+            <div><p class="text-[11.5px] font-semibold text-ink leading-tight">Lab Tested</p><p class="text-[10px] text-muted leading-tight">Every single batch</p></div>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-truck-fast text-olive text-[15px]"></i>
+            <div><p class="text-[11.5px] font-semibold text-ink leading-tight">COD Available</p><p class="text-[10px] text-muted leading-tight">Nationwide, 1-2 days</p></div>
+          </div>
+        </div>
+
+        <!-- Mini social proof -->
+        <div class="reveal mt-8 flex items-center gap-4" style="--d:.44s">
+          <div class="flex -space-x-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-av1/120/120';">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-av2/120/120';">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-av3/120/120';">
+            <span class="w-10 h-10 rounded-full border-2 border-white bg-cream text-ink text-[10px] font-semibold grid place-items-center">30k+</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-1 text-taupe text-[11px]">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span class="ml-1.5 text-ink font-semibold text-[12px]">4.9</span>
+            </div>
+            <p class="text-[11px] text-muted mt-1">from 2,438 verified reviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT : BENTO -->
+      <div class="lg:col-span-7 xl:col-span-7">
+        <div class="grid grid-cols-12 gap-3.5 sm:gap-4">
+
+          <!-- Big product tile -->
+          <div class="reveal-r col-span-12 sm:col-span-8 relative rounded-[26px] overflow-hidden bg-cream noise min-h-[320px] sm:min-h-[420px] group tile">
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1100&q=80"
+                 alt="MOTEGA premium supplement bottles and capsules"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-hero/1100/900';">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/5 to-transparent"></div>
+
+            <div class="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-white/92 backdrop-blur px-3.5 py-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-linegreen animate-pulse"></span>
+              <span class="text-[10.5px] font-semibold text-ink tracking-wide">Restocked this week</span>
+            </div>
+
+            <div class="absolute bottom-5 left-5 right-5">
+              <p class="label text-white/80 mb-1.5">Flagship formula</p>
+              <h2 class="font-display font-black text-white text-[22px] sm:text-[27px] leading-tight">Marine Collagen Tri-Peptide 10,000mg</h2>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="rounded-full bg-cream text-ink text-[12px] font-semibold px-3.5 py-1.5">฿1,490 <span class="text-muted font-normal">/ $42</span></span>
+                <span class="rounded-full border border-white/40 text-white text-[11px] px-3 py-1.5">Sold 4,200+ bottles</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column small tiles -->
+          <div class="col-span-12 sm:col-span-4 flex sm:flex-col gap-3.5 sm:gap-4">
+            <!-- Ingredient tile -->
+            <div class="reveal-r flex-1 rounded-[22px] overflow-hidden bg-ivory relative min-h-[130px] tile" style="--d:.1s">
+              <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=700&q=80"
+                   alt="Natural ingredients and vitamins"
+                   class="absolute inset-0 w-full h-full object-cover"
+                   onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-ing/700/700';">
+              <div class="absolute inset-x-0 bottom-0 bg-white/90 backdrop-blur px-4 py-2.5">
+                <p class="text-[10.5px] font-semibold text-ink">Clean ingredients only</p>
+              </div>
+            </div>
+            <!-- Stat tile -->
+            <div class="reveal-r flex-1 rounded-[22px] bg-sage px-5 py-5 flex flex-col justify-between min-h-[130px] tilt-2" style="--d:.18s">
+              <i class="fa-solid fa-award text-ink text-[19px]"></i>
+              <div>
+                <p class="font-display font-black text-ink text-[30px] leading-none"><span class="counter" data-count="98">0</span>%</p>
+                <p class="text-[11px] text-ink/75 mt-1.5 leading-snug">of customers reorder within 90 days</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom strip tiles -->
+          <div class="col-span-6 sm:col-span-4 reveal rounded-[20px] bg-cream border border-taupe/50 px-5 py-5" style="--d:.22s">
+            <i class="fa-solid fa-box-open text-olive text-[17px]"></i>
+            <p class="card-title text-[15px] mt-3">Free shipping</p>
+            <p class="text-[11.5px] text-muted mt-1 leading-relaxed">on every order over ฿1,500 ($43)</p>
+          </div>
+          <div class="col-span-6 sm:col-span-4 reveal rounded-[20px] bg-cream border border-taupe/50 px-5 py-5" style="--d:.3s">
+            <i class="fa-solid fa-rotate-left text-olive text-[17px]"></i>
+            <p class="card-title text-[15px] mt-3">7-day returns</p>
+            <p class="text-[11.5px] text-muted mt-1 leading-relaxed">unopened bottles, no questions asked</p>
+          </div>
+          <div class="col-span-12 sm:col-span-4 reveal rounded-[20px] bg-ink px-5 py-5 text-cream" style="--d:.38s">
+            <i class="fa-solid fa-headset text-sage text-[17px]"></i>
+            <p class="card-title text-[15px] mt-3 text-cream">Real humans</p>
+            <p class="text-[11.5px] text-cream/70 mt-1 leading-relaxed">advisors reply within 1 minute, 09:00–20:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRUST MARQUEE ================= -->
+<section class="border-y border-canvas py-5 overflow-hidden bg-white">
+  <div class="marquee items-center gap-3">
+    <!-- track 1 -->
+    <div class="flex items-center gap-3 pr-3">
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-shield-halved text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Thai FDA Registered</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-certificate text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">GMP &amp; HACCP Certified</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-truck-fast text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Free Shipping over ฿1,500</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-money-bill-wave text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Cash on Delivery</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-microscope text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Third-Party Lab Tested</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-clock text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Ships in 1–2 Days</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-heart text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">30,000+ Customers</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-leaf text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">No Artificial Fillers</span></span>
+    </div>
+    <!-- track 2 (duplicate) -->
+    <div class="flex items-center gap-3 pr-3" aria-hidden="true">
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-shield-halved text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Thai FDA Registered</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-certificate text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">GMP &amp; HACCP Certified</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-truck-fast text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Free Shipping over ฿1,500</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-money-bill-wave text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Cash on Delivery</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-microscope text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Third-Party Lab Tested</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-clock text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">Ships in 1–2 Days</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-heart text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">30,000+ Customers</span></span>
+      <span class="flex items-center gap-2.5 rounded-full bg-cream border border-taupe/50 px-5 py-2.5 whitespace-nowrap"><i class="fa-solid fa-leaf text-olive text-[12px]"></i><span class="text-[12px] font-medium text-ink">No Artificial Fillers</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CATEGORIES (BENTO) ================= -->
+<section id="categories" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 mb-12 lg:mb-16">
+      <div class="max-w-[620px]">
+        <p class="reveal label mb-4">01 — Shop by goal</p>
+        <h2 class="reveal section-title text-[32px] sm:text-[42px] lg:text-[48px]" style="--d:.08s">
+          Six categories.<br><span>One honest standard.</span>
+        </h2>
+      </div>
+      <p class="reveal text-[14.5px] leading-[1.75] text-body max-w-[380px]" style="--d:.16s">
+        Whether it's everyday immunity, glowing skin or deeper sleep — each formula is grouped by the
+        outcome you're actually shopping for, not by marketing buzzwords.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-12 gap-4 sm:gap-5">
+
+      <!-- Cat 1 : large -->
+      <a href="#shop" class="reveal tile col-span-12 md:col-span-5 lg:col-span-5 rounded-[24px] overflow-hidden bg-cream relative min-h-[300px] lg:min-h-[380px] group">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1000&q=80" alt="Daily essentials vitamins and healthy food"
+             class="absolute inset-0 w-full h-full object-cover"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-cat1/1000/800';">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/72 via-ink/10 to-transparent"></div>
+        <div class="absolute bottom-0 p-7">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/92 px-3.5 py-1.5 text-[10px] font-semibold text-ink tracking-wider uppercase">6 formulas</span>
+          <h3 class="card-title text-white text-[24px] mt-4">Daily Essentials</h3>
+          <p class="text-white/80 text-[12.5px] mt-2 leading-relaxed max-w-[290px]">Multivitamins, Vitamin C + Zinc, Omega-3, D3+K2 — the foundation stack.</p>
+        </div>
+      </a>
+
+      <!-- Cat 2 : medium with olive bg -->
+      <div class="reveal col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 rounded-[24px] bg-olive p-7 flex flex-col justify-between min-h-[240px] tilt-1" style="--d:.08s">
+        <i class="fa-solid fa-fire-flame-curved text-white/90 text-[22px]"></i>
+        <div>
+          <h3 class="card-title text-white text-[21px]">Weight &amp; Metabolism</h3>
+          <p class="text-white/80 text-[12px] mt-2.5 leading-relaxed">Green tea, L-carnitine, garcinia & fiber — realistic metabolic support.</p>
+          <a href="#shop" class="inline-flex items-center gap-2 text-white text-[12px] font-semibold mt-5 border-b border-white/50 pb-1 hover:gap-3 transition-all duration-300">Explore <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+        </div>
+      </div>
+
+      <!-- Cat 3 : medium image -->
+      <a href="#shop" class="reveal tile col-span-12 sm:col-span-6 md:col-span-3 lg:col-span-4 rounded-[24px] overflow-hidden relative min-h-[240px] group" style="--d:.14s">
+        <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=900&q=80" alt="Beauty collagen skincare"
+             class="absolute inset-0 w-full h-full object-cover"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-cat3/900/700';">
+        <div class="absolute inset-0 bg-gradient-to-tr from-ink/70 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <h3 class="card-title text-white text-[21px]">Beauty &amp; Glow</h3>
+          <p class="text-white/80 text-[12px] mt-2 leading-relaxed max-w-[240px]">Marine collagen, glutathione, biotin — beauty that starts from within.</p>
+        </div>
+      </a>
+
+      <!-- Cat 4 : cream tile -->
+      <div class="reveal col-span-6 md:col-span-3 lg:col-span-3 rounded-[24px] bg-cream border border-taupe/50 p-7 min-h-[230px] flex flex-col justify-between" style="--d:.2s">
+        <i class="fa-solid fa-moon text-olive text-[21px]"></i>
+        <div>
+          <h3 class="card-title text-[20px]">Sleep &amp; Calm</h3>
+          <p class="text-[12px] text-muted mt-2.5 leading-relaxed">Magnesium glycinate & ashwagandha KSM-66 for real rest.</p>
+        </div>
+      </div>
+
+      <!-- Cat 5 : taupe tile -->
+      <div class="reveal col-span-6 md:col-span-3 lg:col-span-3 rounded-[24px] bg-taupe p-7 min-h-[230px] flex flex-col justify-between" style="--d:.26s">
+        <i class="fa-solid fa-seedling text-ink/80 text-[21px]"></i>
+        <div>
+          <h3 class="card-title text-[20px]">Gut &amp; Digestion</h3>
+          <p class="text-[12px] text-ink/70 mt-2.5 leading-relaxed">20B CFU probiotics, psyllium fiber, curcumin 95%.</p>
+        </div>
+      </div>
+
+      <!-- Cat 6 : wide dark tile -->
+      <div class="reveal col-span-12 md:col-span-6 lg:col-span-6 rounded-[24px] bg-ink text-cream p-7 sm:p-9 flex items-center justify-between gap-6 min-h-[230px]" style="--d:.32s">
+        <div>
+          <i class="fa-solid fa-person-walking text-sage text-[21px]"></i>
+          <h3 class="card-title text-cream text-[22px] mt-4">Joint &amp; Mobility</h3>
+          <p class="text-cream/70 text-[12.5px] mt-2.5 leading-relaxed max-w-[300px]">
+            UC-II® undenatured collagen type II with glucosamine — built for knees that still want to climb stairs.
+          </p>
+          <a href="#shop" class="inline-flex items-center gap-2 text-sage text-[12px] font-semibold mt-5 border-b border-sage/50 pb-1 hover:gap-3 transition-all duration-300">Shop the range <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Active lifestyle"
+             class="w-[130px] h-[130px] sm:w-[170px] sm:h-[170px] rounded-[18px] object-cover flex-shrink-0"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-cat6/500/500';">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHOP / PRODUCTS ================= -->
+<section id="shop" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 mb-10">
+      <div class="max-w-[620px]">
+        <p class="reveal label mb-4">02 — The collection</p>
+        <h2 class="reveal section-title text-[32px] sm:text-[42px] lg:text-[48px]" style="--d:.08s">
+          16 formulas.<br><span>Zero guesswork.</span>
+        </h2>
+        <p class="reveal mt-5 text-[14.5px] leading-[1.75] text-body max-w-[520px]" style="--d:.14s">
+          Prices in Thai Baht with USD for reference. Tap “Add to Order” and we’ll continue in LINE or Messenger —
+          exactly where you left off in our chat.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="reveal flex flex-wrap gap-2" style="--d:.2s">
+        <button class="tab-btn active rounded-full border border-canvas px-5 py-2.5 text-[12px] font-semibold text-ink" data-filter="all">All</button>
+        <button class="tab-btn rounded-full border border-canvas px-5 py-2.5 text-[12px] font-semibold text-body hover:border-ink" data-filter="daily">Essentials</button>
+        <button class="tab-btn rounded-full border border-canvas px-5 py-2.5 text-[12px] font-semibold text-body hover:border-ink" data-filter="weight">Weight</button>
+        <button class="tab-btn rounded-full border border-canvas px-5 py-2.5 text-[12px] font-semibold text-body hover:border-ink" data-filter="beauty">Beauty</button>
+        <button class="tab-btn rounded-full border border-canvas px-5 py-2.5 text-[12px] font-semibold text-body hover:border-ink" data-filter="sleep">Sleep</button>
+        <button class="tab-btn rounded-full border border-canvas px-5 py-2.5 text-[12px] font-semibold text-body hover:border-ink" data-filter="gut">Gut</button>
+        <button class="tab-btn rounded-full border border-canvas px-5 py-2.5 text-[12px] font-semibold text-body hover:border-ink" data-filter="joint">Joint</button>
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+
+      <!-- 1 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="daily">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=700&q=80" alt="Daily Multi Essentials" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p1/700/880';">
+          <span class="absolute top-3 left-3 rounded-full bg-ink text-white text-[9.5px] font-semibold tracking-wider uppercase px-3 py-1.5">Best seller</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(612)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Daily Multi Essentials</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">23 vitamins &amp; minerals · 30 capsules · once daily</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿890</span>
+            <span class="text-[11px] text-muted line-through">฿1,090</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $25</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Daily%20Multi%20Essentials%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="daily" style="--d:.05s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=700&q=80" alt="Vitamin C 1000mg + Zinc" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p2/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(847)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Vitamin C 1,000mg + Zinc</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Immune daily guard · 60 tablets · 2 months supply</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿690</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $20</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Vitamin%20C%201000mg%20%2B%20Zinc%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="daily" style="--d:.1s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1577401239170-897942555fb3?w=700&q=80" alt="Omega-3 Fish Oil" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p3/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(389)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Omega-3 Fish Oil 1,000mg</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">EPA 360 / DHA 240 · 60 softgels · IFOS-grade oil</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿890</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $25</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Omega-3%20Fish%20Oil%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="daily" style="--d:.15s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=700&q=80" alt="Vitamin D3 + K2 Drops" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p4/700/880';">
+          <span class="absolute top-3 left-3 rounded-full bg-olive text-white text-[9.5px] font-semibold tracking-wider uppercase px-3 py-1.5">New</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(124)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Vitamin D3 + K2 Drops</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">2,000 IU per drop · 30ml · 3-month supply</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿790</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $23</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Vitamin%20D3%20%2B%20K2%20Drops%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="weight">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=700&q=80" alt="Burn Metabolism" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p5/700/880';">
+          <span class="absolute top-3 left-3 rounded-full bg-ink text-white text-[9.5px] font-semibold tracking-wider uppercase px-3 py-1.5">Best seller</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(521)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Burn Metabolism Complex</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Green tea 500mg + L-carnitine · 60 capsules</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,190</span>
+            <span class="text-[11px] text-muted line-through">฿1,390</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $34</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Burn%20Metabolism%20Complex%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="weight" style="--d:.05s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=700&q=80" alt="Fiber Balance" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p6/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(268)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Fiber Balance Psyllium</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Prebiotic husk fiber · 30 sachets · lemon flavor</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿690</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $20</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Fiber%20Balance%20Psyllium%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="weight" style="--d:.1s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?w=700&q=80" alt="Garcinia Complex" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p7/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(203)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Garcinia Complex 60% HCA</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Appetite support · 60 vegan capsules</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,090</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $31</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Garcinia%20Complex%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="beauty" style="--d:.15s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=700&q=80" alt="Marine Collagen Tri-Peptide" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p8/700/880';">
+          <span class="absolute top-3 left-3 rounded-full bg-ink text-white text-[9.5px] font-semibold tracking-wider uppercase px-3 py-1.5">Hero</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(1,204)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Marine Collagen Tri-Peptide 10,000mg</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Fish collagen + vitamin C · 30 sachets · unflavored</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,490</span>
+            <span class="text-[11px] text-muted line-through">฿1,890</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $42</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Marine%20Collagen%20Tri-Peptide%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="beauty">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=700&q=80" alt="Glutathione + Vitamin C" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p9/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(456)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Glutathione + Vitamin C</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Setria® L-glutathione 500mg · 60 capsules</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,290</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $37</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Glutathione%20%2B%20Vitamin%20C%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="beauty" style="--d:.05s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=700&q=80" alt="Biotin Hair & Nail" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p10/700/880';">
+          <span class="absolute top-3 left-3 rounded-full bg-olive text-white text-[9.5px] font-semibold tracking-wider uppercase px-3 py-1.5">New</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(98)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Biotin Hair &amp; Nail 10,000mcg</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">With zinc &amp; selenium · 60 capsules</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿890</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $25</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Biotin%20Hair%20%26%20Nail%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="sleep" style="--d:.1s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&q=80" alt="Night Calm Magnesium" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p11/700/880';">
+          <span class="absolute top-3 left-3 rounded-full bg-ink text-white text-[9.5px] font-semibold tracking-wider uppercase px-3 py-1.5">Best seller</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(534)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Night Calm Magnesium Glycinate</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Chelated 400mg · 60 capsules · non-drowsy formula</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿890</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $25</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Night%20Calm%20Magnesium%20Glycinate%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 12 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="sleep" style="--d:.15s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=700&q=80" alt="Ashwagandha KSM-66" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p12/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(311)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Ashwagandha KSM-66 600mg</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Stress &amp; cortisol balance · 60 capsules</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,090</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $31</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Ashwagandha%20KSM-66%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 13 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="gut">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=700&q=80" alt="Probiotic 20 Billion CFU" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p13/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(402)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Probiotic 20B CFU</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">10 strains + prebiotic FOS · 30 delayed-release caps</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,190</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $34</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Probiotic%2020B%20CFU%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 14 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="gut" style="--d:.05s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=700&q=80" alt="Turmeric Curcumin 95%" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p14/700/880';">
+          <span class="absolute top-3 left-3 rounded-full bg-olive text-white text-[9.5px] font-semibold tracking-wider uppercase px-3 py-1.5">Sale</span>
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(187)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Turmeric Curcumin 95%</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">With BioPerine® black pepper · 60 capsules</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿890</span>
+            <span class="text-[11px] text-muted line-through">฿1,050</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $25</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Turmeric%20Curcumin%2095%25%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 15 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="joint" style="--d:.1s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80" alt="Joint Flex UC-II" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p15/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(176)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">Joint Flex UC-II® + Glucosamine</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Undenatured collagen type II · 60 capsules</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,590</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $45</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22Joint%20Flex%20UC-II%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- 16 -->
+      <article class="filter-item product-card reveal rounded-[20px] border border-canvas bg-white overflow-hidden flex flex-col" data-cat="daily" style="--d:.15s">
+        <div class="relative aspect-[4/5] bg-cream overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=700&q=80" alt="CoQ10 200mg" class="pc-img w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-p16/700/880';">
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center gap-1 text-taupe text-[9px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-muted ml-1.5 text-[10px]">(142)</span></div>
+          <h3 class="card-title text-[16px] mt-2.5 leading-snug">CoQ10 Ubiquinol 200mg</h3>
+          <p class="text-[11px] text-muted mt-1.5 leading-relaxed flex-1">Cellular energy &amp; heart support · 60 softgels</p>
+          <div class="flex items-baseline gap-2 mt-3.5">
+            <span class="font-display font-black text-ink text-[19px]">฿1,290</span>
+            <span class="text-[11px] text-muted ml-auto">≈ $37</span>
+          </div>
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20to%20order%20%22CoQ10%20Ubiquinol%20200mg%22" target="_blank" rel="noopener"
+             class="pc-cta btn-ink mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-4 py-3 text-[11.5px] font-semibold">
+            <i class="fa-brands fa-line text-[14px]"></i> Add to Order
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Bundle offer -->
+    <div class="reveal mt-12 rounded-[24px] bg-cream border border-taupe/50 p-7 sm:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-7">
+      <div class="flex items-start gap-5">
+        <span class="w-12 h-12 rounded-2xl bg-ink text-cream grid place-items-center flex-shrink-0"><i class="fa-solid fa-gift text-[16px]"></i></span>
+        <div>
+          <p class="label mb-2">Bundle offer · limited weekly quota</p>
+          <h3 class="card-title text-[21px] sm:text-[25px]">The Foundation Stack — 3 bottles, save ฿600</h3>
+          <p class="text-[13px] text-body mt-2.5 leading-relaxed max-w-[520px]">
+            Daily Multi + Vitamin C + Omega-3 — the exact stack our advisors recommend to first-time customers.
+            <span class="font-semibold text-ink">฿2,290 ($65)</span> instead of ฿2,870, free shipping included.
+          </p>
+        </div>
+      </div>
+      <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20the%20Foundation%20Stack%20bundle" target="_blank" rel="noopener"
+         class="btn-line inline-flex items-center gap-2.5 rounded-full bg-linegreen text-white px-7 py-[14px] text-[13.5px] font-semibold whitespace-nowrap">
+        <i class="fa-brands fa-line text-[18px]"></i> Claim bundle on LINE
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUALITY / OUR STANDARD ================= -->
+<section id="quality" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+      <!-- Anti-grid imagery -->
+      <div class="lg:col-span-6 order-2 lg:order-1">
+        <div class="relative">
+          <div class="reveal-l rounded-[26px] overflow-hidden h-[380px] sm:h-[480px] bg-cream">
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1000&q=80" alt="Laboratory quality testing"
+                 class="w-full h-full object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-lab/1000/800';">
+          </div>
+          <div class="reveal-l absolute -bottom-8 right-2 sm:right-[-18px] w-[190px] sm:w-[230px] rounded-[20px] overflow-hidden border-[6px] border-white shadow-[0_30px_60px_-25px_rgba(28,28,28,.4)]" style="--d:.18s">
+            <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=600&q=80" alt="GMP manufacturing"
+                 class="w-full h-[150px] sm:h-[180px] object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-gmp/600/450';">
+          </div>
+          <div class="reveal-l absolute top-6 left-[-10px] sm:left-[-22px] rounded-[18px] bg-sage px-6 py-5 tilt-1 float-a" style="--d:.26s">
+            <p class="font-display font-black text-ink text-[27px] leading-none"><span class="counter" data-count="100">0</span>%</p>
+            <p class="text-[10.5px] text-ink/75 mt-1.5 leading-snug max-w-[110px]">of batches third-party lab tested</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="lg:col-span-6 order-1 lg:order-2 lg:pl-6">
+        <p class="reveal label mb-4">03 — Our standard</p>
+        <h2 class="reveal section-title text-[32px] sm:text-[40px] lg:text-[45px]" style="--d:.08s">
+          We formulate like<br>pharmacists, <span>not marketers.</span>
+        </h2>
+        <p class="reveal mt-6 text-[14.5px] leading-[1.78] text-body max-w-[520px]" style="--d:.14s">
+          MOTEGA was founded in Bangkok in 2019 by a pharmacist and a nutrition scientist who were tired of
+          “fairy dust” formulas — products listing impressive ingredients at doses too small to matter.
+          So we do one thing differently: every active is dosed at the level clinical research actually used,
+          and we print the exact amount on the label.
+        </p>
+
+        <div class="mt-9 space-y-5">
+          <div class="reveal flex gap-4" style="--d:.2s">
+            <span class="w-11 h-11 rounded-[14px] bg-cream border border-taupe/50 grid place-items-center flex-shrink-0"><i class="fa-solid fa-flask text-olive text-[15px]"></i></span>
+            <div>
+              <h4 class="card-title text-[16px]">Clinically meaningful dosages</h4>
+              <p class="text-[12.5px] text-muted mt-1.5 leading-relaxed">No proprietary blends hiding the real numbers. Full transparency, every bottle.</p>
+            </div>
+          </div>
+          <div class="reveal flex gap-4" style="--d:.26s">
+            <span class="w-11 h-11 rounded-[14px] bg-cream border border-taupe/50 grid place-items-center flex-shrink-0"><i class="fa-solid fa-microscope text-olive text-[15px]"></i></span>
+            <div>
+              <h4 class="card-title text-[16px]">Independent lab verification</h4>
+              <p class="text-[12.5px] text-muted mt-1.5 leading-relaxed">Heavy metals, microbes, and active potency — tested per batch by ISO 17025 labs.</p>
+            </div>
+          </div>
+          <div class="reveal flex gap-4" style="--d:.32s">
+            <span class="w-11 h-11 rounded-[14px] bg-cream border border-taupe/50 grid place-items-center flex-shrink-0"><i class="fa-solid fa-leaf text-olive text-[15px]"></i></span>
+            <div>
+              <h4 class="card-title text-[16px]">Clean excipient policy</h4>
+              <p class="text-[12.5px] text-muted mt-1.5 leading-relaxed">No titanium dioxide, no artificial dyes, no unnecessary fillers. Ever.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="reveal grid grid-cols-3 gap-4 mt-10 pt-9 border-t border-canvas" style="--d:.38s">
+          <div>
+            <p class="font-display font-black text-ink text-[28px] leading-none"><span class="counter" data-count="30">0</span>k+</p>
+            <p class="text-[11px] text-muted mt-2 leading-snug">customers served since 2019</p>
+          </div>
+          <div>
+            <p class="font-display font-black text-ink text-[28px] leading-none"><span class="counter" data-count="18">0</span></p>
+            <p class="text-[11px] text-muted mt-2 leading-snug">months average R&amp;D per formula</p>
+          </div>
+          <div>
+            <p class="font-display font-black text-ink text-[28px] leading-none"><span class="counter" data-count="4">0</span>.9</p>
+            <p class="text-[11px] text-muted mt-2 leading-snug">average rating from 2,438 reviews</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 mb-12">
+      <div class="max-w-[620px]">
+        <p class="reveal label mb-4">04 — Real people, real refills</p>
+        <h2 class="reveal section-title text-[32px] sm:text-[42px] lg:text-[48px]" style="--d:.08s">
+          What customers say<br><span>after month three.</span>
+        </h2>
+      </div>
+      <div class="reveal flex items-center gap-5 rounded-[18px] bg-cream border border-taupe/50 px-7 py-5" style="--d:.16s">
+        <p class="font-display font-black text-ink text-[38px] leading-none">4.9</p>
+        <div>
+          <div class="flex items-center gap-1 text-taupe text-[12px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-[11px] text-muted mt-1.5">2,438 verified reviews · 96% would reorder</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bento reviews -->
+    <div class="grid grid-cols-12 gap-4 sm:gap-5">
+
+      <div class="reveal col-span-12 md:col-span-5 rounded-[22px] bg-ink text-cream p-8 flex flex-col justify-between min-h-[260px]">
+        <i class="fa-solid fa-quote-left text-sage text-[22px]"></i>
+        <div>
+          <p class="text-[15px] leading-[1.8] text-cream/90 font-light">
+            “I’ve tried at least five collagen brands from Watsons to online shops. MOTEGA is the first one where
+            I actually saw a difference after six weeks — my hairdresser asked what I changed. The sachets
+            dissolve easily, no fishy aftertaste at all.”
+          </p>
+          <div class="flex items-center gap-3.5 mt-7">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=80" alt="Pimnara S." class="w-11 h-11 rounded-full object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-r1/120/120';">
+            <div>
+              <p class="text-[13px] font-semibold text-cream">Pimnara S.</p>
+              <p class="text-[11px] text-cream/60 mt-0.5">Marine Collagen · verified purchase</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal col-span-12 sm:col-span-6 md:col-span-4 rounded-[22px] bg-cream border border-taupe/50 p-8 flex flex-col justify-between min-h-[260px]" style="--d:.08s">
+        <div class="flex items-center gap-1 text-taupe text-[11px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div>
+          <p class="text-[13.5px] leading-[1.8] text-body font-light">
+            “Ordered through their LINE at 10pm, got replies from a real person, and the package arrived in
+            Chiang Mai the day after tomorrow. Paid cash at the door — easy. The magnesium really helps me
+            fall asleep faster.”
+          </p>
+          <div class="flex items-center gap-3.5 mt-6">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Kittipong T." class="w-11 h-11 rounded-full object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-r2/120/120';">
+            <div>
+              <p class="text-[13px] font-semibold text-ink">Kittipong T.</p>
+              <p class="text-[11px] text-muted mt-0.5">Night Calm · verified purchase</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal col-span-12 sm:col-span-6 md:col-span-3 rounded-[22px] bg-sage p-8 flex flex-col justify-between min-h-[260px] tilt-2" style="--d:.14s">
+        <i class="fa-solid fa-heart text-ink/70 text-[18px]"></i>
+        <div>
+          <p class="text-[13px] leading-[1.75] text-ink/85 font-light">
+            “Finally a Thai supplement brand that shows the actual dosage. As a nurse, I appreciate the transparency.”
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="Sirinat P." class="w-10 h-10 rounded-full object-cover"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-r3/120/120';">
+            <div>
+              <p class="text-[12px] font-semibold text-ink">Sirinat P.</p>
+              <p class="text-[10px] text-ink/60 mt-0.5">Daily Multi · verified</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal col-span-12 md:col-span-4 rounded-[22px] bg-cream border border-taupe/50 p-8 min-h-[220px] flex flex-col justify-between" style="--d:.2s">
+        <div class="flex items-center gap-1 text-taupe text-[11px]"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div>
+          <p class="text-[13.5px] leading-[1.8] text-body font-light">
+            “My husband and I have been on the Foundation Stack for four months. We used to catch every cold
+            the kids brought home — this year has been noticeably better. The bundle price makes it easy to keep going.”
+          </p>
+          <p class="text-[11px] text-muted mt-5">— Wanida K., Bangkok · Foundation Stack</p>
+        </div>
+      </div>
+
+      <div class="reveal col-span-12 sm:col-span-6 md:col-span-4 rounded-[22px] overflow-hidden relative min-h-[220px]" style="--d:.26s">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80" alt="Healthy lifestyle"
+             class="absolute inset-0 w-full h-full object-cover"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-r5/800/600';">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/78 to-transparent"></div>
+        <div class="absolute bottom-0 p-7">
+          <p class="font-display font-black text-white text-[22px] leading-tight">30,000+<br><span class="text-white/75 font-normal italic text-[14px]">customers across Thailand</span></p>
+        </div>
+      </div>
+
+      <div class="reveal col-span-12 sm:col-span-6 md:col-span-4 rounded-[22px] bg-ivory border border-taupe/40 p-8 min-h-[220px] flex flex-col justify-between" style="--d:.32s">
+        <i class="fa-solid fa-award text-olive text-[18px]"></i>
+        <div>
+          <p class="text-[13.5px] leading-[1.8] text-body font-light">
+            “Best packaging I’ve seen from a local brand — sealed, dated, with a QR to the lab report.
+            It feels like something you’d buy in Tokyo.”
+          </p>
+          <p class="text-[11px] text-muted mt-5">— Thanawat R., Phuket · Probiotic 20B CFU</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW TO ORDER ================= -->
+<section id="how" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <div class="max-w-[640px] mb-12">
+      <p class="reveal label mb-4">05 — How to order</p>
+      <h2 class="reveal section-title text-[32px] sm:text-[42px] lg:text-[46px]" style="--d:.08s">
+        Three steps. <span>No account, no checkout forms.</span>
+      </h2>
+      <p class="reveal mt-5 text-[14.5px] leading-[1.75] text-body" style="--d:.14s">
+        We keep ordering as human as our formulas. You already started a conversation with us —
+        simply continue it, and we handle the rest.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <div class="reveal rounded-[22px] border border-canvas p-8 hover:border-sage transition-colors duration-500 relative overflow-hidden">
+        <span class="absolute top-6 right-7 font-display font-black text-[54px] leading-none text-canvas select-none">01</span>
+        <span class="w-11 h-11 rounded-[14px] bg-cream grid place-items-center"><i class="fa-solid fa-bag-shopping text-ink text-[15px]"></i></span>
+        <h3 class="card-title text-[19px] mt-6">Pick your formulas</h3>
+        <p class="text-[12.5px] text-muted mt-3 leading-relaxed">
+          Browse the collection above and tap “Add to Order” on anything you want. Your message arrives
+          pre-filled — no typing needed.
+        </p>
+      </div>
+
+      <div class="reveal rounded-[22px] border border-canvas p-8 hover:border-sage transition-colors duration-500 relative overflow-hidden" style="--d:.1s">
+        <span class="absolute top-6 right-7 font-display font-black text-[54px] leading-none text-canvas select-none">02</span>
+        <span class="w-11 h-11 rounded-[14px] bg-cream grid place-items-center"><i class="fa-solid fa-comments text-ink text-[15px]"></i></span>
+        <h3 class="card-title text-[19px] mt-6">Confirm on LINE or Messenger</h3>
+        <p class="text-[12.5px] text-muted mt-3 leading-relaxed">
+          Our advisors confirm stock, suggest the right stack for your goal, and apply your discount code
+          (MESSENGER10 for first orders).
+        </p>
+      </div>
+
+      <div class="reveal rounded-[22px] border border-canvas p-8 hover:border-sage transition-colors duration-500 relative overflow-hidden" style="--d:.2s">
+        <span class="absolute top-6 right-7 font-display font-black text-[54px] leading-none text-canvas select-none">03</span>
+        <span class="w-11 h-11 rounded-[14px] bg-cream grid place-items-center"><i class="fa-solid fa-box text-ink text-[15px]"></i></span>
+        <h3 class="card-title text-[19px] mt-6">Pay &amp; receive in 1–2 days</h3>
+        <p class="text-[12.5px] text-muted mt-3 leading-relaxed">
+          Bank transfer, credit card, PromptPay QR, or cash on delivery. Tracking number sent to your chat
+          the moment it ships.
+        </p>
+      </div>
+    </div>
+
+    <!-- Payment + contact strip -->
+    <div class="reveal mt-8 rounded-[22px] bg-cream border border-taupe/50 p-7 sm:p-9 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-7">
+      <div>
+        <p class="label mb-3">Accepted payment methods</p>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="flex items-center gap-2 rounded-full bg-white border border-taupe/50 px-4 py-2.5"><i class="fa-solid fa-money-bill-wave text-olive text-[12px]"></i><span class="text-[11.5px] font-medium text-ink">Cash on Delivery</span></span>
+          <span class="flex items-center gap-2 rounded-full bg-white border border-taupe/50 px-4 py-2.5"><i class="fa-solid fa-building-columns text-olive text-[12px]"></i><span class="text-[11.5px] font-medium text-ink">Bank Transfer</span></span>
+          <span class="flex items-center gap-2 rounded-full bg-white border border-taupe/50 px-4 py-2.5"><i class="fa-solid fa-qrcode text-olive text-[12px]"></i><span class="text-[11.5px] font-medium text-ink">PromptPay QR</span></span>
+          <span class="flex items-center gap-2 rounded-full bg-white border border-taupe/50 px-4 py-2.5"><i class="fa-solid fa-credit-card text-olive text-[12px]"></i><span class="text-[11.5px] font-medium text-ink">Visa / Mastercard</span></span>
+        </div>
+      </div>
+      <a href="https://line.me/R/ti/p/@motega" target="_blank" rel="noopener"
+         class="btn-line inline-flex items-center gap-2.5 rounded-full bg-linegreen text-white px-7 py-[14px] text-[13.5px] font-semibold whitespace-nowrap">
+        <i class="fa-brands fa-line text-[18px]"></i> Start my order
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ + CONTACT ================= -->
+<section id="faq" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12">
+
+      <!-- FAQ -->
+      <div class="lg:col-span-7">
+        <p class="reveal label mb-4">06 — Good questions</p>
+        <h2 class="reveal section-title text-[31px] sm:text-[40px] lg:text-[43px] mb-9" style="--d:.08s">
+          Everything people ask<br><span>before their first bottle.</span>
+        </h2>
+
+        <div class="space-y-3">
+
+          <div class="acc-item open rounded-[18px] border border-canvas bg-white overflow-hidden">
+            <button class="acc-head w-full flex items-center justify-between gap-5 text-left px-7 py-6">
+              <span class="card-title text-[16px] leading-snug">Are MOTEGA products really registered with the Thai FDA (อย.)?</span>
+              <span class="acc-icon w-8 h-8 rounded-full bg-cream grid place-items-center flex-shrink-0"><i class="fa-solid fa-plus text-[11px] text-ink"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="px-7 pb-7 text-[13px] leading-[1.85] text-body">
+              Yes. Every SKU holds its own Thai FDA food supplement registration number (format 11-1-XXXXX-X-XXXX),
+              printed on each label along with the manufacturing lot and expiry date. If you'd like to verify a
+              number on the FDA's public database, just send us a photo of your bottle on LINE and we'll walk you through it.
+            </p></div></div>
+          </div>
+
+          <div class="acc-item rounded-[18px] border border-canvas bg-white overflow-hidden">
+            <button class="acc-head w-full flex items-center justify-between gap-5 text-left px-7 py-6">
+              <span class="card-title text-[16px] leading-snug">How fast will my order arrive?</span>
+              <span class="acc-icon w-8 h-8 rounded-full bg-cream grid place-items-center flex-shrink-0"><i class="fa-solid fa-plus text-[11px] text-ink"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="px-7 pb-7 text-[13px] leading-[1.85] text-body">
+              Orders confirmed before 14:00 ship the same day from our Bangkok warehouse. Delivery takes 1–2 days
+              within Bangkok and 2–3 days upcountry (Kerry Express &amp; Flash Express). You'll receive a tracking
+              number in your LINE or Messenger chat.
+            </p></div></div>
+          </div>
+
+          <div class="acc-item rounded-[18px] border border-canvas bg-white overflow-hidden">
+            <button class="acc-head w-full flex items-center justify-between gap-5 text-left px-7 py-6">
+              <span class="card-title text-[16px] leading-snug">Can I pay cash on delivery (COD)?</span>
+              <span class="acc-icon w-8 h-8 rounded-full bg-cream grid place-items-center flex-shrink-0"><i class="fa-solid fa-plus text-[11px] text-ink"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="px-7 pb-7 text-[13px] leading-[1.85] text-body">
+              Absolutely — cash on delivery is available nationwide for orders up to ฿5,000. You can also pay by
+              bank transfer, PromptPay QR, or credit card. Free shipping applies to all orders over ฿1,500 regardless
+              of payment method.
+            </p></div></div>
+          </div>
+
+          <div class="acc-item rounded-[18px] border border-canvas bg-white overflow-hidden">
+            <button class="acc-head w-full flex items-center justify-between gap-5 text-left px-7 py-6">
+              <span class="card-title text-[16px] leading-snug">How should I take these supplements?</span>
+              <span class="acc-icon w-8 h-8 rounded-full bg-cream grid place-items-center flex-shrink-0"><i class="fa-solid fa-plus text-[11px] text-ink"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="px-7 pb-7 text-[13px] leading-[1.85] text-body">
+              Each label carries clear Thai and English instructions — most formulas are 1–2 capsules daily with a meal.
+              If you're pregnant, nursing, under 18, or taking prescription medication, please consult your doctor first.
+              Food supplements are not a substitute for a varied diet.
+            </p></div></div>
+          </div>
+
+          <div class="acc-item rounded-[18px] border border-canvas bg-white overflow-hidden">
+            <button class="acc-head w-full flex items-center justify-between gap-5 text-left px-7 py-6">
+              <span class="card-title text-[16px] leading-snug">What if I change my mind after ordering?</span>
+              <span class="acc-icon w-8 h-8 rounded-full bg-cream grid place-items-center flex-shrink-0"><i class="fa-solid fa-plus text-[11px] text-ink"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="px-7 pb-7 text-[13px] leading-[1.85] text-body">
+              Unopened bottles can be returned within 7 days of delivery for a full refund. If your parcel arrives
+              damaged or something's wrong with the product quality, we replace it immediately — no return shipping cost.
+            </p></div></div>
+          </div>
+
+          <div class="acc-item rounded-[18px] border border-canvas bg-white overflow-hidden">
+            <button class="acc-head w-full flex items-center justify-between gap-5 text-left px-7 py-6">
+              <span class="card-title text-[16px] leading-snug">Do you ship outside Thailand?</span>
+              <span class="acc-icon w-8 h-8 rounded-full bg-cream grid place-items-center flex-shrink-0"><i class="fa-solid fa-plus text-[11px] text-ink"></i></span>
+            </button>
+            <div class="acc-body"><div><p class="px-7 pb-7 text-[13px] leading-[1.85] text-body">
+              Yes — we ship to Singapore, Malaysia, Hong Kong, and Australia via DHL (3–7 business days).
+              International orders are paid by card or transfer in advance, and USD pricing is available on request via LINE.
+            </p></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Contact card -->
+      <aside class="lg:col-span-5">
+        <div class="reveal-r sticky top-28">
+          <div class="rounded-[24px] bg-cream border border-taupe/50 overflow-hidden">
+            <div class="p-8 sm:p-9">
+              <p class="label mb-3">Still deciding?</p>
+              <h3 class="card-title text-[23px] leading-snug">Talk to a real advisor.<br>We reply in about 1 minute.</h3>
+
+              <!-- LINE -->
+              <a href="https://line.me/R/ti/p/@motega" target="_blank" rel="noopener"
+                 class="btn-line mt-7 flex items-center gap-4 rounded-[18px] bg-linegreen text-white px-6 py-5">
+                <i class="fa-brands fa-line text-[26px]"></i>
+                <div class="flex-1">
+                  <p class="text-[13.5px] font-semibold leading-tight">Add us on LINE</p>
+                  <p class="text-[11px] text-white/85 mt-1">@motega · fastest reply</p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+              </a>
+
+              <!-- Messenger -->
+              <a href="https://m.me/motegawellness" target="_blank" rel="noopener"
+                 class="btn-ghost mt-3 flex items-center gap-4 rounded-[18px] border border-ink/12 bg-white px-6 py-5">
+                <i class="fa-brands fa-facebook-messenger text-[24px] text-msgblue"></i>
+                <div class="flex-1">
+                  <p class="text-[13.5px] font-semibold text-ink leading-tight">Continue on Messenger</p>
+                  <p class="text-[11px] text-muted mt-1">pick up where you left off in chat</p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+              </a>
+
+              <!-- Phone -->
+              <a href="tel:+66955550188"
+                 class="btn-ghost mt-3 flex items-center gap-4 rounded-[18px] border border-ink/12 bg-white px-6 py-5">
+                <i class="fa-solid fa-phone text-[20px] text-olive"></i>
+                <div class="flex-1">
+                  <p class="text-[13.5px] font-semibold text-ink leading-tight">095-555-0188</p>
+                  <p class="text-[11px] text-muted mt-1">daily 09:00–20:00 (Thai time)</p>
+                </div>
+                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+              </a>
+            </div>
+
+            <!-- QR -->
+            <div class="bg-white border-t border-taupe/40 p-8 flex items-center gap-6">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fline.me%2FR%2Fti%2Fp%2F%40motega&margin=8"
+                   alt="Scan to add MOTEGA on LINE"
+                   class="w-[104px] h-[104px] rounded-[12px] border border-canvas"
+                   onerror="this.onerror=null;this.style.display='none';">
+              <div>
+                <p class="text-[12px] font-semibold text-ink leading-snug">Scan to add us on LINE</p>
+                <p class="text-[11px] text-muted mt-1.5 leading-relaxed">Or search <span class="font-semibold text-ink">@motega</span> in the LINE app</p>
+              </div>
+            </div>
+
+            <!-- Map -->
+            <div class="relative">
+              <iframe
+                title="MOTEGA location map — Sukhumvit 31, Bangkok"
+                src="https://www.google.com/maps?q=Sukhumvit%2031%2C%20Watthana%2C%20Bangkok%2010110&output=embed"
+                width="100%" height="190" style="border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <a href="https://maps.google.com/?q=Sukhumvit+31+Watthana+Bangkok" target="_blank" rel="noopener"
+                 class="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/95 backdrop-blur px-4 py-2.5 text-[11px] font-semibold text-ink shadow-sm hover:bg-white transition-colors">
+                <i class="fa-solid fa-location-dot text-olive"></i> Sukhumvit 31, Watthana, Bangkok 10110
+              </a>
+            </div>
+          </div>
+
+          <p class="text-[10.5px] text-muted leading-relaxed mt-5 px-1">
+            Office &amp; pickup point: 128 Sukhumvit Soi 31, Watthana, Bangkok 10110. Walk-ins welcome by appointment.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="pb-20 lg:pb-28 bg-white">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+    <div class="reveal relative rounded-[28px] overflow-hidden bg-ink text-cream px-8 py-14 sm:px-14 sm:py-20 noise">
+      <div class="absolute top-0 right-0 w-[420px] h-[420px] rounded-full bg-sage/12 blur-[80px] pointer-events-none"></div>
+      <div class="relative max-w-[620px]">
+        <p class="label text-cream/55 mb-4">Your next bottle is one message away</p>
+        <h2 class="font-display font-black text-cream text-[32px] sm:text-[46px] leading-[1.1] tracking-[-0.01em]">
+          Start your first 90 days<br>
+          <span class="text-sage font-normal italic">with formulas that pull their weight.</span>
+        </h2>
+        <p class="text-[14.5px] leading-[1.8] text-cream/75 mt-6 max-w-[480px]">
+          Order today and get free shipping plus ฿100 off with code <span class="text-cream font-semibold">MESSENGER10</span>.
+          Not sure where to start? Our advisors will build a stack around your goal — free, and without the hard sell.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 mt-9">
+          <a href="https://line.me/R/ti/p/@motega?text=Hi%20MOTEGA%2C%20I%27d%20like%20a%20free%20stack%20recommendation%20(code%20MESSENGER10)" target="_blank" rel="noopener"
+             class="btn-line inline-flex items-center gap-2.5 rounded-full bg-linegreen text-white px-8 py-[16px] text-[14.5px] font-semibold">
+            <i class="fa-brands fa-line text-[19px]"></i> Chat with an advisor
+          </a>
+          <a href="https://m.me/motegawellness" target="_blank" rel="noopener"
+             class="btn-ghost inline-flex items-center gap-2.5 rounded-full border border-cream/25 text-cream px-8 py-[16px] text-[14.5px] font-semibold hover:bg-cream hover:text-ink hover:border-cream">
+            <i class="fa-brands fa-facebook-messenger text-[17px]"></i> Messenger
+          </a>
+          <a href="tel:+66955550188"
+             class="btn-ghost inline-flex items-center gap-2.5 rounded-full border border-cream/25 text-cream px-8 py-[16px] text-[14.5px] font-semibold hover:bg-cream hover:text-ink hover:border-cream">
+            <i class="fa-solid fa-phone text-[14px]"></i> 095-555-0188
+          </a>
+        </div>
+      </div>
+
+      <div class="absolute bottom-0 right-0 hidden lg:block w-[360px] h-[360px] pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=700&q=80" alt="MOTEGA supplements"
+             class="w-full h-full object-cover opacity-90 rounded-tl-[80px]"
+             onerror="this.onerror=null;this.src='https://picsum.photos/seed/motega-cta/700/700';">
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-white border-t border-canvas pt-16 pb-9">
+  <div class="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+
+    <div class="grid grid-cols-12 gap-10 lg:gap-8">
+
+      <div class="col-span-12 lg:col-span-4">
+        <a href="#top" class="flex items-center gap-3 w-fit">
+          <span class="w-10 h-10 rounded-[13px] bg-ink text-cream grid place-items-center font-display font-black text-lg">M</span>
+          <span>
+            <span class="block font-display font-black text-[19px] text-ink leading-none">MOTEGA</span>
+            <span class="block label mt-1 text-[9px]">Wellness Apothecary</span>
+          </span>
+        </a>
+        <p class="text-[12.5px] leading-[1.85] text-muted mt-6 max-w-[320px]">
+          Premium, clinically dosed supplements made in GMP-certified facilities and registered with the Thai FDA.
+          Founded in Bangkok, 2019. Serving 30,000+ customers across Thailand.
+        </p>
+        <div class="flex items-center gap-2.5 mt-7">
+          <a href="https://www.facebook.com/motegawellness" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-canvas grid place-items-center text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-300" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f text-[13px]"></i>
+          </a>
+          <a href="https://www.instagram.com/motegawellness" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-canvas grid place-items-center text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-300" aria-label="Instagram">
+            <i class="fa-brands fa-instagram text-[13px]"></i>
+          </a>
+          <a href="https://line.me/R/ti/p/@motega" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-canvas grid place-items-center text-ink hover:bg-linegreen hover:text-white hover:border-linegreen transition-colors duration-300" aria-label="LINE">
+            <i class="fa-brands fa-line text-[13px]"></i>
+          </a>
+          <a href="https://www.tiktok.com/@motegawellness" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-canvas grid place-items-center text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-300" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok text-[13px]"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <p class="label mb-5">Shop</p>
+        <ul class="space-y-3">
+          <li><a href="#categories" class="text-[12.5px] text-body hover:text-ink transition-colors">Daily Essentials</a></li>
+          <li><a href="#categories" class="text-[12.5px] text-body hover:text-ink transition-colors">Weight &amp; Metabolism</a></li>
+          <li><a href="#categories" class="text-[12.5px] text-body hover:text-ink transition-colors">Beauty &amp; Glow</a></li>
+          <li><a href="#categories" class="text-[12.5px] text-body hover:text-ink transition-colors">Sleep &amp; Calm</a></li>
+          <li><a href="#categories" class="text-[12.5px] text-body hover:text-ink transition-colors">Gut &amp; Digestion</a></li>
+          <li><a href="#categories" class="text-[12.5px] text-body hover:text-ink transition-colors">Joint &amp; Mobility</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-6 sm:col-span-4 lg:col-span-2">
+        <p class="label mb-5">Support</p>
+        <ul class="space-y-3">
+          <li><a href="#how" class="text-[12.5px] text-body hover:text-ink transition-colors">How to Order</a></li>
+          <li><a href="#faq" class="text-[12.5px] text-body hover:text-ink transition-colors">Shipping &amp; Delivery</a></li>
+          <li><a href="#faq" class="text-[12.5px] text-body hover:text-ink transition-colors">Returns &amp; Refunds</a></li>
+          <li><a href="#faq" class="text-[12.5px] text-body hover:text-ink transition-colors">FDA Verification</a></li>
+          <li><a href="https://line.me/R/ti/p/@motega" target="_blank" rel="noopener" class="text-[12.5px] text-body hover:text-ink transition-colors">Contact an Advisor</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-12 sm:col-span-4 lg:col-span-4">
+        <p class="label mb-5">Get in touch</p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-olive text-[13px] mt-[3px]"></i>
+            <p class="text-[12.5px] text-body leading-relaxed">128 Sukhumvit Soi 31, Watthana,<br>Bangkok 10110, Thailand</p>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-phone text-olive text-[13px]"></i>
+            <a href="tel:+66955550188" class="text-[12.5px] text-body hover:text-ink transition-colors">095-555-0188</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-envelope text-olive text-[13px]"></i>
+            <a href="mailto:hello@motega.co.th" class="text-[12.5px] text-body hover:text-ink transition-colors">hello@motega.co.th</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <i class="fa-solid fa-clock text-olive text-[13px]"></i>
+            <p class="text-[12.5px] text-body">Daily 09:00 – 20:00 (ICT)</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="mt-14 pt-8 border-t border-canvas">
+      <p class="text-[10.5px] leading-[1.9] text-muted max-w-[900px]">
+        <span class="font-semibold text-body">Important:</span> Food supplements are not medicines and are not intended to
+        diagnose, treat, cure, or prevent any disease. Results vary between individuals. Always read the label and use as directed.
+        Children, pregnant women, and nursing mothers should consult a physician before use. Consumers should eat a varied diet
+        complete with the five food groups. All products are manufactured in facilities certified under GMP and HACCP standards
+        and are registered as food supplements with the Thai Food and Drug Administration (อย.).
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 mt-8">
+        <p class="text-[11px] text-muted">© 2026 MOTEGA Wellness Co., Ltd. All rights reserved. · Tax ID 0105564123456</p>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <a href="#" class="text-[11px] text-muted hover:text-ink transition-colors">Privacy Policy</a>
+          <a href="#" class="text-[11px] text-muted hover:text-ink transition-colors">Terms of Service</a>
+          <a href="#" class="text-[11px] text-muted hover:text-ink transition-colors">Shipping Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING DOCK: back-to-top (left) + chatbot (right), gap 5px ================= -->
+<div id="dock">
+  <button id="backTop" aria-label="Back to top"
+          class="w-[52px] h-[52px] rounded-full bg-white border border-canvas text-ink grid place-items-center shadow-[0_18px_40px_-18px_rgba(28,28,28,.45)] hover:bg-ink hover:text-white hover:border-ink">
+    <i class="fa-solid fa-arrow-up text-[13px]"></i>
+  </button>
+
+  <button id="chatToggle" aria-label="Open chat assistant"
+          class="relative w-[58px] h-[58px] rounded-full bg-ink text-cream grid place-items-center shadow-[0_20px_44px_-16px_rgba(28,28,28,.6)]">
+    <span class="pulse"></span>
+    <i id="chatIcon" class="fa-solid fa-comment-dots text-[19px]"></i>
+    <span class="absolute -top-0.5 -right-0.5 w-[15px] h-[15px] rounded-full bg-linegreen border-2 border-white"></span>
+  </button>
+</div>
+
+<!-- Chat panel -->
+<div id="chatPanel" class="rounded-[22px] bg-white border border-canvas overflow-hidden">
+  <!-- Header -->
+  <div class="bg-ink text-cream px-5 py-4 flex items-center gap-3.5">
+    <div class="relative">
+      <span class="w-10 h-10 rounded-full bg-sage grid place-items-center font-display font-black text-ink text-[15px]">M</span>
+      <span class="absolute -bottom-0.5 -right-0.5 w-[11px] h-[11px] rounded-full bg-linegreen border-2 border-ink"></span>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="text-[13px] font-semibold leading-tight">Momo · MOTEGA Assistant</p>
+      <p class="text-[10.5px] text-cream/60 mt-0.5">Typically replies within 1 minute</p>
+    </div>
+    <a href="https://line.me/R/ti/p/@motega" target="_blank" rel="noopener"
+       class="rounded-full bg-linegreen text-white px-3.5 py-2 text-[10.5px] font-semibold whitespace-nowrap hover:brightness-110 transition">
+      <i class="fa-brands fa-line text-[12px] mr-1"></i>LINE
+    </a>
+    <button id="chatClose" class="w-8 h-8 rounded-full hover:bg-white/12 grid place-items-center transition-colors" aria-label="Close chat">
+      <i class="fa-solid fa-xmark text-[13px]"></i>
+    </button>
+  </div>
+
+  <!-- Messages -->
+  <div id="chatBody" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-white" style="min-height:250px; max-height:320px;"></div>
+
+  <!-- Quick replies -->
+  <div id="quickReplies" class="px-4 pb-2 flex flex-wrap gap-1.5">
+    <button class="chip rounded-full border border-canvas px-3.5 py-2 text-[10.5px] font-medium text-body" data-q="What are your best sellers?">Best sellers</button>
+    <button class="chip rounded-full border border-canvas px-3.5 py-2 text-[10.5px] font-medium text-body" data-q="Do you offer cash on delivery?">COD &amp; shipping</button>
+    <button class="chip rounded-full border border-canvas px-3.5 py-2 text-[10.5px] font-medium text-body" data-q="Are your products FDA registered?">FDA check</button>
+    <button class="chip rounded-full border border-canvas px-3.5 py-2 text-[10.5px] font-medium text-body" data-q="I want to talk to a human advisor.">Talk to human</button>
+  </div>
+
+  <!-- Input -->
+  <div class="px-4 py-3.5 border-t border-canvas bg-white">
+    <form id="chatForm" class="flex items-center gap-2">
+      <input id="chatInput" type="text" autocomplete="off"
+             placeholder="Type your question…"
+             class="flex-1 rounded-full border border-canvas bg-white px-4 py-3 text-[12.5px] text-ink placeholder:text-muted/70
+                    focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/25 transition">
+      <button type="submit" aria-label="Send message"
+              class="w-[42px] h-[42px] rounded-full bg-ink text-cream grid place-items-center hover:bg-sage hover:text-ink transition-colors duration-300 flex-shrink-0">
+        <i class="fa-solid fa-paper-plane text-[13px]"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MOTEGA Wellness Co., Ltd.",
+  "url": "https://motega.co.th/",
+  "logo": "https://motega.co.th/logo.png",
+  "telephone": "+66-95-555-0188",
+  "email": "hello@motega.co.th",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "128 Sukhumvit Soi 31, Watthana",
+    "addressLocality": "Bangkok",
+    "postalCode": "10110",
+    "addressCountry": "TH"
+  },
+  "sameAs": [
+    "https://www.facebook.com/motegawellness",
+    "https://www.instagram.com/motegawellness",
+    "https://line.me/R/ti/p/@motega"
+  ]
+}
+</script>
+
+<script>
+/* =========================================================
+   MOTEGA — interactions
+   ========================================================= */
+(function () {
+  'use strict';
+
+  /* ---------- Reveal on scroll ---------- */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  /* ---------- Sticky header state ---------- */
+  const header = document.getElementById('siteHeader');
+  const onScrollHeader = () => {
+    if (window.scrollY > 24) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  onScrollHeader();
+
+  /* ---------- Mobile menu ---------- */
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+    const icon = menuBtn.querySelector('i');
+    icon.className = mobileNav.classList.contains('open')
+      ? 'fa-solid fa-xmark text-[14px]'
+      : 'fa-solid fa-bars text-[14px]';
+  });
+  document.querySelectorAll('.mob-link').forEach((a) => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      menuBtn.querySelector('i').className = 'fa-solid fa-bars text-[14px]';
+    });
+  });
+
+  /* ---------- Counters ---------- */
+  const counters = document.querySelectorAll('.counter');
+  const animateCounter = (el) => {
+    const target = parseFloat(el.dataset.count || '0');
+    const duration = 1500;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toString();
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toString();
+    };
+    requestAnimationFrame(step);
+  };
+  if ('IntersectionObserver' in window) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          cio.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((c) => cio.observe(c));
+  } else {
+    counters.forEach((c) => (c.textContent = c.dataset.count));
+  }
+
+  /* ---------- Product filter tabs ---------- */
+  const tabs = document.querySelectorAll('.tab-btn');
+  const items = document.querySelectorAll('.filter-item');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      let visibleIndex = 0;
+      items.forEach((item) => {
+        const match = filter === 'all' || item.dataset.cat === filter;
+        if (match) {
+          item.classList.remove('hide');
+          item.style.transitionDelay = (visibleIndex * 0.035) + 's';
+          visibleIndex++;
+        } else {
+          item.style.transitionDelay = '0s';
+          item.classList.add('hide');
+        }
+      });
+    });
+  });
+
+  /* ---------- Accordion ---------- */
+  const accItems = document.querySelectorAll('.acc-item');
+  accItems.forEach((item) => {
+    const head = item.querySelector('.acc-head');
+    head.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      accItems.forEach((i) => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---------- Back to top (appears after hero) ---------- */
+  const backTop = document.getElementById('backTop');
+  const hero = document.querySelector('main section');
+  const toggleBackTop = () => {
+    const threshold = hero ? hero.offsetTop + hero.offsetHeight - 80 : 600;
+    if (window.scrollY > threshold) backTop.classList.add('show');
+    else backTop.classList.remove('show');
+  };
+  backTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', () => {
+    onScrollHeader();
+    toggleBackTop();
+  }, { passive: true });
+  toggleBackTop();
+
+  /* =========================================================
+     CHATBOT — functional, launcher stays fixed in place
+     ========================================================= */
+  const chatToggle = document.getElementById('chatToggle');
+  const chatPanel = document.getElementById('chatPanel');
+  const chatClose = document.getElementById('chatClose');
+  const chatIcon = document.getElementById('chatIcon');
+  const chatBody = document.getElementById('chatBody');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+  const quickReplies = document.getElementById('quickReplies');
+
+  const setChat = (open) => {
+    chatPanel.classList.toggle('open', open);
+    chatToggle.classList.toggle('opened', open);
+    chatIcon.className = open
+      ? 'fa-solid fa-xmark text-[19px]'
+      : 'fa-solid fa-comment-dots text-[19px]';
+    if (open) setTimeout(() => chatInput.focus(), 220);
+  };
+
+  chatToggle.addEventListener('click', () => {
+    setChat(!chatPanel.classList.contains('open'));
+    if (chatBody.children.length === 0) greet();
+  });
+  chatClose.addEventListener('click', () => setChat(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && chatPanel.classList.contains('open')) setChat(false);
+  });
+
+  const scrollChat = () => {
+    chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
+  };
+
+  const timeNow = () => {
+    const d = new Date();
+    return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+  };
+
+  const addBot = (html) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'flex items-end gap-2';
+    wrap.innerHTML =
+      '<span class="w-7 h-7 rounded-full bg-sage grid place-items-center text-ink font-display font-black text-[10px] flex-shrink-0">M</span>' +
+      '<div class="max-w-[82%]">' +
+        '<div class="bubble-bot px-4 py-3 text-[11.8px] leading-[1.72] text-body">' + html + '</div>' +
+        '<p class="text-[9px] text-muted mt-1.5 ml-1">' + timeNow() + '</p>' +
+      '</div>';
+    chatBody.appendChild(wrap);
+    scrollChat();
+  };
+
+  const addUser = (text) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'flex justify-end';
+    wrap.innerHTML =
+      '<div class="max-w-[82%]">' +
+        '<div class="bubble-user px-4 py-3 text-[11.8px] leading-[1.72]"></div>' +
+        '<p class="text-[9px] text-muted mt-1.5 mr-1 text-right">' + timeNow() + '</p>' +
+      '</div>';
+    wrap.querySelector('.bubble-user').textContent = text;
+    chatBody.appendChild(wrap);
+    scrollChat();
+  };
+
+  const addTyping = () => {
+    const wrap = document.createElement('div');
+    wrap.className = 'flex items-end gap-2';
+    wrap.id = 'typingRow';
+    wrap.innerHTML =
+      '<span class="w-7 h-7 rounded-full bg-sage grid place-items-center text-ink font-display font-black text-[10px] flex-shrink-0">M</span>' +
+      '<div class="bubble-bot px-4 py-3.5 flex items-center gap-1.5">' +
+        '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>' +
+      '</div>';
+    chatBody.appendChild(wrap);
+    scrollChat();
+    return wrap;
+  };
+
+  const lineLink = 'https://line.me/R/ti/p/@motega';
+  const lineCta = (label, prefill) =>
+    '<a href="' + lineLink + (prefill ? '?text=' + encodeURIComponent(prefill) : '') + '" target="_blank" rel="noopener" ' +
+    'class="mt-3 inline-flex items-center gap-2 rounded-full bg-linegreen text-white px-4 py-2.5 text-[10.5px] font-semibold hover:brightness-110 transition">' +
+    '<i class="fa-brands fa-line text-[13px]"></i>' + label + '</a>';
+
+  /* Knowledge base */
+  const kb = [
+    {
+      keys: ['hi', 'hello', 'hey', 'สวัสดี', 'good morning', 'good evening', 'start'],
+      answer: () => 'Hi there. I\'m Momo, MOTEGA\'s virtual assistant. Are you looking for daily wellness, better sleep, beauty, or gut support today?'
+    },
+    {
+      keys: ['best seller', 'bestseller', 'popular', 'recommend', 'what should', 'suggest', 'stack', 'top product'],
+      answer: () => 'Our three most-loved formulas right now:<br><br>' +
+        '<strong>1. Marine Collagen Tri-Peptide 10,000mg</strong> — ฿1,490 (1,204 reviews)<br>' +
+        '<strong>2. Daily Multi Essentials</strong> — ฿890<br>' +
+        '<strong>3. Night Calm Magnesium Glycinate</strong> — ฿890<br><br>' +
+        'First-time customers usually start with the Foundation Stack (3 bottles, ฿2,290, save ฿600).' + lineCta('Ask an advisor', 'Hi MOTEGA, recommend a stack for me')
+    },
+    {
+      keys: ['price', 'cost', 'how much', 'baht', '฿', 'discount', 'promo', 'code', 'coupon', 'sale'],
+      answer: () => 'Prices range from ฿690 to ฿1,590 per bottle (approx. $20–$45), shown on every product card above.<br><br>' +
+        'Since you arrived from our chat, use code <strong>MESSENGER10</strong> for ฿100 off your first order. Free shipping on orders over ฿1,500.' + lineCta('Order with code', 'Hi MOTEGA, I want to use code MESSENGER10')
+    },
+    {
+      keys: ['ship', 'shipping', 'deliver', 'delivery', 'how long', 'ส่ง', 'kerry', 'flash', 'track'],
+      answer: () => 'Orders confirmed before 14:00 ship the same day from Bangkok.<br><br>' +
+        '• Bangkok: 1–2 days<br>• Upcountry: 2–3 days<br>• Singapore / Malaysia / HK / Australia: 3–7 days (DHL)<br><br>' +
+        'Free shipping over ฿1,500. Tracking number is sent in this chat.'
+    },
+    {
+      keys: ['cod', 'cash on delivery', 'เก็บเงิน', 'pay on delivery', 'payment', 'pay', 'transfer', 'promptpay', 'credit card'],
+      answer: () => 'Yes, we accept:<br><br>• Cash on delivery (nationwide, orders up to ฿5,000)<br>• Bank transfer &amp; PromptPay QR<br>• Visa / Mastercard<br><br>' +
+        'Pay however you\'re comfortable — most customers choose COD for their first order.'
+    },
+    {
+      keys: ['fda', 'อย', 'registered', 'legit', 'safe', 'authentic', 'real', 'genuine', 'trust', 'certificate', 'lab', 'quality'],
+      answer: () => 'Every MOTEGA product holds a Thai FDA food supplement registration number (11-1-XXXXX), produced in GMP &amp; HACCP certified facilities, and each batch is tested by an ISO 17025 independent lab for heavy metals and microbial safety.<br><br>' +
+        'Send us a photo of your bottle on LINE and we\'ll show you the matching lab report.' + lineCta('Verify on LINE', 'Hi MOTEGA, I want to verify my product')
+    },
+    {
+      keys: ['dosage', 'how to take', 'how do i take', 'when to take', 'dose', 'serve', 'how many', 'กิน'],
+      answer: () => 'Most formulas are 1–2 capsules daily with a meal — full instructions in Thai and English are printed on every label.<br><br>' +
+        'If you\'re pregnant, nursing, under 18, or on prescription medication, please consult your doctor before starting. Supplements are not a substitute for a varied diet.'
+    },
+    {
+      keys: ['return', 'refund', 'exchange', 'cancel', 'change my mind', 'คืน'],
+      answer: () => 'Unopened bottles can be returned within 7 days of delivery for a full refund. If your parcel arrives damaged or there\'s a quality issue, we replace it immediately at no cost to you.'
+    },
+    {
+      keys: ['collagen', 'beauty', 'skin', 'glow', 'glutathione', 'hair', 'biotin', 'nail', 'ผิว'],
+      answer: () => 'For beauty goals, our advisors usually suggest:<br><br>' +
+        '<strong>Marine Collagen Tri-Peptide 10,000mg</strong> — ฿1,490 (structural support from within)<br>' +
+        '<strong>Glutathione + Vitamin C</strong> — ฿1,290 (radiance)<br><br>' +
+        'Visible changes typically show around weeks 6–8 with daily use.' + lineCta('Build my beauty stack', 'Hi MOTEGA, I want a beauty stack')
+    },
+    {
+      keys: ['sleep', 'insomnia', 'stress', 'calm', 'magnesium', 'ashwagandha', 'anxiety', 'นอน'],
+      answer: () => 'For sleep and stress, we\'d suggest:<br><br>' +
+        '<strong>Night Calm Magnesium Glycinate 400mg</strong> — ฿890 (non-drowsy, take 30–60 min before bed)<br>' +
+        '<strong>Ashwagandha KSM-66 600mg</strong> — ฿1,090 (cortisol balance, morning dose)' + lineCta('Ask about sleep', 'Hi MOTEGA, I need help with sleep')
+    },
+    {
+      keys: ['weight', 'fat', 'metabolism', 'slim', 'diet', 'burn', 'fiber', 'ลด'],
+      answer: () => 'For weight and metabolism support:<br><br>' +
+        '<strong>Burn Metabolism Complex</strong> — ฿1,190<br>' +
+        '<strong>Fiber Balance Psyllium</strong> — ฿690<br>' +
+        '<strong>Garcinia Complex 60% HCA</strong> — ฿1,090<br><br>' +
+        'These support your routine — they work best alongside balanced meals and regular movement.' + lineCta('Build my stack', 'Hi MOTEGA, I want a weight management stack')
+    },
+    {
+      keys: ['human', 'agent', 'advisor', 'person', 'call', 'phone', 'contact', 'staff', 'คน'],
+      answer: () => 'Of course. Our human advisors are available daily 09:00–20:00 (Thai time).<br><br>' +
+        'LINE: @motega · Phone: <a href="tel:+66955550188" class="underline">095-555-0188</a>' + lineCta('Talk to an advisor', 'Hi MOTEGA, I want to speak with a human advisor')
+    },
+    {
+      keys: ['location', 'address', 'where', 'map', 'shop', 'store', 'pickup', 'office', 'ที่อยู่'],
+      answer: () => 'Our office &amp; pickup point:<br><strong>128 Sukhumvit Soi 31, Watthana, Bangkok 10110</strong><br>' +
+        'Open daily 09:00–20:00. Walk-ins welcome by appointment — the map is in the contact section of this page.'
+    }
+  ];
+
+  const fallback = () =>
+    'I want to make sure I give you the right answer. Could you tell me a bit more about what you\'re looking for?' +
+    '<br><br>You can also tap a quick reply below, or continue on LINE where our advisors can help directly.' +
+    lineCta('Continue on LINE', 'Hi MOTEGA, I have a question');
+
+  const reply = (text) => {
+    const q = text.toLowerCase();
+    for (const item of kb) {
+      if (item.keys.some((k) => q.includes(k))) return item.answer();
+    }
+    return fallback();
+  };
+
+  const respond = (userText) => {
+    addUser(userText);
+    const typing = addTyping();
+    const delay = 620 + Math.random() * 520;
+    setTimeout(() => {
+      typing.remove();
+      addBot(reply(userText));
+    }, delay);
+  };
+
+  const greet = () => {
+    const typing = addTyping();
+    setTimeout(() => {
+      typing.remove();
+      addBot('Hi, welcome to MOTEGA. I\'m Momo — I can help with pricing, shipping &amp; COD, FDA registration, or picking the right formula.<br><br>What can I help you with today?');
+    }, 500);
+  };
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = chatInput.value.trim();
+    if (!val) return;
+    chatInput.value = '';
+    respond(val);
+  });
+
+  quickReplies.addEventListener('click', (e) => {
+    const btn = e.target.closest('.chip');
+    if (!btn) return;
+    respond(btn.dataset.q || btn.textContent.trim());
+  });
+
+  /* Close chat panel on outside click (desktop) */
+  document.addEventListener('click', (e) => {
+    if (!chatPanel.classList.contains('open')) return;
+    if (chatPanel.contains(e.target) || chatToggle.contains(e.target)) return;
+    if (window.innerWidth < 768) return;
+    setChat(false);
+  });
+
+  /* ---------- Smooth anchor offset for fixed header ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (!id || id === '#' || id.length < 2) return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const offset = header.offsetHeight + 12;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>
