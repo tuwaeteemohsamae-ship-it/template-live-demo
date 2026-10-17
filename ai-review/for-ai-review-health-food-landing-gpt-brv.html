@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOURISH — Thoughtful Daily Wellness | Supplement Store</title>
+  <meta name="description" content="Explore thoughtfully organized daily wellness essentials, vitamins, minerals, gut health, beauty, active nutrition, and botanical supplements. Browse product information or ask our shopping assistant." />
+  <meta name="keywords" content="dietary supplements Thailand, vitamins, minerals, wellness products, daily supplements, gut health, beauty supplements, sports nutrition, botanical supplements, online supplement shop" />
+  <meta name="author" content="NOURISH Storefront Template" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NOURISH — Thoughtful Daily Wellness" />
+  <meta property="og:description" content="Explore everyday wellness essentials, compare product details, and get friendly shopping support." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1662673143520-721ed4fbe965?auto=format&fit=crop&w=1200&q=85" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Fonts: Google Fonts. Icons: Font Awesome icon font only. Tailwind CSS is loaded from its browser CDN. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F9F4EA', ivory: '#F5EFE2', sage: '#C1BFAA', olive: '#A8A58F',
+            taupe: '#D9D0B8', bluegray: '#DDE3E6', stone: '#B7B59F', ink: '#1C1C1C',
+            bodyink: '#3A3A3A', mutedink: '#6B6B6B', canvas: '#E8E8E8'
+          },
+          fontFamily: { display: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --color-cream:#F9F4EA; --color-ivory:#F5EFE2; --color-sage:#C1BFAA; --color-olive:#A8A58F;
+      --color-taupe:#D9D0B8; --color-blue-gray:#DDE3E6; --color-stone:#B7B59F;
+      --color-black:#1C1C1C; --color-text:#3A3A3A; --color-muted:#6B6B6B; --color-canvas:#E8E8E8;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:100px; }
+    body { margin:0; background:#fff; color:var(--color-text); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+    h1,h2,h3,.display { font-family:'Playfair Display',serif; color:var(--color-black); }
+    button,input,select,textarea { font:inherit; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    a { color:inherit; text-decoration:none; }
+    .container-width { width:min(1280px, calc(100% - 48px)); margin-inline:auto; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.16em; font-size:10px; line-height:1.4; font-weight:700; color:#747461; }
+    .section-title { font-size:clamp(2rem,3.8vw,3.1rem); line-height:1.07; letter-spacing:-.035em; }
+    .text-link { display:inline-flex; align-items:center; gap:9px; font-weight:700; font-size:12px; border-bottom:1px solid var(--color-sage); padding-bottom:5px; transition:gap .2s ease,border-color .2s ease; }
+    .text-link:hover { gap:14px; border-color:var(--color-black); }
+    .btn-primary,.btn-secondary,.btn-dark { min-height:48px; padding:0 20px; border-radius:5px; display:inline-flex; align-items:center; justify-content:center; gap:10px; font-size:12px; font-weight:700; transition:transform .22s ease,background .22s ease,color .22s ease,box-shadow .22s ease; cursor:pointer; border:1px solid transparent; }
+    .btn-primary { background:var(--color-black); color:#fff; }
+    .btn-primary:hover,.btn-dark:hover { transform:translateY(-2px); box-shadow:0 10px 22px #1c1c1c17; background:#38382f; }
+    .btn-secondary { background:#fff; color:var(--color-black); border-color:#d9d5c9; }
+    .btn-secondary:hover { transform:translateY(-2px); border-color:var(--color-black); }
+    .btn-dark { background:var(--color-black); color:white; }
+    .icon-button { width:42px; height:42px; border:1px solid #e8e5dc; background:#fff; color:var(--color-black); display:inline-flex; align-items:center; justify-content:center; border-radius:50%; transition:all .2s ease; cursor:pointer; }
+    .icon-button:hover { background:var(--color-ivory); transform:translateY(-1px); }
+    .header { position:sticky; top:0; z-index:40; background:#fff; border-bottom:1px solid #eeece6; }
+    .header-inner { height:78px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { display:inline-flex; align-items:center; gap:10px; color:var(--color-black); flex-shrink:0; }
+    .brand-mark { display:flex; justify-content:center; align-items:center; width:34px; height:34px; border-radius:50% 50% 50% 8px; background:var(--color-sage); font-size:15px; transform:rotate(-7deg); }
+    .brand-mark i { transform:rotate(7deg); }
+    .brand-word { font-size:20px; font-weight:800; letter-spacing:.15em; line-height:1; }
+    .brand-sub { font-size:8px; display:block; letter-spacing:.19em; color:#7a796c; font-weight:700; margin-top:5px; }
+    .nav-links { display:flex; align-items:center; gap:27px; color:#56564e; font-size:12px; font-weight:600; }
+    .nav-links a { transition:color .2s ease; }
+    .nav-links a:hover { color:var(--color-black); }
+    .header-actions { display:flex; align-items:center; gap:10px; }
+    .search-wrap { position:relative; width:190px; }
+    .search-wrap i { position:absolute; top:50%; left:13px; transform:translateY(-50%); font-size:12px; color:#77766b; pointer-events:none; }
+    .search-wrap input { border:1px solid #e7e4dc; height:40px; border-radius:25px; width:100%; padding:0 14px 0 34px; outline:none; background:#fff; font-size:11px; transition:border-color .2s ease,box-shadow .2s ease; }
+    .search-wrap input:focus { border-color:var(--color-sage); box-shadow:0 0 0 3px #c1bfaa35; }
+    .bag-button { position:relative; }
+    .bag-count { position:absolute; right:-3px; top:-4px; width:17px; height:17px; background:var(--color-black); color:#fff; border-radius:50%; display:grid; place-items:center; font-size:9px; border:2px solid #fff; }
+    .mobile-menu-button { display:none; }
+
+    .hero { padding:44px 0 60px; background:#fff; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.03fr); gap:clamp(26px,5vw,72px); align-items:center; }
+    .hero-copy { padding:22px 0 22px 4px; position:relative; z-index:2; }
+    .hero-copy .eyebrow { margin-bottom:24px; }
+    .hero-title { font-size:clamp(3.3rem,6.3vw,6rem); font-weight:600; line-height:.98; letter-spacing:-.055em; max-width:610px; margin:0; }
+    .hero-title em { color:#92917c; font-weight:400; }
+    .hero-description { max-width:440px; line-height:1.85; font-size:14px; color:#64645b; margin:24px 0 27px; }
+    .hero-cta { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+    .hero-note { display:flex; align-items:center; gap:9px; color:#77766a; font-size:10px; margin-top:30px; }
+    .hero-note .dot { width:7px; height:7px; border-radius:50%; background:#a8a58f; }
+    .hero-visual { min-height:510px; position:relative; isolation:isolate; }
+    .hero-photo-frame { position:absolute; top:0; right:4%; width:74%; height:86%; overflow:hidden; border-radius:180px 180px 6px 6px; background:var(--color-ivory); }
+    .hero-photo-frame img { width:100%; height:100%; object-fit:cover; object-position:center; transition:transform .9s cubic-bezier(.2,.75,.2,1); }
+    .hero-visual:hover .hero-photo-frame img { transform:scale(1.035); }
+    .hero-photo-frame::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 65%,#1c1c1c20); pointer-events:none; }
+    .hero-side-note { position:absolute; z-index:2; top:27px; left:0; width:128px; padding:16px 15px; background:var(--color-blue-gray); transform:rotate(-3deg); box-shadow:0 15px 30px #1c1c1c0a; }
+    .hero-side-note strong { display:block; font-family:'Playfair Display',serif; font-size:22px; line-height:1.05; color:var(--color-black); font-weight:600; }
+    .hero-side-note span { display:block; font-size:9px; margin-top:8px; line-height:1.5; }
+    .hero-caption { position:absolute; right:0; bottom:0; z-index:3; width:47%; padding:22px 24px 21px; background:var(--color-cream); border:1px solid #fff; }
+    .hero-caption .caption-top { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-bottom:13px; }
+    .hero-caption .mini-index { font-size:10px; color:#757567; letter-spacing:.12em; }
+    .hero-caption h3 { font-size:23px; line-height:1.1; margin:0 0 8px; }
+    .hero-caption p { font-size:10px; color:#66665c; line-height:1.65; margin:0; }
+    .hero-scribble { position:absolute; left:13%; bottom:10%; width:88px; height:88px; border:1px solid #a8a58f; border-radius:50%; opacity:.7; z-index:-1; }
+    .hero-scribble::after { content:''; position:absolute; inset:8px -5px -2px 9px; border:1px solid #c1bfaa; border-radius:50%; transform:rotate(27deg); }
+    .trust-line { border-top:1px solid #eeece6; border-bottom:1px solid #eeece6; padding:17px 0; }
+    .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .trust-item { display:flex; align-items:center; justify-content:center; gap:11px; font-size:11px; font-weight:600; color:#55554b; text-align:left; }
+    .trust-item i { color:#858571; font-size:17px; }
+
+    .section { padding:92px 0; background:#fff; }
+    .section-heading { display:flex; justify-content:space-between; align-items:end; gap:25px; margin-bottom:30px; }
+    .section-heading .section-title { margin:10px 0 0; }
+    .section-heading .heading-copy { max-width:360px; color:#6b6b60; font-size:12px; line-height:1.8; }
+    .category-grid { display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr 1fr 1fr; gap:12px; }
+    .category-card { min-height:164px; padding:19px 18px; display:flex; flex-direction:column; justify-content:space-between; text-align:left; border:0; border-radius:4px; cursor:pointer; position:relative; overflow:hidden; transition:transform .25s ease,box-shadow .25s ease; }
+    .category-card:hover { transform:translateY(-4px) rotate(-.25deg); box-shadow:0 16px 28px #1c1c1c0d; }
+    .category-card:nth-child(1) { background:var(--color-cream); }
+    .category-card:nth-child(2) { background:var(--color-blue-gray); }
+    .category-card:nth-child(3) { background:var(--color-ivory); }
+    .category-card:nth-child(4) { background:#e8e8df; }
+    .category-card:nth-child(5) { background:#e8e1d5; }
+    .category-card:nth-child(6) { background:#e8e6dc; }
+    .category-card .cat-icon { font-size:20px; color:#686955; margin-bottom:20px; }
+    .category-card .cat-count { position:absolute; top:18px; right:16px; font-size:9px; color:#727263; }
+    .category-card strong { display:block; font-family:'Playfair Display',serif; font-weight:600; font-size:19px; line-height:1.1; color:var(--color-black); max-width:120px; }
+    .category-card small { display:flex; justify-content:space-between; align-items:center; margin-top:12px; color:#66665b; font-size:9px; }
+    .category-card small i { font-size:11px; }
+
+    .products-section { padding-top:30px; }
+    .product-toolbar { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; padding:17px 0 19px; border-top:1px solid #eae8e0; border-bottom:1px solid #eae8e0; margin-bottom:22px; }
+    .filter-chips { display:flex; flex-wrap:wrap; align-items:center; gap:7px; }
+    .filter-chip { border:1px solid #e6e3da; border-radius:100px; background:#fff; padding:9px 13px; font-size:10px; font-weight:600; color:#66665a; cursor:pointer; white-space:nowrap; transition:background .2s ease,color .2s ease,border-color .2s ease; }
+    .filter-chip:hover { border-color:var(--color-sage); }
+    .filter-chip.active { background:var(--color-black); border-color:var(--color-black); color:#fff; }
+    .sort-wrap { display:flex; align-items:center; gap:9px; font-size:10px; color:#79786b; white-space:nowrap; }
+    .sort-wrap select { border:1px solid #e6e3da; background:#fff; border-radius:100px; padding:9px 29px 9px 12px; font-size:10px; outline:none; color:var(--color-black); cursor:pointer; }
+    .product-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:29px 17px; }
+    .product-card { min-width:0; position:relative; display:flex; flex-direction:column; animation:fade-up .45s both; }
+    .product-image { position:relative; overflow:hidden; height:250px; background:var(--color-ivory); border-radius:3px; isolation:isolate; }
+    .product-image::before { content:''; position:absolute; inset:0; z-index:0; background:var(--image-back,linear-gradient(140deg,#e9e6dc,#f6f1e7)); }
+    .product-image img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+    .product-card:hover .product-image img { transform:scale(1.06); }
+    .product-image.image-fallback img { display:none; }
+    .product-image.image-fallback::after { content:'N'; display:flex; align-items:center; justify-content:center; position:absolute; inset:0; color:#8e8c75; font-family:'Playfair Display',serif; font-size:60px; opacity:.72; }
+    .product-label { position:absolute; top:11px; left:11px; z-index:2; background:#fffdf7eF; padding:6px 8px; font-size:8px; text-transform:uppercase; font-weight:700; letter-spacing:.08em; color:#555548; }
+    .favorite-btn { position:absolute; right:11px; top:11px; z-index:3; width:31px; height:31px; border:0; border-radius:50%; display:grid; place-items:center; background:#ffffffed; color:#55554c; cursor:pointer; transition:all .2s ease; }
+    .favorite-btn:hover,.favorite-btn.is-favorite { background:var(--color-sage); color:var(--color-black); }
+    .product-open { display:block; text-align:left; padding:14px 0 0; background:transparent; border:0; cursor:pointer; }
+    .product-category { color:#8a897b; font-size:9px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; }
+    .product-name { font-family:'Playfair Display',serif; font-size:20px; line-height:1.13; color:var(--color-black); font-weight:600; margin-top:7px; display:block; }
+    .product-meta { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:9px; color:#79786c; font-size:10px; }
+    .product-meta .format { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .product-bottom { display:flex; justify-content:space-between; gap:9px; align-items:center; margin-top:15px; }
+    .product-price { font-size:14px; font-weight:800; color:var(--color-black); white-space:nowrap; }
+    .add-button { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:36px; padding:0 12px; background:#fff; border:1px solid #dcd9cf; color:var(--color-black); border-radius:4px; font-size:10px; font-weight:700; cursor:pointer; transition:background .2s ease,color .2s ease,border-color .2s ease; }
+    .add-button:hover { background:var(--color-black); color:#fff; border-color:var(--color-black); }
+    .empty-state { grid-column:1/-1; padding:60px 20px; background:var(--color-cream); text-align:center; color:#66665b; border-radius:5px; }
+    .empty-state h3 { margin:0 0 8px; font-size:25px; }
+
+    .editorial-section { padding:80px 0 92px; }
+    .editorial-grid { display:grid; grid-template-columns:1.15fr .85fr .85fr; grid-template-rows:220px 220px; gap:13px; }
+    .editorial-card { border-radius:4px; padding:27px; overflow:hidden; position:relative; display:flex; flex-direction:column; justify-content:space-between; }
+    .editorial-card h3 { font-size:clamp(1.55rem,2.4vw,2.35rem); line-height:1.04; margin:10px 0; max-width:300px; position:relative; z-index:1; }
+    .editorial-card p { font-size:11px; line-height:1.8; max-width:300px; color:#5d5c51; margin:0; position:relative; z-index:1; }
+    .editorial-card .card-icon { font-size:18px; color:#777763; position:relative; z-index:1; }
+    .editorial-card.tall { grid-row:span 2; background:var(--color-cream); padding:31px; }
+    .editorial-card.tall h3 { font-size:clamp(2.1rem,3vw,3.2rem); }
+    .editorial-card.tall .editorial-art { position:absolute; width:250px; height:250px; right:-24px; bottom:-35px; background:var(--color-sage); border-radius:50% 50% 2px 50%; opacity:.62; transform:rotate(-17deg); }
+    .editorial-card.tall .editorial-art::after { content:''; position:absolute; inset:23px; border:1px solid #fff9; border-radius:50% 50% 2px 50%; }
+    .editorial-card.soft-blue { background:var(--color-blue-gray); }
+    .editorial-card.soft-taupe { background:var(--color-taupe); }
+    .editorial-card.soft-olive { background:#e5e4d9; }
+    .editorial-card.soft-ivory { background:var(--color-ivory); }
+    .editorial-card .text-link { align-self:flex-start; position:relative; z-index:2; margin-top:16px; }
+    .fine-print { font-size:9px !important; color:#717064 !important; line-height:1.7 !important; }
+
+    .faq-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:60px; align-items:start; }
+    .faq-intro p { font-size:12px; line-height:1.85; color:#69695f; max-width:310px; }
+    .faq-contact-card { margin-top:28px; background:var(--color-cream); padding:20px; border-radius:4px; }
+    .faq-contact-card h3 { font-size:22px; margin:0 0 8px; }
+    .faq-contact-card p { font-size:11px; line-height:1.75; margin:0 0 14px; }
+    .faq-list { border-top:1px solid #e9e6de; }
+    .faq-item { border-bottom:1px solid #e9e6de; }
+    .faq-question { width:100%; border:0; background:#fff; cursor:pointer; padding:22px 0; display:flex; align-items:center; justify-content:space-between; text-align:left; gap:20px; font-weight:700; color:var(--color-black); font-size:12px; }
+    .faq-question i { color:#858471; transition:transform .25s ease; }
+    .faq-question[aria-expanded="true"] i { transform:rotate(45deg); }
+    .faq-answer { display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease; }
+    .faq-answer > div { overflow:hidden; }
+    .faq-answer p { font-size:11px; line-height:1.85; color:#6b6b60; margin:0; padding:0 30px 0 0; }
+    .faq-item.open .faq-answer { grid-template-rows:1fr; }
+    .faq-item.open .faq-answer p { padding-bottom:21px; }
+
+    .newsletter-section { padding:28px 0 72px; }
+    .newsletter-panel { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center; background:var(--color-sage); padding:34px 38px; border-radius:4px; }
+    .newsletter-panel h2 { font-size:clamp(1.8rem,3.2vw,2.65rem); margin:8px 0; line-height:1.08; }
+    .newsletter-panel p { font-size:11px; margin:0; color:#4e4e43; line-height:1.7; max-width:450px; }
+    .newsletter-form { display:flex; align-items:center; gap:8px; min-width:min(100%,390px); }
+    .newsletter-form input { min-width:0; flex:1; height:47px; padding:0 15px; border:1px solid #ffffffa8; outline:none; border-radius:4px; background:#ffffffd9; font-size:11px; }
+    .newsletter-form input:focus { border-color:var(--color-black); }
+    .newsletter-form button { min-height:47px; white-space:nowrap; }
+    .footer { padding:46px 0 23px; background:#fff; border-top:1px solid #eeece6; }
+    .footer-main { display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:34px; padding-bottom:37px; }
+    .footer-brand-copy { font-size:11px; color:#6b6b61; line-height:1.8; max-width:260px; margin-top:16px; }
+    .footer h4 { font-size:10px; letter-spacing:.1em; text-transform:uppercase; margin:0 0 15px; color:#55554c; }
+    .footer-links { display:grid; gap:11px; font-size:11px; color:#77766c; }
+    .footer-links a:hover { color:var(--color-black); }
+    .social-links { display:flex; align-items:center; gap:8px; margin-top:15px; }
+    .social-links a { height:33px; width:33px; display:grid; place-items:center; background:var(--color-ivory); border-radius:50%; color:#545449; transition:background .2s ease; }
+    .social-links a:hover { background:var(--color-sage); }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:start; gap:25px; border-top:1px solid #eeeae2; padding-top:20px; font-size:9px; color:#848376; line-height:1.8; }
+    .footer-bottom p { max-width:840px; margin:0; }
+
+    .floating-controls { position:fixed; z-index:65; right:22px; bottom:20px; display:flex; flex-direction:row; gap:5px; align-items:center; }
+    .float-btn { width:54px; height:54px; border:0; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px #1c1c1c22; cursor:pointer; transition:transform .22s ease,opacity .2s ease,background .2s ease; }
+    .float-btn:hover { transform:translateY(-3px); }
+    #backToTop { opacity:0; visibility:hidden; pointer-events:none; background:#fff; color:var(--color-black); border:1px solid #e0ded5; }
+    #backToTop.visible { opacity:1; visibility:visible; pointer-events:auto; }
+    #chatToggle { background:var(--color-black); color:#fff; }
+    #chatToggle:hover { background:#424237; }
+    .chat-panel { position:fixed; z-index:64; right:22px; bottom:86px; width:365px; max-width:calc(100vw - 24px); background:#fff; border:1px solid #e8e5dc; border-radius:12px; box-shadow:0 22px 70px #1c1c1c24; overflow:hidden; transform-origin:bottom right; opacity:0; transform:translateY(12px) scale(.97); pointer-events:none; transition:opacity .22s ease,transform .22s ease; }
+    .chat-panel.open { opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+    .chat-head { background:var(--color-cream); padding:17px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e5e0d3; }
+    .chat-head-main { display:flex; align-items:center; gap:10px; }
+    .chat-avatar { width:35px; height:35px; display:grid; place-items:center; border-radius:50%; background:var(--color-sage); color:var(--color-black); }
+    .chat-head strong { display:block; font-size:12px; color:var(--color-black); }
+    .chat-head small { display:block; color:#747365; font-size:9px; margin-top:3px; }
+    .chat-close { width:30px; height:30px; border:0; background:transparent; color:#66665a; cursor:pointer; }
+    .chat-messages { height:300px; overflow:auto; padding:16px; display:flex; flex-direction:column; gap:10px; background:#fff; }
+    .chat-message { max-width:86%; padding:11px 12px; border-radius:10px 10px 10px 2px; font-size:11px; line-height:1.65; background:var(--color-ivory); color:#44443b; align-self:flex-start; white-space:pre-wrap; overflow-wrap:anywhere; }
+    .chat-message.user { align-self:flex-end; border-radius:10px 10px 2px 10px; background:var(--color-black); color:#fff; }
+    .chat-quick-replies { display:flex; flex-wrap:wrap; gap:6px; padding:0 14px 12px; background:#fff; }
+    .chat-quick-replies button { padding:7px 9px; border:1px solid #ddd9cf; border-radius:30px; background:#fff; font-size:9px; cursor:pointer; color:#59594e; }
+    .chat-quick-replies button:hover { background:var(--color-cream); }
+    .chat-form { display:flex; gap:7px; padding:12px; border-top:1px solid #eeece6; background:#fff; }
+    .chat-form input { flex:1; min-width:0; height:40px; border:1px solid #e5e2d9; border-radius:22px; padding:0 13px; outline:none; font-size:11px; }
+    .chat-form input:focus { border-color:var(--color-sage); }
+    .chat-send { height:40px; width:40px; flex:0 0 auto; background:var(--color-black); border:0; color:#fff; border-radius:50%; cursor:pointer; }
+    .chat-disclaimer { padding:0 15px 13px; font-size:8px; color:#888779; background:#fff; line-height:1.6; }
+
+    .overlay { position:fixed; inset:0; z-index:80; background:#1717126b; backdrop-filter:blur(3px); display:flex; justify-content:center; align-items:center; padding:20px; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s ease,visibility .2s ease; }
+    .overlay.open { opacity:1; visibility:visible; pointer-events:auto; }
+    .modal { position:relative; width:min(790px,100%); max-height:min(88vh,900px); overflow:auto; background:#fff; border-radius:8px; box-shadow:0 30px 100px #0003; transform:translateY(12px) scale(.99); transition:transform .22s ease; }
+    .overlay.open .modal { transform:translateY(0) scale(1); }
+    .modal-close { position:absolute; right:14px; top:14px; z-index:4; width:37px; height:37px; display:grid; place-items:center; background:#fff; border:1px solid #e7e3da; border-radius:50%; cursor:pointer; }
+    .product-modal-grid { display:grid; grid-template-columns:1fr 1fr; }
+    .product-modal-image { min-height:430px; background:var(--color-ivory); position:relative; }
+    .product-modal-image img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .product-modal-image.image-fallback img { display:none; }
+    .product-modal-copy { padding:44px 36px 36px; }
+    .product-modal-copy h2 { font-size:34px; line-height:1.05; margin:10px 0; }
+    .product-modal-copy .modal-price { font-size:19px; font-weight:800; color:var(--color-black); margin:15px 0; }
+    .product-modal-copy p { font-size:12px; line-height:1.8; color:#6b6b60; }
+    .detail-list { list-style:none; padding:0; margin:18px 0; border-top:1px solid #e9e6de; }
+    .detail-list li { display:flex; justify-content:space-between; gap:14px; padding:11px 0; border-bottom:1px solid #e9e6de; font-size:10px; }
+    .detail-list span:first-child { color:#77766a; }
+    .detail-list span:last-child { font-weight:700; text-align:right; color:#44443b; }
+    .quantity-control { display:flex; align-items:center; border:1px solid #e0ddd4; border-radius:4px; overflow:hidden; }
+    .quantity-control button { width:37px; height:39px; border:0; background:#fff; cursor:pointer; }
+    .quantity-control span { min-width:25px; text-align:center; font-size:12px; font-weight:700; }
+    .modal-actions { display:flex; gap:8px; align-items:center; margin-top:16px; }
+    .modal-actions .btn-primary { flex:1; }
+    .cart-modal { width:min(600px,100%); padding:32px; }
+    .cart-title { font-size:30px; margin:0 0 6px; }
+    .cart-subtitle { font-size:11px; color:#77766b; margin:0 0 23px; }
+    .cart-items { display:grid; gap:13px; max-height:42vh; overflow:auto; padding-right:4px; }
+    .cart-item { display:grid; grid-template-columns:67px 1fr auto; gap:13px; align-items:center; padding-bottom:13px; border-bottom:1px solid #eeece6; }
+    .cart-item img { width:67px; height:67px; object-fit:cover; border-radius:3px; background:var(--color-ivory); }
+    .cart-item h4 { margin:0 0 5px; font-family:'Playfair Display',serif; font-size:17px; line-height:1.1; color:var(--color-black); }
+    .cart-item p { margin:0; font-size:10px; color:#77766b; }
+    .cart-item .cart-price { font-size:12px; font-weight:800; white-space:nowrap; color:var(--color-black); }
+    .cart-item-controls { display:flex; align-items:center; gap:8px; margin-top:9px; }
+    .cart-item-controls button { width:23px; height:23px; border:1px solid #e2dfd5; border-radius:50%; background:#fff; cursor:pointer; font-size:10px; }
+    .cart-total-row { display:flex; justify-content:space-between; gap:20px; padding-top:18px; margin-top:6px; color:var(--color-black); font-size:13px; font-weight:800; }
+    .cart-footnote { font-size:9px; line-height:1.7; color:#77766a; margin:12px 0 17px; }
+    .cart-actions { display:flex; gap:9px; }
+    .cart-actions button { flex:1; }
+    .checkout-modal { width:min(590px,100%); padding:32px; }
+    .checkout-modal h2 { margin:0 0 6px; font-size:29px; }
+    .checkout-modal > p { color:#77766a; font-size:11px; line-height:1.7; margin:0 0 20px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .field { display:grid; gap:7px; }
+    .field.full { grid-column:1/-1; }
+    .field label { font-size:10px; font-weight:700; color:#55554b; }
+    .field input,.field textarea { width:100%; border:1px solid #e2dfd6; border-radius:4px; padding:12px; outline:none; font-size:11px; }
+    .field input:focus,.field textarea:focus { border-color:var(--color-sage); box-shadow:0 0 0 3px #c1bfaa2c; }
+    .field textarea { resize:vertical; min-height:75px; }
+    .order-complete { text-align:center; padding:20px 2px 5px; }
+    .order-complete .complete-icon { width:56px; height:56px; border-radius:50%; background:var(--color-sage); display:grid; place-items:center; margin:0 auto 15px; color:var(--color-black); font-size:20px; }
+    .order-complete h2 { font-size:30px; margin:0 0 8px; }
+    .order-complete p { font-size:11px; line-height:1.8; color:#717064; max-width:420px; margin:0 auto 20px; }
+    .order-summary { white-space:pre-wrap; text-align:left; padding:15px; border-radius:4px; background:var(--color-cream); font-size:10px; line-height:1.75; max-height:170px; overflow:auto; }
+    .toast { position:fixed; z-index:100; left:50%; bottom:24px; transform:translate(-50%,18px); background:var(--color-black); color:#fff; padding:12px 17px; border-radius:40px; font-size:11px; box-shadow:0 10px 30px #1c1c1c25; opacity:0; visibility:hidden; transition:all .25s ease; max-width:calc(100% - 32px); text-align:center; }
+    .toast.show { opacity:1; visibility:visible; transform:translate(-50%,0); }
+    .mobile-nav { display:none; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    @keyframes fade-up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    @media (max-width:1100px) {
+      .container-width { width:min(100% - 40px,1280px); }
+      .nav-links { gap:16px; }
+      .search-wrap { width:160px; }
+      .category-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .category-card { min-height:145px; }
+      .product-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .product-image { height:255px; }
+      .hero-visual { min-height:465px; }
+    }
+    @media (max-width:800px) {
+      .container-width { width:min(100% - 32px,1280px); }
+      .header-inner { height:70px; }
+      .nav-links { display:none; }
+      .mobile-menu-button { display:inline-flex; }
+      .header-actions { margin-left:auto; }
+      .search-wrap { width:clamp(130px,28vw,220px); }
+      .hero { padding:32px 0 44px; }
+      .hero-grid { grid-template-columns:1fr; gap:25px; }
+      .hero-copy { padding:8px 0 0; }
+      .hero-title { max-width:620px; font-size:clamp(3.5rem,11vw,5.7rem); }
+      .hero-description { margin:19px 0 22px; max-width:540px; }
+      .hero-visual { min-height:min(590px,112vw); max-height:590px; }
+      .hero-photo-frame { width:77%; height:88%; right:4%; border-radius:145px 145px 5px 5px; }
+      .hero-side-note { left:1%; top:20px; }
+      .hero-caption { width:48%; }
+      .trust-grid { grid-template-columns:repeat(2,1fr); row-gap:16px; }
+      .trust-item { justify-content:flex-start; }
+      .section { padding:70px 0; }
+      .section-heading { align-items:start; flex-direction:column; gap:13px; }
+      .section-heading .heading-copy { max-width:520px; }
+      .category-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 13px; }
+      .product-image { height:clamp(175px,36vw,280px); }
+      .editorial-grid { grid-template-columns:1fr 1fr; grid-template-rows:230px 190px 190px; }
+      .editorial-card.tall { grid-row:span 2; }
+      .editorial-card.tall .editorial-art { width:190px;height:190px;right:-32px; }
+      .faq-grid { grid-template-columns:1fr; gap:30px; }
+      .faq-contact-card { max-width:500px; }
+      .newsletter-panel { grid-template-columns:1fr; padding:28px; gap:20px; }
+      .newsletter-form { min-width:0; width:100%; }
+      .footer-main { grid-template-columns:1fr 1fr; gap:30px 22px; }
+    }
+    @media (max-width:520px) {
+      .container-width { width:calc(100% - 28px); }
+      .header-inner { gap:10px; height:65px; }
+      .brand-mark { width:29px;height:29px;font-size:13px; }
+      .brand-word { font-size:17px; }
+      .brand-sub { font-size:7px; }
+      .search-wrap { width:39px; transition:width .2s ease; }
+      .search-wrap input { padding:0; border-radius:50%; width:39px; color:transparent; cursor:pointer; }
+      .search-wrap i { left:14px; }
+      .search-wrap:focus-within { width:calc(100vw - 180px); }
+      .search-wrap:focus-within input { width:100%; padding:0 12px 0 34px; border-radius:22px; color:var(--color-black); }
+      .header-actions { gap:7px; }
+      .header-actions .icon-button { width:37px;height:37px; }
+      .mobile-menu-button { width:37px;height:37px; }
+      .hero { padding:26px 0 35px; }
+      .hero-copy .eyebrow { margin-bottom:16px; }
+      .hero-title { font-size:clamp(3.1rem,15vw,4.7rem); }
+      .hero-description { font-size:12px; line-height:1.8; margin:17px 0 20px; }
+      .hero-cta { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+      .hero-cta .btn-primary,.hero-cta .btn-secondary { padding:0 12px; font-size:10px; min-height:45px; }
+      .hero-note { margin-top:19px; font-size:9px; }
+      .hero-visual { min-height:380px; max-height:420px; }
+      .hero-photo-frame { width:79%; height:85%; right:3%; border-radius:115px 115px 4px 4px; }
+      .hero-side-note { width:103px; padding:12px; top:16px; }
+      .hero-side-note strong { font-size:18px; }
+      .hero-side-note span { font-size:8px; }
+      .hero-caption { width:60%; padding:15px 15px 14px; }
+      .hero-caption h3 { font-size:18px; }
+      .hero-caption p { font-size:9px; }
+      .hero-scribble { width:62px;height:62px; }
+      .trust-line { padding:15px 0; }
+      .trust-grid { gap:14px 10px; }
+      .trust-item { font-size:9px; gap:8px; }
+      .trust-item i { font-size:14px; }
+      .section { padding:55px 0; }
+      .section-title { font-size:2.25rem; }
+      .category-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+      .category-card { min-height:130px; padding:15px; }
+      .category-card strong { font-size:18px; }
+      .category-card .cat-icon { margin-bottom:12px; }
+      .category-card .cat-count { top:14px;right:13px; }
+      .products-section { padding-top:12px; }
+      .product-toolbar { align-items:flex-start; }
+      .filter-chips { flex-wrap:nowrap; overflow-x:auto; width:100%; padding-bottom:5px; scrollbar-width:thin; }
+      .filter-chip { padding:8px 12px; }
+      .sort-wrap { justify-content:space-between; width:100%; }
+      .product-grid { gap:23px 10px; }
+      .product-image { height:clamp(150px,44vw,220px); }
+      .product-name { font-size:17px; }
+      .product-category { font-size:8px; }
+      .product-meta { font-size:9px; margin-top:7px; }
+      .product-bottom { align-items:stretch; flex-direction:column; gap:8px; margin-top:11px; }
+      .product-price { font-size:13px; }
+      .add-button { width:100%; min-height:34px; }
+      .editorial-section { padding:45px 0 58px; }
+      .editorial-grid { grid-template-columns:1fr 1fr; grid-template-rows:245px 185px 185px; gap:8px; }
+      .editorial-card { padding:17px; }
+      .editorial-card.tall { grid-row:span 2; padding:19px; }
+      .editorial-card h3 { font-size:22px; }
+      .editorial-card.tall h3 { font-size:28px; }
+      .editorial-card p { font-size:10px; }
+      .editorial-card.tall .editorial-art { width:140px;height:140px;right:-35px;bottom:-20px; }
+      .editorial-card .text-link { font-size:10px; }
+      .faq-grid { gap:24px; }
+      .faq-question { padding:18px 0; font-size:11px; }
+      .newsletter-section { padding:10px 0 50px; }
+      .newsletter-panel { padding:23px 19px; }
+      .newsletter-form { flex-direction:column; align-items:stretch; }
+      .newsletter-form input,.newsletter-form button { width:100%; }
+      .footer-main { grid-template-columns:1fr 1fr; gap:28px 15px; }
+      .footer-main > div:first-child { grid-column:1/-1; }
+      .footer-bottom { flex-direction:column; gap:9px; }
+      .floating-controls { right:12px; bottom:13px; gap:5px; }
+      .float-btn { width:49px;height:49px; }
+      .chat-panel { right:12px; bottom:72px; width:calc(100vw - 24px); }
+      .chat-messages { height:min(300px,38vh); }
+      .overlay { padding:10px; }
+      .product-modal-grid { grid-template-columns:1fr; }
+      .product-modal-image { min-height:230px; height:230px; }
+      .product-modal-copy { padding:24px 20px 21px; }
+      .product-modal-copy h2 { font-size:29px; }
+      .modal-close { right:10px;top:10px; }
+      .cart-modal,.checkout-modal { padding:25px 18px 20px; }
+      .cart-item { grid-template-columns:56px 1fr auto; gap:9px; }
+      .cart-item img { width:56px;height:60px; }
+      .cart-item h4 { font-size:15px; }
+      .cart-item .cart-price { font-size:10px; }
+      .cart-actions { flex-direction:column; }
+      .form-grid { grid-template-columns:1fr; }
+      .field.full { grid-column:auto; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- IMPORTANT: The brand name, prices, SKUs and product details below are illustrative template data. Replace with verified brand and label details before publishing. -->
+  <div class="header" id="siteHeader">
+    <div class="container-width header-inner">
+      <a class="brand" href="#home" aria-label="NOURISH home">
+        <span class="brand-mark"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span>
+        <span><span class="brand-word">NOURISH</span><span class="brand-sub">THE DAILY EDIT</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#shop">Shop all</a>
+        <a href="#categories">Collections</a>
+        <a href="#our-approach">Our approach</a>
+        <a href="#help">Help & FAQs</a>
+      </nav>
+      <div class="header-actions">
+        <label class="search-wrap" aria-label="Search products">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="headerSearch" type="search" placeholder="Search products" autocomplete="off" />
+        </label>
+        <button class="icon-button bag-button" id="openCartBtn" aria-label="Open shopping bag">
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i><span class="bag-count" id="bagCount">0</span>
+        </button>
+        <button class="icon-button mobile-menu-button" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <nav id="mobileNav" class="hidden border-t border-[#eeece6] bg-white px-5 py-4" aria-label="Mobile navigation">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm font-semibold text-[#56564e]">
+        <a href="#shop">Shop all</a><a href="#categories">Collections</a><a href="#our-approach">Our approach</a><a href="#help">Help & FAQs</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container-width hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><i class="fa-solid fa-sun mr-2" aria-hidden="true"></i> Small rituals. Thoughtful choices.</p>
+          <h1 class="hero-title" id="hero-title">A little more<br /><em>wellness,</em><br />every day.</h1>
+          <p class="hero-description">Explore everyday wellness essentials with clear product details and a calmer way to shop. Find your next daily ritual, compare the label, and ask us when you need a hand.</p>
+          <div class="hero-cta">
+            <a class="btn-primary" href="#shop">Explore the collection <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <button class="btn-secondary" type="button" data-open-chat><i class="fa-regular fa-message" aria-hidden="true"></i> Ask our guide</button>
+          </div>
+          <div class="hero-note"><span class="dot"></span><span>Clear details. Considered choices. Friendly help.</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Supplement and wellness product photography">
+          <div class="hero-scribble" aria-hidden="true"></div>
+          <div class="hero-side-note"><strong>Daily<br />by design.</strong><span>A thoughtful edit for your everyday routine.</span></div>
+          <div class="hero-photo-frame">
+            <img src="https://images.unsplash.com/photo-1662673143520-721ed4fbe965?auto=format&fit=crop&w=1200&q=85" alt="Minimal wellness supplement bottles styled with a soft, botanical feel" fetchpriority="high" onerror="this.closest('.hero-photo-frame').classList.add('image-fallback');this.remove();" />
+          </div>
+          <div class="hero-caption">
+            <div class="caption-top"><span class="eyebrow">THE NOURISH EDIT</span><span class="mini-index">01 / 06</span></div>
+            <h3>Find your everyday essential.</h3>
+            <p>Explore six collections, from daily basics to active nutrition.</p>
+            <a href="#categories" class="text-link mt-4">Browse collections <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-line" aria-label="Shopping support highlights">
+      <div class="container-width trust-grid">
+        <div class="trust-item"><i class="fa-solid fa-list-check" aria-hidden="true"></i><span>Product details at a glance</span></div>
+        <div class="trust-item"><i class="fa-regular fa-comments" aria-hidden="true"></i><span>Friendly shopping support</span></div>
+        <div class="trust-item"><i class="fa-solid fa-box-open" aria-hidden="true"></i><span>Delivery information before ordering</span></div>
+        <div class="trust-item"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><span>Label-first product browsing</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="categories" aria-labelledby="category-title">
+      <div class="container-width">
+        <div class="section-heading">
+          <div><p class="eyebrow">A considered collection</p><h2 class="section-title" id="category-title">Shop by what<br /><span style="color:#A8A58F;font-weight:400">you’re looking for.</span></h2></div>
+          <p class="heading-copy">Start with the category that interests you. Every collection is designed to make browsing easier—not to make health decisions for you.</p>
+        </div>
+        <div class="category-grid" id="categoryCards">
+          <button class="category-card" data-category="Daily Essentials"><span class="cat-count">03 ITEMS</span><i class="cat-icon fa-solid fa-sun" aria-hidden="true"></i><span><strong>Daily Essentials</strong><small>Everyday basics <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></span></button>
+          <button class="category-card" data-category="Vitamins & Minerals"><span class="cat-count">03 ITEMS</span><i class="cat-icon fa-solid fa-droplet" aria-hidden="true"></i><span><strong>Vitamins & Minerals</strong><small>Explore nutrients <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></span></button>
+          <button class="category-card" data-category="Gut Health"><span class="cat-count">03 ITEMS</span><i class="cat-icon fa-solid fa-seedling" aria-hidden="true"></i><span><strong>Gut Health</strong><small>Fiber & cultures <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></span></button>
+          <button class="category-card" data-category="Beauty & Hair"><span class="cat-count">03 ITEMS</span><i class="cat-icon fa-solid fa-spa" aria-hidden="true"></i><span><strong>Beauty & Hair</strong><small>Beauty routines <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></span></button>
+          <button class="category-card" data-category="Active Living"><span class="cat-count">03 ITEMS</span><i class="cat-icon fa-solid fa-person-running" aria-hidden="true"></i><span><strong>Active Living</strong><small>Move & refuel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></span></button>
+          <button class="category-card" data-category="Herbal & Botanicals"><span class="cat-count">03 ITEMS</span><i class="cat-icon fa-solid fa-leaf" aria-hidden="true"></i><span><strong>Herbal & Botanicals</strong><small>Plant-based picks <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section products-section" id="shop" aria-labelledby="shop-title">
+      <div class="container-width">
+        <div class="section-heading">
+          <div><p class="eyebrow">The daily edit · 18 items</p><h2 class="section-title" id="shop-title">Find your next<br /><span style="color:#A8A58F;font-weight:400">everyday essential.</span></h2></div>
+          <p class="heading-copy">Browse the edit, compare formats and sizes, and open a product to view its information. Prices and SKUs in this template are illustrative only.</p>
+        </div>
+        <div class="product-toolbar">
+          <div class="filter-chips" id="filterChips" aria-label="Filter products by category">
+            <button class="filter-chip active" data-filter="All">All products <span>(18)</span></button>
+            <button class="filter-chip" data-filter="Daily Essentials">Daily essentials</button>
+            <button class="filter-chip" data-filter="Vitamins & Minerals">Vitamins</button>
+            <button class="filter-chip" data-filter="Gut Health">Gut health</button>
+            <button class="filter-chip" data-filter="Beauty & Hair">Beauty</button>
+            <button class="filter-chip" data-filter="Active Living">Active living</button>
+            <button class="filter-chip" data-filter="Herbal & Botanicals">Botanicals</button>
+          </div>
+          <label class="sort-wrap"><span>Sort by</span><select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="name">Name: A to Z</option></select></label>
+        </div>
+        <div id="productGrid" class="product-grid" aria-live="polite"></div>
+        <div class="mt-9 flex flex-wrap items-center justify-between gap-4 border-t border-[#eeece6] pt-5">
+          <p class="text-[10px] leading-6 text-[#77766b]">Illustrative catalogue for this template. Confirm the final product label, price, stock and approved advertising copy before launch.</p>
+          <button id="clearFiltersBtn" class="text-link" type="button">Clear filters <i class="fa-solid fa-arrow-rotate-left" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial-section" id="our-approach" aria-labelledby="approach-title">
+      <div class="container-width">
+        <div class="section-heading">
+          <div><p class="eyebrow">Wellness, without the noise</p><h2 class="section-title" id="approach-title">Shop with a little<br /><span style="color:#A8A58F;font-weight:400">more clarity.</span></h2></div>
+          <p class="heading-copy">Useful information is part of a better shopping experience. Here’s what to look for before you choose a supplement.</p>
+        </div>
+        <div class="editorial-grid">
+          <article class="editorial-card tall">
+            <span class="eyebrow">01 / Read the label</span><h3>Good choices start with good information.</h3><p>Check the ingredient list, serving size, directions, warnings, expiry date and product registration details on the actual pack.</p><a href="#help" class="text-link">Read our FAQs <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><div class="editorial-art" aria-hidden="true"></div>
+          </article>
+          <article class="editorial-card soft-blue">
+            <i class="card-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><div><span class="eyebrow">02 / Make it clear</span><h3>Know what’s inside.</h3><p>Open a product to review the example format and key label fields before ordering.</p></div><a href="#shop" class="text-link">Explore products <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="editorial-card soft-taupe">
+            <i class="card-icon fa-regular fa-comments" aria-hidden="true"></i><div><span class="eyebrow">03 / Ask a question</span><h3>A real conversation helps.</h3><p>Need help with order details or product information? Start with the shopping guide.</p></div><button type="button" data-open-chat class="text-link">Talk to our guide <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </article>
+          <article class="editorial-card soft-olive">
+            <i class="card-icon fa-solid fa-clipboard-check" aria-hidden="true"></i><div><span class="eyebrow">04 / Check before you buy</span><h3>Look for verified details.</h3><p>Use official Thai FDA channels to check applicable product information. Don’t rely on a badge alone.</p></div><a href="https://porta.fda.moph.go.th/" target="_blank" rel="noopener noreferrer" class="text-link">Thai FDA portal <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+          <article class="editorial-card soft-ivory">
+            <i class="card-icon fa-solid fa-box" aria-hidden="true"></i><div><span class="eyebrow">05 / Know the next step</span><h3>Clear ordering, less guesswork.</h3><p>Build your basket, review your order summary, then continue through a configured chat channel.</p></div><button type="button" id="approachCartBtn" class="text-link">Review your bag <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="help" aria-labelledby="faq-title">
+      <div class="container-width faq-grid">
+        <div class="faq-intro">
+          <p class="eyebrow">Here when you need us</p><h2 class="section-title" id="faq-title">A few things<br /><span style="color:#A8A58F;font-weight:400">worth knowing.</span></h2>
+          <p>We believe a good storefront should answer the practical questions before asking for an order.</p>
+          <div class="faq-contact-card"><h3>Need a little help?</h3><p>Ask about product details, delivery, or how to place an order. Our on-page guide can help you find the next step.</p><button type="button" data-open-chat class="btn-primary">Chat with our guide <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
+        </div>
+        <div class="faq-list" id="faqList">
+          <div class="faq-item open"><button class="faq-question" type="button" aria-expanded="true"><span>Are the product names and prices on this page final?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-answer"><div><p>No. This is a standalone storefront template with illustrative catalogue entries and prices in Thai baht. Replace them with the real product names, label details, prices, stock status and current promotion terms before publishing.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>How can I check a product’s Thai FDA details?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-answer"><div><p>Check the information printed on the actual product label and verify applicable details through the Thai FDA’s official product search. This template deliberately does not invent registration numbers or approval badges.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Can supplements treat or prevent a medical condition?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-answer"><div><p>Dietary supplements are not medicines. This storefront does not provide diagnoses or medical advice and does not claim that a supplement treats, cures or prevents a disease. Ask a qualified healthcare professional if you are pregnant, taking medication, have a health condition or are unsure whether a product is suitable for you.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>How do I complete an order from this template?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-answer"><div><p>Add products to your bag and choose “Prepare order”. You can copy an order summary and continue on Messenger or LINE after the store owner adds the correct channel URLs in the configuration section of this HTML file. This template does not process payment or submit orders to a live backend.</p></div></div></div>
+          <div class="faq-item"><button class="faq-question" type="button" aria-expanded="false"><span>Do you have a physical store or a map location?</span><i class="fa-solid fa-plus" aria-hidden="true"></i></button><div class="faq-answer"><div><p>A map is intentionally omitted because the store’s physical address has not been supplied. Add a location and map only if customers can actually visit a verified storefront or collection point.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section" aria-label="Optional updates sign up">
+      <div class="container-width">
+        <div class="newsletter-panel">
+          <div><p class="eyebrow">An occasional note, never noise</p><h2>Good things, in your inbox.</h2><p>Sign up for product updates and practical shopping notes. This demo form shows the interaction only; connect it to your email or CRM service before launch.</p></div>
+          <form class="newsletter-form" id="newsletterForm"><label class="sr-only" for="newsletterEmail">Email address</label><input id="newsletterEmail" type="email" placeholder="Your email address" required /><button class="btn-dark" type="submit">Keep me posted <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container-width">
+      <div class="footer-main">
+        <div><a class="brand" href="#home"><span class="brand-mark"><i class="fa-solid fa-leaf" aria-hidden="true"></i></span><span><span class="brand-word">NOURISH</span><span class="brand-sub">THE DAILY EDIT</span></span></a><p class="footer-brand-copy">A thoughtfully designed example storefront for everyday wellness products. Replace the demo identity and catalogue with verified business information.</p><div class="social-links"><a href="#contact" data-channel="messenger" aria-label="Facebook Messenger"><i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i></a><a href="#contact" data-channel="line" aria-label="LINE Official Account"><i class="fa-brands fa-line" aria-hidden="true"></i></a><a href="#contact" data-channel="facebook" aria-label="Facebook Page"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></div></div>
+        <div><h4>Explore</h4><div class="footer-links"><a href="#shop">All products</a><a href="#categories">Collections</a><a href="#our-approach">Our approach</a><a href="#help">FAQs</a></div></div>
+        <div><h4>Customer care</h4><div class="footer-links"><a href="#help">Ordering help</a><a href="#help">Product information</a><a href="#help">Delivery details</a><button type="button" class="text-left" data-open-chat>Ask our guide</button></div></div>
+        <div><h4>Contact & policies</h4><div class="footer-links"><a href="#contact" data-channel="messenger">Messenger</a><a href="#contact" data-channel="line">LINE Official Account</a><a href="#contact" data-channel="phone">Call the store</a><a href="#help">Safety information</a></div><p class="fine-print mt-4">Connect your real service URLs and contact details before publishing.</p></div>
+      </div>
+      <div class="footer-bottom"><p>© <span id="currentYear"></span> NOURISH Storefront Template. All product details and prices shown are illustrative. Product images are stock imagery and may not depict the exact item described. Always use the actual pack shot and approved label information in the live store.</p><p>Built for responsive browsing · Thailand · Prices displayed in THB (฿)</p></div>
+    </div>
+  </footer>
+
+  <!-- Floating controls: same fixed row; Back to Top is left of Chatbot with exactly 5px gap. -->
+  <div class="floating-controls" aria-label="Quick actions">
+    <button id="backToTop" class="float-btn" aria-label="Back to top" title="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+    <button id="chatToggle" class="float-btn" aria-label="Open shopping assistant" aria-expanded="false" aria-controls="chatPanel" title="Shopping assistant"><i class="fa-regular fa-message" aria-hidden="true"></i></button>
+  </div>
+
+  <section id="chatPanel" class="chat-panel" aria-label="NOURISH shopping assistant" aria-hidden="true">
+    <div class="chat-head">
+      <div class="chat-head-main"><div class="chat-avatar"><i class="fa-solid fa-leaf" aria-hidden="true"></i></div><div><strong>Shop with NOURISH</strong><small><span style="color:#7a8b61">●</span> Shopping guide · Demo assistant</small></div></div>
+      <button id="chatClose" class="chat-close" aria-label="Close chat"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <div id="chatMessages" class="chat-messages" aria-live="polite"><div class="chat-message">Hi there! I can help you explore collections, find product information, or understand how to prepare an order. What would you like to look for?</div></div>
+    <div class="chat-quick-replies" id="chatQuickReplies"><button type="button" data-chat-prompt="Show me daily essentials">Daily essentials</button><button type="button" data-chat-prompt="How do I check product details?">Product details</button><button type="button" data-chat-prompt="How do I place an order?">How to order</button></div>
+    <form id="chatForm" class="chat-form"><label class="sr-only" for="chatInput">Type your message</label><input id="chatInput" type="text" autocomplete="off" placeholder="Ask a shopping question…" required /><button class="chat-send" type="submit" aria-label="Send message"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button></form>
+    <div class="chat-disclaimer">This demo guide provides shopping help only, not medical advice. For questions about suitability, medication interactions or health conditions, consult a qualified healthcare professional.</div>
+  </section>
+
+  <!-- Product detail dialog -->
+  <div id="productOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+    <div class="modal"><button class="modal-close" type="button" data-close-overlay="productOverlay" aria-label="Close product details"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><div class="product-modal-grid"><div id="productModalImage" class="product-modal-image"></div><div class="product-modal-copy"><p id="productModalCategory" class="eyebrow">COLLECTION</p><h2 id="productModalTitle">Product name</h2><p id="productModalDescription"></p><div id="productModalPrice" class="modal-price"></div><ul id="productModalDetails" class="detail-list"></ul><p class="fine-print">Illustrative product listing. Replace with verified packaging and label information. Review the actual ingredients, directions, warnings and expiry date before use.</p><div class="modal-actions"><div class="quantity-control"><button id="productQtyMinus" type="button" aria-label="Decrease quantity">−</button><span id="productQty">1</span><button id="productQtyPlus" type="button" aria-label="Increase quantity">+</button></div><button id="productModalAdd" type="button" class="btn-primary">Add to bag <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></button></div></div></div></div>
+  </div>
+
+  <!-- Shopping bag dialog -->
+  <div id="cartOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="cartModalTitle">
+    <div class="modal cart-modal"><button class="modal-close" type="button" data-close-overlay="cartOverlay" aria-label="Close shopping bag"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><h2 class="cart-title" id="cartModalTitle">Your shopping bag</h2><p class="cart-subtitle">Take a moment to review your selection.</p><div id="cartItems" class="cart-items"></div><div id="cartTotalRow" class="cart-total-row"><span>Subtotal</span><span>฿0</span></div><p class="cart-footnote">Shipping, final availability and payment terms should be confirmed through your store’s actual ordering channel. No payment is collected by this template.</p><div class="cart-actions"><button type="button" id="continueShoppingBtn" class="btn-secondary">Continue shopping</button><button type="button" id="prepareOrderBtn" class="btn-primary">Prepare order <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></div>
+  </div>
+
+  <!-- Customer detail / order preparation dialog -->
+  <div id="checkoutOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal checkout-modal"><button class="modal-close" type="button" data-close-overlay="checkoutOverlay" aria-label="Close order form"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button><div id="checkoutFormWrap"><h2 id="checkoutTitle">Prepare your order</h2><p>Enter the details you want included in your message. This template prepares an order summary; it does not process a payment or send the order to a live system.</p><form id="orderForm"><div class="form-grid"><div class="field"><label for="orderName">Name</label><input id="orderName" name="name" autocomplete="name" placeholder="Your name" required /></div><div class="field"><label for="orderPhone">Phone number</label><input id="orderPhone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. 08X XXX XXXX" required /></div><div class="field full"><label for="orderAddress">Delivery address (optional for chat orders)</label><textarea id="orderAddress" name="address" autocomplete="street-address" placeholder="House number, street, district, province, postcode"></textarea></div><div class="field full"><label for="orderNote">Order note (optional)</label><input id="orderNote" name="note" placeholder="Any question or delivery note" /></div></div><div class="mt-6 flex gap-3"><button type="button" class="btn-secondary flex-1" data-close-overlay="checkoutOverlay">Back</button><button type="submit" class="btn-primary flex-1">Create order summary <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></form></div><div id="orderComplete" class="order-complete hidden"><div class="complete-icon"><i class="fa-solid fa-check" aria-hidden="true"></i></div><h2>Order summary ready.</h2><p>Copy this summary and send it through your store’s confirmed Messenger or LINE channel to arrange availability, delivery and payment.</p><div id="orderSummaryText" class="order-summary"></div><div class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3"><button id="copyOrderBtn" type="button" class="btn-primary">Copy summary</button><button id="sendMessengerBtn" type="button" class="btn-secondary">Messenger</button><button id="sendLineBtn" type="button" class="btn-secondary">LINE</button></div><button id="finishOrderBtn" class="text-link mx-auto mt-5" type="button">Return to store <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /*
+      STORE CONFIG — customize before publishing:
+      - messengerUrl: the exact Page-specific Messenger URL, e.g. https://m.me/your_page_username
+      - lineUrl: your verified LINE OA add-friend URL, e.g. https://line.me/R/ti/p/@yourlineid
+      - facebookUrl: your Facebook Page URL
+      - phoneUrl: a real tel: destination, e.g. tel:+6621234567
+      These are intentionally blank; this template will not invent a business account or phone number.
+    */
+    const STORE_CONFIG = {
+      storeName: 'NOURISH',
+      messengerUrl: '',
+      lineUrl: '',
+      facebookUrl: '',
+      phoneUrl: ''
+    };
+
+    const PHOTO = {
+      bottles: 'https://images.unsplash.com/photo-1662673143520-721ed4fbe965?auto=format&fit=crop&w=900&q=82',
+      shelf: 'https://images.unsplash.com/photo-1606235357537-84aea24d4c4f?auto=format&fit=crop&w=900&q=82',
+      capsules: 'https://images.unsplash.com/photo-1763668444855-401b58dceb20?auto=format&fit=crop&w=900&q=82',
+      bottleCapsules: 'https://images.unsplash.com/photo-1763668331599-487470fb85b2?auto=format&fit=crop&w=900&q=82',
+      beigeBeakers: 'https://images.unsplash.com/photo-1664786908056-347b222e53df?auto=format&fit=crop&w=900&q=82',
+      protein: 'https://images.unsplash.com/photo-1774793476396-de61c6d0fa20?auto=format&fit=crop&w=900&q=82',
+      powder: 'https://images.unsplash.com/photo-1704650311298-4d6915d34c64?auto=format&fit=crop&w=900&q=82'
+    };
+    const FALLBACK_IMAGE = PHOTO.bottles;
+
+    /* All SKUs, sizes, formula details and THB prices are illustrative sample data, not verified market offers. */
+    const products = [
+      {id:1,name:'Daily Multivitamin',category:'Daily Essentials',price:590,size:'60 tablets',format:'Tablet',badge:'Daily pick',img:PHOTO.bottles,back:'#F5EFE2',description:'An example multinutrient product listing for shoppers comparing everyday supplement formats.',details:{'Example format':'Tablet','Pack size':'60 tablets','Label check':'Verify exact ingredients and directions on the pack'}},
+      {id:2,name:'Vitamin C 500 mg',category:'Daily Essentials',price:390,size:'30 tablets',format:'Tablet',badge:'Simple staple',img:PHOTO.capsules,back:'#F2E7D8',description:'An illustrative vitamin C listing. Use the verified product label for ingredient quantities and instructions.',details:{'Example format':'Tablet','Pack size':'30 tablets','Label check':'Confirm amount per serving and warnings'}},
+      {id:3,name:'Zinc 15 mg',category:'Daily Essentials',price:320,size:'60 capsules',format:'Capsule',badge:'Everyday edit',img:PHOTO.bottleCapsules,back:'#E7E9E0',description:'A sample zinc supplement card showing how size and product information can be presented clearly.',details:{'Example format':'Capsule','Pack size':'60 capsules','Label check':'Confirm elemental zinc and serving directions'}},
+      {id:4,name:'Vitamin D3 1000 IU',category:'Vitamins & Minerals',price:420,size:'60 softgels',format:'Softgel',badge:'Nutrient focus',img:PHOTO.shelf,back:'#E4E7E8',description:'A sample vitamin D3 product entry. The final listing should match the exact ingredient form and amount on pack.',details:{'Example format':'Softgel','Pack size':'60 softgels','Label check':'Verify amount per serving and cautions'}},
+      {id:5,name:'Magnesium Glycinate',category:'Vitamins & Minerals',price:690,size:'60 capsules',format:'Capsule',badge:'Label-first',img:PHOTO.beigeBeakers,back:'#E8E2D6',description:'An example mineral supplement listing for browsing by ingredient name and pack format.',details:{'Example format':'Capsule','Pack size':'60 capsules','Label check':'Confirm magnesium amount and ingredient form'}},
+      {id:6,name:'B-Complex',category:'Vitamins & Minerals',price:450,size:'30 tablets',format:'Tablet',badge:'Daily routine',img:PHOTO.capsules,back:'#EFE6D9',description:'An illustrative B-complex product card. Replace all details with the actual approved product label.',details:{'Example format':'Tablet','Pack size':'30 tablets','Label check':'Review each listed B vitamin and the directions'}},
+      {id:7,name:'Probiotic Blend',category:'Gut Health',price:790,size:'30 capsules',format:'Capsule',badge:'Culture blend',img:PHOTO.bottles,back:'#E9E9DF',description:'A sample probiotic listing. If used in a live store, state only the verified strain, quantity, storage requirements and approved label text.',details:{'Example format':'Capsule','Pack size':'30 capsules','Label check':'Check strains, CFU information, storage and expiry'}},
+      {id:8,name:'Prebiotic Fiber',category:'Gut Health',price:490,size:'180 g',format:'Powder',badge:'Mix-in format',img:PHOTO.powder,back:'#EEE4D4',description:'An illustrative fiber powder product entry, shown with a general stock photo rather than an exact pack shot.',details:{'Example format':'Powder','Pack size':'180 g','Label check':'Review source ingredients, serving size and use directions'}},
+      {id:9,name:'Psyllium Husk',category:'Gut Health',price:350,size:'200 g',format:'Powder',badge:'Plant fiber',img:PHOTO.beigeBeakers,back:'#E7E7DE',description:'A sample psyllium product listing. Actual directions and any hydration warnings must come from the real label.',details:{'Example format':'Powder','Pack size':'200 g','Label check':'Follow the product’s own directions and warnings'}},
+      {id:10,name:'Collagen Peptides',category:'Beauty & Hair',price:890,size:'150 g',format:'Powder',badge:'Beauty routine',img:PHOTO.powder,back:'#F2E7E1',description:'An example collagen powder card. The live version should identify the verified collagen source and complete ingredient list.',details:{'Example format':'Powder','Pack size':'150 g','Label check':'Verify collagen source, allergen information and directions'}},
+      {id:11,name:'Biotin 5000 mcg',category:'Beauty & Hair',price:490,size:'60 tablets',format:'Tablet',badge:'Label details',img:PHOTO.capsules,back:'#E9E5E7',description:'An illustrative biotin listing; do not imply cosmetic results or outcomes that are not authorized and substantiated.',details:{'Example format':'Tablet','Pack size':'60 tablets','Label check':'Confirm amount per serving and relevant cautions'}},
+      {id:12,name:'Hyaluronic Acid',category:'Beauty & Hair',price:650,size:'30 capsules',format:'Capsule',badge:'Beauty edit',img:PHOTO.bottleCapsules,back:'#E8E8E0',description:'A sample product card for a hyaluronic acid supplement, with no health or appearance outcome promised.',details:{'Example format':'Capsule','Pack size':'30 capsules','Label check':'Check exact ingredients and directions'}},
+      {id:13,name:'Whey Protein · Vanilla',category:'Active Living',price:790,size:'500 g',format:'Powder',badge:'Active routine',img:PHOTO.protein,back:'#E0E8E6',description:'An illustrative whey protein entry for active nutrition. Actual protein content, allergens and nutrition panel must be verified.',details:{'Example format':'Powder','Pack size':'500 g','Label check':'Review protein per serving, allergens and preparation directions'}},
+      {id:14,name:'Electrolyte Blend',category:'Active Living',price:390,size:'20 sachets',format:'Sachets',badge:'On-the-go',img:PHOTO.bottles,back:'#DDE6E6',description:'An example electrolyte sachet product listing. The final label should show its verified nutrition and preparation details.',details:{'Example format':'Sachets','Pack size':'20 sachets','Label check':'Check sodium, sugars, serving instructions and warnings'}},
+      {id:15,name:'Creatine Monohydrate',category:'Active Living',price:590,size:'300 g',format:'Powder',badge:'Training shelf',img:PHOTO.powder,back:'#E3E7E1',description:'An illustrative creatine product entry. Do not treat this generic content as a substitute for the actual nutrition or label panel.',details:{'Example format':'Powder','Pack size':'300 g','Label check':'Verify purity, serving details and warnings from the pack'}},
+      {id:16,name:'Turmeric Extract',category:'Herbal & Botanicals',price:490,size:'60 capsules',format:'Capsule',badge:'Botanical edit',img:PHOTO.beigeBeakers,back:'#F0E1C7',description:'A sample botanical supplement listing. Ingredient amounts and any authorized wording must be taken from the verified label.',details:{'Example format':'Capsule','Pack size':'60 capsules','Label check':'Review extract details, allergens and directions'}},
+      {id:17,name:'Green Tea Extract',category:'Herbal & Botanicals',price:420,size:'60 capsules',format:'Capsule',badge:'Plant-based pick',img:PHOTO.bottleCapsules,back:'#DDE7D9',description:'An illustrative green tea extract entry. Do not make weight-loss or disease-related promises in the live listing.',details:{'Example format':'Capsule','Pack size':'60 capsules','Label check':'Verify extract amount, caffeine content and warnings'}},
+      {id:18,name:'Ginger Root',category:'Herbal & Botanicals',price:350,size:'60 capsules',format:'Capsule',badge:'Botanical basics',img:PHOTO.capsules,back:'#E8E3D9',description:'A sample ginger root supplement card using a generic stock visual. Final product details must match the actual label.',details:{'Example format':'Capsule','Pack size':'60 capsules','Label check':'Confirm ingredient details, directions and warnings'}}
+    ];
+
+    const categoryNames = ['Daily Essentials','Vitamins & Minerals','Gut Health','Beauty & Hair','Active Living','Herbal & Botanicals'];
+    const state = { filter:'All', query:'', sort:'featured', selectedProduct:null, productQty:1, cart:[], favorites:new Set(), lastOrderText:'', lastFocus:null };
+    const money = value => new Intl.NumberFormat('en-US',{style:'currency',currency:'THB',maximumFractionDigits:0}).format(value).replace('THB','฿');
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => Array.from(document.querySelectorAll(selector));
+    let toastTimer;
+
+    function showToast(message) {
+      const toast = $('#toast'); toast.textContent = message; toast.classList.add('show');
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+    function setupImageFallbacks(root=document) {
+      root.querySelectorAll('img').forEach(img => {
+        if (img.dataset.fallbackBound === '1') return;
+        img.dataset.fallbackBound = '1';
+        img.addEventListener('error', function() {
+          if (!this.dataset.fallbackTried && this.src !== FALLBACK_IMAGE) {
+            this.dataset.fallbackTried = '1'; this.src = FALLBACK_IMAGE;
+          } else {
+            const holder = this.closest('.product-image,.product-modal-image,.hero-photo-frame');
+            if (holder) holder.classList.add('image-fallback');
+            this.remove();
+          }
+        }, {once:false});
+      });
+    }
+    function setSearch(query) {
+      state.query = query.trim().toLowerCase();
+      $('#headerSearch').value = query;
+      renderProducts();
+      if (query.trim()) $('#shop').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function filteredProducts() {
+      let list = products.filter(p => (state.filter==='All' || p.category===state.filter) && (!state.query || `${p.name} ${p.category} ${p.format} ${p.size}`.toLowerCase().includes(state.query)));
+      if (state.sort==='price-asc') list.sort((a,b)=>a.price-b.price);
+      else if (state.sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+      else if (state.sort==='name') list.sort((a,b)=>a.name.localeCompare(b.name));
+      else list.sort((a,b)=>a.id-b.id);
+      return list;
+    }
+    function renderProducts() {
+      const list = filteredProducts(); const grid = $('#productGrid');
+      $$('#filterChips .filter-chip').forEach(btn => btn.classList.toggle('active',btn.dataset.filter===state.filter));
+      if (!list.length) {
+        grid.innerHTML = `<div class="empty-state"><h3>No matches just yet.</h3><p class="text-[11px] mb-4">Try another keyword or clear the current filters.</p><button class="btn-primary" type="button" id="emptyClearBtn">View all products</button></div>`;
+        $('#emptyClearBtn').addEventListener('click',clearFilters);
+        return;
+      }
+      grid.innerHTML = list.map((p,index)=>`
+        <article class="product-card" style="animation-delay:${Math.min(index*35,280)}ms">
+          <div class="product-image" style="--image-back:${p.back}">
+            <img loading="lazy" src="${p.img}" alt="Illustrative supplement product photography for ${escapeHtml(p.name)}" />
+            <span class="product-label">${escapeHtml(p.badge)}</span>
+            <button class="favorite-btn ${state.favorites.has(p.id)?'is-favorite':''}" type="button" data-favorite="${p.id}" aria-label="${state.favorites.has(p.id)?'Remove from':'Add to'} saved items" aria-pressed="${state.favorites.has(p.id)}"><i class="${state.favorites.has(p.id)?'fa-solid':'fa-regular'} fa-heart" aria-hidden="true"></i></button>
+          </div>
+          <button class="product-open" type="button" data-product="${p.id}" aria-label="View details for ${escapeHtml(p.name)}">
+            <span class="product-category">${escapeHtml(p.category)}</span><span class="product-name">${escapeHtml(p.name)}</span>
+          </button>
+          <div class="product-meta"><span class="format">${escapeHtml(p.size)} · ${escapeHtml(p.format)}</span><span aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:9px"></i></span></div>
+          <div class="product-bottom"><span class="product-price">${money(p.price)}</span><button class="add-button" type="button" data-add="${p.id}"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to bag</button></div>
+        </article>`).join('');
+      setupImageFallbacks(grid);
+    }
+    function clearFilters() {
+      state.filter='All'; state.query=''; state.sort='featured';
+      $('#headerSearch').value=''; $('#sortSelect').value='featured'; renderProducts();
+    }
+    function setCategory(category) {
+      state.filter=category; state.query=''; $('#headerSearch').value=''; renderProducts(); $('#shop').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function addToCart(id, qty=1) {
+      const product = products.find(p=>p.id===Number(id)); if (!product) return;
+      const existing = state.cart.find(i=>i.id===product.id);
+      if (existing) existing.qty += qty; else state.cart.push({id:product.id,qty});
+      saveCart(); renderCartCount(); showToast(`${product.name} added to your bag`);
+    }
+    function saveCart() {
+      try { localStorage.setItem('nourishDemoCart',JSON.stringify(state.cart)); } catch(e) {}
+    }
+    function loadCart() {
+      try {
+        const loaded = JSON.parse(localStorage.getItem('nourishDemoCart') || '[]');
+        if (Array.isArray(loaded)) state.cart=loaded.filter(i=>products.some(p=>p.id===i.id)&&Number.isFinite(i.qty)&&i.qty>0).map(i=>({id:i.id,qty:Math.floor(i.qty)}));
+      } catch(e) { state.cart=[]; }
+    }
+    function renderCartCount() { $('#bagCount').textContent=state.cart.reduce((sum,item)=>sum+item.qty,0); }
+    function openOverlay(id) {
+      state.lastFocus=document.activeElement;
+      const overlay=$('#'+id); overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+      const focusable=overlay.querySelector('button,input,textarea,select'); if (focusable) setTimeout(()=>focusable.focus(),80);
+    }
+    function closeOverlay(id) {
+      const overlay=$('#'+id); overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
+      if (!$$('.overlay.open').length) document.body.style.overflow='';
+      if (state.lastFocus && state.lastFocus.focus) state.lastFocus.focus();
+    }
+    function openProduct(id) {
+      const p=products.find(item=>item.id===Number(id)); if (!p) return;
+      state.selectedProduct=p; state.productQty=1;
+      $('#productModalCategory').textContent=p.category.toUpperCase(); $('#productModalTitle').textContent=p.name;
+      $('#productModalDescription').textContent=p.description; $('#productModalPrice').textContent=money(p.price);
+      $('#productQty').textContent='1';
+      $('#productModalImage').className='product-modal-image';
+      $('#productModalImage').innerHTML=`<img src="${p.img}" alt="Illustrative product photo for ${escapeHtml(p.name)}" style="background:${p.back}" /><span class="product-label">${escapeHtml(p.badge)}</span>`;
+      $('#productModalDetails').innerHTML=Object.entries(p.details).map(([k,v])=>`<li><span>${escapeHtml(k)}</span><span>${escapeHtml(v)}</span></li>`).join('');
+      setupImageFallbacks($('#productModalImage')); openOverlay('productOverlay');
+    }
+    function renderCart() {
+      const wrap=$('#cartItems');
+      if (!state.cart.length) {
+        wrap.innerHTML='<div class="empty-state"><h3>Your bag is taking a breath.</h3><p class="text-[11px] mb-4">Explore the collection and add something to get started.</p><button type="button" class="btn-primary" id="emptyBagShop">Explore products</button></div>';
+        $('#emptyBagShop').addEventListener('click',()=>{closeOverlay('cartOverlay');$('#shop').scrollIntoView({behavior:'smooth'});});
+      } else {
+        wrap.innerHTML=state.cart.map(item=>{const p=products.find(product=>product.id===item.id);return `<div class="cart-item"><img src="${p.img}" alt="" /><div><h4>${escapeHtml(p.name)}</h4><p>${escapeHtml(p.size)} · ${escapeHtml(p.category)}</p><div class="cart-item-controls"><button type="button" data-cart-qty="${p.id}" data-delta="-1" aria-label="Decrease ${escapeHtml(p.name)} quantity">−</button><span class="text-[10px] font-bold">${item.qty}</span><button type="button" data-cart-qty="${p.id}" data-delta="1" aria-label="Increase ${escapeHtml(p.name)} quantity">+</button><button type="button" data-cart-remove="${p.id}" aria-label="Remove ${escapeHtml(p.name)}" style="margin-left:4px;color:#77766b"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button></div></div><span class="cart-price">${money(p.price*item.qty)}</span></div>`;}).join('');
+        setupImageFallbacks(wrap);
+      }
+      const total=cartTotal(); $('#cartTotalRow').innerHTML=`<span>Subtotal</span><span>${money(total)}</span>`;
+      $('#prepareOrderBtn').disabled=!state.cart.length; $('#prepareOrderBtn').style.opacity=state.cart.length?'1':'.45';
+    }
+    function cartTotal() { return state.cart.reduce((sum,item)=>{const p=products.find(pr=>pr.id===item.id);return sum+(p?p.price*item.qty:0);},0); }
+    function openCart() { renderCart(); openOverlay('cartOverlay'); }
+    function updateCartQty(id,delta) {
+      const item=state.cart.find(i=>i.id===Number(id)); if (!item) return;
+      item.qty+=delta; if(item.qty<=0) state.cart=state.cart.filter(i=>i.id!==Number(id)); saveCart();renderCartCount();renderCart();
+    }
+    function orderSummary(name,phone,address,note) {
+      const lines=state.cart.map(item=>{const p=products.find(pr=>pr.id===item.id);return `• ${p.name} — ${item.qty} × ${money(p.price)} = ${money(p.price*item.qty)}`;});
+      return `${STORE_CONFIG.storeName} — ORDER ENQUIRY\nName: ${name}\nPhone: ${phone}${address?`\nDelivery address: ${address}`:''}${note?`\nNote: ${note}`:''}\n\nItems:\n${lines.join('\n')}\n\nIllustrative subtotal: ${money(cartTotal())}\n\nPlease confirm current stock, delivery fee, final total and payment instructions. This message is an order enquiry, not a completed or paid order.`;
+    }
+    function startOrder() {
+      if(!state.cart.length) return;
+      closeOverlay('cartOverlay'); $('#checkoutFormWrap').classList.remove('hidden'); $('#orderComplete').classList.add('hidden'); $('#orderForm').reset(); openOverlay('checkoutOverlay');
+    }
+    function openChannel(channel) {
+      const url=channel==='messenger'?STORE_CONFIG.messengerUrl:channel==='line'?STORE_CONFIG.lineUrl:channel==='facebook'?STORE_CONFIG.facebookUrl:STORE_CONFIG.phoneUrl;
+      if (!url) { showToast(`Add your real ${channel==='messenger'?'Messenger Page URL':channel==='line'?'LINE OA URL':channel==='facebook'?'Facebook Page URL':'phone number'} in STORE_CONFIG first.`); return; }
+      if (channel==='phone') { window.location.href=url; return; }
+      window.open(url,'_blank','noopener,noreferrer');
+    }
+    function openChat() {
+      const panel=$('#chatPanel'); panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); $('#chatToggle').setAttribute('aria-expanded','true'); $('#chatInput').focus();
+    }
+    function closeChat() {
+      const panel=$('#chatPanel'); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); $('#chatToggle').setAttribute('aria-expanded','false');
+    }
+    function addChatMessage(text,type='bot') {
+      const div=document.createElement('div'); div.className='chat-message'+(type==='user'?' user':''); div.textContent=text; $('#chatMessages').appendChild(div); $('#chatMessages').scrollTop=$('#chatMessages').scrollHeight;
+    }
+    function replyToChat(raw) {
+      const msg=raw.toLowerCase(); let reply='I can help with collections, product-listing details, or preparing an order. Tell me the category or product name you have in mind.';
+      if (/daily|multivitamin|vitamin c|zinc|everyday|essential/.test(msg)) {
+        reply='You can browse Daily Essentials and Vitamins & Minerals from the collection cards. Open any item to review its example size, format and label fields. The current catalogue is sample data, so confirm the real label before buying.';
+      } else if (/beauty|hair|collagen|biotin|hyaluronic/.test(msg)) {
+        reply='The Beauty & Hair collection includes illustrative entries such as collagen peptides, biotin and hyaluronic acid. These are category examples, not promises of a result. Select an item to view the label fields to verify.';
+      } else if (/gut|fiber|fibre|probiotic|psyllium/.test(msg)) {
+        reply='Open Gut Health to browse the sample probiotic, prebiotic fiber and psyllium listings. Check the actual ingredients, usage directions, storage and warnings on the real pack.';
+      } else if (/active|protein|creatine|electrolyte|workout/.test(msg)) {
+        reply='The Active Living category contains example listings for whey protein, electrolytes and creatine. Always confirm the nutrition panel, serving directions, allergens and cautions from the product label.';
+      } else if (/herb|botanical|turmeric|ginger|green tea/.test(msg)) {
+        reply='The Herbal & Botanicals collection is a set of illustrative entries. Please check ingredient amounts and warnings on the product label; this assistant does not make medical or weight-loss recommendations.';
+      } else if (/order|buy|checkout|purchase|bag|cart/.test(msg)) {
+        reply='To prepare an order, add the items to your bag, open the bag icon and choose “Prepare order”. You can create a message summary, then continue through Messenger or LINE once the store owner configures the real account links.';
+      } else if (/delivery|ship|shipping|fee|ส่ง|จัดส่ง/.test(msg)) {
+        reply='Delivery fees, delivery times and stock are not connected to a live system in this template. Please confirm them with the store through its configured Messenger or LINE account before payment.';
+      } else if (/fda|อย\.|registration|registered|เลขสารบบ/.test(msg)) {
+        reply='Please check the actual pack and verify the applicable details through the official Thai FDA search portal: https://porta.fda.moph.go.th/. This demo catalogue does not invent registration numbers or approval badges.';
+      } else if (/pregnan|medication|medicine|disease|treat|cure|symptom|condition|medical|ยา|โรค|ตั้งครรภ์/.test(msg)) {
+        reply='I can’t assess medical suitability or medication interactions. Dietary supplements are not medicines; please ask a qualified healthcare professional about use with a condition, pregnancy or medication.';
+      } else if (/messenger|facebook/.test(msg)) {
+        reply='The Messenger button can connect to your specific Facebook Page. Add the Page-specific URL to STORE_CONFIG.messengerUrl in this HTML file before publishing.';
+      } else if (/line/.test(msg)) {
+        reply='LINE Official Account is available as a helpful follow-up channel for a Thai storefront. Add your verified LINE OA add-friend URL to STORE_CONFIG.lineUrl before publishing.';
+      }
+      setTimeout(()=>addChatMessage(reply,'bot'),220);
+    }
+
+    // Delegated product interactions.
+    document.addEventListener('click', event=>{
+      const productBtn=event.target.closest('[data-product]'); if(productBtn){openProduct(productBtn.dataset.product);return;}
+      const addBtn=event.target.closest('[data-add]'); if(addBtn){addToCart(addBtn.dataset.add);return;}
+      const favBtn=event.target.closest('[data-favorite]'); if(favBtn){const id=Number(favBtn.dataset.favorite);state.favorites.has(id)?state.favorites.delete(id):state.favorites.add(id);renderProducts();showToast(state.favorites.has(id)?'Saved to your favorites':'Removed from saved items');return;}
+      const filterBtn=event.target.closest('[data-filter]'); if(filterBtn){state.filter=filterBtn.dataset.filter;renderProducts();return;}
+      const catBtn=event.target.closest('[data-category]'); if(catBtn){setCategory(catBtn.dataset.category);return;}
+      const qtyBtn=event.target.closest('[data-cart-qty]'); if(qtyBtn){updateCartQty(qtyBtn.dataset.cartQty,Number(qtyBtn.dataset.delta));return;}
+      const rmBtn=event.target.closest('[data-cart-remove]'); if(rmBtn){state.cart=state.cart.filter(i=>i.id!==Number(rmBtn.dataset.cartRemove));saveCart();renderCartCount();renderCart();showToast('Item removed');return;}
+      const closer=event.target.closest('[data-close-overlay]'); if(closer){closeOverlay(closer.dataset.closeOverlay);return;}
+      const chatPrompt=event.target.closest('[data-chat-prompt]'); if(chatPrompt){sendChat(chatPrompt.dataset.chatPrompt);return;}
+      const openChatBtn=event.target.closest('[data-open-chat]'); if(openChatBtn){openChat();return;}
+      const channelLink=event.target.closest('[data-channel]'); if(channelLink){event.preventDefault();openChannel(channelLink.dataset.channel);return;}
+    });
+    function sendChat(text) {
+      const message=text.trim(); if(!message) return;
+      addChatMessage(message,'user'); $('#chatInput').value=''; replyToChat(message);
+    }
+
+    $('#headerSearch').addEventListener('input',event=>{state.query=event.target.value.trim().toLowerCase();renderProducts();});
+    $('#headerSearch').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();$('#shop').scrollIntoView({behavior:'smooth'});}});
+    $('#sortSelect').addEventListener('change',event=>{state.sort=event.target.value;renderProducts();});
+    $('#clearFiltersBtn').addEventListener('click',clearFilters);
+    $('#openCartBtn').addEventListener('click',openCart);
+    $('#approachCartBtn').addEventListener('click',openCart);
+    $('#continueShoppingBtn').addEventListener('click',()=>closeOverlay('cartOverlay'));
+    $('#prepareOrderBtn').addEventListener('click',startOrder);
+    $('#productQtyMinus').addEventListener('click',()=>{state.productQty=Math.max(1,state.productQty-1);$('#productQty').textContent=state.productQty;});
+    $('#productQtyPlus').addEventListener('click',()=>{state.productQty=Math.min(99,state.productQty+1);$('#productQty').textContent=state.productQty;});
+    $('#productModalAdd').addEventListener('click',()=>{if(state.selectedProduct){addToCart(state.selectedProduct.id,state.productQty);closeOverlay('productOverlay');}});
+    $('#chatToggle').addEventListener('click',()=>$('#chatPanel').classList.contains('open')?closeChat():openChat());
+    $('#chatClose').addEventListener('click',closeChat);
+    $('#chatForm').addEventListener('submit',event=>{event.preventDefault();sendChat($('#chatInput').value);});
+    $('#mobileMenuBtn').addEventListener('click',()=>{const nav=$('#mobileNav');const visible=!nav.classList.contains('hidden');nav.classList.toggle('hidden');$('#mobileMenuBtn').setAttribute('aria-expanded',String(!visible));$('#mobileMenuBtn').innerHTML=visible?'<i class="fa-solid fa-bars" aria-hidden="true"></i>':'<i class="fa-solid fa-xmark" aria-hidden="true"></i>';});
+    $$('#mobileNav a').forEach(link=>link.addEventListener('click',()=>{ $('#mobileNav').classList.add('hidden');$('#mobileMenuBtn').setAttribute('aria-expanded','false');$('#mobileMenuBtn').innerHTML='<i class="fa-solid fa-bars" aria-hidden="true"></i>'; }));
+    $$('.faq-question').forEach(button=>button.addEventListener('click',()=>{const item=button.closest('.faq-item');const willOpen=!item.classList.contains('open');item.classList.toggle('open',willOpen);button.setAttribute('aria-expanded',String(willOpen));}));
+    $('#newsletterForm').addEventListener('submit',event=>{event.preventDefault();const email=$('#newsletterEmail').value.trim();if(email){showToast('Thanks — connect this form to your email service before launch.');$('#newsletterForm').reset();}});
+    $('#orderForm').addEventListener('submit',event=>{
+      event.preventDefault(); const fd=new FormData(event.currentTarget);
+      state.lastOrderText=orderSummary(fd.get('name').trim(),fd.get('phone').trim(),fd.get('address').trim(),fd.get('note').trim());
+      $('#orderSummaryText').textContent=state.lastOrderText; $('#checkoutFormWrap').classList.add('hidden'); $('#orderComplete').classList.remove('hidden');
+    });
+    $('#copyOrderBtn').addEventListener('click',async()=>{
+      try { await navigator.clipboard.writeText(state.lastOrderText); showToast('Order summary copied'); }
+      catch(e) { const area=document.createElement('textarea');area.value=state.lastOrderText;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();try{document.execCommand('copy');showToast('Order summary copied');}catch(err){showToast('Select and copy the order summary above');}area.remove(); }
+    });
+    $('#sendMessengerBtn').addEventListener('click',()=>{openChannel('messenger');});
+    $('#sendLineBtn').addEventListener('click',()=>{openChannel('line');});
+    $('#finishOrderBtn').addEventListener('click',()=>closeOverlay('checkoutOverlay'));
+    $$('.overlay').forEach(overlay=>overlay.addEventListener('click',event=>{if(event.target===overlay)closeOverlay(overlay.id);}));
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'){ $$('.overlay.open').forEach(overlay=>closeOverlay(overlay.id)); closeChat(); }});
+
+    function applyIncomingEntry() {
+      // Entry URLs can preserve the user's intent from Facebook Messenger quick replies,
+      // persistent menu items, product cards, carousels or chatbot recommendations.
+      // Examples: ?source=messenger&entry=quick_reply&category=gut-health
+      //           ?source=messenger&entry=product-card&product=7
+      //           ?source=messenger&entry=chatbot&q=vitamin
+      const params = new URLSearchParams(window.location.search);
+      const rawCategory = params.get('category') || params.get('collection') || '';
+      const normalized = value => String(value).toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (rawCategory) {
+        const matchingCategory = categoryNames.find(name => normalized(name) === normalized(rawCategory));
+        if (matchingCategory) state.filter = matchingCategory;
+      }
+      const incomingQuery = params.get('q') || params.get('search') || '';
+      if (incomingQuery && !rawCategory) {
+        state.query = incomingQuery.toLowerCase().trim();
+        $('#headerSearch').value = incomingQuery;
+      }
+      const rawProduct = params.get('product') || '';
+      const matchingProduct = rawProduct ? (products.find(p => String(p.id) === rawProduct) || products.find(p => normalized(p.name) === normalized(rawProduct))) : null;
+      const source = (params.get('source') || '').toLowerCase();
+      const entry = (params.get('entry') || '').toLowerCase();
+      if (rawCategory || incomingQuery) {
+        setTimeout(() => $('#shop').scrollIntoView({behavior:'smooth',block:'start'}), 350);
+      }
+      if (matchingProduct) {
+        setTimeout(() => openProduct(matchingProduct.id), 550);
+      } else if ((source === 'messenger' || source === 'facebook') && entry) {
+        const friendlyEntry = entry.replace(/[-_]/g, ' ');
+        setTimeout(() => showToast(`Continuing from Messenger · ${friendlyEntry}`), 450);
+      }
+    }
+
+    // Show Back to Top after the page has moved beyond the hero; the chatbot button never moves.
+    const heroSection=$('#home');
+    function updateBackToTop() {
+      const passed=heroSection.getBoundingClientRect().bottom < 0;
+      $('#backToTop').classList.toggle('visible',passed);
+    }
+    window.addEventListener('scroll',updateBackToTop,{passive:true});
+    window.addEventListener('resize',updateBackToTop);
+    $('#backToTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    $('#currentYear').textContent=new Date().getFullYear();
+    loadCart(); renderCartCount(); applyIncomingEntry(); renderProducts(); updateBackToTop(); setupImageFallbacks(document);
+  </script>
+</body>
+</html>
