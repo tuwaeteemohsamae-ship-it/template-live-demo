@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Northbeam Studio — AI-Ready Web, Brand & Growth Systems</title>
+<meta name="description" content="Northbeam Studio builds high-performance websites, brand systems and AI-assisted growth experiences for ambitious companies. Get a tailored quote or ask our AI assistant." />
+<meta name="keywords" content="web design agency, AI website, brand identity, conversion optimization, web development, SEO, digital growth" />
+<meta name="author" content="Northbeam Studio" />
+<meta property="og:title" content="Northbeam Studio — AI-Ready Web, Brand & Growth Systems" />
+<meta property="og:description" content="Design, build and scale high-converting digital experiences with a senior creative and engineering team." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#ffffff" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        vermilion: '#EB4D2B',
+        royal: '#262AF5',
+        canary: '#F4B800',
+        orchid: '#C24AF5',
+        emerald: '#3BB75E',
+        carbon: '#18181A',
+        blush: '#FBECE8'
+      },
+      fontFamily: {
+        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        body: ['Inter', 'sans-serif']
+      },
+      maxWidth: { site: '1280px' }
+    }
+  }
+}
+</script>
+
+<style>
+  :root{--vermilion:#EB4D2B;--royal:#262AF5;--canary:#F4B800;--orchid:#C24AF5;--emerald:#3BB75E;--carbon:#18181A;}
+  *{-webkit-tap-highlight-color:transparent}
+  body{font-family:'Inter',sans-serif;background:#fff;color:#18181A}
+  h1,h2,h3,.display{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.035em}
+  .kicker{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.visible{opacity:1;transform:none}
+  .lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease,border-color .35s ease}
+  .lift:hover{transform:translateY(-6px)}
+  .btn{transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease,color .25s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .focus-ring:focus-visible{outline:3px solid #262AF5;outline-offset:3px}
+  .crosshair::before,.crosshair::after{content:'+';position:absolute;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:#EB4D2B;opacity:.55}
+  .crosshair::before{top:10px;left:14px}
+  .crosshair::after{bottom:10px;right:14px}
+  .marquee{display:flex;gap:3rem;animation:slide 28s linear infinite;width:max-content}
+  @keyframes slide{to{transform:translateX(-50%)}}
+  .accordion-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.7,.2,1)}
+  .chat-enter{animation:chatIn .35s cubic-bezier(.2,.7,.2,1)}
+  @keyframes chatIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+  .typing span{width:6px;height:6px;background:#fff;border-radius:99px;display:inline-block;animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.15s}
+  .typing span:nth-child(3){animation-delay:.3s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"Northbeam Studio",
+  "description":"AI-ready web design, brand systems and conversion-focused digital growth services.",
+  "url":"https://www.northbeamstudio.com",
+  "telephone":"+66-2-123-4567",
+  "priceRange":"฿฿฿",
+  "address":{"@type":"PostalAddress","streetAddress":"88 Sukhumvit Road","addressLocality":"Bangkok","addressCountry":"TH"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"128"}
+}
+</script>
+</head>
+
+<body class="bg-white antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:bg-carbon focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="flex h-16 md:h-20 items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-2.5 focus-ring rounded-lg" aria-label="Northbeam Studio home">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-vermilion text-white font-display font-black text-lg">N</span>
+        <span class="font-display text-lg font-extrabold tracking-tight">Northbeam<span class="text-royal">.</span></span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-carbon/70" aria-label="Primary">
+        <a class="hover:text-vermilion transition-colors focus-ring rounded" href="#services">Services</a>
+        <a class="hover:text-vermilion transition-colors focus-ring rounded" href="#proof">Results</a>
+        <a class="hover:text-vermilion transition-colors focus-ring rounded" href="#testimonials">Clients</a>
+        <a class="hover:text-vermilion transition-colors focus-ring rounded" href="#ai">AI Assistant</a>
+        <a class="hover:text-vermilion transition-colors focus-ring rounded" href="#faq">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button id="langToggle" class="hidden sm:inline-flex items-center gap-1 rounded-full border border-black/10 px-3 py-2 text-xs font-semibold hover:border-royal hover:text-royal transition focus-ring" aria-label="Switch language">
+          <i class="bi bi-translate"></i><span id="langLabel">TH</span>
+        </button>
+        <button data-auth-open class="hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-carbon/75 hover:text-carbon transition focus-ring">
+          <i class="bi bi-person-circle"></i>Log in
+        </button>
+        <a href="#contact" class="btn inline-flex items-center gap-2 rounded-full bg-vermilion px-4 sm:px-5 py-2.5 text-sm font-bold text-white shadow-[0_10px_25px_-12px_rgba(235,77,43,.9)] hover:bg-[#d8421f] focus-ring">
+          Get a Quote <i class="bi bi-arrow-right"></i>
+        </a>
+        <button id="menuBtn" class="lg:hidden grid h-10 w-10 place-items-center rounded-xl border border-black/10 focus-ring" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-black/5 bg-white">
+    <div class="mx-auto max-w-site px-5 py-4 grid gap-1 text-sm font-medium">
+      <a class="rounded-lg px-3 py-3 hover:bg-blush" href="#services">Services</a>
+      <a class="rounded-lg px-3 py-3 hover:bg-blush" href="#proof">Results</a>
+      <a class="rounded-lg px-3 py-3 hover:bg-blush" href="#testimonials">Clients</a>
+      <a class="rounded-lg px-3 py-3 hover:bg-blush" href="#ai">AI Assistant</a>
+      <a class="rounded-lg px-3 py-3 hover:bg-blush" href="#faq">FAQ</a>
+      <button data-auth-open class="mt-2 rounded-lg bg-carbon px-3 py-3 text-left text-white">Log in / Create account</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="relative overflow-hidden bg-white">
+  <div class="mx-auto max-w-site px-5 sm:px-8 pt-14 pb-16 md:pt-24 md:pb-24">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 rounded-full border border-royal/20 bg-royal/5 px-3 py-1.5 text-xs font-semibold text-royal">
+          <span class="h-2 w-2 rounded-full bg-emerald animate-pulse"></span>
+          Now booking Q1 2027 projects
+        </div>
+
+        <h1 class="mt-6 font-display text-[42px] leading-[.98] font-black sm:text-6xl xl:text-[72px]">
+          Build digital experiences<br class="hidden sm:block" />
+          that <span class="text-vermilion">convert</span>, <span class="text-royal">scale</span><br class="hidden sm:block" />
+          and feel unmistakably yours.
+        </h1>
+
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-carbon/70 sm:text-lg">
+          Northbeam Studio combines senior design, engineering and AI-assisted growth strategy to launch websites that earn trust fast and turn attention into qualified revenue.
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="#contact" class="btn inline-flex items-center justify-center gap-2 rounded-full bg-carbon px-7 py-4 text-sm font-bold text-white hover:bg-royal focus-ring">
+            <i class="bi bi-file-earmark-text"></i> Get a tailored quote
+          </a>
+          <button data-chat-open class="btn inline-flex items-center justify-center gap-2 rounded-full border-2 border-vermilion px-7 py-4 text-sm font-bold text-vermilion hover:bg-vermilion hover:text-white focus-ring">
+            <i class="bi bi-stars"></i> Ask AI Assistant
+          </button>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-carbon/60">
+          <span class="inline-flex items-center gap-2"><i class="bi bi-patch-check-fill text-emerald"></i>Free 30-minute consultation</span>
+          <span class="inline-flex items-center gap-2"><i class="bi bi-shield-check text-royal"></i>NDA available</span>
+          <span class="inline-flex items-center gap-2"><i class="bi bi-lightning-charge-fill text-canary"></i>Proposal in 48 hours</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="relative crosshair rounded-[28px] border border-black/5 bg-white p-3 shadow-[0_40px_80px_-40px_rgba(24,24,26,.35)]">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Creative team collaborating around a laptop in a modern studio" width="1200" height="800" loading="eager" class="h-[320px] w-full rounded-[20px] object-cover sm:h-[420px]" />
+          <div class="absolute -bottom-6 -left-4 w-56 rounded-2xl bg-royal p-4 text-white shadow-xl sm:-left-8">
+            <p class="kicker text-[10px] text-white/70">Average outcome</p>
+            <p class="mt-1 font-display text-3xl font-black">+184%</p>
+            <p class="text-xs text-white/80">Lead conversion after redesign</p>
+          </div>
+          <div class="absolute -top-5 right-4 rounded-2xl bg-canary px-4 py-3 text-carbon shadow-xl">
+            <p class="font-display text-sm font-black">LCP 1.4s</p>
+            <p class="text-[11px] font-medium">Core Web Vitals ready</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="border-y border-black/5 bg-white">
+  <div class="mx-auto max-w-site px-5 sm:px-8 py-10">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="reveal rounded-2xl border border-black/5 p-5">
+        <p class="font-display text-3xl font-black text-vermilion">12+</p>
+        <p class="mt-1 text-sm text-carbon/65">Years designing digital products</p>
+      </div>
+      <div class="reveal rounded-2xl border border-black/5 p-5">
+        <p class="font-display text-3xl font-black text-royal">240+</p>
+        <p class="mt-1 text-sm text-carbon/65">Websites and brand systems delivered</p>
+      </div>
+      <div class="reveal rounded-2xl border border-black/5 p-5">
+        <p class="font-display text-3xl font-black text-orchid">ISO 27001</p>
+        <p class="mt-1 text-sm text-carbon/65">Security-aligned delivery process</p>
+      </div>
+      <div class="reveal rounded-2xl border border-black/5 p-5">
+        <p class="font-display text-3xl font-black text-emerald">4.9/5</p>
+        <p class="mt-1 text-sm text-carbon/65">Average client satisfaction score</p>
+      </div>
+    </div>
+
+    <div class="mt-10 overflow-hidden">
+      <p class="kicker text-center text-xs text-carbon/45">Trusted by growth-focused teams</p>
+      <div class="mt-6 marquee">
+        <div class="flex items-center gap-12 pr-12 font-display text-xl font-extrabold text-carbon/25">
+          <span>LUMEN</span><span>Vantage</span><span>ORBIT</span><span>Kinetiq</span><span>NOVA</span><span>Fieldwork</span><span>Atlas</span>
+        </div>
+        <div class="flex items-center gap-12 pr-12 font-display text-xl font-extrabold text-carbon/25" aria-hidden="true">
+          <span>LUMEN</span><span>Vantage</span><span>ORBIT</span><span>Kinetiq</span><span>NOVA</span><span>Fieldwork</span><span>Atlas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="bg-white py-20 md:py-28">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="max-w-3xl reveal">
+      <p class="kicker text-xs text-vermilion">What we do</p>
+      <h2 class="mt-4 font-display text-3xl font-black sm:text-5xl">Services built around measurable growth</h2>
+      <p class="mt-5 text-carbon/70">Choose a focused engagement or combine disciplines into one accountable roadmap. Every project includes clear milestones, accessible design and performance budgets.</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <article class="reveal lift group rounded-3xl border border-black/5 p-7 hover:border-vermilion/30 hover:shadow-xl">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-vermilion text-white text-xl"><i class="bi bi-window-stack"></i></div>
+        <h3 class="mt-6 font-display text-xl font-extrabold">Website Design & Build</h3>
+        <p class="mt-3 text-sm leading-relaxed text-carbon/65">Conversion-led marketing sites, landing pages and design systems with SSR/ISR architecture and mobile-first UX.</p>
+        <p class="mt-5 text-sm font-bold text-vermilion">From ฿185,000 / $5,200</p>
+      </article>
+
+      <article class="reveal lift group rounded-3xl border border-black/5 p-7 hover:border-royal/30 hover:shadow-xl">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-royal text-white text-xl"><i class="bi bi-brush"></i></div>
+        <h3 class="mt-6 font-display text-xl font-extrabold">Brand Identity</h3>
+        <p class="mt-3 text-sm leading-relaxed text-carbon/65">Positioning, visual identity, messaging frameworks and brand guidelines that make your company easier to choose.</p>
+        <p class="mt-5 text-sm font-bold text-royal">From ฿240,000 / $6,800</p>
+      </article>
+
+      <article class="reveal lift group rounded-3xl border border-black/5 p-7 hover:border-orchid/30 hover:shadow-xl">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-orchid text-white text-xl"><i class="bi bi-robot"></i></div>
+        <h3 class="mt-6 font-display text-xl font-extrabold">AI Experience Design</h3>
+        <p class="mt-3 text-sm leading-relaxed text-carbon/65">AI assistants, smart onboarding, conversational search and personalization flows designed around real user intent.</p>
+        <p class="mt-5 text-sm font-bold text-orchid">From ฿310,000 / $8,800</p>
+      </article>
+
+      <article class="reveal lift group rounded-3xl border border-black/5 p-7 hover:border-canary/40 hover:shadow-xl">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-canary text-carbon text-xl"><i class="bi bi-graph-up-arrow"></i></div>
+        <h3 class="mt-6 font-display text-xl font-extrabold">CRO & Analytics</h3>
+        <p class="mt-3 text-sm leading-relaxed text-carbon/65">Funnel audits, A/B testing, heatmaps and experiment roadmaps that improve leads without increasing ad spend.</p>
+        <p class="mt-5 text-sm font-bold text-carbon">From ฿95,000 / $2,700</p>
+      </article>
+
+      <article class="reveal lift group rounded-3xl border border-black/5 p-7 hover:border-emerald/30 hover:shadow-xl">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald text-white text-xl"><i class="bi bi-search"></i></div>
+        <h3 class="mt-6 font-display text-xl font-extrabold">Technical SEO</h3>
+        <p class="mt-3 text-sm leading-relaxed text-carbon/65">Core Web Vitals, structured data, crawlability, content architecture and AI-search readiness for sustainable visibility.</p>
+        <p class="mt-5 text-sm font-bold text-emerald">From ฿75,000 / $2,100</p>
+      </article>
+
+      <article class="reveal lift group rounded-3xl border border-black/5 p-7 hover:border-carbon/20 hover:shadow-xl">
+        <div class="grid h-12 w-12 place-items-center rounded-2xl bg-carbon text-white text-xl"><i class="bi bi-headset"></i></div>
+        <h3 class="mt-6 font-display text-xl font-extrabold">Growth Retainer</h3>
+        <p class="mt-3 text-sm leading-relaxed text-carbon/65">Monthly design, development, experimentation and reporting support for teams that need continuous momentum.</p>
+        <p class="mt-5 text-sm font-bold text-carbon">From ฿120,000 / $3,400 monthly</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof" class="bg-white py-20 md:py-28">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+      <div class="reveal">
+        <p class="kicker text-xs text-royal">Proof, not promises</p>
+        <h2 class="mt-4 font-display text-3xl font-black sm:text-5xl">Results our clients can point to</h2>
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-vermilion p-6 text-white">
+            <p class="font-display text-4xl font-black">3.2x</p>
+            <p class="mt-1 text-sm text-white/85">More qualified demo requests</p>
+          </div>
+          <div class="rounded-2xl bg-royal p-6 text-white">
+            <p class="font-display text-4xl font-black">-38%</p>
+            <p class="mt-1 text-sm text-white/85">Lower cost per acquisition</p>
+          </div>
+          <div class="rounded-2xl bg-canary p-6 text-carbon">
+            <p class="font-display text-4xl font-black">92</p>
+            <p class="mt-1 text-sm text-carbon/75">Average Lighthouse performance score</p>
+          </div>
+          <div class="rounded-2xl bg-emerald p-6 text-white">
+            <p class="font-display text-4xl font-black">6 weeks</p>
+            <p class="mt-1 text-sm text-white/85">Typical launch timeline</p>
+          </div>
+        </div>
+      </div>
+
+      <article class="reveal lift overflow-hidden rounded-3xl border border-black/5 shadow-xl">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Analytics dashboard showing business growth metrics" class="h-64 w-full object-cover sm:h-80" loading="lazy" width="1200" height="640" />
+        <div class="p-7 sm:p-9">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="rounded-full bg-blush px-3 py-1 text-xs font-bold text-vermilion">Case Study</span>
+            <span class="rounded-full bg-royal/10 px-3 py-1 text-xs font-bold text-royal">SaaS</span>
+          </div>
+          <h3 class="mt-5 font-display text-2xl font-extrabold sm:text-3xl">Vantage increased demo bookings by 214% in 90 days</h3>
+          <p class="mt-4 text-sm leading-relaxed text-carbon/70">We rebuilt Vantage’s positioning, simplified its pricing architecture and introduced an AI qualification assistant. The new site reduced form abandonment while giving sales higher-intent leads.</p>
+          <div class="mt-6 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-xl bg-black/[.03] p-4"><p class="font-display text-lg font-black">+214%</p><p class="text-xs text-carbon/60">Demo bookings</p></div>
+            <div class="rounded-xl bg-black/[.03] p-4"><p class="font-display text-lg font-black">1.6s</p><p class="text-xs text-carbon/60">LCP improvement</p></div>
+            <div class="rounded-xl bg-black/[.03] p-4"><p class="font-display text-lg font-black">฿4.2M</p><p class="text-xs text-carbon/60">Pipeline influenced</p></div>
+          </div>
+          <a href="#" class="mt-7 inline-flex items-center gap-2 font-bold text-vermilion hover:gap-3 transition-all focus-ring rounded">Read the full case study <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="bg-white py-20 md:py-28">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between reveal">
+      <div class="max-w-2xl">
+        <p class="kicker text-xs text-orchid">Client voices</p>
+        <h2 class="mt-4 font-display text-3xl font-black sm:text-5xl">Teams choose clarity over complexity</h2>
+      </div>
+      <div class="flex items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-sm font-semibold">
+        <i class="bi bi-star-fill text-canary"></i>4.9 average from 128 verified reviews
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <figure class="reveal lift rounded-3xl border border-black/5 p-7">
+        <div class="flex gap-1 text-canary" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <blockquote class="mt-5 text-sm leading-relaxed text-carbon/75">“Northbeam did not just redesign our website. They rebuilt how we explain our value. Our sales team finally receives leads that understand what we do.”</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80" alt="Portrait of Sarah Mitchell" class="h-11 w-11 rounded-full object-cover" loading="lazy" width="44" height="44" />
+          <div><p class="font-bold">Sarah Mitchell</p><p class="text-xs text-carbon/60">CMO, Vantage</p></div>
+          <span class="ml-auto inline-flex items-center gap-1 rounded-full bg-emerald/10 px-2.5 py-1 text-[11px] font-bold text-emerald"><i class="bi bi-patch-check-fill"></i>Verified</span>
+        </figcaption>
+      </figure>
+
+      <figure class="reveal lift rounded-3xl border border-black/5 p-7">
+        <div class="flex gap-1 text-canary" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <blockquote class="mt-5 text-sm leading-relaxed text-carbon/75">“The AI assistant answers 70% of pre-sales questions before anyone contacts us. It feels useful, not gimmicky.”</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80" alt="Portrait of Daniel Reyes" class="h-11 w-11 rounded-full object-cover" loading="lazy" width="44" height="44" />
+          <div><p class="font-bold">Daniel Reyes</p><p class="text-xs text-carbon/60">Founder, Kinetiq</p></div>
+          <span class="ml-auto inline-flex items-center gap-1 rounded-full bg-emerald/10 px-2.5 py-1 text-[11px] font-bold text-emerald"><i class="bi bi-patch-check-fill"></i>Verified</span>
+        </figcaption>
+      </figure>
+
+      <figure class="reveal lift rounded-3xl border border-black/5 p-7">
+        <div class="flex gap-1 text-canary" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <blockquote class="mt-5 text-sm leading-relaxed text-carbon/75">“Fast, structured and genuinely strategic. They treated our performance targets as design requirements from day one.”</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80" alt="Portrait of Amina Yusuf" class="h-11 w-11 rounded-full object-cover" loading="lazy" width="44" height="44" />
+          <div><p class="font-bold">Amina Yusuf</p><p class="text-xs text-carbon/60">Head of Digital, Lumen</p></div>
+          <span class="ml-auto inline-flex items-center gap-1 rounded-full bg-emerald/10 px-2.5 py-1 text-[11px] font-bold text-emerald"><i class="bi bi-patch-check-fill"></i>Verified</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- AI ASSISTANT -->
+<section id="ai" class="bg-white py-20 md:py-28">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="grid gap-10 rounded-[32px] border border-black/5 p-6 sm:p-10 lg:grid-cols-[1fr_1fr] lg:items-center reveal">
+      <div>
+        <p class="kicker text-xs text-emerald">Ask before you commit</p>
+        <h2 class="mt-4 font-display text-3xl font-black sm:text-5xl">Ask our AI assistant</h2>
+        <p class="mt-5 text-carbon/70">Get instant guidance on scope, timeline, budget range and the right service for your stage. For detailed proposals, our strategists follow up within one business day.</p>
+        <div class="mt-7 flex flex-wrap gap-2" id="promptChips">
+          <button class="chip rounded-full border border-black/10 px-4 py-2 text-sm font-semibold hover:border-emerald hover:text-emerald transition focus-ring">How much does a website cost?</button>
+          <button class="chip rounded-full border border-black/10 px-4 py-2 text-sm font-semibold hover:border-royal hover:text-royal transition focus-ring">Can you redesign our SaaS site?</button>
+          <button class="chip rounded-full border border-black/10 px-4 py-2 text-sm font-semibold hover:border-vermilion hover:text-vermilion transition focus-ring">What is your launch timeline?</button>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-black/5 bg-white p-5 shadow-xl">
+        <div id="inlineChat" class="flex h-72 flex-col gap-3 overflow-y-auto rounded-2xl bg-black/[.02] p-4" aria-live="polite"></div>
+        <form id="inlineChatForm" class="mt-4 flex gap-2">
+          <label class="sr-only" for="inlineChatInput">Ask Northbeam AI</label>
+          <input id="inlineChatInput" type="text" required placeholder="Ask about pricing, timeline or services..." class="w-full rounded-full border border-black/10 px-5 py-3 text-sm outline-none focus:border-royal focus:ring-4 focus:ring-royal/10" />
+          <button class="btn grid h-12 w-12 shrink-0 place-items-center rounded-full bg-emerald text-white hover:bg-[#2f9d4f] focus-ring" aria-label="Send message"><i class="bi bi-send"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-white py-20 md:py-28">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+      <div class="reveal">
+        <p class="kicker text-xs text-vermilion">Popular questions</p>
+        <h2 class="mt-4 font-display text-3xl font-black sm:text-5xl">Everything you need before starting</h2>
+        <p class="mt-5 text-carbon/70">Still unsure? Open the AI assistant or request a proposal—no pressure, no generic sales pitch.</p>
+      </div>
+
+      <div class="space-y-4 reveal" id="faqList">
+        <div class="rounded-2xl border border-black/5">
+          <button class="faq-btn flex w-full items-center justify-between gap-4 p-6 text-left font-display text-lg font-bold focus-ring" aria-expanded="false">
+            How much does a typical website project cost?
+            <i class="bi bi-plus-lg text-vermilion transition-transform"></i>
+          </button>
+          <div class="accordion-body"><p class="px-6 pb-6 text-sm leading-relaxed text-carbon/70">Most marketing websites range from ฿185,000 to ฿650,000 ($5,200–$18,400), depending on pages, integrations, content and custom functionality. We provide a fixed quote after a short discovery call.</p></div>
+        </div>
+        <div class="rounded-2xl border border-black/5">
+          <button class="faq-btn flex w-full items-center justify-between gap-4 p-6 text-left font-display text-lg font-bold focus-ring" aria-expanded="false">
+            How long does a project take?
+            <i class="bi bi-plus-lg text-vermilion transition-transform"></i>
+          </button>
+          <div class="accordion-body"><p class="px-6 pb-6 text-sm leading-relaxed text-carbon/70">A focused landing page can launch in 2–3 weeks. A complete website or brand system usually takes 6–10 weeks, with weekly checkpoints and a shared project board.</p></div>
+        </div>
+        <div class="rounded-2xl border border-black/5">
+          <button class="faq-btn flex w-full items-center justify-between gap-4 p-6 text-left font-display text-lg font-bold focus-ring" aria-expanded="false">
+            Do you work with international clients?
+            <i class="bi bi-plus-lg text-vermilion transition-transform"></i>
+          </button>
+          <div class="accordion-body"><p class="px-6 pb-6 text-sm leading-relaxed text-carbon/70">Yes. We work asynchronously across time zones, invoice in Thai baht or US dollars, and provide English-language documentation and reporting.</p></div>
+        </div>
+        <div class="rounded-2xl border border-black/5">
+          <button class="faq-btn flex w-full items-center justify-between gap-4 p-6 text-left font-display text-lg font-bold focus-ring" aria-expanded="false">
+            Is the AI assistant secure and brand-safe?
+            <i class="bi bi-plus-lg text-vermilion transition-transform"></i>
+          </button>
+          <div class="accordion-body"><p class="px-6 pb-6 text-sm leading-relaxed text-carbon/70">We design assistants with scoped knowledge, moderation rules, clear escalation to humans and no training on your private business data by default.</p></div>
+        </div>
+        <div class="rounded-2xl border border-black/5">
+          <button class="faq-btn flex w-full items-center justify-between gap-4 p-6 text-left font-display text-lg font-bold focus-ring" aria-expanded="false">
+            Can you improve an existing website instead of rebuilding it?
+            <i class="bi bi-plus-lg text-vermilion transition-transform"></i>
+          </button>
+          <div class="accordion-body"><p class="px-6 pb-6 text-sm leading-relaxed text-carbon/70">Absolutely. We start with a conversion and technical audit, then recommend the smallest set of changes likely to create the largest measurable impact.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact" class="bg-white py-20 md:py-28">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="grid overflow-hidden rounded-[32px] border border-black/5 lg:grid-cols-2 reveal">
+      <div class="p-8 sm:p-12">
+        <p class="kicker text-xs text-royal">Start your project</p>
+        <h2 class="mt-4 font-display text-3xl font-black sm:text-5xl">Let’s turn your next website into a growth asset.</h2>
+        <p class="mt-5 text-carbon/70">Tell us about your goals and receive a tailored proposal, timeline and investment range within 48 hours.</p>
+
+        <div class="mt-8 space-y-4 text-sm">
+          <a href="tel:+6621234567" class="flex items-center gap-3 font-semibold hover:text-vermilion transition focus-ring rounded"><span class="grid h-10 w-10 place-items-center rounded-xl bg-vermilion/10 text-vermilion"><i class="bi bi-telephone"></i></span>+66 2 123 4567</a>
+          <a href="mailto:hello@northbeamstudio.com" class="flex items-center gap-3 font-semibold hover:text-royal transition focus-ring rounded"><span class="grid h-10 w-10 place-items-center rounded-xl bg-royal/10 text-royal"><i class="bi bi-envelope"></i></span>hello@northbeamstudio.com</a>
+          <p class="flex items-center gap-3 text-carbon/70"><span class="grid h-10 w-10 place-items-center rounded-xl bg-canary/20 text-carbon"><i class="bi bi-geo-alt"></i></span>88 Sukhumvit Road, Bangkok 10110, Thailand</p>
+        </div>
+
+        <div class="mt-8 overflow-hidden rounded-2xl border border-black/5">
+          <iframe title="Northbeam Studio location map" src="https://www.google.com/maps?q=Sukhumvit%20Road%20Bangkok&output=embed" class="h-56 w-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="border-t border-black/5 p-8 sm:p-12 lg:border-l lg:border-t-0">
+        <form id="quoteForm" class="space-y-5" novalidate>
+          <div>
+            <label for="name" class="mb-2 block text-sm font-semibold">Full name</label>
+            <input id="name" name="name" required class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-royal focus:ring-4 focus:ring-royal/10" placeholder="Alex Carter" />
+          </div>
+          <div>
+            <label for="email" class="mb-2 block text-sm font-semibold">Work email</label>
+            <input id="email" name="email" type="email" required class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-royal focus:ring-4 focus:ring-royal/10" placeholder="alex@company.com" />
+          </div>
+          <div>
+            <label for="budget" class="mb-2 block text-sm font-semibold">Budget range</label>
+            <select id="budget" name="budget" class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-royal focus:ring-4 focus:ring-royal/10">
+              <option>฿185,000–฿350,000 / $5,200–$9,900</option>
+              <option>฿350,000–฿650,000 / $9,900–$18,400</option>
+              <option>฿650,000+ / $18,400+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="mb-2 block text-sm font-semibold">Project goal</label>
+            <textarea id="message" name="message" rows="4" required class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-royal focus:ring-4 focus:ring-royal/10" placeholder="We need a high-converting website for our B2B SaaS product..."></textarea>
+          </div>
+          <button type="submit" class="btn w-full rounded-full bg-vermilion px-6 py-4 font-bold text-white hover:bg-[#d8421f] focus-ring">Request proposal <i class="bi bi-arrow-right ml-1"></i></button>
+          <p id="formStatus" class="hidden rounded-xl bg-emerald/10 p-4 text-sm font-semibold text-emerald"></p>
+          <p class="text-xs text-carbon/50">By submitting, you agree to our privacy policy. We never share your information.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-black/5 bg-white py-14">
+  <div class="mx-auto max-w-site px-5 sm:px-8">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-vermilion text-white font-display font-black">N</span>
+          <span class="font-display text-lg font-extrabold">Northbeam<span class="text-royal">.</span></span>
+        </div>
+        <p class="mt-4 max-w-xs text-sm text-carbon/60">A senior creative and engineering studio building AI-ready digital experiences for ambitious brands.</p>
+      </div>
+      <nav aria-label="Services">
+        <h3 class="kicker text-xs text-carbon/45">Services</h3>
+        <ul class="mt-4 space-y-2 text-sm text-carbon/70">
+          <li><a class="hover:text-vermilion" href="#services">Website Design</a></li>
+          <li><a class="hover:text-vermilion" href="#services">Brand Identity</a></li>
+          <li><a class="hover:text-vermilion" href="#services">AI Experience</a></li>
+          <li><a class="hover:text-vermilion" href="#services">CRO & SEO</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <h3 class="kicker text-xs text-carbon/45">Company</h3>
+        <ul class="mt-4 space-y-2 text-sm text-carbon/70">
+          <li><a class="hover:text-vermilion" href="#proof">Case Studies</a></li>
+          <li><a class="hover:text-vermilion" href="#testimonials">Clients</a></li>
+          <li><a class="hover:text-vermilion" href="#faq">FAQ</a></li>
+          <li><a class="hover:text-vermilion" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3 class="kicker text-xs text-carbon/45">Connect</h3>
+        <div class="mt-4 flex gap-3">
+          <a href="#" aria-label="LinkedIn" class="grid h-10 w-10 place-items-center rounded-xl border border-black/10 hover:border-royal hover:text-royal transition focus-ring"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Instagram" class="grid h-10 w-10 place-items-center rounded-xl border border-black/10 hover:border-orchid hover:text-orchid transition focus-ring"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="YouTube" class="grid h-10 w-10 place-items-center rounded-xl border border-black/10 hover:border-vermilion hover:text-vermilion transition focus-ring"><i class="bi bi-youtube"></i></a>
+        </div>
+        <p class="mt-5 text-xs text-carbon/50">© 2026 Northbeam Studio. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="fixed inset-x-0 bottom-0 z-40 border-t border-black/10 bg-white/95 p-3 backdrop-blur md:hidden">
+  <div class="grid grid-cols-3 gap-2">
+    <a href="tel:+6621234567" class="btn flex items-center justify-center gap-2 rounded-xl border border-black/10 py-3 text-xs font-bold"><i class="bi bi-telephone"></i>Call</a>
+    <a href="https://line.me" class="btn flex items-center justify-center gap-2 rounded-xl bg-emerald py-3 text-xs font-bold text-white"><i class="bi bi-chat-dots"></i>LINE</a>
+    <a href="#contact" class="btn flex items-center justify-center gap-2 rounded-xl bg-vermilion py-3 text-xs font-bold text-white"><i class="bi bi-file-text"></i>Quote</a>
+  </div>
+</div>
+
+<!-- FLOATING ACTIONS: back-to-top left, chatbot right, same row, 5px gap -->
+<div class="fixed bottom-20 right-5 z-50 flex items-end gap-[5px] md:bottom-8">
+  <button id="backToTop" class="btn hidden h-14 w-14 place-items-center rounded-full bg-carbon text-white shadow-xl hover:bg-royal focus-ring" aria-label="Back to top">
+    <i class="bi bi-arrow-up text-xl"></i>
+  </button>
+  <button id="chatToggle" data-chat-open class="btn grid h-14 w-14 place-items-center rounded-full bg-vermilion text-white shadow-xl hover:bg-[#d8421f] focus-ring" aria-label="Open AI assistant" aria-expanded="false">
+    <i class="bi bi-chat-heart text-2xl"></i>
+  </button>
+</div>
+
+<!-- CHATBOT PANEL -->
+<div id="chatPanel" class="fixed bottom-20 right-5 z-50 hidden w-[calc(100vw-40px)] max-w-sm overflow-hidden rounded-3xl border border-black/10 bg-white shadow-2xl chat-enter md:bottom-24" role="dialog" aria-modal="false" aria-label="Northbeam AI assistant">
+  <div class="flex items-center justify-between bg-carbon px-5 py-4 text-white">
+    <div class="flex items-center gap-3">
+      <span class="grid h-9 w-9 place-items-center rounded-xl bg-vermilion"><i class="bi bi-stars"></i></span>
+      <div><p class="font-display text-sm font-extrabold">Northbeam AI</p><p class="text-[11px] text-white/65">Online · replies instantly</p></div>
+    </div>
+    <button id="chatClose" class="grid h-8 w-8 place-items-center rounded-lg hover:bg-white/10 focus-ring" aria-label="Close chat"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div id="chatMessages" class="flex h-80 flex-col gap-3 overflow-y-auto bg-white p-4" aria-live="polite"></div>
+  <div class="flex flex-wrap gap-2 border-t border-black/5 px-4 pt-3">
+    <button class="chat-chip rounded-full bg-blush px-3 py-1.5 text-xs font-semibold text-vermilion">Pricing</button>
+    <button class="chat-chip rounded-full bg-blush px-3 py-1.5 text-xs font-semibold text-vermilion">Timeline</button>
+    <button class="chat-chip rounded-full bg-blush px-3 py-1.5 text-xs font-semibold text-vermilion">Book a call</button>
+  </div>
+  <form id="chatForm" class="flex items-center gap-2 p-4">
+    <label class="sr-only" for="chatInput">Message Northbeam AI</label>
+    <input id="chatInput" type="text" required placeholder="Type your question..." class="w-full rounded-full border border-black/10 px-4 py-3 text-sm outline-none focus:border-vermilion focus:ring-4 focus:ring-vermilion/10" />
+    <button class="btn grid h-11 w-11 shrink-0 place-items-center rounded-full bg-vermilion text-white hover:bg-[#d8421f] focus-ring" aria-label="Send"><i class="bi bi-send"></i></button>
+  </form>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-carbon/60 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl chat-enter">
+    <button id="authClose" class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full hover:bg-black/5 focus-ring" aria-label="Close login modal"><i class="bi bi-x-lg"></i></button>
+
+    <div class="p-8 sm:p-10">
+      <div class="flex rounded-full bg-black/5 p-1" role="tablist">
+        <button id="loginTab" class="auth-tab flex-1 rounded-full px-4 py-2.5 text-sm font-bold transition" role="tab" aria-selected="true">Log in</button>
+        <button id="registerTab" class="auth-tab flex-1 rounded-full px-4 py-2.5 text-sm font-bold transition" role="tab" aria-selected="false">Register</button>
+      </div>
+
+      <form id="loginForm" class="mt-7 space-y-4">
+        <h2 id="authTitle" class="font-display text-2xl font-black">Welcome back</h2>
+        <div>
+          <label for="loginEmail" class="mb-2 block text-sm font-semibold">Email</label>
+          <input id="loginEmail" type="email" required placeholder="you@company.com" class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-royal focus:ring-4 focus:ring-royal/10" />
+        </div>
+        <div>
+          <label for="loginPassword" class="mb-2 block text-sm font-semibold">Password</label>
+          <div class="relative">
+            <input id="loginPassword" type="password" required placeholder="Enter your password" class="w-full rounded-xl border border-black/10 px-4 py-3.5 pr-12 text-sm outline-none focus:border-royal focus:ring-4 focus:ring-royal/10" />
+            <button type="button" class="toggle-pass absolute right-3 top-1/2 -translate-y-1/2 text-carbon/50 hover:text-carbon focus-ring rounded" aria-label="Show password"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+        <button type="submit" class="btn w-full rounded-full bg-royal py-3.5 font-bold text-white hover:bg-[#1b1ecf] focus-ring">Log in</button>
+        <p class="text-center text-xs text-carbon/55">New here? <button type="button" id="toRegister" class="font-bold text-vermilion hover:underline">Create an account</button></p>
+      </form>
+
+      <form id="registerForm" class="mt-7 hidden space-y-4">
+        <h2 class="font-display text-2xl font-black">Create your account</h2>
+        <div>
+          <label for="regName" class="mb-2 block text-sm font-semibold">Full name</label>
+          <input id="regName" required placeholder="Alex Carter" class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-vermilion focus:ring-4 focus:ring-vermilion/10" />
+        </div>
+        <div>
+          <label for="regEmail" class="mb-2 block text-sm font-semibold">Work email</label>
+          <input id="regEmail" type="email" required placeholder="you@company.com" class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-vermilion focus:ring-4 focus:ring-vermilion/10" />
+        </div>
+        <div>
+          <label for="regPassword" class="mb-2 block text-sm font-semibold">Password</label>
+          <input id="regPassword" type="password" required minlength="8" placeholder="At least 8 characters" class="w-full rounded-xl border border-black/10 px-4 py-3.5 text-sm outline-none focus:border-vermilion focus:ring-4 focus:ring-vermilion/10" />
+        </div>
+        <button type="submit" class="btn w-full rounded-full bg-vermilion py-3.5 font-bold text-white hover:bg-[#d8421f] focus-ring">Create account</button>
+        <p class="text-center text-xs text-carbon/55">Already have an account? <button type="button" id="toLogin" class="font-bold text-royal hover:underline">Log in</button></p>
+      </form>
+
+      <div class="my-6 flex items-center gap-4 text-xs text-carbon/40"><span class="h-px flex-1 bg-black/10"></span>OR<span class="h-px flex-1 bg-black/10"></span></div>
+      <button class="btn flex w-full items-center justify-center gap-3 rounded-full border border-black/10 py-3.5 text-sm font-bold hover:border-carbon focus-ring"><i class="bi bi-google"></i>Continue with Google</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.15});
+$$('.reveal').forEach(el=>io.observe(el));
+
+// Mobile menu
+const menuBtn=$('#menuBtn'),mobileMenu=$('#mobileMenu');
+menuBtn.addEventListener('click',()=>{const open=mobileMenu.classList.toggle('hidden');menuBtn.setAttribute('aria-expanded',String(!open));});
+$$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.add('hidden')));
+
+// Language toggle (visual demo)
+$('#langToggle').addEventListener('click',()=>{
+  const label=$('#langLabel');
+  label.textContent=label.textContent==='TH'?'EN':'TH';
+});
+
+// FAQ accordion
+$$('.faq-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const body=btn.nextElementSibling,icon=btn.querySelector('i'),open=btn.getAttribute('aria-expanded')==='true';
+    $$('.faq-btn').forEach(b=>{b.setAttribute('aria-expanded','false');b.nextElementSibling.style.maxHeight='0';b.querySelector('i').className='bi bi-plus-lg text-vermilion transition-transform';});
+    if(!open){btn.setAttribute('aria-expanded','true');body.style.maxHeight=body.scrollHeight+'px';icon.className='bi bi-dash-lg text-vermilion transition-transform';}
+  });
+});
+
+// Back to top
+const backToTop=$('#backToTop'),hero=document.querySelector('section');
+window.addEventListener('scroll',()=>{
+  backToTop.classList.toggle('hidden',window.scrollY<=hero.offsetHeight);
+},{passive:true});
+backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Chat logic
+const chatPanel=$('#chatPanel'),chatToggle=$('#chatToggle'),chatMessages=$('#chatMessages'),chatInput=$('#chatInput');
+let chatOpened=false;
+
+function addMsg(text,who='ai'){
+  const wrap=document.createElement('div');
+  wrap.className=who==='user'?'flex justify-end':'flex justify-start';
+  wrap.innerHTML=`<div class="${who==='user'?'bg-royal text-white':'bg-black/[.04] text-carbon'} max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed">${text}</div>`;
+  chatMessages.appendChild(wrap);chatMessages.scrollTop=chatMessages.scrollHeight;
+}
+function botReply(q){
+  const typing=document.createElement('div');
+  typing.className='flex justify-start';
+  typing.innerHTML='<div class="typing flex gap-1 rounded-2xl bg-carbon px-4 py-3"><span></span><span></span><span></span></div>';
+  chatMessages.appendChild(typing);chatMessages.scrollTop=chatMessages.scrollHeight;
+  setTimeout(()=>{
+    typing.remove();
+    const t=q.toLowerCase();
+    let r='Great question. Our team can prepare a tailored proposal—share your goal and timeline, or tap “Book a call.”';
+    if(t.includes('price')||t.includes('cost')||t.includes('pricing'))r='Marketing websites typically start at ฿185,000 ($5,200). Complex platforms and AI experiences usually range from ฿350,000–฿650,000 ($9,900–$18,400).';
+    else if(t.includes('time')||t.includes('timeline')||t.includes('long'))r='Landing pages take 2–3 weeks. Full websites usually launch in 6–10 weeks, depending on content readiness and integrations.';
+    else if(t.includes('book')||t.includes('call')||t.includes('meeting'))r='You can book a free 30-minute consultation through the quote form. A strategist will reply within one business day.';
+    else if(t.includes('saas')||t.includes('redesign'))r='Yes—SaaS redesigns are one of our core services. We start with a conversion audit, then redesign positioning, navigation, pricing and onboarding flows.';
+    addMsg(r);
+  },900);
+}
+function openChat(){
+  chatPanel.classList.remove('hidden');chatToggle.setAttribute('aria-expanded','true');
+  if(!chatOpened){chatOpened=true;addMsg('Hi! I’m Northbeam AI. Ask me about services, pricing, timelines—or how we can improve your website.');}
+  setTimeout(()=>chatInput.focus(),100);
+}
+function closeChat(){chatPanel.classList.add('hidden');chatToggle.setAttribute('aria-expanded','false');}
+chatToggle.addEventListener('click',()=>chatPanel.classList.contains('hidden')?openChat():closeChat());
+$('#chatClose').addEventListener('click',closeChat);
+$$('[data-chat-open]').forEach(b=>b.addEventListener('click',openChat));
+$('#chatForm').addEventListener('submit',e=>{e.preventDefault();const v=chatInput.value.trim();if(!v)return;addMsg(v,'user');chatInput.value='';botReply(v);});
+$$('.chat-chip').forEach(c=>c.addEventListener('click',()=>{addMsg(c.textContent,'user');botReply(c.textContent);}));
+$$('.chip').forEach(c=>c.addEventListener('click',()=>{openChat();addMsg(c.textContent,'user');botReply(c.textContent);}));
+
+// Auth modal
+const authModal=$('#authModal'),loginForm=$('#loginForm'),registerForm=$('#registerForm'),loginTab=$('#loginTab'),registerTab=$('#registerTab');
+function openAuth(){authModal.classList.remove('hidden');authModal.classList.add('flex');document.body.style.overflow='hidden';}
+function closeAuth(){authModal.classList.add('hidden');authModal.classList.remove('flex');document.body.style.overflow='';}
+$$('[data-auth-open]').forEach(b=>b.addEventListener('click',openAuth));
+$('#authClose').addEventListener('click',closeAuth);
+authModal.addEventListener('click',e=>{if(e.target===authModal)closeAuth();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAuth();closeChat();}});
+function setTab(login){
+  loginForm.classList.toggle('hidden',!login);registerForm.classList.toggle('hidden',login);
+  loginTab.setAttribute('aria-selected',String(login));registerTab.setAttribute('aria-selected',String(!login));
+  loginTab.className=`auth-tab flex-1 rounded-full px-4 py-2.5 text-sm font-bold transition ${login?'bg-white shadow text-carbon':'text-carbon/55'}`;
+  registerTab.className=`auth-tab flex-1 rounded-full px-4 py-2.5 text-sm font-bold transition ${!login?'bg-white shadow text-carbon':'text-carbon/55'}`;
+}
+loginTab.addEventListener('click',()=>setTab(true));
+registerTab.addEventListener('click',()=>setTab(false));
+$('#toRegister').addEventListener('click',()=>setTab(false));
+$('#toLogin').addEventListener('click',()=>setTab(true));
+setTab(true);
+
+$$('.toggle-pass').forEach(btn=>btn.addEventListener('click',()=>{
+  const input=btn.previousElementSibling,show=input.type==='password';
+  input.type=show?'text':'password';
+  btn.innerHTML=show?'<i class="bi bi-eye-slash"></i>':'<i class="bi bi-eye"></i>';
+}));
+
+loginForm.addEventListener('submit',e=>{e.preventDefault();alert('Demo login successful. Connect this form to your authentication provider in production.');closeAuth();});
+registerForm.addEventListener('submit',e=>{e.preventDefault();alert('Demo account created. Connect this form to your auth/database service in production.');closeAuth();});
+
+// Quote form
+$('#quoteForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const status=$('#formStatus');status.classList.remove('hidden');
+  status.textContent='Thank you. Your request has been received—our team will respond within one business day.';
+  e.target.reset();
+});
+</script>
+</body>
+</html>
