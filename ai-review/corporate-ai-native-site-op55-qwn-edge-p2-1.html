@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dominick Creative — Bold Creative Agency in Bangkok | Branding, Web & Strategy</title>
+  <meta name="description" content="Dominick Creative is a high-impact creative agency delivering brand identity, web design, digital marketing, and strategy for brands that want to dominate. 500+ successful projects. Request a quote today." />
+  <meta name="keywords" content="creative agency bangkok, brand identity, web design, digital marketing, strategy consulting, dominick creative, high-impact agency" />
+  <meta name="author" content="Dominick Creative" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Dominick Creative — Bold Creative Agency" />
+  <meta property="og:description" content="We create spaces for brands that dominate. 500+ successful projects worldwide." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href='https://cdn.boxicons.com/3.0.4/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
+  <style>
+    :root {
+      --color-vermilion: #EB4D2B;
+      --color-royal-blue: #262AF5;
+      --color-canary-yellow: #F4B800;
+      --color-orchid-violet: #C24AF5;
+      --color-emerald-green: #3BB75E;
+      --color-carbon-black: #18181A;
+      --color-surface: #FFFFFF;
+      --color-blush: #FBECE8;
+    }
+
+    * { -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--color-carbon-black);
+      background: #FFFFFF;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4, .bold-agency-headline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.035em;
+    }
+
+    .kicker-caps {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 0.96;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .crosshair {
+      position: relative;
+    }
+    .crosshair::before {
+      content: '+';
+      position: absolute;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--color-carbon-black);
+      opacity: 0.4;
+    }
+    .crosshair-tl::before { top: 12px; left: 12px; }
+    .crosshair-tr::before { top: 12px; right: 12px; }
+    .crosshair-bl::before { bottom: 12px; left: 12px; }
+    .crosshair-br::before { bottom: 12px; right: 12px; }
+
+    .gradient-vermilion-blaze { background: linear-gradient(135deg, #EB4D2B 0%, #FF6B4A 100%); }
+    .gradient-orchid-electric { background: linear-gradient(135deg, #C24AF5 0%, #9B2AE0 100%); }
+    .gradient-royal-cobalt { background: linear-gradient(135deg, #262AF5 0%, #1518D6 100%); }
+
+    .text-vermilion { color: var(--color-vermilion); }
+    .text-royal-blue { color: var(--color-royal-blue); }
+    .text-canary { color: #B88900; }
+    .text-orchid { color: var(--color-orchid-violet); }
+    .text-emerald { color: var(--color-emerald-green); }
+
+    .bg-vermilion { background-color: var(--color-vermilion); }
+    .bg-royal-blue { background-color: var(--color-royal-blue); }
+    .bg-canary { background-color: var(--color-canary-yellow); }
+    .bg-orchid { background-color: var(--color-orchid-violet); }
+    .bg-emerald { background-color: var(--color-emerald-green); }
+    .bg-carbon { background-color: var(--color-carbon-black); }
+    .bg-blush { background-color: var(--color-blush); }
+
+    /* Animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hover-lift {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(24, 24, 26, 0.08);
+    }
+
+    .btn-primary {
+      background: var(--color-vermilion);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 0;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #FF6B4A 0%, #EB4D2B 100%);
+      transition: left 0.4s ease;
+      z-index: 0;
+    }
+    .btn-primary:hover::before { left: 0; }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-primary i { position: relative; z-index: 1; }
+
+    .btn-outline {
+      border: 2px solid var(--color-carbon-black);
+      color: var(--color-carbon-black);
+      padding: 14px 30px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-outline:hover {
+      background: var(--color-carbon-black);
+      color: #fff;
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      border-bottom: 1px solid rgba(24,24,26,0.1);
+    }
+    .faq-question {
+      cursor: pointer;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+    .faq-question:hover { color: var(--color-vermilion); }
+    .faq-icon {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-content {
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.active .modal-content {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Chatbot */
+    .chatbot-panel {
+      transform: translateY(120%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .chatbot-panel.active { transform: translateY(0); }
+
+    .chat-message {
+      animation: messageIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes messageIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .typing-indicator span {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: var(--color-carbon-black);
+      border-radius: 50%;
+      margin: 0 2px;
+      animation: typing 1.4s infinite ease-in-out;
+    }
+    .typing-indicator span:nth-child(1) { animation-delay: 0s; }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-8px); opacity: 1; }
+    }
+
+    /* Floating buttons */
+    .floating-btn {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(24, 24, 26, 0.15);
+    }
+    .floating-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(24, 24, 26, 0.25);
+    }
+
+    /* Mobile CTA Bar */
+    .mobile-cta-bar {
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .mobile-cta-bar.visible { transform: translateY(0); }
+
+    /* Testimonial card */
+    .testimonial-card {
+      border-left: 4px solid var(--color-vermilion);
+    }
+    .testimonial-card:nth-child(2) { border-left-color: var(--color-royal-blue); }
+    .testimonial-card:nth-child(3) { border-left-color: var(--color-orchid-violet); }
+
+    /* Service card hover */
+    .service-card .service-icon {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    /* Nav link */
+    .nav-link {
+      position: relative;
+      padding: 8px 0;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--color-vermilion);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Logo pulse */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.3); }
+    }
+    .logo-dot {
+      animation: pulse-dot 2s infinite ease-in-out;
+    }
+
+    /* Starburst badge */
+    .starburst {
+      position: relative;
+      display: inline-block;
+    }
+    .starburst::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 140%; height: 140%;
+      transform: translate(-50%, -50%);
+      background: var(--color-royal-blue);
+      clip-path: polygon(50% 0%, 61% 14%, 79% 5%, 78% 26%, 97% 32%, 85% 50%, 97% 68%, 78% 74%, 79% 95%, 61% 86%, 50% 100%, 39% 86%, 21% 95%, 22% 74%, 3% 68%, 15% 50%, 3% 32%, 22% 26%, 21% 5%, 39% 14%);
+      z-index: -1;
+    }
+
+    /* Hide scrollbar on chat */
+    .chat-messages::-webkit-scrollbar { width: 6px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(24,24,26,0.2); border-radius: 3px; }
+
+    /* Input focus */
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--color-vermilion);
+    }
+
+    /* Marquee for trust logos */
+    .marquee {
+      display: flex;
+      gap: 60px;
+      animation: marquee 30s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Stat counter */
+    .stat-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    /* Hero image mask */
+    .hero-image-mask {
+      clip-path: polygon(0 0, 100% 5%, 100% 100%, 10% 100%);
+    }
+
+    /* Form validation visual */
+    input:invalid:not(:placeholder-shown) {
+      border-color: var(--color-vermilion);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(24,24,26,0.6);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      animation: scrollBounce 2s infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Dominick Creative",
+    "description": "High-impact creative agency delivering brand identity, web design, and digital strategy.",
+    "url": "https://dominick.agency",
+    "logo": "https://dominick.agency/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "88 Silom Road, Building 24F",
+      "addressLocality": "Bangkok",
+      "addressCountry": "TH"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "247"
+    }
+  }
+  </script>
+</head>
+<body class="antialiased">
+
+  <!-- ============== HEADER ============== -->
+  <header class="fixed top-0 left-0 right-0 bg-white z-40 border-b border-gray-100" id="header">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 group">
+          <div class="flex items-center gap-1">
+            <span class="w-3 h-3 bg-vermilion logo-dot"></span>
+            <span class="bold-agency-headline text-2xl font-black tracking-tight">DOMINICK</span>
+          </div>
+          <span class="hidden sm:inline text-xs text-gray-400 tracking-widest uppercase">Creative</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+          <a href="#hero" class="nav-link">Home</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#work" class="nav-link">Work</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-3">
+          <!-- Language Switch -->
+          <div class="hidden md:flex items-center gap-1 px-3 py-2 border border-gray-200 text-xs font-semibold">
+            <button class="lang-btn text-gray-400" data-lang="th">TH</button>
+            <span class="text-gray-300">/</span>
+            <button class="lang-btn font-bold" data-lang="en">EN</button>
+          </div>
+
+          <!-- Login Button -->
+          <button onclick="openModal()" class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-semibold hover:text-vermilion transition-colors">
+            <i class="fa-regular fa-user"></i>
+            <span>Login</span>
+          </button>
+
+          <!-- Request Quote CTA -->
+          <button class="hidden md:inline-block btn-primary text-xs py-3 px-5" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            <span>Request Quote</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="lg:hidden w-10 h-10 flex items-center justify-center" id="menuToggle">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div class="lg:hidden hidden" id="mobileNav">
+        <nav class="flex flex-col gap-4 py-6 border-t border-gray-100">
+          <a href="#hero" class="font-semibold">Home</a>
+          <a href="#services" class="font-semibold">Services</a>
+          <a href="#work" class="font-semibold">Work</a>
+          <a href="#about" class="font-semibold">About</a>
+          <a href="#contact" class="font-semibold">Contact</a>
+          <button onclick="openModal()" class="text-left font-semibold text-vermilion">Login / Register</button>
+          <div class="flex items-center gap-2 pt-2">
+            <span class="text-sm">Language:</span>
+            <button class="px-3 py-1 border text-xs font-semibold">TH</button>
+            <button class="px-3 py-1 bg-carbon text-white text-xs font-semibold">EN</button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section id="hero" class="pt-32 lg:pt-40 pb-20 lg:pb-32 bg-white overflow-hidden relative">
+    <!-- Crosshair decorations -->
+    <span class="absolute top-28 left-8 text-gray-300 text-sm hidden lg:block">+</span>
+    <span class="absolute top-32 right-8 text-gray-300 text-sm hidden lg:block">+</span>
+    <span class="absolute bottom-10 left-8 text-gray-300 text-sm hidden lg:block">+</span>
+    <span class="absolute bottom-10 right-8 text-gray-300 text-sm hidden lg:block">+</span>
+
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb mb-8">
+        <span>Home</span>
+        <span class="mx-2">/</span>
+        <span class="text-carbon font-semibold">Creative Agency</span>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <!-- Left Content -->
+        <div class="lg:col-span-7 fade-in-up">
+          <div class="inline-flex items-center gap-2 mb-6">
+            <span class="w-8 h-[2px] bg-vermilion"></span>
+            <span class="kicker-caps text-xs text-vermilion">Creative Agency · Est. 2014</span>
+          </div>
+
+          <h1 class="hero-title mb-8">
+            We create spaces<br>
+            for brands that<br>
+            <span class="text-vermilion">dominate.</span>
+          </h1>
+
+          <p class="text-base lg:text-lg text-gray-600 mb-10 max-w-xl leading-relaxed">
+            A high-impact creative agency building bold brand identities, digital experiences, and strategies for companies that refuse to be ignored. Based in Bangkok, serving the world.
+          </p>
+
+          <div class="flex flex-wrap gap-4 mb-12">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              <span>Request a Quote</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="btn-outline" onclick="toggleChatbot()">
+              <i class="fa-solid fa-robot"></i>
+              <span>Chat with AI</span>
+            </button>
+          </div>
+
+          <!-- Quick stats -->
+          <div class="flex flex-wrap gap-8 items-center">
+            <div>
+              <div class="stat-number text-3xl lg:text-4xl text-carbon">500+</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider">Projects</div>
+            </div>
+            <div class="w-px h-10 bg-gray-200"></div>
+            <div>
+              <div class="stat-number text-3xl lg:text-4xl text-carbon">12</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider">Years</div>
+            </div>
+            <div class="w-px h-10 bg-gray-200"></div>
+            <div>
+              <div class="stat-number text-3xl lg:text-4xl text-carbon">4.9<span class="text-vermilion">★</span></div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider">Avg. Rating</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="lg:col-span-5 relative fade-in-up" style="transition-delay: 0.2s;">
+          <div class="relative">
+            <!-- Vermilion accent shape -->
+            <div class="absolute -top-6 -right-6 w-32 h-32 bg-vermilion z-0"></div>
+            <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-canary z-0"></div>
+            
+            <!-- Main Image -->
+            <div class="relative z-10 hero-image-mask">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Creative team brainstorming" class="w-full h-[500px] lg:h-[600px] object-cover" loading="eager">
+            </div>
+
+            <!-- Floating stat card -->
+            <div class="absolute -bottom-8 right-4 lg:-right-8 bg-white border-2 border-carbon p-5 z-20 hover-lift max-w-[220px]">
+              <div class="flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-chart-line text-emerald"></i>
+                <span class="text-xs font-semibold uppercase tracking-wider">Live Results</span>
+              </div>
+              <div class="stat-number text-2xl mb-1">+340%</div>
+              <div class="text-xs text-gray-500">Avg. client ROI in year 1</div>
+            </div>
+
+            <!-- Crosshair overlay -->
+            <span class="absolute top-4 left-4 text-white text-xs font-light z-20">+</span>
+            <span class="absolute top-4 right-4 text-white text-xs font-light z-20">+</span>
+            <span class="absolute bottom-4 left-4 text-white text-xs font-light z-20">+</span>
+            <span class="absolute bottom-4 right-4 text-white text-xs font-light z-20">+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hidden lg:flex justify-center mt-16 scroll-indicator">
+        <div class="flex flex-col items-center gap-2 text-gray-400">
+          <span class="text-xs uppercase tracking-widest">Scroll</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TRUST BAR ============== -->
+  <section class="py-12 lg:py-16 bg-white border-y border-gray-100 overflow-hidden">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="text-center mb-10 fade-in-up">
+        <span class="kicker-caps text-xs text-gray-500">Trusted by 200+ Leading Brands Worldwide</span>
+      </div>
+
+      <div class="relative overflow-hidden">
+        <div class="marquee">
+          <!-- First set -->
+          <div class="flex items-center gap-16">
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-cube text-2xl"></i>
+              <span class="bold-agency-headline text-lg">TechVibe</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-rocket text-2xl"></i>
+              <span class="bold-agency-headline text-lg">LaunchPad</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-leaf text-2xl"></i>
+              <span class="bold-agency-headline text-lg">EcoNova</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-gem text-2xl"></i>
+              <span class="bold-agency-headline text-lg">Luxora</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-bolt text-2xl"></i>
+              <span class="bold-agency-headline text-lg">Voltex</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-mountain text-2xl"></i>
+              <span class="bold-agency-headline text-lg">Summit Co.</span>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="flex items-center gap-16">
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-cube text-2xl"></i>
+              <span class="bold-agency-headline text-lg">TechVibe</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-rocket text-2xl"></i>
+              <span class="bold-agency-headline text-lg">LaunchPad</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-leaf text-2xl"></i>
+              <span class="bold-agency-headline text-lg">EcoNova</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-gem text-2xl"></i>
+              <span class="bold-agency-headline text-lg">Luxora</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-bolt text-2xl"></i>
+              <span class="bold-agency-headline text-lg">Voltex</span>
+            </div>
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+              <i class="fa-solid fa-mountain text-2xl"></i>
+              <span class="bold-agency-headline text-lg">Summit Co.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="flex flex-wrap justify-center gap-6 mt-12 fade-in-up">
+        <div class="flex items-center gap-2 px-4 py-2 border border-gray-200">
+          <i class="fa-solid fa-award text-canary"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">Awwwards SOTD 2025</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 border border-gray-200">
+          <i class="fa-solid fa-certificate text-emerald"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">ISO 9001 Certified</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 border border-gray-200">
+          <i class="fa-solid fa-shield-halved text-royal-blue"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">Google Partner</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 border border-gray-200">
+          <i class="fa-solid fa-star text-orchid"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">Clutch Top Agency</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SERVICES GRID ============== -->
+  <section id="services" class="py-20 lg:py-32 bg-white">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 lg:mb-20 gap-6 fade-in-up">
+        <div>
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-8 h-[2px] bg-vermilion"></span>
+            <span class="kicker-caps text-xs text-vermilion">What We Do</span>
+          </div>
+          <h2 class="section-title max-w-xl">Services built for brands that <span class="text-vermilion">refuse to be average.</span></h2>
+        </div>
+        <p class="text-gray-600 max-w-md">
+          Six core disciplines, one unified strategy. We don't just make things pretty—we make them perform.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Service 1 -->
+        <div class="service-card hover-lift bg-white border border-gray-100 p-8 fade-in-up">
+          <div class="w-16 h-16 bg-vermilion mb-6 flex items-center justify-center service-icon">
+            <i class="fa-solid fa-palette text-white text-2xl"></i>
+          </div>
+          <h3 class="bold-agency-headline text-xl mb-3 uppercase">Brand Identity</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+            Logos, visual systems, and brand guidelines that make your audience stop scrolling and start remembering.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-vermilion transition-colors">
+            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card hover-lift bg-white border border-gray-100 p-8 fade-in-up" style="transition-delay: 0.1s;">
+          <div class="w-16 h-16 bg-royal-blue mb-6 flex items-center justify-center service-icon">
+            <i class="fa-solid fa-laptop-code text-white text-2xl"></i>
+          </div>
+          <h3 class="bold-agency-headline text-xl mb-3 uppercase">Web Design</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+            Fast, accessible, conversion-focused websites that rank and convert. Built on modern stacks, measured obsessively.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-royal-blue transition-colors">
+            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card hover-lift bg-white border border-gray-100 p-8 fade-in-up" style="transition-delay: 0.2s;">
+          <div class="w-16 h-16 bg-orchid mb-6 flex items-center justify-center service-icon">
+            <i class="fa-solid fa-bullhorn text-white text-2xl"></i>
+          </div>
+          <h3 class="bold-agency-headline text-xl mb-3 uppercase">Digital Marketing</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+            SEO, paid ads, and performance marketing. Every baht spent is tracked, optimized, and reported transparently.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-orchid transition-colors">
+            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card hover-lift bg-white border border-gray-100 p-8 fade-in-up">
+          <div class="w-16 h-16 bg-canary mb-6 flex items-center justify-center service-icon">
+            <i class="fa-solid fa-video text-white text-2xl"></i>
+          </div>
+          <h3 class="bold-agency-headline text-xl mb-3 uppercase">Video Production</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+            From concept to final cut. Brand films, social shorts, and product videos that feel cinematic, not corporate.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-canary transition-colors">
+            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card hover-lift bg-white border border-gray-100 p-8 fade-in-up" style="transition-delay: 0.1s;">
+          <div class="w-16 h-16 bg-emerald mb-6 flex items-center justify-center service-icon">
+            <i class="fa-solid fa-hashtag text-white text-2xl"></i>
+          </div>
+          <h3 class="bold-agency-headline text-xl mb-3 uppercase">Social Media</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+            Strategy, content calendars, and community management that turn followers into customers and advocates.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-emerald transition-colors">
+            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card hover-lift bg-white border border-gray-100 p-8 fade-in-up" style="transition-delay: 0.2s;">
+          <div class="w-16 h-16 bg-carbon mb-6 flex items-center justify-center service-icon">
+            <i class="fa-solid fa-chess text-white text-2xl"></i>
+          </div>
+          <h3 class="bold-agency-headline text-xl mb-3 uppercase">Strategy</h3>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+            Brand positioning, market research, and go-to-market strategy. We find the insight, you own the category.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:text-carbon transition-colors">
+            Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PROOF SECTION ============== -->
+  <section id="work" class="py-20 lg:py-32 bg-white">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="text-center mb-16 lg:mb-20 fade-in-up">
+        <div class="inline-flex items-center gap-2 mb-4">
+          <span class="w-8 h-[2px] bg-vermilion"></span>
+          <span class="kicker-caps text-xs text-vermilion">Proof, Not Promises</span>
+          <span class="w-8 h-[2px] bg-vermilion"></span>
+        </div>
+        <h2 class="section-title">Numbers that speak louder than pitch decks.</h2>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20 fade-in-up">
+        <div class="text-center">
+          <div class="stat-number text-5xl lg:text-6xl text-vermilion mb-2" data-count="527">0</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-semibold">Projects Delivered</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-number text-5xl lg:text-6xl text-royal-blue mb-2" data-count="203">0</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-semibold">Active Clients</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-number text-5xl lg:text-6xl text-orchid mb-2" data-count="48">0</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-semibold">Industry Awards</div>
+        </div>
+        <div class="text-center">
+          <div class="stat-number text-5xl lg:text-6xl text-emerald mb-2" data-count="98">0</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-semibold">% Client Retention</div>
+        </div>
+      </div>
+
+      <!-- Featured Case Study -->
+      <div class="grid lg:grid-cols-2 gap-0 bg-white border border-gray-100 fade-in-up hover-lift">
+        <div class="relative overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="TechVibe case study" class="w-full h-80 lg:h-full object-cover" loading="lazy">
+          <div class="absolute top-4 left-4 bg-vermilion text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">
+            Featured Case
+          </div>
+        </div>
+        <div class="p-8 lg:p-12 flex flex-col justify-center">
+          <span class="kicker-caps text-xs text-vermilion mb-3">TechVibe × Dominick</span>
+          <h3 class="section-title mb-4">How we grew TechVibe's qualified leads by 340% in 6 months.</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            A full-funnel redesign combining brand refresh, performance site rebuild, and paid acquisition strategy. From ฿45K/mo to ฿180K/mo in pipeline value.
+          </p>
+          <div class="flex flex-wrap gap-6 mb-8">
+            <div>
+              <div class="stat-number text-3xl text-vermilion">+340%</div>
+              <div class="text-xs text-gray-500 uppercase">Leads</div>
+            </div>
+            <div>
+              <div class="stat-number text-3xl text-royal-blue">-52%</div>
+              <div class="text-xs text-gray-500 uppercase">CAC</div>
+            </div>
+            <div>
+              <div class="stat-number text-3xl text-emerald">6 mo</div>
+              <div class="text-xs text-gray-500 uppercase">To ROI</div>
+            </div>
+          </div>
+          <a href="#" class="inline-flex items-center gap-2 font-bold uppercase text-sm hover:text-vermilion transition-colors">
+            Read Full Case Study <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TESTIMONIALS ============== -->
+  <section id="about" class="py-20 lg:py-32 bg-white">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="text-center mb-16 lg:mb-20 fade-in-up">
+        <div class="inline-flex items-center gap-2 mb-4">
+          <span class="w-8 h-[2px] bg-vermilion"></span>
+          <span class="kicker-caps text-xs text-vermilion">What Clients Say</span>
+          <span class="w-8 h-[2px] bg-vermilion"></span>
+        </div>
+        <h2 class="section-title">Real people. Real results. Real reviews.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card bg-white p-8 hover-lift fade-in-up">
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+          </div>
+          <p class="text-gray-700 leading-relaxed mb-6 italic">
+            "Dominick didn't just redesign our brand—they rebuilt how we think about our customers. Pipeline grew 340% in 6 months. No fluff, only numbers."
+          </p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&q=80" alt="Sarah Chen" class="w-12 h-12 object-cover rounded-full">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm">Sarah Chen</span>
+                <i class="fa-solid fa-circle-check text-royal-blue text-sm" title="Verified"></i>
+              </div>
+              <span class="text-xs text-gray-500">CEO, TechVibe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card bg-white p-8 hover-lift fade-in-up" style="transition-delay: 0.1s;">
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+          </div>
+          <p class="text-gray-700 leading-relaxed mb-6 italic">
+            "We've worked with six agencies in eight years. Dominick is the first one that treated our budget like their own money. Transparent, fast, and genuinely creative."
+          </p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&q=80" alt="Marcus Wong" class="w-12 h-12 object-cover rounded-full">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm">Marcus Wong</span>
+                <i class="fa-solid fa-circle-check text-royal-blue text-sm" title="Verified"></i>
+              </div>
+              <span class="text-xs text-gray-500">CMO, LaunchPad Asia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card bg-white p-8 hover-lift fade-in-up" style="transition-delay: 0.2s;">
+          <div class="flex items-center gap-1 mb-4">
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+            <i class="fa-solid fa-star text-canary text-sm"></i>
+          </div>
+          <p class="text-gray-700 leading-relaxed mb-6 italic">
+            "Their AI assistant caught a pricing error in our proposal before we sent it out. That kind of detail-oriented thinking runs through everything they do."
+          </p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&q=80" alt="Priya Patel" class="w-12 h-12 object-cover rounded-full">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm">Priya Patel</span>
+                <i class="fa-solid fa-circle-check text-royal-blue text-sm" title="Verified"></i>
+              </div>
+              <span class="text-xs text-gray-500">Founder, EcoNova</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== AI QUESTION BOX ============== -->
+  <section class="py-20 lg:py-28 bg-canary relative overflow-hidden">
+    <span class="absolute top-6 left-6 text-carbon text-sm">+</span>
+    <span class="absolute top-6 right-6 text-carbon text-sm">+</span>
+    <span class="absolute bottom-6 left-6 text-carbon text-sm">+</span>
+    <span class="absolute bottom-6 right-6 text-carbon text-sm">+</span>
+
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 mb-6 fade-in-up">
+        <i class="fa-solid fa-robot text-carbon"></i>
+        <span class="kicker-caps text-xs text-carbon">Ask Our AI</span>
+      </div>
+      <h2 class="section-title text-carbon mb-4 fade-in-up">Got a question? Our AI answers in seconds.</h2>
+      <p class="text-carbon/80 mb-10 max-w-xl mx-auto fade-in-up">
+        Skip the wait. Get instant answers about our services, pricing, timelines, and process.
+      </p>
+
+      <!-- Search Input -->
+      <div class="max-w-2xl mx-auto mb-8 fade-in-up">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="aiQuestionInput"
+            placeholder="Type your question... (e.g. 'How much does a logo cost?')"
+            class="w-full px-6 py-5 pr-36 bg-white text-carbon font-medium border-2 border-carbon focus:border-vermilion transition-colors"
+          >
+          <button 
+            onclick="askAI()"
+            class="absolute right-2 top-1/2 -translate-y-1/2 bg-carbon text-white px-6 py-3 font-bold uppercase text-xs tracking-wider hover:bg-vermilion transition-colors flex items-center gap-2"
+          >
+            <span>Ask</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Suggested Questions -->
+      <div class="flex flex-wrap justify-center gap-3 fade-in-up">
+        <button onclick="askQuestion('How much does a website cost?')" class="px-4 py-2 bg-white/80 hover:bg-white text-carbon text-sm font-medium transition-colors">
+          How much does a website cost?
+        </button>
+        <button onclick="askQuestion('How long does a rebrand take?')" class="px-4 py-2 bg-white/80 hover:bg-white text-carbon text-sm font-medium transition-colors">
+          How long does a rebrand take?
+        </button>
+        <button onclick="askQuestion('Do you work with startups?')" class="px-4 py-2 bg-white/80 hover:bg-white text-carbon text-sm font-medium transition-colors">
+          Do you work with startups?
+        </button>
+        <button onclick="askQuestion('What is your process?')" class="px-4 py-2 bg-white/80 hover:bg-white text-carbon text-sm font-medium transition-colors">
+          What is your process?
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section class="py-20 lg:py-32 bg-white">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4 fade-in-up">
+          <div class="inline-flex items-center gap-2 mb-4">
+            <span class="w-8 h-[2px] bg-vermilion"></span>
+            <span class="kicker-caps text-xs text-vermilion">FAQ</span>
+          </div>
+          <h2 class="section-title mb-6">Popular questions, honest answers.</h2>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            Can't find what you're looking for? Our AI or team can help.
+          </p>
+          <button onclick="toggleChatbot()" class="btn-outline">
+            <i class="fa-solid fa-comments"></i>
+            <span>Chat with us</span>
+          </button>
+        </div>
+
+        <div class="lg:col-span-8 fade-in-up">
+          <div class="faq-item active">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3 class="bold-agency-headline text-lg uppercase">How much does a typical project cost?</h3>
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer text-gray-600 leading-relaxed">
+              Projects start from ฿85,000 ($2,400) for focused work like a brand refresh, up to ฿2.5M+ ($70,000) for comprehensive rebrands with site build. We provide a transparent quote within 48 hours of our discovery call—no hidden fees, ever.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3 class="bold-agency-headline text-lg uppercase">How long does a project take?</h3>
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer text-gray-600 leading-relaxed">
+              Brand identity: 4–8 weeks. Website build: 6–12 weeks. Full rebrand + site: 10–16 weeks. We publish timelines in every proposal and stick to them—98% of our projects launch on schedule.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3 class="bold-agency-headline text-lg uppercase">Do you work with international clients?</h3>
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer text-gray-600 leading-relaxed">
+              Yes—about 40% of our clients are outside Thailand. We work across all time zones with async-first workflows, bilingual (TH/EN) teams, and invoicing in both THB and USD.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3 class="bold-agency-headline text-lg uppercase">Do you offer ongoing support after launch?</h3>
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer text-gray-600 leading-relaxed">
+              Every project includes 30 days of complimentary post-launch support. Beyond that, we offer monthly retainers starting at ฿25,000 ($700) for continuous optimization, content, and campaign support.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <h3 class="bold-agency-headline text-lg uppercase">What industries do you specialize in?</h3>
+              <i class="fa-solid fa-plus faq-icon"></i>
+            </div>
+            <div class="faq-answer text-gray-600 leading-relaxed">
+              Tech, SaaS, luxury consumer brands, F&B, and B2B professional services. But we're discipline-agnostic—great creative solves any category problem. Our best work often comes from fresh category perspectives.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FINAL CTA + CONTACT ============== -->
+  <section id="contact" class="py-20 lg:py-32 bg-white">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+        <!-- CTA Card -->
+        <div class="lg:col-span-5 bg-vermilion text-white p-10 lg:p-14 relative crosshair fade-in-up">
+          <span class="absolute top-4 left-4 text-white/60 text-sm">+</span>
+          <span class="absolute top-4 right-4 text-white/60 text-sm">+</span>
+          <span class="absolute bottom-4 left-4 text-white/60 text-sm">+</span>
+          <span class="absolute bottom-4 right-4 text-white/60 text-sm">+</span>
+
+          <div class="inline-flex items-center gap-2 mb-6">
+            <span class="w-8 h-[2px] bg-white"></span>
+            <span class="kicker-caps text-xs">Let's Talk</span>
+          </div>
+          <h2 class="section-title text-white mb-6">Ready to stop being ignored?</h2>
+          <p class="text-white/90 mb-8 leading-relaxed">
+            Fill the form and we'll reply within 4 working hours with a discovery call invitation. No bots, no spam.
+          </p>
+
+          <div class="space-y-4 text-sm">
+            <a href="tel:+6621234567" class="flex items-center gap-3 hover:text-carbon transition-colors">
+              <i class="fa-solid fa-phone w-6"></i>
+              <span>+66 2 123 4567</span>
+            </a>
+            <a href="mailto:hello@dominick.agency" class="flex items-center gap-3 hover:text-carbon transition-colors">
+              <i class="fa-solid fa-envelope w-6"></i>
+              <span>hello@dominick.agency</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 hover:text-carbon transition-colors">
+              <i class="fa-brands fa-line w-6"></i>
+              <span>@dominick.creative</span>
+            </a>
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot w-6 mt-1"></i>
+              <span>88 Silom Road, 24F<br>Bangrak, Bangkok 10500</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form + Map -->
+        <div class="lg:col-span-7 space-y-6 fade-in-up" style="transition-delay: 0.1s;">
+          <!-- Form -->
+          <form onsubmit="handleSubmit(event)" class="bg-white border border-gray-100 p-8 lg:p-10">
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-2">Name *</label>
+                <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-2">Email *</label>
+                <input type="email" required placeholder="john@company.com" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-2">Phone</label>
+                <input type="tel" placeholder="+66 81 234 5678" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider mb-2">Service *</label>
+                <select required class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors bg-white">
+                  <option value="">Select a service</option>
+                  <option>Brand Identity</option>
+                  <option>Web Design</option>
+                  <option>Digital Marketing</option>
+                  <option>Video Production</option>
+                  <option>Social Media</option>
+                  <option>Strategy</option>
+                  <option>Full Rebrand</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <label class="block text-xs font-bold uppercase tracking-wider mb-2">Budget Range</label>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <label class="flex items-center gap-2 px-3 py-2 border border-gray-200 cursor-pointer hover:border-vermilion">
+                  <input type="radio" name="budget" class="accent-vermilion">
+                  <span class="text-xs">&lt; ฿100K</span>
+                </label>
+                <label class="flex items-center gap-2 px-3 py-2 border border-gray-200 cursor-pointer hover:border-vermilion">
+                  <input type="radio" name="budget" class="accent-vermilion">
+                  <span class="text-xs">฿100K–500K</span>
+                </label>
+                <label class="flex items-center gap-2 px-3 py-2 border border-gray-200 cursor-pointer hover:border-vermilion">
+                  <input type="radio" name="budget" class="accent-vermilion">
+                  <span class="text-xs">฿500K–1M</span>
+                </label>
+                <label class="flex items-center gap-2 px-3 py-2 border border-gray-200 cursor-pointer hover:border-vermilion">
+                  <input type="radio" name="budget" class="accent-vermilion">
+                  <span class="text-xs">฿1M+</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-xs font-bold uppercase tracking-wider mb-2">Project Details *</label>
+              <textarea required rows="4" placeholder="Tell us about your project, goals, and timeline..." class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary w-full justify-center">
+              <span>Send Request</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+
+          <!-- Map -->
+          <div class="relative h-64 bg-blush overflow-hidden border border-gray-100">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.4865!2d100.5235!3d13.7246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQzJzI4LjYiTiAxMDDCsDMxJzI0LjYiRQ!5e0!3m2!1sen!2sth!4v1234567890"
+              class="w-full h-full"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="bg-white border-t border-gray-100 pt-16 pb-8">
+    <div class="max-w-[1280px] mx-auto px-5 lg:px-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <!-- About -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-3 h-3 bg-vermilion"></span>
+            <span class="bold-agency-headline text-xl font-black">DOMINICK</span>
+          </div>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            A high-impact creative agency building brands that dominate. Bangkok-based, worldwide-served.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 bg-gray-100 hover:bg-vermilion hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="w-9 h-9 bg-gray-100 hover:bg-vermilion hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-9 h-9 bg-gray-100 hover:bg-vermilion hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-behance text-sm"></i>
+            </a>
+            <a href="#" class="w-9 h-9 bg-gray-100 hover:bg-vermilion hover:text-white flex items-center justify-center transition-colors">
+              <i class="fa-brands fa-dribbble text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="bold-agency-headline text-sm uppercase mb-4">Services</h4>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li><a href="#" class="hover:text-vermilion transition-colors">Brand Identity</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Web Design</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Digital Marketing</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Video Production</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Social Media</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Strategy</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h4 class="bold-agency-headline text-sm uppercase mb-4">Company</h4>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li><a href="#" class="hover:text-vermilion transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Case Studies</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Journal</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Press Kit</a></li>
+            <li><a href="#" class="hover:text-vermilion transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="bold-agency-headline text-sm uppercase mb-4">Stay Sharp</h4>
+          <p class="text-sm text-gray-600 mb-4">
+            Monthly insights on creative strategy and brand building. No spam.
+          </p>
+          <form onsubmit="event.preventDefault(); this.reset(); alert('Subscribed!');" class="flex flex-col gap-2">
+            <input type="email" required placeholder="your@email.com" class="px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors text-sm">
+            <button type="submit" class="bg-carbon text-white px-4 py-3 font-bold uppercase text-xs tracking-wider hover:bg-vermilion transition-colors">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+        <div>© 2026 Dominick Creative Co., Ltd. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-vermilion transition-colors">Privacy</a>
+          <a href="#" class="hover:text-vermilion transition-colors">Terms</a>
+          <a href="#" class="hover:text-vermilion transition-colors">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============== MOBILE STICKY CTA BAR ============== -->
+  <div class="lg:hidden mobile-cta-bar fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 px-3 py-3" id="mobileCtaBar">
+    <div class="grid grid-cols-3 gap-2">
+      <a href="tel:+6621234567" class="flex flex-col items-center gap-1 py-2 bg-gray-50 hover:bg-gray-100 transition-colors">
+        <i class="fa-solid fa-phone text-vermilion"></i>
+        <span class="text-xs font-semibold">Call</span>
+      </a>
+      <a href="#" class="flex flex-col items-center gap-1 py-2 bg-gray-50 hover:bg-gray-100 transition-colors">
+        <i class="fa-brands fa-line text-emerald"></i>
+        <span class="text-xs font-semibold">LINE</span>
+      </a>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="flex flex-col items-center gap-1 py-2 bg-vermilion text-white">
+        <i class="fa-solid fa-file-invoice"></i>
+        <span class="text-xs font-semibold">Quote</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============== BACK TO TOP + CHATBOT ============== -->
+  <div class="fixed bottom-6 right-6 z-40 flex items-end gap-[5px]">
+    <!-- Back to Top -->
+    <button 
+      id="backToTop"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      class="floating-btn bg-carbon text-white opacity-0 pointer-events-none transition-opacity duration-300"
+      aria-label="Back to top"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot Button -->
+    <button 
+      id="chatbotToggle"
+      onclick="toggleChatbot()"
+      class="floating-btn bg-vermilion text-white"
+      aria-label="Open chatbot"
+    >
+      <i class="fa-solid fa-comments text-xl" id="chatbotIcon"></i>
+    </button>
+  </div>
+
+  <!-- Chatbot Panel -->
+  <div 
+    id="chatbotPanel"
+    class="chatbot-panel fixed bottom-28 right-6 w-[calc(100vw-3rem)] max-w-sm h-[500px] bg-white border-2 border-carbon z-40 flex flex-col shadow-2xl"
+    style="box-shadow: 0 20px 60px rgba(24,24,26,0.2);"
+  >
+    <!-- Chatbot Header -->
+    <div class="bg-carbon text-white p-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-vermilion flex items-center justify-center">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div>
+          <div class="font-bold text-sm">Dominick AI</div>
+          <div class="flex items-center gap-1 text-xs text-white/70">
+            <span class="w-2 h-2 bg-emerald rounded-full"></span>
+            <span>Online · Replies instantly</span>
+          </div>
+        </div>
+      </div>
+      <button onclick="toggleChatbot()" class="w-8 h-8 hover:bg-white/10 flex items-center justify-center transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div id="chatMessages" class="chat-messages flex-1 overflow-y-auto p-4 space-y-3 bg-blush/30">
+      <div class="chat-message flex items-start gap-2">
+        <div class="w-8 h-8 bg-vermilion text-white flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-robot text-xs"></i>
+        </div>
+        <div class="bg-white p-3 max-w-[80%] border border-gray-100">
+          <p class="text-sm">Hi! 👋 I'm Dominick AI. Ask me about our services, pricing, timelines, or anything else.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Replies -->
+    <div class="px-4 py-2 border-t border-gray-100 bg-white flex gap-2 overflow-x-auto">
+      <button onclick="sendMessage('Pricing')" class="flex-shrink-0 px-3 py-1 bg-blush hover:bg-vermilion hover:text-white text-xs font-semibold transition-colors">Pricing</button>
+      <button onclick="sendMessage('Services')" class="flex-shrink-0 px-3 py-1 bg-blush hover:bg-vermilion hover:text-white text-xs font-semibold transition-colors">Services</button>
+      <button onclick="sendMessage('Process')" class="flex-shrink-0 px-3 py-1 bg-blush hover:bg-vermilion hover:text-white text-xs font-semibold transition-colors">Process</button>
+      <button onclick="sendMessage('Contact')" class="flex-shrink-0 px-3 py-1 bg-blush hover:bg-vermilion hover:text-white text-xs font-semibold transition-colors">Contact</button>
+    </div>
+
+    <!-- Input -->
+    <form onsubmit="sendMessage(event)" class="p-3 border-t border-gray-100 bg-white flex gap-2">
+      <input 
+        type="text" 
+        id="chatInput"
+        placeholder="Type your message..."
+        class="flex-1 px-4 py-2 border border-gray-200 focus:border-vermilion transition-colors text-sm"
+      >
+      <button type="submit" class="w-10 h-10 bg-vermilion text-white flex items-center justify-center hover:bg-carbon transition-colors">
+        <i class="fa-solid fa-paper-plane text-sm"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- ============== LOGIN / REGISTER MODAL ============== -->
+  <div id="authModal" class="modal-overlay fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4" style="backdrop-filter: blur(4px);">
+    <div class="modal-content bg-white max-w-md w-full relative border-2 border-carbon">
+      <!-- Close -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 transition-colors z-10">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Header -->
+      <div class="p-8 border-b border-gray-100">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-2 h-2 bg-vermilion"></span>
+          <span class="bold-agency-headline text-lg font-black">DOMINICK</span>
+        </div>
+        <p class="text-sm text-gray-600" id="authSubtitle">Welcome back. Sign in to continue.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex border-b border-gray-100">
+        <button onclick="switchTab('login')" id="tabLogin" class="flex-1 py-4 font-bold uppercase text-sm tracking-wider border-b-2 border-vermilion text-carbon">
+          Login
+        </button>
+        <button onclick="switchTab('register')" id="tabRegister" class="flex-1 py-4 font-bold uppercase text-sm tracking-wider border-b-2 border-transparent text-gray-400 hover:text-carbon transition-colors">
+          Register
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" onsubmit="event.preventDefault(); alert('Login successful!');" class="p-8 space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider mb-2">Email *</label>
+          <input type="email" required placeholder="you@company.com" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <label class="text-xs font-bold uppercase tracking-wider">Password *</label>
+            <a href="#" class="text-xs text-vermilion hover:underline">Forgot?</a>
+          </div>
+          <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+        </div>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" class="accent-vermilion">
+          <span class="text-xs">Remember me for 30 days</span>
+        </label>
+        <button type="submit" class="btn-primary w-full justify-center">
+          <span>Sign In</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" onsubmit="event.preventDefault(); alert('Account created!');" class="p-8 space-y-4 hidden">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-2">First Name *</label>
+            <input type="text" required placeholder="John" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider mb-2">Last Name *</label>
+            <input type="text" required placeholder="Doe" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider mb-2">Email *</label>
+          <input type="email" required placeholder="you@company.com" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider mb-2">Password *</label>
+          <input type="password" required minlength="8" placeholder="At least 8 characters" class="w-full px-4 py-3 border border-gray-200 focus:border-vermilion transition-colors">
+        </div>
+        <label class="flex items-start gap-2 cursor-pointer">
+          <input type="checkbox" required class="accent-vermilion mt-1">
+          <span class="text-xs">I agree to the <a href="#" class="text-vermilion underline">Terms</a> and <a href="#" class="text-vermilion underline">Privacy Policy</a></span>
+        </label>
+        <button type="submit" class="btn-primary w-full justify-center">
+          <span>Create Account</span>
+          <i class="fa-solid fa-user-plus"></i>
+        </button>
+      </form>
+
+      <!-- Social -->
+      <div class="px-8 pb-8">
+        <div class="relative my-6">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-200"></div>
+          </div>
+          <div class="relative flex justify-center text-xs">
+            <span class="bg-white px-3 text-gray-500 uppercase tracking-wider">or continue with</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" class="flex items-center justify-center gap-2 py-3 border border-gray-200 hover:border-vermilion hover:bg-blush transition-all">
+            <i class="fa-brands fa-google"></i>
+            <span class="text-xs font-bold uppercase">Google</span>
+          </button>
+          <button type="button" class="flex items-center justify-center gap-2 py-3 border border-gray-200 hover:border-vermilion hover:bg-blush transition-all">
+            <i class="fa-brands fa-facebook-f"></i>
+            <span class="text-xs font-bold uppercase">Facebook</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== SCRIPTS ============== -->
+  <script>
+    // ===== Mobile Menu =====
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.add('hidden'));
+    });
+
+    // ===== Auth Modal =====
+    function openModal() {
+      document.getElementById('authModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('authModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('authModal').addEventListener('click', (e) => {
+      if (e.target.id === 'authModal') closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function switchTab(tab) {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const tabLogin = document.getElementById('tabLogin');
+      const tabRegister = document.getElementById('tabRegister');
+      const subtitle = document.getElementById('authSubtitle');
+
+      if (tab === 'login') {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        tabLogin.classList.add('border-vermilion', 'text-carbon');
+        tabLogin.classList.remove('border-transparent', 'text-gray-400');
+        tabRegister.classList.remove('border-vermilion', 'text-carbon');
+        tabRegister.classList.add('border-transparent', 'text-gray-400');
+        subtitle.textContent = 'Welcome back. Sign in to continue.';
+      } else {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        tabRegister.classList.add('border-vermilion', 'text-carbon');
+        tabRegister.classList.remove('border-transparent', 'text-gray-400');
+        tabLogin.classList.remove('border-vermilion', 'text-carbon');
+        tabLogin.classList.add('border-transparent', 'text-gray-400');
+        subtitle.textContent = 'Create your account in 30 seconds.';
+      }
+    }
+
+    // ===== FAQ Accordion =====
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const wasActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
+    }
+
+    // ===== Back to Top + Scroll Effects =====
+    const backToTop = document.getElementById('backToTop');
+    const mobileCtaBar = document.getElementById('mobileCtaBar');
+    const heroSection = document.getElementById('hero');
+
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          backToTop.style.opacity = '1';
+          backToTop.style.pointerEvents = 'auto';
+          mobileCtaBar.classList.add('visible');
+        } else {
+          backToTop.style.opacity = '0';
+          backToTop.style.pointerEvents = 'none';
+          mobileCtaBar.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0 });
+    heroObserver.observe(heroSection);
+
+    // ===== Chatbot =====
+    const chatbotPanel = document.getElementById('chatbotPanel');
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    let chatbotOpen = false;
+
+    function toggleChatbot() {
+      chatbotOpen = !chatbotOpen;
+      chatbotPanel.classList.toggle('active', chatbotOpen);
+      chatbotIcon.className = chatbotOpen ? 'fa-solid fa-xmark text-xl' : 'fa-solid fa-comments text-xl';
+      if (chatbotOpen) document.getElementById('chatInput').focus();
+    }
+
+    function sendMessage(e) {
+      let text = '';
+      if (typeof e === 'string') {
+        text = e;
+      } else {
+        e.preventDefault();
+        const input = document.getElementById('chatInput');
+        text = input.value.trim();
+        if (!text) return;
+        input.value = '';
+      }
+
+      // User message
+      addMessage(text, 'user');
+
+      // Typing indicator
+      const typingId = addTyping();
+
+      // Simulated AI response
+      setTimeout(() => {
+        removeTyping(typingId);
+        const response = generateAIResponse(text);
+        addMessage(response, 'bot');
+      }, 900 + Math.random() * 500);
+    }
+
+    function addMessage(text, sender) {
+      const messages = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = 'chat-message flex items-start gap-2';
+      
+      if (sender === 'bot') {
+        div.innerHTML = `
+          <div class="w-8 h-8 bg-vermilion text-white flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-robot text-xs"></i>
+          </div>
+          <div class="bg-white p-3 max-w-[80%] border border-gray-100">
+            <p class="text-sm leading-relaxed">${text}</p>
+          </div>
+        `;
+      } else {
+        div.classList.add('justify-end');
+        div.innerHTML = `
+          <div class="bg-carbon text-white p-3 max-w-[80%]">
+            <p class="text-sm leading-relaxed">${text}</p>
+          </div>
+          <div class="w-8 h-8 bg-carbon text-white flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-user text-xs"></i>
+          </div>
+        `;
+      }
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function addTyping() {
+      const messages = document.getElementById('chatMessages');
+      const id = 'typing-' + Date.now();
+      const div = document.createElement('div');
+      div.id = id;
+      div.className = 'chat-message flex items-start gap-2';
+      div.innerHTML = `
+        <div class="w-8 h-8 bg-vermilion text-white flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-robot text-xs"></i>
+        </div>
+        <div class="bg-white p-3 border border-gray-100">
+          <div class="typing-indicator"><span></span><span></span><span></span></div>
+        </div>
+      `;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+      return id;
+    }
+
+    function removeTyping(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+
+    function generateAIResponse(input) {
+      const lower = input.toLowerCase();
+      if (lower.includes('price') || lower.includes('cost') || lower.includes('ราคา') || lower.includes('เท่าไหร่')) {
+        return "Great question! Our projects typically range from ฿85,000 (~$2,400) for focused work to ฿2.5M+ ($70,000) for comprehensive rebrands. I can give you an exact quote—just tell me which service you're interested in. 💰";
+      }
+      if (lower.includes('service') || lower.includes('บริการ')) {
+        return "We offer 6 core services: <br><b>• Brand Identity</b><br><b>• Web Design</b><br><b>• Digital Marketing</b><br><b>• Video Production</b><br><b>• Social Media</b><br><b>• Strategy Consulting</b><br>Which one interests you most?";
+      }
+      if (lower.includes('time') || lower.includes('long') || lower.includes('多久') || lower.includes('นาน')) {
+        return "Timelines vary: <br>• Brand identity: 4–8 weeks<br>• Website build: 6–12 weeks<br>• Full rebrand + site: 10–16 weeks<br>We publish timelines in every proposal and stick to them—98% on schedule. ⏱️";
+      }
+      if (lower.includes('contact') || lower.includes('talk') || lower.includes('ติดต่อ')) {
+        return "Happy to connect! You can:<br>📞 Call: +66 2 123 4567<br>📧 Email: hello@dominick.agency<br>💬 LINE: @dominick.creative<br>Or fill out the contact form above and we'll reply within 4 hours!";
+      }
+      if (lower.includes('process') || lower.includes('ขั้นตอน')) {
+        return "Our process has 5 phases: <br><b>1. Discover</b> (research & brief)<br><b>2. Define</b> (strategy & scope)<br><b>3. Design</b> (creative work)<br><b>4. Develop</b> (build & test)<br><b>5. Deploy</b> (launch & optimize)<br>Typically 2–4 weeks per phase.";
+      }
+      if (lower.includes('hello') || lower.includes('hi') || lower.includes('สวัสดี')) {
+        return "Hi there! 👋 Great to meet you. I'm here to answer any questions about Dominick Creative. What brings you here today?";
+      }
+      if (lower.includes('thank')) {
+        return "You're very welcome! 😊 If you have more questions or want to move forward, our team is just a click away. Want to book a free discovery call?";
+      }
+      return "Thanks for asking! I can help with pricing, services, timelines, our process, or how to get in touch. Try one of the quick-reply buttons below, or ask anything else! ✨";
+    }
+
+    function askQuestion(q) {
+      if (!chatbotOpen) toggleChatbot();
+      setTimeout(() => {
+        addMessage(q, 'user');
+        const typingId = addTyping();
+        setTimeout(() => {
+          removeTyping(typingId);
+          addMessage(generateAIResponse(q), 'bot');
+        }, 900);
+      }, 300);
+    }
+
+    function askAI() {
+      const input = document.getElementById('aiQuestionInput');
+      const q = input.value.trim();
+      if (!q) return;
+      if (!chatbotOpen) toggleChatbot();
+      setTimeout(() => {
+        addMessage(q, 'user');
+        input.value = '';
+        const typingId = addTyping();
+        setTimeout(() => {
+          removeTyping(typingId);
+          addMessage(generateAIResponse(q), 'bot');
+        }, 900);
+      }, 300);
+    }
+
+    // ===== Fade-in on scroll =====
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => fadeObserver.observe(el));
+
+    // ===== Stat counter animation =====
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.count);
+          let current = 0;
+          const increment = target / 60;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              el.textContent = target;
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(current);
+            }
+          }, 25);
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
+
+    // ===== Contact form =====
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('✅ Thank you! Your request has been received. We\'ll reply within 4 working hours.');
+      e.target.reset();
+    }
+
+    // ===== Header shadow on scroll =====
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.style.boxShadow = '0 2px 20px rgba(24,24,26,0.05)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
