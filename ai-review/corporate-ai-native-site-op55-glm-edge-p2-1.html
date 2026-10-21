@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXORA — Digital Growth Agency in Bangkok | Web, Branding & Marketing</title>
+<meta name="description" content="NEXORA is an award-winning digital agency in Bangkok. We build high-converting websites, bold brands and data-driven marketing campaigns. 850+ projects delivered since 2012.">
+<meta name="keywords" content="digital agency bangkok, web design thailand, branding agency, SEO services, digital marketing, nexora">
+<meta name="author" content="NEXORA">
+<meta property="og:title" content="NEXORA — Digital Growth Agency">
+<meta property="og:description" content="We build brands that people remember. 850+ projects, 12+ years, 98% client retention.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href='https://cdn.lineicons.com/5.0/lineicons.css' rel='stylesheet'>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23EB4D2B'/><text x='50' y='68' font-size='52' font-family='sans-serif' font-weight='900' fill='white' text-anchor='middle'>N</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "NEXORA Digital Agency",
+  "url": "https://www.nexora.co.th",
+  "foundingDate": "2012",
+  "address": {"@type":"PostalAddress","streetAddress":"140 Sukhumvit Rd, Floor 21","addressLocality":"Bangkok","addressCountry":"TH"},
+  "aggregateRating": {"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"312"},
+  "sameAs": ["https://www.facebook.com/nexora","https://www.linkedin.com/company/nexora"]
+}
+</script>
+<style>
+:root{
+  --vermilion:#EB4D2B;--royal:#262AF5;--canary:#F4B800;--orchid:#C24AF5;--emerald:#3BB75E;--carbon:#18181A;--blush:#FBECE8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--carbon);background:#fff;overflow-x:hidden}
+h1,h2,h3,h4,.headline{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.035em}
+.kicker{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.container-x{max-width:1280px;margin:0 auto;padding-left:24px;padding-right:24px}
+::selection{background:var(--canary);color:var(--carbon)}
+
+/* Crosshair markers */
+.crosshair{position:absolute;font-family:'Plus Jakarta Sans';font-weight:700;font-size:18px;color:#d4d4d8;user-select:none;pointer-events:none;line-height:1}
+.ch-tl{top:-9px;left:-9px}.ch-tr{top:-9px;right:-9px}.ch-bl{bottom:-9px;left:-9px}.ch-br{bottom:-9px;right:-9px}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.40s}
+
+/* Buttons */
+.btn-primary{background:var(--carbon);color:#fff;transition:all .25s cubic-bezier(.22,1,.36,1)}
+.btn-primary:hover{background:var(--vermilion);transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(235,77,43,.5)}
+.btn-accent{background:var(--vermilion);color:#fff;transition:all .25s cubic-bezier(.22,1,.36,1)}
+.btn-accent:hover{background:var(--carbon);transform:translateY(-2px)}
+.btn-outline{border:2px solid var(--carbon);color:var(--carbon);transition:all .25s cubic-bezier(.22,1,.36,1)}
+.btn-outline:hover{background:var(--carbon);color:#fff;transform:translateY(-2px)}
+.btn-blue{background:var(--royal);color:#fff;transition:all .25s cubic-bezier(.22,1,.36,1)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(38,42,245,.45)}
+
+/* Marquee */
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-track{animation:marquee 30s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+
+/* Card hover lift */
+.service-card{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s cubic-bezier(.22,1,.36,1)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px -16px rgba(24,24,26,.15)}
+
+/* FAQ */
+.faq-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1)}
+
+/* Chatbot */
+#chatbot-panel{transition:opacity .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)}
+#chatbot-panel.hidden-chat{opacity:0;transform:translateY(16px) scale(.96);pointer-events:none}
+.chat-msg{animation:msgIn .35s cubic-bezier(.22,1,.36,1) both}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pulseDot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+.typing-dot{animation:pulseDot 1.2s infinite}
+
+/* Modal */
+#auth-modal{transition:opacity .3s ease}
+#auth-modal .modal-box{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .3s ease}
+#auth-modal.closed{opacity:0;pointer-events:none}
+#auth-modal.closed .modal-box{transform:translateY(24px) scale(.97);opacity:0}
+
+/* Sticky mobile bar */
+#mobile-cta{transform:translateY(100%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+#mobile-cta.show{transform:none}
+
+/* Counter */
+.stat-num{font-family:'Plus Jakarta Sans';font-weight:900;letter-spacing:-.04em}
+
+/* Toast */
+#toast{transition:all .35s cubic-bezier(.22,1,.36,1);transform:translateY(120%);opacity:0}
+#toast.show{transform:none;opacity:1}
+
+/* Hero image parallax */
+.hero-img{transition:transform .8s cubic-bezier(.22,1,.36,1)}
+
+/* Star badge rotation */
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+.spin-slow{animation:spinSlow 24s linear infinite}
+
+/* Nav underline */
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--vermilion);transition:width .3s cubic-bezier(.22,1,.36,1)}
+.nav-link:hover::after,.nav-link.active::after{width:100%}
+
+/* Accordion icon rotate */
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-icon{transition:transform .35s cubic-bezier(.22,1,.36,1)}
+
+/* Testimonial slider */
+.testi-track{display:flex;transition:transform .55s cubic-bezier(.22,1,.36,1)}
+
+/* Input focus ring */
+.focus-ring:focus{outline:none;box-shadow:0 0 0 3px rgba(235,77,43,.25);border-color:var(--vermilion)}
+
+/* Scrollbar for chat */
+.chat-scroll::-webkit-scrollbar{width:5px}
+.chat-scroll::-webkit-scrollbar-thumb{background:#d4d4d8;border-radius:99px}
+
+/* Line clamp helper */
+.clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ═══════════ TOP BAR ═══════════ -->
+<div class="bg-[#18181A] text-white text-xs">
+  <div class="container-x flex items-center justify-between h-9">
+    <div class="flex items-center gap-4">
+      <a href="tel:+6621234567" class="flex items-center gap-1.5 hover:text-[#F4B800] transition-colors"><i class="bi bi-telephone-fill text-[10px]"></i>02 123 4567</a>
+      <span class="hidden sm:flex items-center gap-1.5 text-white/70"><i class="bi bi-geo-alt-fill text-[10px]"></i>Sukhumvit 21, Bangkok</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="hidden md:inline text-white/60">Mon–Fri 9:00–18:00</span>
+      <div class="flex items-center bg-white/10 rounded-full p-0.5">
+        <button class="lang-btn px-2.5 py-0.5 rounded-full bg-[#EB4D2B] text-white font-semibold transition-all" data-lang="TH">TH</button>
+        <button class="lang-btn px-2.5 py-0.5 rounded-full text-white/60 font-semibold transition-all hover:text-white" data-lang="EN">EN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<header id="navbar" class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-shadow">
+  <div class="container-x flex items-center justify-between h-16 lg:h-[72px]">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 group">
+      <div class="w-9 h-9 bg-[#EB4D2B] rounded-lg flex items-center justify-center transition-transform group-hover:rotate-6 group-hover:scale-105">
+        <span class="headline text-white font-black text-lg">N</span>
+      </div>
+      <div class="leading-none">
+        <span class="headline font-black text-lg tracking-tight">NEXORA</span>
+        <span class="block text-[9px] text-gray-400 font-medium tracking-widest uppercase mt-0.5">Digital Agency</span>
+      </div>
+    </a>
+    <!-- Desktop Menu -->
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#work" class="nav-link">Case Studies</a>
+      <a href="#testimonials" class="nav-link">Reviews</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button onclick="openAuth('login')" class="hidden sm:block text-sm font-semibold px-4 py-2 rounded-full hover:bg-gray-100 transition-colors">
+        <i class="bi bi-person-circle mr-1"></i>Sign In
+      </button>
+      <button onclick="openAuth('register')" class="btn-accent text-sm font-bold px-5 py-2.5 rounded-full">
+        Get Started <i class="bi bi-arrow-right ml-1"></i>
+      </button>
+      <button id="burger" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100" aria-label="Menu">
+        <i class="bi bi-list text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-100 bg-white">
+    <div class="container-x py-4 flex flex-col gap-1">
+      <a href="#services" class="mobile-nav-link px-3 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between">Services <i class="bi bi-chevron-right text-gray-300"></i></a>
+      <a href="#work" class="mobile-nav-link px-3 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between">Case Studies <i class="bi bi-chevron-right text-gray-300"></i></a>
+      <a href="#testimonials" class="mobile-nav-link px-3 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between">Reviews <i class="bi bi-chevron-right text-gray-300"></i></a>
+      <a href="#faq" class="mobile-nav-link px-3 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between">FAQ <i class="bi bi-chevron-right text-gray-300"></i></a>
+      <a href="#contact" class="mobile-nav-link px-3 py-3 rounded-lg hover:bg-gray-50 font-medium flex items-center justify-between">Contact <i class="bi bi-chevron-right text-gray-300"></i></a>
+      <button onclick="openAuth('login')" class="mt-2 btn-outline px-4 py-3 rounded-xl font-semibold text-sm">Sign In</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════ 1. HERO ═══════════ -->
+<section id="hero" class="relative bg-white pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden">
+  <span class="crosshair ch-tl" style="left:calc((100% - 1280px)/2);top:14px">+</span>
+  <span class="crosshair ch-tr" style="right:calc((100% - 1280px)/2);top:14px">+</span>
+  <div class="container-x">
+    <!-- Breadcrumb -->
+    <nav class="text-xs text-gray-400 mb-8 flex items-center gap-1.5" aria-label="Breadcrumb">
+      <a href="#" class="hover:text-[#EB4D2B]">Home</a><i class="bi bi-chevron-right text-[8px]"></i><span class="text-gray-600 font-medium">Digital Growth Agency</span>
+    </nav>
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <!-- Copy -->
+      <div class="lg:col-span-6">
+        <div class="reveal in inline-flex items-center gap-2 bg-[#FBECE8] border border-[#EB4D2B]/20 rounded-full pl-1.5 pr-4 py-1.5 mb-6">
+          <span class="bg-[#EB4D2B] text-white text-[10px] font-bold px-2.5 py-1 rounded-full">SINCE 2012</span>
+          <span class="text-xs font-semibold text-[#18181A]">Award-winning agency in Bangkok</span>
+        </div>
+        <h1 class="headline text-[42px] leading-[0.98] sm:text-[56px] lg:text-[64px] font-black tracking-tight mb-6">
+          We build brands<br>
+          people <span class="relative inline-block">
+            <span class="relative z-10">remember</span>
+            <span class="absolute bottom-1 left-0 right-0 h-4 bg-[#F4B800] -z-0 -rotate-1 rounded-sm"></span>
+          </span><span class="text-[#EB4D2B]">.</span>
+        </h1>
+        <p class="text-gray-500 text-base lg:text-lg leading-relaxed max-w-lg mb-8">
+          Websites, branding, and marketing that turn visitors into customers. 850+ projects delivered across Southeast Asia — with the numbers to prove it.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mb-10">
+          <a href="#contact" class="btn-accent font-bold px-7 py-4 rounded-full text-sm inline-flex items-center gap-2">
+            <i class="bi bi-calculator"></i>Get a Free Quote
+          </a>
+          <button onclick="toggleChat(true)" class="btn-outline font-bold px-7 py-4 rounded-full text-sm inline-flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-[#262AF5] flex items-center justify-center"><i class="bi bi-stars text-white text-[9px]"></i></span>
+            Talk to AI Assistant
+          </button>
+        </div>
+        <!-- Mini trust -->
+        <div class="flex items-center gap-6 flex-wrap">
+          <div class="flex -space-x-2.5">
+            <img class="w-9 h-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop" alt="Client">
+            <img class="w-9 h-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop" alt="Client">
+            <img class="w-9 h-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop" alt="Client">
+            <div class="w-9 h-9 rounded-full border-2 border-white bg-[#18181A] text-white text-[10px] font-bold flex items-center justify-center">+850</div>
+          </div>
+          <div class="text-xs leading-snug">
+            <div class="flex text-[#F4B800] gap-0.5 mb-0.5"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <span class="text-gray-500">4.9/5 from <strong class="text-[#18181A]">312 verified reviews</strong></span>
+          </div>
+        </div>
+      </div>
+      <!-- Visual -->
+      <div class="lg:col-span-6 relative">
+        <div class="relative grid grid-cols-2 gap-3 lg:gap-4 max-w-[520px] mx-auto lg:ml-auto">
+          <div class="reveal in d1 rounded-2xl overflow-hidden aspect-[3/4] mt-8">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&h=660&fit=crop" alt="NEXORA creative team collaboration" class="hero-img w-full h-full object-cover hover:scale-105">
+          </div>
+          <div class="reveal in d2 rounded-2xl overflow-hidden aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=500&h=660&fit=crop" alt="Design studio workspace" class="hero-img w-full h-full object-cover hover:scale-105">
+          </div>
+          <!-- Floating badge: conversion -->
+          <div class="absolute -left-3 lg:-left-8 bottom-6 bg-white rounded-2xl shadow-xl border border-gray-100 p-4 flex items-center gap-3 reveal in d3">
+            <div class="w-11 h-11 rounded-xl bg-[#3BB75E]/10 flex items-center justify-center">
+              <i class="bi bi-graph-up-arrow text-[#3BB75E] text-xl"></i>
+            </div>
+            <div>
+              <div class="stat-num text-xl" data-count="214" data-suffix="%">0%</div>
+              <div class="text-[10px] text-gray-400 font-medium uppercase tracking-wide">Avg. Conversion Lift</div>
+            </div>
+          </div>
+          <!-- Floating badge: projects -->
+          <div class="absolute -right-2 lg:-right-6 top-2 bg-[#18181A] rounded-2xl p-4 text-white shadow-xl reveal in d4">
+            <div class="stat-num text-2xl text-[#F4B800]" data-count="850" data-suffix="+">0+</div>
+            <div class="text-[10px] text-white/50 font-medium uppercase tracking-wide">Projects Delivered</div>
+          </div>
+          <!-- Spinning badge -->
+          <div class="absolute -top-4 left-6 lg:left-2 w-20 h-20 hidden sm:block reveal in d5">
+            <svg viewBox="0 0 100 100" class="spin-slow w-full h-full">
+              <path id="circlePath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" fill="none"/>
+              <text font-size="10.5" font-weight="700" fill="#18181A" font-family="Plus Jakarta Sans">
+                <textPath href="#circlePath">★ TOP AGENCY 2025 ★ BANGKOK</textPath>
+              </text>
+            </svg>
+            <i class="bi bi-award-fill absolute inset-0 m-auto w-fit h-fit text-[#EB4D2B] text-xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. TRUST BAR ═══════════ -->
+<section id="trust" class="py-10 border-y border-gray-100 bg-white">
+  <div class="container-x">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 mb-10">
+      <div class="lg:border-r border-gray-100 flex flex-col items-center lg:items-start lg:pl-8 first:pl-0 text-center lg:text-left reveal in">
+        <div class="stat-num text-4xl lg:text-5xl text-[#EB4D2B]" data-count="12" data-suffix="+">0+</div>
+        <span class="text-xs text-gray-400 font-medium mt-1 uppercase tracking-wide">Years in Business</span>
+      </div>
+      <div class="lg:border-r border-gray-100 flex flex-col items-center lg:items-start lg:pl-8 text-center lg:text-left reveal in d1">
+        <div class="stat-num text-4xl lg:text-5xl text-[#262AF5]" data-count="850" data-suffix="+">0+</div>
+        <span class="text-xs text-gray-400 font-medium mt-1 uppercase tracking-wide">Projects Completed</span>
+      </div>
+      <div class="lg:border-r border-gray-100 flex flex-col items-center lg:items-start lg:pl-8 text-center lg:text-left reveal in d2">
+        <div class="stat-num text-4xl lg:text-5xl text-[#C24AF5]" data-count="98" data-suffix="%">0%</div>
+        <span class="text-xs text-gray-400 font-medium mt-1 uppercase tracking-wide">Client Retention</span>
+      </div>
+      <div class="flex flex-col items-center lg:items-start lg:pl-8 text-center lg:text-left reveal in d3">
+        <div class="stat-num text-4xl lg:text-5xl text-[#3BB75E]" data-count="40" data-suffix="+">0+</div>
+        <span class="text-xs text-gray-400 font-medium mt-1 uppercase tracking-wide">Industry Awards</span>
+      </div>
+    </div>
+    <!-- Client logos marquee -->
+    <div class="relative overflow-hidden" style="mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)">
+      <p class="text-center kicker text-gray-300 mb-5">Trusted by industry leaders</p>
+      <div class="marquee-track flex items-center gap-14 opacity-40">
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-hexagon-fill text-sm mr-1 text-[#EB4D2B]"></i>SIAM&nbsp;GROUP</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-triangle-fill text-sm mr-1 text-[#262AF5]"></i>ORBIT&nbsp;PAY</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-circle-fill text-sm mr-1 text-[#F4B800]"></i>MANGO&nbsp;LOGISTICS</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-square-fill text-sm mr-1 text-[#C24AF5]"></i>VELA&nbsp;HOTELS</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-diamond-fill text-sm mr-1 text-[#3BB75E]"></i>THAI&nbsp;CREDS</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-star-fill text-sm mr-1 text-[#EB4D2B]"></i>PULSE&nbsp;FIT</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-hexagon-fill text-sm mr-1 text-[#262AF5]"></i>SIAM&nbsp;GROUP</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-triangle-fill text-sm mr-1 text-[#262AF5]"></i>ORBIT&nbsp;PAY</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-circle-fill text-sm mr-1 text-[#F4B800]"></i>MANGO&nbsp;LOGISTICS</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-square-fill text-sm mr-1 text-[#C24AF5]"></i>VELA&nbsp;HOTELS</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-diamond-fill text-sm mr-1 text-[#3BB75E]"></i>THAI&nbsp;CREDS</span>
+        <span class="headline font-black text-xl lg:text-2xl whitespace-nowrap"><i class="bi bi-star-fill text-sm mr-1 text-[#EB4D2B]"></i>PULSE&nbsp;FIT</span>
+      </div>
+    </div>
+    <!-- Certifications -->
+    <div class="flex flex-wrap justify-center gap-3 mt-8">
+      <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-xs font-semibold">
+        <i class="bi bi-patch-check-fill text-[#3BB75E]"></i>Google Partner Certified
+      </div>
+      <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-xs font-semibold">
+        <i class="bi bi-patch-check-fill text-[#3BB75E]"></i>ISO 9001:2015
+      </div>
+      <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-xs font-semibold">
+        <i class="bi bi-patch-check-fill text-[#3BB75E]"></i>Meta Business Partner
+      </div>
+      <div class="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-xs font-semibold">
+        <i class="bi bi-shield-fill-check text-[#262AF5]"></i>PDPA Compliant
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 3. SERVICES ═══════════ -->
+<section id="services" class="py-20 lg:py-28 bg-white">
+  <div class="container-x">
+    <div class="max-w-2xl mb-12 lg:mb-16">
+      <div class="flex items-center gap-3 mb-4 reveal in">
+        <span class="w-8 h-[3px] bg-[#EB4D2B] rounded-full"></span>
+        <span class="kicker text-[#EB4D2B]">What We Do</span>
+      </div>
+      <h2 class="headline text-[32px] lg:text-[42px] font-black leading-[1.05] mb-4 reveal in d1">Full-stack digital<br>services under one roof</h2>
+      <p class="text-gray-500 reveal in d2">From strategy to launch — and everything after. One team, one accountable partner.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Svc 1 -->
+      <a href="#contact" class="service-card reveal in d1 relative bg-[#EB4D2B] rounded-2xl p-7 text-white block overflow-hidden group">
+        <span class="crosshair ch-tr" style="color:rgba(255,255,255,.3)">+</span>
+        <div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center mb-16 group-hover:scale-110 transition-transform">
+          <i class="bi bi-window-sidebar text-2xl"></i>
+        </div>
+        <h3 class="headline text-lg font-bold uppercase mb-2">Web Design & Development</h3>
+        <p class="text-white/85 text-[13px] leading-relaxed mb-6">High-performance websites & e-commerce built for speed, SEO, and conversion — from ฿89,000.</p>
+        <div class="flex items-center gap-2 text-sm font-bold">
+          Explore <i class="bi bi-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+        </div>
+      </a>
+      <!-- Svc 2 -->
+      <a href="#contact" class="service-card reveal in d2 relative bg-[#262AF5] rounded-2xl p-7 text-white block overflow-hidden group">
+        <span class="crosshair ch-tr" style="color:rgba(255,255,255,.3)">+</span>
+        <div class="w-12 h-12 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center mb-16 group-hover:scale-110 transition-transform">
+          <i class="bi bi-palette2 text-2xl"></i>
+        </div>
+        <h3 class="headline text-lg font-bold uppercase mb-2">Brand Identity & Design</h3>
+        <p class="text-white/85 text-[13px] leading-relaxed mb-6">Logos, visual systems, and brand guidelines that make you unforgettable — from ฿65,000.</p>
+        <div class="flex items-center gap-2 text-sm font-bold">
+          Explore <i class="bi bi-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+        </div>
+      </a>
+      <!-- Svc 3 -->
+      <a href="#contact" class="service-card reveal in d3 relative bg-[#F4B800] rounded-2xl p-7 text-[#18181A] block overflow-hidden group">
+        <span class="crosshair ch-tr" style="color:rgba(24,24,26,.25)">+</span>
+        <div class="w-12 h-12 rounded-xl bg-black/10 flex items-center justify-center mb-16 group-hover:scale-110 transition-transform">
+          <i class="bi bi-megaphone text-2xl"></i>
+        </div>
+        <h3 class="headline text-lg font-bold uppercase mb-2">Performance Marketing</h3>
+        <p class="text-[#18181A]/70 text-[13px] leading-relaxed mb-6">Google, Meta & TikTok ads managed for ROAS — not vanity metrics. From ฿35,000/mo.</p>
+        <div class="flex items-center gap-2 text-sm font-bold">
+          Explore <i class="bi bi-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+        </div>
+      </a>
+      <!-- Svc 4 -->
+      <a href="#contact" class="service-card reveal in d1 relative bg-white border-2 border-gray-100 rounded-2xl p-7 block overflow-hidden group hover:border-[#C24AF5]">
+        <div class="w-12 h-12 rounded-xl bg-[#C24AF5]/10 flex items-center justify-center mb-16 group-hover:scale-110 transition-transform">
+          <i class="bi bi-search text-[#C24AF5] text-2xl"></i>
+        </div>
+        <h3 class="headline text-lg font-bold uppercase mb-2 text-[#18181A]">SEO & Content</h3>
+        <p class="text-gray-500 text-[13px] leading-relaxed mb-6">Own page one. Technical SEO, content strategy & link building that compounds — from ฿28,000/mo.</p>
+        <div class="flex items-center gap-2 text-sm font-bold text-[#C24AF5]">
+          Explore <i class="bi bi-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+        </div>
+      </a>
+      <!-- Svc 5 -->
+      <a href="#contact" class="service-card reveal in d2 relative bg-white border-2 border-gray-100 rounded-2xl p-7 block overflow-hidden group hover:border-[#3BB75E]">
+        <div class="w-12 h-12 rounded-xl bg-[#3BB75E]/10 flex items-center justify-center mb-16 group-hover:scale-110 transition-transform">
+          <i class="bi bi-phone text-[#3BB75E] text-2xl"></i>
+        </div>
+        <h3 class="headline text-lg font-bold uppercase mb-2 text-[#18181A]">Mobile App Development</h3>
+        <p class="text-gray-500 text-[13px] leading-relaxed mb-6">iOS & Android apps with native feel and cloud-native scale — from ฿250,000.</p>
+        <div class="flex items-center gap-2 text-sm font-bold text-[#3BB75E]">
+          Explore <i class="bi bi-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+        </div>
+      </a>
+      <!-- Svc 6 -->
+      <a href="#contact" class="service-card reveal in d3 relative bg-[#18181A] rounded-2xl p-7 text-white block overflow-hidden group">
+        <span class="crosshair ch-tr" style="color:rgba(255,255,255,.3)">+</span>
+        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-16 group-hover:scale-110 transition-transform">
+          <i class="bi bi-bar-chart-line text-2xl"></i>
+        </div>
+        <h3 class="headline text-lg font-bold uppercase mb-2">Data & Analytics</h3>
+        <p class="text-white/80 text-[13px] leading-relaxed mb-6">GA4, dashboards, and CRO experiments that turn data into decisions — from ฿22,000/mo.</p>
+        <div class="flex items-center gap-2 text-sm font-bold text-[#3BB75E]">
+          Explore <i class="bi bi-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 4. PROOF / CASE STUDY ═══════════ -->
+<section id="work" class="py-20 lg:py-28 bg-[#FBECE8]">
+  <span class="crosshair ch-tl" style="left:calc((100% - 1280px)/2);top:10px">+</span>
+  <span class="crosshair ch-br" style="right:calc((100% - 1280px)/2);bottom:10px">+</span>
+  <div class="container-x">
+    <div class="flex flex-wrap items-end justify-between gap-4 mb-12 lg:mb-16">
+      <div>
+        <div class="flex items-center gap-3 mb-4 reveal in">
+          <span class="w-8 h-[3px] bg-[#262AF5] rounded-full"></span>
+          <span class="kicker text-[#262AF5]">Proof, Not Promises</span>
+        </div>
+        <h2 class="headline text-[32px] lg:text-[42px] font-black leading-[1.05] reveal in d1">Featured case study</h2>
+      </div>
+      <a href="#contact" class="text-sm font-bold text-[#18181A] hover:text-[#EB4D2B] transition-colors inline-flex items-center gap-2 reveal in d2">
+        View all case studies <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+    <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+      <!-- Image -->
+      <div class="lg:col-span-7 relative rounded-2xl overflow-hidden reveal in group min-h-[300px] lg:min-h-[480px]">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&h=700&fit=crop" alt="Siam Group e-commerce dashboard case study" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#18181A]/80 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+          <div>
+            <span class="bg-[#F4B800] text-[#18181A] text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">E-Commerce</span>
+            <h3 class="headline text-white text-2xl lg:text-3xl font-black mt-3">Siam Group</h3>
+          </div>
+          <div class="hidden sm:flex -space-x-2">
+            <img class="w-9 h-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop" alt="Siam Group CEO">
+            <img class="w-9 h-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop" alt="Siam Group CMO">
+          </div>
+        </div>
+      </div>
+      <!-- Results -->
+      <div class="lg:col-span-5 flex flex-col gap-4">
+        <div class="bg-[#18181A] rounded-2xl p-6 lg:p-7 text-white flex-1 flex flex-col justify-between reveal in d1">
+          <div>
+            <span class="kicker text-[#F4B800]">The Challenge</span>
+            <p class="text-white/70 text-[13px] leading-relaxed mt-2 mb-4">Siam Group's 12-year-old e-commerce site had a 0.8% conversion rate and 9-second load times. Mobile bounce was at 78%.</p>
+            <span class="kicker text-[#3BB75E]">The Solution</span>
+            <p class="text-white/70 text-[13px] leading-relaxed mt-2">Full UX rebuild, headless architecture, and a data-driven CRO program across 3 markets.</p>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t border-white/10">
+            <div>
+              <div class="stat-num text-2xl lg:text-3xl text-[#3BB75E]" data-count="340" data-prefix="+" data-suffix="%">0%</div>
+              <div class="text-[10px] text-white/40 uppercase tracking-wide mt-1">Revenue Growth</div>
+            </div>
+            <div>
+              <div class="stat-num text-2xl lg:text-3xl text-[#3BB75E]" data-count="41" data-suffix="%">0%</div>
+              <div class="text-[10px] text-white/40 uppercase tracking-wide mt-1">Conversion Rate</div>
+            </div>
+            <div>
+              <div class="stat-num text-2xl lg:text-3xl text-[#F4B800]" data-count="12" data-suffix="M ฿">0</div>
+              <div class="text-[10px] text-white/40 uppercase tracking-wide mt-1">Revenue Added</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-[#262AF5] rounded-2xl p-6 text-white flex items-center gap-4 reveal in d2">
+          <i class="bi bi-quote text-4xl text-white/30"></i>
+          <div>
+            <p class="text-[13px] leading-relaxed italic text-white/90">"NEXORA rebuilt our platform in 14 weeks and revenue grew 340% within a year. Best agency decision we've made."</p>
+            <p class="text-xs font-bold mt-2">— Thanakorn V., Chief Digital Officer, Siam Group</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 5. TESTIMONIALS ═══════════ -->
+<section id="testimonials" class="py-20 lg:py-28 bg-white">
+  <div class="container-x">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4 reveal in">
+          <span class="w-8 h-[3px] bg-[#C24AF5] rounded-full"></span>
+          <span class="kicker text-[#C24AF5]">Client Voices</span>
+        </div>
+        <h2 class="headline text-[32px] lg:text-[42px] font-black leading-[1.05] reveal in d1">What clients say<br>about working with us</h2>
+      </div>
+      <div class="flex gap-2 reveal in d2">
+        <button onclick="slideTesti(-1)" class="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center hover:bg-[#18181A] hover:text-white hover:border-[#18181A] transition-all" aria-label="Previous"><i class="bi bi-arrow-left"></i></button>
+        <button onclick="slideTesti(1)" class="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center hover:bg-[#18181A] hover:text-white hover:border-[#18181A] transition-all" aria-label="Next"><i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+    <div class="overflow-hidden reveal in d2">
+      <div id="testi-track" class="testi-track">
+        <!-- T1 -->
+        <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-2.5">
+          <div class="bg-[#F4B800] rounded-2xl p-7 h-full flex flex-col">
+            <div class="flex items-center gap-1 mb-4 text-[#18181A]"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="text-[#18181A] text-[14px] leading-relaxed font-medium flex-1">"The new site loaded 4x faster and our inbound leads tripled in 90 days. The team actually listens — rare in this industry."</p>
+            <div class="mt-6 pt-5 border-t border-[#18181A]/15 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img class="w-11 h-11 rounded-full object-cover border-2 border-[#18181A]" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Napat S.">
+                <div>
+                  <p class="headline font-bold text-sm text-[#18181A]">Napat S.</p>
+                  <p class="text-[11px] text-[#18181A]/60">CMO, Orbit Pay</p>
+                </div>
+              </div>
+              <span class="flex items-center gap-1 text-[10px] font-bold bg-[#18181A] text-[#F4B800] px-2.5 py-1.5 rounded-full"><i class="bi bi-patch-check-fill"></i>Verified</span>
+            </div>
+          </div>
+        </div>
+        <!-- T2 -->
+        <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-2.5">
+          <div class="bg-[#262AF5] rounded-2xl p-7 h-full flex flex-col text-white">
+            <div class="flex items-center gap-1 mb-4"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="text-white/90 text-[14px] leading-relaxed font-medium flex-1">"We've worked with 5 agencies before NEXORA. They're the first that showed us a clear ROI dashboard every single month. Zero guesswork."</p>
+            <div class="mt-6 pt-5 border-t border-white/15 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img class="w-11 h-11 rounded-full object-cover border-2 border-white/50" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="David C.">
+                <div>
+                  <p class="headline font-bold text-sm">David C.</p>
+                  <p class="text-[11px] text-white/50">Founder, Pulse Fit</p>
+                </div>
+              </div>
+              <span class="flex items-center gap-1 text-[10px] font-bold bg-white text-[#262AF5] px-2.5 py-1.5 rounded-full"><i class="bi bi-patch-check-fill"></i>Verified</span>
+            </div>
+          </div>
+        </div>
+        <!-- T3 -->
+        <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-2.5">
+          <div class="bg-[#18181A] rounded-2xl p-7 h-full flex flex-col text-white">
+            <div class="flex items-center gap-1 mb-4 text-[#F4B800]"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="text-white/80 text-[14px] leading-relaxed font-medium flex-1">"Their AI assistant on our site answers 70% of guest inquiries automatically. Our front desk finally breathes. Worth every baht."</p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img class="w-11 h-11 rounded-full object-cover border-2 border-white/20" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Pimchanon W.">
+                <div>
+                  <p class="headline font-bold text-sm">Pimchanon W.</p>
+                  <p class="text-[11px] text-white/40">Director, Vela Hotels</p>
+                </div>
+              </div>
+              <span class="flex items-center gap-1 text-[10px] font-bold bg-[#3BB75E] text-white px-2.5 py-1.5 rounded-full"><i class="bi bi-patch-check-fill"></i>Verified</span>
+            </div>
+          </div>
+        </div>
+        <!-- T4 -->
+        <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-2.5">
+          <div class="bg-[#3BB75E] rounded-2xl p-7 h-full flex flex-col text-white">
+            <div class="flex items-center gap-1 mb-4"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="text-white/90 text-[14px] leading-relaxed font-medium flex-1">"From brand workshop to launch in 10 weeks. The rebrand helped us close a Series A round. Investors noticed the difference."</p>
+            <div class="mt-6 pt-5 border-t border-white/20 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img class="w-11 h-11 rounded-full object-cover border-2 border-white/40" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Arthit K.">
+                <div>
+                  <p class="headline font-bold text-sm">Arthit K.</p>
+                  <p class="text-[11px] text-white/60">CEO, Thai Creds</p>
+                </div>
+              </div>
+              <span class="flex items-center gap-1 text-[10px] font-bold bg-white text-[#3BB75E] px-2.5 py-1.5 rounded-full"><i class="bi bi-patch-check-fill"></i>Verified</span>
+            </div>
+          </div>
+        </div>
+        <!-- T5 -->
+        <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-2.5">
+          <div class="bg-[#EB4D2B] rounded-2xl p-7 h-full flex flex-col text-white">
+            <div class="flex items-center gap-1 mb-4"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="text-white/90 text-[14px] leading-relaxed font-medium flex-1">"Mango Logistics went from page 5 to position 1 for 40+ keywords. Organic traffic is now our #1 revenue channel."</p>
+            <div class="mt-6 pt-5 border-t border-white/20 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img class="w-11 h-11 rounded-full object-cover border-2 border-white/40" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop" alt="Kanokwan T.">
+                <div>
+                  <p class="headline font-bold text-sm">Kanokwan T.</p>
+                  <p class="text-[11px] text-white/60">Head of Growth, Mango Logistics</p>
+                </div>
+              </div>
+              <span class="flex items-center gap-1 text-[10px] font-bold bg-white text-[#EB4D2B] px-2.5 py-1.5 rounded-full"><i class="bi bi-patch-check-fill"></i>Verified</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="testi-dots" class="flex justify-center gap-2 mt-8"></div>
+  </div>
+</section>
+
+<!-- ═══════════ 6. ASK AI ═══════════ -->
+<section id="ask-ai" class="py-20 lg:py-28 bg-[#18181A] relative overflow-hidden">
+  <span class="crosshair ch-tl" style="left:calc((100% - 1280px)/2);top:10px;color:rgba(255,255,255,.2)">+</span>
+  <span class="crosshair ch-br" style="right:calc((100% - 1280px)/2);bottom:10px;color:rgba(255,255,255,.2)">+</span>
+  <div class="container-x relative">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6 reveal in">
+        <span class="relative flex w-2 h-2"><span class="absolute inline-flex w-full h-full rounded-full bg-[#3BB75E] animate-ping opacity-60"></span><span class="relative inline-flex w-2 h-2 rounded-full bg-[#3BB75E]"></span></span>
+        <span class="text-xs font-semibold text-white/80">AI Assistant — Online, replies instantly</span>
+      </div>
+      <h2 class="headline text-[32px] lg:text-[42px] font-black text-white leading-[1.05] mb-4 reveal in d1">Ask AI anything.<br>Get answers in seconds<span class="text-[#262AF5]">.</span></h2>
+      <p class="text-white/50 text-sm lg:text-base mb-8 reveal in d2">Our AI knows everything about our services, pricing, and process. No forms. No waiting.</p>
+      <div class="flex items-center bg-white rounded-2xl p-2 shadow-2xl max-w-xl mx-auto mb-6 reveal in d2">
+        <input id="ai-input-main" type="text" placeholder="e.g. How much does a website cost?" class="flex-1 px-4 py-3 text-sm bg-transparent focus:outline-none placeholder:text-gray-400" onkeydown="if(event.key==='Enter')askAIMain()">
+        <button onclick="askAIMain()" class="btn-blue font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap">
+          <i class="bi bi-send-fill mr-1"></i>Ask
+        </button>
+      </div>
+      <div class="flex flex-wrap justify-center gap-2 reveal in d3" id="suggested-questions">
+        <button class="suggested-q text-xs font-medium bg-white/10 hover:bg-[#EB4D2B] text-white/70 hover:text-white border border-white/10 px-4 py-2.5 rounded-full transition-all" data-q="How much does a website cost?">How much does a website cost?</button>
+        <button class="suggested-q text-xs font-medium bg-white/10 hover:bg-[#262AF5] text-white/70 hover:text-white border border-white/10 px-4 py-2.5 rounded-full transition-all" data-q="How long does a project take?">How long does a project take?</button>
+        <button class="suggested-q text-xs font-medium bg-white/10 hover:bg-[#C24AF5] text-white/70 hover:text-white border border-white/10 px-4 py-2.5 rounded-full transition-all" data-q="Do you offer SEO services?">Do you offer SEO services?</button>
+        <button class="suggested-q text-xs font-medium bg-white/10 hover:bg-[#3BB75E] text-white/70 hover:text-white border border-white/10 px-4 py-2.5 rounded-full transition-all" data-q="Can I see examples of your work?">Can I see your portfolio?</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 7. FAQ ═══════════ -->
+<section id="faq" class="py-20 lg:py-28 bg-white">
+  <div class="container-x">
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-4 reveal in">
+          <span class="w-8 h-[3px] bg-[#EB4D2B] rounded-full"></span>
+          <span class="kicker text-[#EB4D2B]">FAQ</span>
+        </div>
+        <h2 class="headline text-[32px] lg:text-[38px] font-black leading-[1.05] mb-4 reveal in d1">Popular<br>questions</h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6 reveal in d2">Can't find your answer? Our AI assistant or human team will help within minutes.</p>
+        <button onclick="toggleChat(true)" class="btn-primary font-bold px-6 py-3.5 rounded-full text-sm reveal in d3">
+          <i class="bi bi-chat-dots mr-2"></i>Chat with us
+        </button>
+      </div>
+      <div class="lg:col-span-8 space-y-3">
+        <div class="faq-item reveal in d1 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="headline font-bold text-[15px]">How much does a website cost?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-[#EB4D2B] text-white flex items-center justify-center text-lg font-light">+</span>
+          </button>
+          <div class="faq-body">
+            <p class="px-6 pb-5 text-gray-500 text-sm leading-relaxed">Websites start at ฿89,000 ($2,500) for a business site, ฿180,000 ($5,100) for e-commerce, and ฿450,000+ ($12,800) for custom platforms. Every quote includes design, development, SEO setup, and 3 months of support. Request a free quote and we'll scope yours within 24 hours.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal in d1 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="headline font-bold text-[15px]">How long does a typical project take?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-[#262AF5] text-white flex items-center justify-center text-lg font-light">+</span>
+          </button>
+          <div class="faq-body">
+            <p class="px-6 pb-5 text-gray-500 text-sm leading-relaxed">Business websites take 4–6 weeks, e-commerce 8–10 weeks, and custom platforms 12–16 weeks. Brand identity projects run 3–5 weeks. We provide a detailed timeline with milestones before signing — and we hit 94% of our deadlines.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal in d2 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="headline font-bold text-[15px]">Do you work with clients outside Thailand?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-[#C24AF5] text-white flex items-center justify-center text-lg font-light">+</span>
+          </button>
+          <div class="faq-body">
+            <p class="px-6 pb-5 text-gray-500 text-sm leading-relaxed">Yes — 35% of our clients are international, spanning Singapore, Australia, Japan, and the US. We work across time zones with async-friendly workflows and weekly video calls. All contracts and invoices in THB or USD.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal in d3 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="headline font-bold text-[15px]">What's included in the monthly retainer?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-[#F4B800] text-[#18181A] flex items-center justify-center text-lg font-light">+</span>
+          </button>
+          <div class="faq-body">
+            <p class="px-6 pb-5 text-gray-500 text-sm leading-relaxed">Retainers (from ฿35,000/mo) include dedicated hours, monthly strategy calls, performance reporting, priority support, and continuous optimization. Think of it as your on-call digital team — no hiring, no overhead.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal in d4 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
+          <button class="faq-toggle w-full flex items-center justify-between gap-4 px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="headline font-bold text-[15px]">Do you guarantee results?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full bg-[#3BB75E] text-white flex items-center justify-center text-lg font-light">+</span>
+          </button>
+          <div class="faq-body">
+            <p class="px-6 pb-5 text-gray-500 text-sm leading-relaxed">We guarantee process, transparency, and effort — and our track record speaks for itself: 98% client retention and 214% average conversion lift. For SEO retainers over 6 months, we contractually commit to ranking targets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 8. FINAL CTA + CONTACT ═══════════ -->
+<section id="contact" class="py-20 lg:py-28 bg-white">
+  <div class="container-x">
+    <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+      <!-- CTA -->
+      <div class="relative bg-[#EB4D2B] rounded-3xl p-8 lg:p-12 text-white overflow-hidden flex flex-col justify-between reveal in">
+        <span class="crosshair ch-tl" style="color:rgba(255,255,255,.3)">+</span>
+        <span class="crosshair ch-br" style="color:rgba(255,255,255,.3)">+</span>
+        <div>
+          <h2 class="headline text-[34px] lg:text-[44px] font-black leading-[1.02] mb-5">Ready to<br>grow faster?</h2>
+          <p class="text-white/85 text-sm lg:text-base leading-relaxed max-w-sm mb-8">Free 30-min consultation. We'll audit your current presence and give you a concrete action plan — even if you don't hire us.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <a href="tel:+6621234567" class="bg-white text-[#18181A] font-bold px-7 py-4 rounded-full text-sm hover:bg-[#F4B800] transition-all inline-flex items-center gap-2">
+              <i class="bi bi-telephone-fill"></i>02 123 4567
+            </a>
+            <a href="mailto:hello@nexora.co.th" class="border-2 border-white/40 hover:border-white font-bold px-7 py-4 rounded-full text-sm hover:bg-white/10 transition-all inline-flex items-center gap-2">
+              <i class="bi bi-envelope-fill"></i>Email Us
+            </a>
+          </div>
+          <div class="flex items-center gap-5 text-xs text-white/70">
+            <span class="flex items-center gap-1.5"><i class="bi bi-clock-history"></i>Reply within 2 hrs</span>
+            <span class="flex items-center gap-1.5"><i class="bi bi-shield-check"></i>No spam, ever</span>
+          </div>
+        </div>
+      </div>
+      <!-- Contact + Map -->
+      <div class="flex flex-col gap-5 reveal in d1">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="bg-[#FBECE8] rounded-2xl p-6">
+            <i class="bi bi-geo-alt-fill text-[#EB4D2B] text-2xl mb-3 block"></i>
+            <h3 class="headline font-bold text-sm uppercase mb-2">Office</h3>
+            <p class="text-gray-500 text-[13px] leading-relaxed">140 Sukhumvit Rd, Floor 21<br>Khlong Toei Nuea, Watthana<br>Bangkok 10110, Thailand</p>
+          </div>
+          <div class="bg-[#18181A] rounded-2xl p-6 text-white">
+            <i class="bi bi-wechat text-[#3BB75E] text-2xl mb-3 block"></i>
+            <h3 class="headline font-bold text-sm uppercase mb-2 text-white">Connect</h3>
+            <a href="#" class="flex items-center gap-2 text-[13px] text-white/70 hover:text-[#3BB75E] transition-colors mb-2"><i class="bi bi-line"></i> LINE: @nexora</a>
+            <a href="#" class="flex items-center gap-2 text-[13px] text-white/70 hover:text-[#3BB75E] transition-colors"><i class="bi bi-facebook"></i> fb.com/nexora</a>
+          </div>
+        </div>
+        <!-- Map placeholder (styled) -->
+        <div class="relative rounded-2xl overflow-hidden flex-1 min-h-[240px] group">
+          <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=500&fit=crop" alt="Bangkok office location map" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-[#18181A]/40 group-hover:bg-[#18181A]/30 transition-colors"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-[#EB4D2B] flex items-center justify-center shadow-2xl ring-4 ring-white/30 group-hover:scale-110 transition-transform">
+              <i class="bi bi-geo-alt-fill text-white text-xl"></i>
+            </div>
+            <span class="mt-3 bg-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">NEXORA HQ — Asok BTS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="pt-16 pb-28 lg:pb-8 border-t border-gray-100 bg-white">
+  <div class="container-x">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
+      <div class="lg:col-span-4">
+        <a href="#" class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 bg-[#EB4D2B] rounded-lg flex items-center justify-center"><span class="headline text-white font-black text-lg">N</span></div>
+          <span class="headline font-black text-lg">NEXORA</span>
+        </a>
+        <p class="text-gray-400 text-[13px] leading-relaxed max-w-xs mb-5">Digital growth agency in Bangkok. Building brands, websites, and campaigns that deliver measurable results since 2012.</p>
+        <div class="flex gap-2">
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-50 hover:bg-[#18181A] hover:text-white flex items-center justify-center transition-all" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-50 hover:bg-[#18181A] hover:text-white flex items-center justify-center transition-all" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-50 hover:bg-[#18181A] hover:text-white flex items-center justify-center transition-all" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-50 hover:bg-[#18181A] hover:text-white flex items-center justify-center transition-all" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <h4 class="headline font-bold text-xs uppercase tracking-wide mb-4">Services</h4>
+        <ul class="space-y-2.5 text-[13px] text-gray-400">
+          <li><a href="#services" class="hover:text-[#EB4D2B] transition-colors">Web Development</a></li>
+          <li><a href="#services" class="hover:text-[#EB4D2B] transition-colors">Brand Identity</a></li>
+          <li><a href="#services" class="hover:text-[#EB4D2B] transition-colors">Performance Marketing</a></li>
+          <li><a href="#services" class="hover:text-[#EB4D2B] transition-colors">SEO & Content</a></li>
+          <li><a href="#services" class="hover:text-[#EB4D2B] transition-colors">Mobile Apps</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <h4 class="headline font-bold text-xs uppercase tracking-wide mb-4">Company</h4>
+        <ul class="space-y-2.5 text-[13px] text-gray-400">
+          <li><a href="#work" class="hover:text-[#EB4D2B] transition-colors">Case Studies</a></li>
+          <li><a href="#testimonials" class="hover:text-[#EB4D2B] transition-colors">Testimonials</a></li>
+          <li><a href="#faq" class="hover:text-[#EB4D2B] transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-[#EB4D2B] transition-colors">Careers</a></li>
+          <li><a href="#" class="hover:text-[#EB4D2B] transition-colors">Blog</a></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-4">
+        <h4 class="headline font-bold text-xs uppercase tracking-wide mb-4">Stay in the loop</h4>
+        <p class="text-gray-400 text-[13px] mb-4">Monthly insights on digital growth. No fluff.</p>
+        <form onsubmit="subscribeNewsletter(event)" class="flex bg-gray-50 border border-gray-200 rounded-full p-1.5 focus-within:border-[#EB4D2B] transition-colors">
+          <input type="email" required placeholder="you@company.com" class="flex-1 bg-transparent px-4 text-sm focus:outline-none placeholder:text-gray-400">
+          <button type="submit" class="btn-accent font-bold px-5 py-2.5 rounded-full text-xs whitespace-nowrap">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
+      <span>© 2025 NEXORA Co., Ltd. All rights reserved.</span>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-[#18181A] transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-[#18181A] transition-colors">Terms of Service</a>
+        <a href="#" class="hover:text-[#18181A] transition-colors">PDPA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ STICKY MOBILE CTA BAR ═══════════ -->
+<div id="mobile-cta" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,.08)] px-4 py-2.5" style="padding-bottom:calc(10px + env(safe-area-inset-bottom))">
+  <div class="grid grid-cols-3 gap-2">
+    <a href="tel:+6621234567" class="flex flex-col items-center justify-center gap-0.5 py-1.5 rounded-xl bg-gray-50 active:scale-95 transition-transform">
+      <i class="bi bi-telephone-fill text-[#EB4D2B]"></i>
+      <span class="text-[10px] font-bold">Call</span>
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-0.5 py-1.5 rounded-xl bg-gray-50 active:scale-95 transition-transform" onclick="showToast('Opening LINE...','info');return false;">
+      <i class="bi bi-line text-[#3BB75E]"></i>
+      <span class="text-[10px] font-bold">LINE</span>
+    </a>
+    <a href="#contact" class="flex flex-col items-center justify-center gap-0.5 py-1.5 rounded-xl bg-[#EB4D2B] text-white active:scale-95 transition-transform">
+      <i class="bi bi-file-earmark-text-fill"></i>
+      <span class="text-[10px] font-bold">Get Quote</span>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════ FLOATING: BACK TO TOP + CHATBOT ═══════════ -->
+<div class="fixed bottom-5 right-5 z-50 flex items-end gap-[5px]">
+  <button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="opacity-0 pointer-events-none translate-y-3 w-12 h-12 rounded-full bg-[#18181A] text-white shadow-xl flex items-center justify-center hover:bg-[#EB4D2B] transition-all" aria-label="Back to top">
+    <i class="bi bi-arrow-up text-lg"></i>
+  </button>
+  <button id="chatbot-btn" onclick="toggleChat()" class="relative w-14 h-14 rounded-full bg-[#262AF5] text-white shadow-xl shadow-[#262AF5]/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform" aria-label="Open AI chat">
+    <i id="chatbot-btn-icon" class="bi bi-chat-dots-fill text-xl"></i>
+    <span class="absolute -top-1 -right-1 w-4 h-4 bg-[#3BB75E] rounded-full border-2 border-white"></span>
+  </button>
+</div>
+
+<!-- ═══════════ CHATBOT PANEL ═══════════ -->
+<div id="chatbot-panel" class="hidden-chat fixed bottom-24 right-5 z-50 w-[calc(100vw-40px)] max-w-[380px]">
+  <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col" style="height:min(520px,calc(100vh - 140px))">
+    <!-- Header -->
+    <div class="bg-[#18181A] px-5 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-[#262AF5] flex items-center justify-center"><i class="bi bi-stars text-white"></i></div>
+        <div>
+          <p class="headline font-bold text-white text-sm">NEXORA AI</p>
+          <p class="flex items-center gap-1.5 text-[10px] text-[#3BB75E]"><span class="w-1.5 h-1.5 rounded-full bg-[#3BB75E]"></span>Online — replies instantly</p>
+        </div>
+      </div>
+      <button onclick="toggleChat(false)" class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center text-white/60 hover:text-white transition-colors" aria-label="Close chat">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <!-- Messages -->
+    <div id="chat-messages" class="chat-scroll flex-1 overflow-y-auto p-4 bg-gray-50 space-y-3">
+      <div class="chat-msg flex gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-[#262AF5] flex items-center justify-center shrink-0"><i class="bi bi-stars text-white text-xs"></i></div>
+        <div class="bg-white rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm max-w-[80%]">
+          <p class="text-[13px] leading-relaxed">Hi! 👋 I'm NEXORA's AI assistant. Ask me about services, pricing, timelines — or anything else!</p>
+        </div>
+      </div>
+    </div>
+    <!-- Quick replies -->
+    <div id="chat-quick" class="flex gap-2 px-4 py-2.5 bg-gray-50 border-t border-gray-100 overflow-x-auto">
+      <button class="quick-rp text-[11px] font-semibold bg-white border border-gray-200 text-gray-600 px-3 py-2 rounded-full hover:bg-[#262AF5] hover:text-white hover:border-[#262AF5] transition-all whitespace-nowrap" data-q="Pricing">💰 Pricing</button>
+      <button class="quick-rp text-[11px] font-semibold bg-white border border-gray-200 text-gray-600 px-3 py-2 rounded-full hover:bg-[#EB4D2B] hover:text-white hover:border-[#EB4D2B] transition-all whitespace-nowrap" data-q="Services">🛠 Services</button>
+      <button class="quick-rp text-[11px] font-semibold bg-white border border-gray-200 text-gray-600 px-3 py-2 rounded-full hover:bg-[#3BB75E] hover:text-white hover:border-[#3BB75E] transition-all whitespace-nowrap" data-q="Book a call">📅 Book a call</button>
+    </div>
+    <!-- Input -->
+    <div class="p-3 bg-white border-t border-gray-100">
+      <div class="flex items-center bg-gray-100 rounded-2xl p-1.5">
+        <input id="chat-input" type="text" placeholder="Type your message..." class="flex-1 bg-transparent px-3 text-sm focus:outline-none placeholder:text-gray-400" onkeydown="if(event.key==='Enter')sendChat()">
+        <button onclick="sendChat()" class="w-9 h-9 rounded-xl bg-[#262AF5] text-white flex items-center justify-center hover:bg-[#18181A] transition-colors" aria-label="Send">
+          <i class="bi bi-send-fill text-sm"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ LOGIN / REGISTER MODAL ═══════════ -->
+<div id="auth-modal" class="closed fixed inset-0 z-[60] flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-[#18181A]/60 backdrop-blur-sm" onclick="closeAuth()"></div>
+  <div class="modal-box relative bg-white rounded-3xl shadow-2xl w-full max-w-[420px] max-h-[92vh] overflow-y-auto">
+    <button onclick="closeAuth()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors z-10" aria-label="Close">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <div class="p-8">
+      <!-- Tabs -->
+      <div class="flex bg-gray-100 rounded-full p-1 mb-7">
+        <button id="tab-login" onclick="switchAuthTab('login')" class="flex-1 py-2.5 rounded-full text-sm font-bold transition-all bg-white shadow-sm">Sign In</button>
+        <button id="tab-register" onclick="switchAuthTab('register')" class="flex-1 py-2.5 rounded-full text-sm font-bold transition-all text-gray-400">Create Account</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="form-login" onsubmit="handleAuth(event,'login')" class="space-y-4">
+        <div class="text-center mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-[#EB4D2B] flex items-center justify-center mx-auto mb-4"><span class="headline font-black text-white text-xl">N</span></div>
+          <h3 class="headline text-xl font-black">Welcome back</h3>
+          <p class="text-gray-400 text-xs mt-1">Sign in to your client dashboard</p>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-gray-600 block mb-1.5">Email Address</label>
+          <div class="relative">
+            <i class="bi bi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"></i>
+            <input type="email" required placeholder="you@company.com" class="focus-ring w-full bg-gray-50 border border-gray-200 rounded-xl pl-11 pr-4 py-3 text-sm transition-all placeholder:text-gray-300">
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="text-xs font-bold text-gray-600">Password</label>
+            <button type="button" onclick="showToast('Reset link sent to your email','info')" class="text-[11px] font-semibold text-[#EB4D2B] hover:underline">Forgot?</button>
+          </div>
+          <div class="relative">
+            <i class="bi bi-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"></i>
+            <input type="password" id="login-pass" required placeholder="••••••••" class="focus-ring w-full bg-gray-50 border border-gray-200 rounded-xl pl-11 pr-11 py-3 text-sm transition-all placeholder:text-gray-300">
+            <button type="button" onclick="togglePass('login-pass',this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+        <label class="flex items-center gap-2 text-xs text-gray-500 cursor-pointer">
+          <input type="checkbox" class="accent-[#EB4D2B] w-4 h-4 rounded">Remember me for 30 days
+        </label>
+        <button type="submit" class="btn-accent w-full font-bold py-3.5 rounded-xl text-sm">Sign In <i class="bi bi-arrow-right ml-1"></i></button>
+        <div class="flex items-center gap-3 py-2">
+          <span class="flex-1 h-px bg-gray-100"></span><span class="text-[10px] text-gray-300 font-semibold uppercase">or</span><span class="flex-1 h-px bg-gray-100"></span>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" onclick="showToast('Google sign-in demo','info')" class="border border-gray-200 rounded-xl py-2.5 text-sm font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"><i class="bi bi-google text-[#EB4D2B]"></i>Google</button>
+          <button type="button" onclick="showToast('LINE sign-in demo','info')" class="border border-gray-200 rounded-xl py-2.5 text-sm font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"><i class="bi bi-line text-[#3BB75E]"></i>LINE</button>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="form-register" onsubmit="handleAuth(event,'register')" class="space-y-4 hidden">
+        <div class="text-center mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-[#262AF5] flex items-center justify-center mx-auto mb-4"><i class="bi bi-person-plus-fill text-white text-xl"></i></div>
+          <h3 class="headline text-xl font-black">Create your account</h3>
+          <p class="text-gray-400 text-xs mt-1">Free forever. Upgrade anytime.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-bold text-gray-600 block mb-1.5">First Name</label>
+            <input type="text" required placeholder="Somchai" class="focus-ring w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm transition-all placeholder:text-gray-300">
+          </div>
+          <div>
+            <label class="text-xs font-bold text-gray-600 block mb-1.5">Last Name</label>
+            <input type="text" required placeholder="Jaidee" class="focus-ring w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm transition-all placeholder:text-gray-300">
+          </div>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-gray-600 block mb-1.5">Email Address</label>
+          <div class="relative">
+            <i class="bi bi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"></i>
+            <input type="email" required placeholder="you@company.com" class="focus-ring w-full bg-gray-50 border border-gray-200 rounded-xl pl-11 pr-4 py-3 text-sm transition-all placeholder:text-gray-300">
+          </div>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-gray-600 block mb-1.5">Company (optional)</label>
+          <input type="text" placeholder="Acme Co., Ltd." class="focus-ring w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm transition-all placeholder:text-gray-300">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-gray-600 block mb-1.5">Password</label>
+          <div class="relative">
+            <i class="bi bi-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-300"></i>
+            <input type="password" id="reg-pass" required minlength="8" placeholder="Min. 8 characters" class="focus-ring w-full bg-gray-50 border border-gray-200 rounded-xl pl-11 pr-11 py-3 text-sm transition-all placeholder:text-gray-300">
+            <button type="button" onclick="togglePass('reg-pass',this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-gray-500 transition-colors"><i class="bi bi-eye"></i></button>
+          </div>
+          <div id="pass-strength" class="flex gap-1 mt-2">
+            <span class="strength-bar h-1 flex-1 rounded-full bg-gray-100 transition-colors"></span>
+            <span class="strength-bar h-1 flex-1 rounded-full bg-gray-100 transition-colors"></span>
+            <span class="strength-bar h-1 flex-1 rounded-full bg-gray-100 transition-colors"></span>
+          </div>
+          <p id="pass-strength-text" class="text-[10px] text-gray-300 mt-1">Password strength</p>
+        </div>
+        <label class="flex items-start gap-2 text-xs text-gray-500 cursor-pointer">
+          <input type="checkbox" required class="accent-[#262AF5] w-4 h-4 rounded mt-0.5">I agree to the <a href="#" class="text-[#262AF5] font-semibold hover:underline">Terms</a> and <a href="#" class="text-[#262AF5] font-semibold hover:underline">Privacy Policy</a>
+        </label>
+        <button type="submit" class="btn-blue w-full font-bold py-3.5 rounded-xl text-sm">Create Account <i class="bi bi-arrow-right ml-1"></i></button>
+        <p class="text-center text-[11px] text-gray-300">Free plan includes 1 project, 100 AI chat credits/mo</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TOAST ═══════════ -->
+<div id="toast" class="fixed bottom-24 left-5 z-[70] bg-[#18181A] text-white rounded-2xl px-5 py-3.5 shadow-2xl flex items-center gap-3 max-w-xs">
+  <span id="toast-icon" class="w-8 h-8 rounded-full bg-[#3BB75E] flex items-center justify-center shrink-0"><i class="bi bi-check-lg"></i></span>
+  <p id="toast-msg" class="text-sm font-medium leading-snug">Done!</p>
+</div>
+
+<script>
+/* ══════ UTILITIES ══════ */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+/* ══════ REVEAL ON SCROLL ══════ */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
+},{threshold:.1, rootMargin:'0px 0px -40px 0px'});
+ $$('.reveal').forEach(el => observer.observe(el));
+
+/* ══════ ANIMATED COUNTERS ══════ */
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.count, pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
+    let start = null, dur = 1600;
+    function step(ts){
+      if(!start) start = ts;
+      const p = Math.min((ts-start)/dur, 1);
+      const ease = 1 - Math.pow(1-p, 3);
+      el.textContent = pre + Math.round(target*ease).toLocaleString() + suf;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    counterObs.unobserve(el);
+  });
+},{threshold:.5});
+ $$('.stat-num[data-count]').forEach(el => counterObs.observe(el));
+
+/* ══════ NAVBAR SHADOW + BACK TO TOP + MOBILE CTA ══════ */
+const navbar = $('#navbar'), backtop = $('#backtop'), mobileCta = $('#mobile-cta'), heroEl = $('#hero');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  navbar.classList.toggle('shadow-lg', y > 10);
+  const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+  backtop.classList.toggle('opacity-0', y < heroBottom);
+  backtop.classList.toggle('pointer-events-none', y < heroBottom);
+  backtop.classList.toggle('translate-y-3', y < heroBottom);
+  if(window.innerWidth < 1024){
+    mobileCta.classList.toggle('show', y > heroBottom * 0.6);
+  }
+},{passive:true});
+
+/* ══════ MOBILE MENU ══════ */
+ $('#burger').addEventListener('click', () => $('#mobile-menu').classList.toggle('hidden'));
+ $$('.mobile-nav-link').forEach(l => l.addEventListener('click', () => $('#mobile-menu').classList.add('hidden')));
+
+/* ══════ ACTIVE NAV LINK ON SCROLL ══════ */
+const sections = ['services','work','testimonials','faq','contact'];
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      $$('.nav-link').forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(link) link.classList.add('active');
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(id => { const s = document.getElementById(id); if(s) navObs.observe(s); });
+
+/* ══════ FAQ ACCORDION ══════ */
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  const body = item.querySelector('.faq-body');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  $$('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-body').style.maxHeight = '0'; });
+  if(!isOpen){ item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+}
+
+/* ══════ TESTIMONIAL SLIDER ══════ */
+let testiIdx = 0;
+const track = $('#testi-track'), dotsWrap = $('#testi-dots');
+function getPerView(){ return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1; }
+function totalSlides(){ return Math.ceil(track.children.length / getPerView()); }
+function slideTesti(dir){
+  const max = totalSlides() - 1;
+  testiIdx = Math.max(0, Math.min(testiIdx + dir, max));
+  track.style.transform = `translateX(-${testiIdx * 100}%)`;
+  updateDots();
+}
+function updateDots(){
+  dotsWrap.innerHTML = '';
+  for(let i=0; i<totalSlides(); i++){
+    const d = document.createElement('button');
+    d.className = `h-2 rounded-full transition-all ${i===testiIdx ? 'w-7 bg-[#18181A]' : 'w-2 bg-gray-200 hover:bg-gray-300'}`;
+    d.onclick = () => { testiIdx = i; track.style.transform = `translateX(-${testiIdx*100}%)`; updateDots(); };
+    dotsWrap.appendChild(d);
+  }
+}
+updateDots();
+// Auto slide
+let autoSlide = setInterval(() => slideTesti(1), 6000);
+track.parentElement.addEventListener('mouseenter', () => clearInterval(autoSlide));
+track.parentElement.addEventListener('mouseleave', () => autoSlide = setInterval(() => slideTesti(1), 6000));
+window.addEventListener('resize', () => { testiIdx = 0; track.style.transform = 'translateX(0)'; updateDots(); });
+
+/* ══════ TOAST ══════ */
+let toastTimer;
+function showToast(msg, type='success'){
+  const t = $('#toast');
+  $('#toast-msg').textContent = msg;
+  const icon = $('#toast-icon');
+  icon.className = 'w-8 h-8 rounded-full flex items-center justify-center shrink-0 ' + (type==='success' ? 'bg-[#3BB75E]' : type==='error' ? 'bg-[#EB4D2B]' : 'bg-[#262AF5]');
+  icon.innerHTML = `<i class="bi bi-${type==='success'?'check-lg':type==='error'?'x-lg':'info-circle'}"></i>`;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+/* ══════ CHATBOT ══════ */
+const chatPanel = $('#chatbot-panel'), chatBtn = $('#chatbot-btn'), chatBtnIcon = $('#chatbot-btn-icon'), chatMsgs = $('#chat-messages'), chatInput = $('#chat-input');
+let chatOpen = false;
+
+function toggleChat(force){
+  chatOpen = (force !== undefined) ? force : !chatOpen;
+  chatPanel.classList.toggle('hidden-chat', !chatOpen);
+  chatBtnIcon.className = chatOpen ? 'bi bi-x-lg text-xl' : 'bi bi-chat-dots-fill text-xl';
+  if(chatOpen) setTimeout(() => chatInput.focus(), 300);
+}
+
+const kb = [
+  {k:['price','pricing','cost','how much','budget','quote','fee','฿','$'], a:"Here's our pricing overview:\n\n• Business Website — from ฿89,000 ($2,500)\n• E-commerce — from ฿180,000 ($5,100)\n• Brand Identity — from ฿65,000 ($1,850)\n• Marketing Retainer — from ฿35,000/mo\n• SEO — from ฿28,000/mo\n• Mobile App — from ฿250,000\n\nEvery project includes a free scoping call. Want me to book one for you? 📅"},
+  {k:['time','long','duration','deadline','how long','fast','timeline','take','week'], a:"Typical timelines:\n\n• Brand identity: 3–5 weeks\n• Business website: 4–6 weeks\n• E-commerce: 8–10 weeks\n• Custom platform: 12–16 weeks\n\nWe hit 94% of our deadlines and give you milestone tracking in your client dashboard. 🎯"},
+  {k:['service','offer','do you','what can','help','provide'], a:"We offer 6 core services:\n\n1. 🖥 Web Design & Development\n2. 🎨 Brand Identity & Design\n3. 📢 Performance Marketing\n4. 🔍 SEO & Content\n5. 📱 Mobile App Development\n6. 📊 Data & Analytics\n\nWhich one interests you most? I can share details and case studies."},
+  {k:['seo','google','rank','search','keyword'], a:"Absolutely! Our SEO services include:\n\n• Technical SEO audits\n• Content strategy & production\n• Link building (white-hat only)\n• Local SEO for Thai market\n• Monthly transparent reporting\n\nFrom ฿28,000/mo. Our client Mango Logistics went from page 5 to position #1 on 40+ keywords. 📈"},
+  {k:['portfolio','example','work','case','study','project','client'], a:"We've completed 850+ projects! A few highlights:\n\n🏆 Siam Group — 340% revenue growth via e-commerce rebuild\n🏆 Orbit Pay — 3x inbound leads in 90 days\n🏆 Vela Hotels — AI assistant handling 70% of inquiries\n\nCheck the Case Studies section above, or visit our portfolio page for the full list."},
+  {k:['book','call','meeting','consult','appointment','talk','human','contact','quote'], a:"I'd love to set that up! 📅\n\nYou can:\n• Call us: 02 123 4567\n• Email: hello@nexora.co.th\n• LINE: @nexora\n\nOr use the \"Get a Free Quote\" button — we respond within 2 business hours. First consultation is always free, no strings attached."},
+  {k:['ai','chatbot','assistant'], a:"That's me! 😄 I'm NEXORA's AI assistant. I can answer questions about our services, pricing, timelines, and processes 24/7. For anything complex, I'll connect you with our human team. What would you like to know?"},
+  {k:['hello','hi','hey','sawasdee','สวัสดี'], a:"Hello! 👋 Great to meet you. I can help with pricing, services, timelines, case studies, or booking a free consultation. What's on your mind?"},
+  {k:['thank','thanks','ขอบคุณ'], a:"You're very welcome! 😊 Is there anything else I can help you with?"}
+];
+
+function botReply(text){
+  const q = text.toLowerCase();
+  const match = kb.find(item => item.k.some(k => q.includes(k)));
+  if(match) return match.a;
+  return "That's a great question! I want to make sure you get the best answer. Here's what I can help with right now:\n\n• 💰 Pricing & packages\n• 🛠 Our services\n• ⏱ Project timelines\n• 📅 Book a free consultation\n\nOr type your email and our team will reach out within 2 hours.";
+}
+
+function addMsg(text, isBot){
+  const div = document.createElement('div');
+  div.className = `chat-msg flex gap-2.5 ${isBot ? '' : 'flex-row-reverse'}`;
+  div.innerHTML = `
+    <div class="w-8 h-8 rounded-full ${isBot?'bg-[#262AF5]':'bg-[#F4B800]'} flex items-center justify-center shrink-0">
+      <i class="bi ${isBot?'bi-stars':'bi-person-fill'} ${isBot?'text-white':'text-[#18181A]'} text-xs"></i>
+    </div>
+    <div class="${isBot?'bg-white rounded-2xl rounded-tl-sm':'bg-[#18181A] text-white rounded-2xl rounded-tr-sm'} px-4 py-3 shadow-sm max-w-[80%]">
+      <p class="text-[13px] leading-relaxed whitespace-pre-line">${text}</p>
+    </div>`;
+  chatMsgs.appendChild(div);
+  chatMsgs.scrollTo({top: chatMsgs.scrollHeight, behavior:'smooth'});
+}
+
+function addTyping(){
+  const div = document.createElement('div');
+  div.id = 'typing-indicator';
+  div.className = 'chat-msg flex gap-2.5';
+  div.innerHTML = `
+    <div class="w-8 h-8 rounded-full bg-[#262AF5] flex items-center justify-center shrink-0"><i class="bi bi-stars text-white text-xs"></i></div>
+    <div class="bg-white rounded-2xl rounded-tl-sm px-4 py-3.5 shadow-sm flex gap-1.5 items-center">
+      <span class="typing-dot w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+      <span class="typing-dot w-1.5 h-1.5 rounded-full bg-gray-400" style="animation-delay:.15s"></span>
+      <span class="typing-dot w-1.5 h-1.5 rounded-full bg-gray-400" style="animation-delay:.3s"></span>
+    </div>`;
+  chatMsgs.appendChild(div);
+  chatMsgs.scrollTo({top: chatMsgs.scrollHeight, behavior:'smooth'});
+}
+function removeTyping(){ const t = $('#typing-indicator'); if(t) t.remove(); }
+
+function sendChat(presetText){
+  const text = presetText || chatInput.value.trim();
+  if(!text) return;
+  addMsg(text, false);
+  chatInput.value = '';
+  addTyping();
+  setTimeout(() => {
+    removeTyping();
+    addMsg(botReply(text), true);
+  }, 900 + Math.random()*600);
+}
+ $$('.quick-rp').forEach(btn => btn.addEventListener('click', () => sendChat(btn.dataset.q)));
+
+/* Main AI section input */
+function askAIMain(){
+  const input = $('#ai-input-main');
+  const text = input.value.trim();
+  if(!text){ showToast('Please type a question first','error'); return; }
+  input.value = '';
+  toggleChat(true);
+  setTimeout(() => sendChat(text), 400);
+}
+ $$('.suggested-q').forEach(btn => btn.addEventListener('click', () => {
+  toggleChat(true);
+  setTimeout(() => sendChat(btn.dataset.q), 400);
+}));
+
+/* ══════ AUTH MODAL ══════ */
+const modal = $('#auth-modal');
+function openAuth(tab){
+  switchAuthTab(tab);
+  modal.classList.remove('closed');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth(){
+  modal.classList.add('closed');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeAuth(); toggleChat(false); } });
+
+function switchAuthTab(tab){
+  const isLogin = tab === 'login';
+  $('#tab-login').className = `flex-1 py-2.5 rounded-full text-sm font-bold transition-all ${isLogin?'bg-white shadow-sm':'text-gray-400'}`;
+  $('#tab-register').className = `flex-1 py-2.5 rounded-full text-sm font-bold transition-all ${!isLogin?'bg-white shadow-sm':'text-gray-400'}`;
+  $('#form-login').classList.toggle('hidden', !isLogin);
+  $('#form-register').classList.toggle('hidden', isLogin);
+}
+function handleAuth(e, type){
+  e.preventDefault();
+  closeAuth();
+  showToast(type==='login' ? 'Signed in successfully! Welcome back 👋' : 'Account created! Check your inbox to verify 📬','success');
+}
+function togglePass(id, btn){
+  const inp = document.getElementById(id);
+  const show = inp.type === 'password';
+  inp.type = show ? 'text' : 'password';
+  btn.innerHTML = `<i class="bi bi-eye${show?'-slash':''}"></i>`;
+}
+/* Password strength */
+document.getElementById('reg-pass').addEventListener('input', function(){
+  const v = this.value;
+  let score = 0;
+  if(v.length >= 8) score++;
+  if(/[A-Z]/.test(v) && /[a-z]/.test(v)) score++;
+  if(/[0-9]/.test(v) && /[^A-Za-z0-9]/.test(v)) score++;
+  const colors = ['#EB4D2B','#F4B800','#3BB75E'];
+  const labels = ['Weak password','Okay — could be stronger','Strong password 💪'];
+  $$('.strength-bar').forEach((b,i) => {
+    b.style.background = i < score ? colors[score-1] : '#f1f1f4';
+  });
+  $('#pass-strength-text').textContent = v ? labels[score-1] || labels[0] : 'Password strength';
+  $('#pass-strength-text').style.color = v ? colors[Math.max(score-1,0)] : '';
+});
+
+/* ══════ NEWSLETTER ══════ */
+function subscribeNewsletter(e){
+  e.preventDefault();
+  e.target.reset();
+  showToast('Subscribed! Welcome to the insider list 🎉','success');
+}
+
+/* ══════ LANG SWITCH (visual toggle) ══════ */
+ $$('.lang-btn').forEach(btn => btn.addEventListener('click', () => {
+  $$('.lang-btn').forEach(b => b.className = 'lang-btn px-2.5 py-0.5 rounded-full text-white/60 font-semibold transition-all hover:text-white');
+  btn.className = 'lang-btn px-2.5 py-0.5 rounded-full bg-[#EB4D2B] text-white font-semibold transition-all';
+  showToast(`Language switched to ${btn.dataset.lang} (demo)`,'info');
+}));
+
+/* ══════ HERO subtle parallax on mouse ══════ */
+if(window.matchMedia('(min-width:1024px)').matches){
+  const heroImgs = $$('.hero-img');
+  document.getElementById('hero').addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - .5) * 6;
+    heroImgs.forEach((img,i) => {
+      img.style.transform = `translate(${x * (i%2 ? 1 : -1)}px, ${x*0.4}px) scale(1.02)`;
+    });
+  });
+  document.getElementById('hero').addEventListener('mouseleave', () => {
+    heroImgs.forEach(img => img.style.transform = '');
+  });
+}
+</script>
+</body>
+</html>
