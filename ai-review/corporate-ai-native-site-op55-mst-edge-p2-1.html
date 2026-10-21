@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PingMalline — LINE Commerce & Digital Growth Agency in Bangkok</title>
+  <meta name="description" content="PingMalline is Bangkok's LINE-first commerce & digital growth agency. 12+ years, 850+ brands served. LINE OA, chat commerce, performance marketing, web & app development, AI chatbots. Get a free quote today." />
+  <meta name="keywords" content="LINE commerce agency Thailand, LINE OA setup, chat commerce, performance marketing Bangkok, digital growth agency, AI chatbot Thailand, web development Bangkok" />
+  <meta property="og:title" content="PingMalline — Turn Every Message Into Revenue" />
+  <meta property="og:description" content="Bangkok's LINE-first commerce & digital growth agency. Trusted by 850+ brands. Get a free quote in 24 hours." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icon fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vermilion: '#EB4D2B',
+            royal: '#262AF5',
+            canary: '#F4B800',
+            orchid: '#C24AF5',
+            emerald2: '#3BB75E',
+            carbon: '#18181A',
+            blush: '#FBECE8'
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "PingMalline Co., Ltd.",
+        "url": "https://www.pingmalline.co",
+        "logo": "https://www.pingmalline.co/logo.png",
+        "telephone": "+66-2-123-4567",
+        "email": "hello@pingmalline.co",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Sukhumvit Road, Khlong Toei",
+          "addressLocality": "Bangkok",
+          "postalCode": "10110",
+          "addressCountry": "TH"
+        },
+        "sameAs": ["https://www.facebook.com/pingmalline", "https://www.linkedin.com/company/pingmalline"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "PingMalline",
+        "url": "https://www.pingmalline.co",
+        "inLanguage": ["en", "th"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.pingmalline.co/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does it cost to get started?", "acceptedAnswer": { "@type": "Answer", "text": "LINE OA setup packages start at ฿45,000 (~$1,300). Full commerce builds are custom-quoted after a free scoping session — most projects land between ฿150,000 and ฿850,000." } },
+          { "@type": "Question", "name": "How long until we launch?", "acceptedAnswer": { "@type": "Answer", "text": "A LINE OA with chat commerce typically launches in 2–4 weeks. A full omnichannel commerce build takes 6–10 weeks depending on scope." } },
+          { "@type": "Question", "name": "Is my customer data safe with you?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We are PDPA-compliant and ISO 27001 certified. All data is encrypted in transit and at rest, hosted in Thai-region data centers." } },
+          { "@type": "Question", "name": "Do you require long-term contracts?", "acceptedAnswer": { "@type": "Answer", "text": "No. After a 3-month kickoff period, our growth retainers are monthly rolling with 30-day notice." } },
+          { "@type": "Question", "name": "Can you take over our existing LINE Official Account?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. We start with a free audit of your current OA, then migrate messaging flows, rich menus and loyalty data with zero downtime." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; color: #18181A; background: #FFFFFF; }
+    h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.035em; }
+
+    .kicker-caps {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+    }
+    .hero-title { font-size: clamp(38px, 6.4vw, 62px); line-height: 0.98; font-weight: 900; letter-spacing: -0.04em; }
+    .section-title { font-size: clamp(26px, 4vw, 34px); line-height: 1.1; font-weight: 800; letter-spacing: -0.03em; }
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px; line-height: 1.3; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.02em;
+    }
+    .body-text { font-size: 13px; line-height: 1.6; }
+
+    /* editorial crosshair marks */
+    .crosshair { position: absolute; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; font-size: 18px; line-height: 1; user-select: none; z-index: 5; }
+
+    /* underline swash for hero accent word */
+    .swash { position: relative; display: inline-block; color: #EB4D2B; z-index: 0; }
+    .swash::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 10px;
+      background: #F4B800; opacity: .55; z-index: -1; border-radius: 2px;
+      transform: scaleX(0); transform-origin: left; animation: swashIn .9s .6s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    @keyframes swashIn { to { transform: scaleX(1); } }
+
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal[data-delay="1"] { transition-delay: .1s; } .reveal[data-delay="2"] { transition-delay: .2s; }
+    .reveal[data-delay="3"] { transition-delay: .3s; } .reveal[data-delay="4"] { transition-delay: .4s; }
+
+    /* card hover lift */
+    .lift { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1); }
+    .lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -18px rgba(24,24,26,.22); }
+
+    .btn-press { transition: transform .15s ease; }
+    .btn-press:active { transform: scale(.97); }
+
+    /* logo marquee */
+    .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+    .marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* FAQ accordion */
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.22,1,.36,1); }
+    .faq-item.open .faq-chev { transform: rotate(45deg); }
+    .faq-chev { transition: transform .35s ease; }
+
+    /* modal */
+    #authModal { transition: opacity .3s ease, visibility .3s ease; }
+    #authModal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+    #authModal .modal-card { transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .35s ease; }
+    #authModal.hidden-modal .modal-card { transform: translateY(24px) scale(.97); opacity: 0; }
+
+    /* chat */
+    #chatPanel { transition: opacity .28s ease, transform .28s cubic-bezier(.22,1,.36,1); }
+    #chatPanel.hidden-chat { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(14px) scale(.98); }
+    .typing-dot { animation: blink 1.2s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: .2s; } .typing-dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+    .chat-msg { animation: msgIn .3s cubic-bezier(.22,1,.36,1); }
+    @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .pulse-ring { animation: pulseRing 2.2s ease-out infinite; }
+    @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(235,77,43,.45); } 70% { box-shadow: 0 0 0 14px rgba(235,77,43,0); } 100% { box-shadow: 0 0 0 0 rgba(235,77,43,0); } }
+
+    /* toast */
+    .toast { transform: translateX(120%); transition: transform .4s cubic-bezier(.22,1,.36,1), opacity .4s; opacity: 0; }
+    .toast.show { transform: none; opacity: 1; }
+
+    /* back to top */
+    #backToTop { transition: opacity .35s ease, transform .35s cubic-bezier(.22,1,.36,1); }
+    #backToTop.hidden-btn { opacity: 0; pointer-events: none; transform: translateY(12px); }
+
+    /* nav underline */
+    .nav-link { position: relative; }
+    .nav-link::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -4px; height: 2px; background: #EB4D2B; transition: right .3s cubic-bezier(.22,1,.36,1); }
+    .nav-link:hover::after, .nav-link.active::after { right: 0; }
+
+    /* inputs */
+    .field { transition: border-color .25s ease, box-shadow .25s ease; }
+    .field:focus { outline: none; border-color: #262AF5; box-shadow: 0 0 0 3px rgba(38,42,245,.12); }
+
+    /* mobile menu */
+    #mobileMenu { transition: opacity .3s ease, visibility .3s ease; }
+    #mobileMenuPanel { transition: transform .3s cubic-bezier(.22,1,.36,1); }
+
+    ::selection { background: #F4B800; color: #18181A; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body class="bg-white text-carbon antialiased">
+
+  <!-- ══════════════════ HEADER ══════════════════ -->
+  <header id="siteHeader" class="fixed top-0 inset-x-0 z-40 bg-white/90 backdrop-blur-md border-b border-carbon/10">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-[72px]">
+
+        <!-- Logo -->
+        <a href="#top" class="flex items-center gap-2.5 shrink-0" aria-label="PingMalline home">
+          <span class="w-9 h-9 rounded-xl bg-vermilion text-white grid place-items-center font-display font-900 text-lg shadow-sm">P</span>
+          <span class="font-display font-800 text-lg tracking-tight">Ping<span class="text-vermilion">Malline</span></span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-8 text-[13.5px] font-medium" aria-label="Main">
+          <a href="#services" class="nav-link" data-en="Services" data-th="บริการ">Services</a>
+          <a href="#proof" class="nav-link" data-en="Case Studies" data-th="ผลงาน">Case Studies</a>
+          <a href="#testimonials" class="nav-link" data-en="Testimonials" data-th="รีวิว">Testimonials</a>
+          <a href="#faq" class="nav-link" data-en="FAQ" data-th="คำถาม">FAQ</a>
+          <a href="#contact" class="nav-link" data-en="Contact" data-th="ติดต่อ">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- TH/EN switch -->
+          <div class="flex items-center rounded-full border border-carbon/15 p-0.5 text-[11px] font-semibold" role="group" aria-label="Language">
+            <button id="langTH" class="px-2.5 py-1 rounded-full transition-colors" aria-pressed="false">TH</button>
+            <button id="langEN" class="px-2.5 py-1 rounded-full bg-carbon text-white transition-colors" aria-pressed="true">EN</button>
+          </div>
+
+          <button data-auth="login" class="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-[13px] font-semibold text-carbon hover:bg-carbon/5 btn-press transition-colors" data-en="Log in" data-th="เข้าสู่ระบบ">Log in</button>
+          <button data-auth="register" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-carbon text-white text-[13px] font-semibold hover:bg-royal btn-press transition-colors">
+            <i class="bi bi-lightning-charge-fill text-canary text-[11px]"></i><span data-en="Sign up" data-th="สมัครสมาชิก">Sign up</span>
+          </button>
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" class="lg:hidden w-10 h-10 grid place-items-center rounded-full hover:bg-carbon/5" aria-label="Open menu" aria-expanded="false">
+            <i class="bi bi-list text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 lg:hidden invisible opacity-0">
+    <div class="absolute inset-0 bg-carbon/40" data-close-menu></div>
+    <div class="absolute top-0 right-0 h-full w-[82%] max-w-sm bg-white shadow-2xl p-6 translate-x-full" id="mobileMenuPanel">
+      <div class="flex items-center justify-between mb-8">
+        <span class="font-display font-800 text-lg">Menu</span>
+        <button class="w-10 h-10 grid place-items-center rounded-full hover:bg-carbon/5" data-close-menu aria-label="Close menu"><i class="bi bi-x-lg text-xl"></i></button>
+      </div>
+      <nav class="flex flex-col gap-1 text-[15px] font-medium" aria-label="Mobile">
+        <a href="#services" class="py-3 border-b border-carbon/10 flex items-center justify-between" data-close-menu>Services <i class="bi bi-arrow-right text-vermilion"></i></a>
+        <a href="#proof" class="py-3 border-b border-carbon/10 flex items-center justify-between" data-close-menu>Case Studies <i class="bi bi-arrow-right text-vermilion"></i></a>
+        <a href="#testimonials" class="py-3 border-b border-carbon/10 flex items-center justify-between" data-close-menu>Testimonials <i class="bi bi-arrow-right text-vermilion"></i></a>
+        <a href="#faq" class="py-3 border-b border-carbon/10 flex items-center justify-between" data-close-menu>FAQ <i class="bi bi-arrow-right text-vermilion"></i></a>
+        <a href="#contact" class="py-3 border-b border-carbon/10 flex items-center justify-between" data-close-menu>Contact <i class="bi bi-arrow-right text-vermilion"></i></a>
+      </nav>
+      <div class="mt-8 flex flex-col gap-3">
+        <button data-auth="login" class="w-full py-3 rounded-full border-2 border-carbon font-semibold text-[14px] btn-press">Log in</button>
+        <button data-auth="register" class="w-full py-3 rounded-full bg-vermilion text-white font-semibold text-[14px] btn-press">Create free account</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="pt-16 lg:pt-[72px]">
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <section id="hero" class="relative bg-white">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-14 lg:pt-16 lg:pb-20">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+          <!-- Copy -->
+          <div class="lg:col-span-7">
+            <p class="kicker-caps text-royal mb-4 reveal">
+              <i class="bi bi-asterisk text-vermilion mr-1"></i>Bangkok's LINE-First Growth Agency — Since 2014
+            </p>
+            <h1 class="hero-title font-display text-carbon mb-6 reveal" data-delay="1">
+              Turn Every Message Into <span class="swash">Revenue.</span>
+            </h1>
+            <p class="text-[15px] sm:text-base text-carbon/70 max-w-xl mb-8 reveal" data-delay="2">
+              We design, build and scale chat-first commerce for Thailand's most ambitious brands —
+              combining LINE OA, performance marketing and AI automation that converts conversations into customers.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 mb-10 reveal" data-delay="3">
+              <a href="#contact" class="btn-press inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-vermilion text-white font-semibold text-[14px] hover:shadow-[0_12px_28px_-10px_rgba(235,77,43,.55)] hover:-translate-y-0.5 transition-all" data-en="Get a Free Quote" data-th="ขอใบเสนอราคา">
+                Get a Free Quote <i class="bi bi-arrow-right"></i>
+              </a>
+              <button id="heroChatBtn" class="btn-press inline-flex items-center gap-2 px-6 py-3.5 rounded-full border-2 border-carbon font-semibold text-[14px] hover:bg-carbon hover:text-white transition-colors" data-en="Chat with AI" data-th="คุยกับ AI">
+                <i class="bi bi-stars text-orchid"></i> Chat with AI
+              </button>
+            </div>
+
+            <!-- Stat chips -->
+            <div class="flex flex-wrap gap-x-8 gap-y-4 reveal" data-delay="4">
+              <div>
+                <p class="font-display font-800 text-xl">฿1.2B+</p>
+                <p class="body-text text-carbon/60">GMV driven for clients</p>
+              </div>
+              <div class="border-l border-carbon/15 pl-8">
+                <p class="font-display font-800 text-xl">850+</p>
+                <p class="body-text text-carbon/60">Brands served nationwide</p>
+              </div>
+              <div class="border-l border-carbon/15 pl-8">
+                <p class="font-display font-800 text-xl">4.9<span class="text-canary">★</span></p>
+                <p class="body-text text-carbon/60">Average client rating</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media collage -->
+          <div class="lg:col-span-5 relative reveal" data-delay="2">
+            <span class="crosshair text-vermilion -top-3 -left-1" aria-hidden="true">+</span>
+            <span class="crosshair text-royal -bottom-4 -right-2" aria-hidden="true">+</span>
+
+            <div class="relative rounded-[28px] overflow-hidden shadow-[0_30px_60px_-25px_rgba(24,24,26,.35)] rotate-[1.5deg] hover:rotate-0 transition-transform duration-500">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80" alt="PingMalline strategists planning a LINE commerce campaign" class="w-full h-[300px] sm:h-[380px] object-cover" loading="eager" />
+            </div>
+
+            <!-- floating mini card: ROAS -->
+            <div class="absolute -bottom-6 -left-2 sm:-left-6 bg-white rounded-2xl shadow-xl border border-carbon/10 p-4 flex items-center gap-3 -rotate-2 hover:rotate-0 transition-transform duration-500">
+              <span class="w-10 h-10 rounded-xl bg-emerald2/10 text-emerald2 grid place-items-center text-xl"><i class="bi bi-graph-up-arrow"></i></span>
+              <div>
+                <p class="font-display font-800 text-base leading-none">4.2x ROAS</p>
+                <p class="body-text text-carbon/60">Siam Naturals · 6 months</p>
+              </div>
+            </div>
+
+            <!-- floating mini card: message -->
+            <div class="absolute -top-5 -right-1 sm:-right-4 bg-white rounded-2xl shadow-xl border border-carbon/10 p-3.5 flex items-center gap-2.5 rotate-2 hover:rotate-0 transition-transform duration-500">
+              <span class="w-9 h-9 rounded-full bg-royal text-white grid place-items-center"><i class="bi bi-chat-dots-fill text-sm"></i></span>
+              <p class="text-[12px] font-semibold leading-tight">24M+ messages<br /><span class="text-carbon/50 font-normal">automated monthly</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ TRUST BAR ══════════════════ -->
+    <section class="bg-white border-y border-carbon/10">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10">
+          <div class="reveal flex items-center gap-3 justify-center md:justify-start">
+            <i class="bi bi-award-fill text-vermilion text-xl"></i>
+            <p class="text-[13px] font-semibold">12+ Years <span class="text-carbon/50 font-normal">in business</span></p>
+          </div>
+          <div class="reveal flex items-center gap-3 justify-center md:justify-start" data-delay="1">
+            <i class="fa-brands fa-line text-[#06C755] text-xl"></i>
+            <p class="text-[13px] font-semibold">LINE Certified <span class="text-carbon/50 font-normal">Partner</span></p>
+          </div>
+          <div class="reveal flex items-center gap-3 justify-center md:justify-start" data-delay="2">
+            <i class="bi bi-shield-fill-check text-royal text-xl"></i>
+            <p class="text-[13px] font-semibold">ISO 27001 <span class="text-carbon/50 font-normal">Certified</span></p>
+          </div>
+          <div class="reveal flex items-center gap-3 justify-center md:justify-start" data-delay="3">
+            <i class="bi bi-lock-fill text-emerald2 text-xl"></i>
+            <p class="text-[13px] font-semibold">PDPA Compliant <span class="text-carbon/50 font-normal">by design</span></p>
+          </div>
+        </div>
+
+        <p class="text-center kicker-caps text-carbon/40 mb-6 reveal">Trusted by ambitious Thai &amp; regional brands</p>
+        <div class="marquee reveal">
+          <div class="marquee-track gap-14 pr-14 items-center text-carbon/35 font-display font-800 text-lg sm:text-xl whitespace-nowrap">
+            <span>Siam Naturals</span><span class="text-vermilion/40">✦</span>
+            <span>TukTukGo</span><span class="text-royal/40">✦</span>
+            <span>Palm &amp; Pine Hotels</span><span class="text-orchid/40">✦</span>
+            <span>BangkokEats</span><span class="text-emerald2/40">✦</span>
+            <span>METTHA Skincare</span><span class="text-canary/40">✦</span>
+            <span>Sukhumvit Dental</span><span class="text-vermilion/40">✦</span>
+            <span>Siam Naturals</span><span class="text-royal/40">✦</span>
+            <span>TukTukGo</span><span class="text-orchid/40">✦</span>
+            <span>Palm &amp; Pine Hotels</span><span class="text-emerald2/40">✦</span>
+            <span>BangkokEats</span><span class="text-canary/40">✦</span>
+            <span>METTHA Skincare</span><span class="text-vermilion/40">✦</span>
+            <span>Sukhumvit Dental</span><span class="text-royal/40">✦</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ SERVICES ══════════════════ -->
+    <section id="services" class="bg-white scroll-mt-24">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div class="reveal max-w-xl">
+            <p class="kicker-caps text-vermilion mb-3">01 — What we do</p>
+            <h2 class="section-title font-display mb-4">Six disciplines. <span class="text-royal">One growth engine.</span></h2>
+            <p class="text-carbon/60 text-[14px]">Every service plugs into the same chat-first funnel — so customers never drop between channels.</p>
+          </div>
+          <a href="#contact" class="reveal inline-flex items-center gap-2 text-[13px] font-semibold text-carbon hover:text-vermilion transition-colors" data-delay="2">Compare all services <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- 1 -->
+          <article class="reveal lift relative bg-white border-2 border-carbon/10 rounded-3xl p-6 hover:border-vermilion/60 transition-colors">
+            <div class="flex items-center justify-between mb-5">
+              <span class="w-12 h-12 rounded-2xl bg-vermilion/10 text-vermilion grid place-items-center text-2xl"><i class="fa-brands fa-line"></i></span>
+              <span class="crosshair text-carbon/25 top-5 right-5" aria-hidden="true">+</span>
+            </div>
+            <h3 class="card-title mb-2">LINE OA &amp; Chat Commerce</h3>
+            <p class="body-text text-carbon/65 mb-5">Rich menus, broadcast journeys and loyalty flows that turn followers into repeat buyers — fully automated.</p>
+            <span class="text-[12px] font-semibold text-vermilion inline-flex items-center gap-1.5">From ฿45,000 <span class="text-carbon/40 font-normal">(~$1,300)</span></span>
+          </article>
+          <!-- 2 -->
+          <article class="reveal lift relative bg-white border-2 border-carbon/10 rounded-3xl p-6 hover:border-royal/60 transition-colors" data-delay="1">
+            <div class="flex items-center justify-between mb-5">
+              <span class="w-12 h-12 rounded-2xl bg-royal/10 text-royal grid place-items-center text-2xl"><i class="bi bi-graph-up-arrow"></i></span>
+              <span class="crosshair text-carbon/25 top-5 right-5" aria-hidden="true">+</span>
+            </div>
+            <h3 class="card-title mb-2">Performance Marketing</h3>
+            <p class="body-text text-carbon/65 mb-5">Full-funnel Meta, Google and TikTok campaigns engineered around message-to-purchase attribution — not vanity clicks.</p>
+            <span class="text-[12px] font-semibold text-royal inline-flex items-center gap-1.5">Avg. 3.8x ROAS <i class="bi bi-patch-check-fill text-[10px]"></i></span>
+          </article>
+          <!-- 3 -->
+          <article class="reveal lift relative bg-white border-2 border-carbon/10 rounded-3xl p-6 hover:border-orchid/60 transition-colors" data-delay="2">
+            <div class="flex items-center justify-between mb-5">
+              <span class="w-12 h-12 rounded-2xl bg-orchid/10 text-orchid grid place-items-center text-2xl"><i class="bi bi-code-slash"></i></span>
+              <span class="crosshair text-carbon/25 top-5 right-5" aria-hidden="true">+</span>
+            </div>
+            <h3 class="card-title mb-2">Web &amp; App Development</h3>
+            <p class="body-text text-carbon/65 mb-5">Blazing-fast storefronts, mini-apps and booking systems with LCP under 2.5s — built mobile-first, crawl-ready.</p>
+            <span class="text-[12px] font-semibold text-orchid inline-flex items-center gap-1.5">Launch in 6–10 weeks</span>
+          </article>
+          <!-- 4 -->
+          <article class="reveal lift relative bg-white border-2 border-carbon/10 rounded-3xl p-6 hover:border-canary transition-colors">
+            <div class="flex items-center justify-between mb-5">
+              <span class="w-12 h-12 rounded-2xl bg-canary/15 text-carbon grid place-items-center text-2xl"><i class="bi bi-palette-fill"></i></span>
+              <span class="crosshair text-carbon/25 top-5 right-5" aria-hidden="true">+</span>
+            </div>
+            <h3 class="card-title mb-2">Brand &amp; Content Studio</h3>
+            <p class="body-text text-carbon/65 mb-5">Identity, photography direction and thumb-stopping creative produced in-house by our Thai–global studio team.</p>
+            <span class="text-[12px] font-semibold text-carbon inline-flex items-center gap-1.5">In-house studio <i class="bi bi-camera-fill text-canary text-[10px]"></i></span>
+          </article>
+          <!-- 5 -->
+          <article class="reveal lift relative bg-white border-2 border-carbon/10 rounded-3xl p-6 hover:border-emerald2/60 transition-colors" data-delay="1">
+            <div class="flex items-center justify-between mb-5">
+              <span class="w-12 h-12 rounded-2xl bg-emerald2/10 text-emerald2 grid place-items-center text-2xl"><i class="bi bi-robot"></i></span>
+              <span class="crosshair text-carbon/25 top-5 right-5" aria-hidden="true">+</span>
+            </div>
+            <h3 class="card-title mb-2">Data &amp; AI Chatbots</h3>
+            <p class="body-text text-carbon/65 mb-5">Sales-trained AI assistants that qualify leads, answer in Thai &amp; English, and hand off to humans at the right moment.</p>
+            <span class="text-[12px] font-semibold text-emerald2 inline-flex items-center gap-1.5">24M+ chats automated / month</span>
+          </article>
+          <!-- 6 -->
+          <article class="reveal lift relative bg-white border-2 border-carbon/10 rounded-3xl p-6 hover:border-carbon/60 transition-colors" data-delay="2">
+            <div class="flex items-center justify-between mb-5">
+              <span class="w-12 h-12 rounded-2xl bg-carbon/10 text-carbon grid place-items-center text-2xl"><i class="bi bi-shop"></i></span>
+              <span class="crosshair text-carbon/25 top-5 right-5" aria-hidden="true">+</span>
+            </div>
+            <h3 class="card-title mb-2">Omnichannel &amp; Fulfillment</h3>
+            <p class="body-text text-carbon/65 mb-5">Shopee, Lazada, TikTok Shop and retail POS unified in one dashboard with inventory and last-mile integrations.</p>
+            <span class="text-[12px] font-semibold text-carbon inline-flex items-center gap-1.5">5 marketplaces, 1 dashboard</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ PROOF ══════════════════ -->
+    <section id="proof" class="bg-white scroll-mt-24 border-y border-carbon/10">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="reveal max-w-2xl mb-12">
+          <p class="kicker-caps text-orchid mb-3">02 — Proof, not promises</p>
+          <h2 class="section-title font-display">The numbers our clients brag about.</h2>
+        </div>
+
+        <!-- Counters -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          <div class="reveal bg-blush rounded-3xl p-6">
+            <p class="font-display font-900 text-3xl sm:text-4xl text-vermilion"><span class="counter" data-count="1.2" data-decimals="1">0</span>B<span class="text-xl">฿</span></p>
+            <p class="body-text text-carbon/70 mt-2">Client GMV driven since 2014</p>
+          </div>
+          <div class="reveal bg-royal/5 rounded-3xl p-6" data-delay="1">
+            <p class="font-display font-900 text-3xl sm:text-4xl text-royal"><span class="counter" data-count="3.8" data-decimals="1">0</span>x</p>
+            <p class="body-text text-carbon/70 mt-2">Average blended ROAS</p>
+          </div>
+          <div class="reveal bg-orchid/5 rounded-3xl p-6" data-delay="2">
+            <p class="font-display font-900 text-3xl sm:text-4xl text-orchid"><span class="counter" data-count="128">0</span>K</p>
+            <p class="body-text text-carbon/70 mt-2">New followers in one campaign</p>
+          </div>
+          <div class="reveal bg-emerald2/10 rounded-3xl p-6" data-delay="3">
+            <p class="font-display font-900 text-3xl sm:text-4xl text-emerald2"><span class="counter" data-count="98">0</span>%</p>
+            <p class="body-text text-carbon/70 mt-2">Client retention, 12 months</p>
+          </div>
+        </div>
+
+        <!-- Featured case study -->
+        <div class="grid lg:grid-cols-2 bg-white border-2 border-carbon/10 rounded-[32px] overflow-hidden reveal lg:min-h-[420px]">
+          <div class="relative min-h-[280px] lg:min-h-full">
+            <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=800&q=80" alt="Case study portrait — Siam Naturals founder" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <span class="crosshair text-white -top-2 -left-1" aria-hidden="true">+</span>
+            <span class="absolute top-4 left-4 bg-vermilion text-white kicker-caps px-3 py-1.5 rounded-full z-10">Case Study</span>
+          </div>
+          <div class="p-7 sm:p-10 lg:pl-2 lg:pr-10 flex flex-col justify-center">
+            <p class="text-[11px] font-bold uppercase tracking-wider text-vermilion mb-3">Beauty &amp; Skincare · D2C</p>
+            <h3 class="font-display font-800 text-2xl lg:text-[28px] leading-tight mb-4">How Siam Naturals grew ฿48M (~$1.35M) in 6 months with a chat-first funnel</h3>
+            <p class="body-text text-carbon/65 mb-7">We rebuilt their LINE OA into a guided selling machine, connected performance ads to message attribution, and launched an AI concierge that answers in Thai &amp; English 24/7. Cart abandonment dropped 41%.</p>
+            <div class="grid grid-cols-3 gap-3 mb-8">
+              <div class="bg-blush rounded-2xl p-4 text-center">
+                <p class="font-display font-900 text-lg text-vermilion">+312%</p><p class="text-[11px] text-carbon/60 mt-1">Revenue</p>
+              </div>
+              <div class="bg-royal/5 rounded-2xl p-4 text-center">
+                <p class="font-display font-900 text-lg text-royal">4.2x</p><p class="text-[11px] text-carbon/60 mt-1">ROAS</p>
+              </div>
+              <div class="bg-emerald2/10 rounded-2xl p-4 text-center">
+                <p class="font-display font-900 text-lg text-emerald2">-41%</p><p class="text-[11px] text-carbon/60 mt-1">Cart drop-off</p>
+              </div>
+            </div>
+            <a href="#contact" class="btn-press self-start inline-flex items-center gap-2 px-6 py-3 rounded-full bg-carbon text-white font-semibold text-[13px] hover:bg-vermilion transition-colors">Get results like this <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ TESTIMONIALS ══════════════════ -->
+    <section id="testimonials" class="bg-white scroll-mt-24">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="reveal max-w-xl mb-12">
+          <p class="kicker-caps text-emerald2 mb-3">03 — Client voices</p>
+          <h2 class="section-title font-display mb-4">Real reviews. <span class="text-vermilion">Verified humans.</span></h2>
+          <p class="text-carbon/60 text-[14px]">Every testimonial below is verified against a signed engagement — no stock quotes.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 pt-3">
+          <!-- T1 -->
+          <figure class="reveal lift bg-white border-2 border-carbon/10 rounded-3xl p-7 relative">
+            <span class="absolute -top-3 left-7 bg-emerald2 text-white text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full inline-flex items-center gap-1"><i class="bi bi-patch-check-fill"></i> Verified</span>
+            <div class="flex gap-1 text-canary text-sm mb-4 mt-2" aria-label="5 out of 5 stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <blockquote class="body-text text-carbon/75 mb-6">"Our ROAS was stuck at 1.6x for a year. PingMalline rebuilt the funnel around LINE and we hit 3.8x within 90 days. The weekly reporting is brutally honest — exactly what we needed."</blockquote>
+            <figcaption class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Ploy Rattanakorn" class="w-11 h-11 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="text-[13px] font-bold">Ploy Rattanakorn</p>
+                <p class="text-[11.5px] text-carbon/55">Founder, Siam Naturals</p>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- T2 -->
+          <figure class="reveal lift bg-white border-2 border-carbon/10 rounded-3xl p-7 relative" data-delay="1">
+            <span class="absolute -top-3 left-7 bg-emerald2 text-white text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full inline-flex items-center gap-1"><i class="bi bi-patch-check-fill"></i> Verified</span>
+            <div class="flex gap-1 text-canary text-sm mb-4 mt-2" aria-label="5 out of 5 stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <blockquote class="body-text text-carbon/75 mb-6">"The AI concierge they built answers in English and Thai better than our own team did. Message-to-purchase rate tripled in one quarter. Best money we have spent on growth."</blockquote>
+            <figcaption class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Daniel Chen" class="w-11 h-11 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="text-[13px] font-bold">Daniel Chen</p>
+                <p class="text-[11.5px] text-carbon/55">CMO, TukTukGo</p>
+              </div>
+            </figcaption>
+          </figure>
+          <!-- T3 -->
+          <figure class="reveal lift bg-white border-2 border-carbon/10 rounded-3xl p-7 relative" data-delay="2">
+            <span class="absolute -top-3 left-7 bg-emerald2 text-white text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full inline-flex items-center gap-1"><i class="bi bi-patch-check-fill"></i> Verified</span>
+            <div class="flex gap-1 text-canary text-sm mb-4 mt-2" aria-label="4.5 out of 5 stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+            </div>
+            <blockquote class="body-text text-carbon/75 mb-6">"They onboarded 40,000 loyalty members in a single hotel campaign — with zero downtime on our existing systems. The team feels like an in-house department, not a vendor."</blockquote>
+            <figcaption class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80" alt="Emily Watanabe" class="w-11 h-11 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="text-[13px] font-bold">Emily Watanabe</p>
+                <p class="text-[11.5px] text-carbon/55">Operations Director, Palm &amp; Pine Hotels</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ ASK AI ══════════════════ -->
+    <section id="askai" class="bg-white scroll-mt-24 border-y border-carbon/10">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div class="max-w-3xl mx-auto text-center reveal">
+          <p class="kicker-caps text-royal mb-3"><i class="bi bi-stars text-orchid"></i> 04 — Ask AI anything</p>
+          <h2 class="section-title font-display mb-3">Questions about pricing, timelines or results?</h2>
+          <p class="text-carbon/60 text-[14px] mb-8">Type below — our AI assistant answers instantly, 24/7, in Thai &amp; English. No forms, no waiting.</p>
+
+          <form id="askAiForm" class="relative max-w-xl mx-auto mb-6" novalidate>
+            <input id="askAiInput" type="text" placeholder="e.g. How much does a LINE OA setup cost?"
+              class="field w-full rounded-full border-2 border-carbon/15 bg-white pl-12 pr-32 py-4 text-[14px]" aria-label="Your question" />
+            <i class="bi bi-chat-left-text-fill text-orchid absolute left-5 top-1/2 -translate-y-1/2"></i>
+            <button type="submit" class="btn-press absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2.5 rounded-full bg-carbon text-white text-[13px] font-semibold hover:bg-vermilion transition-colors">
+              Ask <i class="bi bi-send-fill text-[10px] ml-1"></i>
+            </button>
+          </form>
+
+          <div class="flex flex-wrap justify-center gap-2.5" id="suggestedChips">
+            <button class="chip btn-press text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2 hover:border-vermilion hover:text-vermilion transition-colors" data-q="How much does LINE OA setup cost?">💸 How much does LINE OA setup cost?</button>
+            <button class="chip btn-press text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2 hover:border-vermilion hover:text-vermilion transition-colors" data-q="How fast can we launch?">⚡ How fast can we launch?</button>
+            <button class="chip btn-press text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2 hover:border-vermilion hover:text-vermilion transition-colors" data-q="Can you take over my existing LINE OA?">🔄 Take over my existing LINE OA?</button>
+            <button class="chip btn-press text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2 hover:border-vermilion hover:text-vermilion transition-colors" data-q="Can I talk to a human?">👤 Can I talk to a human?</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ FAQ ══════════════════ -->
+    <section id="faq" class="bg-white scroll-mt-24">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-4 reveal">
+            <p class="kicker-caps text-canary mb-3">05 — FAQ</p>
+            <h2 class="section-title font-display mb-4">Answers before you even ask.</h2>
+            <p class="body-text text-carbon/60 mb-6">Can't find what you need? Ask the AI assistant — or call us at <a href="tel:+6621234567" class="text-vermilion font-semibold">+66 2 123 4567</a>.</p>
+            <a href="#contact" class="btn-press inline-flex items-center gap-2 px-5 py-3 rounded-full border-2 border-carbon font-semibold text-[13px] hover:bg-carbon hover:text-white transition-colors">Contact sales <i class="bi bi-arrow-right"></i></a>
+          </div>
+
+          <div class="lg:col-span-8 space-y-3.5" id="faqList">
+            <div class="faq-item reveal bg-white border-2 border-carbon/10 rounded-2xl overflow-hidden hover:border-carbon/30 transition-colors">
+              <button class="faq-head w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+                <span class="font-display font-700 text-[14.5px]">How much does it cost to get started?</span>
+                <i class="bi bi-plus-lg faq-chev text-vermilion shrink-0"></i>
+              </button>
+              <div class="faq-body px-6">
+                <p class="body-text text-carbon/65 pb-5">LINE OA setup packages start at <strong>฿45,000 (~$1,300)</strong>. Full commerce builds are custom-quoted after a free scoping session — most projects land between ฿150,000 and ฿850,000 depending on integrations and traffic volume.</p>
+              </div>
+            </div>
+
+            <div class="faq-item reveal bg-white border-2 border-carbon/10 rounded-2xl overflow-hidden hover:border-carbon/30 transition-colors" data-delay="1">
+              <button class="faq-head w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+                <span class="font-display font-700 text-[14.5px]">How long until we launch?</span>
+                <i class="bi bi-plus-lg faq-chev text-vermilion shrink-0"></i>
+              </button>
+              <div class="faq-body px-6">
+                <p class="body-text text-carbon/65 pb-5">A LINE OA with chat commerce typically launches in <strong>2–4 weeks</strong>. A full omnichannel commerce build takes 6–10 weeks. We share a weekly roadmap so you always know exactly where things stand.</p>
+              </div>
+            </div>
+
+            <div class="faq-item reveal bg-white border-2 border-carbon/10 rounded-2xl overflow-hidden hover:border-carbon/30 transition-colors" data-delay="2">
+              <button class="faq-head w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+                <span class="font-display font-700 text-[14.5px]">Is my customer data safe with you?</span>
+                <i class="bi bi-plus-lg faq-chev text-vermilion shrink-0"></i>
+              </button>
+              <div class="faq-body px-6">
+                <p class="body-text text-carbon/65 pb-5">Yes. We are <strong>PDPA-compliant and ISO 27001 certified</strong>. All data is encrypted in transit and at rest, hosted in Thai-region data centers, and never resold or shared with third parties.</p>
+              </div>
+            </div>
+
+            <div class="faq-item reveal bg-white border-2 border-carbon/10 rounded-2xl overflow-hidden hover:border-carbon/30 transition-colors" data-delay="3">
+              <button class="faq-head w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+                <span class="font-display font-700 text-[14.5px]">Do you require long-term contracts?</span>
+                <i class="bi bi-plus-lg faq-chev text-vermilion shrink-0"></i>
+              </button>
+              <div class="faq-body px-6">
+                <p class="body-text text-carbon/65 pb-5">No. After a 3-month kickoff period, our growth retainers are <strong>monthly rolling with 30-day notice</strong>. We keep clients with results, not paperwork — 98% stay past year one.</p>
+              </div>
+            </div>
+
+            <div class="faq-item reveal bg-white border-2 border-carbon/10 rounded-2xl overflow-hidden hover:border-carbon/30 transition-colors" data-delay="4">
+              <button class="faq-head w-full flex items-center justify-between gap-4 text-left px-6 py-5" aria-expanded="false">
+                <span class="font-display font-700 text-[14.5px]">Can you take over our existing LINE Official Account?</span>
+                <i class="bi bi-plus-lg faq-chev text-vermilion shrink-0"></i>
+              </button>
+              <div class="faq-body px-6">
+                <p class="body-text text-carbon/65 pb-5">Absolutely. We start with a <strong>free audit</strong> of your current OA, then migrate messaging flows, rich menus and loyalty data with zero downtime — most migrations complete within 10 business days.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ FINAL CTA + CONTACT ══════════════════ -->
+    <section id="contact" class="bg-white scroll-mt-24">
+      <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+
+        <!-- CTA banner -->
+        <div class="relative rounded-[32px] overflow-hidden bg-carbon text-white p-8 sm:p-14 mb-14 reveal">
+          <span class="crosshair text-vermilion -top-2 -left-2" aria-hidden="true">+</span>
+          <span class="crosshair text-royal -bottom-2 -right-2" aria-hidden="true">+</span>
+          <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-vermilion/25 blur-2xl" aria-hidden="true"></div>
+          <div class="absolute -left-20 -bottom-24 w-72 h-72 rounded-full bg-royal/25 blur-2xl" aria-hidden="true"></div>
+
+          <div class="relative max-w-2xl">
+            <p class="kicker-caps text-canary mb-4">Ready when you are</p>
+            <h2 class="font-display font-900 text-3xl sm:text-5xl leading-[1.02] mb-5">Get your free growth plan in 24 hours.</h2>
+            <p class="text-white/70 text-[14px] mb-8 max-w-lg">Tell us about your brand. We'll send back a custom quote with a 90-day roadmap — no strings, no spam, no 45-minute discovery call required.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="mailto:hello@pingmalline.co?subject=Quote%20Request" class="btn-press inline-flex items-center gap-2 px-7 py-4 rounded-full bg-vermilion text-white font-semibold text-[14px] hover:shadow-[0_12px_28px_-8px_rgba(235,77,43,.7)] hover:-translate-y-0.5 transition-all" data-en="Request a Quote" data-th="ขอใบเสนอราคา">Request a Quote <i class="bi bi-arrow-right"></i></a>
+              <button id="ctaChatBtn" class="btn-press inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-white/30 font-semibold text-[14px] hover:border-white hover:bg-white hover:text-carbon transition-all" data-en="Ask the AI instead" data-th="ถาม AI ก่อน">Ask the AI instead <i class="bi bi-stars text-orchid"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact grid + map -->
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <div class="space-y-4">
+            <div class="reveal lift bg-white border-2 border-carbon/10 rounded-3xl p-6 flex items-start gap-4">
+              <span class="w-12 h-12 rounded-2xl bg-vermilion/10 text-vermilion grid place-items-center text-xl shrink-0"><i class="bi bi-telephone-fill"></i></span>
+              <div>
+                <h3 class="card-title mb-1">Call us</h3>
+                <p class="body-text text-carbon/60 mb-2">Mon–Fri, 9:00–18:00 ICT</p>
+                <a href="tel:+6621234567" class="text-[15px] font-bold text-vermilion hover:underline">+66 2 123 4567</a>
+              </div>
+            </div>
+            <div class="reveal lift bg-white border-2 border-carbon/10 rounded-3xl p-6 flex items-start gap-4" data-delay="1">
+              <span class="w-12 h-12 rounded-2xl bg-[#06C755]/10 text-[#06C755] grid place-items-center text-xl shrink-0"><i class="fa-brands fa-line"></i></span>
+              <div>
+                <h3 class="card-title mb-1">LINE Official</h3>
+                <p class="body-text text-carbon/60 mb-2">Fastest response — usually &lt; 5 minutes</p>
+                <a href="https://line.me/R/ti/p/@pingmalline" target="_blank" rel="noopener" class="text-[15px] font-bold text-royal hover:underline">@pingmalline</a>
+              </div>
+            </div>
+            <div class="reveal lift bg-white border-2 border-carbon/10 rounded-3xl p-6 flex items-start gap-4" data-delay="2">
+              <span class="w-12 h-12 rounded-2xl bg-orchid/10 text-orchid grid place-items-center text-xl shrink-0"><i class="bi bi-envelope-fill"></i></span>
+              <div>
+                <h3 class="card-title mb-1">Email</h3>
+                <p class="body-text text-carbon/60 mb-2">Quotes &amp; partnerships</p>
+                <a href="mailto:hello@pingmalline.co" class="text-[15px] font-bold text-orchid hover:underline">hello@pingmalline.co</a>
+              </div>
+            </div>
+            <div class="reveal lift bg-white border-2 border-carbon/10 rounded-3xl p-6 flex items-start gap-4" data-delay="3">
+              <span class="w-12 h-12 rounded-2xl bg-canary/15 text-carbon grid place-items-center text-xl shrink-0"><i class="bi bi-geo-alt-fill"></i></span>
+              <div>
+                <h3 class="card-title mb-1">Visit us</h3>
+                <p class="body-text text-carbon/60">123 Sukhumvit Road, Khlong Toei,<br />Bangkok 10110, Thailand</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal relative rounded-[32px] overflow-hidden border-2 border-carbon/10 min-h-[320px]" data-delay="2">
+            <iframe
+              title="PingMalline office location on Google Maps"
+              src="https://maps.google.com/maps?q=Sukhumvit%20Road%20Bangkok&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              class="absolute inset-0 w-full h-full" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="bg-white border-t border-carbon/10">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
+        <div class="lg:col-span-4">
+          <a href="#top" class="flex items-center gap-2.5 mb-4">
+            <span class="w-9 h-9 rounded-xl bg-vermilion text-white grid place-items-center font-display font-900 text-lg">P</span>
+            <span class="font-display font-800 text-lg">Ping<span class="text-vermilion">Malline</span></span>
+          </a>
+          <p class="body-text text-carbon/60 max-w-xs mb-5">Bangkok's LINE-first commerce &amp; digital growth agency. Turning messages into revenue since 2014.</p>
+          <div class="flex gap-2.5">
+            <a href="#" class="w-10 h-10 rounded-full border border-carbon/15 grid place-items-center hover:bg-carbon hover:text-white hover:border-carbon transition-colors" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full border border-carbon/15 grid place-items-center hover:bg-[#06C755] hover:text-white hover:border-[#06C755] transition-colors" aria-label="LINE"><i class="fa-brands fa-line"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full border border-carbon/15 grid place-items-center hover:bg-royal hover:text-white hover:border-royal transition-colors" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full border border-carbon/15 grid place-items-center hover:bg-orchid hover:text-white hover:border-orchid transition-colors" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h4 class="kicker-caps text-carbon/40 mb-4">Company</h4>
+          <ul class="space-y-2.5 text-[13px] text-carbon/70">
+            <li><a href="#services" class="hover:text-vermilion transition-colors">Services</a></li>
+            <li><a href="#proof" class="hover:text-vermilion transition-colors">Case Studies</a></li>
+            <li><a href="#testimonials" class="hover:text-vermilion transition-colors">Testimonials</a></li>
+            <li><a href="#contact" class="hover:text-vermilion transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h4 class="kicker-caps text-carbon/40 mb-4">Services</h4>
+          <ul class="space-y-2.5 text-[13px] text-carbon/70">
+            <li><a href="#services" class="hover:text-vermilion transition-colors">LINE OA &amp; Chat Commerce</a></li>
+            <li><a href="#services" class="hover:text-vermilion transition-colors">Performance Marketing</a></li>
+            <li><a href="#services" class="hover:text-vermilion transition-colors">Web &amp; App Development</a></li>
+            <li><a href="#services" class="hover:text-vermilion transition-colors">AI Chatbots</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-4">
+          <h4 class="kicker-caps text-carbon/40 mb-4">Growth notes, monthly</h4>
+          <p class="body-text text-carbon/60 mb-4">One actionable LINE commerce tactic per month. Read by 12,400+ Thai marketers.</p>
+          <form id="newsletterForm" class="flex gap-2" novalidate>
+            <input id="newsEmail" type="email" placeholder="work@email.com" aria-label="Email address"
+              class="field flex-1 min-w-0 rounded-full border-2 border-carbon/15 px-4 py-2.5 text-[13px]" />
+            <button class="btn-press px-5 py-2.5 rounded-full bg-carbon text-white text-[13px] font-semibold hover:bg-vermilion transition-colors shrink-0">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="pt-7 border-t border-carbon/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-[12px] text-carbon/50">© <span id="year">2026</span> PingMalline Co., Ltd. All rights reserved.</p>
+        <div class="flex gap-6 text-[12px] text-carbon/50">
+          <a href="#" class="hover:text-carbon transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-carbon transition-colors">PDPA Notice</a>
+          <a href="#" class="hover:text-carbon transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- spacer so sticky mobile bar never covers footer content -->
+  <div class="h-16 md:hidden" aria-hidden="true"></div>
+
+  <!-- ══════════════════ STICKY MOBILE CTA BAR ══════════════════ -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-carbon/10 px-3 py-2.5">
+    <div class="grid grid-cols-3 gap-2.5 max-w-md mx-auto">
+      <a href="tel:+6621234567" class="btn-press flex flex-col items-center gap-0.5 py-2 rounded-xl border border-carbon/15 text-[11px] font-semibold" data-en="Call" data-th="โทร">
+        <i class="bi bi-telephone-fill text-vermilion text-lg"></i><span>Call</span>
+      </a>
+      <a href="https://line.me/R/ti/p/@pingmalline" target="_blank" rel="noopener" class="btn-press flex flex-col items-center gap-0.5 py-2 rounded-xl border border-carbon/15 text-[11px] font-semibold" data-en="LINE" data-th="ไลน์">
+        <i class="fa-brands fa-line text-[#06C755] text-lg"></i><span>LINE</span>
+      </a>
+      <a href="#contact" class="btn-press flex flex-col items-center gap-0.5 py-2 rounded-xl bg-vermilion text-white text-[11px] font-semibold" data-en="Get Quote" data-th="ขอใบเสนอราคา">
+        <i class="bi bi-file-earmark-text-fill text-lg"></i><span>Get Quote</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══════════════════ FLOATING DOCK (back-to-top left · chatbot right) ══════════════════ -->
+  <div class="fixed z-50 bottom-20 md:bottom-6 right-4 flex flex-row-reverse items-center gap-[5px]">
+    <!-- chat button (right side of the pair) -->
+    <button id="chatBtn" class="pulse-ring w-12 h-12 md:w-14 md:h-14 rounded-full bg-vermilion text-white grid place-items-center text-xl md:text-2xl shadow-xl hover:scale-105 active:scale-95 transition-transform relative" aria-label="Open AI chat assistant" aria-expanded="false">
+      <i class="bi bi-chat-dots-fill"></i>
+      <span class="absolute -top-1 -right-1 w-4 h-4 bg-emerald2 border-2 border-white rounded-full" aria-hidden="true"></span>
+    </button>
+    <!-- back to top (left of the pair, appears after hero) -->
+    <button id="backToTop" class="hidden-btn w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border-2 border-carbon/15 text-carbon grid place-items-center text-lg shadow-lg hover:bg-carbon hover:text-white hover:border-carbon transition-colors" aria-label="Back to top">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- ══════════════════ CHAT PANEL (button never moves) ══════════════════ -->
+  <div id="chatPanel" class="hidden-chat fixed z-50 bottom-[144px] md:bottom-[104px] right-4 w-[calc(100vw-2rem)] max-w-[380px] bg-white rounded-3xl shadow-2xl border-2 border-carbon/10 overflow-hidden flex flex-col" role="dialog" aria-label="AI Assistant chat" style="height:min(520px,70vh)">
+    <div class="bg-carbon text-white px-5 py-4 flex items-center gap-3 shrink-0">
+      <span class="w-10 h-10 rounded-full bg-vermilion grid place-items-center text-lg relative"><i class="bi bi-robot"></i><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald2 border-2 border-carbon rounded-full"></span></span>
+      <div class="flex-1 min-w-0">
+        <p class="font-display font-700 text-[14px] leading-tight">PM Assistant</p>
+        <p class="text-[11px] text-white/60">Online · replies instantly · TH/EN</p>
+      </div>
+      <button id="chatClose" class="w-9 h-9 rounded-full hover:bg-white/10 grid place-items-center shrink-0" aria-label="Close chat"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div id="chatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-white" aria-live="polite"></div>
+    <div id="chatQuick" class="flex flex-wrap gap-2 px-4 pb-3 bg-white shrink-0"></div>
+    <form id="chatForm" class="shrink-0 border-t border-carbon/10 p-3 flex gap-2 bg-white">
+      <input id="chatInput" type="text" placeholder="Type your question…" autocomplete="off"
+        class="field flex-1 min-w-0 rounded-full border-2 border-carbon/15 px-4 py-2.5 text-[13px]" aria-label="Message" />
+      <button class="btn-press w-11 h-11 shrink-0 rounded-full bg-vermilion text-white grid place-items-center hover:bg-royal transition-colors" aria-label="Send message"><i class="bi bi-send-fill text-sm"></i></button>
+    </form>
+  </div>
+
+  <!-- ══════════════════ LOGIN / REGISTER MODAL ══════════════════ -->
+  <div id="authModal" class="hidden-modal fixed inset-0 z-[60] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="absolute inset-0 bg-carbon/50 backdrop-blur-sm" data-close-modal></div>
+
+    <div class="modal-card relative bg-white w-full max-w-md rounded-[28px] shadow-2xl overflow-hidden max-h-[92vh] overflow-y-auto">
+      <button class="absolute top-4 right-4 w-10 h-10 rounded-full hover:bg-carbon/5 grid place-items-center z-10" data-close-modal aria-label="Close"><i class="bi bi-x-lg text-lg"></i></button>
+
+      <div class="px-7 sm:px-9 pt-8 pb-4">
+        <span class="w-12 h-12 rounded-2xl bg-vermilion text-white grid place-items-center font-display font-900 text-xl mb-4">P</span>
+        <h2 id="authTitle" class="font-display font-800 text-[24px] leading-tight mb-1">Welcome to PingMalline</h2>
+        <p class="body-text text-carbon/55 mb-6">Track your campaigns, invoices and chat analytics in one workspace.</p>
+
+        <div class="flex border-b-2 border-carbon/10 -mx-7 sm:-mx-9 px-7 sm:px-9 mb-6">
+          <button id="tabLogin" class="auth-tab flex-1 pb-3 kicker-caps text-vermilion border-b-2 -mb-[2px] border-vermilion">Sign in</button>
+          <button id="tabRegister" class="auth-tab flex-1 pb-3 kicker-caps text-carbon/45 border-b-2 -mb-[2px] border-transparent hover:text-carbon transition-colors">Create account</button>
+        </div>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm" class="px-7 sm:px-9 pb-7 space-y-4" novalidate>
+        <div>
+          <label for="loginEmail" class="block text-[12px] font-semibold mb-1.5">Work email</label>
+          <input id="loginEmail" type="email" required placeholder="you@company.co" class="field w-full rounded-xl border-2 border-carbon/15 px-4 py-3 text-[13.5px]" />
+        </div>
+        <div>
+          <label for="loginPass" class="block text-[12px] font-semibold mb-1.5">Password</label>
+          <div class="relative">
+            <input id="loginPass" type="password" required minlength="6" placeholder="••••••••" class="field w-full rounded-xl border-2 border-carbon/15 px-4 py-3 pr-11 text-[13.5px]" />
+            <button type="button" class="toggle-pass absolute right-3 top-1/2 -translate-y-1/2 text-carbon/40 hover:text-carbon" aria-label="Show password"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-[12px]">
+          <label class="flex items-center gap-2 text-carbon/60 cursor-pointer"><input type="checkbox" class="accent-vermilion" /> Remember me</label>
+          <a href="#" class="font-semibold text-royal hover:underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="auth-submit btn-press w-full py-3.5 rounded-full bg-vermilion text-white font-semibold text-[14px] hover:shadow-[0_12px_28px_-10px_rgba(235,77,43,.6)] transition-shadow flex items-center justify-center gap-2">
+          Sign in <i class="bi bi-arrow-right"></i>
+        </button>
+
+        <div class="flex items-center gap-3 py-1">
+          <span class="flex-1 h-px bg-carbon/10"></span><span class="text-[11px] text-carbon/40 font-medium">OR</span><span class="flex-1 h-px bg-carbon/10"></span>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" class="auth-social btn-press flex items-center justify-center gap-2 border-2 border-carbon/15 rounded-xl py-2.5 text-[13px] font-semibold hover:bg-carbon/5 transition-colors"><i class="bi bi-google text-royal"></i> Google</button>
+          <button type="button" class="auth-social btn-press flex items-center justify-center gap-2 border-2 border-carbon/15 rounded-xl py-2.5 text-[13px] font-semibold hover:bg-carbon/5 transition-colors"><i class="fa-brands fa-line text-[#06C755]"></i> LINE</button>
+        </div>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form id="registerForm" class="px-7 sm:px-9 pb-7 space-y-4 hidden" novalidate>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="regName" class="block text-[12px] font-semibold mb-1.5">Full name</label>
+            <input id="regName" type="text" required placeholder="Niran Smith" class="field w-full rounded-xl border-2 border-carbon/15 px-4 py-3 text-[13.5px]" />
+          </div>
+          <div>
+            <label for="regPhone" class="block text-[12px] font-semibold mb-1.5">Phone</label>
+            <input id="regPhone" type="tel" required placeholder="+66 8x xxx xxxx" class="field w-full rounded-xl border-2 border-carbon/15 px-4 py-3 text-[13.5px]" />
+          </div>
+        </div>
+        <div>
+          <label for="regEmail" class="block text-[12px] font-semibold mb-1.5">Work email</label>
+          <input id="regEmail" type="email" required placeholder="you@company.co" class="field w-full rounded-xl border-2 border-carbon/15 px-4 py-3 text-[13.5px]" />
+        </div>
+        <div>
+          <label for="regPass" class="block text-[12px] font-semibold mb-1.5">Create password</label>
+          <div class="relative">
+            <input id="regPass" type="password" required minlength="6" placeholder="Min. 6 characters" class="field w-full rounded-xl border-2 border-carbon/15 px-4 py-3 pr-11 text-[13.5px]" />
+            <button type="button" class="toggle-pass absolute right-3 top-1/2 -translate-y-1/2 text-carbon/40 hover:text-carbon" aria-label="Show password"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+        <label class="flex items-start gap-2.5 text-[12px] text-carbon/60 cursor-pointer">
+          <input id="regTerms" type="checkbox" required class="accent-vermilion mt-0.5" />
+          <span>I agree to the <a href="#" class="text-royal font-semibold hover:underline">Terms of Service</a> and <a href="#" class="text-royal font-semibold hover:underline">PDPA Notice</a>.</span>
+        </label>
+        <button type="submit" class="auth-submit btn-press w-full py-3.5 rounded-full bg-carbon text-white font-semibold text-[14px] hover:bg-royal transition-colors flex items-center justify-center gap-2">
+          Create free account <i class="bi bi-lightning-charge-fill text-canary"></i>
+        </button>
+        <p class="text-center text-[11.5px] text-carbon/45">Free forever for 1 workspace · No credit card required</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast fixed z-[70] top-20 right-4 bg-carbon text-white rounded-2xl shadow-2xl px-5 py-3.5 flex items-center gap-3 max-w-xs" role="status">
+    <i id="toastIcon" class="bi bi-check-circle-fill text-emerald2 text-lg"></i>
+    <p id="toastMsg" class="text-[13px] font-medium leading-snug">Done</p>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+    var $ = function (s, c) { return (c || document).querySelector(s); };
+    var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+    /* ---------- Toast ---------- */
+    var toastTimer;
+    function toast(msg, icon) {
+      $('#toastMsg').textContent = msg;
+      $('#toastIcon').className = 'bi text-lg ' + (icon || 'bi-check-circle-fill text-emerald2');
+      var t = $('#toast');
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { t.classList.remove('show'); }, 3400);
+    }
+
+    /* ---------- Header shadow ---------- */
+    var header = $('#siteHeader');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 8) header.style.boxShadow = '0 8px 30px -12px rgba(24,24,26,.15)';
+      else header.style.boxShadow = 'none';
+    }, { passive: true });
+
+    /* ---------- Mobile menu ---------- */
+    var mm = $('#mobileMenu'), mmp = $('#mobileMenuPanel'), menuBtn = $('#menuBtn');
+    function setMenu(open) {
+      mm.classList.toggle('invisible', !open);
+      mm.classList.toggle('opacity-0', !open);
+      mmp.classList.toggle('translate-x-full', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      menuBtn.setAttribute('aria-expanded', String(open));
+    }
+    menuBtn.addEventListener('click', function () { setMenu(true); });
+    $$('[data-close-menu]').forEach(function (el) {
+      el.addEventListener('click', function () { setMenu(false); });
+    });
+
+    /* ---------- Scroll reveal ---------- */
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    $$('.reveal').forEach(function (el) { io.observe(el); });
+
+    /* ---------- Counters ---------- */
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target, target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.decimals || '0', 10);
+        var start = null;
+        var step = function (ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / 1400, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = (target * ease).toFixed(dec);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    $$('.counter').forEach(function (el) { cio.observe(el); });
+
+    /* ---------- Scrollspy ---------- */
+    var navLinks = $$('.nav-link');
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          navLinks.forEach(function (l) {
+            l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    ['services', 'proof', 'testimonials', 'faq', 'contact'].forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) spy.observe(s);
+    });
+
+    /* ---------- FAQ accordion ---------- */
+    $$('.faq-head').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('.faq-item'), body = $('.faq-body', item), open = item.classList.contains('open');
+        $$('.faq-item.open').forEach(function (i) {
+          if (i !== item) {
+            i.classList.remove('open');
+            $('.faq-body', i).style.maxHeight = '0';
+            $('.faq-head', i).setAttribute('aria-expanded', 'false');
+          }
+        });
+        item.classList.toggle('open', !open);
+        body.style.maxHeight = open ? '0' : body.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    });
+
+    /* ---------- Back to top (appears after hero passes) ---------- */
+    var btt = $('#backToTop');
+    new IntersectionObserver(function (entries) {
+      btt.classList.toggle('hidden-btn', entries[0].isIntersecting);
+    }, { rootMargin: '-80px 0px 0px 0px' }).observe($('#hero'));
+    btt.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ---------- TH/EN language toggle ---------- */
+    var btnTH = $('#langTH'), btnEN = $('#langEN');
+    function setLang(lang) {
+      var th = lang === 'th';
+      $$('[data-en]').forEach(function (el) { el.textContent = el.dataset[th ? 'th' : 'en']; });
+      btnTH.className = 'px-2.5 py-1 rounded-full transition-colors ' + (th ? 'bg-carbon text-white' : '');
+      btnEN.className = 'px-2.5 py-1 rounded-full transition-colors ' + (!th ? 'bg-carbon text-white' : '');
+      btnTH.setAttribute('aria-pressed', String(th));
+      btnEN.setAttribute('aria-pressed', String(!th));
+      toast(th ? 'ภาษาถูกเปลี่ยนเป็นไทย (ตัวอย่างการสลับภาษา)' : 'Language switched to English', 'bi-translate text-royal');
+    }
+    btnTH.addEventListener('click', function () { setLang('th'); });
+    btnEN.addEventListener('click', function () { setLang('en'); });
+
+    /* ---------- Auth modal ---------- */
+    var modal = $('#authModal'), loginForm = $('#loginForm'), regForm = $('#registerForm');
+    var lastFocus = null;
+    function switchTab(tab) {
+      var login = tab === 'login';
+      loginForm.classList.toggle('hidden', !login);
+      regForm.classList.toggle('hidden', login);
+      $('#tabLogin').className = 'auth-tab flex-1 pb-3 kicker-caps border-b-2 -mb-[2px] transition-colors ' + (login ? 'text-vermilion border-vermilion' : 'text-carbon/45 border-transparent hover:text-carbon');
+      $('#tabRegister').className = 'auth-tab flex-1 pb-3 kicker-caps border-b-2 -mb-[2px] transition-colors ' + (!login ? 'text-vermilion border-vermilion' : 'text-carbon/45 border-transparent hover:text-carbon');
+      $('#authTitle').textContent = login ? 'Welcome to PingMalline' : 'Create your workspace';
+    }
+    function openAuth(tab) {
+      lastFocus = document.activeElement;
+      switchTab(tab || 'login');
+      modal.classList.remove('hidden-modal');
+      document.body.style.overflow = 'hidden';
+      setMenu(false);
+      var focusId = (tab === 'register') ? 'regName' : 'loginEmail';
+      setTimeout(function () { var f = document.getElementById(focusId); if (f) f.focus(); }, 250);
+    }
+    function closeAuth() {
+      modal.classList.add('hidden-modal');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+    $$('[data-auth]').forEach(function (b) {
+      b.addEventListener('click', function () { openAuth(b.getAttribute('data-auth')); });
+    });
+    $$('[data-close-modal]').forEach(function (b) {
+      b.addEventListener('click', closeAuth);
+    });
+    $('#tabLogin').addEventListener('click', function () { switchTab('login'); });
+    $('#tabRegister').addEventListener('click', function () { switchTab('register'); });
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { closeAuth(); setMenu(false); closeChat(); }
+    });
+
+    // password visibility toggles
+    $$('.toggle-pass').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var inp = btn.parentElement.querySelector('input');
+        var show = inp.type === 'password';
+        inp.type = show ? 'text' : 'password';
+        btn.innerHTML = show ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+      });
+    });
+
+    // mock submit with spinner
+    function fakeSubmit(e, successMsg) {
+      e.preventDefault();
+      var form = e.target;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var btn = $('.auth-submit', form);
+      var original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="w-4 h-4 border-2 border-white/40 border-t-white rounded-full inline-block animate-spin"></span> Just a moment…';
+      setTimeout(function () {
+        btn.innerHTML = original;
+        btn.disabled = false;
+        form.reset();
+        closeAuth();
+        toast(successMsg);
+      }, 1100);
+    }
+    loginForm.addEventListener('submit', function (e) { fakeSubmit(e, 'Welcome back! (demo sign-in successful)'); });
+    regForm.addEventListener('submit', function (e) { fakeSubmit(e, 'Account created! Check your inbox to verify. (demo)'); });
+    $$('.auth-social').forEach(function (b) {
+      b.addEventListener('click', function () { toast('Social login is disabled in this demo template 🙂', 'bi-info-circle-fill text-canary'); });
+    });
+
+    /* ---------- Newsletter ---------- */
+    $('#newsletterForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = $('#newsEmail').value;
+      if (!/^\S+@\S+\.\S+$/.test(v)) { toast('Please enter a valid email address.', 'bi-exclamation-triangle-fill text-vermilion'); return; }
+      e.target.reset();
+      toast('Subscribed! Growth notes arrive monthly.');
+    });
+
+    /* ---------- Chatbot ---------- */
+    var chatBtn = $('#chatBtn'), chatPanel = $('#chatPanel'), chatClose = $('#chatClose'),
+        chatMsgs = $('#chatMessages'), chatQuick = $('#chatQuick'), chatForm = $('#chatForm'), chatInput = $('#chatInput');
+    var greeted = false;
+    var DEFAULT_QUICK = ['How much does it cost?', 'How fast can we launch?', 'What services do you offer?', 'Can I talk to a human?'];
+
+    function addMsg(text, who) {
+      var div = document.createElement('div');
+      div.className = 'chat-msg flex ' + (who === 'user' ? 'justify-end' : 'justify-start');
+      var bubble = document.createElement('div');
+      bubble.className = who === 'user'
+        ? 'bg-royal text-white text-[13px] leading-relaxed rounded-2xl rounded-br-md px-4 py-2.5 max-w-[82%]'
+        : 'bg-blush text-carbon text-[13px] leading-relaxed rounded-2xl rounded-bl-md px-4 py-2.5 max-w-[82%]';
+      bubble.textContent = text;
+      div.appendChild(bubble);
+      chatMsgs.appendChild(div);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    function setQuick(replies) {
+      chatQuick.innerHTML = '';
+      replies.forEach(function (r) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'text-[11.5px] font-semibold border border-carbon/20 rounded-full px-3 py-1.5 hover:bg-carbon hover:text-white transition-colors';
+        b.textContent = r;
+        b.addEventListener('click', function () { userSay(r); });
+        chatQuick.appendChild(b);
+      });
+    }
+
+    function typing(cb) {
+      var t = document.createElement('div');
+      t.className = 'chat-msg flex justify-start';
+      t.innerHTML = '<div class="bg-blush rounded-2xl rounded-bl-md px-4 py-3 flex gap-1.5"><span class="typing-dot w-2 h-2 bg-carbon/40 rounded-full inline-block"></span><span class="typing-dot w-2 h-2 bg-carbon/40 rounded-full inline-block"></span><span class="typing-dot w-2 h-2 bg-carbon/40 rounded-full inline-block"></span></div>';
+      chatMsgs.appendChild(t);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+      setTimeout(function () { t.remove(); cb(); }, 700 + Math.random() * 500);
+    }
+
+    function botSay(text, quick) {
+      typing(function () {
+        addMsg(text, 'bot');
+        setQuick(quick && quick.length ? quick : DEFAULT_QUICK);
+      });
+    }
+
+    function userSay(q) {
+      addMsg(q, 'user');
+      chatQuick.innerHTML = '';
+      var a = answer(q);
+      botSay(a.t, a.q);
+    }
+
+    function answer(q) {
+      var s = q.toLowerCase();
+      if (/(price|cost|how much|pricing|budget|บาท|เท่าไหร่)/.test(s))
+        return { t: "Great question! LINE OA setups start at ฿45,000 (~$1,300). Most full projects land between ฿150,000–฿850,000 (~$4,300–$24,000). Every quote includes a free scoping session — want me to book one?", q: ['Book a free audit', "What's included?", 'Can I talk to a human?'] };
+      if (/(fast|how long|timeline|launch|when|week|เร็ว)/.test(s))
+        return { t: "Speed is our thing ⚡ LINE OA + chat commerce: 2–4 weeks. Full omnichannel build: 6–10 weeks. Your first campaign can usually go live within 14 days of kickoff.", q: ["What's included?", 'How much does it cost?'] };
+      if (/(human|person|call|talk to|someone|agent|sales|คน)/.test(s))
+        return { t: "Of course — humans are still our best feature 😊 Call +66 2 123 4567 (Mon–Fri 9–18 ICT) or add LINE @pingmalline — typical reply under 5 minutes.", q: ['What are your office hours?', 'How do I get a quote?'] };
+      if (/(service|do you|offer|what can|บริการ)/.test(s))
+        return { t: "We do 6 things really well: 1) LINE OA & Chat Commerce 2) Performance Marketing 3) Web & App Development 4) Brand & Content Studio 5) Data & AI Chatbots 6) Omnichannel & Fulfillment. Which one fits your project?", q: ['Tell me about LINE OA', 'Tell me about AI chatbots'] };
+      if (/(line oa|line official|rich menu|broadcast)/.test(s))
+        return { t: "LINE OA is where we shine 🟢 Rich menus, broadcast journeys, loyalty flows and AI replies — all automated. One client grew ฿48M in 6 months from their OA alone. Want the full case study?", q: ['Send the case study', 'How much does it cost?'] };
+      if (/(ai|chatbot|bot|automat|robot)/.test(s))
+        return { t: "Our AI assistants are trained on your product catalogue and tone. They qualify leads, answer TH/EN 24/7, and hand off to humans when it matters. We automate 24M+ conversations every month.", q: ['How much does it cost?', 'Book a free audit'] };
+      if (/(quote|proposal|estimate|ใบเสนอราคา)/.test(s))
+        return { t: "Easy! Email hello@pingmalline.co with a sentence about your brand, or call +66 2 123 4567. You'll get a custom quote + 90-day roadmap within 24 hours — free, no strings.", q: ['Can I talk to a human?', 'How fast can we launch?'] };
+      if (/(case|study|result|proof|portfolio|ผลงาน)/.test(s))
+        return { t: "Our favorite: Siam Naturals hit +312% revenue (฿48M) in 6 months with a 4.2x ROAS using our chat-first funnel. Scroll to the Proof section on this page for the numbers 👇", q: ['Book a free audit', 'What services do you offer?'] };
+      if (/(hour|open|close|time|เวลา)/.test(s))
+        return { t: "Our Bangkok office runs Mon–Fri, 9:00–18:00 ICT — but the AI (me 😉) never sleeps. LINE replies average under 5 minutes during office hours.", q: ['Can I talk to a human?', 'How do I get a quote?'] };
+      if (/(book|audit|meeting|consult|นัด)/.test(s))
+        return { t: "Love it! The fastest way: call +66 2 123 4567 or add LINE @pingmalline and mention 'free audit'. It takes 30 minutes and you leave with a written action plan.", q: ['Can I talk to a human?', 'What services do you offer?'] };
+      if (/(included|package|package|scope)/.test(s))
+        return { t: "Every package includes: strategy workshop, creative assets, technical setup, team training and 90 days of optimization. No hidden fees — we promise.", q: ['How much does it cost?', 'How fast can we launch?'] };
+      if (/(hi|hello|hey|sawasdee|สวัสดี)/.test(s))
+        return { t: "Hello there! 👋 Ask me anything about our services, pricing, or timelines — I answer instantly.", q: DEFAULT_QUICK };
+      if (/(thank|thanks|ขอบคุณ|great|awesome|cool)/.test(s))
+        return { t: "You're very welcome! Anything else I can help with? 🙌", q: DEFAULT_QUICK };
+      return { t: "Good question! I'll make sure a specialist covers that. In the meantime: our packages start at ฿45,000 and most projects launch in 2–4 weeks. Want me to connect you with the team?", q: ['Can I talk to a human?', 'Book a free audit'] };
+    }
+
+    function openChat() {
+      chatPanel.classList.remove('hidden-chat');
+      chatBtn.setAttribute('aria-expanded', 'true');
+      if (!greeted) {
+        greeted = true;
+        botSay("Sawasdee! 👋 I'm PM Assistant. I can help with pricing, timelines, services — or connect you with a human. What's on your mind?",
+          ['How much does it cost?', 'How fast can we launch?', 'Book a free audit']);
+      }
+      setTimeout(function () { chatInput.focus(); }, 300);
+    }
+    function closeChat() {
+      chatPanel.classList.add('hidden-chat');
+      chatBtn.setAttribute('aria-expanded', 'false');
+    }
+    chatBtn.addEventListener('click', function () {
+      if (chatPanel.classList.contains('hidden-chat')) openChat(); else closeChat();
+    });
+    chatClose.addEventListener('click', closeChat);
+    $('#heroChatBtn').addEventListener('click', openChat);
+    $('#ctaChatBtn').addEventListener('click', openChat);
+
+    chatForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = chatInput.value.trim();
+      if (!v) return;
+      chatInput.value = '';
+      userSay(v);
+    });
+
+    /* ---------- Ask AI section → chat ---------- */
+    $('#askAiForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = $('#askAiInput').value.trim();
+      if (!v) { toast('Type a question first — or tap one of the suggestions 👇', 'bi-info-circle-fill text-royal'); return; }
+      $('#askAiInput').value = '';
+      openChat();
+      setTimeout(function () { userSay(v); }, 350);
+    });
+    $$('.chip').forEach(function (c) {
+      c.addEventListener('click', function () {
+        openChat();
+        setTimeout(function () { userSay(c.dataset.q); }, 350);
+      });
+    });
+
+    /* ---------- misc ---------- */
+    $('#year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
