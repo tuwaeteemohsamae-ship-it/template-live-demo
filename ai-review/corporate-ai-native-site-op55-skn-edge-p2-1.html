@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DomiNex — Creative Digital Agency | Web Design, Branding & Marketing</title>
+    <meta name="description" content="DomiNex is a full-service creative digital agency specializing in web design, branding, and performance marketing. Trusted by 500+ brands. Get a free quote today.">
+    <meta name="keywords" content="creative agency, web design, branding, digital marketing, SEO, UI/UX design, Bangkok agency, DomiNex">
+    <meta name="author" content="DomiNex Agency">
+    <meta property="og:title" content="DomiNex — Creative Digital Agency">
+    <meta property="og:description" content="Transform your brand with bold design and data-driven marketing. 500+ projects delivered.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vermilion: '#EB4D2B',
+                        'vermilion-light': '#FF6B4A',
+                        'royal-blue': '#262AF5',
+                        'royal-blue-dark': '#1518D6',
+                        'canary-yellow': '#F4B800',
+                        'orchid-violet': '#C24AF5',
+                        'orchid-violet-dark': '#9B2AE0',
+                        'emerald-green': '#3BB75E',
+                        'carbon-black': '#18181A',
+                        'soft-blush': '#FBECE8',
+                    },
+                    fontFamily: {
+                        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    maxWidth: {
+                        'site': '1280px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-vermilion: #EB4D2B;
+            --color-royal-blue: #262AF5;
+            --color-canary-yellow: #F4B800;
+            --color-orchid-violet: #C24AF5;
+            --color-emerald-green: #3BB75E;
+            --color-carbon-black: #18181A;
+            --color-surface: #FFFFFF;
+            --shadow-smooth: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px -12px rgba(0,0,0,0.18);
+            --shadow-card: 0 4px 6px -1px rgba(0,0,0,0.05), 0 10px 30px -6px rgba(0,0,0,0.12);
+            --shadow-elevated: 0 10px 40px -10px rgba(0,0,0,0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #18181A;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.035em;
+        }
+
+        .kicker {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+        }
+
+        /* Hero Title */
+        .hero-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            line-height: 0.98;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .card-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.6s ease-out forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cards */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #EB4D2B 0%, #FF6B4A 100%);
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -8px rgba(235, 77, 43, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #18181A;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #e5e5e5;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+
+        .btn-secondary:hover {
+            border-color: #EB4D2B;
+            color: #EB4D2B;
+            transform: translateY(-2px);
+        }
+
+        .btn-royal {
+            background: linear-gradient(135deg, #262AF5 0%, #1518D6 100%);
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+
+        .btn-royal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -8px rgba(38, 42, 245, 0.5);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(24, 24, 26, 0.65);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* Form inputs */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #262AF5;
+            box-shadow: 0 0 0 3px rgba(38, 42, 245, 0.1);
+        }
+
+        /* Chatbot */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            width: 360px;
+            max-width: calc(100vw - 48px);
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-elevated);
+            z-index: 900;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform-origin: bottom right;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            height: 480px;
+        }
+
+        .chatbot-widget.active {
+            display: flex;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 13px;
+            line-height: 1.5;
+            animation: fadeInUp 0.2s ease;
+        }
+
+        .chat-message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #262AF5 0%, #1518D6 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-message.bot {
+            align-self: flex-start;
+            background: #f5f5f5;
+            color: #18181A;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chatbot-input-area {
+            padding: 12px 16px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 8px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .chatbot-input:focus {
+            border-color: #262AF5;
+        }
+
+        .chatbot-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #262AF5 0%, #1518D6 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.05);
+        }
+
+        /* Floating buttons container */
+        .floating-actions {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 950;
+        }
+
+        .fab {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .fab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .fab-chat {
+            background: linear-gradient(135deg, #262AF5 0%, #1518D6 100%);
+            color: white;
+        }
+
+        .fab-top {
+            background: white;
+            color: #18181A;
+            border: 2px solid #e5e5e5;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .fab-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Mobile CTA Bar */
+        .mobile-cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #eee;
+            padding: 10px 16px;
+            display: none;
+            gap: 8px;
+            z-index: 800;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-cta-bar {
+                display: flex;
+            }
+
+            .floating-actions {
+                bottom: 80px;
+            }
+
+            .chatbot-widget {
+                bottom: 150px;
+                right: 12px;
+                left: 12px;
+                width: auto;
+                max-width: none;
+            }
+
+            body {
+                padding-bottom: 70px;
+            }
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: #18181A;
+            transition: color 0.2s ease;
+        }
+
+        .faq-question:hover {
+            color: #EB4D2B;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #999;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: #EB4D2B;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-bottom: 20px;
+        }
+
+        .faq-answer p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #EB4D2B, #FF6B4A);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+            border-color: transparent;
+        }
+
+        .service-card.blue::before { background: linear-gradient(90deg, #262AF5, #1518D6); }
+        .service-card.violet::before { background: linear-gradient(90deg, #C24AF5, #9B2AE0); }
+        .service-card.green::before { background: linear-gradient(90deg, #3BB75E, #2d9a4c); }
+        .service-card.yellow::before { background: linear-gradient(90deg, #F4B800, #d9a300); }
+
+        /* Testimonial Card */
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-card);
+            transform: translateY(-3px);
+        }
+
+        /* Trust badge */
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Stat number */
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        /* Gradient text */
+        .gradient-text-vermilion {
+            background: linear-gradient(135deg, #EB4D2B 0%, #FF6B4A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-blue {
+            background: linear-gradient(135deg, #262AF5 0%, #1518D6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Tag/Pill */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Suggested question chips */
+        .suggestion-chip {
+            padding: 8px 16px;
+            border-radius: 100px;
+            border: 1px solid #e5e5e5;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .suggestion-chip:hover {
+            border-color: #262AF5;
+            color: #262AF5;
+            background: rgba(38, 42, 245, 0.05);
+        }
+
+        /* Case study card */
+        .case-study-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #18181A;
+            color: white;
+        }
+
+        .case-study-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .case-study-card:hover img {
+            opacity: 0.5;
+            transform: scale(1.05);
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 500;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Nav link hover */
+        .nav-link {
+            position: relative;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #18181A;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #EB4D2B;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Tab buttons */
+        .tab-btn {
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: #666;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tab-btn.active {
+            background: #18181A;
+            color: white;
+        }
+
+        /* Verified badge */
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #3BB75E;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Star rating */
+        .star-rating {
+            color: #F4B800;
+            font-size: 13px;
+        }
+
+        /* Image hover zoom */
+        .img-zoom {
+            overflow: hidden;
+        }
+
+        .img-zoom img {
+            transition: transform 0.5s ease;
+        }
+
+        .img-zoom:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Focus visible */
+        *:focus-visible {
+            outline: 2px solid #262AF5;
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Print */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white;
+            }
+        }
+
+        /* Crosshair decoration */
+        .crosshair {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .crosshair::before,
+        .crosshair::after {
+            content: '';
+            position: absolute;
+            background: currentColor;
+        }
+
+        .crosshair::before {
+            width: 1px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+        }
+
+        .crosshair::after {
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-vermilion to-vermilion-light flex items-center justify-center text-white font-display font-black text-lg transform group-hover:rotate-12 transition-transform">
+                        D
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight">DomiNex</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#work" class="nav-link">Work</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-3">
+                    <button class="hidden md:flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors" onclick="toggleLang()">
+                        <i class="fas fa-globe text-xs"></i>
+                        <span>EN</span>
+                    </button>
+                    <button class="btn-primary text-sm py-2.5 px-5" onclick="openModal('login')">
+                        <span>Sign In</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </button>
+                    <!-- Mobile menu toggle -->
+                    <button class="md:hidden w-10 h-10 flex items-center justify-center text-lg" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden border-t border-gray-100 bg-white">
+            <div class="px-5 py-4 flex flex-col gap-3">
+                <a href="#services" class="py-2 text-gray-700 font-medium" onclick="toggleMobileMenu()">Services</a>
+                <a href="#work" class="py-2 text-gray-700 font-medium" onclick="toggleMobileMenu()">Work</a>
+                <a href="#testimonials" class="py-2 text-gray-700 font-medium" onclick="toggleMobileMenu()">Testimonials</a>
+                <a href="#faq" class="py-2 text-gray-700 font-medium" onclick="toggleMobileMenu()">FAQ</a>
+                <a href="#contact" class="py-2 text-gray-700 font-medium" onclick="toggleMobileMenu()">Contact</a>
+                <button class="btn-primary w-full justify-center mt-2" onclick="openModal('login'); toggleMobileMenu()">Sign In / Register</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-white overflow-hidden" id="hero">
+        <div class="crosshair text-vermilion" style="top: 10%; left: 5%;"></div>
+        <div class="crosshair text-royal-blue" style="top: 20%; right: 10%;"></div>
+        <div class="crosshair text-orchid-violet" style="bottom: 15%; left: 8%;"></div>
+
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-24 lg:py-32">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Hero Content -->
+                <div class="order-2 lg:order-1">
+                    <div class="kicker text-vermilion mb-4 animate-fade-in-up">
+                        <i class="fas fa-fire mr-1"></i> Creative Digital Agency
+                    </div>
+                    <h1 class="hero-title text-carbon-black mb-6 animate-fade-in-up delay-100">
+                        We Design <span class="gradient-text-vermilion">Brands</span> That People <span class="gradient-text-blue">Remember</span>
+                    </h1>
+                    <p class="text-gray-600 text-base md:text-lg leading-relaxed mb-8 max-w-lg animate-fade-in-up delay-200">
+                        DomiNex is a full-service creative agency helping ambitious companies grow through bold design, smart strategy, and performance-driven digital marketing. From Bangkok to the world.
+                    </p>
+                    <div class="flex flex-wrap gap-4 animate-fade-in-up delay-300">
+                        <a href="#contact" class="btn-primary">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Get a Free Quote</span>
+                        </a>
+                        <button class="btn-secondary" onclick="toggleChatbot()">
+                            <i class="fas fa-robot"></i>
+                            <span>Ask AI Assistant</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick trust signals -->
+                    <div class="flex flex-wrap items-center gap-4 mt-10 animate-fade-in-up delay-400">
+                        <div class="flex -space-x-2">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Client" class="w-8 h-8 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Client" class="w-8 h-8 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Client" class="w-8 h-8 rounded-full border-2 border-white object-cover">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Client" class="w-8 h-8 rounded-full border-2 border-white object-cover">
+                        </div>
+                        <div class="text-sm">
+                            <span class="font-semibold text-carbon-black">500+</span>
+                            <span class="text-gray-500"> happy clients worldwide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="order-1 lg:order-2 relative animate-scale-in delay-200">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="Creative team collaborating in modern office" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-vermilion/20 to-transparent"></div>
+                    </div>
+                    <!-- Floating stat card -->
+                    <div class="absolute -bottom-4 -left-4 md:-left-8 bg-white rounded-xl p-4 shadow-lg border border-gray-100 animate-fade-in-up delay-500">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-green to-emerald-500 flex items-center justify-center text-white">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <div class="font-display font-bold text-lg leading-none">340%</div>
+                                <div class="text-xs text-gray-500">Avg. ROI Increase</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating badge -->
+                    <div class="absolute -top-3 -right-3 md:-right-6 bg-royal-blue text-white rounded-xl p-3 shadow-lg animate-fade-in-up delay-500">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-award text-yellow-300"></i>
+                            <div>
+                                <div class="font-display font-bold text-sm leading-none">Top 3%</div>
+                                <div class="text-[10px] opacity-90">Agency in SEA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="bg-white border-y border-gray-100 py-10 md:py-14" id="trust">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="text-center mb-8">
+                <span class="kicker text-gray-400">Trusted by Industry Leaders</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+                <div class="flex flex-col items-center gap-2 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-soft-blush flex items-center justify-center text-vermilion text-xl">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-600">ISO 9001 Certified</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-royal-blue text-xl">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-600">12+ Years</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-orchid-violet text-xl">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-600">4.9/5 Rating</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-emerald-green text-xl">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-600">Verified Reviews</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-50 flex items-center justify-center text-canary-yellow text-xl">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-600">Fast Delivery</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-carbon-black text-xl">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-gray-600">24/7 Support</span>
+                </div>
+            </div>
+
+            <!-- Client Logos -->
+            <div class="mt-10 pt-8 border-t border-gray-100">
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-50">
+                    <div class="flex items-center gap-2 text-xl font-display font-bold text-gray-400 hover:text-vermilion transition-colors cursor-pointer">
+                        <i class="fas fa-cube"></i> TechFlow
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-display font-bold text-gray-400 hover:text-royal-blue transition-colors cursor-pointer">
+                        <i class="fas fa-leaf"></i> GreenLife
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-display font-bold text-gray-400 hover:text-orchid-violet transition-colors cursor-pointer">
+                        <i class="fas fa-gem"></i> Luxora
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-display font-bold text-gray-400 hover:text-emerald-green transition-colors cursor-pointer">
+                        <i class="fas fa-building"></i> MetroCorp
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-display font-bold text-gray-400 hover:text-canary-yellow transition-colors cursor-pointer">
+                        <i class="fas fa-sun"></i> SolarMax
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="bg-white py-16 md:py-24" id="services">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <span class="kicker text-royal-blue mb-3 block">What We Do</span>
+                <h2 class="section-title text-carbon-black mb-4">Full-Service Creative Solutions</h2>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">From brand strategy to performance marketing, we provide end-to-end digital solutions that drive measurable business growth.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="service-card reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-vermilion to-vermilion-light flex items-center justify-center text-white text-xl mb-5">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="card-title text-carbon-black mb-3">Brand Identity Design</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Logo design, brand guidelines, visual identity systems, and brand strategy that makes you unforgettable in your market.</p>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-sm font-semibold text-vermilion hover:gap-2 transition-all">
+                        Learn more <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card blue reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-royal-blue to-royal-blue-dark flex items-center justify-center text-white text-xl mb-5">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title text-carbon-black mb-3">Web Design & Development</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Custom websites, e-commerce platforms, and web applications built for speed, SEO, and conversion. SSR/ISR ready.</p>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-sm font-semibold text-royal-blue hover:gap-2 transition-all">
+                        Learn more <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card violet reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orchid-violet to-orchid-violet-dark flex items-center justify-center text-white text-xl mb-5">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="card-title text-carbon-black mb-3">UI/UX Design</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">User research, wireframing, prototyping, and interface design that creates intuitive digital experiences your users love.</p>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-sm font-semibold text-orchid-violet hover:gap-2 transition-all">
+                        Learn more <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card green reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-green to-emerald-600 flex items-center justify-center text-white text-xl mb-5">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="card-title text-carbon-black mb-3">SEO & Content Strategy</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Technical SEO, content marketing, keyword strategy, and authority building that puts you on page one of Google.</p>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-sm font-semibold text-emerald-green hover:gap-2 transition-all">
+                        Learn more <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card yellow reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-canary-yellow to-yellow-500 flex items-center justify-center text-carbon-black text-xl mb-5">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="card-title text-carbon-black mb-3">Performance Marketing</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Google Ads, Meta Ads, TikTok marketing, and conversion rate optimization that maximizes your ad spend ROI.</p>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-sm font-semibold text-yellow-600 hover:gap-2 transition-all">
+                        Learn more <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card reveal">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-carbon-black to-gray-700 flex items-center justify-center text-white text-xl mb-5">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="card-title text-carbon-black mb-3">Motion & Video</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">Brand videos, product demos, motion graphics, and social media content that captures attention and drives engagement.</p>
+                    <a href="#contact" class="inline-flex items-center gap-1 text-sm font-semibold text-gray-700 hover:gap-2 transition-all">
+                        Learn more <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof / Stats Section -->
+    <section class="bg-white py-16 md:py-24" id="work">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Stats -->
+                <div>
+                    <span class="kicker text-emerald-green mb-3 block reveal">Proven Results</span>
+                    <h2 class="section-title text-carbon-black mb-6 reveal">Numbers That Speak for Themselves</h2>
+                    <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-10 reveal">We do not just create beautiful designs. We deliver measurable business outcomes that impact your bottom line.</p>
+
+                    <div class="grid grid-cols-2 gap-6 md:gap-8">
+                        <div class="reveal">
+                            <div class="stat-number gradient-text-vermilion">500+</div>
+                            <div class="text-sm font-semibold text-gray-700 mt-1">Projects Delivered</div>
+                            <div class="text-xs text-gray-400 mt-1">Across 15+ countries</div>
+                        </div>
+                        <div class="reveal">
+                            <div class="stat-number gradient-text-blue">340%</div>
+                            <div class="text-sm font-semibold text-gray-700 mt-1">Average ROI</div>
+                            <div class="text-xs text-gray-400 mt-1">For marketing clients</div>
+                        </div>
+                        <div class="reveal">
+                            <div class="stat-number gradient-text-vermilion">12+</div>
+                            <div class="text-sm font-semibold text-gray-700 mt-1">Years Experience</div>
+                            <div class="text-xs text-gray-400 mt-1">In digital & creative</div>
+                        </div>
+                        <div class="reveal">
+                            <div class="stat-number gradient-text-blue">98%</div>
+                            <div class="text-sm font-semibold text-gray-700 mt-1">Client Retention</div>
+                            <div class="text-xs text-gray-400 mt-1">Year over year</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Case Study -->
+                <div class="reveal">
+                    <div class="case-study-card">
+                        <div class="relative h-80 md:h-96">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="E-commerce dashboard showing growth metrics" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/50 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="tag bg-vermilion text-white">E-commerce</span>
+                                    <span class="tag bg-white/20 text-white backdrop-blur">UI/UX Redesign</span>
+                                </div>
+                                <h3 class="font-display font-bold text-xl md:text-2xl text-white mb-2">Luxora Fashion</h3>
+                                <p class="text-white/80 text-sm mb-4 max-w-md">Complete digital transformation including brand refresh, e-commerce platform rebuild, and performance marketing campaign.</p>
+                                <div class="flex flex-wrap gap-6">
+                                    <div>
+                                        <div class="font-display font-bold text-xl text-white">+245%</div>
+                                        <div class="text-white/60 text-xs">Online Revenue</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-bold text-xl text-white">+189%</div>
+                                        <div class="text-white/60 text-xs">Conversion Rate</div>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-bold text-xl text-white">1.8s</div>
+                                        <div class="text-white/60 text-xs">Avg Load Time</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-white py-16 md:py-24" id="testimonials">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <span class="kicker text-orchid-violet mb-3 block">Client Stories</span>
+                <h2 class="section-title text-carbon-black mb-4">Loved by Teams Worldwide</h2>
+                <p class="text-gray-600 text-sm md:text-base leading-relaxed">Do not just take our word for it. Here is what our clients say about working with DomiNex.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card reveal">
+                    <div class="flex items-center gap-1 mb-4 star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-6">"DomiNex transformed our entire digital presence. Our new website loads in under 2 seconds and conversions have doubled. The team truly understands both design and business."</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Sarah Chen" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <div class="font-semibold text-sm text-carbon-black">Sarah Chen</div>
+                                <div class="text-xs text-gray-500">CMO, TechFlow Inc.</div>
+                            </div>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card reveal">
+                    <div class="flex items-center gap-1 mb-4 star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-6">"The ROI we have seen from DomiNex's performance marketing is incredible. They helped us scale from $50k to $500k monthly revenue in just 8 months. Highly recommended."</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Marcus Johnson" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <div class="font-semibold text-sm text-carbon-black">Marcus Johnson</div>
+                                <div class="text-xs text-gray-500">Founder, GreenLife Co.</div>
+                            </div>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card reveal">
+                    <div class="flex items-center gap-1 mb-4 star-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-6">"Professional, creative, and always on time. DomiNex delivered a brand identity that perfectly captures our vision. Our customers constantly compliment our new look."</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Ariya Patel" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <div class="font-semibold text-sm text-carbon-black">Ariya Patel</div>
+                                <div class="text-xs text-gray-500">Director, Luxora</div>
+                            </div>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Section -->
+    <section class="bg-white py-16 md:py-24" id="ai-assistant">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-10 reveal">
+                    <span class="kicker text-royal-blue mb-3 block"><i class="fas fa-robot mr-1"></i> AI Assistant</span>
+                    <h2 class="section-title text-carbon-black mb-4">Ask Me Anything</h2>
+                    <p class="text-gray-600 text-sm md:text-base leading-relaxed">Get instant answers about our services, pricing, process, or how we can help your business grow.</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8 reveal">
+                    <div class="relative mb-6">
+                        <input type="text" id="aiInput" placeholder="Type your question here... (e.g., 'How much does a website cost?')" 
+                            class="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 bg-white text-sm focus:border-royal-blue focus:outline-none transition-colors"
+                            onkeypress="if(event.key==='Enter')handleAIQuery()">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <button onclick="handleAIQuery()" class="absolute right-2 top-1/2 -translate-y-1/2 btn-royal py-2 px-4 text-sm">
+                            Ask
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <button onclick="askAI('How much does a website cost?')" class="suggestion-chip">
+                            <i class="fas fa-dollar-sign text-xs mr-1 text-gray-400"></i> Website pricing
+                        </button>
+                        <button onclick="askAI('What is your process?')" class="suggestion-chip">
+                            <i class="fas fa-tasks text-xs mr-1 text-gray-400"></i> Our process
+                        </button>
+                        <button onclick="askAI('How long does a project take?')" class="suggestion-chip">
+                            <i class="fas fa-clock text-xs mr-1 text-gray-400"></i> Timeline
+                        </button>
+                        <button onclick="askAI('Do you offer SEO services?')" class="suggestion-chip">
+                            <i class="fas fa-search text-xs mr-1 text-gray-400"></i> SEO services
+                        </button>
+                        <button onclick="askAI('Can I see your portfolio?')" class="suggestion-chip">
+                            <i class="fas fa-images text-xs mr-1 text-gray-400"></i> Portfolio
+                        </button>
+                    </div>
+
+                    <!-- AI Response Area -->
+                    <div id="aiResponse" class="hidden mt-6 p-5 bg-white rounded-xl border border-gray-100">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-royal-blue to-royal-blue-dark flex items-center justify-center text-white text-sm flex-shrink-0">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-sm text-carbon-black mb-1">DomiNex AI</div>
+                                <div id="aiResponseText" class="text-sm text-gray-600 leading-relaxed"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-16 md:py-24" id="faq">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+                <div class="lg:col-span-2 reveal">
+                    <span class="kicker text-vermilion mb-3 block">FAQ</span>
+                    <h2 class="section-title text-carbon-black mb-4">Frequently Asked Questions</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Got questions? We have answers. If you cannot find what you are looking for, feel free to ask our AI assistant or contact us directly.</p>
+                    <a href="#contact" class="btn-primary text-sm">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+
+                <div class="lg:col-span-3 reveal">
+                    <div class="faq-item active">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>How much does a typical website project cost?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our website projects typically range from 85,000 THB ($2,500) for a professional business website to 850,000+ THB ($25,000+) for complex e-commerce or custom web applications. We provide detailed quotes after understanding your specific requirements during a free consultation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>How long does a project usually take?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Timeline depends on scope. A standard brand identity takes 2-4 weeks, a corporate website takes 4-8 weeks, and a comprehensive e-commerce platform takes 8-16 weeks. We always provide a detailed timeline before starting and keep you updated weekly.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Do you offer ongoing support after launch?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, we offer flexible maintenance and support packages starting from 8,500 THB ($250) per month. This includes security updates, performance monitoring, content updates, and priority support with a 24-hour response guarantee.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>What makes DomiNex different from other agencies?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We combine creative excellence with data-driven strategy. Every design decision is backed by research and aimed at measurable business outcomes. Our 98% client retention rate and 340% average ROI speak for themselves. Plus, you get a dedicated team, not just an account manager.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            <span>Do you work with international clients?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutely. We work with clients across 15+ countries including USA, UK, Singapore, Australia, and across Southeast Asia. Our team is fluent in English and Thai, and we are experienced in managing remote projects across time zones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA + Contact -->
+    <section class="bg-white py-16 md:py-24" id="contact">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="reveal">
+                    <span class="kicker text-emerald-green mb-3 block">Start Your Project</span>
+                    <h2 class="section-title text-carbon-black mb-4">Ready to Grow Your Business?</h2>
+                    <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-8">Get a free, no-obligation quote for your project. Our team will analyze your needs and propose a tailored solution within 24 hours.</p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-vermilion to-vermilion-light flex items-center justify-center text-white">
+                                <i class="fas fa-phone-alt text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Call us</div>
+                                <div class="font-semibold text-sm text-carbon-black">+66 2 123 4567</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-royal-blue to-royal-blue-dark flex items-center justify-center text-white">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Email us</div>
+                                <div class="font-semibold text-sm text-carbon-black"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8a0ada4a4a788aca7a5a1a6adb0e6a9afada6abb1">[email&#160;protected]</a></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-orchid-violet to-orchid-violet-dark flex items-center justify-center text-white">
+                                <i class="fab fa-line text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">LINE</div>
+                                <div class="font-semibold text-sm text-carbon-black">@dominex</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-green to-emerald-600 flex items-center justify-center text-white">
+                                <i class="fas fa-map-marker-alt text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Visit us</div>
+                                <div class="font-semibold text-sm text-carbon-black">Empire Tower, Bangkok, Thailand</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="reveal">
+                    <form id="contactForm" class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100" onsubmit="handleContactSubmit(event)">
+                        <h3 class="font-display font-bold text-lg text-carbon-black mb-5">Request a Free Quote</h3>
+                        <div class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1.5">First Name</label>
+                                    <input type="text" class="form-input" placeholder="John" required>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1.5">Last Name</label>
+                                    <input type="text" class="form-input" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Email</label>
+                                <input type="email" class="form-input" placeholder="john@company.com" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Phone</label>
+                                <input type="tel" class="form-input" placeholder="+66 81 234 5678">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Service Interested In</label>
+                                <select class="form-input" required>
+                                    <option value="">Select a service</option>
+                                    <option value="branding">Brand Identity</option>
+                                    <option value="web">Web Design & Development</option>
+                                    <option value="uiux">UI/UX Design</option>
+                                    <option value="seo">SEO & Content</option>
+                                    <option value="marketing">Performance Marketing</option>
+                                    <option value="video">Motion & Video</option>
+                                    <option value="other">Other / Not Sure</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1.5">Project Details</label>
+                                <textarea class="form-input" rows="3" placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full justify-center">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Send Request</span>
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-4 text-center">We respect your privacy. No spam, ever.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-14 pb-6">
+        <div class="max-w-site mx-auto px-5 md:px-8 lg:px-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-vermilion to-vermilion-light flex items-center justify-center text-white font-display font-black text-sm">D</div>
+                        <span class="font-display font-bold text-lg tracking-tight">DomiNex</span>
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Bold design meets data-driven strategy. We help ambitious brands grow in the digital age.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-vermilion hover:text-white transition-colors" aria-label="Facebook">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-royal-blue hover:text-white transition-colors" aria-label="Instagram">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-carbon-black hover:text-white transition-colors" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-orchid-violet hover:text-white transition-colors" aria-label="TikTok">
+                            <i class="fab fa-tiktok text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-sm text-carbon-black mb-4">Services</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#services" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Brand Identity</a></li>
+                        <li><a href="#services" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Web Design</a></li>
+                        <li><a href="#services" class="text-sm text-gray-500 hover:text-vermilion transition-colors">UI/UX Design</a></li>
+                        <li><a href="#services" class="text-sm text-gray-500 hover:text-vermilion transition-colors">SEO & Content</a></li>
+                        <li><a href="#services" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Performance Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-sm text-carbon-black mb-4">Company</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-vermilion transition-colors">About Us</a></li>
+                        <li><a href="#work" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Our Work</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Blog</a></li>
+                        <li><a href="#contact" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-sm text-carbon-black mb-4">Legal</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-sm text-gray-500 hover:text-vermilion transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-gray-400"> 2026 DomiNex Agency. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <span class="text-xs text-gray-400">TH/EN</span>
+                    <button onclick="toggleLang()" class="text-xs text-gray-500 hover:text-carbon-black transition-colors font-medium">Switch Language</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login/Register Modal -->
+    <div class="modal-overlay" id="authModal" onclick="closeModalOnOverlay(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-vermilion to-vermilion-light flex items-center justify-center text-white font-display font-black text-sm">D</div>
+                        <span class="font-display font-bold text-lg">DomiNex</span>
+                    </div>
+                    <button onclick="closeModal()" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close">
+                        <i class="fas fa-times text-gray-500"></i>
+                    </button>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex gap-2 bg-gray-100 rounded-xl p-1 mb-6">
+                    <button class="tab-btn active flex-1" id="loginTab" onclick="switchTab('login')">Sign In</button>
+                    <button class="tab-btn flex-1" id="registerTab" onclick="switchTab('register')">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-4" onsubmit="handleLogin(event)">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1.5">Email</label>
+                        <input type="email" class="form-input" placeholder="you@company.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1.5">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-royal-blue focus:ring-royal-blue">
+                            <span class="text-xs text-gray-600">Remember me</span>
+                        </label>
+                        <a href="#" class="text-xs font-semibold text-royal-blue hover:underline">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn-primary w-full justify-center">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Sign In</span>
+                    </button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="space-y-4 hidden" onsubmit="handleRegister(event)">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">First Name</label>
+                            <input type="text" class="form-input" placeholder="John" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1.5">Email</label>
+                        <input type="email" class="form-input" placeholder="you@company.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1.5">Company</label>
+                        <input type="text" class="form-input" placeholder="Your company name">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1.5">Password</label>
+                        <input type="password" class="form-input" placeholder="Min. 8 characters" required minlength="8">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1.5">Confirm Password</label>
+                        <input type="password" class="form-input" placeholder="Repeat password" required>
+                    </div>
+                    <label class="flex items-start gap-2 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-royal-blue focus:ring-royal-blue mt-0.5" required>
+                        <span class="text-xs text-gray-600">I agree to the <a href="#" class="text-royal-blue font-semibold hover:underline">Terms of Service</a> and <a href="#" class="text-royal-blue font-semibold hover:underline">Privacy Policy</a></span>
+                    </label>
+                    <button type="submit" class="btn-primary w-full justify-center">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Create Account</span>
+                    </button>
+                </form>
+
+                <div class="mt-6 pt-6 border-t border-gray-100 text-center">
+                    <p class="text-xs text-gray-400 mb-3">Or continue with</p>
+                    <div class="flex justify-center gap-3">
+                        <button class="w-10 h-10 rounded-xl border-2 border-gray-200 flex items-center justify-center text-gray-600 hover:border-gray-300 transition-colors" aria-label="Google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-xl border-2 border-gray-200 flex items-center justify-center text-gray-600 hover:border-gray-300 transition-colors" aria-label="LINE">
+                            <i class="fab fa-line"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-xl border-2 border-gray-200 flex items-center justify-center text-gray-600 hover:border-gray-300 transition-colors" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-24 right-5 bg-carbon-black text-white px-5 py-3 rounded-xl shadow-lg transform translate-x-full transition-transform duration-300 z-[1100] flex items-center gap-3">
+        <i class="fas fa-check-circle text-emerald-green"></i>
+        <span id="toastMessage" class="text-sm font-medium">Success!</span>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions no-print">
+        <button id="backToTop" class="fab fab-top" onclick="scrollToTop()" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button id="chatbotToggle" class="fab fab-chat" onclick="toggleChatbot()" aria-label="Open chatbot">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbotWidget" class="chatbot-widget no-print">
+        <div class="p-4 border-b border-gray-100 flex items-center justify-between bg-gradient-to-r from-royal-blue to-royal-blue-dark text-white rounded-t-2xl">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <div class="font-display font-bold text-sm">DomiNex AI</div>
+                    <div class="text-xs opacity-80 flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-emerald-green animate-pulse"></span> Online
+                    </div>
+                </div>
+            </div>
+            <button onclick="toggleChatbot()" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/20 transition-colors" aria-label="Close chatbot">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chat-message bot">
+                <div class="font-semibold text-xs mb-1">DomiNex AI</div>
+                Hi there! I am your AI assistant. How can I help you today? You can ask me about our services, pricing, process, or anything else!
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendChatMessage()">
+            <button class="chatbot-send" onclick="sendChatMessage()" aria-label="Send message">
+                <i class="fas fa-paper-plane text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="mobile-cta-bar no-print md:hidden">
+        <a href="tel:+6621234567" class="flex-1 bg-white border-2 border-gray-200 text-carbon-black py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:border-vermilion hover:text-vermilion transition-colors">
+            <i class="fas fa-phone-alt"></i> Call
+        </a>
+        <a href="https://line.me/ti/p/@dominex" class="flex-1 bg-emerald-green text-white py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-colors">
+            <i class="fab fa-line"></i> LINE
+        </a>
+        <button onclick="openModal('login')" class="flex-1 bg-gradient-to-r from-vermilion to-vermilion-light text-white py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
+            <i class="fas fa-file-invoice"></i> Quote
+        </button>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Scroll reveal observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 80);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Back to top visibility
+        const heroSection = document.getElementById('hero');
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            if (heroBottom < 0) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal
+        function openModal(tab = 'login') {
+            document.getElementById('authModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            switchTab(tab);
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target === event.currentTarget) {
+                closeModal();
+            }
+        }
+
+        // Tab switching
+        function switchTab(tab) {
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            if (tab === 'login') {
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                loginTab.classList.remove('active');
+                registerTab.classList.add('active');
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+            }
+        }
+
+        // Form handlers
+        function handleLogin(e) {
+            e.preventDefault();
+            showToast('Welcome back! Signed in successfully.');
+            closeModal();
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            showToast('Account created! Please check your email to verify.');
+            closeModal();
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Quote request sent! We will contact you within 24 hours.');
+            e.target.reset();
+        }
+
+        // Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('translate-x-full');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+            }, 4000);
+        }
+
+        // FAQ
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const wasActive = item.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+
+            // Open clicked if wasn't active
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Chatbot
+        let chatbotOpen = false;
+
+        function toggleChatbot() {
+            const widget = document.getElementById('chatbotWidget');
+            chatbotOpen = !chatbotOpen;
+            if (chatbotOpen) {
+                widget.classList.add('active');
+                setTimeout(() => document.getElementById('chatbotInput').focus(), 100);
+            } else {
+                widget.classList.remove('active');
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesContainer = document.getElementById('chatbotMessages');
+
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            userMsg.innerHTML = `<div class="font-semibold text-xs mb-1 opacity-80">You</div>${escapeHtml(message)}`;
+            messagesContainer.appendChild(userMsg);
+
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Bot response
+            setTimeout(() => {
+                const botResponse = getBotResponse(message);
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                botMsg.innerHTML = `<div class="font-semibold text-xs mb-1">DomiNex AI</div>${botResponse}`;
+                messagesContainer.appendChild(botMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 600);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function getBotResponse(message) {
+            const lower = message.toLowerCase();
+            if (lower.includes('price') || lower.includes('cost') || lower.includes('baht') || lower.includes('dollar')) {
+                return 'Our website projects start from 85,000 THB ($2,500) and scale based on complexity. Brand identity packages begin at 45,000 THB ($1,300). We offer custom quotes tailored to your needs. Would you like a free estimate?';
+            }
+            if (lower.includes('process') || lower.includes('how')) {
+                return 'Our process follows 5 steps: 1) Discovery & Research, 2) Strategy & Planning, 3) Design & Prototyping, 4) Development & Testing, 5) Launch & Optimize. We keep you involved at every stage with weekly updates.';
+            }
+            if (lower.includes('time') || lower.includes('long')) {
+                return 'A typical brand project takes 2-4 weeks, a corporate website 4-8 weeks, and e-commerce platforms 8-16 weeks. We always provide a detailed timeline upfront and work to meet your deadlines.';
+            }
+            if (lower.includes('seo')) {
+                return 'Yes, we offer comprehensive SEO services including technical SEO, content strategy, keyword research, and link building. Our clients see an average 180% increase in organic traffic within 6 months.';
+            }
+            if (lower.includes('portfolio') || lower.includes('work') || lower.includes('example')) {
+                return 'You can view our featured case studies in the "Work" section above. We have delivered 500+ projects for clients in e-commerce, fintech, hospitality, and B2B sectors. Would you like to see work specific to your industry?';
+            }
+            if (lower.includes('hello') || lower.includes('hi')) {
+                return 'Hello! Welcome to DomiNex. I can help you learn about our services, pricing, process, or connect you with our team. What would you like to know?';
+            }
+            return 'That is a great question! I would love to give you a detailed answer. For the most accurate information, would you like me to connect you with our team? You can also request a free quote and we will get back to you within 24 hours.';
+        }
+
+        // AI Assistant Section
+        function askAI(question) {
+            document.getElementById('aiInput').value = question;
+            handleAIQuery();
+        }
+
+        function handleAIQuery() {
+            const input = document.getElementById('aiInput');
+            const question = input.value.trim();
+            if (!question) return;
+
+            const responseDiv = document.getElementById('aiResponse');
+            const responseText = document.getElementById('aiResponseText');
+
+            responseDiv.classList.remove('hidden');
+            responseText.innerHTML = '<i class="fas fa-spinner fa-spin text-royal-blue"></i> Thinking...';
+
+            setTimeout(() => {
+                responseText.textContent = getBotResponse(question);
+            }, 800);
+
+            input.value = '';
+        }
+
+        // Language toggle (demo)
+        function toggleLang() {
+            showToast('Language switch: TH/EN toggle (demo)');
+        }
+
+        // Escape key to close modal and chatbot
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                if (chatbotOpen) toggleChatbot();
+            }
+        });
+    </script>
+</body>
+</html>
