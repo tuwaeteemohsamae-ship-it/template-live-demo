@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiang Mai City Municipality | Online Services, News, Procurement & Transparency</title>
+<meta name="description" content="Official portal of Chiang Mai City Municipality: file requests, report issues, pay taxes, book venues, download forms, check permits, and view transparent service statistics.">
+<meta name="keywords" content="Chiang Mai municipality, e-service, pay property tax, file complaint, procurement, ITA transparency, Thailand local government">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{forest:'#123D2E',deep:'#0B2820',fcard:'#16453D',mint:'#A8E6C8',mint2:'#7DD8AC',cream:'#F5F0DF',sage:'#D9D3BE'},fontFamily:{head:['Space Grotesk','sans-serif'],body:['Inter','sans-serif']}}}}</script>
+<style>
+html{scroll-behavior:smooth;font-size:16px}body{font-family:Inter,sans-serif;color:#1A1A1A;background:#fff}
+h1,h2,h3,.head{font-family:'Space Grotesk',sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}@media(min-width:768px){.wrap{padding:0 32px}}
+.sec{padding:72px 0}@media(min-width:1024px){.sec{padding:96px 0}}
+.card{background:#fff;border:1px solid #D9D3BE;border-radius:6px;box-shadow:0 8px 24px rgba(18,61,46,.06);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(18,61,46,.12)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:100px;padding:10px 22px;font-weight:600;font-size:14px;transition:all .25s;background:#A8E6C8;color:#123D2E}
+.btn:hover{background:#7DD8AC}.btn-dark{background:#123D2E;color:#fff}.btn-dark:hover{background:#16453D}
+.btn-ghost{background:transparent;border:1px solid #123D2E;color:#123D2E}.btn-ghost:hover{background:#123D2E;color:#fff}
+:focus-visible{outline:3px solid #123D2E;outline-offset:2px}
+.tile{position:relative;overflow:hidden}.tile .ic{transition:transform .35s}.tile:hover .ic{transform:rotate(-6deg) scale(1.08)}
+.slide{opacity:0;transition:opacity .9s;position:absolute;inset:0}.slide.on{opacity:1}
+.reveal{opacity:0;transform:translateY(14px);transition:all .7s}.reveal.in{opacity:1;transform:none}
+.hc{filter:contrast(1.25)}.hc .card{border-color:#000}.hc .text-gray-600{color:#000}
+.tab.on{background:#123D2E;color:#fff}
+#chat{transform-origin:bottom right;transition:all .3s;opacity:0;transform:scale(.9) translateY(10px);pointer-events:none}
+#chat.open{opacity:1;transform:none;pointer-events:auto}
+#btt{transition:all .3s;opacity:0;transform:translateY(10px);pointer-events:none}#btt.show{opacity:1;transform:none;pointer-events:auto}
+@keyframes bar{from{width:0}}.bar{animation:bar 1.4s ease-out both}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="border-b border-sage text-[13px] font-medium">
+ <div class="wrap flex flex-wrap items-center justify-between gap-2 py-2">
+  <div class="flex items-center gap-2 text-forest"><i class="fa-solid fa-landmark"></i><span class="hidden sm:inline">Local Administrative Organization · Chiang Mai Province</span></div>
+  <div class="flex items-center gap-3">
+   <div class="flex border border-sage rounded overflow-hidden" role="group" aria-label="Language">
+    <button class="lang px-2.5 py-1 bg-forest text-white" data-l="TH">TH</button><button class="lang px-2.5 py-1" data-l="EN">EN</button><button class="lang px-2.5 py-1" data-l="NOR">Kam Mueang</button></div>
+   <div class="flex border border-sage rounded overflow-hidden" role="group" aria-label="Text size">
+    <button class="fs px-2 py-1 hover:bg-mint" data-s="-1" aria-label="Smaller text">A-</button><button class="fs px-2 py-1 hover:bg-mint" data-s="0" aria-label="Default text">A</button><button class="fs px-2 py-1 hover:bg-mint font-bold" data-s="1" aria-label="Larger text">A+</button></div>
+   <button id="hc" class="border border-sage rounded px-2 py-1 hover:bg-mint" aria-label="Toggle high contrast"><i class="bi bi-circle-half"></i></button>
+   <button class="open-auth hidden sm:inline-flex btn btn-dark !py-1.5 !px-4 !text-[13px]"><i class="fa-regular fa-user"></i>Citizen sign in</button>
+  </div>
+ </div>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-sage">
+ <div class="wrap flex items-center justify-between h-16">
+  <a href="#" class="flex items-center gap-3">
+   <span class="w-10 h-10 rounded-full bg-forest text-mint grid place-items-center text-lg"><i class="fa-solid fa-dharmachakra"></i></span>
+   <span class="head font-bold leading-tight text-forest">Chiang Mai<small class="block text-[11px] font-medium text-gray-600">City Municipality</small></span></a>
+  <nav class="hidden lg:flex gap-7 text-sm font-medium">
+   <a class="hover:text-forest" href="#services">Services</a><a class="hover:text-forest" href="#news">News</a><a class="hover:text-forest" href="#procure">Procurement</a><a class="hover:text-forest" href="#projects">Projects</a><a class="hover:text-forest" href="#stats">Performance</a><a class="hover:text-forest" href="#contact">Contact</a></nav>
+  <div class="flex items-center gap-2">
+   <button class="open-auth btn btn-dark sm:hidden !px-4"><i class="fa-regular fa-user"></i></button>
+   <button id="menuBtn" class="lg:hidden w-10 h-10 border border-sage rounded" aria-label="Menu"><i class="fa-solid fa-bars"></i></button></div>
+ </div>
+ <div id="menu" class="hidden lg:hidden border-t border-sage bg-white"><div class="wrap py-3 grid gap-2 text-sm font-medium">
+  <a href="#services">Services</a><a href="#news">News</a><a href="#procure">Procurement</a><a href="#projects">Projects</a><a href="#stats">Performance</a><a href="#contact">Contact</a></div></div>
+</header>
+
+<main>
+<!-- Hero -->
+<section id="hero" class="pt-8 pb-16 lg:pt-12">
+ <div class="wrap grid lg:grid-cols-12 gap-8 items-center">
+  <div class="lg:col-span-5 order-2 lg:order-1">
+   <p class="inline-flex items-center gap-2 bg-mint text-forest text-xs font-semibold rounded-full px-3 py-1 mb-5"><i class="fa-solid fa-circle text-[7px]"></i>Open now · Mon–Fri 08:30–16:30</p>
+   <h1 id="heroT" class="text-[40px] sm:text-5xl lg:text-[56px] font-bold leading-[1.05] tracking-tight text-forest">City services,<br>finished in one visit.</h1>
+   <p class="mt-5 text-gray-600 max-w-md leading-relaxed">Pay property tax, report a broken streetlight or book a venue in Chiang Mai from your phone. 94% of requests were closed within the promised time last month.</p>
+   <form id="sf" class="mt-7 relative" role="search">
+    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-forest"></i>
+    <input id="q" autocomplete="off" class="w-full border-2 border-forest rounded-full pl-11 pr-28 py-4 text-sm focus:outline-none focus:ring-4 focus:ring-mint" placeholder="Search services, news, documents…">
+    <button class="btn absolute right-1.5 top-1/2 -translate-y-1/2 !py-2.5">Search</button>
+    <ul id="sug" class="hidden absolute z-20 left-0 right-0 mt-2 bg-white border border-sage rounded-md shadow-xl text-sm overflow-hidden"></ul></form>
+   <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-600">Popular:
+    <a href="#services" class="underline decoration-mint decoration-2">Land & building tax</a><a href="#services" class="underline decoration-mint decoration-2">Street vendor permit</a><a href="#services" class="underline decoration-mint decoration-2">Waste collection</a></div>
+  </div>
+  <div class="lg:col-span-7 order-1 lg:order-2 relative">
+   <div id="carousel" class="relative aspect-[4/3] sm:aspect-[16/10] rounded-md overflow-hidden bg-mint">
+    <div class="slide on"><img src="https://images.unsplash.com/photo-1598935898639-81586f7d2129?w=1400&q=75" alt="Doi Suthep temple above Chiang Mai" class="w-full h-full object-cover"></div>
+    <div class="slide"><img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1400&q=75" alt="Old city temple in Chiang Mai" class="w-full h-full object-cover"></div>
+    <div class="slide"><img src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=1400&q=75" alt="Lanna architecture detail" class="w-full h-full object-cover"></div>
+    <div class="absolute left-4 bottom-4 right-4 flex items-end justify-between gap-3">
+     <div class="bg-white rounded px-4 py-3 max-w-[70%]"><p id="cap" class="head font-semibold text-forest text-sm sm:text-base leading-snug">Yi Peng Festival 2026: traffic plan and free shuttle routes</p></div>
+     <div class="flex gap-1.5 pb-2" id="dots"><button class="w-6 h-1.5 rounded bg-mint" aria-label="Slide 1"></button><button class="w-6 h-1.5 rounded bg-white/70" aria-label="Slide 2"></button><button class="w-6 h-1.5 rounded bg-white/70" aria-label="Slide 3"></button></div></div>
+   </div>
+   <div class="hidden md:block absolute -bottom-6 -left-6 bg-forest text-white rounded p-4 -rotate-2 shadow-xl">
+    <div class="head text-3xl font-bold text-mint">3.2 days</div><div class="text-xs font-medium">average request turnaround</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- Quick services -->
+<section id="services" class="sec !pt-10">
+ <div class="wrap">
+  <div class="flex items-end justify-between mb-10 gap-4"><h2 class="text-3xl font-semibold tracking-tight text-forest">What do you need today?</h2><a href="#" class="hidden sm:inline text-sm font-semibold text-forest underline decoration-mint decoration-2 underline-offset-4">All 64 services</a></div>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+   <!-- featured: winner takes most -->
+   <a href="#" class="tile card col-span-2 lg:row-span-2 !bg-forest !border-forest text-white p-7 flex flex-col justify-between min-h-[220px]">
+    <span class="ic w-14 h-14 rounded bg-mint text-forest grid place-items-center text-2xl"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+    <div><h3 class="text-2xl font-semibold">Pay tax & fees</h3><p class="text-sm text-white/75 mt-2 max-w-xs">Land, building and signboard tax via PromptPay QR. Receipt is issued instantly.</p><span class="btn mt-5">Pay now <i class="fa-solid fa-arrow-right"></i></span></div></a>
+   <a href="#" class="tile card p-5"><span class="ic w-11 h-11 rounded bg-cream text-forest grid place-items-center text-lg mb-4"><i class="fa-regular fa-file-lines"></i></span><h3 class="card-title text-[17px] font-semibold">File a request</h3><p class="text-xs text-gray-600 mt-1">Permits, certificates, registrations</p></a>
+   <a href="#" class="tile card p-5"><span class="ic w-11 h-11 rounded bg-mint text-forest grid place-items-center text-lg mb-4"><i class="fa-solid fa-bullhorn"></i></span><h3 class="text-[17px] font-semibold">Report an issue</h3><p class="text-xs text-gray-600 mt-1">Roads, lights, waste, flooding</p></a>
+   <a href="#" class="tile card p-5"><span class="ic w-11 h-11 rounded bg-cream text-forest grid place-items-center text-lg mb-4"><i class="fa-regular fa-calendar-check"></i></span><h3 class="text-[17px] font-semibold">Book a venue</h3><p class="text-xs text-gray-600 mt-1">Halls, sports fields, markets</p></a>
+   <a href="#" class="tile card p-5"><span class="ic w-11 h-11 rounded bg-cream text-forest grid place-items-center text-lg mb-4"><i class="fa-solid fa-download"></i></span><h3 class="text-[17px] font-semibold">Download forms</h3><p class="text-xs text-gray-600 mt-1">142 forms, PDF and DOCX</p></a>
+   <a href="#" class="tile card p-5"><span class="ic w-11 h-11 rounded bg-mint text-forest grid place-items-center text-lg mb-4"><i class="bi bi-patch-check"></i></span><h3 class="text-[17px] font-semibold">Verify a permit</h3><p class="text-xs text-gray-600 mt-1">Enter number or scan QR</p></a>
+   <a href="#" class="tile card p-5"><span class="ic w-11 h-11 rounded bg-cream text-forest grid place-items-center text-lg mb-4"><i class="fa-solid fa-calendar-days"></i></span><h3 class="text-[17px] font-semibold">Event calendar</h3><p class="text-xs text-gray-600 mt-1">Festivals, hearings, clinics</p></a>
+   <a href="#" class="tile card p-5 col-span-2 lg:col-span-1"><span class="ic w-11 h-11 rounded bg-mint text-forest grid place-items-center text-lg mb-4"><i class="fa-solid fa-scale-balanced"></i></span><h3 class="text-[17px] font-semibold">Open data (ITA)</h3><p class="text-xs text-gray-600 mt-1">Budget, contracts, audits</p></a>
+  </div>
+ </div>
+</section>
+
+<!-- News -->
+<section id="news" class="sec !pt-0">
+ <div class="wrap">
+  <div class="flex items-end justify-between mb-10"><h2 class="text-3xl font-semibold tracking-tight text-forest">Latest from City Hall</h2><a href="#" class="btn btn-ghost">View all</a></div>
+  <div class="grid md:grid-cols-3 gap-6 reveal">
+   <article class="card overflow-hidden md:col-span-2 md:flex"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=70" alt="Ping River at dusk" class="md:w-1/2 h-48 md:h-auto object-cover"><div class="p-6 flex flex-col"><span class="self-start bg-mint text-forest text-xs font-semibold px-2.5 py-1 rounded">Environment</span><h3 class="text-xl font-semibold mt-3 leading-snug">PM2.5 season: free N95 masks at all 17 community halls</h3><p class="text-sm text-gray-600 mt-2">Distribution starts 20 January. Bring your ID card; one pack per resident.</p><time class="mt-auto pt-4 text-xs text-gray-600"><i class="fa-regular fa-clock mr-1"></i>14 Oct 2026</time></div></article>
+   <article class="card overflow-hidden"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=700&q=70" alt="Public transport" class="h-48 w-full object-cover"><div class="p-6"><span class="bg-cream text-forest text-xs font-semibold px-2.5 py-1 rounded">Transport</span><h3 class="text-lg font-semibold mt-3 leading-snug">Red songthaew fares frozen at ฿30 through 2027</h3><time class="block mt-4 text-xs text-gray-600"><i class="fa-regular fa-clock mr-1"></i>11 Oct 2026</time></div></article>
+   <article class="card p-6 md:col-span-3 grid sm:grid-cols-3 gap-6 !bg-cream">
+    <div><span class="text-xs font-semibold text-forest">Health · 9 Oct 2026</span><h3 class="font-semibold mt-1 leading-snug">Free dengue screening at Nong Hoi clinic</h3></div>
+    <div><span class="text-xs font-semibold text-forest">Culture · 6 Oct 2026</span><h3 class="font-semibold mt-1 leading-snug">Sunday Walking Street adds 40 stalls for local artisans</h3></div>
+    <div><span class="text-xs font-semibold text-forest">Finance · 2 Oct 2026</span><h3 class="font-semibold mt-1 leading-snug">Property tax early-payment discount: 5% until 30 Nov</h3></div></article>
+  </div>
+ </div>
+</section>
+
+<!-- Procurement -->
+<section id="procure" class="sec !pt-0">
+ <div class="wrap grid lg:grid-cols-12 gap-10">
+  <div class="lg:col-span-4"><h2 class="text-3xl font-semibold tracking-tight text-forest">Procurement notices</h2><p class="text-gray-600 mt-3 text-sm leading-relaxed max-w-sm">Every tender, quotation and award is published here within 24 hours, in line with the e-GP system.</p>
+   <div class="mt-6 inline-flex rounded-full border border-forest p-1 text-sm font-semibold" id="tabs"><button class="tab on px-4 py-1.5 rounded-full" data-t="0">Tenders</button><button class="tab px-4 py-1.5 rounded-full" data-t="1">Quotations</button><button class="tab px-4 py-1.5 rounded-full" data-t="2">Winners</button></div></div>
+  <ul id="plist" class="lg:col-span-8 divide-y divide-sage border-y border-sage"></ul>
+ </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="sec !pt-0">
+ <div class="wrap">
+  <h2 class="text-3xl font-semibold tracking-tight text-forest mb-10">Projects in progress</h2>
+  <div class="grid md:grid-cols-2 gap-6 reveal">
+   <article class="card overflow-hidden"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=70" alt="Construction" class="h-52 w-full object-cover"><div class="p-6">
+    <h3 class="text-xl font-semibold">Mae Kha Canal embankment upgrade</h3><p class="text-sm text-gray-600 mt-1">Flood protection for 3,200 households, Zone 2.</p>
+    <div class="flex justify-between text-sm mt-5"><span class="font-semibold">฿48.5M budget</span><span class="head font-bold text-forest" data-count="68">0</span></div>
+    <div class="h-2 bg-cream rounded mt-2"><div class="bar h-2 bg-forest rounded" style="width:68%"></div></div>
+    <p class="mt-4 text-xs text-gray-600"><i class="fa-regular fa-calendar mr-1"></i>Next: community briefing, 24 Oct, Wat Ket Hall</p></div></article>
+   <article class="card overflow-hidden"><img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=900&q=70" alt="Solar" class="h-52 w-full object-cover"><div class="p-6">
+    <h3 class="text-xl font-semibold">Solar streetlights on Huay Kaew Road</h3><p class="text-sm text-gray-600 mt-1">212 LED units replacing aging sodium lamps.</p>
+    <div class="flex justify-between text-sm mt-5"><span class="font-semibold">฿12.8M budget</span><span class="head font-bold text-forest" data-count="41">0</span></div>
+    <div class="h-2 bg-cream rounded mt-2"><div class="bar h-2 bg-mint2 rounded" style="width:41%"></div></div>
+    <p class="mt-4 text-xs text-gray-600"><i class="fa-regular fa-calendar mr-1"></i>Next: phase 2 installation, 3 Nov</p></div></article>
+  </div>
+ </div>
+</section>
+
+<!-- Stats -->
+<section id="stats" class="sec !pt-0">
+ <div class="wrap"><h2 class="text-3xl font-semibold tracking-tight text-forest mb-8">October 2026 service performance</h2>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+   <div class="bg-mint text-forest rounded p-6"><div class="head text-4xl font-bold" data-count="2418" data-sep>0</div><p class="text-xs font-medium mt-2">Requests received</p></div>
+   <div class="bg-forest text-white rounded p-6"><div class="head text-4xl font-bold" data-count="2273" data-sep>0</div><p class="text-xs font-medium mt-2">Completed</p></div>
+   <div class="bg-mint text-forest rounded p-6"><div class="head text-4xl font-bold">3.2 <span class="text-xl">days</span></div><p class="text-xs font-medium mt-2">Average turnaround</p></div>
+   <div class="bg-fcard text-white rounded p-6"><div class="head text-4xl font-bold"><span data-count="94">0</span>%</div><p class="text-xs font-medium mt-2">On time within SLA</p></div>
+  </div></div>
+</section>
+
+<!-- Executives + contact -->
+<section id="contact" class="sec !pt-0">
+ <div class="wrap grid lg:grid-cols-12 gap-6">
+  <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+   <div class="card p-6"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=70" alt="Mayor" class="w-20 h-20 rounded-full object-cover mb-4"><p class="text-xs text-gray-600">Mayor</p><h3 class="text-xl font-semibold">Mr. Anan Wongsakul</h3><p class="text-xs text-gray-600 mt-1">Citizen hours: Wednesdays, 13:00–15:00</p></div>
+   <div class="card p-6"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=70" alt="Permanent Secretary" class="w-20 h-20 rounded-full object-cover mb-4"><p class="text-xs text-gray-600">Permanent Secretary</p><h3 class="text-xl font-semibold">Ms. Pimchanok Saetang</h3><p class="text-xs text-gray-600 mt-1">Administration and finance</p></div>
+  </div>
+  <div class="lg:col-span-5 bg-forest text-white rounded p-7 grid grid-cols-[1fr_auto] gap-5">
+   <div><h3 class="text-xl font-semibold text-mint">Urgent contacts</h3>
+    <ul class="mt-4 space-y-2.5 text-sm"><li><i class="fa-solid fa-phone w-5 text-mint"></i>053-252-000 · Main line</li><li><i class="fa-solid fa-truck-medical w-5 text-mint"></i>1669 · Emergency</li><li><i class="fa-solid fa-fire-extinguisher w-5 text-mint"></i>199 · Fire & rescue</li><li><i class="fa-regular fa-clock w-5 text-mint"></i>Mon–Fri 08:30–16:30</li></ul></div>
+   <div class="text-center"><div class="w-24 h-24 bg-white rounded p-1.5 grid place-items-center"><i class="fa-solid fa-qrcode text-6xl text-forest"></i></div><p class="text-[11px] mt-2 text-mint font-medium"><i class="fa-brands fa-line"></i> @cmcity</p></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="border-t border-sage pt-14 pb-24 text-sm">
+ <div class="wrap grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+  <div><div class="head font-bold text-forest text-lg">Chiang Mai City Municipality</div><p class="text-gray-600 mt-3 text-xs leading-relaxed">1 Prarajawithee Rd, Phra Sing, Mueang Chiang Mai 50200</p></div>
+  <div><h4 class="font-semibold mb-3">Sitemap</h4><ul class="space-y-2 text-gray-600"><li><a href="#services">Services</a></li><li><a href="#news">News</a></li><li><a href="#procure">Procurement</a></li><li><a href="#projects">Projects</a></li></ul></div>
+  <div><h4 class="font-semibold mb-3">Transparency</h4><ul class="space-y-2 text-gray-600"><li><a href="#">OIT / ITA assessment</a></li><li><a href="#">Annual budget</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Cookie settings</a></li></ul></div>
+  <div><h4 class="font-semibold mb-3">Related agencies</h4><ul class="space-y-2 text-gray-600"><li><a href="#">Dept. of Local Administration</a></li><li><a href="#">Chiang Mai Provincial Office</a></li><li><a href="#">Ministry of Interior</a></li></ul></div>
+ </div>
+ <div class="wrap mt-10 pt-6 border-t border-sage text-xs text-gray-600">© 2026 Chiang Mai City Municipality. Demo content for template purposes.</div>
+</footer>
+
+<!-- Floating: back to top (left) + chatbot (right), 5px gap, same row -->
+<div class="fixed right-5 bottom-5 z-50 flex items-center" style="gap:5px">
+ <button id="btt" class="w-12 h-12 rounded-full bg-white border border-forest text-forest shadow-lg hover:bg-mint" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+ <button id="chatBtn" class="w-14 h-14 rounded-full bg-forest text-mint shadow-xl text-xl hover:scale-105 transition" aria-label="Open chat" aria-expanded="false"><i id="chatI" class="fa-solid fa-comment-dots"></i></button>
+</div>
+<a href="#" class="fixed left-5 bottom-5 z-50 btn !bg-white !border !border-forest hidden sm:inline-flex shadow-lg"><i class="fa-solid fa-triangle-exclamation text-red-600"></i>Urgent report</a>
+
+<!-- Chat -->
+<section id="chat" class="fixed right-5 bottom-24 z-50 w-[calc(100vw-40px)] max-w-sm bg-white border border-sage rounded-md shadow-2xl flex flex-col" style="height:min(480px,70vh)" aria-label="Chat assistant">
+ <div class="bg-forest text-white px-4 py-3 rounded-t-md flex items-center gap-3"><i class="fa-brands fa-line text-mint text-xl"></i><div><div class="head font-semibold text-sm">CM Assistant</div><div class="text-[11px] text-mint">Online · replies instantly</div></div></div>
+ <div id="msgs" class="flex-1 overflow-y-auto p-4 space-y-3 text-sm bg-cream/40"></div>
+ <div class="px-3 pt-2 flex gap-2 flex-wrap" id="chips"><button class="chip border border-forest rounded-full px-3 py-1 text-xs hover:bg-mint">Pay property tax</button><button class="chip border border-forest rounded-full px-3 py-1 text-xs hover:bg-mint">Office hours</button><button class="chip border border-forest rounded-full px-3 py-1 text-xs hover:bg-mint">Report a problem</button></div>
+ <form id="cf" class="p-3 flex gap-2"><input id="ci" class="flex-1 border border-sage rounded-full px-4 py-2 text-sm focus:outline-none focus:border-forest" placeholder="Type your question…"><button class="w-10 h-10 rounded-full bg-forest text-white" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button></form>
+</section>
+
+<!-- Auth modal -->
+<div id="auth" class="hidden fixed inset-0 z-[60] bg-forest/60 backdrop-blur-sm grid place-items-center p-4" role="dialog" aria-modal="true" aria-label="Citizen sign in">
+ <div class="bg-white rounded-md w-full max-w-md p-7 relative max-h-[92vh] overflow-y-auto">
+  <button id="x" class="absolute right-4 top-4 w-9 h-9 rounded hover:bg-cream" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <h2 class="text-2xl font-semibold text-forest" id="aT">Sign in</h2><p class="text-sm text-gray-600 mt-1" id="aS">Access your requests, receipts and bookings.</p>
+  <div class="mt-5 grid grid-cols-2 border border-forest rounded-full p-1 text-sm font-semibold"><button class="at tab on py-2 rounded-full" data-m="in">Sign in</button><button class="at tab py-2 rounded-full" data-m="up">Register</button></div>
+  <form id="af" class="mt-5 space-y-3 text-sm" novalidate>
+   <div id="nm" class="hidden"><label class="font-medium">Full name</label><input class="w-full border border-sage rounded px-3 py-2.5 mt-1 focus:outline-none focus:border-forest" placeholder="Somchai Jaidee"></div>
+   <div><label class="font-medium" id="idl">National ID or email</label><input id="idf" class="w-full border border-sage rounded px-3 py-2.5 mt-1 focus:outline-none focus:border-forest" placeholder="1-5099-00000-00-0"></div>
+   <div><label class="font-medium">Password</label><input id="pw" type="password" class="w-full border border-sage rounded px-3 py-2.5 mt-1 focus:outline-none focus:border-forest" placeholder="At least 8 characters"></div>
+   <p id="err" class="hidden text-red-700 text-xs"></p>
+   <button class="btn btn-dark w-full justify-center !py-3" id="sub">Sign in</button>
+   <button type="button" class="w-full border border-sage rounded-full py-2.5 font-semibold hover:bg-cream"><i class="fa-solid fa-id-card mr-2 text-forest"></i>Continue with ThaID</button>
+  </form>
+ </div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// Carousel
+let si=0;const sl=$$('.slide'),dots=$$('#dots button'),caps=['Yi Peng Festival 2026: traffic plan and free shuttle routes','New e-service: renew your market stall licence in 3 minutes','Old City moat walkway reopens after restoration'];
+function go(i){si=(i+3)%3;sl.forEach((s,k)=>s.classList.toggle('on',k==si));dots.forEach((d,k)=>{d.classList.toggle('bg-mint',k==si);d.classList.toggle('bg-white/70',k!=si)});$('#cap').textContent=caps[si]}
+dots.forEach((d,k)=>d.onclick=()=>{go(k);reset()});let tm=setInterval(()=>go(si+1),5500);const reset=()=>{clearInterval(tm);tm=setInterval(()=>go(si+1),5500)};
+// Search
+const idx=['Pay land and building tax','Pay signboard tax','Street vendor permit','Waste collection schedule','Report a broken streetlight','Book Chiang Mai Municipal Hall','Download building permit form','Verify a food-stall licence','Yi Peng Festival traffic plan','Annual budget 2027'];
+$('#q').oninput=e=>{const v=e.target.value.toLowerCase(),r=idx.filter(x=>v&&x.toLowerCase().includes(v)).slice(0,5),u=$('#sug');u.classList.toggle('hidden',!r.length);u.innerHTML=r.map(x=>`<li><a href="#services" class="block px-4 py-2.5 hover:bg-mint"><i class="fa-solid fa-magnifying-glass mr-2 text-forest text-xs"></i>${x}</a></li>`).join('')};
+document.addEventListener('click',e=>{if(!e.target.closest('#sf'))$('#sug').classList.add('hidden')});
+$('#sf').onsubmit=e=>{e.preventDefault();$('#services').scrollIntoView({behavior:'smooth'})};
+// Accessibility
+let fz=16;$$('.fs').forEach(b=>b.onclick=()=>{const s=+b.dataset.s;fz=s?Math.min(20,Math.max(13,fz+s*2)):16;document.documentElement.style.fontSize=fz+'px'});
+$('#hc').onclick=()=>document.documentElement.classList.toggle('hc');
+$$('.lang').forEach(b=>b.onclick=()=>{$$('.lang').forEach(x=>x.classList.remove('bg-forest','text-white'));b.classList.add('bg-forest','text-white')});
+$('#menuBtn').onclick=()=>$('#menu').classList.toggle('hidden');
+// Procurement
+const P=[[['Road resurfacing, Nimmanhaemin Soi 9','฿3.2M','Closes 28 Oct'],['Garbage trucks (4 units)','฿9.6M','Closes 31 Oct'],['Library renovation, Zone 3','฿2.1M','Closes 4 Nov'],['LED lamp supply, 800 units','฿1.4M','Closes 6 Nov'],['Public toilet cleaning, 2027','฿860K','Closes 9 Nov']],
+[['Office stationery, Q4','฿68K','Closes 22 Oct'],['Festival stage rental, Yi Peng','฿245K','Closes 24 Oct'],['Tree trimming, Moat Road','฿120K','Closes 25 Oct'],['Printer toner (60 units)','฿92K','Closes 27 Oct'],['Uniforms, sanitation crew','฿180K','Closes 30 Oct']],
+[['Drainage works, Chang Khlan','฿4.8M','Awarded to Lanna Civil Co., Ltd.'],['CCTV expansion, Old City','฿2.9M','Awarded to Nakorn Ping Tech'],['Bus shelters (12)','฿1.7M','Awarded to Doi Kham Build'],['Water tank, Zone 5','฿640K','Awarded to Siam Aqua Works'],['Park lighting','฿520K','Awarded to Mae Rim Electric']]];
+function plist(t){$('#plist').innerHTML=P[t].map(r=>`<li class="flex items-center justify-between gap-4 py-4 group hover:bg-cream/60 px-2 transition"><div><h3 class="font-semibold leading-snug">${r[0]}</h3><p class="text-xs text-gray-600 mt-1">${r[2]}</p></div><span class="head font-bold text-forest whitespace-nowrap">${r[1]}</span></li>`).join('')}
+plist(0);$$('#tabs .tab').forEach(b=>b.onclick=()=>{$$('#tabs .tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');plist(+b.dataset.t)});
+// Count-up + reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);e.target.classList.add('in');
+ e.target.querySelectorAll('[data-count]').forEach(c=>cnt(c))}),{threshold:.2});$$('.reveal,#stats').forEach(el=>io.observe(el));
+function cnt(c){const n=+c.dataset.count,sep='sep'in c.dataset,sfx=c.parentElement.querySelector('span:last-child')===c&&c.textContent.includes('%')?'%':'';let t0;const f=t=>{t0=t0||t;const p=Math.min(1,(t-t0)/1200),v=Math.round(n*(1-Math.pow(1-p,3)));c.textContent=(sep?v.toLocaleString():v)+(c.closest('article')?'%':'');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+// Back to top
+addEventListener('scroll',()=>$('#btt').classList.toggle('show',scrollY>$('#hero').offsetTop+$('#hero').offsetHeight),{passive:true});
+$('#btt').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+// Chat (button stays in place)
+const msgs=$('#msgs');function add(t,me){const d=document.createElement('div');d.className=me?'flex justify-end':'flex';d.innerHTML=`<div class="max-w-[85%] px-3.5 py-2.5 rounded-lg ${me?'bg-forest text-white':'bg-white border border-sage'}">${t}</div>`;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+const KB=[[/tax|pay|fee/,'You can pay land, building and signboard tax online via PromptPay QR. Early payment gets 5% off until 30 Nov. Open "Pay tax & fees" above.'],[/hour|open|time/,'City Hall is open Monday to Friday, 08:30–16:30, except public holidays.'],[/report|problem|complain|light|road|flood/,'Use "Report an issue" and attach a photo. Most reports are acknowledged within 24 hours. For emergencies call 1669.'],[/permit|licen/,'Use "Verify a permit" with the permit number, or "File a request" to apply for a new one.']];
+function reply(q){add('<i class="fa-solid fa-ellipsis fa-fade"></i>');const l=msgs.lastChild;setTimeout(()=>{l.remove();add((KB.find(k=>k[0].test(q.toLowerCase()))||[0,'I can help with taxes, permits, reports and office hours. For anything else call 053-252-000.'])[1])},700)}
+function ask(q){if(!q.trim())return;add(q,1);reply(q)}
+let first=1;$('#chatBtn').onclick=()=>{const o=$('#chat').classList.toggle('open');$('#chatBtn').setAttribute('aria-expanded',o);$('#chatI').className=o?'fa-solid fa-xmark':'fa-solid fa-comment-dots';if(o&&first){first=0;add('Sawasdee! I\'m the Chiang Mai City assistant. What can I help with?');}if(o)setTimeout(()=>$('#ci').focus(),300)};
+$('#cf').onsubmit=e=>{e.preventDefault();ask($('#ci').value);$('#ci').value=''};$$('.chip').forEach(c=>c.onclick=()=>ask(c.textContent));
+// Auth modal
+let mode='in';const A=$('#auth');$$('.open-auth').forEach(b=>b.onclick=()=>{A.classList.remove('hidden');document.body.style.overflow='hidden'});
+const close=()=>{A.classList.add('hidden');document.body.style.overflow=''};$('#x').onclick=close;A.onclick=e=>{if(e.target===A)close()};addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+$$('.at').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$$('.at').forEach(x=>x.classList.toggle('on',x===b));const up=mode==='up';$('#nm').classList.toggle('hidden',!up);$('#aT').textContent=up?'Create account':'Sign in';$('#sub').textContent=up?'Create account':'Sign in';$('#aS').textContent=up?'Register once to use every municipal e-service.':'Access your requests, receipts and bookings.'});
+$('#af').onsubmit=e=>{e.preventDefault();const er=$('#err');if(!$('#idf').value.trim()||$('#pw').value.length<8){er.textContent='Enter your ID or email and a password of at least 8 characters.';er.classList.remove('hidden');return}er.classList.add('hidden');$('#sub').innerHTML='<i class="fa-solid fa-check"></i> Done';setTimeout(()=>{close();$('#sub').textContent=mode==='up'?'Create account':'Sign in'},900)};
+</script>
+</body>
+</html>
