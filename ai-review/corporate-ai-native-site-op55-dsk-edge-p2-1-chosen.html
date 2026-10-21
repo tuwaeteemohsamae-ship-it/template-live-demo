@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIAM PULSE — Digital Growth Agency Bangkok | SEO, Performance Ads, Web & AI Automation</title>
+
+<meta name="description" content="SIAM PULSE is a Bangkok digital growth agency. Performance ads, SEO, web experience and AI automation engineered for revenue. 240+ brands, 3.4× average ROAS. Get a free quote today.">
+<meta name="keywords" content="digital agency Bangkok, SEO Thailand, performance marketing, Google Ads Thailand, web design Bangkok, AI automation, growth agency, การตลาดออนไลน์, รับทำ SEO">
+<meta name="author" content="SIAM PULSE">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://www.siampulse.co/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SIAM PULSE">
+<meta property="og:title" content="SIAM PULSE — Digital Growth Agency Bangkok">
+<meta property="og:description" content="Performance ads, SEO, web experience and AI automation engineered for revenue — not vanity metrics.">
+<meta property="og:url" content="https://www.siampulse.co/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="th_TH">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SIAM PULSE — Digital Growth Agency Bangkok">
+<meta name="twitter:description" content="240+ brands scaled. 3.4× average ROAS. Free strategy call.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        vermilion: '#EB4D2B',
+        royal:     '#262AF5',
+        canary:    '#F4B800',
+        orchid:    '#C24AF5',
+        emerald:   '#3BB75E',
+        carbon:    '#18181A',
+        blush:     '#FBECE8',
+      },
+      fontFamily: {
+        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+      },
+      boxShadow: {
+        soft: '0 1px 2px rgba(24,24,26,.04), 0 12px 32px -12px rgba(24,24,26,.12)',
+        lift: '0 18px 48px -18px rgba(24,24,26,.28)',
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  :root{
+    --vermilion:#EB4D2B; --royal:#262AF5; --canary:#F4B800;
+    --orchid:#C24AF5; --emerald:#3BB75E; --carbon:#18181A; --blush:#FBECE8;
+  }
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+  body{font-family:'Inter',sans-serif; color:#18181A; background:#FFFFFF;}
+  h1,h2,h3,h4,.display{font-family:'Plus Jakarta Sans',sans-serif; letter-spacing:-0.035em;}
+  .kicker{font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.08em;}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0; transform:translateY(26px);
+    transition:opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1);}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- Crosshair ---------- */
+  .crosshair{position:absolute; width:16px; height:16px; pointer-events:none; opacity:.35;}
+  .crosshair::before,.crosshair::after{content:''; position:absolute; background:#18181A;}
+  .crosshair::before{left:50%; top:0; width:1px; height:100%; transform:translateX(-50%);}
+  .crosshair::after{top:50%; left:0; height:1px; width:100%; transform:translateY(-50%);}
+
+  /* ---------- Marquee ---------- */
+  .marquee{overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+           mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
+  .marquee-track{display:flex; width:max-content; animation:marquee 32s linear infinite;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+  /* ---------- Accordion ---------- */
+  .faq-panel{max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.22,1,.36,1), opacity .35s ease; opacity:0;}
+  .faq-item.open .faq-panel{opacity:1;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-icon{transition:transform .35s cubic-bezier(.22,1,.36,1);}
+
+  /* ---------- Floating buttons ---------- */
+  #backToTop{opacity:0; transform:translateY(10px) scale(.9); pointer-events:none;
+             transition:opacity .35s ease, transform .35s cubic-bezier(.22,1,.36,1);}
+  #backToTop.show{opacity:1; transform:none; pointer-events:auto;}
+
+  /* ---------- Chat ---------- */
+  #chatPanel{transform-origin:bottom right; transition:opacity .28s ease, transform .28s cubic-bezier(.22,1,.36,1);}
+  #chatPanel.hidden-panel{opacity:0; transform:translateY(12px) scale(.96); pointer-events:none;}
+  .chat-scroll::-webkit-scrollbar{width:6px;}
+  .chat-scroll::-webkit-scrollbar-thumb{background:#e5e5e5; border-radius:99px;}
+
+  /* ---------- Modal ---------- */
+  #authModal{transition:opacity .25s ease;}
+  #authModal.hidden-modal{opacity:0; pointer-events:none;}
+  #authModal .modal-card{transition:transform .35s cubic-bezier(.22,1,.36,1), opacity .3s ease;}
+  #authModal.hidden-modal .modal-card{transform:translateY(18px) scale(.97);}
+
+  /* ---------- Misc ---------- */
+  .tap{-webkit-tap-highlight-color:transparent;}
+  .underline-grow{position:relative;}
+  .underline-grow::after{content:''; position:absolute; left:0; bottom:-3px; height:2px; width:0; background:currentColor;
+    transition:width .3s cubic-bezier(.22,1,.36,1);}
+  .underline-grow:hover::after{width:100%;}
+  .card-lift{transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, border-color .4s ease;}
+  .card-lift:hover{transform:translateY(-6px); box-shadow:0 18px 48px -18px rgba(24,24,26,.28);}
+</style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.siampulse.co/#org",
+      "name": "SIAM PULSE",
+      "url": "https://www.siampulse.co/",
+      "logo": "https://www.siampulse.co/logo.png",
+      "description": "Digital growth agency in Bangkok specialising in performance marketing, SEO, web experience and AI automation.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "88 Sukhumvit Soi 24, Khlong Ton",
+        "addressLocality": "Bangkok",
+        "postalCode": "10110",
+        "addressCountry": "TH"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+66-2-123-4567",
+        "contactType": "sales",
+        "availableLanguage": ["th", "en"]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.siampulse.co/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does SEO cost in Thailand?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most of our SEO retainers run from ฿35,000 to ฿120,000 per month depending on competition, site size and content volume. You get a fixed scope, transparent reporting and no lock-in after the first 90 days." }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast will we see results?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Paid campaigns go live within 5 working days and usually show meaningful signal in 2–4 weeks. SEO typically compounds from month 3 onward, with the biggest gains between months 4 and 8." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with small and medium businesses?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Around 60% of our clients are Thai SMEs with budgets starting at ฿30,000 per month. We scale the scope, not the price of our attention." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we own the accounts and data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Always. Ad accounts, analytics, creative files and dashboards are set up under your ownership from day one. If we ever part ways, everything stays with you." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you work with our in-house team?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. We run hybrid models where we own strategy and paid media while your team handles product and content. Shared Slack channel, shared dashboards, shared wins." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="bg-white text-carbon antialiased selection:bg-vermilion selection:text-white">
+
+<!-- ============================ HEADER ============================ -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-carbon/10">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+    <div class="flex h-[68px] items-center justify-between gap-4">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 shrink-0 tap" aria-label="SIAM PULSE home">
+        <span class="relative inline-flex h-8 w-8 items-center justify-center rounded-lg bg-vermilion">
+          <i class="bi bi-lightning-charge-fill text-white text-[15px]"></i>
+          <span class="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-canary"></span>
+        </span>
+        <span class="display text-[19px] font-black tracking-[-0.04em] leading-none">
+          SIAM<span class="text-vermilion">PULSE</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Main">
+        <a href="#services" data-th="บริการ" class="text-[13.5px] font-medium text-carbon/70 hover:text-carbon underline-grow tap">Services</a>
+        <a href="#proof" data-th="ผลงาน" class="text-[13.5px] font-medium text-carbon/70 hover:text-carbon underline-grow tap">Proof</a>
+        <a href="#testimonials" data-th="รีวิว" class="text-[13.5px] font-medium text-carbon/70 hover:text-carbon underline-grow tap">Clients</a>
+        <a href="#ask-ai" data-th="ถาม AI" class="text-[13.5px] font-medium text-carbon/70 hover:text-carbon underline-grow tap">Ask AI</a>
+        <a href="#faq" data-th="คำถามที่พบบ่อย" class="text-[13.5px] font-medium text-carbon/70 hover:text-carbon underline-grow tap">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- TH / EN -->
+        <div class="hidden sm:flex items-center rounded-full border border-carbon/15 p-0.5 text-[11px] font-semibold">
+          <button id="langEN" class="rounded-full px-2.5 py-1 bg-carbon text-white transition-colors tap">EN</button>
+          <button id="langTH" class="rounded-full px-2.5 py-1 text-carbon/60 hover:text-carbon transition-colors tap">TH</button>
+        </div>
+
+        <button data-auth-open="login" class="hidden sm:inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[13px] font-semibold text-carbon/75 hover:text-carbon hover:bg-carbon/5 transition tap">
+          <i class="bi bi-person text-[15px]"></i><span data-th="เข้าสู่ระบบ">Log in</span>
+        </button>
+
+        <a href="#contact" data-th="ขอใบเสนอราคา" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-vermilion px-4 py-2.5 text-[13px] font-bold text-white shadow-[0_8px_24px_-10px_rgba(235,77,43,.9)] hover:bg-[#d8431f] hover:shadow-[0_12px_30px_-10px_rgba(235,77,43,1)] transition-all duration-300 tap">
+          Get a Quote <i class="bi bi-arrow-right text-[13px]"></i>
+        </a>
+
+        <button id="menuToggle" class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-carbon/15 text-carbon tap" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list text-[20px]"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-carbon/10 bg-white">
+    <div class="mx-auto max-w-[1280px] px-5 py-4 flex flex-col gap-1">
+      <a href="#services" data-th="บริการ" class="rounded-xl px-3 py-3 text-[15px] font-semibold hover:bg-blush transition">Services</a>
+      <a href="#proof" data-th="ผลงาน" class="rounded-xl px-3 py-3 text-[15px] font-semibold hover:bg-blush transition">Proof</a>
+      <a href="#testimonials" data-th="รีวิว" class="rounded-xl px-3 py-3 text-[15px] font-semibold hover:bg-blush transition">Clients</a>
+      <a href="#ask-ai" data-th="ถาม AI" class="rounded-xl px-3 py-3 text-[15px] font-semibold hover:bg-blush transition">Ask AI</a>
+      <a href="#faq" data-th="คำถามที่พบบ่อย" class="rounded-xl px-3 py-3 text-[15px] font-semibold hover:bg-blush transition">FAQ</a>
+      <div class="mt-2 flex items-center gap-2">
+        <button data-auth-open="login" class="flex-1 rounded-full border border-carbon/15 px-4 py-3 text-[13px] font-semibold">Log in</button>
+        <button data-auth-open="register" class="flex-1 rounded-full bg-vermilion px-4 py-3 text-[13px] font-bold text-white">Sign up</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="relative bg-white overflow-hidden pt-8 pb-14 sm:pt-12 lg:pt-16 lg:pb-24">
+  <span class="crosshair" style="top:24px; left:24px;"></span>
+  <span class="crosshair hidden lg:block" style="top:24px; right:24px;"></span>
+  <span class="crosshair hidden lg:block" style="bottom:24px; left:24px;"></span>
+
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-8 lg:mb-12">
+      <ol class="flex items-center gap-2 text-[12px] text-carbon/45">
+        <li><a href="#" class="hover:text-carbon transition">Home</a></li>
+        <li aria-hidden="true"><i class="bi bi-chevron-right text-[10px]"></i></li>
+        <li class="text-carbon/75 font-medium" aria-current="page">Digital Growth Agency</li>
+      </ol>
+    </nav>
+
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+      <!-- Copy -->
+      <div class="lg:col-span-6 xl:col-span-6">
+        <div class="reveal flex items-center gap-3">
+          <span class="inline-flex h-2 w-2 rounded-full bg-emerald animate-pulse"></span>
+          <span class="kicker text-[11px] text-carbon/60" data-th="กรุงเทพฯ · เอเจนซี่การเติบโตดิจิทัล ตั้งแต่ 2014">Bangkok · Digital Growth Agency since 2014</span>
+        </div>
+
+        <h1 class="reveal mt-5 text-[38px] leading-[1.02] sm:text-[50px] lg:text-[58px] font-black tracking-[-0.04em]"
+            style="transition-delay:80ms"
+            data-th="เราเปลี่ยนแบรนด์ที่เงียบ ให้กลายเป็นผู้นำตลาดที่ดังก้อง">
+          We turn quiet brands into <span class="text-vermilion">loud</span> market leaders.
+        </h1>
+
+        <p class="reveal mt-6 max-w-xl text-[15px] sm:text-[16px] leading-relaxed text-carbon/65"
+           style="transition-delay:160ms"
+           data-th="กลยุทธ์โฆษณา ประสบการณ์เว็บ และระบบ AI อัตโนมัติ ที่ออกแบบมาเพื่อเพิ่มรายได้จริง ไม่ใช่แค่ตัวเลขสวยๆ บนแดชบอร์ด">
+          Performance marketing, web experience and AI automation — engineered to grow revenue, not vanity metrics.
+        </p>
+
+        <div class="reveal mt-8 flex flex-col sm:flex-row gap-3" style="transition-delay:240ms">
+          <a href="#contact" data-th="ขอใบเสนอราคาฟรี"
+             class="group inline-flex items-center justify-center gap-2 rounded-full bg-carbon px-6 py-4 text-[14px] font-bold text-white hover:bg-vermilion transition-all duration-300 shadow-[0_10px_30px_-14px_rgba(24,24,26,.9)] tap">
+            Get a Free Quote
+            <i class="bi bi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+          </a>
+          <button id="heroAskAI" data-th="คุยกับ AI ของเรา"
+                  class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-carbon/15 px-6 py-4 text-[14px] font-bold text-carbon hover:border-royal hover:text-royal transition-all duration-300 tap">
+            <i class="bi bi-stars text-royal"></i> Ask our AI
+          </button>
+        </div>
+
+        <div class="reveal mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 text-[12.5px] text-carbon/55" style="transition-delay:320ms">
+          <span class="inline-flex items-center gap-2"><i class="bi bi-check-circle-fill text-emerald"></i> Free 30-min strategy call</span>
+          <span class="inline-flex items-center gap-2"><i class="bi bi-check-circle-fill text-emerald"></i> No lock-in contracts</span>
+          <span class="inline-flex items-center gap-2"><i class="bi bi-check-circle-fill text-emerald"></i> Avg. 3.4× ROAS in 90 days</span>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div class="lg:col-span-6 relative reveal" style="transition-delay:200ms">
+        <div class="relative">
+          <!-- offset color frame -->
+          <div class="absolute -inset-3 sm:-inset-4 rounded-[28px] bg-blush rotate-[-1.5deg]"></div>
+          <div class="absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl bg-canary/90 -z-0 hidden sm:block"></div>
+
+          <div class="relative overflow-hidden rounded-[24px] bg-carbon shadow-lift">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+              alt="SIAM PULSE strategy team reviewing campaign performance in a Bangkok studio"
+              width="1200" height="900" loading="eager" fetchpriority="high"
+              class="h-[300px] sm:h-[400px] lg:h-[480px] w-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-carbon/55 via-transparent to-transparent"></div>
+
+            <!-- live badge -->
+            <div class="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/95 backdrop-blur px-3 py-1.5 text-[11px] font-bold">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald animate-pulse"></span> 12 campaigns live
+            </div>
+          </div>
+
+          <!-- Floating stat card -->
+          <div class="absolute -bottom-6 right-3 sm:right-6 w-[190px] rounded-2xl bg-white border border-carbon/10 p-4 shadow-lift">
+            <div class="flex items-center justify-between">
+              <span class="kicker text-[9.5px] text-carbon/45">Organic traffic</span>
+              <i class="bi bi-graph-up-arrow text-emerald text-[13px]"></i>
+            </div>
+            <p class="display mt-1.5 text-[26px] font-black leading-none text-carbon">+312<span class="text-vermilion">%</span></p>
+            <p class="mt-1 text-[11px] text-carbon/50">7-month average lift</p>
+          </div>
+
+          <!-- Floating rating card -->
+          <div class="absolute -top-5 -left-3 sm:-left-6 hidden sm:flex items-center gap-2.5 rounded-2xl bg-white border border-carbon/10 px-4 py-3 shadow-lift">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-royal">
+              <i class="bi bi-star-fill text-white text-[13px]"></i>
+            </div>
+            <div>
+              <p class="display text-[15px] font-black leading-none">4.9/5.0</p>
+              <p class="text-[10.5px] text-carbon/50 mt-0.5">128 verified reviews</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRUST BAR ============================ -->
+<section class="bg-white border-y border-carbon/10 py-9 sm:py-11">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-4 mb-8">
+      <div class="reveal flex items-center gap-3">
+        <i class="bi bi-award text-[22px] text-vermilion"></i>
+        <div>
+          <p class="display text-[15px] font-black leading-none">11 Years</p>
+          <p class="text-[11.5px] text-carbon/50 mt-1">In-market experience</p>
+        </div>
+      </div>
+      <div class="reveal flex items-center gap-3" style="transition-delay:60ms">
+        <i class="bi bi-people text-[22px] text-royal"></i>
+        <div>
+          <p class="display text-[15px] font-black leading-none">240+ Brands</p>
+          <p class="text-[11.5px] text-carbon/50 mt-1">TH & SEA portfolio</p>
+        </div>
+      </div>
+      <div class="reveal flex items-center gap-3" style="transition-delay:120ms">
+        <i class="bi bi-patch-check text-[22px] text-emerald"></i>
+        <div>
+          <p class="display text-[15px] font-black leading-none">Certified</p>
+          <p class="text-[11.5px] text-carbon/50 mt-1">Google & Meta Partner</p>
+        </div>
+      </div>
+      <div class="reveal flex items-center gap-3" style="transition-delay:180ms">
+        <i class="bi bi-shield-check text-[22px] text-orchid"></i>
+        <div>
+          <p class="display text-[15px] font-black leading-none">PDPA Ready</p>
+          <p class="text-[11.5px] text-carbon/50 mt-1">ISO 27001 aligned</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo marquee -->
+    <div class="marquee">
+      <div class="marquee-track items-center gap-12 sm:gap-16 pr-12 sm:pr-16">
+        <!-- set 1 -->
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">THONGKIT</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">Ari Wellness</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">BKK PROPERTY</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">Saneh Foods</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">LOTUS MOTORS</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">Phuket Escapes</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">NORTHSTAR CLINIC</span>
+        <!-- set 2 (duplicate) -->
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">THONGKIT</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">Ari Wellness</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">BKK PROPERTY</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">Saneh Foods</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">LOTUS MOTORS</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">Phuket Escapes</span>
+        <span class="display text-[17px] font-black text-carbon/25 whitespace-nowrap">NORTHSTAR CLINIC</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ SERVICES ============================ -->
+<section id="services" class="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="max-w-2xl mb-12 lg:mb-16">
+      <span class="kicker text-[11px] text-vermilion reveal">What we do</span>
+      <h2 class="reveal mt-3 text-[30px] sm:text-[38px] lg:text-[42px] font-black leading-[1.06] tracking-[-0.035em]" style="transition-delay:60ms"
+          data-th="บริการที่ออกแบบมาเพื่อ 'รายได้' ไม่ใช่แค่ 'ยอดไลก์'">
+        Services built for <span class="text-royal">revenue</span>, not likes.
+      </h2>
+      <p class="reveal mt-4 text-[14.5px] leading-relaxed text-carbon/60" style="transition-delay:120ms"
+         data-th="ทุกบริการมาพร้อมทีมเฉพาะทาง ตัวชี้วัดที่ชัดเจน และแดชบอร์ดที่คุณดูได้ตลอด 24 ชั่วโมง">
+        Every engagement ships with a dedicated pod, a defined scoreboard, and a dashboard you can open at 2am.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+
+      <!-- 1 -->
+      <article class="reveal card-lift group rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-vermilion/10 group-hover:bg-vermilion transition-colors duration-300">
+          <i class="bi bi-megaphone-fill text-[20px] text-vermilion group-hover:text-white transition-colors duration-300"></i>
+        </div>
+        <h3 class="card-title mt-5 text-[15px] font-extrabold uppercase tracking-[0.02em]">Performance Ads</h3>
+        <p class="mt-2.5 text-[13.5px] leading-relaxed text-carbon/60">
+          Meta, Google and TikTok campaigns run on contribution margin — not last-click vanity.
+        </p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">From ฿25,000/mo</span>
+          <a href="#contact" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-carbon/5 text-carbon group-hover:bg-vermilion group-hover:text-white transition-all duration-300" aria-label="Learn more about Performance Ads">
+            <i class="bi bi-arrow-right text-[13px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="reveal card-lift group rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7" style="transition-delay:60ms">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-royal/10 group-hover:bg-royal transition-colors duration-300">
+          <i class="bi bi-graph-up-arrow text-[20px] text-royal group-hover:text-white transition-colors duration-300"></i>
+        </div>
+        <h3 class="card-title mt-5 text-[15px] font-extrabold uppercase tracking-[0.02em]">SEO &amp; Content</h3>
+        <p class="mt-2.5 text-[13.5px] leading-relaxed text-carbon/60">
+          Technical fixes, topical authority and Thai-first content that ranks and converts.
+        </p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">From ฿35,000/mo</span>
+          <a href="#contact" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-carbon/5 text-carbon group-hover:bg-royal group-hover:text-white transition-all duration-300" aria-label="Learn more about SEO and Content">
+            <i class="bi bi-arrow-right text-[13px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="reveal card-lift group rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7" style="transition-delay:120ms">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-orchid/10 group-hover:bg-orchid transition-colors duration-300">
+          <i class="bi bi-code-slash text-[20px] text-orchid group-hover:text-white transition-colors duration-300"></i>
+        </div>
+        <h3 class="card-title mt-5 text-[15px] font-extrabold uppercase tracking-[0.02em]">Web &amp; UX</h3>
+        <p class="mt-2.5 text-[13.5px] leading-relaxed text-carbon/60">
+          Fast, accessible, crawlable websites — LCP under 2.5s and built to be found.
+        </p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">From ฿180,000</span>
+          <a href="#contact" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-carbon/5 text-carbon group-hover:bg-orchid group-hover:text-white transition-all duration-300" aria-label="Learn more about Web and UX">
+            <i class="bi bi-arrow-right text-[13px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="reveal card-lift group rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7" style="transition-delay:0ms">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-canary/20 group-hover:bg-canary transition-colors duration-300">
+          <i class="bi bi-palette-fill text-[20px] text-[#b88a00] group-hover:text-carbon transition-colors duration-300"></i>
+        </div>
+        <h3 class="card-title mt-5 text-[15px] font-extrabold uppercase tracking-[0.02em]">Brand &amp; Creative</h3>
+        <p class="mt-2.5 text-[13.5px] leading-relaxed text-carbon/60">
+          Identity, motion and ad creative that stops the scroll in under 0.8 seconds.
+        </p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">From ฿95,000</span>
+          <a href="#contact" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-carbon/5 text-carbon group-hover:bg-canary group-hover:text-carbon transition-all duration-300" aria-label="Learn more about Brand and Creative">
+            <i class="bi bi-arrow-right text-[13px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="reveal card-lift group rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7" style="transition-delay:60ms">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald/10 group-hover:bg-emerald transition-colors duration-300">
+          <i class="bi bi-cpu-fill text-[20px] text-emerald group-hover:text-white transition-colors duration-300"></i>
+        </div>
+        <h3 class="card-title mt-5 text-[15px] font-extrabold uppercase tracking-[0.02em]">AI &amp; Automation</h3>
+        <p class="mt-2.5 text-[13.5px] leading-relaxed text-carbon/60">
+          Lead routing, LINE OA flows and AI assistants that answer customers at 3am.
+        </p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">From ฿60,000</span>
+          <a href="#contact" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-carbon/5 text-carbon group-hover:bg-emerald group-hover:text-white transition-all duration-300" aria-label="Learn more about AI and Automation">
+            <i class="bi bi-arrow-right text-[13px]"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="reveal card-lift group rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7" style="transition-delay:120ms">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-carbon/8 group-hover:bg-carbon transition-colors duration-300">
+          <i class="bi bi-bar-chart-line-fill text-[20px] text-carbon group-hover:text-white transition-colors duration-300"></i>
+        </div>
+        <h3 class="card-title mt-5 text-[15px] font-extrabold uppercase tracking-[0.02em]">Analytics &amp; CRO</h3>
+        <p class="mt-2.5 text-[13.5px] leading-relaxed text-carbon/60">
+          Server-side tracking, funnel teardowns and A/B tests that lift conversion rate.
+        </p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">From ฿45,000/mo</span>
+          <a href="#contact" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-carbon/5 text-carbon group-hover:bg-carbon group-hover:text-white transition-all duration-300" aria-label="Learn more about Analytics and CRO">
+            <i class="bi bi-arrow-right text-[13px]"></i>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROOF ============================ -->
+<section id="proof" class="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24 border-t border-carbon/10">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+      <!-- Left: numbers -->
+      <div class="lg:col-span-5">
+        <span class="kicker text-[11px] text-emerald reveal">The receipts</span>
+        <h2 class="reveal mt-3 text-[30px] sm:text-[38px] font-black leading-[1.06] tracking-[-0.035em]" style="transition-delay:60ms"
+            data-th="ตัวเลขที่ลูกค้าของเราใช้คุยในที่ประชุมบอร์ด">
+          Numbers our clients quote in board meetings.
+        </h2>
+        <p class="reveal mt-4 text-[14.5px] leading-relaxed text-carbon/60" style="transition-delay:120ms">
+          Measured across 240+ engagements since 2014. Independently audited annually.
+        </p>
+
+        <div class="mt-9 grid grid-cols-2 gap-5">
+          <div class="reveal rounded-2xl bg-blush p-5">
+            <p class="display text-[34px] sm:text-[40px] font-black leading-none text-vermilion">
+              <span class="counter" data-count="3.4" data-decimals="1">0</span>×
+            </p>
+            <p class="mt-2 text-[12.5px] font-medium text-carbon/60">Average blended ROAS</p>
+          </div>
+          <div class="reveal rounded-2xl bg-blush p-5" style="transition-delay:80ms">
+            <p class="display text-[34px] sm:text-[40px] font-black leading-none text-royal">
+              ฿<span class="counter" data-count="1.8" data-decimals="1">0</span>B
+            </p>
+            <p class="mt-2 text-[12.5px] font-medium text-carbon/60">Ad spend managed</p>
+          </div>
+          <div class="reveal rounded-2xl bg-blush p-5" style="transition-delay:160ms">
+            <p class="display text-[34px] sm:text-[40px] font-black leading-none text-emerald">
+              <span class="counter" data-count="240">0</span>+
+            </p>
+            <p class="mt-2 text-[12.5px] font-medium text-carbon/60">Brands scaled</p>
+          </div>
+          <div class="reveal rounded-2xl bg-blush p-5" style="transition-delay:240ms">
+            <p class="display text-[34px] sm:text-[40px] font-black leading-none text-orchid">
+              <span class="counter" data-count="92">0</span>%
+            </p>
+            <p class="mt-2 text-[12.5px] font-medium text-carbon/60">Client retention, 12 mo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: case study -->
+      <div class="lg:col-span-7 reveal" style="transition-delay:120ms">
+        <article class="overflow-hidden rounded-3xl border border-carbon/10 bg-white shadow-soft">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80"
+              alt="Analytics dashboard showing revenue growth for a Thai wellness brand"
+              width="1400" height="800" loading="lazy"
+              class="h-[220px] sm:h-[280px] w-full object-cover">
+            <span class="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[11px] font-bold shadow">
+              <i class="bi bi-briefcase-fill text-vermilion text-[11px]"></i> Case Study
+            </span>
+          </div>
+
+          <div class="p-6 sm:p-8">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="rounded-full bg-blush px-3 py-1 text-[11px] font-semibold text-vermilion">Health &amp; Wellness</span>
+              <span class="rounded-full bg-carbon/5 px-3 py-1 text-[11px] font-semibold text-carbon/60">SEO + Paid Social</span>
+              <span class="rounded-full bg-carbon/5 px-3 py-1 text-[11px] font-semibold text-carbon/60">7 months</span>
+            </div>
+
+            <h3 class="display text-[21px] sm:text-[24px] font-black leading-[1.2] tracking-[-0.03em]">
+              Ari Wellness: from 40 orders a month to 1,900.
+            </h3>
+            <p class="mt-3 text-[14px] leading-relaxed text-carbon/60">
+              We rebuilt their Shopify storefront for speed, mapped 180 Thai long-tail keywords, and shifted 70% of ad budget into retargeting with creator-made video. Cost per acquisition dropped 58% while order volume grew 47×.
+            </p>
+
+            <div class="mt-6 grid grid-cols-3 gap-4 border-t border-carbon/10 pt-6">
+              <div>
+                <p class="display text-[20px] sm:text-[24px] font-black leading-none text-vermilion">+312%</p>
+                <p class="mt-1.5 text-[11.5px] text-carbon/50">Revenue</p>
+              </div>
+              <div>
+                <p class="display text-[20px] sm:text-[24px] font-black leading-none text-royal">−58%</p>
+                <p class="mt-1.5 text-[11.5px] text-carbon/50">Cost per acquisition</p>
+              </div>
+              <div>
+                <p class="display text-[20px] sm:text-[24px] font-black leading-none text-emerald">1.1s</p>
+                <p class="mt-1.5 text-[11.5px] text-carbon/50">Largest Contentful Paint</p>
+              </div>
+            </div>
+
+            <a href="#contact" class="mt-7 inline-flex items-center gap-2 text-[13.5px] font-bold text-carbon hover:text-vermilion transition-colors duration-300 group">
+              Read the full breakdown
+              <i class="bi bi-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIALS ============================ -->
+<section id="testimonials" class="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24 border-t border-carbon/10">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12">
+      <div class="max-w-xl">
+        <span class="kicker text-[11px] text-orchid reveal">Verified clients</span>
+        <h2 class="reveal mt-3 text-[30px] sm:text-[38px] font-black leading-[1.06] tracking-[-0.035em]" style="transition-delay:60ms"
+            data-th="ไม่ใช่คำพูดเรา — เป็นคำพูดลูกค้าที่จ่ายเงินจริง">
+          Not our words. Theirs.
+        </h2>
+      </div>
+      <div class="reveal flex items-center gap-3" style="transition-delay:120ms">
+        <div class="flex -space-x-2">
+          <img src="https://i.pravatar.cc/64?img=12" alt="" class="h-9 w-9 rounded-full border-2 border-white object-cover">
+          <img src="https://i.pravatar.cc/64?img=32" alt="" class="h-9 w-9 rounded-full border-2 border-white object-cover">
+          <img src="https://i.pravatar.cc/64?img=45" alt="" class="h-9 w-9 rounded-full border-2 border-white object-cover">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-carbon text-[10px] font-bold text-white">+125</span>
+        </div>
+        <p class="text-[12.5px] text-carbon/55 leading-tight">4.9 average from<br>128 reviews</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 lg:gap-6">
+
+      <!-- T1 -->
+      <figure class="reveal card-lift rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7 flex flex-col">
+        <i class="bi bi-quote text-[30px] leading-none text-vermilion/25"></i>
+        <blockquote class="mt-3 text-[14px] leading-relaxed text-carbon/75 flex-1">
+          “We'd burned through two agencies before. SIAM PULSE was the first team that asked about our margin before our budget. Revenue doubled in five months and we finally understand where every baht goes.”
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 border-t border-carbon/10 pt-5">
+          <img src="https://i.pravatar.cc/80?img=32" alt="Nattaporn S." class="h-10 w-10 rounded-full object-cover">
+          <div class="min-w-0">
+            <p class="text-[13px] font-bold truncate flex items-center gap-1.5">
+              Nattaporn S.
+              <i class="bi bi-patch-check-fill text-royal text-[12px]" title="Verified client"></i>
+            </p>
+            <p class="text-[11.5px] text-carbon/50 truncate">CMO · Ari Wellness</p>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- T2 -->
+      <figure class="reveal card-lift rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7 flex flex-col" style="transition-delay:80ms">
+        <i class="bi bi-quote text-[30px] leading-none text-royal/25"></i>
+        <blockquote class="mt-3 text-[14px] leading-relaxed text-carbon/75 flex-1">
+          “The AI assistant they built answers 68% of our LINE enquiries before a human ever sees them. Our sales team stopped drowning and started closing.”
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 border-t border-carbon/10 pt-5">
+          <img src="https://i.pravatar.cc/80?img=12" alt="Krit P." class="h-10 w-10 rounded-full object-cover">
+          <div class="min-w-0">
+            <p class="text-[13px] font-bold truncate flex items-center gap-1.5">
+              Krit P.
+              <i class="bi bi-patch-check-fill text-royal text-[12px]" title="Verified client"></i>
+            </p>
+            <p class="text-[11.5px] text-carbon/50 truncate">Founder · BKK Property</p>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- T3 -->
+      <figure class="reveal card-lift rounded-2xl border border-carbon/10 bg-white p-6 sm:p-7 flex flex-col" style="transition-delay:160ms">
+        <i class="bi bi-quote text-[30px] leading-none text-emerald/25"></i>
+        <blockquote class="mt-3 text-[14px] leading-relaxed text-carbon/75 flex-1">
+          “They handed us the keys to everything — ad accounts, dashboards, source files. That confidence is exactly why we've stayed four years.”
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 border-t border-carbon/10 pt-5">
+          <img src="https://i.pravatar.cc/80?img=45" alt="Siriporn T." class="h-10 w-10 rounded-full object-cover">
+          <div class="min-w-0">
+            <p class="text-[13px] font-bold truncate flex items-center gap-1.5">
+              Siriporn T.
+              <i class="bi bi-patch-check-fill text-royal text-[12px]" title="Verified client"></i>
+            </p>
+            <p class="text-[11.5px] text-carbon/50 truncate">MD · Saneh Foods</p>
+          </div>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ASK AI ============================ -->
+<section id="ask-ai" class="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24 border-t border-carbon/10">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="reveal relative overflow-hidden rounded-3xl bg-carbon p-7 sm:p-10 lg:p-14">
+      <span class="crosshair" style="top:20px; right:20px; opacity:.35;">
+        <style>#ask-ai .crosshair::before,#ask-ai .crosshair::after{background:#fff;}</style>
+      </span>
+
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+
+        <div class="lg:col-span-5">
+          <span class="kicker text-[11px] text-canary">AI Assistant</span>
+          <h2 class="mt-3 text-[28px] sm:text-[34px] font-black leading-[1.08] tracking-[-0.035em] text-white"
+              data-th="ถาม AI ได้เลย — ตอบใน 3 วินาที ไม่ต้องรอเซลส์">
+            Ask our AI anything. <span class="text-canary">Answers in 3 seconds.</span>
+          </h2>
+          <p class="mt-4 text-[14px] leading-relaxed text-white/60">
+            Trained on 11 years of our proposals, pricing and case studies. No forms, no gatekeeping.
+          </p>
+          <div class="mt-6 flex items-center gap-4 text-[12px] text-white/45">
+            <span class="inline-flex items-center gap-1.5"><i class="bi bi-shield-check text-emerald"></i> No data stored</span>
+            <span class="inline-flex items-center gap-1.5"><i class="bi bi-translate text-royal"></i> TH / EN</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <form id="aiForm" class="flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-1">
+              <i class="bi bi-stars absolute left-4 top-1/2 -translate-y-1/2 text-canary text-[15px]"></i>
+              <input
+                id="aiInput" type="text" autocomplete="off"
+                placeholder="e.g. How much does SEO cost for a Bangkok clinic?"
+                class="w-full rounded-full border border-white/15 bg-white/[0.06] py-4 pl-11 pr-4 text-[14px] text-white placeholder:text-white/35 outline-none focus:border-canary focus:bg-white/[0.09] transition-all duration-300">
+            </div>
+            <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-full bg-canary px-6 py-4 text-[14px] font-bold text-carbon hover:bg-white transition-colors duration-300 tap">
+              Ask AI <i class="bi bi-arrow-right"></i>
+            </button>
+          </form>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            <button class="ai-chip rounded-full border border-white/15 px-3.5 py-2 text-[12px] font-medium text-white/70 hover:border-canary hover:text-canary transition-all duration-300 tap">How much does SEO cost?</button>
+            <button class="ai-chip rounded-full border border-white/15 px-3.5 py-2 text-[12px] font-medium text-white/70 hover:border-canary hover:text-canary transition-all duration-300 tap">Do you work with SMEs?</button>
+            <button class="ai-chip rounded-full border border-white/15 px-3.5 py-2 text-[12px] font-medium text-white/70 hover:border-canary hover:text-canary transition-all duration-300 tap">How fast can we launch?</button>
+            <button class="ai-chip rounded-full border border-white/15 px-3.5 py-2 text-[12px] font-medium text-white/70 hover:border-canary hover:text-canary transition-all duration-300 tap">Do we own the ad accounts?</button>
+          </div>
+
+          <div id="aiAnswer" class="mt-5 hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+            <p class="kicker text-[10px] text-canary mb-2">SIAM PULSE AI</p>
+            <p id="aiAnswerText" class="text-[13.5px] leading-relaxed text-white/80"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24 border-t border-carbon/10">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14">
+
+      <div class="lg:col-span-4">
+        <span class="kicker text-[11px] text-royal reveal">FAQ</span>
+        <h2 class="reveal mt-3 text-[30px] sm:text-[36px] font-black leading-[1.08] tracking-[-0.035em]" style="transition-delay:60ms"
+            data-th="คำถามที่ลูกค้าถามบ่อยที่สุด">
+          Questions we get asked every single week.
+        </h2>
+        <p class="reveal mt-4 text-[14px] leading-relaxed text-carbon/60" style="transition-delay:120ms">
+          Still unclear? Ask our AI or book a free 30-minute call.
+        </p>
+        <a href="#contact" class="reveal mt-6 inline-flex items-center gap-2 rounded-full bg-carbon px-5 py-3 text-[13px] font-bold text-white hover:bg-vermilion transition-colors duration-300 tap" style="transition-delay:160ms">
+          Book a free call <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="divide-y divide-carbon/10 border-y border-carbon/10">
+
+          <div class="faq-item reveal">
+            <button class="faq-trigger flex w-full items-center justify-between gap-5 py-5 text-left tap">
+              <span class="text-[15px] sm:text-[16px] font-bold pr-2">How much does SEO cost in Thailand?</span>
+              <i class="bi bi-plus-lg faq-icon shrink-0 text-[15px] text-vermilion"></i>
+            </button>
+            <div class="faq-panel">
+              <p class="pb-5 text-[13.5px] leading-relaxed text-carbon/60 max-w-2xl">
+                Most of our SEO retainers run from ฿35,000 to ฿120,000 per month depending on competition, site size and content volume. You get a fixed scope, transparent reporting and no lock-in after the first 90 days.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="transition-delay:60ms">
+            <button class="faq-trigger flex w-full items-center justify-between gap-5 py-5 text-left tap">
+              <span class="text-[15px] sm:text-[16px] font-bold pr-2">How fast will we see results?</span>
+              <i class="bi bi-plus-lg faq-icon shrink-0 text-[15px] text-royal"></i>
+            </button>
+            <div class="faq-panel">
+              <p class="pb-5 text-[13.5px] leading-relaxed text-carbon/60 max-w-2xl">
+                Paid campaigns go live within 5 working days and usually show meaningful signal in 2–4 weeks. SEO typically compounds from month 3 onward, with the biggest gains landing between months 4 and 8.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="transition-delay:120ms">
+            <button class="faq-trigger flex w-full items-center justify-between gap-5 py-5 text-left tap">
+              <span class="text-[15px] sm:text-[16px] font-bold pr-2">Do you work with small and medium businesses?</span>
+              <i class="bi bi-plus-lg faq-icon shrink-0 text-[15px] text-orchid"></i>
+            </button>
+            <div class="faq-panel">
+              <p class="pb-5 text-[13.5px] leading-relaxed text-carbon/60 max-w-2xl">
+                Yes. Around 60% of our clients are Thai SMEs with budgets starting at ฿30,000 per month. We scale the scope — never the level of attention you get.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="transition-delay:180ms">
+            <button class="faq-trigger flex w-full items-center justify-between gap-5 py-5 text-left tap">
+              <span class="text-[15px] sm:text-[16px] font-bold pr-2">Do we own the accounts and data?</span>
+              <i class="bi bi-plus-lg faq-icon shrink-0 text-[15px] text-emerald"></i>
+            </button>
+            <div class="faq-panel">
+              <p class="pb-5 text-[13.5px] leading-relaxed text-carbon/60 max-w-2xl">
+                Always. Ad accounts, analytics, creative files and dashboards are set up under your ownership from day one. If we ever part ways, everything stays with you — no hostage negotiations.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal" style="transition-delay:240ms">
+            <button class="faq-trigger flex w-full items-center justify-between gap-5 py-5 text-left tap">
+              <span class="text-[15px] sm:text-[16px] font-bold pr-2">Can you work alongside our in-house team?</span>
+              <i class="bi bi-plus-lg faq-icon shrink-0 text-[15px] text-canary"></i>
+            </button>
+            <div class="faq-panel">
+              <p class="pb-5 text-[13.5px] leading-relaxed text-carbon/60 max-w-2xl">
+                Absolutely. We run hybrid models where we own strategy and paid media while your team handles product and content. Shared Slack channel, shared dashboards, shared wins.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA + CONTACT ============================ -->
+<section id="contact" class="scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24 border-t border-carbon/10">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-8">
+
+      <!-- CTA card -->
+      <div class="lg:col-span-6 reveal">
+        <div class="h-full rounded-3xl bg-gradient-to-br from-[#EB4D2B] to-[#FF6B4A] p-7 sm:p-9 lg:p-10 text-white relative overflow-hidden">
+          <span class="crosshair" style="top:20px; right:20px;">
+            <style>#contact .crosshair::before,#contact .crosshair::after{background:#fff;}</style>
+          </span>
+
+          <span class="kicker text-[11px] text-white/70">Let's talk</span>
+          <h2 class="mt-3 text-[28px] sm:text-[34px] font-black leading-[1.06] tracking-[-0.035em]"
+              data-th="รับใบเสนอราคาฟรี ภายใน 24 ชั่วโมง">
+            Get your free proposal within 24 hours.
+          </h2>
+          <p class="mt-4 text-[14px] leading-relaxed text-white/80 max-w-md">
+            Tell us your goal. We'll come back with a channel plan, a realistic forecast and a fixed price — no fluff, no obligation.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="tel:+6621234567" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[13.5px] font-bold text-vermilion hover:bg-carbon hover:text-white transition-colors duration-300 tap">
+              <i class="bi bi-telephone-fill"></i> +66 2 123 4567
+            </a>
+            <a href="https://line.me/" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/40 px-6 py-3.5 text-[13.5px] font-bold text-white hover:bg-white hover:text-vermilion transition-colors duration-300 tap">
+              <i class="bi bi-line"></i> LINE: @siampulse
+            </a>
+          </div>
+
+          <div class="mt-9 grid sm:grid-cols-2 gap-5 border-t border-white/20 pt-7 text-[13px]">
+            <div class="flex items-start gap-3">
+              <i class="bi bi-geo-alt-fill mt-0.5 text-white/70"></i>
+              <div>
+                <p class="font-bold">Studio</p>
+                <p class="text-white/70 mt-0.5 leading-relaxed">88 Sukhumvit Soi 24,<br>Khlong Ton, Bangkok 10110</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <i class="bi bi-envelope-fill mt-0.5 text-white/70"></i>
+              <div>
+                <p class="font-bold">Email</p>
+                <p class="text-white/70 mt-0.5 leading-relaxed">hello@siampulse.co</p>
+                <p class="text-white/70 leading-relaxed">Mon–Fri · 09:00–18:00 ICT</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map + form -->
+      <div class="lg:col-span-6 reveal flex flex-col gap-6" style="transition-delay:120ms">
+
+        <div class="overflow-hidden rounded-3xl border border-carbon/10">
+          <iframe
+            title="SIAM PULSE studio location on Sukhumvit Soi 24, Bangkok"
+            src="https://www.google.com/maps?q=Sukhumvit+Soi+24+Bangkok&output=embed"
+            width="100%" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            style="border:0; display:block;"></iframe>
+        </div>
+
+        <form id="quoteForm" class="rounded-3xl border border-carbon/10 bg-white p-6 sm:p-7">
+          <p class="display text-[17px] font-black tracking-[-0.02em]">Or send us a quick brief</p>
+          <div class="mt-5 grid sm:grid-cols-2 gap-3">
+            <input required type="text" placeholder="Your name"
+              class="w-full rounded-xl border border-carbon/15 px-4 py-3 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+            <input required type="email" placeholder="Work email"
+              class="w-full rounded-xl border border-carbon/15 px-4 py-3 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+          </div>
+          <input type="text" placeholder="Monthly budget (e.g. ฿50,000)" class="mt-3 w-full rounded-xl border border-carbon/15 px-4 py-3 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+          <textarea rows="3" placeholder="What are you trying to grow?" class="mt-3 w-full resize-none rounded-xl border border-carbon/15 px-4 py-3 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300"></textarea>
+
+          <button type="submit" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-vermilion px-6 py-3.5 text-[13.5px] font-bold text-white hover:bg-carbon transition-colors duration-300 tap">
+            Request my proposal <i class="bi bi-arrow-right"></i>
+          </button>
+          <p id="quoteMsg" class="mt-3 hidden text-[12.5px] font-semibold text-emerald">
+            <i class="bi bi-check-circle-fill"></i> Thanks — we'll reply within 24 hours.
+          </p>
+          <p class="mt-3 text-[11.5px] text-carbon/40 text-center">We reply to every enquiry. No spam, ever.</p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="bg-white border-t border-carbon/10 pt-14 pb-28 md:pb-10">
+  <div class="mx-auto max-w-[1280px] px-5 sm:px-6 lg:px-8">
+
+    <div class="grid gap-10 lg:grid-cols-12">
+
+      <div class="lg:col-span-4">
+        <a href="#" class="flex items-center gap-2">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-vermilion">
+            <i class="bi bi-lightning-charge-fill text-white text-[15px]"></i>
+          </span>
+          <span class="display text-[19px] font-black tracking-[-0.04em] leading-none">SIAM<span class="text-vermilion">PULSE</span></span>
+        </a>
+        <p class="mt-4 text-[13px] leading-relaxed text-carbon/55 max-w-xs">
+          A Bangkok digital growth agency building revenue engines for ambitious brands across Thailand and Southeast Asia.
+        </p>
+        <div class="mt-5 flex items-center gap-2">
+          <a href="#" aria-label="Facebook" class="flex h-9 w-9 items-center justify-center rounded-full border border-carbon/12 text-carbon/60 hover:bg-royal hover:border-royal hover:text-white transition-all duration-300"><i class="bi bi-facebook text-[14px]"></i></a>
+          <a href="#" aria-label="Instagram" class="flex h-9 w-9 items-center justify-center rounded-full border border-carbon/12 text-carbon/60 hover:bg-orchid hover:border-orchid hover:text-white transition-all duration-300"><i class="bi bi-instagram text-[14px]"></i></a>
+          <a href="#" aria-label="LinkedIn" class="flex h-9 w-9 items-center justify-center rounded-full border border-carbon/12 text-carbon/60 hover:bg-royal hover:border-royal hover:text-white transition-all duration-300"><i class="bi bi-linkedin text-[14px]"></i></a>
+          <a href="#" aria-label="LINE" class="flex h-9 w-9 items-center justify-center rounded-full border border-carbon/12 text-carbon/60 hover:bg-emerald hover:border-emerald hover:text-white transition-all duration-300"><i class="bi bi-line text-[14px]"></i></a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <p class="kicker text-[10.5px] text-carbon/40">Services</p>
+        <ul class="mt-4 space-y-2.5 text-[13px] text-carbon/60">
+          <li><a href="#services" class="hover:text-vermilion transition">Performance Ads</a></li>
+          <li><a href="#services" class="hover:text-vermilion transition">SEO &amp; Content</a></li>
+          <li><a href="#services" class="hover:text-vermilion transition">Web &amp; UX</a></li>
+          <li><a href="#services" class="hover:text-vermilion transition">AI Automation</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-2">
+        <p class="kicker text-[10.5px] text-carbon/40">Company</p>
+        <ul class="mt-4 space-y-2.5 text-[13px] text-carbon/60">
+          <li><a href="#proof" class="hover:text-vermilion transition">Case Studies</a></li>
+          <li><a href="#testimonials" class="hover:text-vermilion transition">Clients</a></li>
+          <li><a href="#faq" class="hover:text-vermilion transition">FAQ</a></li>
+          <li><a href="#contact" class="hover:text-vermilion transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-4">
+        <p class="kicker text-[10.5px] text-carbon/40">Get growth notes</p>
+        <p class="mt-4 text-[13px] text-carbon/55 leading-relaxed">One short email a month. Thai market insights, no fluff.</p>
+        <form id="newsForm" class="mt-4 flex gap-2">
+          <input type="email" required placeholder="you@company.com" class="min-w-0 flex-1 rounded-full border border-carbon/15 px-4 py-2.5 text-[13px] outline-none focus:border-vermilion transition-all duration-300">
+          <button class="shrink-0 rounded-full bg-carbon px-5 py-2.5 text-[13px] font-bold text-white hover:bg-vermilion transition-colors duration-300 tap">Join</button>
+        </form>
+        <p id="newsMsg" class="mt-2 hidden text-[12px] font-semibold text-emerald"><i class="bi bi-check-circle-fill"></i> You're in.</p>
+      </div>
+
+    </div>
+
+    <div class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-carbon/10 pt-6">
+      <p class="text-[12px] text-carbon/40">© 2026 SIAM PULSE Co., Ltd. · Bangkok, Thailand</p>
+      <div class="flex items-center gap-5 text-[12px] text-carbon/40">
+        <a href="#" class="hover:text-carbon transition">Privacy</a>
+        <a href="#" class="hover:text-carbon transition">Terms</a>
+        <a href="#" class="hover:text-carbon transition">PDPA</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ============================ FLOATING: BACK TO TOP + CHATBOT ============================ -->
+<div class="fixed right-4 md:right-6 bottom-20 md:bottom-6 z-50 flex flex-col items-end gap-3 pointer-events-none">
+
+  <!-- Chat panel -->
+  <div id="chatPanel" class="hidden-panel pointer-events-auto w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-3xl border border-carbon/10 bg-white shadow-lift">
+    <div class="flex items-center gap-3 bg-carbon px-5 py-4">
+      <span class="relative flex h-9 w-9 items-center justify-center rounded-full bg-vermilion">
+        <i class="bi bi-stars text-white text-[15px]"></i>
+        <span class="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-carbon bg-emerald"></span>
+      </span>
+      <div class="min-w-0 flex-1">
+        <p class="text-[13.5px] font-bold text-white leading-none">PULSE Assistant</p>
+        <p class="text-[11px] text-white/50 mt-1">Online · replies instantly</p>
+      </div>
+      <button id="chatClose" class="flex h-8 w-8 items-center justify-center rounded-full text-white/60 hover:bg-white/10 hover:text-white transition tap" aria-label="Close chat">
+        <i class="bi bi-x-lg text-[14px]"></i>
+      </button>
+    </div>
+
+    <div id="chatScroll" class="chat-scroll h-[280px] overflow-y-auto px-4 py-4 space-y-3 bg-white">
+      <div class="flex gap-2.5">
+        <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-vermilion/10">
+          <i class="bi bi-stars text-vermilion text-[12px]"></i>
+        </span>
+        <div class="rounded-2xl rounded-tl-sm bg-carbon/5 px-4 py-3 text-[13px] leading-relaxed text-carbon/80 max-w-[80%]">
+          Hi 👋 I'm the SIAM PULSE assistant. Ask me about pricing, timelines, or what we'd do for your brand.
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-carbon/10 bg-white px-3 py-3">
+      <form id="chatForm" class="flex items-center gap-2">
+        <input id="chatInput" type="text" autocomplete="off" placeholder="Type your question…"
+          class="min-w-0 flex-1 rounded-full border border-carbon/15 bg-white px-4 py-2.5 text-[13px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+        <button type="submit" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-vermilion text-white hover:bg-carbon transition-colors duration-300 tap" aria-label="Send message">
+          <i class="bi bi-send-fill text-[14px]"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Button row: back-to-top (left) + chatbot (right), 5px gap -->
+  <div class="flex items-center gap-[5px] pointer-events-auto">
+    <button id="backToTop" aria-label="Back to top"
+      class="flex h-12 w-12 items-center justify-center rounded-full border border-carbon/12 bg-white text-carbon shadow-soft hover:bg-carbon hover:text-white transition-colors duration-300 tap">
+      <i class="bi bi-arrow-up text-[17px]"></i>
+    </button>
+
+    <button id="chatToggle" aria-label="Open AI assistant"
+      class="relative flex h-14 w-14 items-center justify-center rounded-full bg-vermilion text-white shadow-[0_12px_32px_-10px_rgba(235,77,43,.95)] hover:bg-carbon transition-colors duration-300 tap">
+      <i class="bi bi-chat-dots-fill text-[21px]"></i>
+      <span class="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-canary text-[9.5px] font-black text-carbon">1</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============================ MOBILE STICKY CTA BAR ============================ -->
+<div class="fixed bottom-0 inset-x-0 z-40 md:hidden border-t border-carbon/10 bg-white/95 backdrop-blur-md">
+  <div class="grid grid-cols-3 gap-2 px-3 py-2.5">
+    <a href="tel:+6621234567" class="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-carbon hover:bg-blush transition tap">
+      <i class="bi bi-telephone-fill text-[16px] text-royal"></i>
+      <span class="text-[10.5px] font-bold">Call</span>
+    </a>
+    <a href="https://line.me/" target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-1 rounded-xl py-2 text-carbon hover:bg-blush transition tap">
+      <i class="bi bi-line text-[16px] text-emerald"></i>
+      <span class="text-[10.5px] font-bold">LINE</span>
+    </a>
+    <a href="#contact" class="flex flex-col items-center justify-center gap-1 rounded-xl bg-vermilion py-2 text-white tap">
+      <i class="bi bi-file-earmark-text-fill text-[16px]"></i>
+      <span class="text-[10.5px] font-bold">Get Quote</span>
+    </a>
+  </div>
+</div>
+
+<!-- ============================ AUTH MODAL ============================ -->
+<div id="authModal" class="hidden-modal fixed inset-0 z-[60] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div id="authBackdrop" class="absolute inset-0 bg-carbon/55 backdrop-blur-sm"></div>
+
+  <div class="modal-card relative w-full max-w-[420px] overflow-hidden rounded-3xl bg-white shadow-lift">
+
+    <button id="authClose" class="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full text-carbon/50 hover:bg-carbon/5 hover:text-carbon transition tap" aria-label="Close">
+      <i class="bi bi-x-lg text-[15px]"></i>
+    </button>
+
+    <div class="px-7 pt-8 pb-6">
+      <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-vermilion">
+        <i class="bi bi-lightning-charge-fill text-white text-[16px]"></i>
+      </span>
+      <h2 id="authTitle" class="display mt-4 text-[24px] font-black leading-tight tracking-[-0.03em]">
+        Welcome back.
+      </h2>
+      <p id="authSub" class="mt-1.5 text-[13px] text-carbon/55">Log in to your client dashboard.</p>
+
+      <!-- Tabs -->
+      <div class="mt-6 flex rounded-full bg-carbon/5 p-1">
+        <button data-tab="login" class="auth-tab flex-1 rounded-full py-2.5 text-[13px] font-bold bg-white text-carbon shadow-sm transition-all duration-300 tap">Log in</button>
+        <button data-tab="register" class="auth-tab flex-1 rounded-full py-2.5 text-[13px] font-bold text-carbon/50 transition-all duration-300 tap">Sign up</button>
+      </div>
+
+      <!-- Login form -->
+      <form id="loginForm" class="mt-6 space-y-3">
+        <div class="relative">
+          <i class="bi bi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-carbon/35 text-[14px]"></i>
+          <input type="email" required placeholder="Work email" class="w-full rounded-xl border border-carbon/15 py-3.5 pl-11 pr-4 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+        </div>
+        <div class="relative">
+          <i class="bi bi-lock absolute left-4 top-1/2 -translate-y-1/2 text-carbon/35 text-[14px]"></i>
+          <input type="password" required placeholder="Password" class="w-full rounded-xl border border-carbon/15 py-3.5 pl-11 pr-4 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+        </div>
+        <div class="flex items-center justify-between pt-1">
+          <label class="flex items-center gap-2 text-[12.5px] text-carbon/60 cursor-pointer">
+            <input type="checkbox" class="h-4 w-4 rounded border-carbon/20 accent-vermilion"> Remember me
+          </label>
+          <a href="#" class="text-[12.5px] font-semibold text-royal hover:underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="mt-2 w-full rounded-full bg-vermilion py-3.5 text-[14px] font-bold text-white hover:bg-carbon transition-colors duration-300 tap">
+          Log in to dashboard
+        </button>
+      </form>
+
+      <!-- Register form -->
+      <form id="registerForm" class="mt-6 space-y-3 hidden">
+        <div class="relative">
+          <i class="bi bi-person absolute left-4 top-1/2 -translate-y-1/2 text-carbon/35 text-[14px]"></i>
+          <input type="text" required placeholder="Full name" class="w-full rounded-xl border border-carbon/15 py-3.5 pl-11 pr-4 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+        </div>
+        <div class="relative">
+          <i class="bi bi-envelope absolute left-4 top-1/2 -translate-y-1/2 text-carbon/35 text-[14px]"></i>
+          <input type="email" required placeholder="Work email" class="w-full rounded-xl border border-carbon/15 py-3.5 pl-11 pr-4 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+        </div>
+        <div class="relative">
+          <i class="bi bi-lock absolute left-4 top-1/2 -translate-y-1/2 text-carbon/35 text-[14px]"></i>
+          <input type="password" required placeholder="Create password" class="w-full rounded-xl border border-carbon/15 py-3.5 pl-11 pr-4 text-[13.5px] outline-none focus:border-vermilion focus:ring-2 focus:ring-vermilion/15 transition-all duration-300">
+        </div>
+        <label class="flex items-start gap-2.5 pt-1 text-[12px] text-carbon/55 cursor-pointer leading-relaxed">
+          <input type="checkbox" required class="mt-0.5 h-4 w-4 shrink-0 rounded border-carbon/20 accent-vermilion">
+          I agree to the Terms and the PDPA Privacy Policy.
+        </label>
+        <button type="submit" class="mt-2 w-full rounded-full bg-carbon py-3.5 text-[14px] font-bold text-white hover:bg-vermilion transition-colors duration-300 tap">
+          Create my account
+        </button>
+      </form>
+
+      <p id="authMsg" class="mt-4 hidden rounded-xl bg-emerald/10 px-4 py-3 text-[12.5px] font-semibold text-emerald"></p>
+
+      <div class="mt-6 flex items-center gap-3">
+        <span class="h-px flex-1 bg-carbon/10"></span>
+        <span class="text-[11px] text-carbon/35 font-medium">or continue with</span>
+        <span class="h-px flex-1 bg-carbon/10"></span>
+      </div>
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        <button class="flex items-center justify-center gap-2 rounded-xl border border-carbon/15 py-3 text-[12.5px] font-semibold hover:bg-carbon/5 transition tap">
+          <i class="bi bi-google text-[14px] text-vermilion"></i> Google
+        </button>
+        <button class="flex items-center justify-center gap-2 rounded-xl border border-carbon/15 py-3 text-[12.5px] font-semibold hover:bg-carbon/5 transition tap">
+          <i class="bi bi-line text-[14px] text-emerald"></i> LINE
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---------------- Reveal on scroll ---------------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  /* ---------------- Animated counters ---------------- */
+  const counters = document.querySelectorAll('.counter');
+  const runCounter = (el) => {
+    const target = parseFloat(el.dataset.count || '0');
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const dur = 1500;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = target * eased;
+      el.textContent = decimals ? val.toFixed(decimals) : Math.round(val).toLocaleString('en-US');
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = decimals ? target.toFixed(decimals) : target.toLocaleString('en-US');
+    };
+    requestAnimationFrame(step);
+  };
+  if ('IntersectionObserver' in window && counters.length) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { runCounter(e.target); cio.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((c) => cio.observe(c));
+  } else {
+    counters.forEach((c) => { c.textContent = c.dataset.count; });
+  }
+
+  /* ---------------- Mobile menu ---------------- */
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('hidden') === false;
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.innerHTML = open
+      ? '<i class="bi bi-x-lg text-[18px]"></i>'
+      : '<i class="bi bi-list text-[20px]"></i>';
+  });
+  mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.innerHTML = '<i class="bi bi-list text-[20px]"></i>';
+  }));
+
+  /* ---------------- FAQ accordion ---------------- */
+  document.querySelectorAll('.faq-item').forEach((item) => {
+    const trigger = item.querySelector('.faq-trigger');
+    const panel = item.querySelector('.faq-panel');
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item.open').forEach((other) => {
+        other.classList.remove('open');
+        other.querySelector('.faq-panel').style.maxHeight = '0px';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------------- Back to top ---------------- */
+  const backToTop = document.getElementById('backToTop');
+  const heroSection = document.querySelector('main section');
+  const onScroll = () => {
+    const threshold = heroSection ? heroSection.offsetHeight * 0.9 : 600;
+    if (window.scrollY > threshold) backToTop.classList.add('show');
+    else backToTop.classList.remove('show');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ---------------- Chatbot ---------------- */
+  const chatPanel = document.getElementById('chatPanel');
+  const chatToggle = document.getElementById('chatToggle');
+  const chatClose = document.getElementById('chatClose');
+  const chatScroll = document.getElementById('chatScroll');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+
+  const openChat = () => {
+    chatPanel.classList.remove('hidden-panel');
+    setTimeout(() => chatInput.focus(), 260);
+  };
+  const closeChat = () => chatPanel.classList.add('hidden-panel');
+
+  chatToggle.addEventListener('click', () => {
+    if (chatPanel.classList.contains('hidden-panel')) openChat();
+    else closeChat();
+  });
+  chatClose.addEventListener('click', closeChat);
+  document.getElementById('heroAskAI').addEventListener('click', () => {
+    openChat();
+    chatInput.value = 'What can you do for my business?';
+  });
+
+  const scrollChat = () => { chatScroll.scrollTop = chatScroll.scrollHeight; };
+
+  const addMsg = (text, who) => {
+    const row = document.createElement('div');
+    row.className = who === 'user' ? 'flex justify-end' : 'flex gap-2.5';
+    if (who === 'user') {
+      row.innerHTML = '<div class="rounded-2xl rounded-tr-sm bg-vermilion px-4 py-3 text-[13px] leading-relaxed text-white max-w-[80%]"></div>';
+      row.firstChild.textContent = text;
+    } else {
+      row.innerHTML =
+        '<span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-vermilion/10">' +
+        '<i class="bi bi-stars text-vermilion text-[12px]"></i></span>' +
+        '<div class="rounded-2xl rounded-tl-sm bg-carbon/5 px-4 py-3 text-[13px] leading-relaxed text-carbon/80 max-w-[80%]"></div>';
+      row.lastChild.textContent = text;
+    }
+    chatScroll.appendChild(row);
+    scrollChat();
+  };
+
+  const addTyping = () => {
+    const row = document.createElement('div');
+    row.id = 'typingRow';
+    row.className = 'flex gap-2.5';
+    row.innerHTML =
+      '<span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-vermilion/10">' +
+      '<i class="bi bi-stars text-vermilion text-[12px]"></i></span>' +
+      '<div class="rounded-2xl rounded-tl-sm bg-carbon/5 px-4 py-3"><span class="flex gap-1">' +
+      '<span class="h-1.5 w-1.5 rounded-full bg-carbon/30 animate-bounce" style="animation-delay:0ms"></span>' +
+      '<span class="h-1.5 w-1.5 rounded-full bg-carbon/30 animate-bounce" style="animation-delay:120ms"></span>' +
+      '<span class="h-1.5 w-1.5 rounded-full bg-carbon/30 animate-bounce" style="animation-delay:240ms"></span>' +
+      '</span></div>';
+    chatScroll.appendChild(row);
+    scrollChat();
+  };
+
+  const botReply = (q) => {
+    const t = q.toLowerCase();
+    if (/(price|cost|budget|how much|seo cost|baht|฿|ราคา)/.test(t))
+      return 'Our retainers start at ฿25,000/mo for paid media, ฿35,000/mo for SEO, and projects like a full website start around ฿180,000. Every scope is fixed-price — you will never see a surprise line item.';
+    if (/(sme|small|startup|small business|เจ้าของกิจการ)/.test(t))
+      return 'Yes — about 60% of our clients are Thai SMEs starting at ฿30,000/mo. We scale the scope, not the attention you get.';
+    if (/(fast|how long|timeline|launch|when|เร็ว)/.test(t))
+      return 'Paid campaigns go live in ~5 working days. Meaningful signal usually shows in 2–4 weeks. SEO compounds from month 3, peaking between months 4 and 8.';
+    if (/(own|ownership|account|data|belong|เป็นเจ้าของ)/.test(t))
+      return 'You own everything — ad accounts, analytics, creative files and dashboards — from day one. If we part ways, it all stays with you.';
+    if (/(ai|automation|chatbot|line|ระบบอัตโนมัติ)/.test(t))
+      return 'We build AI assistants and LINE OA flows that typically resolve 60–70% of enquiries before a human is involved. Projects start around ฿60,000.';
+    if (/(case|result|proof|roas|example|ผลงาน)/.test(t))
+      return 'Our blended average is 3.4× ROAS. Ari Wellness went from 40 orders a month to 1,900 in seven months with a 58% lower cost per acquisition.';
+    if (/(hi|hello|hey|สวัสดี)/.test(t))
+      return 'Hello! Ask me about pricing, timelines, ownership of accounts, or what a first 90 days with us looks like.';
+    return 'Great question. A strategist can answer that in detail on a free 30-minute call — or tell me a bit more about your business and I will point you in the right direction.';
+  };
+
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const value = chatInput.value.trim();
+    if (!value) return;
+    addMsg(value, 'user');
+    chatInput.value = '';
+    addTyping();
+    setTimeout(() => {
+      const typing = document.getElementById('typingRow');
+      if (typing) typing.remove();
+      addMsg(botReply(value), 'bot');
+    }, 900 + Math.random() * 500);
+  });
+
+  /* ---------------- Ask AI inline ---------------- */
+  const aiForm = document.getElementById('aiForm');
+  const aiInput = document.getElementById('aiInput');
+  const aiAnswer = document.getElementById('aiAnswer');
+  const aiAnswerText = document.getElementById('aiAnswerText');
+
+  const askAI = (q) => {
+    if (!q) return;
+    aiAnswerText.textContent = 'Thinking…';
+    aiAnswer.classList.remove('hidden');
+    setTimeout(() => { aiAnswerText.textContent = botReply(q); }, 700);
+  };
+
+  aiForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    askAI(aiInput.value.trim());
+  });
+  document.querySelectorAll('.ai-chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      aiInput.value = chip.textContent.trim();
+      askAI(aiInput.value);
+    });
+  });
+
+  /* ---------------- Auth modal ---------------- */
+  const authModal = document.getElementById('authModal');
+  const authBackdrop = document.getElementById('authBackdrop');
+  const authClose = document.getElementById('authClose');
+  const authTitle = document.getElementById('authTitle');
+  const authSub = document.getElementById('authSub');
+  const authMsg = document.getElementById('authMsg');
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const tabs = document.querySelectorAll('.auth-tab');
+
+  const openModal = (mode) => {
+    authModal.classList.remove('hidden-modal');
+    document.body.style.overflow = 'hidden';
+    setTab(mode || 'login');
+  };
+  const closeModal = () => {
+    authModal.classList.add('hidden-modal');
+    document.body.style.overflow = '';
+  };
+
+  const setTab = (mode) => {
+    authMsg.classList.add('hidden');
+    tabs.forEach((t) => {
+      const active = t.dataset.tab === mode;
+      t.classList.toggle('bg-white', active);
+      t.classList.toggle('shadow-sm', active);
+      t.classList.toggle('text-carbon', active);
+      t.classList.toggle('text-carbon/50', !active);
+    });
+    if (mode === 'login') {
+      loginForm.classList.remove('hidden');
+      registerForm.classList.add('hidden');
+      authTitle.textContent = 'Welcome back.';
+      authSub.textContent = 'Log in to your client dashboard.';
+    } else {
+      registerForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+      authTitle.textContent = 'Create your account.';
+      authSub.textContent = 'Free strategy call, no card required.';
+    }
+  };
+
+  document.querySelectorAll('[data-auth-open]').forEach((btn) => {
+    btn.addEventListener('click', () => openModal(btn.dataset.authOpen));
+  });
+  authClose.addEventListener('click', closeModal);
+  authBackdrop.addEventListener('click', closeModal);
+  tabs.forEach((t) => t.addEventListener('click', () => setTab(t.dataset.tab)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !authModal.classList.contains('hidden-modal')) closeModal();
+  });
+
+  const showAuthMsg = (text) => {
+    authMsg.textContent = text;
+    authMsg.classList.remove('hidden');
+  };
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showAuthMsg('✓ Demo mode — you are logged in. Redirecting to dashboard…');
+  });
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showAuthMsg('✓ Account created. Check your inbox to verify your email.');
+  });
+
+  /* ---------------- Forms feedback ---------------- */
+  const quoteForm = document.getElementById('quoteForm');
+  const quoteMsg = document.getElementById('quoteMsg');
+  quoteForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    quoteMsg.classList.remove('hidden');
+    quoteForm.reset();
+  });
+
+  const newsForm = document.getElementById('newsForm');
+  const newsMsg = document.getElementById('newsMsg');
+  newsForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    newsMsg.classList.remove('hidden');
+    newsForm.reset();
+  });
+
+  /* ---------------- TH / EN switch ---------------- */
+  const langEN = document.getElementById('langEN');
+  const langTH = document.getElementById('langTH');
+
+  document.querySelectorAll('[data-th]').forEach((el) => {
+    el.dataset.en = el.textContent.trim();
+  });
+
+  const setLang = (lang) => {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-th]').forEach((el) => {
+      el.textContent = lang === 'th' ? el.dataset.th : el.dataset.en;
+    });
+    const activeCls = ['bg-carbon', 'text-white'];
+    const idleCls = ['text-carbon/60'];
+    if (lang === 'th') {
+      langTH.classList.add(...activeCls); langTH.classList.remove(...idleCls);
+      langEN.classList.remove(...activeCls); langEN.classList.add(...idleCls);
+    } else {
+      langEN.classList.add(...activeCls); langEN.classList.remove(...idleCls);
+      langTH.classList.remove(...activeCls); langTH.classList.add(...idleCls);
+    }
+  };
+  langEN.addEventListener('click', () => setLang('en'));
+  langTH.addEventListener('click', () => setLang('th'));
+
+})();
+</script>
+
+</body>
+</html>
