@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreativeBKK — Award-Winning Creative & Digital Agency in Bangkok</title>
+<meta name="description" content="CreativeBKK is Bangkok's high-impact creative agency. Brand identity, web design, SEO & performance marketing that converts. 500+ projects, 98% client retention. Get a free quote today.">
+<meta name="keywords" content="creative agency bangkok, web design thailand, branding, SEO agency, digital marketing, UI UX design">
+<meta property="og:title" content="CreativeBKK — High-Impact Creative Agency">
+<meta property="og:description" content="We build brands that demand attention. 500+ projects delivered across 12 countries.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        vermilion: '#EB4D2B', royal: '#262AF5', canary: '#F4B800',
+        orchid: '#C24AF5', emerald: '#3BB75E', carbon: '#18181A', blush: '#FBECE8'
+      },
+      fontFamily: {
+        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        body: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"CreativeBKK","url":"https://creativebkk.example.com","logo":"https://creativebkk.example.com/logo.png","description":"High-impact creative & digital agency in Bangkok.","address":{"@type":"PostalAddress","addressLocality":"Bangkok","addressCountry":"TH"},"telephone":"+66-2-000-1234","sameAs":["https://facebook.com/creativebkk","https://instagram.com/creativebkk"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://creativebkk.example.com/"}]}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #fff; color: #18181A; overflow-x: hidden; }
+  h1,h2,h3,.display { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.035em; }
+  .kicker { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; }
+
+  /* Crosshair markers */
+  .crosshair { position: absolute; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; color: #18181A; opacity: .25; font-size: 18px; user-select: none; pointer-events: none; line-height: 1; }
+  .crosshair::before { content: "+"; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: .08s; } .reveal-d2 { transition-delay: .16s; } .reveal-d3 { transition-delay: .24s; }
+
+  /* Header */
+  #siteHeader { transition: box-shadow .3s ease, background .3s ease; }
+  #siteHeader.scrolled { box-shadow: 0 4px 24px rgba(24,24,26,.07); }
+
+  /* Buttons */
+  .btn-primary { position: relative; overflow: hidden; transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(235,77,43,.35); }
+  .btn-primary::after { content:""; position:absolute; inset:0; background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%); transform:translateX(-120%); transition:transform .6s; }
+  .btn-primary:hover::after { transform:translateX(120%); }
+  .btn-ghost { transition: all .25s cubic-bezier(.22,1,.36,1); }
+  .btn-ghost:hover { transform: translateY(-2px); background:#18181A; color:#fff; }
+
+  /* Service cards */
+  .svc-card { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s; }
+  .svc-card:hover { transform: translateY(-8px); box-shadow: 0 20px 44px rgba(24,24,26,.12); }
+  .svc-card:hover .svc-arrow { transform: translate(4px,-4px); background:#18181A; color:#fff; }
+  .svc-arrow { transition: all .3s; }
+
+  /* Marquee */
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 26s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+
+  /* Floating badges */
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .floaty { animation: floaty 5s ease-in-out infinite; }
+  .floaty-2 { animation: floaty 6.5s ease-in-out infinite; animation-delay: 1s; }
+
+  /* Accordion */
+  .faq-body { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.22,1,.36,1); }
+  .faq-item.open .faq-body { max-height: 240px; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-chevron { transition: transform .35s; }
+  .faq-item.open .faq-icon { background:#EB4D2B; color:#fff; border-color:#EB4D2B; }
+  .faq-item { transition: border-color .3s; }
+  .faq-item.open { border-color:#EB4D2B; }
+
+  /* Modal */
+  #authModal { transition: opacity .3s ease; }
+  #authModal.hidden-modal { opacity: 0; pointer-events: none; }
+  #authModal .modal-panel { transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .35s; }
+  #authModal.hidden-modal .modal-panel { transform: translateY(28px) scale(.97); opacity: 0; }
+  .auth-tab { transition: all .3s; }
+  .shake { animation: shake .4s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+  /* Chatbot */
+  #chatPanel { transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .3s; transform-origin: bottom right; }
+  #chatPanel.closed { transform: scale(.6) translateY(20px); opacity: 0; pointer-events: none; }
+  #chatBtn .chat-pulse { animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(38,42,245,.45); } 70% { box-shadow: 0 0 0 14px rgba(38,42,245,0); } 100% { box-shadow: 0 0 0 0 rgba(38,42,245,0); } }
+  @keyframes dotBounce { 0%,80%,100% { transform: translateY(0); opacity:.4; } 40% { transform: translateY(-5px); opacity:1; } }
+  .typing-dot { width:7px; height:7px; border-radius:50%; background:#18181A; animation: dotBounce 1.2s infinite; }
+  .typing-dot:nth-child(2){ animation-delay:.15s } .typing-dot:nth-child(3){ animation-delay:.3s }
+  .msg-in { animation: msgIn .35s cubic-bezier(.22,1,.36,1); }
+  @keyframes msgIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+  #chatMessages::-webkit-scrollbar { width:5px; } #chatMessages::-webkit-scrollbar-thumb { background:#e5e5e5; border-radius:99px; }
+
+  /* Back to top */
+  #backTop { transition: all .35s cubic-bezier(.22,1,.36,1); }
+  #backTop.btt-hidden { opacity: 0; transform: translateY(16px) scale(.8); pointer-events: none; }
+
+  /* Mobile menu */
+  #mobileMenu { transition: transform .4s cubic-bezier(.22,1,.36,1); }
+  #mobileMenu.closed { transform: translateX(100%); }
+
+  /* Sticky mobile bar */
+  #mobileCta { transition: transform .35s ease; }
+  #mobileCta.btt-hidden { transform: translateY(110%); }
+
+  /* Testimonial cards */
+  .testi-card { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s; }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(24,24,26,.1); }
+
+  /* Chips */
+  .chip { transition: all .25s; }
+  .chip:hover { background:#18181A; color:#fff; transform: translateY(-2px); }
+
+  /* Image hover */
+  .img-zoom img { transition: transform .8s cubic-bezier(.22,1,.36,1); }
+  .img-zoom:hover img { transform: scale(1.05); }
+
+  input:focus, textarea:focus { outline: none; }
+  /* Floating row: above mobile CTA bar on phones, low corner on desktop */
+  .float-row { bottom: calc(74px + env(safe-area-inset-bottom)) !important; }
+  @media (min-width: 768px) { .float-row { bottom: 1.5rem !important; } }
+  .field-error { border-color:#EB4D2B !important; }
+</style>
+</head>
+<body class="bg-white text-carbon antialiased">
+
+<!-- ============ HEADER ============ -->
+<header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="w-9 h-9 rounded-xl bg-vermilion grid place-items-center text-white font-display font-900 text-lg transition-transform duration-300 group-hover:rotate-[-8deg]">C</span>
+        <span class="font-display font-800 text-[19px] tracking-tight">Creative<span class="text-vermilion">BKK</span></span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-9 text-[13.5px] font-medium text-carbon/70">
+        <a href="#services" class="hover:text-carbon transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-vermilion after:transition-all hover:after:w-full">Services</a>
+        <a href="#work" class="hover:text-carbon transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-vermilion after:transition-all hover:after:w-full">Work</a>
+        <a href="#testimonials" class="hover:text-carbon transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-vermilion after:transition-all hover:after:w-full">Clients</a>
+        <a href="#faq" class="hover:text-carbon transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-vermilion after:transition-all hover:after:w-full">FAQ</a>
+        <a href="#contact" class="hover:text-carbon transition-colors relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-vermilion after:transition-all hover:after:w-full">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <!-- TH/EN switch -->
+        <div class="hidden sm:flex items-center bg-carbon/[.06] rounded-full p-1 text-[11px] font-semibold">
+          <button id="langEN" class="px-2.5 py-1 rounded-full bg-carbon text-white transition-all">EN</button>
+          <button id="langTH" class="px-2.5 py-1 rounded-full text-carbon/60 hover:text-carbon transition-all">TH</button>
+        </div>
+        <button onclick="openAuth('login')" class="hidden sm:inline-flex items-center gap-2 text-[13px] font-semibold border border-carbon/15 rounded-full px-5 py-2.5 btn-ghost">
+          <i class="fa-regular fa-user text-[12px]"></i> Login
+        </button>
+        <button onclick="openAuth('quote')" class="hidden sm:inline-flex btn-primary items-center gap-2 text-[13px] font-semibold bg-vermilion text-white rounded-full px-5 py-2.5">
+          Get a Quote <i class="fa-solid fa-arrow-right text-[11px]"></i>
+        </button>
+        <button id="hamburger" class="lg:hidden w-10 h-10 grid place-items-center rounded-full border border-carbon/10" aria-label="Menu">
+          <i class="fa-solid fa-bars text-[15px]"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="closed fixed inset-0 z-[60] bg-white lg:hidden">
+  <div class="flex items-center justify-between h-[72px] px-5">
+    <span class="font-display font-800 text-[19px]">Creative<span class="text-vermilion">BKK</span></span>
+    <button id="mobileClose" class="w-10 h-10 grid place-items-center rounded-full border border-carbon/10"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="px-6 pt-6 flex flex-col gap-1 font-display font-800 text-[28px] tracking-tight">
+    <a href="#services" class="mob-link py-3 border-b border-carbon/8 flex justify-between items-center">Services <i class="fa-solid fa-arrow-right text-vermilion text-sm"></i></a>
+    <a href="#work" class="mob-link py-3 border-b border-carbon/8 flex justify-between items-center">Work <i class="fa-solid fa-arrow-right text-vermilion text-sm"></i></a>
+    <a href="#testimonials" class="mob-link py-3 border-b border-carbon/8 flex justify-between items-center">Clients <i class="fa-solid fa-arrow-right text-vermilion text-sm"></i></a>
+    <a href="#faq" class="mob-link py-3 border-b border-carbon/8 flex justify-between items-center">FAQ <i class="fa-solid fa-arrow-right text-vermilion text-sm"></i></a>
+    <a href="#contact" class="mob-link py-3 border-b border-carbon/8 flex justify-between items-center">Contact <i class="fa-solid fa-arrow-right text-vermilion text-sm"></i></a>
+  </nav>
+  <div class="px-6 mt-8 flex flex-col gap-3">
+    <button onclick="closeMobileMenu();openAuth('quote')" class="btn-primary bg-vermilion text-white rounded-full py-4 font-semibold text-[15px]">Get a Free Quote</button>
+    <button onclick="closeMobileMenu();openAuth('login')" class="border border-carbon/15 rounded-full py-4 font-semibold text-[15px]">Client Login</button>
+  </div>
+</div>
+
+<main>
+<!-- ============ HERO ============ -->
+<section id="hero" class="relative pt-[120px] lg:pt-[150px] pb-16 lg:pb-24 overflow-hidden">
+  <span class="crosshair top-28 left-[4%]"></span>
+  <span class="crosshair top-40 right-[6%]"></span>
+  <span class="crosshair bottom-16 left-[45%]"></span>
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="lg:col-span-6 relative z-10">
+        <div class="reveal inline-flex items-center gap-2 bg-blush rounded-full px-4 py-2 mb-7">
+          <span class="w-2 h-2 rounded-full bg-vermilion animate-pulse"></span>
+          <span class="kicker text-vermilion">Bangkok's No.1 Creative Agency · Est. 2013</span>
+        </div>
+        <h1 class="reveal reveal-d1 font-display font-900 text-[44px] sm:text-[58px] lg:text-[68px] leading-[0.98] tracking-[-0.04em]">
+          We build brands that <span class="text-vermilion">demand</span> attention.
+        </h1>
+        <p class="reveal reveal-d2 mt-6 text-[15.5px] leading-[1.7] text-carbon/60 max-w-[480px]">
+          Award-winning brand identity, web design & performance marketing for ambitious companies. 500+ projects delivered across 12 countries — with results you can measure in revenue, not applause.
+        </p>
+        <div class="reveal reveal-d3 mt-9 flex flex-wrap items-center gap-4">
+          <button onclick="openAuth('quote')" class="btn-primary bg-vermilion text-white rounded-full px-8 py-4 font-semibold text-[14.5px] inline-flex items-center gap-2.5">
+            Get a Free Quote <i class="fa-solid fa-arrow-right text-[12px]"></i>
+          </button>
+          <button onclick="openChat()" class="btn-ghost border border-carbon/20 rounded-full px-8 py-4 font-semibold text-[14.5px] inline-flex items-center gap-2.5">
+            <i class="fa-solid fa-robot text-royal"></i> Talk to our AI
+          </button>
+        </div>
+        <div class="reveal reveal-d3 mt-10 flex items-center gap-5">
+          <div class="flex -space-x-3">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="client">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&q=80&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="client">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80&auto=format&fit=crop" class="w-10 h-10 rounded-full border-2 border-white object-cover" alt="client">
+            <span class="w-10 h-10 rounded-full border-2 border-white bg-carbon text-white text-[10px] font-bold grid place-items-center">120+</span>
+          </div>
+          <div class="text-[12.5px] leading-tight text-carbon/60">
+            <div class="text-canary text-[13px] mb-0.5">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <strong class="text-carbon">4.9/5</strong> from 240+ verified reviews
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-6 relative">
+        <div class="reveal reveal-d1 relative">
+          <div class="img-zoom rounded-[28px] overflow-hidden shadow-[0_30px_70px_rgba(24,24,26,.14)]">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&q=80&auto=format&fit=crop" alt="CreativeBKK team collaborating" class="w-full h-[340px] sm:h-[440px] lg:h-[520px] object-cover">
+          </div>
+          <div class="floaty absolute -top-5 -left-3 sm:-left-8 bg-white rounded-2xl shadow-[0_14px_36px_rgba(24,24,26,.14)] px-5 py-4 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-emerald grid place-items-center text-white"><i class="fa-solid fa-arrow-trend-up"></i></span>
+            <div><div class="font-display font-800 text-[17px] leading-none">+312%</div><div class="text-[11px] text-carbon/55 mt-1">Avg. conversion lift</div></div>
+          </div>
+          <div class="floaty-2 absolute -bottom-5 right-3 sm:-right-6 bg-carbon text-white rounded-2xl shadow-[0_14px_36px_rgba(24,24,26,.22)] px-5 py-4 flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-canary grid place-items-center text-carbon"><i class="fa-solid fa-award"></i></span>
+            <div><div class="font-display font-800 text-[15px] leading-tight">Agency of<br>the Year 2025</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="py-10 border-y border-carbon/[.07]">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="reveal flex flex-wrap items-center justify-center lg:justify-between gap-x-10 gap-y-6">
+      <div class="flex items-center gap-3 text-carbon/50">
+        <i class="fa-solid fa-shield-halved text-emerald text-xl"></i>
+        <span class="text-[12px] font-medium leading-tight">ISO 9001 Certified<br><span class="text-carbon/40">Google Partner Agency</span></span>
+      </div>
+      <div class="hidden md:flex items-center gap-10 overflow-hidden">
+        <div class="flex items-center gap-3 whitespace-nowrap">
+          <span class="font-display font-900 text-[26px]">12<span class="text-vermilion">+</span></span>
+          <span class="text-[11.5px] text-carbon/50 leading-tight">Years of<br>excellence</span>
+        </div>
+        <div class="w-px h-10 bg-carbon/10"></div>
+        <div class="flex items-center gap-3 whitespace-nowrap">
+          <span class="font-display font-900 text-[26px]">500<span class="text-royal">+</span></span>
+          <span class="text-[11.5px] text-carbon/50 leading-tight">Projects<br>delivered</span>
+        </div>
+        <div class="w-px h-10 bg-carbon/10"></div>
+        <div class="flex items-center gap-3 whitespace-nowrap">
+          <span class="font-display font-900 text-[26px]">฿480M<span class="text-orchid">+</span></span>
+          <span class="text-[11.5px] text-carbon/50 leading-tight">Client revenue<br>generated</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-6 text-carbon/35 text-[13px] font-display font-800 tracking-tight">
+        <i class="fa-brands fa-airbnb text-[26px] hover:text-carbon transition-colors"></i>
+        <i class="fa-brands fa-spotify text-[26px] hover:text-carbon transition-colors"></i>
+        <i class="fa-brands fa-stripe text-[26px] hover:text-carbon transition-colors"></i>
+        <i class="fa-brands fa-shopify text-[26px] hover:text-carbon transition-colors"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="py-20 lg:py-28 relative">
+  <span class="crosshair top-24 right-[3%]"></span>
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+      <div class="reveal">
+        <p class="kicker text-royal mb-4"><span class="inline-block w-8 h-[2px] bg-royal align-middle mr-3"></span>What we do</p>
+        <h2 class="font-display font-800 text-[34px] sm:text-[44px] leading-[1.05]">Full-stack creativity,<br>engineered for growth.</h2>
+      </div>
+      <p class="reveal reveal-d1 text-[14px] text-carbon/55 max-w-[360px] leading-relaxed lg:text-right">Every service is designed around one metric: your return on investment. Winner takes most — we make sure it's you.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Card 1 -->
+      <div class="reveal svc-card group bg-white border border-carbon/10 rounded-3xl p-8 relative overflow-hidden">
+        <span class="absolute top-0 right-0 w-24 h-24 bg-vermilion/[.07] rounded-bl-[48px]"></span>
+        <div class="w-14 h-14 rounded-2xl bg-vermilion text-white grid place-items-center text-xl mb-14"><i class="fa-solid fa-fingerprint"></i></div>
+        <h3 class="font-display font-700 text-[16px] uppercase tracking-wide mb-3">Brand Identity</h3>
+        <p class="text-[13px] text-carbon/55 leading-[1.65] mb-6">Logo systems, brand guidelines and visual languages that make you unmistakable — from first impression to loyal fan.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">from ฿85,000</span>
+          <span class="svc-arrow w-10 h-10 rounded-full border border-carbon/15 grid place-items-center text-[12px]"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="reveal reveal-d1 svc-card group bg-white border border-carbon/10 rounded-3xl p-8 relative overflow-hidden">
+        <span class="absolute top-0 right-0 w-24 h-24 bg-royal/[.07] rounded-bl-[48px]"></span>
+        <div class="w-14 h-14 rounded-2xl bg-royal text-white grid place-items-center text-xl mb-14"><i class="fa-solid fa-code"></i></div>
+        <h3 class="font-display font-700 text-[16px] uppercase tracking-wide mb-3">Web Design & Dev</h3>
+        <p class="text-[13px] text-carbon/55 leading-[1.65] mb-6">Conversion-first websites with sub-2.5s LCP, 100% crawlable SSR and WCAG 2.2 AA accessibility as standard.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">from ฿120,000</span>
+          <span class="svc-arrow w-10 h-10 rounded-full border border-carbon/15 grid place-items-center text-[12px]"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="reveal reveal-d2 svc-card group bg-white border border-carbon/10 rounded-3xl p-8 relative overflow-hidden">
+        <span class="absolute top-0 right-0 w-24 h-24 bg-canary/[.15] rounded-bl-[48px]"></span>
+        <div class="w-14 h-14 rounded-2xl bg-canary text-carbon grid place-items-center text-xl mb-14"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3 class="font-display font-700 text-[16px] uppercase tracking-wide mb-3">SEO & Performance</h3>
+        <p class="text-[13px] text-carbon/55 leading-[1.65] mb-6">Technical SEO, content systems and paid media managed against revenue targets — not vanity metrics.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">from ฿45,000/mo</span>
+          <span class="svc-arrow w-10 h-10 rounded-full border border-carbon/15 grid place-items-center text-[12px]"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="reveal svc-card group bg-white border border-carbon/10 rounded-3xl p-8 relative overflow-hidden">
+        <span class="absolute top-0 right-0 w-24 h-24 bg-orchid/[.08] rounded-bl-[48px]"></span>
+        <div class="w-14 h-14 rounded-2xl bg-orchid text-white grid place-items-center text-xl mb-14"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3 class="font-display font-700 text-[16px] uppercase tracking-wide mb-3">UI/UX Design</h3>
+        <p class="text-[13px] text-carbon/55 leading-[1.65] mb-6">Research-driven product design, wireframes to polished design systems, validated with real user testing.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">from ฿95,000</span>
+          <span class="svc-arrow w-10 h-10 rounded-full border border-carbon/15 grid place-items-center text-[12px]"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="reveal reveal-d1 svc-card group bg-white border border-carbon/10 rounded-3xl p-8 relative overflow-hidden">
+        <span class="absolute top-0 right-0 w-24 h-24 bg-emerald/[.09] rounded-bl-[48px]"></span>
+        <div class="w-14 h-14 rounded-2xl bg-emerald text-white grid place-items-center text-xl mb-14"><i class="fa-solid fa-cart-shopping"></i></div>
+        <h3 class="font-display font-700 text-[16px] uppercase tracking-wide mb-3">E-commerce</h3>
+        <p class="text-[13px] text-carbon/55 leading-[1.65] mb-6">Shopify & headless storefronts engineered for checkout speed, upsells and repeat purchase revenue.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">from ฿150,000</span>
+          <span class="svc-arrow w-10 h-10 rounded-full border border-carbon/15 grid place-items-center text-[12px]"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="reveal reveal-d2 svc-card group bg-white border border-carbon/10 rounded-3xl p-8 relative overflow-hidden">
+        <span class="absolute top-0 right-0 w-24 h-24 bg-carbon/[.05] rounded-bl-[48px]"></span>
+        <div class="w-14 h-14 rounded-2xl bg-carbon text-white grid place-items-center text-xl mb-14"><i class="fa-solid fa-video"></i></div>
+        <h3 class="font-display font-700 text-[16px] uppercase tracking-wide mb-3">Content Production</h3>
+        <p class="text-[13px] text-carbon/55 leading-[1.65] mb-6">Photo, video and motion content that stops the scroll — shot in-house, edited for every platform.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-[12px] font-semibold text-carbon/45">from ฿38,000</span>
+          <span class="svc-arrow w-10 h-10 rounded-full border border-carbon/15 grid place-items-center text-[12px]"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF / CASE STUDY ============ -->
+<section id="work" class="py-20 lg:py-28 bg-carbon text-white relative overflow-hidden">
+  <span class="crosshair top-16 left-[4%] !text-white"></span>
+  <span class="crosshair bottom-20 right-[5%] !text-white"></span>
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <div>
+        <p class="reveal kicker text-emerald mb-4"><span class="inline-block w-8 h-[2px] bg-emerald align-middle mr-3"></span>Proof, not promises</p>
+        <h2 class="reveal reveal-d1 font-display font-800 text-[34px] sm:text-[44px] leading-[1.05] mb-10">Results our clients<br>brag about.</h2>
+        <div class="reveal reveal-d2 grid grid-cols-2 gap-x-8 gap-y-10">
+          <div>
+            <div class="font-display font-900 text-[42px] sm:text-[52px] leading-none text-canary"><span class="counter" data-target="312">0</span>%</div>
+            <p class="text-[12.5px] text-white/55 mt-2 leading-relaxed">Average conversion-rate increase across redesign projects</p>
+          </div>
+          <div>
+            <div class="font-display font-900 text-[42px] sm:text-[52px] leading-none text-vermilion"><span class="counter" data-target="98">0</span>%</div>
+            <p class="text-[12.5px] text-white/55 mt-2 leading-relaxed">Client retention rate — they stay because it works</p>
+          </div>
+          <div>
+            <div class="font-display font-900 text-[42px] sm:text-[52px] leading-none text-orchid"><span class="counter" data-target="500">0</span>+</div>
+            <p class="text-[12.5px] text-white/55 mt-2 leading-relaxed">Projects shipped for startups to Fortune 500 brands</p>
+          </div>
+          <div>
+            <div class="font-display font-900 text-[42px] sm:text-[52px] leading-none text-royal"><span class="counter" data-target="12">0</span></div>
+            <p class="text-[12.5px] text-white/55 mt-2 leading-relaxed">Countries served — 70% of clients are outside Thailand</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="bg-white text-carbon rounded-[28px] overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,.35)]">
+          <div class="img-zoom relative">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&q=80&auto=format&fit=crop" alt="Analytics dashboard case study" class="w-full h-[220px] object-cover">
+            <span class="absolute top-4 left-4 bg-vermilion text-white kicker px-3.5 py-2 rounded-full">Featured Case Study</span>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center gap-2 text-[11px] font-semibold text-carbon/45 mb-3">
+              <span class="bg-blush text-vermilion px-2.5 py-1 rounded-full">E-commerce</span>
+              <span class="bg-carbon/[.05] px-2.5 py-1 rounded-full">Shopify Plus</span>
+              <span class="bg-carbon/[.05] px-2.5 py-1 rounded-full">CRO</span>
+            </div>
+            <h3 class="font-display font-800 text-[22px] leading-tight mb-3">How we took a Thai skincare brand from ฿2M to ฿18M monthly revenue</h3>
+            <p class="text-[13px] text-carbon/55 leading-[1.65] mb-6">Full replatform, brand refresh and a CRO program running 14 A/B tests per quarter. Payback period: 6 weeks.</p>
+            <div class="flex items-center justify-between border-t border-carbon/10 pt-5">
+              <div class="flex gap-7">
+                <div><div class="font-display font-800 text-[18px]">9×</div><div class="text-[10.5px] text-carbon/45">Revenue</div></div>
+                <div><div class="font-display font-800 text-[18px]">+212%</div><div class="text-[10.5px] text-carbon/45">AOV</div></div>
+                <div><div class="font-display font-800 text-[18px]">1.4s</div><div class="text-[10.5px] text-carbon/45">LCP</div></div>
+              </div>
+              <a href="#contact" class="text-[12.5px] font-semibold text-vermilion inline-flex items-center gap-1.5 hover:gap-3 transition-all">Read story <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials" class="py-20 lg:py-28">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="text-center max-w-[560px] mx-auto mb-14">
+      <p class="reveal kicker text-orchid mb-4">Verified client voices</p>
+      <h2 class="reveal reveal-d1 font-display font-800 text-[34px] sm:text-[44px] leading-[1.05]">Loved by founders.<br>Trusted by CMOs.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="reveal testi-card bg-white border border-carbon/10 rounded-3xl p-8 flex flex-col">
+        <div class="text-canary text-[13px] mb-5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-[13.5px] leading-[1.7] text-carbon/70 flex-1">"CreativeBKK rebuilt our entire digital presence in 8 weeks. Lead quality doubled and our sales team finally stopped complaining about the website. Best agency decision we've made."</p>
+        <div class="flex items-center gap-3.5 mt-7 pt-6 border-t border-carbon/[.07]">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover" alt="Somsak">
+          <div class="flex-1">
+            <div class="flex items-center gap-1.5"><span class="font-display font-700 text-[13.5px]">Somsak Chai</span><i class="fa-solid fa-circle-check text-royal text-[12px]" title="Verified client"></i></div>
+            <div class="text-[11.5px] text-carbon/45">CEO, UrbanNest Property</div>
+          </div>
+          <span class="text-[10.5px] font-semibold bg-emerald/[.1] text-emerald px-2.5 py-1 rounded-full">Verified</span>
+        </div>
+      </div>
+      <div class="reveal reveal-d1 testi-card bg-carbon text-white rounded-3xl p-8 flex flex-col md:-translate-y-3">
+        <div class="text-canary text-[13px] mb-5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-[13.5px] leading-[1.7] text-white/75 flex-1">"Their CRO program paid for itself in the first month. 14 experiments per quarter, every one documented, every decision data-backed. It feels less like an agency and more like a growth team."</p>
+        <div class="flex items-center gap-3.5 mt-7 pt-6 border-t border-white/[.12]">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover" alt="Emily">
+          <div class="flex-1">
+            <div class="flex items-center gap-1.5"><span class="font-display font-700 text-[13.5px]">Emily Tan</span><i class="fa-solid fa-circle-check text-canary text-[12px]" title="Verified client"></i></div>
+            <div class="text-[11.5px] text-white/45">CMO, Lumina Cosmetics</div>
+          </div>
+          <span class="text-[10.5px] font-semibold bg-emerald text-carbon px-2.5 py-1 rounded-full">Verified</span>
+        </div>
+      </div>
+      <div class="reveal reveal-d2 testi-card bg-white border border-carbon/10 rounded-3xl p-8 flex flex-col">
+        <div class="text-canary text-[13px] mb-5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-[13.5px] leading-[1.7] text-carbon/70 flex-1">"We interviewed 9 agencies across 3 countries. CreativeBKK was the only one that talked about revenue in the first meeting. Three years later, they're still our only agency."</p>
+        <div class="flex items-center gap-3.5 mt-7 pt-6 border-t border-carbon/[.07]">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop" class="w-11 h-11 rounded-full object-cover" alt="Daniel">
+          <div class="flex-1">
+            <div class="flex items-center gap-1.5"><span class="font-display font-700 text-[13.5px]">Daniel Reyes</span><i class="fa-solid fa-circle-check text-royal text-[12px]" title="Verified client"></i></div>
+            <div class="text-[11.5px] text-carbon/45">Founder, Kaizen SaaS</div>
+          </div>
+          <span class="text-[10.5px] font-semibold bg-emerald/[.1] text-emerald px-2.5 py-1 rounded-full">Verified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASK AI ============ -->
+<section class="py-16 lg:py-24 border-y border-carbon/[.07] bg-blush/40">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <p class="kicker text-royal mb-4"><span class="inline-block w-8 h-[2px] bg-royal align-middle mr-3"></span>Instant answers</p>
+        <h2 class="font-display font-800 text-[30px] sm:text-[38px] leading-[1.08] mb-4">Ask our AI anything.<br>Get an answer in seconds.</h2>
+        <p class="text-[13.5px] text-carbon/55 leading-relaxed max-w-[420px]">Pricing, timelines, process, past work — our AI assistant is trained on 12 years of project data. No forms, no waiting.</p>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="bg-white rounded-3xl border border-carbon/10 shadow-[0_20px_50px_rgba(24,24,26,.08)] p-6 sm:p-7">
+          <div class="flex items-center gap-2 mb-5">
+            <span class="w-8 h-8 rounded-full bg-royal grid place-items-center text-white text-[13px]"><i class="fa-solid fa-robot"></i></span>
+            <span class="font-display font-700 text-[14px]">Nova, your AI project advisor</span>
+            <span class="ml-auto flex items-center gap-1.5 text-[10.5px] font-semibold text-emerald"><span class="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse"></span>Online</span>
+          </div>
+          <form id="askAiForm" class="flex gap-2 mb-4">
+            <input id="askAiInput" type="text" placeholder="e.g. How much does a website cost?" class="flex-1 bg-carbon/[.04] border border-carbon/10 rounded-full px-5 py-3.5 text-[13.5px] focus:border-royal transition-colors" autocomplete="off">
+            <button type="submit" class="btn-primary w-12 h-12 rounded-full bg-royal text-white grid place-items-center shrink-0"><i class="fa-solid fa-paper-plane text-[14px]"></i></button>
+          </form>
+          <div class="flex flex-wrap gap-2">
+            <button class="chip ask-chip text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2" data-q="How much does a website cost?">How much does a website cost?</button>
+            <button class="chip ask-chip text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2" data-q="How long does a project take?">How long does a project take?</button>
+            <button class="chip ask-chip text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2" data-q="Do you work with overseas clients?">Overseas clients?</button>
+            <button class="chip ask-chip text-[12px] font-medium border border-carbon/15 rounded-full px-4 py-2" data-q="What makes you different?">What makes you different?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-20 lg:py-28">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4">
+        <p class="reveal kicker text-vermilion mb-4"><span class="inline-block w-8 h-[2px] bg-vermilion align-middle mr-3"></span>FAQ</p>
+        <h2 class="reveal reveal-d1 font-display font-800 text-[32px] sm:text-[40px] leading-[1.08] mb-5">Questions everyone asks before they call.</h2>
+        <p class="reveal reveal-d2 text-[13.5px] text-carbon/55 leading-relaxed mb-7">Can't find your answer? Our AI assistant responds instantly, or talk to a strategist within one business day.</p>
+        <button onclick="openChat()" class="reveal reveal-d2 btn-ghost inline-flex items-center gap-2.5 border border-carbon/20 rounded-full px-6 py-3.5 font-semibold text-[13.5px]"><i class="fa-solid fa-robot text-royal"></i> Ask Nova instead</button>
+      </div>
+      <div class="lg:col-span-8 flex flex-col gap-3">
+        <div class="reveal faq-item border border-carbon/12 rounded-2xl bg-white">
+          <button class="faq-toggle w-full flex items-center gap-4 p-6 text-left">
+            <span class="faq-icon w-9 h-9 shrink-0 rounded-xl border border-carbon/12 grid place-items-center text-[13px] transition-colors"><i class="fa-solid fa-plus"></i></span>
+            <span class="font-display font-700 text-[15.5px] flex-1">How much does a website project cost?</span>
+            <i class="fa-solid fa-chevron-down faq-chevron text-[12px] text-carbon/40"></i>
+          </button>
+          <div class="faq-body px-6 pb-6 pl-[76px]"><p class="text-[13.5px] text-carbon/60 leading-[1.7]">Landing pages start at ฿65,000 ($1,800), full corporate sites from ฿120,000 ($3,300), and e-commerce builds from ฿150,000 ($4,100). Every quote is fixed-price with a detailed scope — no surprise invoices, ever.</p></div>
+        </div>
+        <div class="reveal reveal-d1 faq-item border border-carbon/12 rounded-2xl bg-white">
+          <button class="faq-toggle w-full flex items-center gap-4 p-6 text-left">
+            <span class="faq-icon w-9 h-9 shrink-0 rounded-xl border border-carbon/12 grid place-items-center text-[13px] transition-colors"><i class="fa-solid fa-plus"></i></span>
+            <span class="font-display font-700 text-[15.5px] flex-1">How long does a typical project take?</span>
+            <i class="fa-solid fa-chevron-down faq-chevron text-[12px] text-carbon/40"></i>
+          </button>
+          <div class="faq-body px-6 pb-6 pl-[76px]"><p class="text-[13.5px] text-carbon/60 leading-[1.7]">Brand identity: 4–6 weeks. Corporate websites: 8–10 weeks. E-commerce platforms: 10–14 weeks. We work in weekly sprints with a live staging link from week one, so you always see real progress.</p></div>
+        </div>
+        <div class="reveal reveal-d2 faq-item border border-carbon/12 rounded-2xl bg-white">
+          <button class="faq-toggle w-full flex items-center gap-4 p-6 text-left">
+            <span class="faq-icon w-9 h-9 shrink-0 rounded-xl border border-carbon/12 grid place-items-center text-[13px] transition-colors"><i class="fa-solid fa-plus"></i></span>
+            <span class="font-display font-700 text-[15.5px] flex-1">Do you work with clients outside Thailand?</span>
+            <i class="fa-solid fa-chevron-down faq-chevron text-[12px] text-carbon/40"></i>
+          </button>
+          <div class="faq-body px-6 pb-6 pl-[76px]"><p class="text-[13.5px] text-carbon/60 leading-[1.7]">Absolutely — 70% of our clients are in Singapore, Australia, the US and Europe. We overlap working hours for calls, use Slack for daily communication, and all contracts are available in English with USD or THB billing.</p></div>
+        </div>
+        <div class="reveal reveal-d3 faq-item border border-carbon/12 rounded-2xl bg-white">
+          <button class="faq-toggle w-full flex items-center gap-4 p-6 text-left">
+            <span class="faq-icon w-9 h-9 shrink-0 rounded-xl border border-carbon/12 grid place-items-center text-[13px] transition-colors"><i class="fa-solid fa-plus"></i></span>
+            <span class="font-display font-700 text-[15.5px] flex-1">What happens after launch?</span>
+            <i class="fa-solid fa-chevron-down faq-chevron text-[12px] text-carbon/40"></i>
+          </button>
+          <div class="faq-body px-6 pb-6 pl-[76px]"><p class="text-[13.5px] text-carbon/60 leading-[1.7]">Every project includes 30 days of free support. After that, most clients move to a growth retainer (from ฿25,000/month) covering CRO experiments, SEO, content and priority development — or simple pay-as-you-go maintenance.</p></div>
+        </div>
+        <div class="reveal reveal-d3 faq-item border border-carbon/12 rounded-2xl bg-white">
+          <button class="faq-toggle w-full flex items-center gap-4 p-6 text-left">
+            <span class="faq-icon w-9 h-9 shrink-0 rounded-xl border border-carbon/12 grid place-items-center text-[13px] transition-colors"><i class="fa-solid fa-plus"></i></span>
+            <span class="font-display font-700 text-[15.5px] flex-1">Who owns the work and the assets?</span>
+            <i class="fa-solid fa-chevron-down faq-chevron text-[12px] text-carbon/40"></i>
+          </button>
+          <div class="faq-body px-6 pb-6 pl-[76px]"><p class="text-[13.5px] text-carbon/60 leading-[1.7]">You do — 100%. Source files, design systems, code repositories and content are transferred to your accounts on final payment. We never lock clients in; our 98% retention speaks for itself.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA + CONTACT ============ -->
+<section id="contact" class="py-20 lg:py-28 bg-blush/40 border-t border-carbon/[.07] relative">
+  <span class="crosshair top-16 right-[4%]"></span>
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="reveal kicker text-emerald mb-4"><span class="inline-block w-8 h-[2px] bg-emerald align-middle mr-3"></span>Let's talk</p>
+        <h2 class="reveal reveal-d1 font-display font-800 text-[34px] sm:text-[46px] leading-[1.04] mb-5">Your competitors are already moving.<br><span class="text-vermilion">Move faster.</span></h2>
+        <p class="reveal reveal-d2 text-[14px] text-carbon/55 leading-relaxed max-w-[440px] mb-9">Tell us about your project and get a fixed-price proposal with timeline within 48 hours. Free strategy session included — no obligation.</p>
+        <div class="reveal reveal-d3 space-y-4 mb-9">
+          <a href="tel:+6620001234" class="flex items-center gap-4 group">
+            <span class="w-11 h-11 rounded-xl bg-vermilion text-white grid place-items-center group-hover:scale-110 transition-transform"><i class="fa-solid fa-phone"></i></span>
+            <div><div class="text-[11px] text-carbon/45 font-medium">Call us — Mon–Sat, 9:00–19:00 ICT</div><div class="font-display font-700 text-[15px]">+66 2 000 1234</div></div>
+          </a>
+          <a href="#" class="flex items-center gap-4 group">
+            <span class="w-11 h-11 rounded-xl bg-emerald text-white grid place-items-center group-hover:scale-110 transition-transform"><i class="fa-brands fa-line"></i></span>
+            <div><div class="text-[11px] text-carbon/45 font-medium">LINE Official — replies within minutes</div><div class="font-display font-700 text-[15px]">@creativebkk</div></div>
+          </a>
+          <a href="mailto:hello@creativebkk.com" class="flex items-center gap-4 group">
+            <span class="w-11 h-11 rounded-xl bg-royal text-white grid place-items-center group-hover:scale-110 transition-transform"><i class="fa-solid fa-envelope"></i></span>
+            <div><div class="text-[11px] text-carbon/45 font-medium">Email</div><div class="font-display font-700 text-[15px]">hello@creativebkk.com</div></div>
+          </a>
+        </div>
+        <button onclick="openAuth('quote')" class="reveal reveal-d3 btn-primary bg-carbon text-white rounded-full px-9 py-4 font-semibold text-[14.5px] inline-flex items-center gap-2.5">Request a Free Quote <i class="fa-solid fa-arrow-right text-[12px]"></i></button>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="rounded-[28px] overflow-hidden shadow-[0_24px_60px_rgba(24,24,26,.12)] border border-carbon/10 relative">
+          <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1000&q=80&auto=format&fit=crop" alt="Map to CreativeBKK office" class="w-full h-[300px] sm:h-[420px] object-cover">
+          <div class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white rounded-2xl shadow-lg p-5 flex items-center gap-4">
+            <span class="w-11 h-11 rounded-xl bg-vermilion text-white grid place-items-center text-lg shrink-0"><i class="fa-solid fa-location-dot"></i></span>
+            <div>
+              <div class="font-display font-700 text-[14.5px]">CreativeBKK HQ</div>
+              <div class="text-[12px] text-carbon/55">88 Sukhumvit Soi 21, Asoke, Bangkok 10110</div>
+            </div>
+            <a href="#" class="ml-3 text-[12px] font-semibold text-royal whitespace-nowrap hover:underline">Directions <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-carbon text-white pt-16 pb-8">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2.5 mb-5">
+          <span class="w-9 h-9 rounded-xl bg-vermilion grid place-items-center font-display font-900 text-lg">C</span>
+          <span class="font-display font-800 text-[19px]">Creative<span class="text-vermilion">BKK</span></span>
+        </div>
+        <p class="text-[13px] text-white/50 leading-[1.7] max-w-[300px] mb-6">High-impact creative & digital agency in Bangkok. Building brands that demand attention since 2013.</p>
+        <div class="flex gap-2.5">
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/15 grid place-items-center text-[13px] hover:bg-vermilion hover:border-vermilion transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/15 grid place-items-center text-[13px] hover:bg-orchid hover:border-orchid transition-all"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-white/15 grid place-items-center text-[13px] hover:bg-royal hover:border-royal transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full border border-white/15 grid place-items-center text-[13px] hover:bg-emerald hover:border-emerald transition-all"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h4 class="kicker text-white/40 mb-5">Services</h4>
+        <ul class="space-y-3 text-[13px] text-white/60">
+          <li><a href="#services" class="hover:text-white transition-colors">Brand Identity</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">Web Design</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">SEO & Performance</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">UI/UX Design</a></li>
+          <li><a href="#services" class="hover:text-white transition-colors">E-commerce</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-2">
+        <h4 class="kicker text-white/40 mb-5">Company</h4>
+        <ul class="space-y-3 text-[13px] text-white/60">
+          <li><a href="#work" class="hover:text-white transition-colors">Our Work</a></li>
+          <li><a href="#testimonials" class="hover:text-white transition-colors">Clients</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+          <li><a href="#" onclick="openAuth('login');return false;" class="hover:text-white transition-colors">Client Portal</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-4">
+        <h4 class="kicker text-white/40 mb-5">Growth insights, monthly</h4>
+        <p class="text-[12.5px] text-white/45 mb-4 leading-relaxed">One email per month. Conversion tactics, case studies, zero fluff.</p>
+        <form id="newsletterForm" class="flex gap-2">
+          <input id="newsletterEmail" type="email" placeholder="your@email.com" class="flex-1 bg-white/[.07] border border-white/15 rounded-full px-5 py-3 text-[13px] placeholder:text-white/35 focus:border-vermilion transition-colors">
+          <button type="submit" class="btn-primary bg-vermilion rounded-full px-5 grid place-items-center text-[13px] font-semibold">Join</button>
+        </form>
+        <p id="newsletterMsg" class="text-[12px] text-emerald mt-3 opacity-0 transition-opacity">Subscribed — welcome aboard.</p>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11.5px] text-white/35">
+      <span>© 2026 CreativeBKK Co., Ltd. All rights reserved.</span>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-white/70 transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white/70 transition-colors">Terms of Service</a>
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-lock text-[10px]"></i> SSL Secured</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA BAR ============ -->
+<div id="mobileCta" class="btt-hidden md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-carbon/10 shadow-[0_-8px_30px_rgba(24,24,26,.08)] grid grid-cols-3">
+  <a href="tel:+6620001234" class="flex flex-col items-center gap-1 py-3 text-vermilion"><i class="fa-solid fa-phone text-[16px]"></i><span class="text-[10px] font-semibold">Call</span></a>
+  <a href="#" class="flex flex-col items-center gap-1 py-3 text-emerald border-x border-carbon/10"><i class="fa-brands fa-line text-[18px]"></i><span class="text-[10px] font-semibold">LINE</span></a>
+  <button onclick="openAuth('quote')" class="flex flex-col items-center gap-1 py-3 text-royal"><i class="fa-solid fa-file-invoice text-[16px]"></i><span class="text-[10px] font-semibold">Get Quote</span></button>
+</div>
+
+<!-- ============ FLOATING: BACK TO TOP + CHATBOT (same row, 5px gap) ============ -->
+<div class="float-row fixed z-50 flex items-end gap-[5px] right-4 md:right-6">
+  <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" class="btt-hidden w-[52px] h-[52px] rounded-full bg-carbon text-white grid place-items-center shadow-[0_10px_26px_rgba(24,24,26,.3)] hover:bg-vermilion transition-colors">
+    <i class="fa-solid fa-arrow-up text-[15px]"></i>
+  </button>
+  <div class="relative">
+    <!-- Chat panel -->
+    <div id="chatPanel" class="closed absolute bottom-[60px] right-0 w-[330px] sm:w-[370px] max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-[0_30px_80px_rgba(24,24,26,.28)] border border-carbon/10 overflow-hidden flex flex-col" style="height:480px; max-height:calc(100vh - 160px);">
+      <div class="bg-carbon text-white px-5 py-4 flex items-center gap-3 shrink-0">
+        <span class="relative w-10 h-10 rounded-full bg-royal grid place-items-center text-[15px]"><i class="fa-solid fa-robot"></i><span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald border-2 border-carbon"></span></span>
+        <div class="flex-1">
+          <div class="font-display font-700 text-[14.5px]">Nova — AI Assistant</div>
+          <div class="text-[10.5px] text-white/50">Typically replies instantly</div>
+        </div>
+        <button onclick="closeChat()" class="w-8 h-8 grid place-items-center rounded-full hover:bg-white/10 transition-colors" aria-label="Close chat"><i class="fa-solid fa-xmark text-[13px]"></i></button>
+      </div>
+      <div id="chatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-carbon/[.02]"></div>
+      <div id="chatChips" class="px-4 pb-2 flex flex-wrap gap-1.5 shrink-0 bg-carbon/[.02]"></div>
+      <form id="chatForm" class="p-3 border-t border-carbon/10 flex gap-2 shrink-0 bg-white">
+        <input id="chatInput" type="text" placeholder="Type your question..." class="flex-1 bg-carbon/[.04] border border-carbon/10 rounded-full px-4 py-2.5 text-[13px] focus:border-royal transition-colors" autocomplete="off">
+        <button type="submit" class="w-10 h-10 rounded-full bg-royal text-white grid place-items-center hover:scale-105 transition-transform shrink-0"><i class="fa-solid fa-paper-plane text-[13px]"></i></button>
+      </form>
+    </div>
+    <!-- Chat button (stays fixed in place) -->
+    <button id="chatBtn" onclick="toggleChat()" aria-label="Open chat" class="chat-pulse w-[52px] h-[52px] rounded-full bg-royal text-white grid place-items-center text-[20px] shadow-[0_10px_26px_rgba(38,42,245,.4)] hover:scale-105 transition-transform">
+      <i id="chatBtnIcon" class="fa-solid fa-comment-dots"></i>
+    </button>
+  </div>
+</div>
+
+<!-- ============ AUTH MODAL (Login / Register / Quote) ============ -->
+<div id="authModal" class="hidden-modal fixed inset-0 z-[70] grid place-items-center px-4">
+  <div class="absolute inset-0 bg-carbon/55 backdrop-blur-sm" onclick="closeAuth()"></div>
+  <div class="modal-panel relative bg-white rounded-[28px] w-full max-w-[430px] shadow-[0_40px_100px_rgba(0,0,0,.35)] overflow-hidden max-h-[92vh] overflow-y-auto">
+    <button onclick="closeAuth()" class="absolute top-4 right-4 w-9 h-9 grid place-items-center rounded-full hover:bg-carbon/[.05] transition-colors z-10" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="p-8 sm:p-9">
+      <div class="flex items-center gap-2.5 mb-7">
+        <span class="w-9 h-9 rounded-xl bg-vermilion grid place-items-center text-white font-display font-900 text-lg">C</span>
+        <span class="font-display font-800 text-[17px]">Creative<span class="text-vermilion">BKK</span></span>
+      </div>
+
+      <!-- Tabs -->
+      <div id="authTabs" class="flex bg-carbon/[.05] rounded-full p-1 mb-7">
+        <button data-tab="login" class="auth-tab flex-1 rounded-full py-2.5 text-[13px] font-semibold">Sign In</button>
+        <button data-tab="register" class="auth-tab flex-1 rounded-full py-2.5 text-[13px] font-semibold">Create Account</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form id="loginForm" class="space-y-4" novalidate>
+        <div>
+          <label class="text-[12px] font-semibold text-carbon/60 mb-1.5 block">Email address</label>
+          <div class="relative">
+            <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-[13px] text-carbon/35"></i>
+            <input id="loginEmail" type="email" placeholder="you@company.com" class="w-full border border-carbon/15 rounded-xl pl-11 pr-4 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+          </div>
+          <p class="err text-[11px] text-vermilion mt-1 hidden">Please enter a valid email.</p>
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-1.5">
+            <label class="text-[12px] font-semibold text-carbon/60">Password</label>
+            <a href="#" class="text-[11.5px] font-semibold text-royal hover:underline">Forgot password?</a>
+          </div>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-[13px] text-carbon/35"></i>
+            <input id="loginPass" type="password" placeholder="Enter your password" class="w-full border border-carbon/15 rounded-xl pl-11 pr-12 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+            <button type="button" class="toggle-pass absolute right-4 top-1/2 -translate-y-1/2 text-carbon/40 hover:text-carbon" tabindex="-1"><i class="fa-regular fa-eye text-[14px]"></i></button>
+          </div>
+          <p class="err text-[11px] text-vermilion mt-1 hidden">Password must be at least 6 characters.</p>
+        </div>
+        <button type="submit" class="btn-primary w-full bg-carbon text-white rounded-xl py-3.5 font-semibold text-[14px] flex items-center justify-center gap-2">
+          <span class="submit-label">Sign In</span> <i class="fa-solid fa-arrow-right text-[12px] submit-icon"></i>
+        </button>
+        <p class="text-center text-[12px] text-carbon/45">New here? <button type="button" onclick="switchTab('register')" class="font-semibold text-vermilion hover:underline">Create an account</button></p>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form id="registerForm" class="space-y-4 hidden" novalidate>
+        <div>
+          <label class="text-[12px] font-semibold text-carbon/60 mb-1.5 block">Full name</label>
+          <div class="relative">
+            <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-[13px] text-carbon/35"></i>
+            <input id="regName" type="text" placeholder="Jane Cooper" class="w-full border border-carbon/15 rounded-xl pl-11 pr-4 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+          </div>
+          <p class="err text-[11px] text-vermilion mt-1 hidden">Please enter your name.</p>
+        </div>
+        <div>
+          <label class="text-[12px] font-semibold text-carbon/60 mb-1.5 block">Work email</label>
+          <div class="relative">
+            <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-[13px] text-carbon/35"></i>
+            <input id="regEmail" type="email" placeholder="you@company.com" class="w-full border border-carbon/15 rounded-xl pl-11 pr-4 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+          </div>
+          <p class="err text-[11px] text-vermilion mt-1 hidden">Please enter a valid email.</p>
+        </div>
+        <div>
+          <label class="text-[12px] font-semibold text-carbon/60 mb-1.5 block">Password</label>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-[13px] text-carbon/35"></i>
+            <input id="regPass" type="password" placeholder="Min. 8 characters" class="w-full border border-carbon/15 rounded-xl pl-11 pr-12 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+            <button type="button" class="toggle-pass absolute right-4 top-1/2 -translate-y-1/2 text-carbon/40 hover:text-carbon" tabindex="-1"><i class="fa-regular fa-eye text-[14px]"></i></button>
+          </div>
+          <p class="err text-[11px] text-vermilion mt-1 hidden">Password must be at least 8 characters.</p>
+        </div>
+        <label class="flex items-start gap-2.5 text-[12px] text-carbon/55 cursor-pointer">
+          <input id="regTerms" type="checkbox" class="mt-0.5 accent-vermilion"> I agree to the <a href="#" class="font-semibold text-carbon hover:underline">Terms</a> and <a href="#" class="font-semibold text-carbon hover:underline">Privacy Policy</a>
+        </label>
+        <button type="submit" class="btn-primary w-full bg-vermilion text-white rounded-xl py-3.5 font-semibold text-[14px] flex items-center justify-center gap-2">
+          <span class="submit-label">Create Account</span> <i class="fa-solid fa-arrow-right text-[12px] submit-icon"></i>
+        </button>
+        <p class="text-center text-[12px] text-carbon/45">Already a member? <button type="button" onclick="switchTab('login')" class="font-semibold text-royal hover:underline">Sign in</button></p>
+      </form>
+
+      <!-- QUOTE FORM -->
+      <form id="quoteForm" class="space-y-4 hidden" novalidate>
+        <div class="bg-blush rounded-2xl p-4 mb-1 flex gap-3">
+          <i class="fa-solid fa-bolt text-vermilion mt-0.5"></i>
+          <p class="text-[12px] text-carbon/60 leading-relaxed"><strong class="text-carbon">Free fixed-price proposal</strong> with timeline — delivered within 48 hours. No obligation.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <input id="qName" type="text" placeholder="Your name" class="w-full border border-carbon/15 rounded-xl px-4 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+            <p class="err text-[11px] text-vermilion mt-1 hidden">Required.</p>
+          </div>
+          <div>
+            <input id="qCompany" type="text" placeholder="Company" class="w-full border border-carbon/15 rounded-xl px-4 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+          </div>
+        </div>
+        <div>
+          <input id="qEmail" type="email" placeholder="Work email" class="w-full border border-carbon/15 rounded-xl px-4 py-3 text-[13.5px] focus:border-vermilion transition-colors">
+          <p class="err text-[11px] text-vermilion mt-1 hidden">Please enter a valid email.</p>
+        </div>
+        <div>
+          <select id="qService" class="w-full border border-carbon/15 rounded-xl px-4 py-3 text-[13.5px] text-carbon/70 focus:border-vermilion transition-colors bg-white">
+            <option value="">What do you need?</option>
+            <option>Brand Identity</option><option>Website Design & Development</option>
+            <option>SEO & Performance Marketing</option><option>UI/UX Design</option>
+            <option>E-commerce</option><option>Content Production</option><option>Not sure yet</option>
+          </select>
+          <p class="err text-[11px] text-vermilion mt-1 hidden">Please select a service.</p>
+        </div>
+        <div>
+          <select id="qBudget" class="w-full border border-carbon/15 rounded-xl px-4 py-3 text-[13.5px] text-carbon/70 focus:border-vermilion transition-colors bg-white">
+            <option value="">Budget range (THB)</option>
+            <option>Under ฿100,000 (~$2,700)</option><option>฿100,000 – ฿300,000 (~$2,700–8,300)</option>
+            <option>฿300,000 – ฿800,000 (~$8,300–22,000)</option><option>฿800,000+ (~$22,000+)</option>
+          </select>
+        </div>
+        <div>
+          <textarea id="qMsg" rows="3" placeholder="Tell us briefly about your project..." class="w-full border border-carbon/15 rounded-xl px-4 py-3 text-[13.5px] focus:border-vermilion transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full bg-vermilion text-white rounded-xl py-3.5 font-semibold text-[14px] flex items-center justify-center gap-2">
+          <span class="submit-label">Request My Free Quote</span> <i class="fa-solid fa-paper-plane text-[12px] submit-icon"></i>
+        </button>
+        <p class="text-center text-[11px] text-carbon/40">Your data stays private. We reply within 1 business day.</p>
+      </form>
+
+      <!-- SUCCESS STATE -->
+      <div id="authSuccess" class="hidden text-center py-8">
+        <span class="w-16 h-16 rounded-full bg-emerald/10 text-emerald grid place-items-center text-[28px] mx-auto mb-5"><i class="fa-solid fa-check"></i></span>
+        <h3 class="font-display font-800 text-[20px] mb-2" id="successTitle">You're signed in!</h3>
+        <p class="text-[13px] text-carbon/55 leading-relaxed max-w-[280px] mx-auto" id="successMsg">Welcome back to your client portal.</p>
+        <button onclick="closeAuth()" class="mt-7 bg-carbon text-white rounded-full px-8 py-3 text-[13.5px] font-semibold btn-primary">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-[80] bg-carbon text-white text-[13px] font-medium px-6 py-3.5 rounded-full shadow-xl opacity-0 pointer-events-none transition-all duration-300 -translate-y-4"></div>
+
+<script>
+/* ================= HEADER & NAV ================= */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+  updateBackTop();
+}, { passive: true });
+
+const mobileMenu = document.getElementById('mobileMenu');
+document.getElementById('hamburger').addEventListener('click', () => mobileMenu.classList.remove('closed'));
+document.getElementById('mobileClose').addEventListener('click', closeMobileMenu);
+document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', closeMobileMenu));
+function closeMobileMenu(){ mobileMenu.classList.add('closed'); }
+
+/* Language switch */
+const langEN = document.getElementById('langEN'), langTH = document.getElementById('langTH');
+function setLang(en){
+  langEN.className = 'px-2.5 py-1 rounded-full transition-all ' + (en ? 'bg-carbon text-white' : 'text-carbon/60 hover:text-carbon');
+  langTH.className = 'px-2.5 py-1 rounded-full transition-all ' + (!en ? 'bg-carbon text-white' : 'text-carbon/60 hover:text-carbon');
+  if(!en) showToast('Thai version launching soon — เร็วๆ นี้');
+}
+langEN.addEventListener('click', () => setLang(true));
+langTH.addEventListener('click', () => setLang(false));
+
+/* ================= REVEAL ON SCROLL ================= */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ================= COUNTERS ================= */
+const counterIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.target, dur = 1600, t0 = performance.now();
+    (function tick(t){
+      const p = Math.min((t - t0)/dur, 1), ease = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(target * ease);
+      if(p < 1) requestAnimationFrame(tick);
+    })(t0);
+    counterIO.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterIO.observe(el));
+
+/* ================= FAQ ================= */
+document.querySelectorAll('.faq-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item'), wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ================= BACK TO TOP & MOBILE BAR VISIBILITY ================= */
+const backTop = document.getElementById('backTop'), mobileCta = document.getElementById('mobileCta'), heroSec = document.getElementById('hero');
+function updateBackTop(){
+  const past = window.scrollY > heroSec.offsetTop + heroSec.offsetHeight - 80;
+  backTop.classList.toggle('btt-hidden', !past);
+  mobileCta.classList.toggle('btt-hidden', !past);
+}
+updateBackTop();
+
+/* ================= TOAST ================= */
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.remove('opacity-0','-translate-y-4','pointer-events-none');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.add('opacity-0','-translate-y-4','pointer-events-none'), 2600);
+}
+
+/* ================= AUTH MODAL ================= */
+const authModal = document.getElementById('authModal');
+const tabs = { login: document.getElementById('loginForm'), register: document.getElementById('registerForm'), quote: document.getElementById('quoteForm') };
+const tabBtns = document.querySelectorAll('.auth-tab');
+function switchTab(name){
+  Object.entries(tabs).forEach(([k, f]) => f.classList.toggle('hidden', k !== name));
+  document.getElementById('authSuccess').classList.add('hidden');
+  document.getElementById('authTabs').style.display = name === 'quote' ? 'none' : 'flex';
+  tabBtns.forEach(b => {
+    const active = b.dataset.tab === name;
+    b.className = 'auth-tab flex-1 rounded-full py-2.5 text-[13px] font-semibold ' + (active ? 'bg-carbon text-white shadow' : 'text-carbon/55 hover:text-carbon');
+  });
+}
+tabBtns.forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+function openAuth(mode){
+  switchTab(mode === 'quote' ? 'quote' : mode);
+  authModal.classList.remove('hidden-modal');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth(){
+  authModal.classList.add('hidden-modal');
+  document.body.style.overflow = '';
+  setTimeout(() => { Object.values(tabs).forEach(f => f.reset()); document.querySelectorAll('#authModal .err').forEach(e => e.classList.add('hidden')); }, 350);
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeAuth(); closeChat(); } });
+
+/* Password toggles */
+document.querySelectorAll('.toggle-pass').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = btn.parentElement.querySelector('input');
+    input.type = input.type === 'password' ? 'text' : 'password';
+    btn.querySelector('i').className = input.type === 'password' ? 'fa-regular fa-eye text-[14px]' : 'fa-regular fa-eye-slash text-[14px]';
+  });
+});
+
+/* Validation helpers */
+function setErr(input, bad){
+  input.classList.toggle('field-error', bad);
+  const err = input.closest('div').parentElement.querySelector('.err');
+  if(err) err.classList.toggle('hidden', !bad);
+  return !bad;
+}
+const emailOK = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+
+function fakeSubmit(form, label, icon, title, msg){
+  const btn = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  btn.querySelector('.submit-label').textContent = label;
+  if(icon) icon.className = 'fa-solid fa-circle-notch fa-spin text-[12px] submit-icon';
+  setTimeout(() => {
+    Object.values(tabs).forEach(f => f.classList.add('hidden'));
+    document.getElementById('authTabs').style.display = 'none';
+    document.getElementById('successTitle').textContent = title;
+    document.getElementById('successMsg').textContent = msg;
+    document.getElementById('authSuccess').classList.remove('hidden');
+    btn.disabled = false;
+    btn.querySelector('.submit-label').textContent = btn.dataset.label || 'Submit';
+  }, 1200);
+}
+
+document.getElementById('loginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const em = document.getElementById('loginEmail'), pw = document.getElementById('loginPass');
+  let ok = setErr(em, !emailOK(em.value.trim()));
+  ok = setErr(pw, pw.value.length < 6) && ok;
+  if(!ok){ e.target.classList.add('shake'); setTimeout(() => e.target.classList.remove('shake'), 450); return; }
+  fakeSubmit(e.target, 'Signing in...', e.target.querySelector('.submit-icon'), 'Welcome back!', 'You are signed in. Redirecting to your client portal...');
+});
+document.getElementById('registerForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const nm = document.getElementById('regName'), em = document.getElementById('regEmail'), pw = document.getElementById('regPass'), terms = document.getElementById('regTerms');
+  let ok = setErr(nm, !nm.value.trim());
+  ok = setErr(em, !emailOK(em.value.trim())) && ok;
+  ok = setErr(pw, pw.value.length < 8) && ok;
+  if(!terms.checked){ showToast('Please accept the Terms to continue'); ok = false; }
+  if(!ok){ e.target.classList.add('shake'); setTimeout(() => e.target.classList.remove('shake'), 450); return; }
+  fakeSubmit(e.target, 'Creating account...', e.target.querySelector('.submit-icon'), 'Account created!', 'Check your inbox to verify your email, then access your client portal.');
+});
+document.getElementById('quoteForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const nm = document.getElementById('qName'), em = document.getElementById('qEmail'), sv = document.getElementById('qService');
+  let ok = setErr(nm, !nm.value.trim());
+  ok = setErr(em, !emailOK(em.value.trim())) && ok;
+  ok = setErr(sv, !sv.value) && ok;
+  if(!ok){ e.target.classList.add('shake'); setTimeout(() => e.target.classList.remove('shake'), 450); return; }
+  fakeSubmit(e.target, 'Sending request...', e.target.querySelector('.submit-icon'), 'Request received!', 'A strategist will send your fixed-price proposal within 48 hours.');
+});
+/* store original labels */
+document.querySelectorAll('#authModal button[type=submit]').forEach(b => b.dataset.label = b.querySelector('.submit-label').textContent);
+
+/* ================= NEWSLETTER ================= */
+document.getElementById('newsletterForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const em = document.getElementById('newsletterEmail');
+  if(!emailOK(em.value.trim())){ em.classList.add('field-error'); em.focus(); return; }
+  em.classList.remove('field-error'); em.value = '';
+  const msg = document.getElementById('newsletterMsg');
+  msg.classList.remove('opacity-0');
+  setTimeout(() => msg.classList.add('opacity-0'), 3000);
+});
+
+/* ================= CHATBOT ================= */
+const chatPanel = document.getElementById('chatPanel'), chatBtn = document.getElementById('chatBtn'), chatIcon = document.getElementById('chatBtnIcon');
+const chatMessages = document.getElementById('chatMessages'), chatChips = document.getElementById('chatChips');
+let chatOpened = false;
+
+function toggleChat(){ chatPanel.classList.contains('closed') ? openChat() : closeChat(); }
+function openChat(){
+  chatPanel.classList.remove('closed');
+  chatIcon.className = 'fa-solid fa-xmark';
+  if(!chatOpened){
+    chatOpened = true;
+    setTimeout(() => botSay("Hi, I'm Nova — CreativeBKK's AI advisor. Ask me about pricing, timelines, services or how we work with overseas clients."), 250);
+  }
+  setTimeout(() => document.getElementById('chatInput').focus(), 350);
+}
+function closeChat(){ chatPanel.classList.add('closed'); chatIcon.className = 'fa-solid fa-comment-dots'; }
+
+function addMsg(text, who){
+  const wrap = document.createElement('div');
+  wrap.className = 'msg-in flex ' + (who === 'user' ? 'justify-end' : 'justify-start');
+  if(who === 'user'){
+    wrap.innerHTML = '<div class="max-w-[80%] bg-royal text-white text-[12.5px] leading-[1.55] px-4 py-3 rounded-2xl rounded-br-md"></div>';
+    wrap.querySelector('div').textContent = text;
+  } else {
+    wrap.innerHTML = '<div class="max-w-[85%] bg-white border border-carbon/10 text-carbon text-[12.5px] leading-[1.55] px-4 py-3 rounded-2xl rounded-bl-md shadow-sm"><span class="block w-7 h-7 -mt-7 -ml-7 mb-1 rounded-full bg-royal text-white grid place-items-center text-[11px]"><i class="fa-solid fa-robot"></i></span><span class="msg-text"></span></div>';
+    wrap.querySelector('.msg-text').textContent = text;
+  }
+  chatMessages.appendChild(wrap);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return wrap;
+}
+function showTyping(){
+  const t = document.createElement('div');
+  t.id = 'typingRow';
+  t.className = 'msg-in flex justify-start';
+  t.innerHTML = '<div class="bg-white border border-carbon/10 px-4 py-3.5 rounded-2xl rounded-bl-md shadow-sm flex gap-1.5 items-center"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+  chatMessages.appendChild(t);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function botSay(text){
+  showTyping();
+  setTimeout(() => {
+    document.getElementById('typingRow')?.remove();
+    addMsg(text, 'bot');
+    renderChips();
+  }, 700 + Math.random() * 700);
+}
+function renderChips(){
+  const chips = ['How much does it cost?','Typical timeline?','Do you do SEO?','Book a call'];
+  chatChips.innerHTML = chips.map(c => '<button type="button" class="chip text-[11px] font-medium border border-carbon/15 bg-white rounded-full px-3 py-1.5" data-q="' + c + '">' + c + '</button>').join('');
+  chatChips.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { document.getElementById('chatInput').value = b.dataset.q; document.getElementById('chatForm').dispatchEvent(new Event('submit')); }));
+}
+
+function botReply(q){
+  q = q.toLowerCase();
+  if(/(price|cost|much|fee|budget|baht|quote)/.test(q))
+    return 'Landing pages start at ฿65,000 (~$1,800), corporate sites from ฿120,000 (~$3,300), e-commerce from ฿150,000 (~$4,100). Want a fixed-price proposal? Tap "Get a Quote" and you will have it within 48 hours.';
+  if(/(long|timeline|week|fast|duration|take)/.test(q))
+    return 'Brand identity takes 4–6 weeks, corporate websites 8–10 weeks, e-commerce 10–14 weeks. We run weekly sprints with a live staging link from week one — you will never wonder where things stand.';
+  if(/(seo|rank|google|traffic|marketing|ads)/.test(q))
+    return 'Our SEO & performance retainers start at ฿45,000/month (~$1,240) and are managed against revenue targets. Clients typically see first-page rankings within 4–6 months on competitive terms.';
+  if(/(overseas|abroad|country|foreign|singapore|australia|us|europe|time ?zone)/.test(q))
+    return '70% of our clients are outside Thailand — Singapore, Australia, the US and Europe. We overlap working hours for calls, work in Slack, and bill in THB or USD.';
+  if(/(different|why|better|unique)/.test(q))
+    return 'Three things: fixed-price quotes with zero surprise invoices, every project measured against revenue outcomes, and a 98% client retention rate. We win by making you win.';
+  if(/(book|call|talk|human|contact|appointment|meet)/.test(q))
+    return 'You can reach a strategist at +66 2 000 1234 (Mon–Sat, 9:00–19:00 ICT), on LINE @creativebkk, or tap "Get a Quote" and we will call you within one business day.';
+  if(/(service|what do you do|offer)/.test(q))
+    return 'We cover the full stack: Brand Identity, Web Design & Development, SEO & Performance Marketing, UI/UX Design, E-commerce and Content Production. Which one are you exploring?';
+  if(/(hi|hello|hey|สวัสดี)/.test(q))
+    return 'Hello! Great to meet you. Ask me anything about CreativeBKK — pricing, timelines, past work, or how to get started.';
+  if(/(thank)/.test(q))
+    return 'You are welcome! Anything else I can help with?';
+  return 'Great question — a strategist can give you the full answer within one business day. Meanwhile, try asking me about pricing, timelines, or our services. Or tap "Get a Quote" for a tailored proposal in 48 hours.';
+}
+
+document.getElementById('chatForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('chatInput');
+  const q = input.value.trim();
+  if(!q) return;
+  addMsg(q, 'user');
+  input.value = '';
+  chatChips.innerHTML = '';
+  botSay(botReply(q));
+});
+
+/* Ask AI section -> routes into chatbot */
+document.getElementById('askAiForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('askAiInput');
+  const q = input.value.trim();
+  if(!q) return;
+  openChat();
+  setTimeout(() => { addMsg(q, 'user'); botSay(botReply(q)); input.value = ''; }, chatOpened ? 100 : 600);
+});
+document.querySelectorAll('.ask-chip').forEach(b => b.addEventListener('click', () => {
+  document.getElementById('askAiInput').value = b.dataset.q;
+  document.getElementById('askAiForm').dispatchEvent(new Event('submit'));
+}));
+
+/* ================= INIT ================= */
+switchTab('login');
+</script>
+</body>
+</html>
