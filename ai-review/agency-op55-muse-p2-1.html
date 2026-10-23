@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiamCraft Studio | Home Renovation & Interior in Bangkok - Free AI Estimate</title>
+<meta name="description" content="SiamCraft Studio is a Bangkok-based home renovation & interior agency. 480+ projects, 4.9 rating, 12 years. Kitchen, condo, bathroom & full home. Free AI price estimate in 60 sec.">
+<meta name="keywords" content="Bangkok renovation, interior Bangkok, condo renovation, kitchen remodel Thailand, home contractor, SiamCraft Studio, free estimate AI">
+<meta property="og:title" content="SiamCraft Studio - Bangkok Renovation Experts">
+<meta property="og:description" content="Who is SiamCraft? We are a Bangkok renovation team that designs & builds beautiful livable homes with transparent pricing.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { coral:'#F75A38', lime:'#C4E864', slate2:'#222426', sky2:'#7CA4F8', muted:'#A4A8B0' },
+      fontFamily: { outfit:['Outfit','sans-serif'], jakarta:['Plus Jakarta Sans','sans-serif'] }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"SiamCraft Studio","description":"Who is SiamCraft? SiamCraft Studio is a Bangkok home renovation and interior agency specializing in condos, kitchens and full-home makeovers.","address":{"@type":"PostalAddress","streetAddress":"88 Sukhumvit 61","addressLocality":"Bangkok","postalCode":"10110","addressCountry":"TH"},"telephone":"+66-2-123-4567","priceRange":"฿฿","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"312"},"openingHours":"Mo-Sa 09:00-19:00"}
+</script>
+<style>
+:root{--coral:#F75A38;--lime:#C4E864;--sky:#7CA4F8;--dark:#222426}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#222426}
+h1,h2,h3{font-family:'Outfit',sans-serif}
+.hero-title{font-size:clamp(38px,5.5vw,60px);line-height:.95;font-weight:800;letter-spacing:-.03em}
+.section-title{font-size:clamp(26px,3vw,36px);line-height:1.15;font-weight:800;letter-spacing:-.02em}
+.label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.tag-lime{background:var(--lime);color:#222426;font-weight:700;border-radius:20px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px}
+.reveal{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:none}
+.card-hover{transition:all .35s ease}
+.card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(34,36,38,.1)}
+.img-zoom img{transition:transform .6s ease}
+.img-zoom:hover img{transform:scale(1.06)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:250px}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--coral);color:#fff}
+#chatWindow{transform-origin:bottom right;transform:scale(.9) translateY(10px);opacity:0;pointer-events:none;transition:all .3s ease}
+#chatWindow.open{transform:scale(1) translateY(0);opacity:1;pointer-events:auto}
+#backTop{opacity:0;pointer-events:none;transform:translateY(8px);transition:all .3s}
+#backTop.show{opacity:1;pointer-events:auto;transform:none}
+.dot{width:8px;height:8px;border-radius:99px;background:#E5E7EB;transition:all .3s}
+.dot.active{width:28px;background:var(--coral)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--coral)!important;box-shadow:0 0 0 3px rgba(247,90,56,.12)}
+</style>
+</head>
+<body class="bg-white antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 h-[72px] flex items-center justify-between gap-4">
+<a href="#" class="flex items-center gap-2.5">
+<span class="w-10 h-10 rounded-xl bg-[#F75A38] grid place-items-center text-white text-xl"><i class="fa-solid fa-house-chimney"></i></span>
+<span class="font-outfit font-extrabold text-lg leading-none">SiamCraft<span class="text-[#F75A38]">.</span><br><span class="text-[11px] font-jakarta font-bold tracking-widest text-gray-500">BANGKOK STUDIO</span></span>
+</a>
+<nav class="hidden lg:flex items-center gap-8 text-[14px] font-semibold">
+<a href="#services" class="hover:text-[#F75A38]">Services</a>
+<a href="#work" class="hover:text-[#F75A38]">Our Work</a>
+<a href="#process" class="hover:text-[#F75A38]">Process</a>
+<a href="#reviews" class="hover:text-[#F75A38]">Reviews</a>
+<a href="#faq" class="hover:text-[#F75A38]">FAQ</a>
+</nav>
+<div class="flex items-center gap-2.5">
+<a href="tel:+6621234567" class="hidden md:flex items-center gap-2 text-sm font-bold"><span class="w-9 h-9 rounded-full bg-[#222426] text-white grid place-items-center"><i class="bi bi-telephone-fill text-sm"></i></span> 02-123-4567</a>
+<button onclick="openAuth('login')" class="hidden sm:inline-flex px-5 py-2.5 rounded-full border-2 border-[#222426] font-bold text-sm hover:bg-[#222426] hover:text-white transition">Sign In</button>
+<button onclick="openEstimator()" class="px-5 py-2.5 rounded-full bg-[#F75A38] text-white font-bold text-sm hover:brightness-110 shadow-[0_8px_20px_rgba(247,90,56,.35)] transition"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Free AI Estimate</button>
+<button id="menuBtn" class="lg:hidden w-10 h-10 grid place-items-center rounded-full bg-gray-100"><i class="fa-solid fa-bars"></i></button>
+</div>
+</div>
+<div id="mobileMenu" class="hidden lg:hidden border-t bg-white px-5 py-4 space-y-3 font-semibold">
+<a href="#services" class="block">Services</a><a href="#work" class="block">Our Work</a><a href="#process" class="block">Process</a><a href="#reviews" class="block">Reviews</a><a href="#faq" class="block">FAQ</a>
+<button onclick="openAuth('login')" class="w-full py-3 rounded-xl bg-[#222426] text-white font-bold">Sign In / Register</button>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="bg-white">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 pt-10 lg:pt-16 pb-14 grid lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-6 reveal active">
+<span class="tag-lime label"><span class="w-2 h-2 rounded-full bg-[#222426] animate-pulse"></span> Bangkok • Sukhumvit • Thonglor • Ari</span>
+<h1 class="hero-title mt-4">Bangkok Home Renovation <span class="text-[#F75A38]">Done Right.</span> <span class="bg-[#C4E864] px-3 rounded-xl">Priced Clear.</span></h1>
+<p class="mt-5 text-gray-600 text-[16px] leading-relaxed max-w-[520px]">Who is SiamCraft? We design & build condos, kitchens and full homes across Bangkok. Transparent ฿ pricing, 12-year warranty, and free AI estimate in 60 seconds.</p>
+<div class="mt-7 flex flex-wrap gap-3">
+<button onclick="openEstimator()" class="px-7 py-4 rounded-2xl bg-[#222426] text-white font-bold flex items-center gap-2 hover:bg-[#F75A38] transition card-hover"><i class="fa-solid fa-robot text-[#C4E864]"></i> Free Estimate with AI <i class="fa-solid fa-arrow-right text-sm"></i></button>
+<a href="#work" class="px-7 py-4 rounded-2xl border-2 border-gray-200 font-bold flex items-center gap-2 hover:border-[#222426] transition"><i class="bi bi-grid-1x2-fill text-[#7CA4F8]"></i> View Our Work</a>
+</div>
+<div class="mt-7 flex items-center gap-4">
+<div class="flex -space-x-3">
+<img src="https://i.pravatar.cc/80?img=5" class="w-10 h-10 rounded-full border-2 border-white" alt="client"><img src="https://i.pravatar.cc/80?img=12" class="w-10 h-10 rounded-full border-2 border-white" alt="client"><img src="https://i.pravatar.cc/80?img=32" class="w-10 h-10 rounded-full border-2 border-white" alt="client"><span class="w-10 h-10 rounded-full bg-[#7CA4F8] text-white text-xs font-bold border-2 border-white grid place-items-center">312+</span>
+</div>
+<div class="text-sm"><span class="text-[#F75A38] tracking-tight"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span> <b>4.9/5</b> from 312 verified reviews</div>
+</div>
+</div>
+<div class="lg:col-span-6 relative reveal active">
+<div class="grid grid-cols-12 gap-3">
+<div class="col-span-7 rounded-3xl overflow-hidden img-zoom h-[420px]"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" class="w-full h-full object-cover" alt="Modern living room Bangkok"></div>
+<div class="col-span-5 space-y-3">
+<div class="rounded-3xl overflow-hidden img-zoom h-[204px]"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&q=80" class="w-full h-full object-cover" alt="Kitchen"></div>
+<div class="rounded-3xl overflow-hidden img-zoom h-[204px]"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" class="w-full h-full object-cover" alt="Condo interior"></div>
+</div>
+</div>
+<div class="absolute -left-3 lg:-left-6 bottom-8 bg-white rounded-2xl shadow-xl border p-4 flex items-center gap-3">
+<span class="w-11 h-11 rounded-xl bg-[#C4E864] grid place-items-center text-xl"><i class="fa-solid fa-badge-check"></i></span>
+<div><p class="label text-gray-500">Avg. project</p><p class="font-outfit font-extrabold text-lg">฿450K • 28 days</p></div>
+</div>
+<div class="absolute -right-2 lg:right-6 -top-4 bg-[#222426] text-white rounded-2xl p-4 shadow-xl flex items-center gap-3">
+<span class="w-10 h-10 rounded-xl bg-[#F75A38] grid place-items-center"><i class="fa-solid fa-robot"></i></span>
+<div><p class="text-xs text-gray-300">AI Estimate ready</p><p class="font-bold text-sm">฿385,000 ±5% <span class="text-[#C4E864]">● Live</span></p></div>
+</div>
+</div>
+</div>
+<!-- TRUST BAR -->
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 pb-16">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 reveal">
+<div class="rounded-2xl border-2 border-gray-100 p-6 text-center card-hover"><p class="font-outfit font-extrabold text-[44px] leading-none text-[#F75A38]"><span class="counter" data-target="480">0</span>+</p><p class="label mt-2 text-gray-500">Finished Projects</p></div>
+<div class="rounded-2xl border-2 border-gray-100 p-6 text-center card-hover"><p class="font-outfit font-extrabold text-[44px] leading-none text-[#222426]"><span class="counter" data-target="4.9" data-dec="1">0</span> <span class="text-xl">★</span></p><p class="label mt-2 text-gray-500">Average Rating</p></div>
+<div class="rounded-2xl bg-[#222426] text-white p-6 text-center card-hover"><p class="font-outfit font-extrabold text-[44px] leading-none text-[#C4E864]"><span class="counter" data-target="12">0</span> yrs</p><p class="label mt-2 text-gray-400">Experience</p></div>
+<div class="rounded-2xl border-2 border-[#7CA4F8]/30 bg-[#7CA4F8]/10 p-6 text-center card-hover"><p class="font-outfit font-extrabold text-[44px] leading-none text-[#7CA4F8]"><span class="counter" data-target="98">0</span>%</p><p class="label mt-2 text-gray-500">On-time Handover</p></div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="bg-white border-t border-gray-100">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 py-20">
+<div class="flex flex-wrap items-end justify-between gap-4 reveal">
+<div><span class="tag-lime label">Our Services</span><h2 class="section-title mt-3">Clear scope. Clear ฿ price.<br>No hidden cost, ever.</h2></div>
+<a href="#" class="font-bold text-sm underline decoration-[#F75A38] decoration-2 underline-offset-4">Download full price list <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+<div class="rounded-3xl border border-gray-150 border-gray-200 overflow-hidden card-hover reveal"><div class="h-48 overflow-hidden img-zoom"><img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=600&q=80" class="w-full h-full object-cover" alt="Kitchen"></div><div class="p-6"><span class="w-11 h-11 rounded-xl bg-[#F75A38]/10 text-[#F75A38] grid place-items-center text-xl mb-3"><i class="fa-solid fa-kitchen-set"></i></span><h3 class="font-bold text-lg">Kitchen Remodel</h3><p class="text-sm text-gray-600 mt-1">Cabinets, stone top, lighting & appliances setup.</p><p class="mt-3 font-outfit font-bold">฿180,000 – ฿550,000</p><button onclick="openEstimator('Kitchen')" class="mt-4 w-full py-3 rounded-xl bg-[#222426] text-white font-bold text-sm hover:bg-[#F75A38] transition">Estimate this →</button></div></div>
+<div class="rounded-3xl border border-gray-200 overflow-hidden card-hover reveal"><div class="h-48 overflow-hidden img-zoom"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80" class="w-full h-full object-cover" alt="Condo"></div><div class="p-6"><span class="w-11 h-11 rounded-xl bg-[#C4E864]/40 grid place-items-center text-xl mb-3"><i class="fa-solid fa-building"></i></span><h3 class="font-bold text-lg">Condo Full Renovation</h3><p class="text-sm text-gray-600 mt-1">30–60 sqm. Floor, wall, electric & built-in.</p><p class="mt-3 font-outfit font-bold">฿350,000 – ฿950,000</p><button onclick="openEstimator('Condo')" class="mt-4 w-full py-3 rounded-xl bg-[#222426] text-white font-bold text-sm hover:bg-[#F75A38] transition">Estimate this →</button></div></div>
+<div class="rounded-3xl border-2 border-[#222426] overflow-hidden card-hover reveal relative"><span class="absolute top-4 left-4 tag-lime label !text-[10px]">Most Popular</span><div class="h-48 overflow-hidden img-zoom"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" class="w-full h-full object-cover" alt="Full home"></div><div class="p-6"><span class="w-11 h-11 rounded-xl bg-[#7CA4F8]/20 text-[#7CA4F8] grid place-items-center text-xl mb-3"><i class="fa-solid fa-house-laptop"></i></span><h3 class="font-bold text-lg">Full Home Makeover</h3><p class="text-sm text-gray-600 mt-1">Townhome / single house. Design + build.</p><p class="mt-3 font-outfit font-bold">฿890,000 – ฿2.9M</p><button onclick="openEstimator('Full Home')" class="mt-4 w-full py-3 rounded-xl bg-[#F75A38] text-white font-bold text-sm hover:brightness-110 transition">Estimate this →</button></div></div>
+<div class="rounded-3xl border border-gray-200 overflow-hidden card-hover reveal"><div class="h-44 overflow-hidden img-zoom"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=600&q=80" class="w-full h-full object-cover" alt="Bathroom"></div><div class="p-6"><span class="w-11 h-11 rounded-xl bg-[#7CA4F8]/20 text-[#7CA4F8] grid place-items-center text-xl mb-3"><i class="fa-solid fa-shower"></i></span><h3 class="font-bold text-lg">Bathroom Upgrade</h3><p class="text-sm text-gray-600 mt-1">Waterproofing, tiles, sanitary & glass.</p><p class="mt-3 font-outfit font-bold">฿120,000 – ฿320,000</p><button onclick="openEstimator('Bathroom')" class="mt-4 w-full py-3 rounded-xl bg-gray-100 font-bold text-sm hover:bg-[#222426] hover:text-white transition">Estimate this →</button></div></div>
+<div class="rounded-3xl border border-gray-200 overflow-hidden card-hover reveal"><div class="h-44 overflow-hidden img-zoom"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" class="w-full h-full object-cover" alt="Interior"></div><div class="p-6"><span class="w-11 h-11 rounded-xl bg-[#F75A38]/10 text-[#F75A38] grid place-items-center text-xl mb-3"><i class="fa-solid fa-couch"></i></span><h3 class="font-bold text-lg">Interior & Built-in</h3><p class="text-sm text-gray-600 mt-1">Wardrobe, TV wall, partition & painting.</p><p class="mt-3 font-outfit font-bold">฿95,000 – ฿480,000</p><button onclick="openEstimator('Interior')" class="mt-4 w-full py-3 rounded-xl bg-gray-100 font-bold text-sm hover:bg-[#222426] hover:text-white transition">Estimate this →</button></div></div>
+<div class="rounded-3xl bg-[#C4E864] p-6 card-hover reveal flex flex-col justify-center"><h3 class="font-outfit font-extrabold text-2xl">Not sure what you need?</h3><p class="text-sm mt-2 font-medium">Send photos via LINE. We reply in 15 min with honest advice.</p><div class="flex gap-2 mt-5"><a href="#" class="flex-1 py-3 rounded-xl bg-[#222426] text-white text-center font-bold text-sm"><i class="bi bi-line"></i> LINE Us</a><button onclick="openEstimator()" class="flex-1 py-3 rounded-xl bg-white font-bold text-sm">Ask AI</button></div></div>
+</div>
+</div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="bg-white border-t border-gray-100">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 py-20">
+<div class="flex flex-wrap items-end justify-between gap-4 reveal">
+<div><span class="tag-lime label">Latest Work • Auto-updated</span><h2 class="section-title mt-3">Real homes. Real ฿ budgets.</h2></div>
+<div class="flex gap-2" id="filters"><button data-f="all" class="fbtn px-4 py-2 rounded-full bg-[#222426] text-white text-sm font-bold">All</button><button data-f="condo" class="fbtn px-4 py-2 rounded-full bg-gray-100 text-sm font-bold">Condo</button><button data-f="kitchen" class="fbtn px-4 py-2 rounded-full bg-gray-100 text-sm font-bold">Kitchen</button><button data-f="house" class="fbtn px-4 py-2 rounded-full bg-gray-100 text-sm font-bold">House</button></div>
+</div>
+<div id="workGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+<div data-cat="condo" class="work rounded-3xl overflow-hidden border border-gray-200 card-hover reveal"><div class="h-60 img-zoom overflow-hidden relative"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" class="w-full h-full object-cover" alt="work"><span class="absolute top-3 left-3 bg-white px-3 py-1 rounded-full text-xs font-bold">Condo • Thonglor 45 sqm</span></div><div class="p-5 flex justify-between items-center"><div><h3 class="font-bold">Warm Minimal Condo</h3><p class="text-xs text-gray-500">Done in 26 days • ★ 5.0</p></div><p class="font-outfit font-extrabold text-[#F75A38]">฿520K</p></div></div>
+<div data-cat="kitchen" class="work rounded-3xl overflow-hidden border border-gray-200 card-hover reveal"><div class="h-60 img-zoom overflow-hidden relative"><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=600&q=80" class="w-full h-full object-cover" alt="work"><span class="absolute top-3 left-3 bg-[#C4E864] px-3 py-1 rounded-full text-xs font-bold">Kitchen • Ari 18 sqm</span></div><div class="p-5 flex justify-between items-center"><div><h3 class="font-bold">Scandi Coral Kitchen</h3><p class="text-xs text-gray-500">Done in 19 days • ★ 4.9</p></div><p class="font-outfit font-extrabold text-[#F75A38]">฿310K</p></div></div>
+<div data-cat="house" class="work rounded-3xl overflow-hidden border border-gray-200 card-hover reveal"><div class="h-60 img-zoom overflow-hidden relative"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" class="w-full h-full object-cover" alt="work"><span class="absolute top-3 left-3 bg-[#7CA4F8] text-white px-3 py-1 rounded-full text-xs font-bold">House • Bangna 180 sqm</span></div><div class="p-5 flex justify-between items-center"><div><h3 class="font-bold">Bangna Family Villa</h3><p class="text-xs text-gray-500">Done in 58 days • ★ 5.0</p></div><p class="font-outfit font-extrabold text-[#F75A38]">฿1.85M</p></div></div>
+<div data-cat="condo" class="work rounded-3xl overflow-hidden border border-gray-200 card-hover reveal"><div class="h-60 img-zoom overflow-hidden relative"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" class="w-full h-full object-cover" alt="work"><span class="absolute top-3 left-3 bg-white px-3 py-1 rounded-full text-xs font-bold">Condo • Sathorn 38 sqm</span></div><div class="p-5 flex justify-between items-center"><div><h3 class="font-bold">Sky Loft Sathorn</h3><p class="text-xs text-gray-500">Done in 24 days • ★ 4.8</p></div><p class="font-outfit font-extrabold text-[#F75A38]">฿480K</p></div></div>
+<div data-cat="kitchen" class="work rounded-3xl overflow-hidden border border-gray-200 card-hover reveal"><div class="h-60 img-zoom overflow-hidden relative"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&q=80" class="w-full h-full object-cover" alt="work"><span class="absolute top-3 left-3 bg-[#C4E864] px-3 py-1 rounded-full text-xs font-bold">Kitchen • Onnut 22 sqm</span></div><div class="p-5 flex justify-between items-center"><div><h3 class="font-bold">Chef’s Lime Kitchen</h3><p class="text-xs text-gray-500">Done in 21 days • ★ 5.0</p></div><p class="font-outfit font-extrabold text-[#F75A38]">฿365K</p></div></div>
+<div data-cat="house" class="work rounded-3xl overflow-hidden border border-gray-200 card-hover reveal"><div class="h-60 img-zoom overflow-hidden relative"><img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&q=80" class="w-full h-full object-cover" alt="work"><span class="absolute top-3 left-3 bg-[#7CA4F8] text-white px-3 py-1 rounded-full text-xs font-bold">House • Ekkamai 210 sqm</span></div><div class="p-5 flex justify-between items-center"><div><h3 class="font-bold">Ekkamai Courtyard</h3><p class="text-xs text-gray-500">Done in 65 days • ★ 4.9</p></div><p class="font-outfit font-extrabold text-[#F75A38]">฿2.4M</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="bg-white border-t border-gray-100">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 py-20">
+<span class="tag-lime label">How it works</span>
+<h2 class="section-title mt-3 reveal">From chat to keys in 4 steps.</h2>
+<div class="grid md:grid-cols-4 gap-4 mt-8">
+<div class="rounded-3xl border border-gray-200 p-6 card-hover reveal"><span class="w-12 h-12 rounded-2xl bg-[#F75A38] text-white grid place-items-center text-xl font-outfit font-extrabold">1</span><h3 class="font-bold mt-4">AI Estimate + Chat</h3><p class="text-sm text-gray-600 mt-1">60-sec AI price + human review on LINE. Free, no pushy sales.</p></div>
+<div class="rounded-3xl border border-gray-200 p-6 card-hover reveal"><span class="w-12 h-12 rounded-2xl bg-[#C4E864] grid place-items-center text-xl font-outfit font-extrabold">2</span><h3 class="font-bold mt-4">Site Visit & 3D</h3><p class="text-sm text-gray-600 mt-1">Measure + 3D design in 3 days. Fixed quote in ฿.</p></div>
+<div class="rounded-3xl border border-gray-200 p-6 card-hover reveal"><span class="w-12 h-12 rounded-2xl bg-[#7CA4F8] text-white grid place-items-center text-xl font-outfit font-extrabold">3</span><h3 class="font-bold mt-4">Build + Live Update</h3><p class="text-sm text-gray-600 mt-1">Daily photos, dust-free team, on-time or we pay.</p></div>
+<div class="rounded-3xl bg-[#222426] text-white p-6 card-hover reveal"><span class="w-12 h-12 rounded-2xl bg-white text-[#222426] grid place-items-center text-xl"><i class="fa-solid fa-key"></i></span><h3 class="font-bold mt-4">Handover + Warranty</h3><p class="text-sm text-gray-300 mt-1">Deep clean, 12-year warranty, aftercare LINE.</p></div>
+</div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="bg-white border-t border-gray-100">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 py-20">
+<div class="flex items-end justify-between reveal"><div><span class="tag-lime label">312 Verified Reviews</span><h2 class="section-title mt-3">Loved by Bangkok families.</h2></div><div class="hidden md:flex gap-2"><button onclick="moveRev(-1)" class="w-11 h-11 rounded-full border-2 border-gray-200 grid place-items-center hover:bg-[#222426] hover:text-white transition"><i class="fa-solid fa-arrow-left"></i></button><button onclick="moveRev(1)" class="w-11 h-11 rounded-full bg-[#F75A38] text-white grid place-items-center"><i class="fa-solid fa-arrow-right"></i></button></div></div>
+<div class="overflow-hidden mt-8"><div id="revTrack" class="flex gap-4 transition-transform duration-500" style="transform:translateX(0)">
+<div class="min-w-[85%] md:min-w-[31.5%] rounded-3xl border border-gray-200 p-6 bg-white"><p class="text-[#F75A38] text-sm">★★★★★</p><p class="text-[15px] mt-3 leading-relaxed">“AI estimate was ฿495K, final bill ฿502K. So honest. Team cleaned every day — my cat wasn’t even stressed.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/80?img=47" class="w-11 h-11 rounded-full" alt="review"><div><p class="font-bold text-sm">Khun Ploy • Thonglor</p><p class="text-xs text-gray-500">Condo 45 sqm • ฿502K</p></div></div></div>
+<div class="min-w-[85%] md:min-w-[31.5%] rounded-3xl bg-[#222426] text-white p-6"><p class="text-[#C4E864] text-sm">★★★★★</p><p class="text-[15px] mt-3 leading-relaxed">“They finished 3 days early. 3D matched reality 95%. LINE replies in minutes, even Sunday night.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/80?img=13" class="w-11 h-11 rounded-full" alt="review"><div><p class="font-bold text-sm">Daniel & Mint • Sathorn</p><p class="text-xs text-gray-400">House 180 sqm • ฿1.85M</p></div></div></div>
+<div class="min-w-[85%] md:min-w-[31.5%] rounded-3xl border border-gray-200 p-6 bg-white"><p class="text-[#F75A38] text-sm">★★★★★</p><p class="text-[15px] mt-3 leading-relaxed">“Second time using them. Kitchen waterproofing perfect after 1 rainy season. Worth every baht.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/80?img=32" class="w-11 h-11 rounded-full" alt="review"><div><p class="font-bold text-sm">Khun Aoy • Ari</p><p class="text-xs text-gray-500">Kitchen 18 sqm • ฿310K</p></div></div></div>
+<div class="min-w-[85%] md:min-w-[31.5%] rounded-3xl border-2 border-[#7CA4F8]/30 p-6 bg-[#7CA4F8]/10"><p class="text-[#7CA4F8] text-sm">★★★★★</p><p class="text-[15px] mt-3 leading-relaxed">“Transparent BOQ in ฿, no upsell. Foreman sent video updates daily while I was abroad.”</p><div class="flex items-center gap-3 mt-5"><img src="https://i.pravatar.cc/80?img=8" class="w-11 h-11 rounded-full" alt="review"><div><p class="font-bold text-sm">Khun Bank • Ekkamai</p><p class="text-xs text-gray-500">House 210 sqm • ฿2.4M</p></div></div></div>
+</div></div>
+<div class="flex gap-2 mt-5 justify-center" id="revDots"></div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-white border-t border-gray-100">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 py-20 grid lg:grid-cols-12 gap-10">
+<div class="lg:col-span-4 reveal"><span class="tag-lime label">FAQ</span><h2 class="section-title mt-3">Questions everyone asks us.</h2><p class="text-gray-600 text-sm mt-3">Still unsure? Chat with AI or LINE — humans reply in 15 min, 9am–7pm.</p><button onclick="toggleChat(true)" class="mt-5 px-6 py-3 rounded-xl bg-[#7CA4F8] text-white font-bold text-sm"><i class="fa-solid fa-comments mr-1"></i> Ask AI now</button></div>
+<div class="lg:col-span-8 space-y-3">
+<div class="faq-item open rounded-2xl border border-gray-200 overflow-hidden reveal"><button class="faq-q w-full flex justify-between items-center p-5 font-bold text-left">How much does renovation cost in Bangkok? <span class="faq-icon w-8 h-8 rounded-full bg-gray-100 grid place-items-center transition">+</span></button><div class="faq-a px-5"><p class="pb-5 text-sm text-gray-600">Condo 30–45 sqm typically ฿350K–650K, kitchen ฿180K–550K, full house ฿890K+. Use our free AI estimator for a fixed quote in 60 seconds — final BOQ never changes without your approval.</p></div></div>
+<div class="faq-item rounded-2xl border border-gray-200 overflow-hidden reveal"><button class="faq-q w-full flex justify-between items-center p-5 font-bold text-left">How long does it take? <span class="faq-icon w-8 h-8 rounded-full bg-gray-100 grid place-items-center transition">+</span></button><div class="faq-a px-5"><p class="pb-5 text-sm text-gray-600">Kitchen 18–22 days, condo 24–30 days, house 55–70 days. We guarantee on-time handover in contract — late = we compensate ฿2,000/day.</p></div></div>
+<div class="faq-item rounded-2xl border border-gray-200 overflow-hidden reveal"><button class="faq-q w-full flex justify-between items-center p-5 font-bold text-left">Do you handle condo juristic permission? <span class="faq-icon w-8 h-8 rounded-full bg-gray-100 grid place-items-center transition">+</span></button><div class="faq-a px-5"><p class="pb-5 text-sm text-gray-600">Yes, 100%. We prepare drawings, insurance and deposits for buildings in Sukhumvit, Sathorn, Ari and all Bangkok areas.</p></div></div>
+<div class="faq-item rounded-2xl border border-gray-200 overflow-hidden reveal"><button class="faq-q w-full flex justify-between items-center p-5 font-bold text-left">Is there warranty? <span class="faq-icon w-8 h-8 rounded-full bg-gray-100 grid place-items-center transition">+</span></button><div class="faq-a px-5"><p class="pb-5 text-sm text-gray-600">12-year structural, 2-year systems, lifetime LINE aftercare. Claim via chat with photos — technician in 48h.</p></div></div>
+<div class="faq-item rounded-2xl border border-gray-200 overflow-hidden reveal"><button class="faq-q w-full flex justify-between items-center p-5 font-bold text-left">How do I start? <span class="faq-icon w-8 h-8 rounded-full bg-gray-100 grid place-items-center transition">+</span></button><div class="faq-a px-5"><p class="pb-5 text-sm text-gray-600">Tap Free AI Estimate, answer 3 questions, get price. Then book free site visit. No deposit until you approve 3D + BOQ.</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="bg-white border-t border-gray-100">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 py-20">
+<div class="rounded-[28px] border-2 border-gray-100 p-6 lg:p-12 grid lg:grid-cols-2 gap-10 items-center reveal overflow-hidden relative">
+<div class="absolute top-0 left-0 w-full h-2 flex"><span class="flex-1 bg-[#F75A38]"></span><span class="flex-1 bg-[#C4E864]"></span><span class="flex-1 bg-[#7CA4F8]"></span></div>
+<div><h2 class="section-title">Get your fixed ฿ price today.<br>Free. No pressure.</h2><p class="text-gray-600 mt-3 text-[15px]">Leave your LINE or phone. AI + human team sends estimate + 3 similar past projects within 2 hours.</p>
+<div class="flex flex-wrap gap-3 mt-6 text-sm font-bold"><a href="tel:+6621234567" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#222426] text-white"><i class="bi bi-telephone-fill"></i> 02-123-4567</a><a href="#" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#06C755] text-white"><i class="bi bi-line"></i> @siamcraft</a><span class="flex items-center gap-2 px-5 py-3 rounded-xl bg-gray-100"><i class="fa-solid fa-location-dot text-[#F75A38]"></i> Sukhumvit 61, Bangkok</span></div>
+</div>
+<form onsubmit="return submitLead(event)" class="bg-gray-50 rounded-3xl p-6 space-y-3 border">
+<p class="label text-gray-500">Get callback in 15 min</p>
+<input required id="leadName" placeholder="Your name" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm">
+<input required id="leadPhone" placeholder="Phone / LINE ID" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm">
+<select id="leadService" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm"><option>Condo Renovation</option><option>Kitchen Remodel</option><option>Bathroom</option><option>Full Home</option></select>
+<button class="w-full py-4 rounded-xl bg-[#F75A38] text-white font-bold hover:brightness-110 transition">Request Free Estimate <i class="fa-solid fa-paper-plane ml-1"></i></button>
+<p id="leadOk" class="hidden text-sm font-bold text-green-600 text-center">✓ Received! We’ll contact you in 15 min (9am–7pm).</p>
+<p class="text-[11px] text-gray-500 text-center">By submitting, you agree to our privacy policy.</p>
+</form>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-gray-200">
+<div class="max-w-[1280px] mx-auto px-5 lg:px-8 py-12 grid md:grid-cols-4 gap-8 text-sm">
+<div><p class="font-outfit font-extrabold text-lg">SiamCraft<span class="text-[#F75A38]">.</span></p><p class="text-gray-600 mt-2">Bangkok renovation agency. 480+ homes, 4.9★, 12 years. Design + build with fixed ฿ pricing.</p></div>
+<div><p class="label text-gray-500 mb-3">Explore</p><div class="space-y-2 font-semibold"><a href="#services" class="block hover:text-[#F75A38]">Services</a><a href="#work" class="block hover:text-[#F75A38]">Our Work</a><a href="#reviews" class="block hover:text-[#F75A38]">Reviews</a></div></div>
+<div><p class="label text-gray-500 mb-3">Contact</p><p><i class="bi bi-telephone-fill text-[#F75A38]"></i> 02-123-4567</p><p class="mt-1"><i class="bi bi-line text-green-600"></i> @siamcraft</p><p class="mt-1"><i class="fa-solid fa-envelope text-[#7CA4F8]"></i> hello@siamcraft.co</p></div>
+<div><p class="label text-gray-500 mb-3">Hours</p><p>Mon–Sat 09:00–19:00</p><p class="mt-2 text-xs text-gray-500">88 Sukhumvit 61, Bangkok 10110</p></div>
+</div>
+<div class="border-t text-center py-5 text-xs text-gray-500">© 2026 SiamCraft Studio • All prices in Thai Baht (฿)</div>
+<div class="h-20 md:hidden"></div>
+</footer>
+
+<!-- STICKY MOBILE BAR -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t grid grid-cols-3 z-40 text-center text-xs font-bold">
+<button onclick="toggleChat(true)" class="py-3 border-r flex flex-col items-center gap-1"><i class="fa-solid fa-robot text-lg text-[#F75A38]"></i> AI Chat</button>
+<a href="#" class="py-3 border-r flex flex-col items-center gap-1"><i class="bi bi-line text-lg text-green-600"></i> LINE</a>
+<a href="tel:+6621234567" class="py-3 flex flex-col items-center gap-1"><i class="bi bi-telephone-fill text-lg"></i> Call</a>
+</div>
+
+<!-- FLOATING: BACK TO TOP + CHATBOT SAME LINE -->
+<div class="fixed bottom-5 right-4 md:right-6 z-50 flex items-center gap-[5px]">
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="w-[52px] h-[52px] rounded-full bg-white border-2 border-[#222426] grid place-items-center shadow-lg hover:bg-[#222426] hover:text-white"><i class="fa-solid fa-arrow-up"></i></button>
+<button id="chatBtn" onclick="toggleChat()" class="w-[52px] h-[52px] rounded-full bg-[#F75A38] text-white grid place-items-center text-xl shadow-[0_10px_25px_rgba(247,90,56,.45)] hover:scale-105 transition relative"><i class="fa-solid fa-comment-dots"></i><span class="absolute -top-1 -right-1 w-4 h-4 bg-[#C4E864] border-2 border-white rounded-full"></span></button>
+</div>
+
+<!-- CHAT WINDOW -->
+<div id="chatWindow" class="fixed bottom-[84px] right-4 md:right-6 w-[340px] max-w-[calc(100vw-2rem)] bg-white rounded-3xl shadow-2xl border overflow-hidden z-50">
+<div class="bg-[#222426] text-white p-4 flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-[#C4E864] text-[#222426] grid place-items-center"><i class="fa-solid fa-robot"></i></span><div class="flex-1"><p class="font-bold text-sm">Crafty • AI Assistant</p><p class="text-xs text-green-300">● Online — replies instantly</p></div><button onclick="toggleChat(false)" class="opacity-70 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button></div>
+<div id="chatBody" class="h-[300px] overflow-y-auto p-4 space-y-3 bg-gray-50 text-sm"></div>
+<div class="p-2.5 border-t bg-white"><div class="flex gap-1.5 mb-2.5 flex-wrap"><button onclick="quickChat('Price estimate')" class="text-xs font-bold px-3 py-1.5 rounded-full bg-gray-100 hover:bg-[#C4E864]">Price estimate</button><button onclick="quickChat('Book site visit')" class="text-xs font-bold px-3 py-1.5 rounded-full bg-gray-100 hover:bg-[#C4E864]">Book visit</button><button onclick="quickChat('Talk to human')" class="text-xs font-bold px-3 py-1.5 rounded-full bg-gray-100 hover:bg-[#C4E864]">Human</button></div>
+<div class="flex gap-2"><input id="chatInput" onkeydown="if(event.key==='Enter')sendChat()" placeholder="Type message..." class="flex-1 p-3 rounded-xl border bg-gray-50 text-sm"><button onclick="sendChat()" class="w-11 h-11 rounded-xl bg-[#F75A38] text-white grid place-items-center"><i class="fa-solid fa-paper-plane"></i></button></div>
+</div>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="hidden fixed inset-0 z-[70] bg-black/50 backdrop-blur-sm grid place-items-center p-4">
+<div class="bg-white w-full max-w-[420px] rounded-3xl p-7 relative">
+<button onclick="closeAuth()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 grid place-items-center"><i class="fa-solid fa-xmark"></i></button>
+<div class="flex bg-gray-100 rounded-full p-1 mb-6"><button id="tabLogin" onclick="switchAuth('login')" class="flex-1 py-2.5 rounded-full bg-[#222426] text-white font-bold text-sm">Login</button><button id="tabReg" onclick="switchAuth('register')" class="flex-1 py-2.5 rounded-full font-bold text-sm text-gray-500">Register</button></div>
+<div id="paneLogin"><h3 class="font-outfit font-extrabold text-2xl">Welcome back 👋</h3><p class="text-sm text-gray-500 mb-4">Track your project & quotes.</p><input id="lEmail" placeholder="Email" class="w-full p-3.5 rounded-xl border mb-2.5 text-sm"><input id="lPass" type="password" placeholder="Password" class="w-full p-3.5 rounded-xl border mb-3 text-sm"><button onclick="doAuth('login')" class="w-full py-3.5 rounded-xl bg-[#F75A38] text-white font-bold">Login →</button><button class="w-full mt-2 py-3.5 rounded-xl border font-bold text-sm"><i class="bi bi-line text-green-600"></i> Continue with LINE</button></div>
+<div id="paneReg" class="hidden"><h3 class="font-outfit font-extrabold text-2xl">Create account ✨</h3><p class="text-sm text-gray-500 mb-4">Free estimate history + priority booking.</p><input id="rName" placeholder="Full name" class="w-full p-3.5 rounded-xl border mb-2.5 text-sm"><input id="rPhone" placeholder="Phone / LINE" class="w-full p-3.5 rounded-xl border mb-2.5 text-sm"><input id="rEmail" placeholder="Email" class="w-full p-3.5 rounded-xl border mb-3 text-sm"><button onclick="doAuth('register')" class="w-full py-3.5 rounded-xl bg-[#222426] text-white font-bold">Register free →</button></div>
+<p id="authMsg" class="hidden mt-3 text-sm font-bold text-center text-green-600"></p>
+</div>
+</div>
+
+<!-- ESTIMATOR MODAL -->
+<div id="estModal" class="hidden fixed inset-0 z-[70] bg-black/50 backdrop-blur-sm grid place-items-center p-4">
+<div class="bg-white w-full max-w-[520px] rounded-3xl p-7 relative">
+<button onclick="closeEstimator()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 grid place-items-center"><i class="fa-solid fa-xmark"></i></button>
+<span class="tag-lime label"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Estimator • 60 sec</span>
+<h3 class="font-outfit font-extrabold text-2xl mt-2">Free estimate in ฿</h3>
+<div class="grid grid-cols-2 gap-2.5 mt-5">
+<select id="estType" class="p-3.5 rounded-xl border bg-gray-50 text-sm font-semibold"><option>Condo</option><option>Kitchen</option><option>Bathroom</option><option>Full Home</option><option>Interior</option></select>
+<select id="estSize" class="p-3.5 rounded-xl border bg-gray-50 text-sm font-semibold"><option value="35">25–35 sqm</option><option value="45">36–50 sqm</option><option value="80">60–100 sqm</option><option value="180">150–220 sqm</option></select>
+</div>
+<select id="estStyle" class="w-full mt-2.5 p-3.5 rounded-xl border bg-gray-50 text-sm font-semibold"><option>Minimal / Japandi</option><option>Modern Luxury</option><option>Scandinavian</option><option>Budget Refresh</option></select>
+<button onclick="runEstimate()" class="w-full mt-4 py-4 rounded-xl bg-[#222426] text-white font-bold hover:bg-[#F75A38] transition">✨ Calculate my price</button>
+<div id="estResult" class="hidden mt-4 rounded-2xl bg-[#222426] text-white p-5 text-center"><p class="text-xs text-gray-300">AI ESTIMATED RANGE</p><p id="estPrice" class="font-outfit font-extrabold text-3xl text-[#C4E864] mt-1">฿0 – ฿0</p><p id="estNote" class="text-xs text-gray-300 mt-1"></p><button onclick="closeEstimator();toggleChat(true)" class="mt-3 px-6 py-2.5 rounded-full bg-[#F75A38] font-bold text-sm">Discuss with AI →</button></div>
+</div>
+</div>
+
+<script>
+// menu
+menuBtn.onclick=()=>mobileMenu.classList.toggle('hidden');
+// reveal + counters + backtop
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('active');x.target.querySelectorAll('.counter').forEach(runCounter);if(x.target.querySelector&&x.target.querySelector('.counter'))runCounter(x.target.querySelector('.counter'));}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function runCounter(el){if(el.dataset.done)return;el.dataset.done=1;const t=parseFloat(el.dataset.target),d=parseInt(el.dataset.dec||0);let s=0;const iv=setInterval(()=>{s+=t/40;if(s>=t){s=t;clearInterval(iv);}el.textContent=d?s.toFixed(d):Math.round(s).toLocaleString();},30);}
+window.addEventListener('scroll',()=>{backTop.classList.toggle('show',window.scrollY>600);},{passive:true});
+// filters
+document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.fbtn').forEach(x=>x.className='fbtn px-4 py-2 rounded-full bg-gray-100 text-sm font-bold');b.className='fbtn px-4 py-2 rounded-full bg-[#222426] text-white text-sm font-bold';const f=b.dataset.f;document.querySelectorAll('.work').forEach(w=>w.style.display=(f==='all'||w.dataset.cat===f)?'':'none');});
+// faq
+document.querySelectorAll('.faq-q').forEach(q=>q.onclick=()=>{const it=q.parentElement,was=it.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!was)it.classList.add('open');});
+// reviews
+let ri=0;const track=document.getElementById('revTrack'),dots=document.getElementById('revDots');
+function revCount(){return window.innerWidth>=768?3:1;}
+function renderDots(){dots.innerHTML='';for(let i=0;i<4;i++){const d=document.createElement('button');d.className='dot'+(i===ri?' active':'');d.onclick=()=>{ri=i;updateRev();};dots.appendChild(d);}}
+function updateRev(){const per=revCount();const max=4-per;if(ri>max)ri=0;if(ri<0)ri=max;const w=track.children[0].offsetWidth+16;track.style.transform=`translateX(${-ri*w}px)`;renderDots();}
+function moveRev(d){ri+=d;updateRev();}renderDots();window.addEventListener('resize',updateRev);setInterval(()=>{ri++;updateRev();},6000);
+// auth
+function openAuth(m){authModal.classList.remove('hidden');switchAuth(m);}function closeAuth(){authModal.classList.add('hidden');}function switchAuth(m){const L=m==='login';paneLogin.classList.toggle('hidden',!L);paneReg.classList.toggle('hidden',L);tabLogin.className='flex-1 py-2.5 rounded-full font-bold text-sm '+(L?'bg-[#222426] text-white':'text-gray-500');tabReg.className='flex-1 py-2.5 rounded-full font-bold text-sm '+(!L?'bg-[#222426] text-white':'text-gray-500');}
+function doAuth(m){const msg=document.getElementById('authMsg');msg.classList.remove('hidden');msg.textContent=m==='login'?'✓ Welcome back! Logged in (demo).':'✓ Account created! Check LINE for verification (demo).';localStorage.setItem('sc_user',m);setTimeout(closeAuth,1200);}
+authModal.addEventListener('click',e=>{if(e.target===authModal)closeAuth();});
+// estimator
+function openEstimator(t){estModal.classList.remove('hidden');if(t)estType.value=t;}function closeEstimator(){estModal.classList.add('hidden');}
+function runEstimate(){const base={'Condo':12500,'Kitchen':15500,'Bathroom':13500,'Full Home':11500,'Interior':9000}[estType.value]||12000;const sqm=parseInt(estSize.value);const low=Math.round(base*sqm/10000)*10000;const high=Math.round(low*1.18/10000)*10000;estResult.classList.remove('hidden');estPrice.textContent='฿'+low.toLocaleString()+' – ฿'+high.toLocaleString();estNote.textContent=`${estType.value} • ${sqm} sqm • ${estStyle.value} • includes labor + materials`; }
+estModal.addEventListener('click',e=>{if(e.target===estModal)closeEstimator();});
+// lead
+function submitLead(e){e.preventDefault();leadOk.classList.remove('hidden');return false;}
+// chat
+let chatOpened=false;
+function toggleChat(force){const w=document.getElementById('chatWindow');const open=force!==undefined?force:!w.classList.contains('open');w.classList.toggle('open',open);if(open&&!chatOpened){chatOpened=true;botSay('Hi! I’m Crafty 🤖 from SiamCraft Bangkok. Want a free ฿ estimate or book a site visit?');}}
+function bubble(t,me){const d=document.createElement('div');d.className=me?'ml-auto bg-[#222426] text-white px-4 py-2.5 rounded-2xl rounded-br-md max-w-[80%]':'bg-white border px-4 py-2.5 rounded-2xl rounded-bl-md max-w-[85%] shadow-sm';d.innerHTML=t;chatBody.appendChild(d);chatBody.scrollTop=chatBody.scrollHeight;return d;}
+function botSay(t){bubble(t,false);}function quickChat(t){bubble(t,true);setTimeout(()=>botReply(t),500);}function sendChat(){const v=chatInput.value.trim();if(!v)return;bubble(v,true);chatInput.value='';setTimeout(()=>botReply(v),600);}
+function botReply(v){v=v.toLowerCase();if(v.includes('price')||v.includes('estimate')||v.includes('cost'))botSay('Great! Condo 35–45 sqm is usually <b>฿420K–620K</b>. Tap <b>Free AI Estimate</b> on top — 3 questions, fixed price in 60 sec. What type is yours?');else if(v.includes('visit')||v.includes('book'))botSay('I can book a <b>free site visit</b> tomorrow 10am–6pm. Leave your phone / LINE here and our team confirms in 15 min. Which area in Bangkok?');else if(v.includes('human')||v.includes('line')||v.includes('phone'))botSay('Sure! LINE: <b>@siamcraft</b> • Tel: <b>02-123-4567</b> (9am–7pm). Humans reply in ~15 min. Want me to have them call you?');else botSay('Got it! For fastest help: 1) price → press <b>Free AI Estimate</b>, 2) photos → send via LINE <b>@siamcraft</b>. How many sqm is your place?');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAuth();closeEstimator();toggleChat(false);}});
+</script>
+</body>
+</html>
