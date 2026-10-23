@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form & Field Studio | Interior Design & Renovation in Bangkok</title>
+  <meta name="description" content="Form & Field Studio plans, designs, and renovates thoughtful homes and commercial spaces across Bangkok and surrounding areas. Explore selected projects or get a free project estimate." />
+  <meta name="keywords" content="interior design Bangkok, home renovation Bangkok, built-in furniture, space planning, commercial interior design, renovation estimate, Form and Field Studio" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Form & Field Studio | Thoughtful spaces, built well" />
+  <meta property="og:description" content="Interior design and renovation for homes and small businesses in Bangkok. Clear scope, considered details, and a straightforward process." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { coral: '#F75A38', lime: '#C4E864', sky: '#7CA4F8', slateink: '#222426' }, fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], outfit: ['Outfit', 'sans-serif'] } } }
+    };
+  </script>
+  <!-- Demo structured data. Replace the example business details and verify every metric/review before production. -->
+  <script type="application/ld+json" id="business-schema">
+  {
+    "@context":"https://schema.org",
+    "@type":["Organization","LocalBusiness","HomeAndConstructionBusiness"],
+    "name":"Form & Field Studio",
+    "description":"An interior design and renovation studio serving homes and small businesses across Bangkok and surrounding areas.",
+    "areaServed":{"@type":"AdministrativeArea","name":"Bangkok and surrounding areas, Thailand"},
+    "url":"https://example.com/",
+    "telephone":"+66-2-555-0188",
+    "priceRange":"฿฿–฿฿฿",
+    "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"86"}
+  }
+  </script>
+  <style>
+    :root{--coral:#F75A38;--lime:#C4E864;--sky:#7CA4F8;--ink:#222426;--muted:#707780;--line:#e8e9eb;--soft:#f7f8f8;--white:#fff;--shadow:0 18px 50px rgba(34,36,38,.09);--radius:22px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:92px}
+    body{margin:0;background:#fff;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    button,input,select,textarea{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .site-container{width:min(1280px,calc(100% - 48px));max-width:1280px;margin-inline:auto}
+    .outfit,h1,h2,h3,.display-number{font-family:'Outfit',sans-serif}
+    .section{padding:94px 0;background:#fff}
+    .section-sm{padding:60px 0;background:#fff}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#4b5159}
+    .eyebrow:before{content:'';width:22px;height:3px;border-radius:4px;background:var(--coral)}
+    .section-heading{font-size:clamp(30px,3.3vw,44px);line-height:1.06;letter-spacing:-.035em;font-weight:700;margin:15px 0 14px}
+    .section-copy{max-width:560px;color:var(--muted);font-size:14px;line-height:1.85;margin:0}
+    .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid transparent;border-radius:999px;padding:0 20px;font-size:12px;font-weight:800;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease,border-color .22s ease;white-space:nowrap}
+    .btn:hover{transform:translateY(-2px)}
+    .btn:focus-visible,.icon-btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid rgba(124,164,248,.7);outline-offset:3px}
+    .btn-primary{background:var(--coral);color:white;box-shadow:0 8px 20px rgba(247,90,56,.18)}
+    .btn-primary:hover{background:#e84a29;box-shadow:0 12px 26px rgba(247,90,56,.24)}
+    .btn-dark{background:var(--ink);color:white}
+    .btn-dark:hover{background:#373a3d}
+    .btn-outline{background:white;border-color:#dfe1e4;color:var(--ink)}
+    .btn-outline:hover{border-color:var(--ink);background:#fafafa}
+    .btn-lime{background:var(--lime);color:var(--ink)}
+    .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:white;color:var(--ink);cursor:pointer;transition:all .2s ease}
+    .icon-btn:hover{border-color:var(--coral);color:var(--coral);transform:translateY(-1px)}
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .header-inner{height:78px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+    .brand-mark{width:39px;height:39px;border-radius:13px;background:var(--ink);display:grid;place-items:center;color:white;position:relative;overflow:hidden}
+    .brand-mark:before{content:'';position:absolute;width:21px;height:21px;left:7px;top:7px;border:3px solid var(--lime);border-radius:7px;transform:rotate(-12deg)}
+    .brand-mark:after{content:'';position:absolute;width:11px;height:11px;right:5px;bottom:5px;background:var(--coral);border-radius:4px}
+    .brand-name{font-family:'Outfit',sans-serif;font-size:17px;font-weight:800;letter-spacing:-.035em;line-height:1.1}
+    .brand-sub{font-size:9px;color:#767b82;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-top:4px}
+    .nav-links{display:flex;align-items:center;gap:30px;color:#596069;font-size:12px;font-weight:700}
+    .nav-links a{transition:color .2s ease}
+    .nav-links a:hover{color:var(--coral)}
+    .header-actions{display:flex;align-items:center;gap:10px}
+    .header-actions .btn{min-height:42px;padding:0 16px}
+    .mobile-menu{display:none}
+    .hero{padding:42px 0 62px;background:#fff;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);gap:46px;align-items:center}
+    .hero-copy{padding:20px 0 15px;position:relative;z-index:2}
+    .hero-proof{display:flex;align-items:center;gap:10px;margin-bottom:23px}
+    .proof-dots{display:flex;padding-left:3px}
+    .proof-dots span{width:25px;height:25px;border:2px solid white;border-radius:50%;margin-left:-5px;background:#d8dfd2;display:grid;place-items:center;font-size:9px;color:#4b5a48;font-weight:800}
+    .proof-dots span:nth-child(2){background:#f5c9b6;color:#9a4e36}.proof-dots span:nth-child(3){background:#cad9fa;color:#3b5994}.proof-dots span:nth-child(4){background:var(--lime);color:#37431d}
+    .hero-proof-text{font-size:11px;color:#737981;line-height:1.45}.hero-proof-text strong{color:var(--ink)}
+    .hero-title{font-size:clamp(43px,5.6vw,72px);font-weight:800;line-height:.98;letter-spacing:-.055em;margin:0;max-width:610px}
+    .hero-title .coral{color:var(--coral)}
+    .hero-title .underline-word{position:relative;white-space:nowrap}
+    .hero-title .underline-word:after{content:'';position:absolute;z-index:-1;left:0;right:0;bottom:0px;height:13px;border-radius:10px;background:var(--lime);transform:rotate(-1.5deg)}
+    .hero-text{color:#656c74;font-size:14px;line-height:1.9;max-width:480px;margin:23px 0 24px}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+    .hero-note{display:flex;align-items:center;gap:8px;color:#7a8087;font-size:10px;margin-top:15px}
+    .hero-note i{color:#3b8d50}
+    .hero-visual{position:relative;min-height:500px;display:grid;grid-template-columns:1fr .73fr;grid-template-rows:1fr .69fr;gap:12px;padding:8px 0 8px 8px}
+    .photo-card{position:relative;overflow:hidden;border-radius:22px;background:#f1f2f0;isolation:isolate}
+    .photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+    .photo-card:hover img{transform:scale(1.045)}
+    .photo-main{grid-row:1/3;min-height:490px}
+    .photo-top{min-height:265px}
+    .photo-bottom{min-height:210px}
+    .photo-caption{position:absolute;left:14px;right:14px;bottom:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-radius:14px;z-index:2}
+    .photo-caption small{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#777d84;font-weight:800}
+    .photo-caption strong{font-family:'Outfit';font-size:13px;display:block;margin-top:2px}
+    .photo-caption .round-arrow{width:32px;height:32px;border-radius:50%;background:var(--lime);display:grid;place-items:center;flex:0 0 auto}
+    .floating-stamp{position:absolute;z-index:3;top:25px;right:-12px;width:108px;height:108px;border-radius:50%;background:var(--coral);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 10px 25px rgba(247,90,56,.22);transform:rotate(8deg)}
+    .floating-stamp strong{font:800 26px/1 'Outfit';letter-spacing:-.05em}.floating-stamp span{font-size:8px;text-transform:uppercase;letter-spacing:.11em;line-height:1.35;margin-top:5px;font-weight:800}
+    .floating-label{position:absolute;z-index:3;bottom:37px;left:-19px;background:var(--lime);border-radius:14px;padding:13px 15px;display:flex;gap:10px;align-items:center;box-shadow:0 12px 24px rgba(34,36,38,.1);transform:rotate(-2deg)}
+    .floating-label .mini-icon{width:30px;height:30px;background:var(--ink);color:white;border-radius:10px;display:grid;place-items:center}
+    .floating-label strong{font-size:11px;display:block;line-height:1.25}.floating-label small{font-size:9px;color:#525846}
+    .trust-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;background:#fff}
+    .trust-inner{display:grid;grid-template-columns:1.15fr repeat(3,1fr);align-items:center;gap:24px}
+    .trust-intro{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#737981;font-weight:800}
+    .trust-item{display:flex;align-items:center;gap:12px;padding-left:24px;border-left:1px solid var(--line)}
+    .trust-icon{width:38px;height:38px;border-radius:12px;background:#f6f7f6;display:grid;place-items:center;font-size:15px}
+    .trust-item:nth-child(2) .trust-icon{color:var(--coral);background:#fff0ec}.trust-item:nth-child(3) .trust-icon{color:#5a8b21;background:#f3f9e2}.trust-item:nth-child(4) .trust-icon{color:#4d79d7;background:#edf2ff}
+    .trust-number{font:700 23px/1 'Outfit';letter-spacing:-.03em}.trust-label{font-size:10px;color:#7b8188;margin-top:4px}
+    .section-top{display:flex;align-items:flex-end;justify-content:space-between;gap:26px;margin-bottom:34px}
+    .section-top .section-copy{max-width:390px}
+    .services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .service-card{border:1px solid var(--line);border-radius:20px;padding:22px 21px 21px;background:white;display:flex;flex-direction:column;min-height:260px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;position:relative;overflow:hidden}
+    .service-card:hover{transform:translateY(-5px);border-color:#d7d9dc;box-shadow:var(--shadow)}
+    .service-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;font-size:18px;margin-bottom:22px}
+    .service-card:nth-child(1) .service-icon{background:#fff0ec;color:var(--coral)}.service-card:nth-child(2) .service-icon{background:#f1f8df;color:#546e25}.service-card:nth-child(3) .service-icon{background:#edf2ff;color:#4d79d7}.service-card:nth-child(4) .service-icon{background:#f0f1f1;color:#34383c}
+    .service-card h3{font-size:18px;line-height:1.2;margin:0 0 10px;font-weight:700;letter-spacing:-.02em}
+    .service-card p{font-size:11px;color:#737981;line-height:1.8;margin:0 0 20px}
+    .service-bottom{border-top:1px solid #eff0f1;padding-top:15px;margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+    .price-label{font-size:9px;color:#868c93;text-transform:uppercase;letter-spacing:.1em;font-weight:800}.price-value{font-family:'Outfit';font-size:18px;line-height:1.25;font-weight:700;letter-spacing:-.02em}.service-arrow{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:all .2s ease}.service-card:hover .service-arrow{background:var(--coral);border-color:var(--coral);color:white}
+    .work-section{background:#fff}
+    .work-grid{display:grid;grid-template-columns:1.08fr .92fr .92fr;gap:16px;align-items:stretch}
+    .work-card{min-width:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:white;transition:transform .25s ease,box-shadow .25s ease}
+    .work-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .work-image{height:255px;position:relative;overflow:hidden;background:#f0f1ee}
+    .work-card:first-child .work-image{height:305px}
+    .work-image img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+    .work-card:hover .work-image img{transform:scale(1.04)}
+    .work-tag{position:absolute;left:14px;top:14px;background:white;border-radius:999px;padding:6px 10px;font-size:9px;font-weight:800;letter-spacing:.04em}
+    .work-content{padding:18px 18px 20px}
+    .work-meta{display:flex;align-items:center;gap:8px;color:#7a8088;font-size:10px;margin-bottom:7px}.work-meta i{color:var(--coral)}
+    .work-content h3{margin:0;font-size:19px;letter-spacing:-.025em;font-weight:700;line-height:1.25}
+    .work-content p{font-size:11px;color:#737981;line-height:1.8;margin:9px 0 15px}
+    .work-stats{display:flex;gap:8px;flex-wrap:wrap}.work-stat{font-size:9px;color:#4e555c;border-radius:999px;padding:5px 9px;background:#f5f6f5}.work-stat.lime{background:#f2f8df}
+    .work-footer{display:flex;align-items:center;justify-content:space-between;margin-top:29px;padding-top:19px;border-top:1px solid var(--line);gap:15px}
+    .work-footer-note{font-size:11px;color:#747a81}.work-footer-note strong{color:var(--ink)}
+    .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;position:relative}
+    .process-card{position:relative;border-radius:20px;background:#f8f9f8;padding:24px 20px 22px;min-height:214px;border:1px solid #f0f1f0;transition:transform .22s ease,background .22s ease}
+    .process-card:hover{transform:translateY(-4px);background:#fff;border-color:#e5e6e7}
+    .process-num{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}.process-num span{font:700 38px/1 'Outfit';letter-spacing:-.05em;color:#d6d9d8}.process-num i{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:var(--lime);font-size:13px;color:var(--ink)}
+    .process-card:nth-child(2) .process-num i{background:#ffd8ce}.process-card:nth-child(3) .process-num i{background:#dce6ff}.process-card:nth-child(4) .process-num i{background:var(--ink);color:white}
+    .process-card h3{font-size:17px;line-height:1.25;margin:0 0 8px;font-weight:700}.process-card p{color:#757b82;font-size:11px;line-height:1.8;margin:0}
+    .review-wrap{background:#222426;color:white;border-radius:26px;padding:34px;display:grid;grid-template-columns:.75fr 1.25fr;gap:35px;align-items:center;position:relative;overflow:hidden}
+    .review-wrap:after{content:'“';position:absolute;font-family:Georgia,serif;font-size:250px;color:rgba(196,232,100,.08);right:5%;top:-100px;line-height:1;pointer-events:none}
+    .review-side{position:relative;z-index:1}.review-side .eyebrow{color:#d0d3d5}.review-side .eyebrow:before{background:var(--lime)}
+    .review-side h2{font-size:clamp(30px,3.4vw,43px);line-height:1.05;letter-spacing:-.04em;margin:16px 0 19px}.review-score{display:flex;gap:12px;align-items:center}.review-score strong{font:700 45px/1 'Outfit';letter-spacing:-.04em;color:var(--lime)}.stars{color:var(--lime);font-size:12px;letter-spacing:2px}.review-score small{display:block;color:#b7bcc1;font-size:10px;margin-top:4px}
+    .review-main{position:relative;z-index:1;border-radius:19px;background:#2c2e31;border:1px solid #3a3d40;padding:28px 28px 22px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+    .review-quote{font:500 clamp(19px,2.1vw,26px)/1.45 'Outfit';letter-spacing:-.02em;max-width:640px;margin:0 0 26px}
+    .review-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid #45484a;padding-top:17px}
+    .review-person{display:flex;align-items:center;gap:11px}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:var(--ink);font-weight:800;font-size:12px}.review-person strong{display:block;font-size:11px}.review-person small{font-size:9px;color:#b5bac0}.review-controls{display:flex;gap:7px}.review-controls .icon-btn{width:35px;height:35px;background:transparent;border-color:#53575a;color:#fff}.review-controls .icon-btn:hover{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+    .faq-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:50px;align-items:start}
+    .faq-aside .section-copy{max-width:340px}.faq-contact{margin-top:24px;display:inline-flex;align-items:center;gap:10px;color:var(--coral);font-size:12px;font-weight:800}
+    .faq-list{border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-item summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:13px;font-weight:800;color:var(--ink)}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary i{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;font-size:11px;flex:0 0 auto;transition:transform .22s ease,background .22s ease}.faq-item[open] summary i{transform:rotate(45deg);background:var(--lime);border-color:var(--lime)}.faq-answer{font-size:12px;color:#727981;line-height:1.9;padding:0 42px 20px 0;max-width:660px;animation:answerIn .25s ease}
+    @keyframes answerIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+    .final-cta{padding:26px 0 78px;background:#fff}
+    .cta-card{border-radius:26px;background:var(--coral);color:white;padding:36px 42px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;position:relative;overflow:hidden}
+    .cta-card:after{content:'';position:absolute;width:220px;height:220px;border:38px solid rgba(255,255,255,.1);border-radius:50%;right:19%;top:-150px;pointer-events:none}
+    .cta-card .eyebrow{color:#fff}.cta-card .eyebrow:before{background:var(--lime)}.cta-card h2{font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-.04em;line-height:1.06;margin:13px 0 10px;max-width:660px}.cta-card p{margin:0;color:rgba(255,255,255,.86);font-size:12px;line-height:1.8;max-width:580px}.cta-card .btn{position:relative;z-index:1;background:var(--lime);color:var(--ink);min-height:52px;padding-inline:22px}.cta-card .btn:hover{background:white}
+    .site-footer{background:white;border-top:1px solid var(--line);padding:32px 0 22px}.footer-top{display:grid;grid-template-columns:1.2fr .8fr .9fr;gap:35px;padding-bottom:27px}.footer-brand-copy{font-size:11px;color:#747b82;line-height:1.8;max-width:330px;margin:14px 0 17px}.footer-socials{display:flex;gap:8px}.footer-socials a{width:32px;height:32px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:12px;transition:all .2s ease}.footer-socials a:hover{background:var(--ink);border-color:var(--ink);color:white}.footer-col h3{font:700 12px 'Outfit';margin:3px 0 14px}.footer-col a,.footer-col p{display:flex;align-items:center;gap:9px;color:#727981;font-size:10px;margin:9px 0}.footer-col a:hover{color:var(--coral)}.footer-col p i{color:var(--coral);width:13px}.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid var(--line);padding-top:17px;color:#8a9096;font-size:9px}.demo-disclaimer{color:#9a6a0d;background:#fff9e9;border:1px solid #f3e2b5;border-radius:8px;padding:8px 10px;font-size:9px;line-height:1.5;max-width:420px}
+    .floating-tools{position:fixed;right:24px;bottom:24px;z-index:80;display:flex;align-items:center;gap:5px}
+    .float-btn{height:54px;border:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 28px rgba(34,36,38,.18);transition:transform .2s ease,opacity .2s ease,background .2s ease}
+    .float-btn:hover{transform:translateY(-3px)}
+    .back-top{width:54px;border-radius:17px;background:white;color:var(--ink);border:1px solid #e4e6e8;opacity:0;visibility:hidden;transform:translateY(8px)}
+    .back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+    .chat-launcher{border-radius:17px;background:var(--ink);color:white;padding:0 17px;gap:10px;font-size:11px;font-weight:800;min-width:145px}
+    .chat-launcher .chat-icon{width:28px;height:28px;border-radius:10px;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-size:13px}
+    .chat-launcher .online-dot{width:7px;height:7px;background:#69d391;border-radius:50%;margin-left:auto;box-shadow:0 0 0 3px rgba(105,211,145,.15)}
+    .chat-panel{position:absolute;right:0;bottom:66px;width:min(365px,calc(100vw - 30px));height:475px;max-height:min(74vh,590px);border:1px solid #e3e5e7;border-radius:22px;background:white;box-shadow:0 22px 70px rgba(34,36,38,.22);display:flex;flex-direction:column;overflow:hidden;transform-origin:bottom right;animation:chatPop .2s ease}
+    .chat-panel[hidden]{display:none}
+    @keyframes chatPop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .chat-header{padding:16px;background:var(--ink);color:white;display:flex;align-items:center;gap:11px}.chat-avatar{width:37px;height:37px;border-radius:13px;background:var(--lime);display:grid;place-items:center;color:var(--ink)}.chat-header strong{font-size:12px;display:block}.chat-header small{color:#c0c4c8;font-size:9px}.chat-close{margin-left:auto;border:0;color:#fff;background:transparent;width:30px;height:30px;border-radius:50%;cursor:pointer}.chat-close:hover{background:#414448}
+    .chat-messages{padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex:1;background:#fcfcfb}.chat-msg{max-width:87%;font-size:11px;line-height:1.7;padding:11px 12px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}.chat-msg.bot{align-self:flex-start;background:#f0f1ef;border-bottom-left-radius:4px;color:#303438}.chat-msg.user{align-self:flex-end;background:var(--ink);color:white;border-bottom-right-radius:4px}.chat-quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}.chat-quick button{border:1px solid #dfe2e1;background:white;border-radius:999px;padding:7px 10px;font-size:9px;font-weight:800;cursor:pointer}.chat-quick button:hover{border-color:var(--coral);color:var(--coral)}
+    .chat-compose{display:flex;gap:8px;padding:11px;border-top:1px solid var(--line);background:white}.chat-compose input{min-width:0;flex:1;border:1px solid #e2e4e5;border-radius:999px;padding:10px 13px;font-size:11px;outline:none}.chat-compose input:focus{border-color:var(--sky)}.chat-send{width:39px;height:39px;border:0;border-radius:50%;background:var(--coral);color:white;cursor:pointer}.chat-send:hover{background:#e84a29}
+    .mobile-sticky{display:none}
+    .modal-backdrop{position:fixed;inset:0;z-index:100;background:rgba(22,24,26,.52);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+    .modal-backdrop.show{display:flex;animation:fadeIn .18s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .modal{width:min(100%,520px);background:white;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.22);position:relative;overflow:hidden;animation:modalIn .22s ease}
+    @keyframes modalIn{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .modal-head{padding:27px 28px 0}.modal-head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}.modal-kicker{font-size:9px;letter-spacing:.13em;font-weight:800;text-transform:uppercase;color:var(--coral)}.modal-title{font:700 29px/1.1 'Outfit';letter-spacing:-.04em;margin:7px 0 8px}.modal-desc{font-size:11px;color:#747b82;line-height:1.8;margin:0;max-width:400px}.modal-close{flex:0 0 auto}.modal-body{padding:22px 28px 28px}
+    .auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;background:#f4f5f4;border-radius:13px;margin-bottom:20px}.auth-tab{border:0;border-radius:9px;background:transparent;padding:10px;font-size:11px;font-weight:800;color:#777e85;cursor:pointer}.auth-tab.active{background:white;color:var(--ink);box-shadow:0 2px 8px rgba(34,36,38,.07)}
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:13px}.field label{font-size:10px;font-weight:800;color:#4f565d}.field input,.field select,.field textarea{width:100%;border:1px solid #dfe2e4;border-radius:11px;min-height:45px;padding:11px 12px;font-size:11px;color:var(--ink);background:white;outline:none;transition:border .2s ease,box-shadow .2s ease}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(124,164,248,.13)}.field textarea{resize:vertical;min-height:85px}.field-hint{font-size:9px;color:#8a9096;margin-top:-2px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal-submit{width:100%;margin-top:5px;min-height:49px}.form-legal{font-size:9px;color:#8a9096;line-height:1.6;text-align:center;margin:12px 0 0}.form-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:1px 0 14px;font-size:10px;color:#737981}.text-btn{border:0;background:none;padding:0;color:var(--coral);font-size:10px;font-weight:800;cursor:pointer}.text-btn:hover{text-decoration:underline}
+    .estimate-result{border:1px solid #e7ebde;background:#f8fbeF;border-radius:17px;padding:18px;margin-top:14px;display:none}.estimate-result.show{display:block;animation:answerIn .22s ease}.estimate-result small{font-size:9px;font-weight:800;color:#6e7c4e;text-transform:uppercase;letter-spacing:.1em}.estimate-result strong{display:block;font:800 30px/1.1 'Outfit';letter-spacing:-.04em;margin:6px 0;color:var(--ink)}.estimate-result p{font-size:10px;line-height:1.8;color:#656d59;margin:0}.estimate-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.estimate-meta span{font-size:9px;background:white;border:1px solid #e6ecd7;border-radius:999px;padding:5px 8px;color:#566240}
+    .toast-stack{position:fixed;top:92px;right:20px;z-index:130;display:flex;flex-direction:column;gap:8px;pointer-events:none}.toast{background:var(--ink);color:white;box-shadow:var(--shadow);border-radius:13px;padding:13px 15px;max-width:min(360px,calc(100vw - 40px));font-size:11px;display:flex;gap:10px;align-items:flex-start;animation:toastIn .25s ease}.toast i{color:var(--lime);margin-top:2px}@keyframes toastIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:translateX(0)}}
+    .reveal{opacity:0;transform:translateY(15px);transition:opacity .55s ease,transform .55s ease}.reveal.in-view{opacity:1;transform:translateY(0)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+    @media(max-width:1050px){.site-container{width:calc(100% - 40px);max-width:1280px}.nav-links{gap:18px}.hero-grid{gap:25px;grid-template-columns:.9fr 1.1fr}.hero-visual{min-height:440px}.photo-main{min-height:430px}.photo-top{min-height:230px}.photo-bottom{min-height:180px}.services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-card{min-height:225px}.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.work-card:first-child{grid-row:span 2}.work-card:first-child .work-image{height:260px}.work-card:not(:first-child) .work-image{height:210px}.process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.trust-inner{grid-template-columns:repeat(4,1fr);gap:15px}.trust-intro{display:none}.trust-item{padding-left:15px}.review-wrap{gap:25px;padding:28px}.faq-layout{gap:30px}}
+    @media(max-width:760px){html{scroll-padding-top:75px}.site-container{width:calc(100% - 32px);max-width:1280px}.section{padding:67px 0}.section-sm{padding:48px 0}.header-inner{height:68px;gap:12px}.brand-mark{width:35px;height:35px;border-radius:11px}.brand-name{font-size:15px}.brand-sub{font-size:8px}.nav-links{display:none;position:absolute;top:67px;left:0;right:0;padding:16px 20px 20px;background:white;border-bottom:1px solid var(--line);box-shadow:0 15px 25px rgba(0,0,0,.06);flex-direction:column;align-items:stretch;gap:0}.nav-links.open{display:flex}.nav-links a{padding:12px 0;border-bottom:1px solid #f1f2f3}.nav-links a:last-child{border-bottom:0}.header-actions{margin-left:auto;gap:6px}.header-actions .login-btn{display:none}.header-actions .btn{min-height:39px;padding:0 12px;font-size:10px}.mobile-menu{display:inline-flex;width:39px;height:39px;border:1px solid var(--line);border-radius:50%;background:white;align-items:center;justify-content:center;cursor:pointer}.hero{padding:30px 0 39px}.hero-grid{grid-template-columns:1fr;gap:24px}.hero-copy{padding:0}.hero-proof{margin-bottom:18px}.hero-title{font-size:clamp(43px,11vw,64px);max-width:620px}.hero-text{margin:18px 0 21px;font-size:13px;max-width:600px}.hero-visual{min-height:380px;grid-template-columns:1fr .72fr;grid-template-rows:1fr .67fr;margin:0 8px 0 10px;gap:9px}.photo-main{min-height:380px}.photo-top{min-height:205px}.photo-bottom{min-height:160px}.floating-stamp{width:83px;height:83px;right:-12px;top:16px}.floating-stamp strong{font-size:21px}.floating-stamp span{font-size:7px}.floating-label{left:-10px;bottom:24px;padding:10px 11px}.trust-band{padding:21px 0}.trust-inner{grid-template-columns:repeat(3,1fr);gap:10px}.trust-item{padding-left:10px;gap:8px}.trust-icon{display:none}.trust-number{font-size:22px}.trust-label{font-size:9px}.section-top{display:block;margin-bottom:25px}.section-top .section-copy{margin-top:13px}.section-heading{font-size:34px}.services-grid{gap:10px}.service-card{padding:17px 15px;min-height:235px;border-radius:17px}.service-icon{margin-bottom:18px;width:42px;height:42px}.service-card h3{font-size:16px}.service-card p{font-size:10px}.price-value{font-size:16px}.work-grid{grid-template-columns:1fr;gap:13px}.work-card:first-child{grid-row:auto}.work-card:first-child .work-image,.work-card:not(:first-child) .work-image{height:240px}.work-content{padding:16px}.work-footer{margin-top:22px;align-items:flex-start;flex-direction:column}.process-grid{gap:10px}.process-card{padding:18px 15px;min-height:200px}.process-num{margin-bottom:25px}.process-num span{font-size:32px}.process-card h3{font-size:15px}.process-card p{font-size:10px}.review-wrap{grid-template-columns:1fr;padding:23px;gap:23px;border-radius:21px}.review-side h2{font-size:34px;max-width:430px}.review-main{padding:20px;min-height:240px}.review-quote{font-size:21px}.faq-layout{grid-template-columns:1fr;gap:24px}.faq-aside .section-copy{max-width:550px}.faq-contact{margin-top:15px}.faq-item summary{font-size:12px;padding:18px 0}.faq-answer{font-size:11px}.final-cta{padding:15px 0 62px}.cta-card{padding:27px 24px;grid-template-columns:1fr;gap:20px;border-radius:22px}.cta-card h2{font-size:34px}.cta-card .btn{justify-self:start}.footer-top{grid-template-columns:1fr 1fr;gap:25px}.footer-brand-col{grid-column:1/-1}.footer-bottom{align-items:flex-start;flex-direction:column}.demo-disclaimer{max-width:100%}.floating-tools{right:12px;bottom:calc(82px + env(safe-area-inset-bottom));}.float-btn{height:48px}.back-top{width:48px;border-radius:15px}.chat-launcher{min-width:51px;width:51px;padding:0;border-radius:15px}.chat-launcher .chat-label,.chat-launcher .online-dot{display:none}.chat-launcher .chat-icon{width:30px;height:30px}.chat-panel{bottom:59px;right:0;height: min(475px, calc(100dvh - 165px));max-height:none}.mobile-sticky{position:fixed;z-index:75;bottom:0;left:0;right:0;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:7px;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);backdrop-filter:blur(15px);border-top:1px solid var(--line)}.mobile-sticky a,.mobile-sticky button{min-height:42px;border-radius:12px;display:flex;justify-content:center;align-items:center;gap:7px;font-size:10px;font-weight:800;border:1px solid var(--line);background:white;color:var(--ink);cursor:pointer}.mobile-sticky .mobile-ai{background:var(--coral);border-color:var(--coral);color:white}.mobile-sticky .mobile-line{background:#06c755;border-color:#06c755;color:white}.site-footer{padding-bottom:98px}.toast-stack{top:80px;right:12px}.modal-backdrop{align-items:flex-start;padding:12px}.modal{margin:auto 0;border-radius:20px}.modal-head{padding:22px 20px 0}.modal-body{padding:18px 20px 22px}.modal-title{font-size:26px}}
+    @media(max-width:420px){.hero-cta .btn{width:100%}.hero-visual{min-height:325px}.photo-main{min-height:325px}.photo-top{min-height:175px}.photo-bottom{min-height:135px}.photo-caption{left:8px;right:8px;bottom:8px;padding:9px}.photo-caption strong{font-size:11px}.photo-caption small{font-size:8px}.photo-caption .round-arrow{width:28px;height:28px}.floating-label{bottom:15px}.trust-number{font-size:20px}.trust-label{font-size:8px}.service-card{min-height:250px;padding:15px 12px}.service-card h3{font-size:14px}.service-card p{font-size:9px}.service-bottom{align-items:flex-start}.price-value{font-size:14px}.service-arrow{width:29px;height:29px}.process-card{min-height:210px}.footer-top{grid-template-columns:1fr}.footer-brand-col{grid-column:auto}.field-row{grid-template-columns:1fr;gap:0}}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="site-container header-inner">
+      <a href="#top" class="brand" aria-label="Form and Field Studio home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span><span class="brand-name">form & field</span><span class="brand-sub">Spaces with intention</span></span>
+      </a>
+      <nav class="nav-links" id="mainNav" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#work">Selected work</a><a href="#process">Our process</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-outline login-btn" data-open-auth="login">Log in</button>
+        <button class="btn btn-primary" data-open-estimate>Get a free estimate <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+        <button class="mobile-menu" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="site-container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-proof"><div class="proof-dots" aria-hidden="true"><span>J</span><span>M</span><span>A</span><span>+</span></div><div class="hero-proof-text"><strong>Spaces people love coming home to.</strong><br/>A local team, from first sketch to final handover.</div></div>
+          <h1 class="hero-title">Good spaces.<br/><span class="coral">Thoughtfully</span><br/><span class="underline-word">made real.</span></h1>
+          <p class="hero-text">Interior design and renovation for homes, cafés, and small businesses across Bangkok. Clear plans, honest conversations, and details that feel like you.</p>
+          <div class="hero-cta"><button class="btn btn-primary" data-open-estimate><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Get a free AI estimate <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button><a class="btn btn-outline" href="#work"><i class="fa-regular fa-images" aria-hidden="true"></i> Explore our work</a></div>
+          <div class="hero-note"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Free first consultation · No pressure · Clear next steps</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Selected interior design and renovation photography">
+          <div class="photo-card photo-main"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" alt="Warm, contemporary living room with natural materials" fetchpriority="high"/><div class="photo-caption"><div><small>Featured project · Bangkok</small><strong>The Sunday Residence</strong></div><span class="round-arrow"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div></div>
+          <div class="photo-card photo-top"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="Calm modern living area with daylight and neutral finishes" loading="lazy"/><div class="photo-caption"><div><small>Space planning</small><strong>Light, in every corner</strong></div><span class="round-arrow"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div></div>
+          <div class="photo-card photo-bottom"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="Refined modern kitchen with oak cabinetry" loading="lazy"/><div class="photo-caption"><div><small>Detail-led design</small><strong>Made for real life</strong></div><span class="round-arrow"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div></div>
+          <div class="floating-stamp"><strong>4.9/5</strong><span>Client<br/>happiness*</span></div>
+          <div class="floating-label"><span class="mini-icon"><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i></span><span><strong>Thoughtful by design</strong><small>Designed around your life</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust bar: figures are illustrative demo data -->
+    <section class="trust-band" aria-label="Studio highlights">
+      <div class="site-container trust-inner">
+        <div class="trust-intro">Small details.<br/>Big peace of mind.</div>
+        <div class="trust-item"><span class="trust-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span><div><div class="trust-number">128<span style="color:var(--coral)">+</span></div><div class="trust-label">Projects delivered*</div></div></div>
+        <div class="trust-item"><span class="trust-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span><div><div class="trust-number">4.9<span style="font-size:13px">/5</span></div><div class="trust-label">Average client rating*</div></div></div>
+        <div class="trust-item"><span class="trust-icon"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><div><div class="trust-number">8<span style="font-size:13px"> yrs</span></div><div class="trust-label">Design experience*</div></div></div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="site-container">
+        <div class="section-top reveal"><div><span class="eyebrow">What we do</span><h2 class="section-heading">One good team.<br/>From first idea to finished space.</h2></div><p class="section-copy">Start with the room you have or the idea you cannot stop thinking about. We help you work out what is possible, what it may cost, and what comes next.</p></div>
+        <div class="services-grid">
+          <article class="service-card reveal"><span class="service-icon"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i></span><h3>Interior Design</h3><p>Layouts, materials, lighting, and a cohesive direction shaped around the way you live.</p><div class="service-bottom"><div><div class="price-label">Projects from</div><div class="price-value">฿18,000</div></div><button class="service-arrow" data-estimate-service="Interior Design" aria-label="Estimate interior design"><i class="fa-solid fa-arrow-right"></i></button></div></article>
+          <article class="service-card reveal"><span class="service-icon"><i class="fa-solid fa-hammer" aria-hidden="true"></i></span><h3>Home Renovation</h3><p>Carefully managed updates, repairs, and room transformations with a clear scope.</p><div class="service-bottom"><div><div class="price-label">Projects from</div><div class="price-value">฿65,000</div></div><button class="service-arrow" data-estimate-service="Home Renovation" aria-label="Estimate home renovation"><i class="fa-solid fa-arrow-right"></i></button></div></article>
+          <article class="service-card reveal"><span class="service-icon"><i class="fa-solid fa-couch" aria-hidden="true"></i></span><h3>Built-in Furniture</h3><p>Made-to-fit storage and cabinetry that make better use of every useful centimetre.</p><div class="service-bottom"><div><div class="price-label">Projects from</div><div class="price-value">฿35,000</div></div><button class="service-arrow" data-estimate-service="Built-in Furniture" aria-label="Estimate built-in furniture"><i class="fa-solid fa-arrow-right"></i></button></div></article>
+          <article class="service-card reveal"><span class="service-icon"><i class="fa-solid fa-store" aria-hidden="true"></i></span><h3>Commercial Spaces</h3><p>Warm, memorable cafés, studios, and small business spaces designed for customers and teams.</p><div class="service-bottom"><div><div class="price-label">Projects from</div><div class="price-value">฿95,000</div></div><button class="service-arrow" data-estimate-service="Commercial Spaces" aria-label="Estimate commercial spaces"><i class="fa-solid fa-arrow-right"></i></button></div></article>
+        </div>
+        <p style="font-size:9px;color:#92979d;margin:13px 0 0">*Illustrative starting prices in Thai baht. Final quotes depend on site conditions, material choices, scope, and measurements.</p>
+      </div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="section work-section" id="work" style="padding-top:22px">
+      <div class="site-container">
+        <div class="section-top reveal"><div><span class="eyebrow">Selected work</span><h2 class="section-heading">A little proof.<br/>A lot of personality.</h2></div><p class="section-copy">Every project begins with a different person, a different routine, and a different set of possibilities. Here are a few directions we love.</p></div>
+        <div class="work-grid">
+          <article class="work-card reveal"><div class="work-image"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85" alt="Elegant open-plan residence with warm wood and natural stone" loading="lazy"/><span class="work-tag">RESIDENTIAL</span></div><div class="work-content"><div class="work-meta"><i class="fa-solid fa-location-dot"></i> Sukhumvit, Bangkok <span>·</span> 2026</div><h3>The Sunday Residence</h3><p>A brighter, calmer family home built around natural textures, practical storage, and a more connected living area.</p><div class="work-stats"><span class="work-stat lime">180 sq.m.</span><span class="work-stat">Full interior</span><span class="work-stat">12 weeks</span></div></div></article>
+          <article class="work-card reveal"><div class="work-image"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85" alt="Minimal kitchen design with natural finishes and integrated cabinetry" loading="lazy"/><span class="work-tag">KITCHEN</span></div><div class="work-content"><div class="work-meta"><i class="fa-solid fa-location-dot"></i> Ari, Bangkok <span>·</span> 2026</div><h3>Everyday Kitchen</h3><p>Hard-working storage and easy-to-clean finishes without losing the warmth of a lived-in home.</p><div class="work-stats"><span class="work-stat lime">24 sq.m.</span><span class="work-stat">Built-ins</span></div></div></article>
+          <article class="work-card reveal"><div class="work-image"><img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=900&q=85" alt="Contemporary small commercial interior with calm lighting" loading="lazy"/><span class="work-tag">COMMERCIAL</span></div><div class="work-content"><div class="work-meta"><i class="fa-solid fa-location-dot"></i> Thonglor, Bangkok <span>·</span> 2025</div><h3>Little House Café</h3><p>A friendly café interior with better customer flow, a clear service counter, and thoughtful lighting.</p><div class="work-stats"><span class="work-stat lime">92 sq.m.</span><span class="work-stat">Fit-out</span></div></div></article>
+        </div>
+        <div class="work-footer"><div class="work-footer-note"><strong>Good work is personal.</strong> These sample projects show the kind of outcomes we aim for.</div><button class="btn btn-outline" data-open-estimate>Discuss your project <i class="fa-solid fa-arrow-right"></i></button></div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process" style="padding-top:30px">
+      <div class="site-container">
+        <div class="section-top reveal"><div><span class="eyebrow">How it works</span><h2 class="section-heading">A clear path.<br/>No unnecessary surprises.</h2></div><p class="section-copy">We keep the process collaborative and practical, so you know what is happening, what decisions are needed, and what the next step looks like.</p></div>
+        <div class="process-grid">
+          <article class="process-card reveal"><div class="process-num"><span>01</span><i class="fa-regular fa-comments" aria-hidden="true"></i></div><h3>Tell us what you need</h3><p>Share your ideas, space, timing, and what matters most to you.</p></article>
+          <article class="process-card reveal"><div class="process-num"><span>02</span><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i></div><h3>Scope & estimate</h3><p>We clarify the requirements, visit the site when needed, and outline the costs.</p></article>
+          <article class="process-card reveal"><div class="process-num"><span>03</span><i class="fa-solid fa-pencil-ruler" aria-hidden="true"></i></div><h3>Design & build</h3><p>Review the plan and selections, then follow the agreed work schedule.</p></article>
+          <article class="process-card reveal"><div class="process-num"><span>04</span><i class="fa-solid fa-key" aria-hidden="true"></i></div><h3>Walkthrough & handover</h3><p>Check the details together, record outstanding items, and receive your space.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section" id="reviews" style="padding-top:16px">
+      <div class="site-container">
+        <div class="review-wrap reveal">
+          <div class="review-side"><span class="eyebrow">Kind words</span><h2>Good work is<br/>felt, not just seen.</h2><div class="review-score"><strong>4.9</strong><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><small>Average from 86 sample reviews*</small></div></div></div>
+          <div class="review-main" aria-live="polite"><div><div class="stars" style="margin-bottom:15px">★★★★★</div><p class="review-quote" id="reviewQuote">“They listened before they designed. Our home feels more like us now, and every decision had a clear reason behind it.”</p></div><div class="review-bottom"><div class="review-person"><div class="avatar" id="reviewAvatar">PK</div><div><strong id="reviewName">Pim K.</strong><small id="reviewMeta">Home renovation · Sukhumvit</small></div></div><div class="review-controls"><button class="icon-btn" id="reviewPrev" aria-label="Previous review"><i class="fa-solid fa-arrow-left"></i></button><button class="icon-btn" id="reviewNext" aria-label="Next review"><i class="fa-solid fa-arrow-right"></i></button></div></div></div>
+        </div>
+        <p style="font-size:9px;color:#92979d;margin:10px 0 0">*Review names, quotes, rating, and counts are demonstration content. Replace with verified customer feedback before publication.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" style="padding-top:25px">
+      <div class="site-container faq-layout">
+        <div class="faq-aside reveal"><span class="eyebrow">A few answers</span><h2 class="section-heading">Before you<br/>get started.</h2><p class="section-copy">Still deciding what is right for your space? Start with the questions we hear most often, or tell us a little about your project.</p><a class="faq-contact" href="https://line.me/" target="_blank" rel="noopener"><i class="fa-brands fa-line"></i> Talk to our team on LINE <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+        <div class="faq-list reveal">
+          <details class="faq-item"><summary>How much does an interior design or renovation project cost?<i class="fa-solid fa-plus"></i></summary><div class="faq-answer">Costs depend on the size of the space, existing conditions, material selections, and how much work is involved. Our sample starting prices are guides only. Use the free estimate form to share your scope and receive an initial planning range.</div></details>
+          <details class="faq-item"><summary>Do you offer a free consultation?<i class="fa-solid fa-plus"></i></summary><div class="faq-answer">Yes. The first conversation is to understand your needs and explain our process. A detailed site survey, drawings, or specialist technical work may be quoted separately when appropriate.</div></details>
+          <details class="faq-item"><summary>Which areas do you serve?<i class="fa-solid fa-plus"></i></summary><div class="faq-answer">This demo site is configured for Bangkok and surrounding areas. Travel or site-visit fees may apply outside the core service area. Update this section with your actual coverage.</div></details>
+          <details class="faq-item"><summary>How long does a typical project take?<i class="fa-solid fa-plus"></i></summary><div class="faq-answer">A focused room refresh may take a few weeks, while a full renovation may take several months. We confirm the project schedule after understanding the scope, approvals, lead times, and site conditions.</div></details>
+          <details class="faq-item"><summary>Can you work with my existing ideas or budget?<i class="fa-solid fa-plus"></i></summary><div class="faq-answer">Absolutely. Bring inspiration images, a rough budget, or even a list of things that are not working. We will help prioritise what will have the biggest practical impact and flag trade-offs early.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="site-container"><div class="cta-card reveal"><div><span class="eyebrow">Your space, your story</span><h2>Have a space in mind?<br/>Let’s make the first step simple.</h2><p>Tell us what you are planning. Get an initial estimate, understand your options, and decide what feels right—without pressure.</p></div><button class="btn" data-open-estimate>Start my free estimate <i class="fa-solid fa-arrow-right"></i></button></div></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-top">
+        <div class="footer-brand-col"><a href="#top" class="brand"><span class="brand-mark" aria-hidden="true"></span><span><span class="brand-name">form & field</span><span class="brand-sub">Spaces with intention</span></span></a><p class="footer-brand-copy">A small, detail-led interior design and renovation studio for homes and businesses in Bangkok. Thoughtful spaces begin with listening.</p><div class="footer-socials"><a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a><a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a><a href="https://line.me/" aria-label="LINE" target="_blank" rel="noopener"><i class="fa-brands fa-line"></i></a></div></div>
+        <div class="footer-col"><h3>Explore</h3><a href="#services">Our services</a><a href="#work">Selected projects</a><a href="#process">How we work</a><a href="#reviews">Client reviews</a><a href="#faq">Frequently asked questions</a></div>
+        <div class="footer-col"><h3>Say hello</h3><p><i class="fa-solid fa-location-dot"></i> Bangkok, Thailand</p><a href="tel:+6625550188"><i class="fa-solid fa-phone"></i> +66 2 555 0188</a><a href="mailto:hello@example.com"><i class="fa-regular fa-envelope"></i> hello@example.com</a><a href="https://line.me/" target="_blank" rel="noopener"><i class="fa-brands fa-line"></i> Chat on LINE</a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="yearNow">2026</span> Form & Field Studio. All rights reserved.</span><span class="demo-disclaimer">Demo template: business details, prices, project photographs, reviews, and performance figures are illustrative and must be verified before publishing.</span></div>
+    </div>
+  </footer>
+
+  <!-- Floating controls: back to top left, chat on right, 5px gap. Chat launcher stays anchored while chat panel opens. -->
+  <div class="floating-tools" id="floatingTools">
+    <button class="float-btn back-top" id="backTop" aria-label="Back to top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <button class="float-btn chat-launcher" id="chatLauncher" aria-expanded="false" aria-controls="chatPanel"><span class="chat-icon"><i class="fa-regular fa-message"></i></span><span class="chat-label">Ask our AI</span><span class="online-dot" aria-label="Available"></span></button>
+    <section class="chat-panel" id="chatPanel" aria-label="AI chat assistant" hidden>
+      <div class="chat-header"><span class="chat-avatar"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><strong>Studio Assistant</strong><small><i class="fa-solid fa-circle" style="font-size:6px;color:#69d391"></i> Online · Replies instantly</small></div><button class="chat-close" id="chatClose" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button></div>
+      <div class="chat-messages" id="chatMessages" aria-live="polite"><div class="chat-msg bot">Hi there 👋 I can help you find the right service, understand starting prices, or prepare a project estimate. What would you like to know?</div><div class="chat-quick"><button data-chat-quick="Show me your services">Explore services</button><button data-chat-quick="I want a project estimate">Get an estimate</button><button data-chat-quick="Which areas do you serve?">Service areas</button></div></div>
+      <form class="chat-compose" id="chatForm"><input id="chatInput" type="text" placeholder="Type your message…" autocomplete="off" aria-label="Type a message" maxlength="500"/><button class="chat-send" type="submit" aria-label="Send message"><i class="fa-solid fa-arrow-up"></i></button></form>
+    </section>
+  </div>
+
+  <!-- Sticky mobile contact bar -->
+  <div class="mobile-sticky" aria-label="Quick contact actions"><button class="mobile-ai" data-open-estimate><i class="fa-solid fa-wand-magic-sparkles"></i> AI estimate</button><a class="mobile-line" href="https://line.me/" target="_blank" rel="noopener"><i class="fa-brands fa-line"></i> LINE</a><a href="tel:+6625550188"><i class="fa-solid fa-phone"></i> Call</a></div>
+
+  <!-- Authentication Modal -->
+  <div class="modal-backdrop" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal"><div class="modal-head"><div class="modal-head-row"><div><div class="modal-kicker">Your project space</div><h2 class="modal-title" id="authTitle">Welcome back.</h2><p class="modal-desc" id="authDesc">Sign in to revisit saved estimates and project conversations.</p></div><button class="icon-btn modal-close" data-close-modal aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button></div></div>
+      <div class="modal-body"><div class="auth-tabs"><button class="auth-tab active" id="loginTab" data-auth-tab="login">Log in</button><button class="auth-tab" id="registerTab" data-auth-tab="register">Create account</button></div>
+        <form id="authForm" novalidate>
+          <div class="field" id="nameField" hidden><label for="authName">Full name</label><input id="authName" name="name" autocomplete="name" placeholder="Your name" /></div>
+          <div class="field"><label for="authEmail">Email address</label><input type="email" id="authEmail" name="email" autocomplete="email" placeholder="you@example.com" required /></div>
+          <div class="field"><label for="authPassword">Password</label><input type="password" id="authPassword" name="password" autocomplete="current-password" placeholder="At least 8 characters" minlength="8" required /></div>
+          <div class="form-foot" id="authFormFoot"><label style="display:flex;align-items:center;gap:7px;font-size:10px"><input type="checkbox" style="accent-color:var(--coral)" /> Remember me</label><button type="button" class="text-btn" id="forgotPassword">Forgot password?</button></div>
+          <button class="btn btn-primary modal-submit" type="submit" id="authSubmit">Log in <i class="fa-solid fa-arrow-right"></i></button><p class="form-legal" id="authLegal">Demo mode: this form demonstrates the interface only. No account is created and no data is sent to a server.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Free estimate modal -->
+  <div class="modal-backdrop" id="estimateModal" role="dialog" aria-modal="true" aria-labelledby="estimateTitle">
+    <div class="modal"><div class="modal-head"><div class="modal-head-row"><div><div class="modal-kicker">A useful first step</div><h2 class="modal-title" id="estimateTitle">Let’s size up your project.</h2><p class="modal-desc">Share a few details to get an illustrative planning range. We’ll keep the next steps clear.</p></div><button class="icon-btn modal-close" data-close-modal aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button></div></div>
+      <div class="modal-body"><form id="estimateForm">
+        <div class="field"><label for="estimateService">What do you have in mind?</label><select id="estimateService" required><option value="Interior Design">Interior Design</option><option value="Home Renovation">Home Renovation</option><option value="Built-in Furniture">Built-in Furniture</option><option value="Commercial Spaces">Commercial Spaces</option></select></div>
+        <div class="field-row"><div class="field"><label for="estimateArea">Approximate area (sq.m.)</label><input id="estimateArea" type="number" min="1" max="10000" value="45" required /></div><div class="field"><label for="estimateLocation">Project area</label><select id="estimateLocation"><option value="Bangkok">Bangkok</option><option value="Greater Bangkok">Greater Bangkok</option><option value="Outside service area">Outside service area</option></select></div></div>
+        <div class="field"><label for="estimateBudget">Target budget</label><select id="estimateBudget"><option value="Not sure yet">Not sure yet</option><option value="Under ฿100,000">Under ฿100,000</option><option value="฿100,000–฿300,000">฿100,000–฿300,000</option><option value="฿300,000–฿700,000">฿300,000–฿700,000</option><option value="฿700,000+">฿700,000+</option></select></div>
+        <div class="field"><label for="estimateNotes">Anything else we should know? <span style="color:#969ba1;font-weight:500">(optional)</span></label><textarea id="estimateNotes" placeholder="For example: refresh a condo before moving in, built-in storage, preferred timeline…" maxlength="800"></textarea></div>
+        <button class="btn btn-primary modal-submit" type="submit"><i class="fa-solid fa-calculator"></i> Calculate my planning range</button>
+      </form>
+      <div class="estimate-result" id="estimateResult" aria-live="polite"><small>Your illustrative planning range</small><strong id="estimateRange">฿45,000–฿75,000</strong><p id="estimateResultText">This is a starting point, not a fixed quotation. We’ll need to confirm your scope, materials, site conditions, and measurements before quoting.</p><div class="estimate-meta"><span id="estimateMetaType">Interior Design</span><span id="estimateMetaArea">45 sq.m.</span><span id="estimateMetaBudget">Budget: Not sure yet</span></div><button class="btn btn-dark" id="estimateChatNext" style="width:100%;margin-top:15px" type="button">Ask a follow-up question <i class="fa-solid fa-arrow-right"></i></button></div>
+      <p class="form-legal">Estimate logic is local demonstration code and does not contact an AI service or create a lead record.</p></div>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    (() => {
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const authModal = $('#authModal');
+      const estimateModal = $('#estimateModal');
+      const modals = [authModal, estimateModal];
+      let lastFocused = null;
+      let authMode = 'login';
+      let lastEstimate = null;
+
+      // Toast feedback is local only; no external requests are made.
+      function toast(message, icon = 'fa-circle-check') {
+        const el = document.createElement('div');
+        el.className = 'toast';
+        const ico = document.createElement('i'); ico.className = `fa-solid ${icon}`;
+        const txt = document.createElement('span'); txt.textContent = message;
+        el.append(ico, txt); $('#toastStack').append(el);
+        window.setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(10px)'; window.setTimeout(() => el.remove(), 220); }, 3800);
+      }
+      function openModal(modal) {
+        lastFocused = document.activeElement;
+        modals.forEach(m => m.classList.remove('show'));
+        modal.classList.add('show'); document.body.style.overflow = 'hidden';
+        const focusable = $('input:not([type="checkbox"]),select,textarea,button', modal);
+        window.setTimeout(() => focusable && focusable.focus(), 40);
+      }
+      function closeModals() { modals.forEach(m => m.classList.remove('show')); document.body.style.overflow = ''; if(lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus(); }
+      $$('[data-close-modal]').forEach(btn => btn.addEventListener('click', closeModals));
+      modals.forEach(modal => modal.addEventListener('click', e => { if(e.target === modal) closeModals(); }));
+      document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeModals(); closeChat(); $('#mainNav').classList.remove('open'); $('#mobileMenuBtn').setAttribute('aria-expanded','false'); } });
+
+      // Auth modal: UI-only demo, deliberately does not pretend to authenticate.
+      function setAuthMode(mode) {
+        authMode = mode;
+        const login = mode === 'login';
+        $('#loginTab').classList.toggle('active', login); $('#registerTab').classList.toggle('active', !login);
+        $('#authTitle').textContent = login ? 'Welcome back.' : 'Make room for good ideas.';
+        $('#authDesc').textContent = login ? 'Sign in to revisit saved estimates and project conversations.' : 'Create a place to keep your project details together.';
+        $('#nameField').hidden = login; $('#authName').required = !login;
+        $('#authPassword').autocomplete = login ? 'current-password' : 'new-password';
+        $('#authSubmit').innerHTML = login ? 'Log in <i class="fa-solid fa-arrow-right"></i>' : 'Create account <i class="fa-solid fa-arrow-right"></i>';
+        $('#authFormFoot').hidden = !login;
+        $('#authLegal').textContent = 'Demo mode: this form demonstrates the interface only. No account is created and no data is sent to a server.';
+      }
+      $$('[data-open-auth]').forEach(btn => btn.addEventListener('click', () => { setAuthMode(btn.dataset.openAuth); openModal(authModal); }));
+      $$('[data-auth-tab]').forEach(btn => btn.addEventListener('click', () => setAuthMode(btn.dataset.authTab)));
+      $('#forgotPassword').addEventListener('click', () => {
+        const email = $('#authEmail').value.trim();
+        if(!email) { toast('Enter your email first. In production, a reset link would be sent by the authentication service.', 'fa-envelope'); $('#authEmail').focus(); return; }
+        toast(`Password reset is a demo flow. Connect an auth provider to send a reset link to ${email}.`, 'fa-envelope');
+      });
+      $('#authForm').addEventListener('submit', e => {
+        e.preventDefault();
+        if(!e.currentTarget.reportValidity()) return;
+        const email = $('#authEmail').value.trim();
+        toast(authMode === 'login' ? `Login demo submitted for ${email}. Connect your backend to authenticate users.` : `Registration demo submitted for ${email}. Connect your backend to create the account.`);
+        closeModals();
+      });
+
+      // Local range estimate: clearly marked as illustrative and not a live AI quotation.
+      const baseByService = {
+        'Interior Design': { base: 18000, perSqm: 900, min: 18000 },
+        'Home Renovation': { base: 65000, perSqm: 4800, min: 65000 },
+        'Built-in Furniture': { base: 35000, perSqm: 2200, min: 35000 },
+        'Commercial Spaces': { base: 95000, perSqm: 3900, min: 95000 }
+      };
+      const fmtTHB = value => '฿' + Math.round(value).toLocaleString('en-US');
+      function calculateEstimate(e) {
+        e.preventDefault();
+        const service = $('#estimateService').value;
+        const area = Math.min(10000, Math.max(1, Number($('#estimateArea').value) || 1));
+        const location = $('#estimateLocation').value;
+        const budget = $('#estimateBudget').value;
+        const notes = $('#estimateNotes').value.trim();
+        const rule = baseByService[service] || baseByService['Interior Design'];
+        let midpoint = Math.max(rule.min, rule.base + area * rule.perSqm);
+        if(location === 'Greater Bangkok') midpoint *= 1.07;
+        if(location === 'Outside service area') midpoint *= 1.16;
+        const low = midpoint * .82; const high = midpoint * 1.28;
+        lastEstimate = {service,area,location,budget,notes,low,high};
+        $('#estimateRange').textContent = `${fmtTHB(low)}–${fmtTHB(high)}`;
+        $('#estimateResultText').textContent = location === 'Outside service area'
+          ? 'Your selected location may require a separate travel and site-visit assessment. This planning range is illustrative only and does not confirm service availability.'
+          : 'This is a starting point, not a fixed quotation. The final price depends on your scope, materials, site conditions, measurements, and project schedule.';
+        $('#estimateMetaType').textContent = service; $('#estimateMetaArea').textContent = `${area.toLocaleString('en-US')} sq.m.`; $('#estimateMetaBudget').textContent = `Budget: ${budget}`;
+        $('#estimateResult').classList.add('show'); $('#estimateResult').scrollIntoView({behavior:'smooth',block:'nearest'});
+        toast('Your planning range is ready. It is a local demo calculation, not a verified quotation.');
+      }
+      $$('[data-open-estimate]').forEach(btn => btn.addEventListener('click', () => { $('#estimateResult').classList.remove('show'); openModal(estimateModal); }));
+      $$('[data-estimate-service]').forEach(btn => btn.addEventListener('click', () => { $('#estimateService').value = btn.dataset.estimateService; $('#estimateResult').classList.remove('show'); openModal(estimateModal); }));
+      $('#estimateForm').addEventListener('submit', calculateEstimate);
+      $('#estimateChatNext').addEventListener('click', () => {
+        if(!lastEstimate) return;
+        closeModals(); openChat();
+        addMessage(`I’m looking at ${lastEstimate.service} for about ${lastEstimate.area} sq.m. in ${lastEstimate.location}. The planning range shown was ${fmtTHB(lastEstimate.low)}–${fmtTHB(lastEstimate.high)}. ${lastEstimate.notes ? 'Notes: ' + lastEstimate.notes : ''}`, 'user');
+        window.setTimeout(() => addMessage('Thanks for sharing the details. This range is only an initial guide. A real project quote needs a confirmed scope, measurements, material choices, and site conditions. You can also contact the studio directly to arrange a consultation.', 'bot'), 250);
+      });
+
+      // Mobile nav.
+      $('#mobileMenuBtn').addEventListener('click', () => {
+        const nav = $('#mainNav'); const isOpen = nav.classList.toggle('open');
+        $('#mobileMenuBtn').setAttribute('aria-expanded', String(isOpen));
+        $('#mobileMenuBtn').innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+      });
+      $$('#mainNav a').forEach(link => link.addEventListener('click', () => { $('#mainNav').classList.remove('open'); $('#mobileMenuBtn').setAttribute('aria-expanded','false'); $('#mobileMenuBtn').innerHTML = '<i class="fa-solid fa-bars"></i>'; }));
+
+      // Back-to-top appears only once the hero area has been passed. It shares a row with chat at a 5px gap.
+      const hero = $('#hero'); const backTop = $('#backTop');
+      function onScroll() { const edge = hero.getBoundingClientRect().bottom; backTop.classList.toggle('visible', edge < 0); }
+      window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+      backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+      // Floating chat panel: launcher stays fixed in place while its panel opens above it.
+      const chatLauncher = $('#chatLauncher'); const chatPanel = $('#chatPanel'); const chatMessages = $('#chatMessages');
+      function openChat() { chatPanel.hidden = false; chatLauncher.setAttribute('aria-expanded','true'); window.setTimeout(() => $('#chatInput').focus(), 30); }
+      function closeChat() { chatPanel.hidden = true; chatLauncher.setAttribute('aria-expanded','false'); }
+      chatLauncher.addEventListener('click', () => chatPanel.hidden ? openChat() : closeChat()); $('#chatClose').addEventListener('click', closeChat);
+      function addMessage(text, type) { const msg = document.createElement('div'); msg.className = `chat-msg ${type}`; msg.textContent = text; chatMessages.appendChild(msg); chatMessages.scrollTop = chatMessages.scrollHeight; }
+      function answerFor(raw) {
+        const text = raw.toLowerCase();
+        if(/estimate|quote|price|cost|budget|ราคา|ประเมิน/.test(text)) return { text:'The quickest way to get a planning range is our short estimate form. It asks for the service, approximate area, and project location. The range is illustrative until a real scope and site conditions are confirmed.', estimate:true };
+        if(/service|design|renovat|built.?in|café|commercial|บริการ/.test(text)) return { text:'We currently showcase four service types: Interior Design, Home Renovation, Built-in Furniture, and Commercial Spaces. Starting prices in this demo range from ฿18,000 to ฿95,000 depending on service. Select “Get a free estimate” to tailor the range to your space.' };
+        if(/area|location|where|bangkok|พื้นที่|ที่ไหน/.test(text)) return { text:'This demo is set up for Bangkok and surrounding areas. Projects farther away may need a separate travel and site-visit assessment. Replace this service area with your real coverage before launch.' };
+        if(/time|long|schedule|duration|when|ระยะเวลา|นาน/.test(text)) return { text:'Timing depends on scope, approvals, materials, and site conditions. A focused room refresh can take weeks; a full renovation may take several months. A project schedule is confirmed after the scope is understood.' };
+        if(/human|person|call|line|contact|talk|team|คน|ติดต่อ/.test(text)) return { text:'You can call the demo studio at +66 2 555 0188 or use the LINE link on this page. Replace these example contact details with your actual business channels before publication.' };
+        if(/hello|hi|hey|สวัสดี/.test(text)) return { text:'Hello! 👋 Tell me what kind of space you are working on, or choose a quick action below. I can explain services, outline the process, or help you prepare an estimate.' };
+        return { text:'Thanks for the details. I can help with service options, indicative starting prices, project timing, and service areas. For a tailored starting range, choose “Get a free estimate.” This demo assistant uses scripted replies; connect an AI service for live AI responses.' };
+      }
+      function handleChat(text) {
+        const clean = text.trim(); if(!clean) return;
+        addMessage(clean,'user'); $('#chatInput').value = '';
+        const reply = answerFor(clean);
+        window.setTimeout(() => {
+          addMessage(reply.text,'bot');
+          if(reply.estimate) { const row = document.createElement('div'); row.className = 'chat-quick'; const b = document.createElement('button'); b.type='button'; b.textContent='Open estimate form'; b.addEventListener('click', () => { closeChat(); $('#estimateResult').classList.remove('show'); openModal(estimateModal); }); row.appendChild(b); chatMessages.appendChild(row); chatMessages.scrollTop = chatMessages.scrollHeight; }
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 270);
+      }
+      $('#chatForm').addEventListener('submit', e => { e.preventDefault(); handleChat($('#chatInput').value); });
+      $$('.chat-quick button').forEach(btn => btn.addEventListener('click', () => handleChat(btn.dataset.chatQuick)));
+
+      // Review carousel.
+      const reviews = [
+        {quote:'“They listened before they designed. Our home feels more like us now, and every decision had a clear reason behind it.”',name:'Pim K.',meta:'Home renovation · Sukhumvit',avatar:'PK'},
+        {quote:'“The team made a complicated renovation feel manageable. We always knew what was happening and what decision came next.”',name:'Narin S.',meta:'Condo refresh · Ari',avatar:'NS'},
+        {quote:'“Our café works so much better now. The layout is practical, the details feel considered, and customers notice the atmosphere.”',name:'Mali R.',meta:'Commercial fit-out · Thonglor',avatar:'MR'}
+      ]; let reviewIndex = 0;
+      function showReview(index) { reviewIndex = (index + reviews.length) % reviews.length; const r = reviews[reviewIndex]; $('#reviewQuote').textContent = r.quote; $('#reviewName').textContent = r.name; $('#reviewMeta').textContent = r.meta; $('#reviewAvatar').textContent = r.avatar; }
+      $('#reviewPrev').addEventListener('click', () => showReview(reviewIndex-1)); $('#reviewNext').addEventListener('click', () => showReview(reviewIndex+1));
+
+      // Small reveal motion with graceful fallback for browsers without IntersectionObserver.
+      if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const io = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); } }), {threshold:.12});
+        $$('.reveal').forEach(el => io.observe(el));
+      } else { $$('.reveal').forEach(el => el.classList.add('in-view')); }
+      $('#yearNow').textContent = String(new Date().getFullYear());
+
+      // Simple focus containment for the active modal.
+      document.addEventListener('keydown', e => {
+        if(e.key !== 'Tab') return;
+        const modal = modals.find(m => m.classList.contains('show')); if(!modal) return;
+        const candidates = $$('button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),a[href]', modal).filter(el => !el.hasAttribute('hidden') && el.offsetParent !== null);
+        if(!candidates.length) return;
+        const first = candidates[0], last = candidates[candidates.length-1];
+        if(e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+    })();
+  </script>
+</body>
+</html>
