@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiamBuild Studio — Interior Design, Renovation & Construction in Hat Yai</title>
+<meta name="description" content="SiamBuild Studio is a design-and-build agency in Hat Yai, Thailand, creating modern homes, commercial interiors, renovations and custom construction. Get a free AI estimate today.">
+<meta name="keywords" content="Hat Yai renovation, interior design Hat Yai, construction company Thailand, home renovation Songkhla, commercial interior design, SiamBuild Studio">
+<meta property="og:title" content="SiamBuild Studio — Design & Build in Hat Yai">
+<meta property="og:description" content="Modern interiors, renovations and construction across Hat Yai and Songkhla. Free AI project estimate.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        coral: '#F75A38',
+        lime: '#C4E864',
+        skyblue: '#7CA4F8',
+        slate: '#222426',
+        silver: '#A4A8B0',
+        inkborder: '#34363A'
+      },
+      fontFamily: {
+        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+        outfit: ['Outfit', 'sans-serif']
+      },
+      maxWidth: { site: '1280px' }
+    }
+  }
+}
+</script>
+
+<style>
+  :root{
+    --color-coral:#F75A38; --color-lime:#C4E864; --color-sky-blue:#7CA4F8;
+    --color-slate-dark:#222426; --color-surface:#FFFFFF; --color-text-muted:#A4A8B0;
+    --color-border-dark:#34363A;
+  }
+  body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#222426;}
+  h1,h2,h3,.outfit{font-family:'Outfit',sans-serif;}
+  .hero-title{font-family:'Outfit';font-weight:800;letter-spacing:-.03em;line-height:.94;}
+  .section-title{font-family:'Outfit';font-weight:700;line-height:1.2;}
+  .label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .card-hover{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease;}
+  .card-hover:hover{transform:translateY(-6px);box-shadow:0 24px 60px -30px rgba(34,36,38,.35);}
+  .btn-primary{background:var(--color-coral);color:#fff;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 35px -18px rgba(247,90,56,.75);background:#e34c2c;}
+  .btn-dark{background:var(--color-slate-dark);color:#fff;transition:transform .25s ease,box-shadow .25s ease;}
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:0 18px 35px -18px rgba(34,36,38,.65);}
+  .tag-lime{background:var(--color-lime);color:#222426;font-weight:700;border-radius:999px;padding:5px 14px;}
+  .accordion-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1),opacity .35s ease;opacity:0;}
+  .accordion.open .accordion-body{max-height:260px;opacity:1;}
+  .accordion.open .accordion-icon{transform:rotate(45deg);}
+  .accordion-icon{transition:transform .35s ease;}
+  .modal{opacity:0;pointer-events:none;transition:opacity .3s ease;}
+  .modal.active{opacity:1;pointer-events:auto;}
+  .modal-panel{transform:translateY(24px) scale(.98);transition:transform .35s cubic-bezier(.22,1,.36,1);}
+  .modal.active .modal-panel{transform:translateY(0) scale(1);}
+  .chat-panel{transform:translateY(16px) scale(.97);opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.22,1,.36,1);}
+  .chat-panel.active{transform:translateY(0) scale(1);opacity:1;pointer-events:auto;}
+  .typing span{width:6px;height:6px;background:#A4A8B0;border-radius:50%;display:inline-block;animation:blink 1.2s infinite;}
+  .typing span:nth-child(2){animation-delay:.15s}
+  .typing span:nth-child(3){animation-delay:.3s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  .marquee{animation:marquee 24s linear infinite;}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":["Organization","LocalBusiness"],
+  "name":"SiamBuild Studio",
+  "description":"Design-and-build agency in Hat Yai specializing in interior design, renovation, architecture and construction.",
+  "url":"https://siambuildstudio.example",
+  "telephone":"+66-74-000-000",
+  "address":{"@type":"PostalAddress","streetAddress":"123 Karnjanavanich Road","addressLocality":"Hat Yai","addressRegion":"Songkhla","postalCode":"90110","addressCountry":"TH"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"187"},
+  "priceRange":"฿฿"
+}
+</script>
+</head>
+
+<body class="bg-white antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+  <div class="max-w-site mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <a href="#" class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-xl bg-coral text-white grid place-items-center font-outfit font-extrabold">S</span>
+        <span class="font-outfit font-extrabold text-lg tracking-tight">SiamBuild<span class="text-coral">.</span></span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#services" class="hover:text-coral transition-colors">Services</a>
+        <a href="#work" class="hover:text-coral transition-colors">Work</a>
+        <a href="#process" class="hover:text-coral transition-colors">Process</a>
+        <a href="#reviews" class="hover:text-coral transition-colors">Reviews</a>
+        <a href="#faq" class="hover:text-coral transition-colors">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="openAuth('login')" class="hidden sm:inline-flex text-sm font-semibold px-4 py-2.5 rounded-full border border-slate-200 hover:border-slate hover:text-slate transition-all">
+          <i class="bi bi-person mr-2"></i>Login
+        </button>
+        <button onclick="openAIEstimate()" class="btn-primary hidden md:inline-flex items-center text-sm font-semibold px-5 py-2.5 rounded-full">
+          <i class="bi bi-stars mr-2"></i>Free AI Estimate
+        </button>
+        <button onclick="openAuth('register')" class="lg:hidden text-sm font-semibold px-3 py-2 rounded-full bg-slate text-white">
+          <i class="bi bi-person-plus"></i>
+        </button>
+        <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="lg:hidden w-10 h-10 grid place-items-center rounded-xl border border-slate-200">
+          <i class="bi bi-list text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-100 bg-white px-5 py-4">
+    <div class="grid gap-1 text-sm font-medium">
+      <a href="#services" class="py-2.5">Services</a>
+      <a href="#work" class="py-2.5">Work</a>
+      <a href="#process" class="py-2.5">Process</a>
+      <a href="#reviews" class="py-2.5">Reviews</a>
+      <a href="#faq" class="py-2.5">FAQ</a>
+      <button onclick="openAIEstimate()" class="btn-primary mt-3 py-3 rounded-xl font-semibold">Free AI Estimate</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative bg-white overflow-hidden">
+  <div class="max-w-site mx-auto px-5 sm:px-8 pt-12 pb-16 md:pt-20 md:pb-24">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+      <div class="lg:col-span-6 reveal">
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+          <span class="tag-lime text-xs">Hat Yai · Songkhla</span>
+          <span class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 bg-slate-50 border border-slate-100 px-3.5 py-1.5 rounded-full">
+            <i class="bi bi-shield-check text-skyblue"></i>Licensed design & build team
+          </span>
+        </div>
+
+        <h1 class="hero-title text-[42px] sm:text-[56px] lg:text-[64px] text-slate">
+          Modern spaces,<br>built with <span class="text-coral">precision.</span>
+        </h1>
+
+        <p class="mt-6 text-base md:text-lg text-slate-600 max-w-xl leading-relaxed">
+          SiamBuild Studio designs and builds homes, cafés, offices and retail spaces across Hat Yai and Songkhla — from concept and permits to renovation and handover.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <button onclick="openAIEstimate()" class="btn-primary px-7 py-4 rounded-full font-semibold text-sm sm:text-base">
+            <i class="bi bi-stars mr-2"></i>Get a Free AI Estimate
+          </button>
+          <a href="#work" class="btn-dark px-7 py-4 rounded-full font-semibold text-sm sm:text-base text-center">
+            <i class="bi bi-images mr-2"></i>View Our Work
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-3 max-w-lg">
+          <div class="rounded-2xl border border-slate-100 p-4">
+            <p class="font-outfit font-extrabold text-2xl md:text-3xl text-coral">240+</p>
+            <p class="label text-slate-500 mt-1">Projects</p>
+          </div>
+          <div class="rounded-2xl border border-slate-100 p-4">
+            <p class="font-outfit font-extrabold text-2xl md:text-3xl text-skyblue">4.9/5</p>
+            <p class="label text-slate-500 mt-1">Client rating</p>
+          </div>
+          <div class="rounded-2xl border border-slate-100 p-4">
+            <p class="font-outfit font-extrabold text-2xl md:text-3xl text-slate">12 yrs</p>
+            <p class="label text-slate-500 mt-1">Experience</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 reveal">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Modern renovated living room in Hat Yai" class="w-full h-[340px] sm:h-[440px] lg:h-[520px] object-cover rounded-[28px]">
+          <div class="absolute -bottom-5 left-4 sm:left-6 bg-slate text-white rounded-2xl p-4 sm:p-5 shadow-2xl max-w-[270px]">
+            <p class="label text-lime">Recent handover</p>
+            <p class="font-outfit font-bold text-lg mt-1">Nimman Café, Hat Yai</p>
+            <p class="text-xs text-silver mt-1">Delivered 6 days early · ฿1.85M / US$52K</p>
+          </div>
+          <div class="absolute top-5 right-4 bg-white rounded-2xl px-4 py-3 shadow-xl border border-slate-100">
+            <p class="label text-slate-500">Avg. response</p>
+            <p class="font-outfit font-extrabold text-xl text-coral">2 hrs</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+<section class="bg-white border-y border-slate-100 py-5 overflow-hidden">
+  <div class="flex whitespace-nowrap marquee">
+    <div class="flex items-center gap-10 pr-10 text-sm font-semibold text-slate-500">
+      <span><i class="bi bi-patch-check text-lime mr-2"></i>240+ completed projects</span>
+      <span><i class="bi bi-star-fill text-coral mr-2"></i>4.9 average client rating</span>
+      <span><i class="bi bi-award text-skyblue mr-2"></i>12 years in Songkhla</span>
+      <span><i class="bi bi-people text-coral mr-2"></i>18 in-house specialists</span>
+      <span><i class="bi bi-buildings text-lime mr-2"></i>Residential & commercial</span>
+      <span><i class="bi bi-geo-alt text-skyblue mr-2"></i>Hat Yai · Songkhla · Southern Thailand</span>
+    </div>
+    <div class="flex items-center gap-10 pr-10 text-sm font-semibold text-slate-500" aria-hidden="true">
+      <span><i class="bi bi-patch-check text-lime mr-2"></i>240+ completed projects</span>
+      <span><i class="bi bi-star-fill text-coral mr-2"></i>4.9 average client rating</span>
+      <span><i class="bi bi-award text-skyblue mr-2"></i>12 years in Songkhla</span>
+      <span><i class="bi bi-people text-coral mr-2"></i>18 in-house specialists</span>
+      <span><i class="bi bi-buildings text-lime mr-2"></i>Residential & commercial</span>
+      <span><i class="bi bi-geo-alt text-skyblue mr-2"></i>Hat Yai · Songkhla · Southern Thailand</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="bg-white py-16 md:py-24">
+  <div class="max-w-site mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="label text-coral">What we do</span>
+      <h2 class="section-title text-3xl md:text-5xl mt-3 text-slate">Clear services. Transparent budgets.</h2>
+      <p class="mt-4 text-slate-600">Choose a service to see the typical investment range. Every project starts with a free AI-assisted scope and estimate.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+      <!-- service cards -->
+      <article class="reveal card-hover bg-white border border-slate-100 rounded-3xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral grid place-items-center text-xl"><i class="bi bi-house-heart"></i></div>
+        <h3 class="font-outfit font-bold text-xl mt-5">Home Renovation</h3>
+        <p class="text-sm text-slate-600 mt-2">Full or partial renovation for houses, condos and townhomes, including demolition, MEP and finishing.</p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="font-outfit font-bold text-lg text-slate">฿250K–฿2.5M</span>
+          <span class="text-xs text-slate-500">US$7K–US$70K</span>
+        </div>
+      </article>
+
+      <article class="reveal card-hover bg-white border border-slate-100 rounded-3xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-2xl bg-lime/25 text-slate grid place-items-center text-xl"><i class="bi bi-rulers"></i></div>
+        <h3 class="font-outfit font-bold text-xl mt-5">Interior Design</h3>
+        <p class="text-sm text-slate-600 mt-2">Concept, 3D visualization, material selection, lighting plans and detailed construction drawings.</p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="font-outfit font-bold text-lg text-slate">฿35K–฿350K</span>
+          <span class="text-xs text-slate-500">US$1K–US$10K</span>
+        </div>
+      </article>
+
+      <article class="reveal card-hover bg-white border border-slate-100 rounded-3xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-2xl bg-skyblue/15 text-skyblue grid place-items-center text-xl"><i class="bi bi-building"></i></div>
+        <h3 class="font-outfit font-bold text-xl mt-5">Commercial Fit-Out</h3>
+        <p class="text-sm text-slate-600 mt-2">Cafés, restaurants, clinics, offices and retail stores designed for customer flow and brand identity.</p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="font-outfit font-bold text-lg text-slate">฿400K–฿6M</span>
+          <span class="text-xs text-slate-500">US$11K–US$168K</span>
+        </div>
+      </article>
+
+      <article class="reveal card-hover bg-white border border-slate-100 rounded-3xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-2xl bg-slate text-lime grid place-items-center text-xl"><i class="bi bi-bricks"></i></div>
+        <h3 class="font-outfit font-bold text-xl mt-5">New Construction</h3>
+        <p class="text-sm text-slate-600 mt-2">Custom homes and small commercial buildings with architectural design, permits and site management.</p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="font-outfit font-bold text-lg text-slate">฿2M–฿15M</span>
+          <span class="text-xs text-slate-500">US$56K–US$420K</span>
+        </div>
+      </article>
+
+      <article class="reveal card-hover bg-white border border-slate-100 rounded-3xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral grid place-items-center text-xl"><i class="bi bi-tools"></i></div>
+        <h3 class="font-outfit font-bold text-xl mt-5">Custom Furniture</h3>
+        <p class="text-sm text-slate-600 mt-2">Built-in cabinets, kitchens, wardrobes, counters and bespoke joinery made for Thai humidity.</p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="font-outfit font-bold text-lg text-slate">฿45K–฿800K</span>
+          <span class="text-xs text-slate-500">US$1.3K–US$22K</span>
+        </div>
+      </article>
+
+      <article class="reveal card-hover bg-white border border-slate-100 rounded-3xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-2xl bg-lime/25 text-slate grid place-items-center text-xl"><i class="bi bi-clipboard-check"></i></div>
+        <h3 class="font-outfit font-bold text-xl mt-5">Project Management</h3>
+        <p class="text-sm text-slate-600 mt-2">Vendor coordination, quality inspection, budget control and weekly progress reporting.</p>
+        <div class="mt-5 flex items-center justify-between">
+          <span class="font-outfit font-bold text-lg text-slate">From ฿25K/mo</span>
+          <span class="text-xs text-slate-500">From US$700/mo</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="bg-white py-16 md:py-24">
+  <div class="max-w-site mx-auto px-5 sm:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+      <div class="max-w-xl">
+        <span class="label text-skyblue">Latest work</span>
+        <h2 class="section-title text-3xl md:text-5xl mt-3 text-slate">Projects delivered across Songkhla</h2>
+      </div>
+      <a href="#" class="inline-flex items-center gap-2 font-semibold text-slate hover:text-coral transition-colors">
+        View full portfolio <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-5 mt-10">
+      <article class="reveal card-hover md:col-span-7 relative rounded-3xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80" alt="Modern minimalist home interior" class="w-full h-[300px] md:h-[430px] object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-slate/90 to-transparent text-white">
+          <span class="tag-lime text-xs">Residential</span>
+          <h3 class="font-outfit font-bold text-2xl mt-3">Tropical Minimal House</h3>
+          <p class="text-sm text-silver mt-1">Hat Yai · ฿3.4M / US$95K · Completed 2026</p>
+        </div>
+      </article>
+
+      <div class="md:col-span-5 grid gap-5">
+        <article class="reveal card-hover relative rounded-3xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Cafe interior design" class="w-full h-[200px] md:h-[205px] object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-slate/90 to-transparent text-white">
+            <span class="tag-lime text-xs">Café</span>
+            <h3 class="font-outfit font-bold text-lg mt-2">Kao Soy Studio Café</h3>
+            <p class="text-xs text-silver mt-1">฿1.85M / US$52K</p>
+          </div>
+        </article>
+        <article class="reveal card-hover relative rounded-3xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80" alt="Modern office fit out" class="w-full h-[200px] md:h-[205px] object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-slate/90 to-transparent text-white">
+            <span class="tag-lime text-xs">Office</span>
+            <h3 class="font-outfit font-bold text-lg mt-2">Songkhla Tech Office</h3>
+            <p class="text-xs text-silver mt-1">฿2.6M / US$73K</p>
+          </div>
+        </article>
+      </div>
+
+      <article class="reveal card-hover md:col-span-4 relative rounded-3xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" alt="Luxury bathroom renovation" class="w-full h-[240px] object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-slate/90 to-transparent text-white">
+          <span class="tag-lime text-xs">Renovation</span>
+          <h3 class="font-outfit font-bold text-lg mt-2">Central Condo Upgrade</h3>
+          <p class="text-xs text-silver mt-1">฿680K / US$19K</p>
+        </div>
+      </article>
+
+      <article class="reveal card-hover md:col-span-4 relative rounded-3xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80" alt="Retail store interior" class="w-full h-[240px] object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-slate/90 to-transparent text-white">
+          <span class="tag-lime text-xs">Retail</span>
+          <h3 class="font-outfit font-bold text-lg mt-2">Lanna Concept Store</h3>
+          <p class="text-xs text-silver mt-1">฿1.2M / US$34K</p>
+        </div>
+      </article>
+
+      <article class="reveal card-hover md:col-span-4 relative rounded-3xl overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80" alt="Custom kitchen cabinetry" class="w-full h-[240px] object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-slate/90 to-transparent text-white">
+          <span class="tag-lime text-xs">Kitchen</span>
+          <h3 class="font-outfit font-bold text-lg mt-2">Custom Kitchen Suite</h3>
+          <p class="text-xs text-silver mt-1">฿420K / US$12K</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="bg-white py-16 md:py-24">
+  <div class="max-w-site mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl reveal">
+      <span class="label text-coral">How it works</span>
+      <h2 class="section-title text-3xl md:text-5xl mt-3 text-slate">A calm, predictable build process</h2>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-5 mt-10">
+      <div class="reveal rounded-3xl border border-slate-100 p-6 md:p-7 card-hover">
+        <span class="font-outfit font-extrabold text-4xl text-coral">01</span>
+        <h3 class="font-outfit font-bold text-lg mt-4">AI Scope & Estimate</h3>
+        <p class="text-sm text-slate-600 mt-2">Share your space, photos and budget. Receive an initial scope and price range within 24 hours.</p>
+      </div>
+      <div class="reveal rounded-3xl border border-slate-100 p-6 md:p-7 card-hover">
+        <span class="font-outfit font-extrabold text-4xl text-skyblue">02</span>
+        <h3 class="font-outfit font-bold text-lg mt-4">Design & Quotation</h3>
+        <p class="text-sm text-slate-600 mt-2">We confirm layout, materials and timeline, then provide a fixed-scope quotation.</p>
+      </div>
+      <div class="reveal rounded-3xl border border-slate-100 p-6 md:p-7 card-hover">
+        <span class="font-outfit font-extrabold text-4xl text-lime">03</span>
+        <h3 class="font-outfit font-bold text-lg mt-4">Build & Monitor</h3>
+        <p class="text-sm text-slate-600 mt-2">Our team manages craftsmen, suppliers and inspections with weekly photo updates.</p>
+      </div>
+      <div class="reveal rounded-3xl border border-slate-100 p-6 md:p-7 card-hover">
+        <span class="font-outfit font-extrabold text-4xl text-slate">04</span>
+        <h3 class="font-outfit font-bold text-lg mt-4">Handover & Care</h3>
+        <p class="text-sm text-slate-600 mt-2">We complete snagging, cleaning and documentation, with a 12-month workmanship warranty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="bg-white py-16 md:py-24">
+  <div class="max-w-site mx-auto px-5 sm:px-8">
+    <div class="flex items-end justify-between gap-6 reveal">
+      <div class="max-w-xl">
+        <span class="label text-lime">Client reviews</span>
+        <h2 class="section-title text-3xl md:text-5xl mt-3 text-slate">Trusted by homeowners & business owners</h2>
+      </div>
+      <div class="hidden sm:flex gap-2">
+        <button onclick="scrollReviews(-1)" class="w-11 h-11 rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all"><i class="bi bi-arrow-left"></i></button>
+        <button onclick="scrollReviews(1)" class="w-11 h-11 rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all"><i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div id="reviewTrack" class="mt-10 flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-2">
+      <article class="reveal snap-start min-w-[85%] sm:min-w-[420px] bg-slate text-white rounded-3xl p-7 md:p-8">
+        <div class="flex gap-1 text-lime"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="mt-5 text-lg leading-relaxed">“They turned our old shophouse into a café that feels completely new. The schedule was clear and the finish quality exceeded what we expected.”</p>
+        <div class="mt-6 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="w-11 h-11 rounded-full object-cover" alt="Client">
+          <div><p class="font-semibold">Napat C.</p><p class="text-xs text-silver">Café Owner · Hat Yai</p></div>
+        </div>
+      </article>
+
+      <article class="reveal snap-start min-w-[85%] sm:min-w-[420px] border border-slate-100 rounded-3xl p-7 md:p-8">
+        <div class="flex gap-1 text-coral"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="mt-5 text-lg leading-relaxed text-slate-700">“The 3D design made decisions easy. We knew the cost before construction started, and there were no surprise charges.”</p>
+        <div class="mt-6 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="w-11 h-11 rounded-full object-cover" alt="Client">
+          <div><p class="font-semibold">Somchai P.</p><p class="text-xs text-slate-500">Homeowner · Songkhla</p></div>
+        </div>
+      </article>
+
+      <article class="reveal snap-start min-w-[85%] sm:min-w-[420px] border border-slate-100 rounded-3xl p-7 md:p-8">
+        <div class="flex gap-1 text-skyblue"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="mt-5 text-lg leading-relaxed text-slate-700">“Professional project management. Weekly reports kept our headquarters confident throughout the office fit-out.”</p>
+        <div class="mt-6 flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" class="w-11 h-11 rounded-full object-cover" alt="Client">
+          <div><p class="font-semibold">Amanda L.</p><p class="text-xs text-slate-500">Operations Director</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-white py-16 md:py-24">
+  <div class="max-w-site mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4 reveal">
+      <span class="label text-coral">FAQ</span>
+      <h2 class="section-title text-3xl md:text-5xl mt-3 text-slate">Questions clients ask first</h2>
+      <p class="mt-4 text-slate-600">Still unsure? Ask our AI assistant or message us on LINE.</p>
+      <button onclick="openChat()" class="btn-dark mt-6 px-6 py-3.5 rounded-full font-semibold text-sm"><i class="bi bi-chat-dots mr-2"></i>Ask SiamBuild AI</button>
+    </div>
+
+    <div class="lg:col-span-8 space-y-4">
+      <div class="accordion reveal border border-slate-100 rounded-2xl overflow-hidden">
+        <button class="w-full flex items-center justify-between gap-4 text-left p-5 md:p-6" onclick="toggleAccordion(this)">
+          <span class="font-outfit font-bold text-lg">How much does a renovation cost in Hat Yai?</span>
+          <i class="bi bi-plus-lg accordion-icon text-coral"></i>
+        </button>
+        <div class="accordion-body px-5 md:px-6"><p class="pb-6 text-sm text-slate-600">Most home renovations start around ฿250,000. A full modern renovation commonly ranges from ฿800,000 to ฿2.5M, depending on area, structure, materials and MEP work.</p></div>
+      </div>
+      <div class="accordion reveal border border-slate-100 rounded-2xl overflow-hidden">
+        <button class="w-full flex items-center justify-between gap-4 text-left p-5 md:p-6" onclick="toggleAccordion(this)">
+          <span class="font-outfit font-bold text-lg">Do you handle permits and contractors?</span>
+          <i class="bi bi-plus-lg accordion-icon text-coral"></i>
+        </button>
+        <div class="accordion-body px-5 md:px-6"><p class="pb-6 text-sm text-slate-600">Yes. We coordinate drawings, permits, suppliers, craftsmen and inspections as one accountable team.</p></div>
+      </div>
+      <div class="accordion reveal border border-slate-100 rounded-2xl overflow-hidden">
+        <button class="w-full flex items-center justify-between gap-4 text-left p-5 md:p-6" onclick="toggleAccordion(this)">
+          <span class="font-outfit font-bold text-lg">How long does a typical project take?</span>
+          <i class="bi bi-plus-lg accordion-icon text-coral"></i>
+        </button>
+        <div class="accordion-body px-5 md:px-6"><p class="pb-6 text-sm text-slate-600">A condo renovation may take 4–8 weeks. A café or office fit-out usually takes 8–14 weeks. Custom homes vary by scope.</p></div>
+      </div>
+      <div class="accordion reveal border border-slate-100 rounded-2xl overflow-hidden">
+        <button class="w-full flex items-center justify-between gap-4 text-left p-5 md:p-6" onclick="toggleAccordion(this)">
+          <span class="font-outfit font-bold text-lg">Can I get an estimate before visiting?</span>
+          <i class="bi bi-plus-lg accordion-icon text-coral"></i>
+        </button>
+        <div class="accordion-body px-5 md:px-6"><p class="pb-6 text-sm text-slate-600">Yes. Use the AI estimate tool to share your property type, size, preferred style and budget for an initial range.</p></div>
+      </div>
+      <div class="accordion reveal border border-slate-100 rounded-2xl overflow-hidden">
+        <button class="w-full flex items-center justify-between gap-4 text-left p-5 md:p-6" onclick="toggleAccordion(this)">
+          <span class="font-outfit font-bold text-lg">Do you provide a warranty?</span>
+          <i class="bi bi-plus-lg accordion-icon text-coral"></i>
+        </button>
+        <div class="accordion-body px-5 md:px-6"><p class="pb-6 text-sm text-slate-600">We provide a 12-month workmanship warranty after handover, plus manufacturer warranties on selected materials and equipment.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="bg-white pb-20 md:pb-28">
+  <div class="max-w-site mx-auto px-5 sm:px-8">
+    <div class="reveal relative overflow-hidden rounded-[32px] bg-coral text-white p-8 md:p-14">
+      <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-lime/25"></div>
+      <div class="absolute -bottom-20 -left-10 w-52 h-52 rounded-full bg-skyblue/25"></div>
+      <div class="relative grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <span class="label text-lime">Start today</span>
+          <h2 class="section-title text-3xl md:text-5xl mt-3">Ready to transform your space?</h2>
+          <p class="mt-4 text-white/90 max-w-xl">Tell us about your project and receive a practical AI-assisted estimate—no obligation, no confusing jargon.</p>
+        </div>
+        <div class="lg:col-span-5 flex flex-col gap-3">
+          <button onclick="openAIEstimate()" class="bg-white text-slate font-bold px-7 py-4 rounded-full hover:-translate-y-0.5 transition-transform"><i class="bi bi-stars mr-2 text-coral"></i>Get Free AI Estimate</button>
+          <a href="tel:+6674000000" class="border border-white/50 px-7 py-4 rounded-full font-semibold text-center hover:bg-white/10 transition-colors"><i class="bi bi-telephone mr-2"></i>Call +66 74 000 000</a>
+          <a href="https://line.me" class="bg-lime text-slate px-7 py-4 rounded-full font-bold text-center hover:-translate-y-0.5 transition-transform"><i class="bi bi-line mr-2"></i>Chat on LINE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-slate-100 py-14">
+  <div class="max-w-site mx-auto px-5 sm:px-8 grid md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-xl bg-coral text-white grid place-items-center font-outfit font-extrabold">S</span>
+        <span class="font-outfit font-extrabold text-lg">SiamBuild<span class="text-coral">.</span></span>
+      </div>
+      <p class="text-sm text-slate-600 mt-4">Design-and-build studio creating modern residential and commercial spaces in Hat Yai and Songkhla.</p>
+    </div>
+    <div>
+      <p class="label text-slate-500">Company</p>
+      <div class="mt-4 grid gap-2.5 text-sm text-slate-600">
+        <a href="#services" class="hover:text-coral">Services</a>
+        <a href="#work" class="hover:text-coral">Portfolio</a>
+        <a href="#process" class="hover:text-coral">Process</a>
+        <a href="#faq" class="hover:text-coral">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <p class="label text-slate-500">Contact</p>
+      <div class="mt-4 grid gap-2.5 text-sm text-slate-600">
+        <p><i class="bi bi-geo-alt text-coral mr-2"></i>123 Karnjanavanich Rd, Hat Yai</p>
+        <p><i class="bi bi-telephone text-coral mr-2"></i>+66 74 000 000</p>
+        <p><i class="bi bi-envelope text-coral mr-2"></i>hello@siambuildstudio.example</p>
+      </div>
+    </div>
+    <div>
+      <p class="label text-slate-500">Follow</p>
+      <div class="flex gap-3 mt-4">
+        <a href="#" class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all"><i class="bi bi-line"></i></a>
+        <a href="#" class="w-10 h-10 grid place-items-center rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all"><i class="bi bi-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-site mx-auto px-5 sm:px-8 mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between gap-3 text-xs text-slate-500">
+    <p>© 2026 SiamBuild Studio. All rights reserved.</p>
+    <p>Hat Yai · Songkhla · Thailand</p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE BAR -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur border-t border-slate-100 px-4 py-3">
+  <div class="grid grid-cols-3 gap-2 text-center text-xs font-semibold">
+    <button onclick="openChat()" class="py-3 rounded-xl bg-slate text-white"><i class="bi bi-robot mr-1"></i>AI Chat</button>
+    <a href="https://line.me" class="py-3 rounded-xl bg-lime text-slate"><i class="bi bi-line mr-1"></i>LINE</a>
+    <a href="tel:+6674000000" class="py-3 rounded-xl bg-coral text-white"><i class="bi bi-telephone mr-1"></i>Call</a>
+  </div>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-50 flex items-center gap-[5px]">
+  <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="w-12 h-12 rounded-full bg-white border border-slate-200 shadow-lg text-slate grid place-items-center opacity-0 pointer-events-none transition-all duration-300 hover:border-coral hover:text-coral">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+  <button id="chatToggle" onclick="toggleChat()" class="w-14 h-14 rounded-full bg-coral text-white shadow-xl grid place-items-center text-xl hover:scale-105 transition-transform">
+    <i class="bi bi-chat-heart"></i>
+  </button>
+</div>
+
+<!-- CHATBOT -->
+<div id="chatPanel" class="chat-panel fixed bottom-20 lg:bottom-24 right-4 sm:right-6 z-50 w-[calc(100%-2rem)] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
+  <div class="bg-slate text-white p-5">
+    <div class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-xl bg-coral grid place-items-center"><i class="bi bi-robot"></i></span>
+      <div>
+        <p class="font-outfit font-bold">SiamBuild AI</p>
+        <p class="text-xs text-silver">Online · Replies instantly</p>
+      </div>
+      <button onclick="toggleChat()" class="ml-auto w-9 h-9 grid place-items-center rounded-lg hover:bg-white/10"><i class="bi bi-x-lg"></i></button>
+    </div>
+  </div>
+  <div id="chatMessages" class="h-[320px] overflow-y-auto p-4 space-y-3 bg-slate-50"></div>
+  <div class="p-3 border-t border-slate-100 bg-white">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button onclick="quickReply('I need a renovation estimate')" class="text-xs font-semibold px-3 py-2 rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all">Renovation estimate</button>
+      <button onclick="quickReply('What services do you offer?')" class="text-xs font-semibold px-3 py-2 rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all">Services</button>
+      <button onclick="quickReply('I want to visit your office')" class="text-xs font-semibold px-3 py-2 rounded-full border border-slate-200 hover:border-coral hover:text-coral transition-all">Visit office</button>
+    </div>
+    <form onsubmit="sendMessage(event)" class="flex gap-2">
+      <input id="chatInput" type="text" placeholder="Ask about your project..." class="flex-1 px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-coral">
+      <button class="btn-primary w-12 h-12 rounded-xl grid place-items-center"><i class="bi bi-send"></i></button>
+    </form>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal fixed inset-0 z-[60] bg-slate/60 backdrop-blur-sm grid place-items-center p-4">
+  <div class="modal-panel bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl">
+    <div class="p-6 md:p-8">
+      <div class="flex items-start justify-between">
+        <div>
+          <span id="authBadge" class="tag-lime text-xs">Welcome back</span>
+          <h3 id="authTitle" class="font-outfit font-extrabold text-2xl mt-3">Login to your project</h3>
+          <p id="authSubtitle" class="text-sm text-slate-600 mt-2">Track estimates, drawings and construction updates.</p>
+        </div>
+        <button onclick="closeAuth()" class="w-9 h-9 grid place-items-center rounded-lg hover:bg-slate-50"><i class="bi bi-x-lg"></i></button>
+      </div>
+
+      <form id="authForm" onsubmit="handleAuth(event)" class="mt-6 space-y-4">
+        <div id="nameField" class="hidden">
+          <label class="label text-slate-500">Full name</label>
+          <input required type="text" id="authName" placeholder="Your name" class="mt-1.5 w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-coral">
+        </div>
+        <div>
+          <label class="label text-slate-500">Email</label>
+          <input required type="email" id="authEmail" placeholder="you@email.com" class="mt-1.5 w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-coral">
+        </div>
+        <div>
+          <label class="label text-slate-500">Password</label>
+          <input required type="password" id="authPassword" placeholder="••••••••" class="mt-1.5 w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-coral">
+        </div>
+        <button class="btn-primary w-full py-4 rounded-xl font-bold">Continue</button>
+      </form>
+
+      <p class="text-center text-sm text-slate-600 mt-5">
+        <span id="authSwitchText">New client?</span>
+        <button onclick="switchAuth()" id="authSwitchBtn" class="font-bold text-coral hover:underline">Create account</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- AI ESTIMATE MODAL -->
+<div id="estimateModal" class="modal fixed inset-0 z-[60] bg-slate/60 backdrop-blur-sm grid place-items-center p-4">
+  <div class="modal-panel bg-white w-full max-w-lg rounded-3xl p-6 md:p-8 shadow-2xl">
+    <div class="flex items-start justify-between">
+      <div>
+        <span class="tag-lime text-xs">Free estimate</span>
+        <h3 class="font-outfit font-extrabold text-2xl mt-3">Get your AI project estimate</h3>
+      </div>
+      <button onclick="closeEstimate()" class="w-9 h-9 grid place-items-center rounded-lg hover:bg-slate-50"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <form onsubmit="calculateEstimate(event)" class="mt-6 space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="label text-slate-500">Project type</label>
+          <select id="estType" class="mt-1.5 w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-coral">
+            <option value="home">Home renovation</option>
+            <option value="commercial">Café / office / retail</option>
+            <option value="construction">New construction</option>
+          </select>
+        </div>
+        <div>
+          <label class="label text-slate-500">Area (sqm)</label>
+          <input id="estArea" type="number" min="10" value="80" class="mt-1.5 w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-coral">
+        </div>
+      </div>
+      <div>
+        <label class="label text-slate-500">Finish level</label>
+        <select id="estLevel" class="mt-1.5 w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-coral">
+          <option value="6500">Standard</option>
+          <option value="11000" selected>Premium</option>
+          <option value="17000">Luxury</option>
+        </select>
+      </div>
+      <button class="btn-primary w-full py-4 rounded-xl font-bold"><i class="bi bi-stars mr-2"></i>Calculate Estimate</button>
+    </form>
+    <div id="estimateResult" class="hidden mt-6 rounded-2xl bg-slate text-white p-5">
+      <p class="label text-lime">Estimated investment</p>
+      <p id="estimateTHB" class="font-outfit font-extrabold text-3xl mt-2"></p>
+      <p id="estimateUSD" class="text-sm text-silver mt-1"></p>
+      <p class="text-xs text-silver mt-3">Preliminary range only. Final pricing depends on site condition, materials and scope.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Reveal animation
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Back to top
+const hero = document.querySelector('section');
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('backToTop');
+  if(window.scrollY > hero.offsetHeight){ btn.classList.remove('opacity-0','pointer-events-none'); }
+  else{ btn.classList.add('opacity-0','pointer-events-none'); }
+});
+
+// Accordion
+function toggleAccordion(btn){
+  const item=btn.parentElement;
+  document.querySelectorAll('.accordion').forEach(a=>{ if(a!==item) a.classList.remove('open'); });
+  item.classList.toggle('open');
+}
+
+// Reviews
+function scrollReviews(dir){
+  document.getElementById('reviewTrack').scrollBy({left:dir*440,behavior:'smooth'});
+}
+
+// Auth modal
+let authMode='login';
+function openAuth(mode){ authMode=mode; setAuthUI(); document.getElementById('authModal').classList.add('active'); document.body.style.overflow='hidden'; }
+function closeAuth(){ document.getElementById('authModal').classList.remove('active'); document.body.style.overflow=''; }
+function switchAuth(){ authMode=authMode==='login'?'register':'login'; setAuthUI(); }
+function setAuthUI(){
+  const isLogin=authMode==='login';
+  document.getElementById('authBadge').textContent=isLogin?'Welcome back':'Create account';
+  document.getElementById('authTitle').textContent=isLogin?'Login to your project':'Create your client account';
+  document.getElementById('authSubtitle').textContent=isLogin?'Track estimates, drawings and construction updates.':'Save estimates and follow your project in one place.';
+  document.getElementById('nameField').classList.toggle('hidden',isLogin);
+  document.getElementById('authSwitchText').textContent=isLogin?'New client?':'Already have an account?';
+  document.getElementById('authSwitchBtn').textContent=isLogin?'Create account':'Login';
+}
+function handleAuth(e){
+  e.preventDefault();
+  const email=document.getElementById('authEmail').value;
+  localStorage.setItem('siam_user',email);
+  closeAuth();
+  showToast(authMode==='login'?'Welcome back!':'Account created successfully.');
+}
+
+// Estimate
+function openAIEstimate(){ document.getElementById('estimateModal').classList.add('active'); document.body.style.overflow='hidden'; }
+function closeEstimate(){ document.getElementById('estimateModal').classList.remove('active'); document.body.style.overflow=''; }
+function calculateEstimate(e){
+  e.preventDefault();
+  const area=+document.getElementById('estArea').value||0;
+  const rate=+document.getElementById('estLevel').value;
+  const type=document.getElementById('estType').value;
+  const multiplier=type==='construction'?1.8:type==='commercial'?1.25:1;
+  const low=Math.round(area*rate*.85*multiplier/1000)*1000;
+  const high=Math.round(area*rate*1.2*multiplier/1000)*1000;
+  document.getElementById('estimateTHB').textContent=`฿${low.toLocaleString()} – ฿${high.toLocaleString()}`;
+  document.getElementById('estimateUSD').textContent=`Approx. US$${Math.round(low/34).toLocaleString()} – US$${Math.round(high/34).toLocaleString()}`;
+  document.getElementById('estimateResult').classList.remove('hidden');
+}
+
+// Chatbot
+const chatPanel=document.getElementById('chatPanel');
+let chatOpened=false;
+function toggleChat(){
+  chatPanel.classList.toggle('active');
+  if(chatPanel.classList.contains('active') && !chatOpened){
+    chatOpened=true;
+    botSay("Hi! I’m SiamBuild AI. I can help with renovation budgets, timelines, services or booking a site visit. What are you planning?");
+  }
+}
+function openChat(){ if(!chatPanel.classList.contains('active')) toggleChat(); }
+function addUser(text){
+  const wrap=document.createElement('div');
+  wrap.className='flex justify-end';
+  wrap.innerHTML=`<div class="bg-coral text-white text-sm px-4 py-3 rounded-2xl rounded-br-md max-w-[80%]">${text}</div>`;
+  document.getElementById('chatMessages').appendChild(wrap);
+  scrollChat();
+}
+function botSay(text){
+  const wrap=document.createElement('div');
+  wrap.className='flex gap-2 items-end';
+  wrap.innerHTML=`<span class="w-8 h-8 rounded-lg bg-slate text-white grid place-items-center text-xs shrink-0"><i class="bi bi-robot"></i></span>
+  <div class="bg-white border border-slate-100 text-sm text-slate-700 px-4 py-3 rounded-2xl rounded-bl-md max-w-[80%]">${text}</div>`;
+  document.getElementById('chatMessages').appendChild(wrap);
+  scrollChat();
+}
+function botTyping(){
+  const wrap=document.createElement('div');
+  wrap.id='typingIndicator';
+  wrap.className='flex gap-2 items-end';
+  wrap.innerHTML=`<span class="w-8 h-8 rounded-lg bg-slate text-white grid place-items-center text-xs shrink-0"><i class="bi bi-robot"></i></span>
+  <div class="bg-white border border-slate-100 px-4 py-3 rounded-2xl rounded-bl-md"><span class="typing flex gap-1"><span></span><span></span><span></span></span></div>`;
+  document.getElementById('chatMessages').appendChild(wrap);
+  scrollChat();
+}
+function scrollChat(){ const box=document.getElementById('chatMessages'); box.scrollTop=box.scrollHeight; }
+function quickReply(text){ document.getElementById('chatInput').value=text; sendMessage(new Event('submit')); }
+function sendMessage(e){
+  e.preventDefault();
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text) return;
+  addUser(text); input.value='';
+  botTyping();
+  setTimeout(()=>{
+    document.getElementById('typingIndicator')?.remove();
+    botSay(getBotAnswer(text));
+  },900);
+}
+function getBotAnswer(q){
+  q=q.toLowerCase();
+  if(q.includes('estimate')||q.includes('price')||q.includes('cost')||q.includes('budget')) return 'For an initial estimate, tell me your property type, approximate size in sqm and preferred finish level. Home renovations usually start from ฿250K; commercial fit-outs from ฿400K.';
+  if(q.includes('service')) return 'We provide home renovation, interior design, commercial fit-out, new construction, custom furniture and project management across Hat Yai and Songkhla.';
+  if(q.includes('visit')||q.includes('office')||q.includes('meeting')) return 'Our studio is at 123 Karnjanavanich Road, Hat Yai. We are open Monday–Saturday, 9:00–18:00. Would you like to book a consultation?';
+  if(q.includes('time')||q.includes('long')||q.includes('timeline')) return 'Condo renovations often take 4–8 weeks. Café, office and retail fit-outs usually take 8–14 weeks, depending on permits and custom work.';
+  if(q.includes('line')) return 'You can message our team on LINE for photos, quotations and site-visit scheduling. Tap the LINE button in the mobile bar or final CTA.';
+  return 'Thanks! I can help with renovation estimates, timelines, design services, construction scope or arranging a consultation. Which would you like to explore?';
+}
+
+// Toast
+function showToast(msg){
+  const t=document.createElement('div');
+  t.className='fixed top-20 left-1/2 -translate-x-1/2 z-[70] bg-slate text-white text-sm font-semibold px-5 py-3 rounded-full shadow-xl';
+  t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2600);
+}
+
+// Close modals on backdrop
+document.querySelectorAll('.modal').forEach(m=>{
+  m.addEventListener('click',e=>{ if(e.target===m){ m.classList.remove('active'); document.body.style.overflow=''; }});
+});
+</script>
+</body>
+</html>
