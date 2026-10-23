@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renova Studio — Home Renovation & Interior Design in Bangkok | Free AI Price Estimate</title>
+<meta name="description" content="Renova Studio is Bangkok's trusted renovation & interior design agency. 480+ projects, 4.9/5 rating, 12 years of experience. Get a free AI estimate in 60 seconds.">
+<meta name="keywords" content="renovation bangkok, interior design thailand, home renovation, condo renovation, kitchen remodel, bathroom renovation, free estimate">
+<meta property="og:title" content="Renova Studio — Renovate Smarter with AI-Powered Estimates">
+<meta property="og:description" content="480+ completed projects across Bangkok. Free AI price estimate in 60 seconds.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        coral: '#F75A38', lime: '#C4E864', sky2: '#7CA4F8',
+        slate2: '#222426', silver2: '#A4A8B0', borderdark: '#34363A'
+      },
+      fontFamily: {
+        outfit: ['Outfit','sans-serif'],
+        jakarta: ['"Plus Jakarta Sans"','sans-serif']
+      }
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Renova Studio",
+  "description": "Bangkok-based home renovation and interior design agency offering AI-powered free estimates, fixed-price packages and 5-year workmanship warranty.",
+  "url": "https://renova.studio",
+  "telephone": "+66-2-123-4567",
+  "address": { "@type": "PostalAddress", "streetAddress": "88 Sukhumvit Rd", "addressLocality": "Bangkok", "postalCode": "10110", "addressCountry": "TH" },
+  "areaServed": "Bangkok Metropolitan Region",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1287" },
+  "sameAs": ["https://line.me/R/ti/p/@renovastudio"]
+}
+</script>
+<style>
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #222426; }
+  h1,h2,h3,.font-display { font-family: 'Outfit', sans-serif; }
+
+  .hero-title { font-size: clamp(2.4rem, 6vw, 3.75rem); line-height: .98; font-weight: 800; letter-spacing: -0.03em; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 1.85rem); line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; }
+  .label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .stat-large { font-family:'Outfit',sans-serif; font-size: clamp(2rem,4vw,2.75rem); font-weight: 800; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: .1s } .reveal-d2 { transition-delay: .2s } .reveal-d3 { transition-delay: .3s }
+
+  /* Buttons */
+  .btn-primary { position: relative; overflow: hidden; }
+  .btn-primary::after { content:''; position:absolute; top:0; left:-80%; width:50%; height:100%;
+    background: linear-gradient(105deg, transparent, rgba(255,255,255,.45), transparent);
+    transform: skewX(-20deg); transition: left .6s ease; }
+  .btn-primary:hover::after { left: 130%; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(247,90,56,.55); }
+  .btn-primary { transition: transform .3s ease, box-shadow .3s ease; }
+
+  .lift { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }
+  .lift:hover { transform: translateY(-6px); box-shadow: 0 18px 40px -14px rgba(34,36,38,.18); }
+
+  /* Cards */
+  .dash-card { background:#222426; border:1px solid #34363A; border-radius:14px; color:#fff; }
+  .tag-lime { background:#C4E864; color:#222426; font-weight:700; border-radius:20px; padding:4px 14px; font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
+
+  /* Chat panel */
+  #chatPanel { transform-origin: bottom right; transition: opacity .35s cubic-bezier(.22,1,.36,1), transform .35s cubic-bezier(.22,1,.36,1); }
+  #chatPanel.hidden-panel { opacity:0; transform: translateY(16px) scale(.96); pointer-events:none; }
+  .typing-dot { width:6px; height:6px; border-radius:50%; background:#A4A8B0; animation: blink 1.2s infinite; }
+  .typing-dot:nth-child(2){ animation-delay:.2s } .typing-dot:nth-child(3){ animation-delay:.4s }
+  @keyframes blink { 0%,80%,100%{opacity:.25} 40%{opacity:1} }
+
+  /* Modal */
+  #authModal { transition: opacity .3s ease; }
+  #authModal .modal-box { transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .35s ease; }
+  #authModal.hidden-modal { opacity:0; pointer-events:none; }
+  #authModal.hidden-modal .modal-box { transform: translateY(24px) scale(.97); opacity:0; }
+
+  /* Carousel */
+  .no-scrollbar::-webkit-scrollbar { display:none } .no-scrollbar { scrollbar-width:none; }
+  .snap-row { scroll-snap-type: x mandatory; } .snap-row > * { scroll-snap-align: start; }
+
+  /* FAQ */
+  .faq-body { max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.22,1,.36,1); }
+  .faq-item.open .faq-body { max-height:220px; }
+  .faq-item.open .faq-chev { transform: rotate(180deg); }
+  .faq-chev { transition: transform .3s ease; }
+
+  /* Marquee trust logos */
+  @keyframes marquee { from { transform: translateX(0)} to { transform: translateX(-50%)} }
+  .marquee-track { animation: marquee 28s linear infinite; }
+
+  /* Toast */
+  #toast { transition: transform .4s cubic-bezier(.22,1,.36,1), opacity .4s; }
+
+  /* Header state */
+  #siteHeader { transition: box-shadow .3s ease, background .3s ease; }
+  #siteHeader.scrolled { box-shadow: 0 4px 24px -8px rgba(34,36,38,.12); }
+
+  /* Progress bar on portfolio filter */
+  .filter-btn.active { background:#222426; color:#fff; }
+
+  @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .floaty { animation: floaty 5s ease-in-out infinite; }
+
+  #backTop { transition: opacity .3s ease, transform .3s ease; }
+  #backTop.hide { opacity:0; pointer-events:none; transform: translateY(8px); }
+</style>
+</head>
+<body class="bg-white text-slate2 antialiased pb-16 lg:pb-0">
+
+<!-- ============ HEADER ============ -->
+<header id="siteHeader" class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 h-16 lg:h-20 flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-2.5 shrink-0">
+      <span class="w-9 h-9 rounded-xl bg-coral grid place-items-center text-white"><i class="fa-solid fa-house-chimney-window text-sm"></i></span>
+      <span class="font-display font-800 font-bold text-lg tracking-tight">Renova<span class="text-coral">.</span>Studio</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate2/80">
+      <a href="#services" class="hover:text-coral transition">Services</a>
+      <a href="#portfolio" class="hover:text-coral transition">Portfolio</a>
+      <a href="#process" class="hover:text-coral transition">Process</a>
+      <a href="#reviews" class="hover:text-coral transition">Reviews</a>
+      <a href="#faq" class="hover:text-coral transition">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button onclick="openAuth('login')" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-full border border-slate2/15 hover:border-slate2/40 transition">
+        <i class="fa-regular fa-user text-xs"></i> Log in
+      </button>
+      <a href="#estimate" class="btn-primary inline-flex items-center gap-2 bg-coral text-white text-sm font-bold px-5 py-2.5 rounded-full">
+        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Free AI Estimate
+      </a>
+      <button id="navBurger" class="lg:hidden w-10 h-10 grid place-items-center rounded-full border border-slate2/15">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-slate2/10 bg-white">
+    <div class="px-5 py-4 flex flex-col gap-1 text-sm font-semibold">
+      <a href="#services" class="py-2.5 mobile-link">Services</a>
+      <a href="#portfolio" class="py-2.5 mobile-link">Portfolio</a>
+      <a href="#process" class="py-2.5 mobile-link">Process</a>
+      <a href="#reviews" class="py-2.5 mobile-link">Reviews</a>
+      <a href="#faq" class="py-2.5 mobile-link">FAQ</a>
+      <button onclick="openAuth('login')" class="text-left py-2.5 text-coral mobile-link">Log in / Register</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ 1. HERO ============ -->
+<section id="hero" class="pt-28 lg:pt-40 pb-14 lg:pb-20 bg-white overflow-hidden">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+    <!-- Left zone -->
+    <div class="lg:col-span-6 reveal">
+      <div class="inline-flex items-center gap-2 bg-lime/40 border border-lime rounded-full pl-1.5 pr-4 py-1.5 mb-6">
+        <span class="w-6 h-6 rounded-full bg-lime grid place-items-center"><i class="fa-solid fa-location-dot text-[10px] text-slate2"></i></span>
+        <span class="label !text-slate2">Bangkok & Metropolitan Area</span>
+      </div>
+      <h1 class="hero-title">Renovate your home <span class="text-coral">without</span> the headache.</h1>
+      <p class="mt-5 text-[15px] lg:text-base leading-relaxed text-slate2/70 max-w-xl">
+        Renova Studio is a Bangkok-based renovation & interior design agency. Fixed-price packages, a dedicated project manager, and an AI estimate in 60 seconds — so you know the cost before you commit.
+      </p>
+      <div class="mt-7 flex flex-wrap items-center gap-3.5">
+        <a href="#estimate" class="btn-primary inline-flex items-center gap-2.5 bg-coral text-white font-bold px-7 py-4 rounded-full text-[15px]">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Get Free AI Estimate
+        </a>
+        <a href="#portfolio" class="inline-flex items-center gap-2.5 border-2 border-slate2 font-bold px-7 py-[14px] rounded-full text-[15px] hover:bg-slate2 hover:text-white transition">
+          <i class="fa-regular fa-images text-coral"></i> View Our Work
+        </a>
+      </div>
+      <!-- Trust micro-proof -->
+      <div class="mt-8 flex items-center gap-4">
+        <div class="flex -space-x-2.5">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=100&auto=format&fit=crop" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="client">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=100&auto=format&fit=crop" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="client">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" class="w-9 h-9 rounded-full border-2 border-white object-cover" alt="client">
+          <span class="w-9 h-9 rounded-full border-2 border-white bg-slate2 text-white text-[10px] font-bold grid place-items-center">1.2k</span>
+        </div>
+        <div class="text-xs leading-snug">
+          <div class="text-coral tracking-tight"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <b class="text-slate2">4.9/5</b></div>
+          <span class="text-slate2/60">from 1,287 verified reviews</span>
+        </div>
+      </div>
+    </div>
+    <!-- Right zone -->
+    <div class="lg:col-span-6 relative reveal reveal-d1">
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate2/20">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="Renovated modern home in Bangkok" class="w-full h-[340px] sm:h-[420px] lg:h-[500px] object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate2/50 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4 sm:right-auto dash-card px-5 py-4 flex items-center gap-4">
+          <span class="w-11 h-11 rounded-xl bg-lime grid place-items-center shrink-0"><i class="fa-solid fa-clock-rotate-left text-slate2"></i></span>
+          <div>
+            <p class="text-sm font-bold">Thonglor Townhouse</p>
+            <p class="text-xs text-silver2 mt-0.5">Full renovation · completed in 45 days</p>
+          </div>
+        </div>
+      </div>
+      <!-- Floating metric card -->
+      <div class="floaty hidden sm:block absolute -top-5 -right-2 lg:-right-6 dash-card px-5 py-4 shadow-xl">
+        <p class="label !text-lime">Avg. savings vs market</p>
+        <p class="stat-large !text-3xl mt-1">18<span class="text-coral">%</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. TRUST BAR ============ -->
+<section class="py-10 border-y border-slate2/10 bg-white">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="reveal text-center lg:text-left">
+      <p class="stat-large text-coral"><span class="counter" data-target="480">0</span>+</p>
+      <p class="label text-slate2/50 mt-1">Projects completed</p>
+    </div>
+    <div class="reveal reveal-d1 text-center lg:text-left">
+      <p class="stat-large text-slate2"><span class="counter" data-target="4.9" data-decimal="1">0</span><span class="text-coral text-2xl align-top">/5</span></p>
+      <p class="label text-slate2/50 mt-1">Average rating</p>
+    </div>
+    <div class="reveal reveal-d2 text-center lg:text-left">
+      <p class="stat-large text-sky2"><span class="counter" data-target="12">0</span> yrs</p>
+      <p class="label text-slate2/50 mt-1">Industry experience</p>
+    </div>
+    <div class="reveal reveal-d3 text-center lg:text-left">
+      <p class="stat-large text-slate2"><span class="counter" data-target="5">0</span> yr</p>
+      <p class="label text-slate2/50 mt-1">Workmanship warranty</p>
+    </div>
+  </div>
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 mt-8 overflow-hidden">
+    <div class="flex whitespace-nowrap marquee-track gap-12 text-slate2/30 text-sm font-bold tracking-wide w-max">
+      <span>SANSIRI</span><span>AP THAILAND</span><span>ANANDA</span><span>SC ASSET</span><span>MAJOR DEVELOPMENT</span><span>LPN</span><span>SANSIRI</span><span>AP THAILAND</span><span>ANANDA</span><span>SC ASSET</span><span>MAJOR DEVELOPMENT</span><span>LPN</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. SERVICES ============ -->
+<section id="services" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-12 reveal">
+      <div>
+        <span class="tag-lime inline-block mb-4">What we do</span>
+        <h2 class="section-title">Fixed-price renovation packages,<br class="hidden sm:block"> zero surprise costs.</h2>
+      </div>
+      <p class="text-sm text-slate2/60 max-w-sm leading-relaxed">Every package includes materials, labor, project management and a 5-year warranty — quoted upfront by our AI estimator.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- card -->
+      <div class="lift reveal rounded-2xl border border-slate2/10 p-7 bg-white relative overflow-hidden group">
+        <span class="absolute top-0 left-0 w-full h-1.5 bg-coral"></span>
+        <span class="w-12 h-12 rounded-2xl bg-coral/10 text-coral grid place-items-center text-lg mb-5 group-hover:bg-coral group-hover:text-white transition"><i class="fa-solid fa-sink"></i></span>
+        <h3 class="card-title !text-lg font-semibold mb-2">Kitchen Remodel</h3>
+        <p class="text-[13px] text-slate2/60 leading-relaxed mb-5">Countertops, cabinets, backsplash and appliances — installed in as little as 3 weeks.</p>
+        <div class="flex items-center justify-between pt-4 border-t border-slate2/10">
+          <span class="text-xs text-slate2/50">From</span>
+          <span class="font-display font-bold text-lg">฿149,000</span>
+        </div>
+      </div>
+      <div class="lift reveal reveal-d1 rounded-2xl border border-slate2/10 p-7 bg-white relative overflow-hidden group">
+        <span class="absolute top-0 left-0 w-full h-1.5 bg-sky2"></span>
+        <span class="w-12 h-12 rounded-2xl bg-sky2/10 text-sky2 grid place-items-center text-lg mb-5 group-hover:bg-sky2 group-hover:text-white transition"><i class="fa-solid fa-shower"></i></span>
+        <h3 class="card-title !text-lg font-semibold mb-2">Bathroom Renovation</h3>
+        <p class="text-[13px] text-slate2/60 leading-relaxed mb-5">Waterproofing, tiling and fixtures with leak-proof guarantees on every job.</p>
+        <div class="flex items-center justify-between pt-4 border-t border-slate2/10">
+          <span class="text-xs text-slate2/50">From</span>
+          <span class="font-display font-bold text-lg">฿89,000</span>
+        </div>
+      </div>
+      <div class="lift reveal reveal-d2 rounded-2xl border border-slate2/10 p-7 bg-white relative overflow-hidden group">
+        <span class="absolute top-0 left-0 w-full h-1.5 bg-lime"></span>
+        <span class="w-12 h-12 rounded-2xl bg-lime/30 text-slate2 grid place-items-center text-lg mb-5 group-hover:bg-lime transition"><i class="fa-solid fa-couch"></i></span>
+        <h3 class="card-title !text-lg font-semibold mb-2">Full Home Renovation</h3>
+        <p class="text-[13px] text-slate2/60 leading-relaxed mb-5">End-to-end transformation: layout, systems, finishes — one contract, one team.</p>
+        <div class="flex items-center justify-between pt-4 border-t border-slate2/10">
+          <span class="text-xs text-slate2/50">From</span>
+          <span class="font-display font-bold text-lg">฿690,000</span>
+        </div>
+      </div>
+      <div class="lift reveal rounded-2xl border border-slate2/10 p-7 bg-white relative overflow-hidden group">
+        <span class="absolute top-0 left-0 w-full h-1.5 bg-sky2"></span>
+        <span class="w-12 h-12 rounded-2xl bg-sky2/10 text-sky2 grid place-items-center text-lg mb-5 group-hover:bg-sky2 group-hover:text-white transition"><i class="fa-solid fa-building"></i></span>
+        <h3 class="card-title !text-lg font-semibold mb-2">Condo Fit-Out</h3>
+        <p class="text-[13px] text-slate2/60 leading-relaxed mb-5">Juristic-approved renovation for condos of every size, completed while you live elsewhere.</p>
+        <div class="flex items-center justify-between pt-4 border-t border-slate2/10">
+          <span class="text-xs text-slate2/50">From</span>
+          <span class="font-display font-bold text-lg">฿219,000</span>
+        </div>
+      </div>
+      <div class="lift reveal reveal-d1 rounded-2xl border border-slate2/10 p-7 bg-white relative overflow-hidden group">
+        <span class="absolute top-0 left-0 w-full h-1.5 bg-coral"></span>
+        <span class="w-12 h-12 rounded-2xl bg-coral/10 text-coral grid place-items-center text-lg mb-5 group-hover:bg-coral group-hover:text-white transition"><i class="fa-solid fa-pen-ruler"></i></span>
+        <h3 class="card-title !text-lg font-semibold mb-2">Interior Design</h3>
+        <p class="text-[13px] text-slate2/60 leading-relaxed mb-5">3D renders, material boards and lighting plans by our in-house design team.</p>
+        <div class="flex items-center justify-between pt-4 border-t border-slate2/10">
+          <span class="text-xs text-slate2/50">From</span>
+          <span class="font-display font-bold text-lg">฿45,000</span>
+        </div>
+      </div>
+      <div class="lift reveal reveal-d2 rounded-2xl border border-slate2/10 p-7 bg-white relative overflow-hidden group">
+        <span class="absolute top-0 left-0 w-full h-1.5 bg-lime"></span>
+        <span class="w-12 h-12 rounded-2xl bg-lime/30 text-slate2 grid place-items-center text-lg mb-5 group-hover:bg-lime transition"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+        <h3 class="card-title !text-lg font-semibold mb-2">Repair & Handyman</h3>
+        <p class="text-[13px] text-slate2/60 leading-relaxed mb-5">Same-week fixes: leaks, wiring, doors and more — billed by the job, never by the hour.</p>
+        <div class="flex items-center justify-between pt-4 border-t border-slate2/10">
+          <span class="text-xs text-slate2/50">From</span>
+          <span class="font-display font-bold text-lg">฿990</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. PORTFOLIO ============ -->
+<section id="portfolio" class="py-20 lg:py-28 bg-[#FAFAF8]">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10 reveal">
+      <div>
+        <span class="tag-lime inline-block mb-4">Latest work</span>
+        <h2 class="section-title">480+ projects across Bangkok.<br class="hidden sm:block"> Here are the recent ones.</h2>
+      </div>
+      <div class="flex flex-wrap gap-2" id="filterBar">
+        <button data-filter="all" class="filter-btn active text-xs font-bold px-4 py-2 rounded-full border border-slate2/15 transition">All</button>
+        <button data-filter="kitchen" class="filter-btn text-xs font-bold px-4 py-2 rounded-full border border-slate2/15 transition">Kitchen</button>
+        <button data-filter="bathroom" class="filter-btn text-xs font-bold px-4 py-2 rounded-full border border-slate2/15 transition">Bathroom</button>
+        <button data-filter="living" class="filter-btn text-xs font-bold px-4 py-2 rounded-full border border-slate2/15 transition">Living</button>
+        <button data-filter="exterior" class="filter-btn text-xs font-bold px-4 py-2 rounded-full border border-slate2/15 transition">Exterior</button>
+      </div>
+    </div>
+    <div id="portfolioGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="#" class="portfolio-item lift reveal group relative rounded-2xl overflow-hidden aspect-[4/3] block" data-cat="exterior">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Thonglor townhouse">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate2/80 via-slate2/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div class="absolute bottom-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+          <span class="tag-lime">Exterior</span>
+          <p class="text-white font-display font-bold mt-2">Thonglor Townhouse</p>
+          <p class="text-white/70 text-xs mt-0.5">Full renovation · ฿2.4M · 45 days</p>
+        </div>
+      </a>
+      <a href="#" class="portfolio-item lift reveal reveal-d1 group relative rounded-2xl overflow-hidden aspect-[4/3] block" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Ekkamai kitchen">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate2/80 via-slate2/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div class="absolute bottom-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+          <span class="tag-lime">Kitchen</span>
+          <p class="text-white font-display font-bold mt-2">Ekkamai Modern Kitchen</p>
+          <p class="text-white/70 text-xs mt-0.5">Remodel · ฿380K · 21 days</p>
+        </div>
+      </a>
+      <a href="#" class="portfolio-item lift reveal reveal-d2 group relative rounded-2xl overflow-hidden aspect-[4/3] block" data-cat="bathroom">
+        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Ari bathroom">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate2/80 via-slate2/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div class="absolute bottom-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+          <span class="tag-lime">Bathroom</span>
+          <p class="text-white font-display font-bold mt-2">Ari Spa Bathroom</p>
+          <p class="text-white/70 text-xs mt-0.5">Renovation · ฿210K · 14 days</p>
+        </div>
+      </a>
+      <a href="#" class="portfolio-item lift reveal group relative rounded-2xl overflow-hidden aspect-[4/3] block" data-cat="living">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Phrom Phong living">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate2/80 via-slate2/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div class="absolute bottom-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+          <span class="tag-lime">Living</span>
+          <p class="text-white font-display font-bold mt-2">Phrom Phong Living</p>
+          <p class="text-white/70 text-xs mt-0.5">Interior design · ฿560K · 30 days</p>
+        </div>
+      </a>
+      <a href="#" class="portfolio-item lift reveal reveal-d1 group relative rounded-2xl overflow-hidden aspect-[4/3] block" data-cat="kitchen">
+        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="On Nut kitchen">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate2/80 via-slate2/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div class="absolute bottom-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+          <span class="tag-lime">Kitchen</span>
+          <p class="text-white font-display font-bold mt-2">On Nut Family Kitchen</p>
+          <p class="text-white/70 text-xs mt-0.5">Remodel · ฿295K · 18 days</p>
+        </div>
+      </a>
+      <a href="#" class="portfolio-item lift reveal reveal-d2 group relative rounded-2xl overflow-hidden aspect-[4/3] block" data-cat="exterior">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Bang Na facade">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate2/80 via-slate2/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div class="absolute bottom-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+          <span class="tag-lime">Exterior</span>
+          <p class="text-white font-display font-bold mt-2">Bang Na Facade Revamp</p>
+          <p class="text-white/70 text-xs mt-0.5">Exterior · ฿890K · 35 days</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. PROCESS ============ -->
+<section id="process" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <span class="tag-lime inline-block mb-4">How it works</span>
+      <h2 class="section-title">From first message to keys in hand<br class="hidden sm:block"> in 4 simple steps.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="reveal relative rounded-2xl p-7 dash-card lift">
+        <span class="font-display font-800 text-5xl font-bold text-coral/90">01</span>
+        <span class="w-11 h-11 rounded-xl bg-coral/20 text-coral grid place-items-center my-5"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <h3 class="card-title !text-lg mb-2">AI Estimate</h3>
+        <p class="text-[13px] text-silver2 leading-relaxed">Answer 5 quick questions and get a ballpark price in 60 seconds — no phone call needed.</p>
+      </div>
+      <div class="reveal reveal-d1 relative rounded-2xl p-7 dash-card lift">
+        <span class="font-display text-5xl font-bold text-sky2/90">02</span>
+        <span class="w-11 h-11 rounded-xl bg-sky2/20 text-sky2 grid place-items-center my-5"><i class="fa-solid fa-ruler-combined"></i></span>
+        <h3 class="card-title !text-lg mb-2">Site Survey</h3>
+        <p class="text-[13px] text-silver2 leading-relaxed">Our engineer visits within 48 hours and locks in a fixed, itemized quote.</p>
+      </div>
+      <div class="reveal reveal-d2 relative rounded-2xl p-7 dash-card lift">
+        <span class="font-display text-5xl font-bold text-lime/90">03</span>
+        <span class="w-11 h-11 rounded-xl bg-lime/20 text-lime grid place-items-center my-5"><i class="fa-solid fa-hammer"></i></span>
+        <h3 class="card-title !text-lg mb-2">Build & Track</h3>
+        <p class="text-[13px] text-silver2 leading-relaxed">Daily photo updates in your client portal. One project manager, one point of contact.</p>
+      </div>
+      <div class="reveal reveal-d3 relative rounded-2xl p-7 dash-card lift">
+        <span class="font-display text-5xl font-bold text-white/90">04</span>
+        <span class="w-11 h-11 rounded-xl bg-white/10 text-white grid place-items-center my-5"><i class="fa-solid fa-key"></i></span>
+        <h3 class="card-title !text-lg mb-2">Handover</h3>
+        <p class="text-[13px] text-silver2 leading-relaxed">Snag-list walkthrough, deep clean, then your 5-year workmanship warranty begins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. REVIEWS ============ -->
+<section id="reviews" class="py-20 lg:py-28 bg-[#FAFAF8] overflow-hidden">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="flex items-end justify-between gap-4 mb-10 reveal">
+      <div>
+        <span class="tag-lime inline-block mb-4">Client love</span>
+        <h2 class="section-title">1,287 verified reviews.<br class="hidden sm:block"> Here's why they chose us.</h2>
+      </div>
+      <div class="hidden sm:flex gap-2">
+        <button id="revPrev" class="w-11 h-11 rounded-full border border-slate2/15 grid place-items-center hover:bg-slate2 hover:text-white transition"><i class="fa-solid fa-arrow-left text-xs"></i></button>
+        <button id="revNext" class="w-11 h-11 rounded-full bg-coral text-white grid place-items-center hover:bg-slate2 transition"><i class="fa-solid fa-arrow-right text-xs"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 reveal reveal-d1">
+    <div id="reviewTrack" class="snap-row no-scrollbar flex gap-6 overflow-x-auto pb-2">
+      <!-- review card -->
+      <div class="shrink-0 w-[86%] sm:w-[47%] lg:w-[31.5%] rounded-2xl bg-white border border-slate2/10 p-7 lift">
+        <div class="text-coral text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-sm leading-relaxed text-slate2/80 mb-6">"The AI estimate was within 4% of the final price. Unheard of in this industry. Our kitchen was done in 3 weeks exactly as promised."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover" alt="">
+          <div><p class="text-sm font-bold">Nattawut P.</p><p class="text-xs text-slate2/50">Kitchen Remodel · Ekkamai</p></div>
+        </div>
+      </div>
+      <div class="shrink-0 w-[86%] sm:w-[47%] lg:w-[31.5%] rounded-2xl bg-white border border-slate2/10 p-7 lift">
+        <div class="text-coral text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-sm leading-relaxed text-slate2/80 mb-6">"Daily photo updates meant I never had to take a day off work to check the site. The PM answered on LINE within minutes, every time."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover" alt="">
+          <div><p class="text-sm font-bold">Priya S.</p><p class="text-xs text-slate2/50">Condo Fit-Out · Phrom Phong</p></div>
+        </div>
+      </div>
+      <div class="shrink-0 w-[86%] sm:w-[47%] lg:w-[31.5%] rounded-2xl bg-white border border-slate2/10 p-7 lift">
+        <div class="text-coral text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-sm leading-relaxed text-slate2/80 mb-6">"Full townhouse renovation while we lived abroad. Fixed quote, zero variation orders, handover two days early. Genuinely impressive."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover" alt="">
+          <div><p class="text-sm font-bold">Marcus L.</p><p class="text-xs text-slate2/50">Full Renovation · Thonglor</p></div>
+        </div>
+      </div>
+      <div class="shrink-0 w-[86%] sm:w-[47%] lg:w-[31.5%] rounded-2xl bg-white border border-slate2/10 p-7 lift">
+        <div class="text-coral text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="text-sm leading-relaxed text-slate2/80 mb-6">"They spotted a waterproofing issue two other contractors missed — and it was already included in the quote. That's honesty you pay for once."</p>
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover" alt="">
+          <div><p class="text-sm font-bold">Kanya W.</p><p class="text-xs text-slate2/50">Bathroom · Ari</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. FAQ ============ -->
+<section id="faq" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4 reveal">
+      <span class="tag-lime inline-block mb-4">Questions</span>
+      <h2 class="section-title">Everything people ask<br class="hidden sm:block"> before they call.</h2>
+      <p class="text-sm text-slate2/60 mt-4 leading-relaxed">Can't find your answer? Our AI assistant replies in seconds — tap the chat bubble.</p>
+    </div>
+    <div class="lg:col-span-8 space-y-3">
+      <div class="faq-item reveal rounded-2xl border border-slate2/10 bg-white overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between gap-4 text-left px-6 py-5">
+          <span class="font-display font-semibold text-[15px]">How accurate is the AI estimate?</span>
+          <i class="fa-solid fa-chevron-down faq-chev text-xs text-coral shrink-0"></i>
+        </button>
+        <div class="faq-body px-6"><p class="text-sm text-slate2/70 leading-relaxed pb-6">Within ±8% on average for the past 12 months. After a free site survey we lock in a fixed, itemized quote — so the price you sign is the price you pay.</p></div>
+      </div>
+      <div class="faq-item reveal rounded-2xl border border-slate2/10 bg-white overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between gap-4 text-left px-6 py-5">
+          <span class="font-display font-semibold text-[15px]">How long does a typical renovation take?</span>
+          <i class="fa-solid fa-chevron-down faq-chev text-xs text-coral shrink-0"></i>
+        </button>
+        <div class="faq-body px-6"><p class="text-sm text-slate2/70 leading-relaxed pb-6">Bathrooms 2–3 weeks, kitchens 3–5 weeks, full homes 2–4 months depending on scope. You get a guaranteed timeline in writing before work starts.</p></div>
+      </div>
+      <div class="faq-item reveal rounded-2xl border border-slate2/10 bg-white overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between gap-4 text-left px-6 py-5">
+          <span class="font-display font-semibold text-[15px]">Do I need to move out during construction?</span>
+          <i class="fa-solid fa-chevron-down faq-chev text-xs text-coral shrink-0"></i>
+        </button>
+        <div class="faq-body px-6"><p class="text-sm text-slate2/70 leading-relaxed pb-6">For bathrooms, kitchens and room-by-room work, usually not — we seal off the work zone. For full-home renovations we help arrange temporary housing options nearby.</p></div>
+      </div>
+      <div class="faq-item reveal rounded-2xl border border-slate2/10 bg-white overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between gap-4 text-left px-6 py-5">
+          <span class="font-display font-semibold text-[15px]">What does the 5-year warranty cover?</span>
+          <i class="fa-solid fa-chevron-down faq-chev text-xs text-coral shrink-0"></i>
+        </button>
+        <div class="faq-body px-6"><p class="text-sm text-slate2/70 leading-relaxed pb-6">All workmanship: tiling, waterproofing, carpentry, electrical and plumbing we installed. If anything fails due to our work, we repair it free — parts and labor.</p></div>
+      </div>
+      <div class="faq-item reveal rounded-2xl border border-slate2/10 bg-white overflow-hidden">
+        <button class="faq-toggle w-full flex items-center justify-between gap-4 text-left px-6 py-5">
+          <span class="font-display font-semibold text-[15px]">How do payments work?</span>
+          <i class="fa-solid fa-chevron-down faq-chev text-xs text-coral shrink-0"></i>
+        </button>
+        <div class="faq-body px-6"><p class="text-sm text-slate2/70 leading-relaxed pb-6">Milestone-based: 30% on signing, then payments tied to verified progress stages shown in your client portal. No large upfront deposits, ever.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. FINAL CTA ============ -->
+<section id="estimate" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8">
+    <div class="reveal relative rounded-3xl bg-coral overflow-hidden px-6 py-14 sm:p-14 lg:p-20 text-center">
+      <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/10"></div>
+      <div class="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-lime/25"></div>
+      <div class="relative">
+        <span class="tag-lime inline-block mb-5">Limited slots this month</span>
+        <h2 class="hero-title !text-white max-w-2xl mx-auto">Know your renovation price in 60 seconds.</h2>
+        <p class="text-white/85 text-sm sm:text-base mt-5 max-w-xl mx-auto leading-relaxed">Our AI estimator analyzes 480+ past projects to give you a realistic budget instantly. No email required, no sales calls.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3.5">
+          <a href="#top" onclick="setTimeout(()=>document.getElementById('chatBtn').click(),400)" class="btn-primary inline-flex items-center gap-2.5 bg-white text-coral font-bold px-8 py-4 rounded-full"><i class="fa-solid fa-wand-magic-sparkles"></i> Start Free AI Estimate</a>
+          <a href="tel:+6621234567" class="inline-flex items-center gap-2.5 border-2 border-white/70 text-white font-bold px-8 py-[14px] rounded-full hover:bg-white/10 transition"><i class="fa-solid fa-phone"></i> 02-123-4567</a>
+        </div>
+        <p class="text-white/70 text-xs mt-6"><i class="fa-solid fa-shield-halved mr-1"></i> Free · No obligation · Response within 1 business hour</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-white border-t border-slate2/10 pt-16 pb-8">
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <a href="#top" class="flex items-center gap-2.5 mb-4">
+        <span class="w-9 h-9 rounded-xl bg-coral grid place-items-center text-white"><i class="fa-solid fa-house-chimney-window text-sm"></i></span>
+        <span class="font-display font-bold text-lg">Renova<span class="text-coral">.</span>Studio</span>
+      </a>
+      <p class="text-[13px] text-slate2/60 leading-relaxed">Bangkok's renovation & interior design agency. Fixed prices, honest timelines, and a 5-year warranty on every job since 2014.</p>
+    </div>
+    <div>
+      <p class="label text-slate2/50 mb-4">Services</p>
+      <ul class="space-y-2.5 text-sm text-slate2/70">
+        <li><a href="#services" class="hover:text-coral transition">Kitchen Remodel</a></li>
+        <li><a href="#services" class="hover:text-coral transition">Bathroom Renovation</a></li>
+        <li><a href="#services" class="hover:text-coral transition">Full Home Renovation</a></li>
+        <li><a href="#services" class="hover:text-coral transition">Interior Design</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="label text-slate2/50 mb-4">Company</p>
+      <ul class="space-y-2.5 text-sm text-slate2/70">
+        <li><a href="#portfolio" class="hover:text-coral transition">Portfolio</a></li>
+        <li><a href="#process" class="hover:text-coral transition">Our Process</a></li>
+        <li><a href="#reviews" class="hover:text-coral transition">Reviews</a></li>
+        <li><a href="#faq" class="hover:text-coral transition">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="label text-slate2/50 mb-4">Contact</p>
+      <ul class="space-y-3 text-sm text-slate2/70">
+        <li class="flex gap-3"><i class="fa-solid fa-location-dot text-coral mt-0.5"></i> 88 Sukhumvit Rd, Bangkok 10110</li>
+        <li class="flex gap-3"><i class="fa-solid fa-phone text-coral mt-0.5"></i> <a href="tel:+6621234567" class="hover:text-coral transition">02-123-4567</a></li>
+        <li class="flex gap-3"><i class="fa-brands fa-line text-coral mt-0.5"></i> <a href="#" class="hover:text-coral transition">@renovastudio</a></li>
+        <li class="flex gap-3"><i class="fa-regular fa-clock text-coral mt-0.5"></i> Mon–Sat, 8:30–18:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-[1280px] mx-auto px-5 lg:px-8 mt-12 pt-6 border-t border-slate2/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate2/50">
+    <p>© 2026 Renova Studio Co., Ltd. All rights reserved.</p>
+    <div class="flex gap-5"><a href="#" class="hover:text-coral transition">Privacy</a><a href="#" class="hover:text-coral transition">Terms</a><a href="#" class="hover:text-coral transition">Warranty Policy</a></div>
+  </div>
+</footer>
+</main>
+
+<!-- ============ STICKY MOBILE BAR ============ -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate2/10 grid grid-cols-3 shadow-[0_-4px_20px_-8px_rgba(34,36,38,.15)]">
+  <button onclick="toggleChat(true)" class="py-3.5 flex flex-col items-center gap-1 text-[11px] font-bold text-coral">
+    <i class="fa-solid fa-robot text-base"></i> AI Chat
+  </button>
+  <a href="#" class="py-3.5 flex flex-col items-center gap-1 text-[11px] font-bold text-[#06C755] border-x border-slate2/10">
+    <i class="fa-brands fa-line text-base"></i> LINE
+  </a>
+  <a href="tel:+6621234567" class="py-3.5 flex flex-col items-center gap-1 text-[11px] font-bold text-sky2">
+    <i class="fa-solid fa-phone text-base"></i> Call
+  </a>
+</div>
+
+<!-- ============ FLOATING GROUP: back-to-top (left) + chatbot (right), 5px gap ============ -->
+<div class="fixed z-50 flex items-center gap-[5px] bottom-20 right-4 sm:right-6 lg:bottom-6">
+  <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"
+    class="hide w-11 h-11 rounded-full bg-slate2 text-white grid place-items-center shadow-lg hover:bg-coral transition-colors">
+    <i class="fa-solid fa-arrow-up text-sm"></i>
+  </button>
+  <button id="chatBtn" onclick="toggleChat()" title="Chat with us"
+    class="w-14 h-14 rounded-full bg-coral text-white grid place-items-center shadow-xl shadow-coral/40 hover:scale-105 transition-transform relative">
+    <i id="chatIcon" class="fa-solid fa-comments text-xl"></i>
+    <span class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-lime border-2 border-white rounded-full"></span>
+  </button>
+</div>
+
+<!-- ============ CHAT PANEL ============ -->
+<div id="chatPanel" class="hidden-panel fixed z-50 bottom-[144px] lg:bottom-[92px] right-4 sm:right-6 w-[calc(100vw-2rem)] max-w-[380px] rounded-2xl bg-white border border-slate2/10 shadow-2xl overflow-hidden flex flex-col" style="height:min(540px,72vh)">
+  <div class="dash-card px-5 py-4 flex items-center gap-3 shrink-0">
+    <span class="w-10 h-10 rounded-xl bg-coral grid place-items-center shrink-0"><i class="fa-solid fa-robot"></i></span>
+    <div class="flex-1">
+      <p class="font-display font-bold text-sm">Renova AI Assistant</p>
+      <p class="text-[11px] text-lime flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-lime inline-block"></span> Online · replies instantly</p>
+    </div>
+    <button onclick="toggleChat(false)" class="text-silver2 hover:text-white transition"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="chatBody" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-[#FAFAF8]"></div>
+  <div id="chatChips" class="px-4 pb-2 pt-1 flex gap-2 overflow-x-auto no-scrollbar shrink-0 bg-[#FAFAF8]"></div>
+  <div class="p-3 border-t border-slate2/10 flex items-center gap-2 shrink-0 bg-white">
+    <input id="chatInput" type="text" placeholder="Type your question…" class="flex-1 text-sm px-4 py-3 rounded-full bg-[#F2F2F0] outline-none focus:ring-2 focus:ring-coral/40 transition" autocomplete="off">
+    <button id="chatSend" class="w-11 h-11 rounded-full bg-coral text-white grid place-items-center hover:bg-slate2 transition-colors shrink-0"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+  </div>
+</div>
+
+<!-- ============ AUTH MODAL (Login / Register) ============ -->
+<div id="authModal" class="hidden-modal fixed inset-0 z-[60] grid place-items-center p-4">
+  <div class="absolute inset-0 bg-slate2/60 backdrop-blur-sm" onclick="closeAuth()"></div>
+  <div class="modal-box relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
+    <div class="dash-card px-7 py-6 relative">
+      <button onclick="closeAuth()" class="absolute top-5 right-5 text-silver2 hover:text-white transition"><i class="fa-solid fa-xmark"></i></button>
+      <span class="w-11 h-11 rounded-xl bg-coral grid place-items-center mb-4"><i class="fa-solid fa-house-chimney-window"></i></span>
+      <p class="font-display font-bold text-xl" id="authHeading">Welcome back</p>
+      <p class="text-xs text-silver2 mt-1" id="authSub">Log in to track your project, quotes and warranty.</p>
+    </div>
+    <div class="px-7 py-6">
+      <!-- Tabs -->
+      <div class="grid grid-cols-2 bg-[#F2F2F0] rounded-full p-1 mb-6">
+        <button id="tabLogin" onclick="switchAuthTab('login')" class="auth-tab py-2.5 rounded-full text-sm font-bold bg-slate2 text-white transition">Log in</button>
+        <button id="tabRegister" onclick="switchAuthTab('register')" class="auth-tab py-2.5 rounded-full text-sm font-bold text-slate2/60 transition">Register</button>
+      </div>
+      <!-- Forms -->
+      <form id="loginForm" class="space-y-4" novalidate>
+        <div>
+          <label class="label text-slate2/50 block mb-1.5">Email</label>
+          <input type="email" required placeholder="you@email.com" class="w-full text-sm px-4 py-3 rounded-xl border border-slate2/15 outline-none focus:ring-2 focus:ring-coral/40 focus:border-coral transition">
+        </div>
+        <div>
+          <label class="label text-slate2/50 block mb-1.5">Password</label>
+          <div class="relative">
+            <input type="password" required placeholder="••••••••" class="w-full text-sm px-4 py-3 rounded-xl border border-slate2/15 outline-none focus:ring-2 focus:ring-coral/40 focus:border-coral transition pr-11">
+            <button type="button" class="pw-toggle absolute right-3 top-1/2 -translate-y-1/2 text-slate2/40 hover:text-coral"><i class="fa-regular fa-eye"></i></button>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs">
+          <label class="flex items-center gap-2 text-slate2/60 cursor-pointer"><input type="checkbox" class="accent-[#F75A38] rounded"> Remember me</label>
+          <a href="#" class="text-coral font-semibold hover:underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-primary w-full bg-coral text-white font-bold py-3.5 rounded-full flex items-center justify-center gap-2"><i class="fa-solid fa-arrow-right-to-bracket"></i> <span>Log in</span></button>
+      </form>
+      <form id="registerForm" class="space-y-4 hidden" novalidate>
+        <div>
+          <label class="label text-slate2/50 block mb-1.5">Full name</label>
+          <input type="text" required placeholder="Somchai Jaidee" class="w-full text-sm px-4 py-3 rounded-xl border border-slate2/15 outline-none focus:ring-2 focus:ring-coral/40 focus:border-coral transition">
+        </div>
+        <div>
+          <label class="label text-slate2/50 block mb-1.5">Email</label>
+          <input type="email" required placeholder="you@email.com" class="w-full text-sm px-4 py-3 rounded-xl border border-slate2/15 outline-none focus:ring-2 focus:ring-coral/40 focus:border-coral transition">
+        </div>
+        <div>
+          <label class="label text-slate2/50 block mb-1.5">Password</label>
+          <div class="relative">
+            <input type="password" required placeholder="Min. 8 characters" minlength="8" class="w-full text-sm px-4 py-3 rounded-xl border border-slate2/15 outline-none focus:ring-2 focus:ring-coral/40 focus:border-coral transition pr-11">
+            <button type="button" class="pw-toggle absolute right-3 top-1/2 -translate-y-1/2 text-slate2/40 hover:text-coral"><i class="fa-regular fa-eye"></i></button>
+          </div>
+        </div>
+        <label class="flex items-start gap-2 text-xs text-slate2/60 cursor-pointer"><input type="checkbox" required class="accent-[#F75A38] mt-0.5"> I agree to the Terms of Service and Privacy Policy.</label>
+        <button type="submit" class="btn-primary w-full bg-coral text-white font-bold py-3.5 rounded-full flex items-center justify-center gap-2"><i class="fa-solid fa-user-plus"></i> <span>Create account</span></button>
+      </form>
+      <div class="flex items-center gap-4 my-6"><span class="flex-1 h-px bg-slate2/10"></span><span class="text-xs text-slate2/40">or continue with</span><span class="flex-1 h-px bg-slate2/10"></span></div>
+      <div class="grid grid-cols-2 gap-3">
+        <button onclick="socialAuth('Google')" class="flex items-center justify-center gap-2 border border-slate2/15 rounded-full py-3 text-sm font-semibold hover:border-slate2/40 hover:bg-[#FAFAF8] transition"><i class="fa-brands fa-google text-coral"></i> Google</button>
+        <button onclick="socialAuth('LINE')" class="flex items-center justify-center gap-2 border border-slate2/15 rounded-full py-3 text-sm font-semibold hover:border-slate2/40 hover:bg-[#FAFAF8] transition"><i class="fa-brands fa-line text-[#06C755]"></i> LINE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-24 lg:bottom-8 z-[70] translate-y-6 opacity-0 pointer-events-none">
+  <div class="dash-card px-5 py-3.5 flex items-center gap-3 shadow-2xl">
+    <span class="w-8 h-8 rounded-full bg-lime grid place-items-center shrink-0"><i class="fa-solid fa-check text-slate2 text-xs"></i></span>
+    <p class="text-sm font-semibold" id="toastMsg">Success</p>
+  </div>
+</div>
+
+<script>
+/* ============ Reveal on scroll ============ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============ Header shadow ============ */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive:true });
+
+/* ============ Mobile menu ============ */
+const burger = document.getElementById('navBurger'), mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+/* ============ Back to top (shows after hero) ============ */
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  const past = window.scrollY > document.getElementById('hero').offsetHeight * 0.8;
+  backTop.classList.toggle('hide', !past);
+}, { passive:true });
+
+/* ============ Counter animation ============ */
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, target = parseFloat(el.dataset.target), dec = parseInt(el.dataset.decimal || 0);
+    const dur = 1600, t0 = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * ease).toFixed(dec);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    cio.unobserve(el);
+  });
+}, { threshold: .5 });
+document.querySelectorAll('.counter').forEach(el => cio.observe(el));
+
+/* ============ Portfolio filter ============ */
+document.querySelectorAll('#filterBar .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#filterBar .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const show = f === 'all' || item.dataset.cat === f;
+      item.style.display = show ? '' : 'none';
+      if (show) { item.style.opacity = 0; requestAnimationFrame(() => { item.style.transition='opacity .4s'; item.style.opacity = 1; }); }
+    });
+  });
+});
+
+/* ============ Reviews carousel ============ */
+const track = document.getElementById('reviewTrack');
+const cardW = () => track.querySelector('div').offsetWidth + 24;
+document.getElementById('revNext').addEventListener('click', () => track.scrollBy({ left: cardW(), behavior:'smooth' }));
+document.getElementById('revPrev').addEventListener('click', () => track.scrollBy({ left: -cardW(), behavior:'smooth' }));
+let autoRev = setInterval(() => {
+  if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) track.scrollTo({ left: 0, behavior:'smooth' });
+  else track.scrollBy({ left: cardW(), behavior:'smooth' });
+}, 5000);
+track.addEventListener('pointerdown', () => clearInterval(autoRev));
+
+/* ============ FAQ accordion ============ */
+document.querySelectorAll('.faq-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item'), wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ============ Toast ============ */
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.style.opacity = 1; t.style.transform = 'translate(-50%,0)';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.style.opacity = 0; t.style.transform = 'translate(-50%,1.5rem)'; }, 3200);
+}
+
+/* ============ Auth modal ============ */
+const authModal = document.getElementById('authModal');
+function openAuth(tab) { authModal.classList.remove('hidden-modal'); switchAuthTab(tab || 'login'); document.body.style.overflow = 'hidden'; }
+function closeAuth() { authModal.classList.add('hidden-modal'); document.body.style.overflow = ''; }
+function switchAuthTab(tab) {
+  const isL = tab === 'login';
+  document.getElementById('loginForm').classList.toggle('hidden', !isL);
+  document.getElementById('registerForm').classList.toggle('hidden', isL);
+  document.getElementById('tabLogin').className = 'auth-tab py-2.5 rounded-full text-sm font-bold transition ' + (isL ? 'bg-slate2 text-white' : 'text-slate2/60');
+  document.getElementById('tabRegister').className = 'auth-tab py-2.5 rounded-full text-sm font-bold transition ' + (!isL ? 'bg-slate2 text-white' : 'text-slate2/60');
+  document.getElementById('authHeading').textContent = isL ? 'Welcome back' : 'Create your account';
+  document.getElementById('authSub').textContent = isL ? 'Log in to track your project, quotes and warranty.' : 'Save estimates, compare quotes and track progress in one place.';
+}
+document.querySelectorAll('.pw-toggle').forEach(b => b.addEventListener('click', () => {
+  const i = b.parentElement.querySelector('input');
+  i.type = i.type === 'password' ? 'text' : 'password';
+  b.innerHTML = `<i class="fa-regular fa-eye${i.type === 'password' ? '' : '-slash'}"></i>`;
+}));
+function handleAuthSubmit(form, name) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.querySelector('span').innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i>';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = form.id === 'loginForm' ? 'Log in' : 'Create account';
+      closeAuth();
+      showToast(name ? `Welcome, ${name.split(' ')[0]}! You're logged in.` : 'Welcome back! You\'re logged in.');
+    }, 1100);
+  });
+}
+handleAuthSubmit(document.getElementById('loginForm'));
+handleAuthSubmit(document.getElementById('registerForm'), document.querySelector('#registerForm input[type=text]').value);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAuth(); toggleChat(false); } });
+function socialAuth(p) { closeAuth(); showToast(`Redirecting to ${p} sign-in… (demo)`); }
+
+/* ============ Chatbot ============ */
+const chatPanel = document.getElementById('chatPanel');
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+const chatChips = document.getElementById('chatChips');
+let chatOpen = false, greeted = false;
+
+function toggleChat(force) {
+  chatOpen = force !== undefined ? force : !chatOpen;
+  chatPanel.classList.toggle('hidden-panel', !chatOpen);
+  document.getElementById('chatIcon').className = chatOpen ? 'fa-solid fa-xmark text-xl' : 'fa-solid fa-comments text-xl';
+  if (chatOpen && !greeted) { greeted = true; botSay("Hi there! I'm Renova, your AI renovation assistant. Ask me anything about pricing, timelines, or booking a survey.", true); renderChips(); }
+  if (chatOpen) setTimeout(() => chatInput.focus(), 350);
+}
+function bubble(text, me) {
+  const d = document.createElement('div');
+  d.className = 'flex ' + (me ? 'justify-end' : 'justify-start');
+  d.innerHTML = `<div class="max-w-[82%] px-4 py-3 rounded-2xl text-[13px] leading-relaxed ${me ? 'bg-coral text-white rounded-br-md' : 'bg-white border border-slate2/10 rounded-bl-md shadow-sm'}">${text}</div>`;
+  chatBody.appendChild(d);
+  chatBody.scrollTo({ top: chatBody.scrollHeight, behavior:'smooth' });
+  return d;
+}
+function typing() {
+  const d = document.createElement('div');
+  d.className = 'flex justify-start';
+  d.innerHTML = `<div class="px-4 py-3.5 rounded-2xl rounded-bl-md bg-white border border-slate2/10 shadow-sm flex gap-1.5 items-center"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>`;
+  chatBody.appendChild(d);
+  chatBody.scrollTo({ top: chatBody.scrollHeight, behavior:'smooth' });
+  return d;
+}
+function botSay(text, instant) {
+  if (instant) { bubble(text, false); return; }
+  const t = typing();
+  setTimeout(() => { t.remove(); bubble(text, false); }, 900 + Math.random() * 600);
+}
+const brain = [
+  { k: ['price','cost','estimate','budget','much','baht','quote'], r: "Quick guide: bathrooms from ฿89,000, kitchens from ฿149,000, condo fit-outs from ฿219,000, full homes from ฿690,000. Want a number for your place? Tap 'Free AI estimate' above — it takes 60 seconds." },
+  { k: ['long','time','timeline','duration','week','finish','fast'], r: "Bathrooms take 2–3 weeks, kitchens 3–5 weeks, and full-home renovations 2–4 months. You'll get a guaranteed timeline in writing before we start." },
+  { k: ['warrant','guarantee','fix','repair','defect'], r: "Every project includes a 5-year workmanship warranty covering tiling, waterproofing, carpentry, electrical and plumbing we installed — parts and labor, free." },
+  { k: ['book','survey','visit','schedule','appoint','start','consult'], r: "Easy! Book a free site survey and we'll visit within 48 hours. You can also call 02-123-4567 or message us on LINE @renovastudio. Which area is the property in?" },
+  { k: ['pay','payment','deposit','deposit','milestone','installment'], r: "Payments are milestone-based: 30% on signing, then installments tied to verified progress in your client portal. No large upfront deposits — ever." },
+  { k: ['move','live','stay','condo','juristic'], r: "For single-room work you can usually stay home — we seal off the work zone. Condo jobs are fully juristic-approved, and we handle all the paperwork with your building." },
+  { k: ['where','location','area','bangkok','place','branch'], r: "We're at 88 Sukhumvit Rd, Bangkok, and serve the entire metropolitan area — from Bang Na to Nonthaburi. Where's your property?" },
+  { k: ['hello','hi','hey','sawatdee','สวัสดี'], r: "Hello! How can I help with your renovation today? I can share pricing, timelines, or help you book a free survey." },
+  { k: ['thank','great','awesome','perfect'], r: "You're welcome! If you'd like, I can get you a free AI estimate right now — it only takes a minute." }
+];
+const chips = ['How much does a kitchen cost?','How long does it take?','Book a free survey','What\'s the warranty?'];
+function renderChips() {
+  chatChips.innerHTML = '';
+  chips.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'shrink-0 text-[11px] font-semibold px-3.5 py-2 rounded-full bg-white border border-coral/30 text-coral hover:bg-coral hover:text-white transition';
+    b.textContent = c;
+    b.addEventListener('click', () => { chatInput.value = c; sendChat(); });
+    chatChips.appendChild(b);
+  });
+}
+function sendChat() {
+  const v = chatInput.value.trim();
+  if (!v) return;
+  bubble(v, true);
+  chatInput.value = '';
+  const low = v.toLowerCase();
+  const hit = brain.find(b => b.k.some(k => low.includes(k)));
+  botSay(hit ? hit.r : "Good question! For anything specific, our human team replies on LINE @renovastudio within minutes, or call 02-123-4567 (Mon–Sat, 8:30–18:00). Meanwhile, try asking me about pricing, timelines or warranties.");
+}
+document.getElementById('chatSend').addEventListener('click', sendChat);
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+</script>
+</body>
+</html>
