@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Renova Studio — Interior Design & Renovation in Bangkok | Free AI Estimate</title>
+<meta name="description" content="Renova Studio is a Bangkok interior design & renovation agency. 480+ projects delivered, 4.9/5 average rating, 12 years experience. Get a free AI price estimate in 30 seconds and a fixed-price quote within 24 hours.">
+<meta name="keywords" content="interior design Bangkok, renovation Bangkok, home renovation Thailand, condo renovation Bangkok, office fit-out Bangkok, AI price estimate, interior designer Bangkok, รับออกแบบตกแต่งภายใน, รีโนเวทบ้าน">
+<meta name="author" content="Renova Studio">
+<meta name="theme-color" content="#F75A38">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Renova Studio — Interior Design & Renovation in Bangkok">
+<meta property="og:description" content="Bangkok interior design & renovation. Free AI estimate in 30 seconds. Fixed-price quotes. 5-year workmanship warranty.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.lineicons.com/5.0/lineicons.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        coral:  '#F75A38',
+        lime:   '#C4E864',
+        sky:    '#7CA4F8',
+        ink:    '#222426',
+        line:   '#34363A',
+        muted:  '#A4A8B0'
+      },
+      fontFamily: {
+        display: ['Outfit', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  :root{
+    --color-coral:#F75A38;
+    --color-lime:#C4E864;
+    --color-sky-blue:#7CA4F8;
+    --color-slate-dark:#222426;
+    --color-surface:#FFFFFF;
+    --color-text-on-dark:#FFFFFF;
+    --color-text-muted:#A4A8B0;
+    --color-border-dark:#34363A;
+  }
+
+  html{scroll-behavior:smooth; scroll-padding-top:88px;}
+  body{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:#FFFFFF;
+    color:#222426;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* ---------- Typography hierarchy ---------- */
+  .t-hero{
+    font-family:'Outfit',sans-serif;
+    font-weight:800;
+    letter-spacing:-0.03em;
+    line-height:0.98;
+    font-size:clamp(2.4rem, 6.2vw, 3.75rem);
+  }
+  .t-h2{
+    font-family:'Outfit',sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.14;
+    font-size:clamp(1.6rem, 3.4vw, 2.05rem);
+  }
+  .t-h3{
+    font-family:'Outfit',sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    line-height:1.35;
+  }
+  .t-stat{
+    font-family:'Outfit',sans-serif;
+    font-weight:800;
+    line-height:1;
+    font-size:clamp(2rem, 4.4vw, 2.75rem);
+    letter-spacing:-0.02em;
+  }
+  .t-label{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0; transform:translateY(26px);}
+  .reveal.in{
+    opacity:1; transform:translateY(0);
+    transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px;
+    border-radius:12px; padding:.9rem 1.4rem; line-height:1;
+    transition:transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s ease, background-color .28s ease, color .28s ease, border-color .28s ease;
+    white-space:nowrap; cursor:pointer; border:1px solid transparent;
+  }
+  .btn:active{transform:translateY(1px) scale(.99);}
+  .btn-coral{background:#F75A38; color:#fff; box-shadow:0 8px 22px -10px rgba(247,90,56,.75);}
+  .btn-coral:hover{background:#e64a29; transform:translateY(-2px); box-shadow:0 16px 30px -12px rgba(247,90,56,.85);}
+  .btn-ink{background:#222426; color:#fff;}
+  .btn-ink:hover{background:#000; transform:translateY(-2px); box-shadow:0 16px 30px -14px rgba(34,36,38,.7);}
+  .btn-ghost{background:#fff; color:#222426; border-color:rgba(34,36,38,.14);}
+  .btn-ghost:hover{border-color:#222426; transform:translateY(-2px);}
+  .btn-lime{background:#C4E864; color:#222426;}
+  .btn-lime:hover{background:#b6de4f; transform:translateY(-2px);}
+
+  .tag-lime{
+    display:inline-flex; align-items:center; gap:.4rem;
+    background:#C4E864; color:#222426; font-weight:700;
+    border-radius:20px; padding:6px 14px; font-size:12px;
+    letter-spacing:.01em;
+  }
+  .tag-dark{
+    display:inline-flex; align-items:center; gap:.4rem;
+    background:#222426; color:#fff; font-weight:700;
+    border-radius:20px; padding:6px 14px; font-size:12px;
+  }
+
+  /* ---------- Cards ---------- */
+  .card{
+    background:#fff; border:1px solid rgba(34,36,38,.10); border-radius:18px;
+    transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease, border-color .35s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(247,90,56,.45);
+    box-shadow:0 26px 50px -30px rgba(34,36,38,.35);
+  }
+  .card-dark{
+    background:#222426; border:1px solid #34363A; border-radius:18px; color:#fff;
+    transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+  }
+  .card-dark:hover{transform:translateY(-6px); box-shadow:0 30px 55px -28px rgba(34,36,38,.6);}
+
+  .icon-tile{
+    width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+    font-size:20px; flex:0 0 auto;
+  }
+
+  /* ---------- Work grid ---------- */
+  .work{
+    position:relative; overflow:hidden; border-radius:16px; display:block;
+    background:#222426;
+  }
+  .work img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 1s cubic-bezier(.16,1,.3,1), opacity .5s ease;
+  }
+  .work:hover img{transform:scale(1.07); opacity:.72;}
+  .work .work-meta{
+    position:absolute; inset:auto 0 0 0; padding:18px;
+    background:linear-gradient(to top, rgba(15,16,17,.92), rgba(15,16,17,0));
+    color:#fff; transform:translateY(8px); opacity:0;
+    transition:transform .5s cubic-bezier(.16,1,.3,1), opacity .5s ease;
+  }
+  .work:hover .work-meta{transform:translateY(0); opacity:1;}
+  .work .work-chip{
+    position:absolute; top:14px; left:14px;
+    background:#C4E864; color:#222426; font-weight:700; font-size:11px;
+    padding:5px 11px; border-radius:20px; letter-spacing:.02em;
+  }
+
+  /* ---------- Reviews carousel ---------- */
+  .rail{
+    display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory;
+    padding-bottom:10px; scrollbar-width:none;
+  }
+  .rail::-webkit-scrollbar{display:none;}
+  .rail > *{scroll-snap-align:start; flex:0 0 auto;}
+
+  /* ---------- FAQ ---------- */
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.16,1,.3,1);}
+  .faq-item.open .faq-a{max-height:260px;}
+  .faq-item.open .faq-icon{background:#F75A38; color:#fff; border-color:#F75A38; transform:rotate(45deg);}
+
+  /* ---------- Floating buttons ---------- */
+  #floatGroup{
+    position:fixed; right:20px; bottom:88px; z-index:60;
+    display:flex; align-items:center; gap:5px;
+    transition:bottom .3s ease;
+  }
+  @media (min-width:1024px){ #floatGroup{bottom:24px;} }
+
+  .fab{
+    width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+    font-size:19px; cursor:pointer; border:none;
+    transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, background-color .3s ease, opacity .35s ease;
+  }
+  .fab:hover{transform:translateY(-3px);}
+  #toTop{
+    background:#fff; color:#222426; border:1px solid rgba(34,36,38,.14);
+    box-shadow:0 10px 24px -14px rgba(34,36,38,.5);
+    opacity:0; pointer-events:none; transform:translateY(10px);
+  }
+  #toTop.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+  #toTop:hover{border-color:#222426;}
+  #chatToggle{
+    background:#F75A38; color:#fff;
+    box-shadow:0 14px 28px -12px rgba(247,90,56,.85);
+    position:relative;
+  }
+  #chatToggle:hover{background:#e64a29;}
+  #chatToggle .ping{
+    position:absolute; top:-3px; right:-3px; width:12px;height:12px;border-radius:50%;
+    background:#C4E864; border:2px solid #fff;
+  }
+  #chatToggle.active .ping{display:none;}
+
+  /* ---------- Chat panel ---------- */
+  #chatPanel{
+    position:fixed; right:20px; bottom:146px; z-index:60;
+    width:min(360px, calc(100vw - 40px));
+    height:min(500px, calc(100vh - 220px));
+    background:#fff; border:1px solid rgba(34,36,38,.10);
+    border-radius:20px; box-shadow:0 40px 80px -30px rgba(34,36,38,.45);
+    display:flex; flex-direction:column; overflow:hidden;
+    opacity:0; transform:translateY(14px) scale(.97); pointer-events:none;
+    transform-origin:bottom right;
+    transition:opacity .3s ease, transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  @media (min-width:1024px){ #chatPanel{bottom:86px;} }
+  #chatPanel.open{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+
+  .msg{max-width:82%; padding:10px 14px; border-radius:14px; font-size:13.5px; line-height:1.55;}
+  .msg-bot{background:#F4F5F7; color:#222426; border-bottom-left-radius:5px;}
+  .msg-user{background:#222426; color:#fff; border-bottom-right-radius:5px; margin-left:auto;}
+
+  .typing span{
+    width:6px;height:6px;background:#A4A8B0;border-radius:50%;display:inline-block;
+    animation:blink 1.2s infinite;
+  }
+  .typing span:nth-child(2){animation-delay:.2s;}
+  .typing span:nth-child(3){animation-delay:.4s;}
+  @keyframes blink{0%,60%,100%{opacity:.25; transform:translateY(0);}30%{opacity:1; transform:translateY(-3px);}}
+
+  /* ---------- Modals ---------- */
+  .modal{
+    position:fixed; inset:0; z-index:80; display:grid; place-items:center; padding:20px;
+    background:rgba(20,21,22,.55); backdrop-filter:blur(6px);
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+    overflow-y:auto;
+  }
+  .modal.open{opacity:1; pointer-events:auto;}
+  .modal-box{
+    background:#fff; border-radius:22px; width:100%;
+    transform:translateY(18px) scale(.98); transition:transform .4s cubic-bezier(.16,1,.3,1);
+    box-shadow:0 50px 90px -40px rgba(0,0,0,.6);
+    max-height:calc(100vh - 40px); overflow-y:auto;
+  }
+  .modal.open .modal-box{transform:translateY(0) scale(1);}
+
+  .field{
+    width:100%; border:1px solid rgba(34,36,38,.16); border-radius:12px;
+    padding:.82rem 1rem; font-size:14px; font-family:'Plus Jakarta Sans',sans-serif;
+    outline:none; transition:border-color .25s ease, box-shadow .25s ease; background:#fff;
+  }
+  .field:focus{border-color:#F75A38; box-shadow:0 0 0 4px rgba(247,90,56,.13);}
+
+  .chip{
+    border:1px solid rgba(34,36,38,.14); background:#fff; color:#222426;
+    border-radius:11px; padding:.62rem .9rem; font-size:13px; font-weight:600;
+    cursor:pointer; transition:all .25s ease; font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .chip:hover{border-color:#222426;}
+  .chip.active{background:#222426; color:#fff; border-color:#222426;}
+  .chip.active.coral{background:#F75A38; border-color:#F75A38;}
+
+  .tab-btn{
+    flex:1; padding:.7rem .5rem; font-weight:700; font-size:14px; border-radius:10px;
+    background:transparent; color:#A4A8B0; cursor:pointer; transition:all .25s ease;
+    font-family:'Plus Jakarta Sans',sans-serif; border:none;
+  }
+  .tab-btn.active{background:#222426; color:#fff;}
+
+  input[type=range]{
+    -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:999px;
+    background:linear-gradient(to right,#F75A38 0%, #F75A38 50%, #E9EAEC 50%, #E9EAEC 100%);
+    outline:none; cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:22px;height:22px;border-radius:50%;
+    background:#fff; border:4px solid #F75A38; cursor:pointer;
+    box-shadow:0 4px 12px -4px rgba(247,90,56,.8);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid #F75A38;cursor:pointer;
+  }
+
+  .nav-link{position:relative; padding:.5rem .8rem; font-size:14px; font-weight:600; color:#222426; border-radius:9px; transition:background-color .25s ease;}
+  .nav-link:hover{background:rgba(34,36,38,.05);}
+  .nav-link::after{
+    content:''; position:absolute; left:.8rem; right:.8rem; bottom:.28rem; height:2px;
+    background:#F75A38; transform:scaleX(0); transform-origin:left;
+    transition:transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  .nav-link:hover::after{transform:scaleX(1);}
+
+  .marquee-track{display:flex; gap:56px; width:max-content; animation:scrollx 32s linear infinite;}
+  @keyframes scrollx{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition-duration:.01ms !important;}
+    .reveal{opacity:1; transform:none;}
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://renovastudio.co.th/#organization",
+      "name": "Renova Studio",
+      "url": "https://renovastudio.co.th/",
+      "logo": "https://renovastudio.co.th/logo.png",
+      "description": "Renova Studio is a Bangkok-based interior design and renovation agency delivering residential and commercial fit-outs across the Bangkok metropolitan area.",
+      "foundingDate": "2014",
+      "areaServed": "Bangkok Metropolitan Region, Thailand",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+66-2-123-4567",
+        "contactType": "sales",
+        "availableLanguage": ["Thai", "English"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/renovastudio",
+        "https://www.instagram.com/renovastudio"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://renovastudio.co.th/#localbusiness",
+      "name": "Renova Studio",
+      "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
+      "priceRange": "฿฿฿",
+      "telephone": "+66-2-123-4567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "128 Sukhumvit 26, Klongton",
+        "addressLocality": "Bangkok",
+        "postalCode": "10110",
+        "addressCountry": "TH"
+      },
+      "geo": {"@type": "GeoCoordinates", "latitude": 13.7307, "longitude": 100.5696},
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00", "closes": "18:00"
+      }]
+    },
+    {
+      "@type": "AggregateRating",
+      "itemReviewed": {"@type": "LocalBusiness", "name": "Renova Studio"},
+      "ratingValue": "4.9",
+      "reviewCount": "216",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="bg-white">
+
+<!-- ============================ HEADER ============================ -->
+<header id="siteHeader" class="sticky top-0 z-50 bg-white/85 backdrop-blur-xl border-b border-black/[.06]">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[68px]">
+
+      <a href="#top" class="flex items-center gap-2.5 shrink-0">
+        <span class="w-9 h-9 rounded-[11px] bg-coral grid place-items-center">
+          <span class="w-3 h-3 rounded-[4px] bg-lime"></span>
+        </span>
+        <span class="font-display font-extrabold text-[19px] tracking-tight text-ink leading-none">
+          RENOVA<span class="text-coral">.</span>
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#work" class="nav-link">Our Work</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="openAuth" class="hidden sm:inline-flex btn btn-ghost !py-[0.68rem] !px-[1.05rem] !text-[13.5px]">
+          <i class="bi bi-person"></i> Sign in
+        </button>
+        <button class="js-open-estimate btn btn-coral !py-[0.68rem] !px-[1.05rem] !text-[13.5px]">
+          <i class="bi bi-stars"></i> Free AI Estimate
+        </button>
+        <button id="menuBtn" aria-label="Open menu" class="lg:hidden w-10 h-10 grid place-items-center rounded-xl border border-black/10 text-[18px]">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- mobile menu -->
+  <div id="mobileMenu" class="lg:hidden hidden border-t border-black/[.06] bg-white">
+    <div class="max-w-[1280px] mx-auto px-5 py-4 flex flex-col gap-1">
+      <a href="#services" class="mob-link py-3 px-3 rounded-xl text-[15px] font-semibold hover:bg-black/[.04]">Services</a>
+      <a href="#work" class="mob-link py-3 px-3 rounded-xl text-[15px] font-semibold hover:bg-black/[.04]">Our Work</a>
+      <a href="#process" class="mob-link py-3 px-3 rounded-xl text-[15px] font-semibold hover:bg-black/[.04]">Process</a>
+      <a href="#reviews" class="mob-link py-3 px-3 rounded-xl text-[15px] font-semibold hover:bg-black/[.04]">Reviews</a>
+      <a href="#faq" class="mob-link py-3 px-3 rounded-xl text-[15px] font-semibold hover:bg-black/[.04]">FAQ</a>
+      <button id="openAuthMobile" class="btn btn-ghost mt-2 w-full"><i class="bi bi-person"></i> Sign in / Register</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================ HERO ============================ -->
+<section class="bg-white pt-12 sm:pt-16 lg:pt-20 pb-14 sm:pb-20">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+      <!-- copy -->
+      <div class="lg:col-span-6 reveal">
+        <span class="tag-lime">
+          <i class="bi bi-geo-alt-fill"></i> Bangkok · Interior &amp; Renovation
+        </span>
+
+        <h1 class="t-hero text-ink mt-6">
+          Renovate your<br>
+          Bangkok home —<br>
+          <span class="text-coral">without the guesswork.</span>
+        </h1>
+
+        <p class="mt-6 text-[15px] sm:text-base leading-relaxed text-black/60 max-w-[520px]">
+          One studio for design, build and handover. Get a free AI price estimate in 30&nbsp;seconds,
+          a fixed-price quote within 24&nbsp;hours, and a 5-year workmanship warranty on every project.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <button class="js-open-estimate btn btn-coral">
+            <i class="bi bi-stars"></i> Get a Free AI Estimate
+          </button>
+          <a href="#work" class="btn btn-ghost">
+            <i class="bi bi-grid-3x3-gap"></i> See 480+ Projects
+          </a>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px] text-black/55 font-medium">
+          <span class="flex items-center gap-2"><i class="bi bi-check-circle-fill text-coral"></i> No obligation</span>
+          <span class="flex items-center gap-2"><i class="bi bi-check-circle-fill text-coral"></i> Fixed-price contract</span>
+          <span class="flex items-center gap-2"><i class="bi bi-check-circle-fill text-coral"></i> On-site in 24h</span>
+        </div>
+      </div>
+
+      <!-- visual -->
+      <div class="lg:col-span-6 reveal" style="transition-delay:120ms">
+        <div class="relative">
+          <div class="rounded-[24px] overflow-hidden bg-ink aspect-[4/3.35] sm:aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
+                 alt="Modern renovated living room in Bangkok by Renova Studio"
+                 class="w-full h-full object-cover" loading="eager">
+          </div>
+
+          <!-- floating metric card -->
+          <div class="absolute -left-3 sm:-left-6 top-6 sm:top-10 card-dark px-4 py-3.5 w-[152px] shadow-2xl">
+            <div class="t-label text-muted">Avg. rating</div>
+            <div class="font-display font-extrabold text-[30px] leading-none mt-1 text-white">4.9</div>
+            <div class="flex gap-[3px] mt-2 text-lime text-[11px]">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <div class="text-[11px] text-muted mt-1.5">216 verified reviews</div>
+          </div>
+
+          <!-- floating metric card 2 -->
+          <div class="absolute -right-2 sm:-right-5 bottom-6 sm:bottom-8 bg-white border border-black/10 rounded-2xl px-4 py-3.5 w-[164px] shadow-[0_24px_50px_-24px_rgba(34,36,38,.45)]">
+            <div class="t-label text-black/40">Projects delivered</div>
+            <div class="t-stat text-coral mt-1.5"><span class="counter" data-target="480">0</span>+</div>
+            <div class="mt-2.5 h-1.5 rounded-full bg-black/[.07] overflow-hidden">
+              <div class="h-full rounded-full bg-coral" style="width:86%"></div>
+            </div>
+            <div class="text-[11px] text-black/45 mt-2">Since 2014 · Bangkok metro</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRUST BAR ============================ -->
+<section class="bg-white border-y border-black/[.07]">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-black/[.07]">
+
+      <div class="py-7 sm:py-9 px-4 sm:px-6 reveal">
+        <div class="t-label text-black/40">Projects delivered</div>
+        <div class="t-stat text-ink mt-2"><span class="counter" data-target="480">0</span>+</div>
+        <div class="text-[12px] text-black/45 mt-1.5">Residential &amp; commercial</div>
+      </div>
+
+      <div class="py-7 sm:py-9 px-4 sm:px-6 reveal" style="transition-delay:80ms">
+        <div class="t-label text-black/40">Average rating</div>
+        <div class="t-stat text-coral mt-2">4.9<span class="text-[20px] text-black/30">/5</span></div>
+        <div class="text-[12px] text-black/45 mt-1.5">216 verified reviews</div>
+      </div>
+
+      <div class="py-7 sm:py-9 px-4 sm:px-6 reveal" style="transition-delay:160ms">
+        <div class="t-label text-black/40">Years experience</div>
+        <div class="t-stat text-ink mt-2"><span class="counter" data-target="12">0</span></div>
+        <div class="text-[12px] text-black/45 mt-1.5">Operating since 2014</div>
+      </div>
+
+      <div class="py-7 sm:py-9 px-4 sm:px-6 reveal" style="transition-delay:240ms">
+        <div class="t-label text-black/40">On-site response</div>
+        <div class="t-stat text-sky mt-2">24<span class="text-[20px] text-black/30">h</span></div>
+        <div class="text-[12px] text-black/45 mt-1.5">Free survey, no obligation</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ SERVICES ============================ -->
+<section id="services" class="bg-white py-20 sm:py-24 lg:py-28">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+
+    <div class="max-w-[640px] reveal">
+      <span class="t-label text-coral">What we do</span>
+      <h2 class="t-h2 text-ink mt-3">Six services. One accountable team.</h2>
+      <p class="mt-4 text-[15px] leading-relaxed text-black/55">
+        Transparent starting prices in Thai baht. Every quote is fixed before we start — no surprise variations.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+
+      <!-- 1 -->
+      <article class="card p-6 reveal">
+        <div class="icon-tile bg-coral/10 text-coral"><i class="bi bi-palette2"></i></div>
+        <h3 class="t-h3 text-ink mt-5">Interior Design</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          Concept, 3D renders and material boards — approved before a single wall moves.
+        </p>
+        <div class="mt-5 pt-5 border-t border-black/[.07] flex items-end justify-between">
+          <div>
+            <div class="t-label text-black/35">Starting from</div>
+            <div class="font-display font-extrabold text-[19px] text-ink mt-1">฿1,500 <span class="text-[12px] font-semibold text-black/40">/ m²</span></div>
+          </div>
+          <i class="bi bi-arrow-right text-black/25"></i>
+        </div>
+      </article>
+
+      <!-- 2 — winner takes most -->
+      <article class="card-dark p-6 relative overflow-hidden reveal" style="transition-delay:80ms">
+        <span class="absolute top-5 right-5 tag-lime !text-[10.5px] !py-[5px] !px-[11px]">MOST POPULAR</span>
+        <div class="icon-tile bg-lime text-ink"><i class="bi bi-house-gear"></i></div>
+        <h3 class="t-h3 text-white mt-5">Full Home Renovation</h3>
+        <p class="text-[13.5px] leading-relaxed text-white/60 mt-2.5">
+          Design-to-handover renovation. One team, one contract, one fixed price.
+        </p>
+        <div class="mt-5 pt-5 border-t border-line flex items-end justify-between">
+          <div>
+            <div class="t-label text-white/40">Price range</div>
+            <div class="font-display font-extrabold text-[19px] text-lime mt-1">฿9,500–18,000 <span class="text-[12px] font-semibold text-white/40">/ m²</span></div>
+          </div>
+          <i class="bi bi-arrow-right text-white/30"></i>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card p-6 reveal" style="transition-delay:160ms">
+        <div class="icon-tile bg-sky/15 text-sky"><i class="bi bi-droplet-half"></i></div>
+        <h3 class="t-h3 text-ink mt-5">Kitchen &amp; Bathroom</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          Waterproofing, plumbing and cabinetry — built to survive Bangkok humidity.
+        </p>
+        <div class="mt-5 pt-5 border-t border-black/[.07] flex items-end justify-between">
+          <div>
+            <div class="t-label text-black/35">Starting from</div>
+            <div class="font-display font-extrabold text-[19px] text-ink mt-1">฿120,000 <span class="text-[12px] font-semibold text-black/40">/ room</span></div>
+          </div>
+          <i class="bi bi-arrow-right text-black/25"></i>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card p-6 reveal">
+        <div class="icon-tile bg-coral/10 text-coral"><i class="bi bi-buildings"></i></div>
+        <h3 class="t-h3 text-ink mt-5">Office &amp; Retail Fit-out</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          Fast-track commercial fit-outs scheduled around your opening date.
+        </p>
+        <div class="mt-5 pt-5 border-t border-black/[.07] flex items-end justify-between">
+          <div>
+            <div class="t-label text-black/35">Starting from</div>
+            <div class="font-display font-extrabold text-[19px] text-ink mt-1">฿7,500 <span class="text-[12px] font-semibold text-black/40">/ m²</span></div>
+          </div>
+          <i class="bi bi-arrow-right text-black/25"></i>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card p-6 reveal" style="transition-delay:80ms">
+        <div class="icon-tile bg-lime text-ink"><i class="bi bi-rulers"></i></div>
+        <h3 class="t-h3 text-ink mt-5">Built-in Furniture</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          Wardrobes, TV walls and storage — made in our own Bangkok workshop.
+        </p>
+        <div class="mt-5 pt-5 border-t border-black/[.07] flex items-end justify-between">
+          <div>
+            <div class="t-label text-black/35">Starting from</div>
+            <div class="font-display font-extrabold text-[19px] text-ink mt-1">฿18,000 <span class="text-[12px] font-semibold text-black/40">/ linear m</span></div>
+          </div>
+          <i class="bi bi-arrow-right text-black/25"></i>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="card p-6 reveal" style="transition-delay:160ms">
+        <div class="icon-tile bg-sky/15 text-sky"><i class="bi bi-clipboard2-check"></i></div>
+        <h3 class="t-h3 text-ink mt-5">Site Survey &amp; Consult</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          An engineer visits, measures and reports. Zero cost, zero obligation.
+        </p>
+        <div class="mt-5 pt-5 border-t border-black/[.07] flex items-end justify-between">
+          <div>
+            <div class="t-label text-black/35">Cost</div>
+            <div class="font-display font-extrabold text-[19px] text-coral mt-1">Free</div>
+          </div>
+          <i class="bi bi-arrow-right text-black/25"></i>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WORK ============================ -->
+<section id="work" class="bg-white py-20 sm:py-24 lg:py-28 border-t border-black/[.06]">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+
+    <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+      <div class="max-w-[560px]">
+        <span class="t-label text-coral">Recent work</span>
+        <h2 class="t-h2 text-ink mt-3">Finished, photographed, handed over.</h2>
+        <p class="mt-4 text-[15px] leading-relaxed text-black/55">
+          Updated automatically as projects complete. Real budgets, real timelines.
+        </p>
+      </div>
+      <a href="#" class="btn btn-ghost !py-[0.7rem] !px-[1.1rem] !text-[13.5px]">
+        View all 480 projects <i class="bi bi-arrow-up-right"></i>
+      </a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+
+      <a href="#" class="work aspect-[4/3] reveal">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Condo renovation Sukhumvit 39" loading="lazy">
+        <span class="work-chip">Full renovation</span>
+        <div class="work-meta">
+          <div class="font-display font-bold text-[16px]">Condo — Sukhumvit 39</div>
+          <div class="text-[12px] text-white/70 mt-1">78 m² · ฿1.42M · 7 weeks</div>
+        </div>
+      </a>
+
+      <a href="#" class="work aspect-[4/3] reveal" style="transition-delay:80ms">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Townhouse renovation Ladprao" loading="lazy">
+        <span class="work-chip">Structural + interior</span>
+        <div class="work-meta">
+          <div class="font-display font-bold text-[16px]">Townhouse — Ladprao</div>
+          <div class="text-[12px] text-white/70 mt-1">180 m² · ฿2.65M · 11 weeks</div>
+        </div>
+      </a>
+
+      <a href="#" class="work aspect-[4/3] reveal" style="transition-delay:160ms">
+        <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=900&q=80" alt="Kitchen and dining Thonglor" loading="lazy">
+        <span class="work-chip">Kitchen</span>
+        <div class="work-meta">
+          <div class="font-display font-bold text-[16px]">Kitchen &amp; Dining — Thonglor</div>
+          <div class="text-[12px] text-white/70 mt-1">24 m² · ฿385K · 4 weeks</div>
+        </div>
+      </a>
+
+      <a href="#" class="work aspect-[4/3] reveal">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80" alt="Master bathroom Phrom Phong" loading="lazy">
+        <span class="work-chip">Bathroom</span>
+        <div class="work-meta">
+          <div class="font-display font-bold text-[16px]">Master Bath — Phrom Phong</div>
+          <div class="text-[12px] text-white/70 mt-1">9 m² · ฿248K · 3 weeks</div>
+        </div>
+      </a>
+
+      <a href="#" class="work aspect-[4/3] reveal" style="transition-delay:80ms">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80" alt="Penthouse living Sathorn" loading="lazy">
+        <span class="work-chip">Penthouse</span>
+        <div class="work-meta">
+          <div class="font-display font-bold text-[16px]">Penthouse Living — Sathorn</div>
+          <div class="text-[12px] text-white/70 mt-1">142 m² · ฿3.10M · 13 weeks</div>
+        </div>
+      </a>
+
+      <a href="#" class="work aspect-[4/3] reveal" style="transition-delay:160ms">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80" alt="Office fit-out Asok" loading="lazy">
+        <span class="work-chip">Commercial</span>
+        <div class="work-meta">
+          <div class="font-display font-bold text-[16px]">Office Fit-out — Asok</div>
+          <div class="text-[12px] text-white/70 mt-1">320 m² · ฿2.40M · 6 weeks</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESS ============================ -->
+<section id="process" class="bg-white py-20 sm:py-24 lg:py-28 border-t border-black/[.06]">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+
+    <div class="max-w-[620px] reveal">
+      <span class="t-label text-coral">How it works</span>
+      <h2 class="t-h2 text-ink mt-3">Four steps from idea to handover.</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+
+      <div class="card p-6 reveal">
+        <div class="flex items-center justify-between">
+          <span class="font-display font-extrabold text-[38px] leading-none text-coral/25">01</span>
+          <i class="bi bi-stars text-coral text-[20px]"></i>
+        </div>
+        <h3 class="t-h3 text-ink mt-5">Free AI estimate</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          Tell us the space and scope. Get an indicative budget range in 30 seconds.
+        </p>
+        <div class="mt-5 tag-dark !text-[11px] !py-[5px] !px-[11px] w-fit">30 seconds</div>
+      </div>
+
+      <div class="card p-6 reveal" style="transition-delay:80ms">
+        <div class="flex items-center justify-between">
+          <span class="font-display font-extrabold text-[38px] leading-none text-coral/25">02</span>
+          <i class="bi bi-geo-alt text-coral text-[20px]"></i>
+        </div>
+        <h3 class="t-h3 text-ink mt-5">On-site survey</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          Our engineer measures, checks structure and photographs everything.
+        </p>
+        <div class="mt-5 tag-dark !text-[11px] !py-[5px] !px-[11px] w-fit">Within 24 hours</div>
+      </div>
+
+      <div class="card p-6 reveal" style="transition-delay:160ms">
+        <div class="flex items-center justify-between">
+          <span class="font-display font-extrabold text-[38px] leading-none text-coral/25">03</span>
+          <i class="bi bi-file-earmark-text text-coral text-[20px]"></i>
+        </div>
+        <h3 class="t-h3 text-ink mt-5">Fixed-price proposal</h3>
+        <p class="text-[13.5px] leading-relaxed text-black/55 mt-2.5">
+          Itemised quote with a locked total and a written timeline. No hidden extras.
+        </p>
+        <div class="mt-5 tag-dark !text-[11px] !py-[5px] !px-[11px] w-fit">3–5 days</div>
+      </div>
+
+      <div class="card-dark p-6 reveal" style="transition-delay:240ms">
+        <div class="flex items-center justify-between">
+          <span class="font-display font-extrabold text-[38px] leading-none text-white/15">04</span>
+          <i class="bi bi-shield-check text-lime text-[20px]"></i>
+        </div>
+        <h3 class="t-h3 text-white mt-5">Build &amp; handover</h3>
+        <p class="text-[13.5px] leading-relaxed text-white/60 mt-2.5">
+          Daily site cleaning, weekly photo reports, and a 5-year workmanship warranty.
+        </p>
+        <div class="mt-5 tag-lime !text-[11px] !py-[5px] !px-[11px] w-fit">5-year warranty</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REVIEWS ============================ -->
+<section id="reviews" class="bg-white py-20 sm:py-24 lg:py-28 border-t border-black/[.06]">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+
+    <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+      <div class="max-w-[560px]">
+        <span class="t-label text-coral">Client reviews</span>
+        <h2 class="t-h2 text-ink mt-3">216 reviews. 4.9 average.</h2>
+        <p class="mt-4 text-[15px] leading-relaxed text-black/55">
+          Verified after handover — including the ones that mention delays.
+        </p>
+      </div>
+      <div class="flex gap-2">
+        <button id="revPrev" aria-label="Previous review" class="w-11 h-11 rounded-xl border border-black/10 grid place-items-center hover:border-ink hover:bg-black/[.03] transition">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+        <button id="revNext" aria-label="Next review" class="w-11 h-11 rounded-xl border border-black/10 grid place-items-center hover:border-ink hover:bg-black/[.03] transition">
+          <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="rail mt-12 -mx-5 px-5 sm:mx-0 sm:px-0" id="revRail">
+
+      <article class="card p-6 w-[300px] sm:w-[360px]">
+        <div class="flex gap-[3px] text-coral text-[13px]">
+          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+        <p class="text-[14px] leading-relaxed text-ink/80 mt-4">
+          “They quoted ฿1.42M and the final bill was ฿1.42M. In Bangkok, that alone is worth five stars.”
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-black/[.07]">
+          <span class="w-10 h-10 rounded-full bg-coral text-white grid place-items-center font-display font-bold text-[14px]">PS</span>
+          <div>
+            <div class="font-semibold text-[13.5px] text-ink">Ploy S.</div>
+            <div class="text-[12px] text-black/45">Condo renovation · Sukhumvit</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card p-6 w-[300px] sm:w-[360px]">
+        <div class="flex gap-[3px] text-coral text-[13px]">
+          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+        <p class="text-[14px] leading-relaxed text-ink/80 mt-4">
+          “The 3D renders matched the finished room almost exactly. I approved the design without ever feeling unsure.”
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-black/[.07]">
+          <span class="w-10 h-10 rounded-full bg-sky text-white grid place-items-center font-display font-bold text-[14px]">MT</span>
+          <div>
+            <div class="font-semibold text-[13.5px] text-ink">Marcus T.</div>
+            <div class="text-[12px] text-black/45">Penthouse · Sathorn</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card p-6 w-[300px] sm:w-[360px]">
+        <div class="flex gap-[3px] text-coral text-[13px]">
+          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+        <p class="text-[14px] leading-relaxed text-ink/80 mt-4">
+          “The site team cleaned up every single day. My neighbours actually thanked me at the end of the project.”
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-black/[.07]">
+          <span class="w-10 h-10 rounded-full bg-lime text-ink grid place-items-center font-display font-bold text-[14px]">NW</span>
+          <div>
+            <div class="font-semibold text-[13.5px] text-ink">Napat W.</div>
+            <div class="text-[12px] text-black/45">Townhouse · Ladprao</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card p-6 w-[300px] sm:w-[360px]">
+        <div class="flex gap-[3px] text-coral text-[13px]">
+          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+        </div>
+        <p class="text-[14px] leading-relaxed text-ink/80 mt-4">
+          “Handover ran 4 days late — and they credited the penalty clause without me having to ask. That's rare.”
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-black/[.07]">
+          <span class="w-10 h-10 rounded-full bg-ink text-white grid place-items-center font-display font-bold text-[14px]">AP</span>
+          <div>
+            <div class="font-semibold text-[13.5px] text-ink">Anan P.</div>
+            <div class="text-[12px] text-black/45">House renovation · Nonthaburi</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card p-6 w-[300px] sm:w-[360px]">
+        <div class="flex gap-[3px] text-coral text-[13px]">
+          <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+        </div>
+        <p class="text-[14px] leading-relaxed text-ink/80 mt-4">
+          “Our office fit-out ran over a single weekend and we opened for business on Monday morning.”
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-black/[.07]">
+          <span class="w-10 h-10 rounded-full bg-coral text-white grid place-items-center font-display font-bold text-[14px]">CD</span>
+          <div>
+            <div class="font-semibold text-[13.5px] text-ink">Claire D.</div>
+            <div class="text-[12px] text-black/45">Office fit-out · Asok</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="bg-white py-20 sm:py-24 lg:py-28 border-t border-black/[.06]">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <div class="lg:col-span-5 reveal">
+        <span class="t-label text-coral">FAQ</span>
+        <h2 class="t-h2 text-ink mt-3">The five questions we hear most.</h2>
+        <p class="mt-4 text-[15px] leading-relaxed text-black/55">
+          Still unsure? Ask our AI assistant — it answers in seconds, in Thai or English.
+        </p>
+        <button id="faqChatBtn" class="btn btn-ink mt-6">
+          <i class="bi bi-chat-dots"></i> Ask the AI assistant
+        </button>
+      </div>
+
+      <div class="lg:col-span-7 reveal" style="transition-delay:100ms">
+
+        <div class="faq-item border-b border-black/[.09]">
+          <button class="faq-q w-full flex items-center justify-between gap-6 py-5 text-left">
+            <span class="t-h3 text-ink">How much does a renovation cost in Bangkok?</span>
+            <span class="faq-icon w-8 h-8 rounded-lg border border-black/12 grid place-items-center text-[13px] shrink-0 transition-all duration-300">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+          </button>
+          <div class="faq-a"><p class="pb-6 pr-10 text-[14px] leading-relaxed text-black/55">
+            A full renovation typically runs ฿9,500–18,000 per m² depending on scope and materials. A 60 m² condo lands around ฿650K–1.1M. Use the free AI estimate above for a range based on your actual space.
+          </p></div>
+        </div>
+
+        <div class="faq-item border-b border-black/[.09]">
+          <button class="faq-q w-full flex items-center justify-between gap-6 py-5 text-left">
+            <span class="t-h3 text-ink">How long does a typical project take?</span>
+            <span class="faq-icon w-8 h-8 rounded-lg border border-black/12 grid place-items-center text-[13px] shrink-0 transition-all duration-300">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+          </button>
+          <div class="faq-a"><p class="pb-6 pr-10 text-[14px] leading-relaxed text-black/55">
+            A 60–80 m² condo takes 6–8 weeks from signed proposal to handover. Townhouses and houses run 10–14 weeks. We publish a written milestone schedule before work begins.
+          </p></div>
+        </div>
+
+        <div class="faq-item border-b border-black/[.09]">
+          <button class="faq-q w-full flex items-center justify-between gap-6 py-5 text-left">
+            <span class="t-h3 text-ink">Do you provide a fixed-price quote?</span>
+            <span class="faq-icon w-8 h-8 rounded-lg border border-black/12 grid place-items-center text-[13px] shrink-0 transition-all duration-300">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+          </button>
+          <div class="faq-a"><p class="pb-6 pr-10 text-[14px] leading-relaxed text-black/55">
+            Yes. After the on-site survey you receive an itemised quote with a locked total. Variations only happen if you request a change — and they're priced and approved in writing first.
+          </p></div>
+        </div>
+
+        <div class="faq-item border-b border-black/[.09]">
+          <button class="faq-q w-full flex items-center justify-between gap-6 py-5 text-left">
+            <span class="t-h3 text-ink">Which areas of Bangkok do you cover?</span>
+            <span class="faq-icon w-8 h-8 rounded-lg border border-black/12 grid place-items-center text-[13px] shrink-0 transition-all duration-300">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+          </button>
+          <div class="faq-a"><p class="pb-6 pr-10 text-[14px] leading-relaxed text-black/55">
+            All of Bangkok plus the metro area — Nonthaburi, Samut Prakan, Pathum Thani and Samut Sakhon. Surveys outside the metro area may include a small travel fee.
+          </p></div>
+        </div>
+
+        <div class="faq-item border-b border-black/[.09]">
+          <button class="faq-q w-full flex items-center justify-between gap-6 py-5 text-left">
+            <span class="t-h3 text-ink">What warranty do you offer?</span>
+            <span class="faq-icon w-8 h-8 rounded-lg border border-black/12 grid place-items-center text-[13px] shrink-0 transition-all duration-300">
+              <i class="bi bi-plus-lg"></i>
+            </span>
+          </button>
+          <div class="faq-a"><p class="pb-6 pr-10 text-[14px] leading-relaxed text-black/55">
+            A 5-year workmanship warranty plus manufacturer warranties on all supplied materials — waterproofing, electrical and plumbing included. Claims are handled by our own after-sales team.
+          </p></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA ============================ -->
+<section class="bg-white pb-20 sm:pb-24 lg:pb-28">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
+    <div class="relative overflow-hidden rounded-[26px] bg-coral px-6 sm:px-12 py-14 sm:py-16 reveal">
+      <div class="absolute -right-16 -top-16 w-[280px] h-[280px] rounded-full bg-lime/25 blur-3xl"></div>
+      <div class="absolute -left-20 -bottom-20 w-[260px] h-[260px] rounded-full bg-white/10 blur-3xl"></div>
+
+      <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7">
+          <span class="tag-lime !bg-white !text-coral"><i class="bi bi-lightning-charge-fill"></i> Free · No obligation</span>
+          <h2 class="t-h2 text-white mt-5 max-w-[520px]">Know your budget before you talk to anyone.</h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-white/85 max-w-[500px]">
+            Answer three questions. Get a real price range for your space in under a minute.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <button class="js-open-estimate btn !bg-white !text-ink hover:!bg-lime">
+              <i class="bi bi-stars"></i> Start Free AI Estimate
+            </button>
+            <a href="tel:+6621234567" class="btn !bg-transparent !text-white !border-white/40 hover:!border-white">
+              <i class="bi bi-telephone"></i> 02-123-4567
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="bg-ink rounded-2xl p-5 space-y-3">
+            <a href="tel:+6621234567" class="flex items-center gap-3.5 p-3 rounded-xl hover:bg-white/[.06] transition">
+              <span class="w-10 h-10 rounded-xl bg-coral grid place-items-center text-white"><i class="bi bi-telephone-fill"></i></span>
+              <span><span class="block text-[11px] uppercase tracking-wider text-muted font-bold">Call us</span><span class="block text-white font-semibold text-[14px] mt-0.5">02-123-4567</span></span>
+            </a>
+            <a href="https://line.me" class="flex items-center gap-3.5 p-3 rounded-xl hover:bg-white/[.06] transition">
+              <span class="w-10 h-10 rounded-xl bg-lime grid place-items-center text-ink"><i class="bi bi-chat-fill"></i></span>
+              <span><span class="block text-[11px] uppercase tracking-wider text-muted font-bold">LINE</span><span class="block text-white font-semibold text-[14px] mt-0.5">@renovastudio</span></span>
+            </a>
+            <a href="mailto:hello@renovastudio.co.th" class="flex items-center gap-3.5 p-3 rounded-xl hover:bg-white/[.06] transition">
+              <span class="w-10 h-10 rounded-xl bg-sky grid place-items-center text-white"><i class="bi bi-envelope-fill"></i></span>
+              <span><span class="block text-[11px] uppercase tracking-wider text-muted font-bold">Email</span><span class="block text-white font-semibold text-[14px] mt-0.5">hello@renovastudio.co.th</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="bg-white border-t border-black/[.07]">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8 py-14">
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-12 gap-10">
+
+      <div class="lg:col-span-5">
+        <a href="#top" class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-[11px] bg-coral grid place-items-center"><span class="w-3 h-3 rounded-[4px] bg-lime"></span></span>
+          <span class="font-display font-extrabold text-[19px] tracking-tight text-ink">RENOVA<span class="text-coral">.</span></span>
+        </a>
+        <p class="mt-5 text-[13.5px] leading-relaxed text-black/55 max-w-[380px]">
+          <strong class="text-ink font-semibold">Who we are:</strong> Renova Studio is a Bangkok interior design and renovation agency founded in 2014. We design, build and hand over residential and commercial spaces across the Bangkok metropolitan area — with fixed pricing and a 5-year workmanship warranty.
+        </p>
+        <div class="flex gap-2 mt-6">
+          <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-xl border border-black/10 grid place-items-center hover:bg-ink hover:text-white hover:border-ink transition"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-xl border border-black/10 grid place-items-center hover:bg-ink hover:text-white hover:border-ink transition"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LINE" class="w-10 h-10 rounded-xl border border-black/10 grid place-items-center hover:bg-ink hover:text-white hover:border-ink transition"><i class="bi bi-chat-dots"></i></a>
+          <a href="#" aria-label="YouTube" class="w-10 h-10 rounded-xl border border-black/10 grid place-items-center hover:bg-ink hover:text-white hover:border-ink transition"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <div class="t-label text-black/35">Services</div>
+        <ul class="mt-4 space-y-2.5 text-[13.5px] text-black/60">
+          <li><a href="#services" class="hover:text-coral transition">Interior Design</a></li>
+          <li><a href="#services" class="hover:text-coral transition">Home Renovation</a></li>
+          <li><a href="#services" class="hover:text-coral transition">Kitchen &amp; Bath</a></li>
+          <li><a href="#services" class="hover:text-coral transition">Office Fit-out</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-2">
+        <div class="t-label text-black/35">Company</div>
+        <ul class="mt-4 space-y-2.5 text-[13.5px] text-black/60">
+          <li><a href="#work" class="hover:text-coral transition">Our Work</a></li>
+          <li><a href="#process" class="hover:text-coral transition">Process</a></li>
+          <li><a href="#reviews" class="hover:text-coral transition">Reviews</a></li>
+          <li><a href="#faq" class="hover:text-coral transition">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-3">
+        <div class="t-label text-black/35">Studio</div>
+        <p class="mt-4 text-[13.5px] leading-relaxed text-black/60">
+          128 Sukhumvit 26, Klongton<br>
+          Bangkok 10110, Thailand
+        </p>
+        <p class="mt-3 text-[13.5px] text-black/60">
+          Mon–Sat · 09:00–18:00
+        </p>
+        <p class="mt-3 text-[13.5px] font-semibold text-ink">02-123-4567</p>
+      </div>
+
+    </div>
+
+    <div class="mt-12 pt-7 border-t border-black/[.07] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-[12.5px] text-black/45">© 2026 Renova Studio Co., Ltd. All rights reserved.</p>
+      <div class="flex gap-6 text-[12.5px] text-black/45">
+        <a href="#" class="hover:text-ink transition">Privacy Policy</a>
+        <a href="#" class="hover:text-ink transition">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ STICKY MOBILE BAR ============================ -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-t border-black/[.08] pb-[env(safe-area-inset-bottom)]">
+  <div class="grid grid-cols-3 divide-x divide-black/[.07]">
+    <button class="js-chat-toggle flex flex-col items-center justify-center gap-1 py-3 text-coral">
+      <i class="bi bi-stars text-[17px]"></i>
+      <span class="text-[11px] font-bold">AI Chat</span>
+    </button>
+    <a href="https://line.me" class="flex flex-col items-center justify-center gap-1 py-3 text-ink">
+      <i class="bi bi-chat-dots text-[17px]"></i>
+      <span class="text-[11px] font-bold">LINE</span>
+    </a>
+    <a href="tel:+6621234567" class="flex flex-col items-center justify-center gap-1 py-3 text-ink">
+      <i class="bi bi-telephone text-[17px]"></i>
+      <span class="text-[11px] font-bold">Call</span>
+    </a>
+  </div>
+</div>
+
+<!-- ============================ FLOATING BUTTONS ============================ -->
+<div id="floatGroup">
+  <button id="toTop" class="fab" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+  <button id="chatToggle" class="fab" aria-label="Open AI assistant">
+    <i class="bi bi-chat-dots-fill"></i>
+    <span class="ping"></span>
+  </button>
+</div>
+
+<!-- ============================ CHAT PANEL ============================ -->
+<div id="chatPanel" role="dialog" aria-label="AI assistant">
+  <div class="bg-ink px-5 py-4 flex items-center gap-3 shrink-0">
+    <span class="w-9 h-9 rounded-xl bg-coral grid place-items-center text-white text-[15px]">
+      <i class="bi bi-stars"></i>
+    </span>
+    <div class="flex-1 min-w-0">
+      <div class="text-white font-display font-bold text-[14.5px] leading-tight">Renova AI Assistant</div>
+      <div class="flex items-center gap-1.5 mt-0.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-lime"></span>
+        <span class="text-[11.5px] text-muted">Online · replies instantly</span>
+      </div>
+    </div>
+    <button id="chatClose" aria-label="Close chat" class="w-8 h-8 rounded-lg grid place-items-center text-white/50 hover:text-white hover:bg-white/10 transition">
+      <i class="bi bi-x-lg text-[14px]"></i>
+    </button>
+  </div>
+
+  <div id="chatBody" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-white">
+    <div class="msg msg-bot">
+      Hi 👋 I'm the Renova assistant. Ask me about pricing, timelines, or coverage areas — in Thai or English.
+    </div>
+    <div class="flex flex-wrap gap-2 pt-1">
+      <button class="chat-quick chip !text-[12px] !py-[0.5rem] !px-[0.8rem]">How much for a 60 m² condo?</button>
+      <button class="chat-quick chip !text-[12px] !py-[0.5rem] !px-[0.8rem]">How long does it take?</button>
+      <button class="chat-quick chip !text-[12px] !py-[0.5rem] !px-[0.8rem]">Do you cover Nonthaburi?</button>
+    </div>
+  </div>
+
+  <form id="chatForm" class="border-t border-black/[.08] p-3 flex items-center gap-2 shrink-0 bg-white">
+    <input id="chatInput" type="text" autocomplete="off" placeholder="Type your question…"
+           class="flex-1 border border-black/12 rounded-xl px-3.5 py-2.5 text-[13.5px] outline-none focus:border-coral focus:ring-4 focus:ring-coral/12 transition">
+    <button type="submit" aria-label="Send" class="w-10 h-10 rounded-xl bg-coral text-white grid place-items-center hover:bg-[#e64a29] transition shrink-0">
+      <i class="bi bi-send-fill text-[14px]"></i>
+    </button>
+  </form>
+</div>
+
+<!-- ============================ AUTH MODAL ============================ -->
+<div id="authModal" class="modal" role="dialog" aria-modal="true" aria-label="Sign in or register">
+  <div class="modal-box max-w-[420px] p-7 sm:p-8">
+
+    <div class="flex items-start justify-between">
+      <div>
+        <h2 class="font-display font-extrabold text-[24px] tracking-tight text-ink leading-tight">Welcome back</h2>
+        <p class="text-[13.5px] text-black/50 mt-1.5">Track your project and quotes in one place.</p>
+      </div>
+      <button data-close-modal class="w-9 h-9 rounded-xl grid place-items-center text-black/40 hover:text-ink hover:bg-black/[.05] transition">
+        <i class="bi bi-x-lg text-[15px]"></i>
+      </button>
+    </div>
+
+    <div class="flex gap-1 p-1 bg-black/[.04] rounded-xl mt-6">
+      <button class="tab-btn active" data-tab="signin">Sign in</button>
+      <button class="tab-btn" data-tab="signup">Create account</button>
+    </div>
+
+    <!-- sign in -->
+    <form id="signinForm" class="mt-6 space-y-4">
+      <div>
+        <label class="t-label text-black/40 block mb-2">Email</label>
+        <input type="email" required class="field" placeholder="you@example.com">
+      </div>
+      <div>
+        <label class="t-label text-black/40 block mb-2">Password</label>
+        <input type="password" required class="field" placeholder="••••••••">
+      </div>
+      <div class="flex items-center justify-between pt-1">
+        <label class="flex items-center gap-2 text-[13px] text-black/60 cursor-pointer">
+          <input type="checkbox" class="accent-coral w-4 h-4 rounded"> Remember me
+        </label>
+        <a href="#" class="text-[13px] font-semibold text-coral hover:underline">Forgot?</a>
+      </div>
+      <button type="submit" class="btn btn-coral w-full mt-2">Sign in</button>
+    </form>
+
+    <!-- sign up -->
+    <form id="signupForm" class="mt-6 space-y-4 hidden">
+      <div>
+        <label class="t-label text-black/40 block mb-2">Full name</label>
+        <input type="text" required class="field" placeholder="Somchai Jaidee">
+      </div>
+      <div>
+        <label class="t-label text-black/40 block mb-2">Email</label>
+        <input type="email" required class="field" placeholder="you@example.com">
+      </div>
+      <div>
+        <label class="t-label text-black/40 block mb-2">Password</label>
+        <input type="password" required class="field" placeholder="At least 8 characters">
+      </div>
+      <label class="flex items-start gap-2.5 text-[12.5px] text-black/55 cursor-pointer pt-1">
+        <input type="checkbox" required class="accent-coral w-4 h-4 mt-0.5 rounded">
+        <span>I agree to the <a href="#" class="text-coral font-semibold hover:underline">Terms</a> and <a href="#" class="text-coral font-semibold hover:underline">Privacy Policy</a>.</span>
+      </label>
+      <button type="submit" class="btn btn-coral w-full mt-2">Create account</button>
+    </form>
+
+    <div class="flex items-center gap-3 my-6">
+      <span class="flex-1 h-px bg-black/[.09]"></span>
+      <span class="text-[11.5px] text-black/35 font-semibold">OR CONTINUE WITH</span>
+      <span class="flex-1 h-px bg-black/[.09]"></span>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2.5">
+      <button class="flex items-center justify-center gap-2 py-3 rounded-xl border border-black/12 hover:border-ink hover:bg-black/[.02] transition text-[13px] font-semibold">
+        <i class="bi bi-google text-[15px]"></i> Google
+      </button>
+      <button class="flex items-center justify-center gap-2 py-3 rounded-xl border border-black/12 hover:border-ink hover:bg-black/[.02] transition text-[13px] font-semibold">
+        <i class="bi bi-chat-fill text-lime text-[15px]"></i> LINE
+      </button>
+      <button class="flex items-center justify-center gap-2 py-3 rounded-xl border border-black/12 hover:border-ink hover:bg-black/[.02] transition text-[13px] font-semibold">
+        <i class="bi bi-facebook text-sky text-[15px]"></i> Meta
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ AI ESTIMATE MODAL ============================ -->
+<div id="estimateModal" class="modal" role="dialog" aria-modal="true" aria-label="Free AI estimate">
+  <div class="modal-box max-w-[560px] p-7 sm:p-8">
+
+    <div class="flex items-start justify-between">
+      <div>
+        <span class="tag-lime"><i class="bi bi-stars"></i> AI Estimate</span>
+        <h2 class="font-display font-extrabold text-[24px] tracking-tight text-ink leading-tight mt-4">
+          Your budget, in 30 seconds.
+        </h2>
+        <p class="text-[13.5px] text-black/50 mt-1.5">Indicative range only — the on-site survey confirms the final fixed price.</p>
+      </div>
+      <button data-close-modal class="w-9 h-9 rounded-xl grid place-items-center text-black/40 hover:text-ink hover:bg-black/[.05] transition">
+        <i class="bi bi-x-lg text-[15px]"></i>
+      </button>
+    </div>
+
+    <div class="mt-7">
+      <label class="t-label text-black/40 block mb-3">1. Property type</label>
+      <div class="flex flex-wrap gap-2" id="estType">
+        <button class="chip active coral" data-value="condo">Condo</button>
+        <button class="chip" data-value="townhouse">Townhouse</button>
+        <button class="chip" data-value="house">Detached house</button>
+        <button class="chip" data-value="office">Office / Retail</button>
+      </div>
+    </div>
+
+    <div class="mt-7">
+      <div class="flex items-center justify-between mb-3">
+        <label class="t-label text-black/40">2. Usable area</label>
+        <span class="font-display font-extrabold text-[17px] text-coral"><span id="estAreaVal">60</span> m²</span>
+      </div>
+      <input type="range" id="estArea" min="20" max="400" step="5" value="60">
+      <div class="flex justify-between text-[11px] text-black/35 mt-2 font-semibold">
+        <span>20 m²</span><span>400 m²</span>
+      </div>
+    </div>
+
+    <div class="mt-7">
+      <label class="t-label text-black/40 block mb-3">3. Scope of work</label>
+      <div class="flex flex-wrap gap-2" id="estScope">
+        <button class="chip" data-value="refresh">Light refresh</button>
+        <button class="chip active coral" data-value="full">Full renovation</button>
+        <button class="chip" data-value="custom">Custom / Premium</button>
+      </div>
+    </div>
+
+    <div class="mt-8 bg-ink rounded-2xl p-6">
+      <div class="t-label text-muted">Estimated budget range</div>
+      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mt-2">
+        <span class="font-display font-extrabold text-[32px] sm:text-[38px] leading-none text-white" id="estRange">฿513K – ฿655K</span>
+      </div>
+      <div class="text-[12.5px] text-muted mt-2">≈ <span id="estUsd">$14,250 – $18,200</span> USD · incl. labour &amp; materials</div>
+
+      <div class="mt-5 grid grid-cols-3 gap-3 pt-5 border-t border-line">
+        <div>
+          <div class="text-[10.5px] uppercase tracking-wider text-muted font-bold">Duration</div>
+          <div class="font-display font-bold text-[15px] text-lime mt-1" id="estWeeks">6–8 wks</div>
+        </div>
+        <div>
+          <div class="text-[10.5px] uppercase tracking-wider text-muted font-bold">Rate / m²</div>
+          <div class="font-display font-bold text-[15px] text-sky mt-1" id="estRate">฿9,500</div>
+        </div>
+        <div>
+          <div class="text-[10.5px] uppercase tracking-wider text-muted font-bold">Survey</div>
+          <div class="font-display font-bold text-[15px] text-white mt-1">Free</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <button id="estBook" class="btn btn-coral flex-1"><i class="bi bi-calendar-check"></i> Book free survey</button>
+      <button class="js-chat-toggle btn btn-ghost flex-1"><i class="bi bi-chat-dots"></i> Ask a question</button>
+    </div>
+
+    <p class="text-[11.5px] text-black/35 mt-5 text-center">
+      Estimates are indicative and based on 2026 Bangkok market rates. Not a contractual quotation.
+    </p>
+  </div>
+</div>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Reveal on scroll ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ---------- Counters ---------- */
+  const counters = document.querySelectorAll('.counter');
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      const dur = 1400;
+      const start = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(tick);
+      })(start);
+      cio.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => cio.observe(c));
+
+  /* ---------- Header shadow on scroll ---------- */
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 12) header.classList.add('shadow-[0_10px_30px_-24px_rgba(34,36,38,.55)]');
+    else header.classList.remove('shadow-[0_10px_30px_-24px_rgba(34,36,38,.55)]');
+  }, { passive: true });
+
+  /* ---------- Mobile menu ---------- */
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.innerHTML = mobileMenu.classList.contains('hidden')
+      ? '<i class="bi bi-list"></i>' : '<i class="bi bi-x-lg"></i>';
+  });
+  document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    menuBtn.innerHTML = '<i class="bi bi-list"></i>';
+  }));
+
+  /* ---------- Back to top ---------- */
+  const toTop = document.getElementById('toTop');
+  const hero = document.querySelector('main section');
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) toTop.classList.remove('show');
+      else toTop.classList.add('show');
+    });
+  }, { threshold: 0.05 });
+  heroObserver.observe(hero);
+
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ---------- Auth modal ---------- */
+  const authModal = document.getElementById('authModal');
+  const openAuthBtns = [document.getElementById('openAuth'), document.getElementById('openAuthMobile')].filter(Boolean);
+
+  function openModal(m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeModal(m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+
+  openAuthBtns.forEach(b => b.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    menuBtn.innerHTML = '<i class="bi bi-list"></i>';
+    openModal(authModal);
+  }));
+
+  document.querySelectorAll('[data-close-modal]').forEach(b => {
+    b.addEventListener('click', () => closeModal(b.closest('.modal')));
+  });
+  document.querySelectorAll('.modal').forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m) closeModal(m); });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal.open').forEach(closeModal);
+  });
+
+  /* auth tabs */
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const signinForm = document.getElementById('signinForm');
+  const signupForm = document.getElementById('signupForm');
+  tabBtns.forEach(btn => btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const isSignin = btn.dataset.tab === 'signin';
+    signinForm.classList.toggle('hidden', !isSignin);
+    signupForm.classList.toggle('hidden', isSignin);
+  }));
+
+  /* fake submit */
+  [signinForm, signupForm].forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = f.querySelector('button[type=submit]');
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Success';
+    btn.classList.remove('btn-coral');
+    btn.classList.add('btn-lime');
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.classList.add('btn-coral');
+      btn.classList.remove('btn-lime');
+      closeModal(authModal);
+    }, 1500);
+  }));
+
+  /* ---------- Estimate modal ---------- */
+  const estimateModal = document.getElementById('estimateModal');
+  document.querySelectorAll('.js-open-estimate').forEach(b => b.addEventListener('click', () => {
+    openModal(estimateModal);
+    updateEstimate();
+  }));
+
+  const estState = { type: 'condo', scope: 'full', area: 60 };
+  const RATES = { condo: 9500, townhouse: 10500, house: 12000, office: 8500 };
+  const MULT  = { refresh: 0.55, full: 1, custom: 1.35 };
+  const WEEKS = { refresh: [3, 4], full: [6, 8], custom: [9, 14] };
+
+  const estArea = document.getElementById('estArea');
+  const estAreaVal = document.getElementById('estAreaVal');
+  const estRange = document.getElementById('estRange');
+  const estUsd = document.getElementById('estUsd');
+  const estWeeks = document.getElementById('estWeeks');
+  const estRate = document.getElementById('estRate');
+
+  function fmtTHB(v) {
+    if (v >= 1000000) return '฿' + (v / 1000000).toFixed(2).replace(/\.00$/, '') + 'M';
+    return '฿' + Math.round(v / 1000) + 'K';
+  }
+  function fmtUSD(v) {
+    return '$' + Math.round(v / 1000).toLocaleString('en-US') + 'K';
+  }
+  function fmtNum(v) { return '฿' + Math.round(v).toLocaleString('en-US'); }
+
+  function updateEstimate() {
+    const base = estState.area * RATES[estState.type] * MULT[estState.scope];
+    const low = base * 0.9, high = base * 1.15;
+    estRange.textContent = fmtTHB(low) + ' – ' + fmtTHB(high);
+    estUsd.textContent = fmtUSD(low / 36) + ' – ' + fmtUSD(high / 36);
+    estRate.textContent = fmtNum(RATES[estState.type] * MULT[estState.scope]);
+    const w = WEEKS[estState.scope];
+    const factor = Math.max(0.6, Math.min(1.8, estState.area / 60));
+    estWeeks.textContent = Math.round(w[0] * factor) + '–' + Math.round(w[1] * factor) + ' wks';
+    estAreaVal.textContent = estState.area;
+    // slider fill
+    const pct = ((estState.area - 20) / (400 - 20)) * 100;
+    estArea.style.background =
+      `linear-gradient(to right, #F75A38 0%, #F75A38 ${pct}%, #E9EAEC ${pct}%, #E9EAEC 100%)`;
+  }
+
+  estArea.addEventListener('input', e => { estState.area = parseInt(e.target.value, 10); updateEstimate(); });
+
+  document.querySelectorAll('#estType .chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('#estType .chip').forEach(x => { x.classList.remove('active', 'coral'); });
+    c.classList.add('active', 'coral');
+    estState.type = c.dataset.value;
+    updateEstimate();
+  }));
+  document.querySelectorAll('#estScope .chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('#estScope .chip').forEach(x => { x.classList.remove('active', 'coral'); });
+    c.classList.add('active', 'coral');
+    estState.scope = c.dataset.value;
+    updateEstimate();
+  }));
+
+  document.getElementById('estBook').addEventListener('click', function () {
+    const original = this.innerHTML;
+    this.innerHTML = '<i class="bi bi-check-circle-fill"></i> Request sent — we\'ll call you';
+    this.classList.remove('btn-coral'); this.classList.add('btn-lime');
+    setTimeout(() => {
+      this.innerHTML = original;
+      this.classList.add('btn-coral'); this.classList.remove('btn-lime');
+      closeModal(estimateModal);
+    }, 1800);
+  });
+
+  updateEstimate();
+
+  /* ---------- FAQ ---------- */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ---------- Reviews rail ---------- */
+  const rail = document.getElementById('revRail');
+  const step = () => {
+    const first = rail.querySelector('article');
+    return first ? first.offsetWidth + 18 : 340;
+  };
+  document.getElementById('revNext').addEventListener('click', () => rail.scrollBy({ left: step(), behavior: 'smooth' }));
+  document.getElementById('revPrev').addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: 'smooth' }));
+
+  /* ---------- Chat ---------- */
+  const chatPanel = document.getElementById('chatPanel');
+  const chatToggle = document.getElementById('chatToggle');
+  const chatBody = document.getElementById('chatBody');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+
+  function toggleChat(force) {
+    const willOpen = force !== undefined ? force : !chatPanel.classList.contains('open');
+    chatPanel.classList.toggle('open', willOpen);
+    chatToggle.classList.toggle('active', willOpen);
+    if (willOpen) setTimeout(() => chatInput.focus(), 260);
+  }
+
+  chatToggle.addEventListener('click', () => toggleChat());
+  document.getElementById('chatClose').addEventListener('click', () => toggleChat(false));
+  document.querySelectorAll('.js-chat-toggle').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.modal.open').forEach(closeModal);
+    toggleChat(true);
+  }));
+  document.getElementById('faqChatBtn').addEventListener('click', () => toggleChat(true));
+
+  const KB = [
+    { k: ['price', 'cost', 'much', 'estimate', 'budget', 'ราคา', 'เท่าไหร่', 'งบ'],
+      a: 'A full renovation runs ฿9,500–18,000 per m². A 60 m² condo typically lands between ฿650K and ฿1.1M. Tap “Free AI Estimate” for a range on your exact space.' },
+    { k: ['time', 'long', 'duration', 'week', 'schedule', 'กี่วัน', 'นาน'],
+      a: 'A 60–80 m² condo takes 6–8 weeks from signed proposal to handover. Townhouses and houses run 10–14 weeks.' },
+    { k: ['area', 'where', 'location', 'cover', 'bangkok', 'nonthaburi', 'พื้นที่', 'ที่ไหน'],
+      a: 'We cover all of Bangkok plus Nonthaburi, Samut Prakan, Pathum Thani and Samut Sakhon.' },
+    { k: ['warranty', 'guarantee', 'ประกัน'],
+      a: 'Every project includes a 5-year workmanship warranty, plus manufacturer warranties on all supplied materials.' },
+    { k: ['survey', 'visit', 'site', 'book', 'appointment', 'นัด', 'สำรวจ'],
+      a: 'We can arrange a free on-site survey within 24 hours. Want me to book a slot? Just leave your phone number here.' },
+    { k: ['fixed', 'quote', 'contract', 'สัญญา'],
+      a: 'Yes — we issue an itemised, fixed-price quote after the survey. Variations only happen if you request a change, and they are approved in writing first.' }
+  ];
+
+  function addMsg(text, who) {
+    const d = document.createElement('div');
+    d.className = 'msg ' + (who === 'user' ? 'msg-user' : 'msg-bot');
+    d.textContent = text;
+    chatBody.appendChild(d);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function addTyping() {
+    const d = document.createElement('div');
+    d.className = 'msg msg-bot typing flex gap-1 items-center';
+    d.id = 'typingIndicator';
+    d.innerHTML = '<span></span><span></span><span></span>';
+    chatBody.appendChild(d);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function botReply(text) {
+    const lower = text.toLowerCase();
+    const hit = KB.find(entry => entry.k.some(k => lower.includes(k)));
+    addTyping();
+    setTimeout(() => {
+      const t = document.getElementById('typingIndicator');
+      if (t) t.remove();
+      addMsg(hit ? hit.a : 'Thanks! I\'ve noted that. For a precise answer, our team can call you within 24 hours — or tap “Free AI Estimate” above for an instant price range.', 'bot');
+    }, 800 + Math.random() * 500);
+  }
+
+  chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const val = chatInput.value.trim();
+    if (!val) return;
+    addMsg(val, 'user');
+    chatInput.value = '';
+    botReply(val);
+  });
+
+  document.querySelectorAll('.chat-quick').forEach(b => b.addEventListener('click', () => {
+    const txt = b.textContent.trim();
+    addMsg(txt, 'user');
+    botReply(txt);
+  }));
+
+  /* ---------- Smooth anchor for older browsers ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      const el = document.querySelector(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
