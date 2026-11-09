@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth · Today</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+@theme{--color-mint:#04E1AB;--color-emer:#10AE9E;--color-viol:#6A5DE6;--color-indi:#222480;--color-ink:#291F1B;--color-navy:#050738;--color-sage:#BD9681;--color-olive:#724E40;--color-line:#ECE9E4;--font-display:'Plus Jakarta Sans',sans-serif;--font-sans:'Inter',sans-serif}
+</style>
+<style>
+:root{--r:#fff;--ring:#6A5DE6}
+html{scroll-behavior:smooth}
+body{font-size:13px;line-height:1.6;color:#291F1B;background:#fff;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.f{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em}
+*{scrollbar-width:thin;scrollbar-color:#BD9681 transparent}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#BD9681;border-radius:99px;border:2px solid #fff}::-webkit-scrollbar-thumb:hover{background:#6A5DE6}
+::-webkit-scrollbar-button{display:none;width:0;height:0}
+:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.sb{position:fixed;inset:0 auto 0 0;width:248px;z-index:40;background:#fff;border-right:1px solid #ECE9E4;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+body.sbo .sb{transform:none}
+.bd{position:fixed;inset:0;background:rgba(5,7,56,.35);z-index:30;opacity:0;pointer-events:none;transition:opacity .3s}body.sbo .bd{opacity:1;pointer-events:auto}
+.main{transition:padding .35s cubic-bezier(.2,.8,.2,1)}
+@media(min-width:1024px){.sb{transform:none}body.sbh .sb{transform:translateX(-100%)}.main{padding-left:248px}body.sbh .main{padding-left:0}.bd{display:none}}
+.nv{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:12px;font-weight:500;color:#5b4f49;transition:.2s;width:100%;text-align:left}
+.nv i{font-size:16px}.nv:hover{background:#F4F2FF;color:#6A5DE6}.nv.on{background:#6A5DE6;color:#fff;box-shadow:0 8px 18px -8px #6A5DE6}
+.nv .tag{margin-left:auto;font-size:11px;font-weight:700;background:#04E1AB;color:#291F1B;border-radius:99px;padding:0 7px}
+.card{background:#fff;border:1px solid #ECE9E4;border-radius:22px;padding:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;border-radius:12px;padding:9px 16px;transition:transform .18s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:active{transform:scale(.96)}
+.b1{background:#222480;color:#fff}.b1:hover{background:#6A5DE6;box-shadow:0 10px 20px -10px #6A5DE6}
+.b2{background:#04E1AB;color:#291F1B}.b2:hover{box-shadow:0 10px 20px -8px #04E1AB}
+.b3{background:#F4F2EE;color:#291F1B}.b3:hover{background:#ECE9E4}
+.inp{width:100%;border:1px solid #E3E3DD;border-radius:12px;padding:10px 14px;background:#fff;transition:.2s}
+.inp:focus{outline:none;border-color:#6A5DE6;box-shadow:0 0 0 4px rgba(106,93,230,.14)}
+.sw{width:46px;height:26px;border-radius:99px;background:#D9D4CE;position:relative;transition:.3s;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:.3s cubic-bezier(.3,1.5,.5,1);box-shadow:0 2px 5px rgba(0,0,0,.2)}
+.sw.on{background:#724E40}.sw.on::after{transform:translateX(20px)}
+.tk{display:flex;align-items:center;gap:14px;padding:14px;border-radius:18px;transition:.35s}.tk:hover{background:#FAF9F7}
+.tk.out{opacity:0;transform:translateX(30px);height:0;padding:0;margin:0;overflow:hidden}
+.qa{min-height:92px;border-radius:22px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;font-weight:700;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s}
+.qa:hover{transform:translateY(-3px) rotate(-.6deg)}.qa i{font-size:22px}
+.sk{background:linear-gradient(90deg,#F4F2EE 25%,#fff 50%,#F4F2EE 75%);background-size:200% 100%;animation:sk 1.1s infinite;color:transparent!important;border-radius:10px}
+@keyframes sk{to{background-position:-200% 0}}
+.rise{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+.ov{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:16px;background:rgba(5,7,56,.45);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s}
+.ov.on{opacity:1;pointer-events:auto}
+.ov>div{width:100%;max-width:420px;max-height:92vh;overflow:auto;background:#fff;border-radius:26px;padding:28px;position:relative;transform:translateY(18px) scale(.97);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.ov.on>div{transform:none}
+.x{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:#F4F2EE;display:grid;place-items:center;transition:.2s}.x:hover{background:#291F1B;color:#fff;transform:rotate(90deg)}
+.chip{padding:8px 14px;border-radius:99px;border:1px solid #E3E3DD;font-weight:600;transition:.2s}.chip.on{background:#222480;color:#fff;border-color:#222480}
+.dd{position:absolute;right:0;top:calc(100% + 10px);width:min(440px,92vw);background:#fff;border:1px solid #ECE9E4;border-radius:20px;box-shadow:0 30px 60px -20px rgba(5,7,56,.35);opacity:0;transform:translateY(-8px) scale(.98);transform-origin:top right;pointer-events:none;transition:.25s}
+.dd.on{opacity:1;transform:none;pointer-events:auto}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:90;display:flex;flex-direction:column;gap:8px;align-items:center}
+.t{background:#050738;color:#fff;padding:10px 16px;border-radius:14px;display:flex;gap:12px;align-items:center;animation:rise .35s both;box-shadow:0 14px 30px -10px rgba(5,7,56,.5)}
+.t button{color:#04E1AB;font-weight:700}
+.cp{position:absolute;bottom:calc(100% + 12px);right:0;width:min(360px,calc(100vw - 32px));background:#fff;border:1px solid #ECE9E4;border-radius:24px;box-shadow:0 30px 60px -20px rgba(5,7,56,.4);display:flex;flex-direction:column;height:min(460px,70vh);opacity:0;transform:translateY(12px) scale(.96);transform-origin:bottom right;pointer-events:none;transition:.3s cubic-bezier(.2,.8,.2,1)}
+.cp.on{opacity:1;transform:none;pointer-events:auto}
+.m{max-width:85%;padding:9px 13px;border-radius:16px;animation:rise .3s both}.m.u{background:#222480;color:#fff;margin-left:auto;border-bottom-right-radius:4px}.m.b{background:#F4F2EE;border-bottom-left-radius:4px}
+#top{opacity:0;transform:scale(.6);pointer-events:none;transition:.3s}#top.on{opacity:1;transform:none;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sb" id="sb">
+  <div class="h-16 shrink-0 flex items-center gap-3 px-5 border-b border-line">
+    <span class="w-9 h-9 grid place-items-center bg-viol text-white" style="border-radius:62% 38% 55% 45%/48% 58% 42% 52%"><i class="bi bi-cup-hot-fill"></i></span>
+    <span class="f font-extrabold text-[17px] text-navy">Hearth</span>
+  </div>
+  <nav class="flex-1 overflow-y-auto p-3 space-y-1" id="nav">
+    <button class="nv on"><i class="bi bi-house-heart-fill"></i>Today</button>
+    <p class="px-3 pt-4 pb-1 text-[11px] font-semibold text-sage">Manage</p>
+    <button class="nv" data-go="Menu items"><i class="bi bi-cup-straw"></i>Menu &amp; prices</button>
+    <button class="nv" data-go="Promotions"><i class="bi bi-tag-fill"></i>Promotions</button>
+    <button class="nv" data-go="Photos"><i class="bi bi-images"></i>Photos</button>
+    <button class="nv" data-go="Inquiries"><i class="bi bi-chat-heart"></i>Inquiries<span class="tag">5</span></button>
+    <p class="px-3 pt-4 pb-1 text-[11px] font-semibold text-sage">Shop</p>
+    <button class="nv" data-go="Shop info"><i class="bi bi-shop"></i>Shop info</button>
+    <button class="nv" data-go="Insights"><i class="bi bi-graph-up-arrow"></i>Insights</button>
+    <button class="nv" data-go="Site health"><i class="bi bi-heart-pulse"></i>Site health</button>
+    <button class="nv" data-go="Grow"><i class="bi bi-rocket-takeoff"></i>Grow</button>
+  </nav>
+  <div class="p-3"><a href="#" class="btn b2 w-full" data-go="Your website"><i class="bi bi-box-arrow-up-right"></i>View website</a></div>
+</aside>
+<div class="bd" id="bd"></div>
+
+<div class="main min-h-screen">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-20 h-16 bg-white/90 backdrop-blur border-b border-line flex items-center gap-3 px-4 sm:px-6">
+    <button id="tg" class="w-10 h-10 rounded-xl grid place-items-center hover:bg-[#F4F2FF] hover:text-viol transition" aria-label="Toggle menu"><i class="bi bi-list text-xl"></i></button>
+    <div class="min-w-0"><p class="f font-bold text-[15px] truncate">Today</p></div>
+    <span id="hb" class="hidden sm:inline-flex items-center gap-2 ml-2 text-[12px] font-semibold px-3 py-1 rounded-full bg-[#FBEFE9] text-olive opacity-0 transition"><i class="bi bi-moon-stars-fill"></i>Closed today</span>
+    <div class="ml-auto flex items-center gap-1 sm:gap-2">
+      <div class="relative">
+        <button id="nb" class="w-10 h-10 rounded-xl grid place-items-center hover:bg-[#F4F2FF] hover:text-viol transition" aria-label="App notes"><i class="bi bi-journal-text text-lg"></i></button>
+        <div class="dd" id="dd">
+          <div class="flex items-center justify-between p-4 border-b border-line">
+            <h3 class="font-bold text-[14px]">ข้อมูลของเว็บแอพ</h3>
+            <button id="cpy" class="btn b3 !py-1.5 !px-3 text-[12px]"><i class="bi bi-clipboard"></i><span>Copy</span></button>
+          </div>
+          <div id="spec" class="p-4 max-h-[60vh] overflow-y-auto whitespace-pre-line text-[12.5px] leading-[1.7]">1.1 หลังบ้านเจ้าของร้าน | หน้าแรก "วันนี้ร้านเป็นไง"
+/app · ผู้ใช้: เจ้าของ, พนักงาน · ที่มา: D1.1, D1.4, D1.14
+
+เป้าหมาย: เปิดมาแล้วรู้ใน 5 วินาทีว่า (1) มีงานค้างไหม (2) เว็บปกติไหม (3) อยากแก้อะไรกดได้ทันที — ไม่ใช่หน้ากราฟ
+
+Function
+แสดงงานค้างอัตโนมัติ: ลูกค้าสนใจที่ยังไม่ตอบ · โปรใกล้หมด (≤ 3 วัน) · รายการที่ราคาไม่ถูกแก้เกิน 60 วัน · รายการที่รูปหาย
+ทางลัด "งาน" 4 ปุ่ม → ไปหน้า 1.2 / 1.3 / 1.4 พร้อมเปิด sheet ที่ถูกต้องทันที
+ปิดร้านวันนี้ / ปิดตามช่วง (F4): เลือก "วันนี้ · พรุ่งนี้ · ถึงวันที่…" + ข้อความถึงลูกค้า (มีข้อความเริ่มต้นให้) → ขึ้นบน 2.1 / 2.5 ทันที · เปิดร้านกลับด้วย 1 แตะ
+สรุป 3 ตัวเลขของวันนี้ (เทียบเมื่อวาน) → แตะไป 1.8
+สถานะเว็บ 1 บรรทัด → แตะไป 1.9
+กิจกรรมล่าสุด 5 รายการ (ภาษาคน) + ปุ่ม "ย้อนกลับ" ต่อรายการที่ย้อนได้
+[P2] ช่อง "บอกสิ่งที่อยากแก้" (D1.14): พิมพ์ "ลาเต้เย็นขึ้นเป็น 75" → ระบบแปลงเป็นการเปลี่ยนที่มีโครงสร้าง → แสดงสรุป ก่อน→หลัง → เจ้าของกดยืนยัน · รองรับเฉพาะ: แก้ราคา · เปลี่ยนสถานะรายการ · ร่างโปร · ปิดร้าน · ห้ามเขียนข้อมูลเองโดยไม่ยืนยัน · บันทึกใน ChangeLog ว่า "สั่งด้วยข้อความ"
+
+UX/UI (มือถือ ไล่จากบนลงล่าง)
+1 ทักทาย + สถานะร้าน — "สวัสดีครับ คุณเอก" · วันที่ พ.ศ. · ป้าย "ร้านเปิดอยู่ / ปิดวันนี้" + สวิตช์ปิดร้านวันนี้
+2 งานค้าง (สูงสุด 3 การ์ด) — การ์ดแถวเดียว: ไอคอน + ข้อความ + ปุ่มเดียว ("ตอบเลย" · "ต่ออายุโปร" · "ตรวจราคา") เรียงตามความเร่งด่วน · ไม่มีงาน → "วันนี้ไม่มีงานค้าง"
+3 ทางลัด 4 ปุ่มใหญ่ (2×2) — แก้ราคา · เปิดโปร · เปลี่ยนรูป · ปิดร้านวันนี้ · ปุ่ม ≥ 72 px
+4 วันนี้ในตัวเลข — Metric card 3 ใบ: คนเข้าชม · คนติดต่อ (โทร+LINE+นำทาง+ฟอร์ม) · ลูกค้าสนใจใหม่ · ▲▼ เทียบเมื่อวาน
+5 สถานะเว็บ — "เว็บปกติ · ตรวจล่าสุด 05:00 น. · สำรองข้อมูลเมื่อคืนสำเร็จ"
+6 กิจกรรมล่าสุด — "สมชาย แก้ ลาเต้เย็น ฿70 → ฿75 · 14:05 น. [ย้อนกลับ]"
+7 การ์ดต่อยอด (เฉพาะเมื่อถึงเกณฑ์) — 1 การ์ดย่อ → 1.10
+8 แถบภารกิจ (เฉพาะโหมดเดโม) — "ภารกิจ 1/3" → 3.3
+เดสก์ท็อป: 2 คอลัมน์ ซ้าย = 1–4, ขวา = 5–7 + พรีวิวเว็บ 390 px
+
+สถานะ: ร้านใหม่/ว่าง → เช็กลิสต์เริ่มต้น 3 ข้อ (ตรวจข้อมูลร้าน 1.6 → เพิ่มรายการ 1.2 → ลองแก้ราคา) · โหลด → skeleton · ออฟไลน์ → แสดงข้อมูลล่าสุดที่แคชไว้
+
+เชื่อมโยง: เข้ามาจาก 1.12 (หลังล็อกอิน), 3.3 (เดโม) → ไปต่อ 1.2 · 1.3 · 1.4 · 1.6 · 1.7 · 1.8 · 1.9 · 1.10 · ปุ่ม "ดูเว็บ" → 2.1
+
+พรีเซ็ต: งานค้างเด่นต่างกัน — A: ลูกค้าจองโต๊ะ/ทักสั่ง · B: คำขอนัดรอยืนยัน · C: คำขอใบเสนอราคาที่ยังไม่ตอบ
+
+เกณฑ์ผ่าน: พร้อมใช้ ≤ 3 วิ บน 4G · ทางลัดไปถึงจุดแก้ ≤ 2 แตะ · กด "ปิดร้านวันนี้" แล้ว 2.1 แสดงแบนเนอร์ ≤ 5 วิ</div>
+        </div>
+      </div>
+      <button class="btn b3 !hidden md:!inline-flex" data-open="login"><i class="bi bi-box-arrow-in-right"></i>Log in</button>
+      <button class="btn b1 !hidden md:!inline-flex" data-open="signup">Sign up</button>
+      <button class="w-10 h-10 rounded-full bg-mint text-ink f font-extrabold md:ml-1" data-open="login" aria-label="Account">E</button>
+    </div>
+  </header>
+
+  <main class="p-4 sm:p-6 lg:p-8 max-w-[1500px] mx-auto">
+    <!-- 1 GREETING -->
+    <section id="hero" class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 pb-8">
+      <div>
+        <p class="text-sage font-semibold" id="date"></p>
+        <h1 class="text-[28px] sm:text-[34px] font-extrabold leading-tight text-navy mt-1">Hello, Ek. <span id="hl">You have 3 things waiting.</span></h1>
+      </div>
+      <div class="flex items-center gap-4 bg-white border border-line rounded-full pl-5 pr-3 py-2.5 self-start">
+        <span class="flex items-center gap-2 font-semibold" id="st"><span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full rounded-full bg-emer opacity-60 animate-ping"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emer"></span></span><span id="stt">Shop is open</span></span>
+        <button id="swb" class="flex items-center gap-2 font-medium text-[12px]" aria-label="Close shop today"><span>Close today</span><span class="sw" id="sw"></span></button>
+      </div>
+    </section>
+
+    <div class="grid gap-6 xl:grid-cols-[minmax(0,1fr)_400px]">
+      <!-- LEFT -->
+      <div class="grid gap-6 content-start">
+        <!-- 2 TASKS: the winner -->
+        <section class="card !p-6 sm:!p-8 rise" style="background:linear-gradient(180deg,#fff,#FAF9FF)">
+          <div class="flex items-center justify-between mb-4"><h2 class="text-[20px] font-bold">Needs your attention</h2><span class="text-[12px] font-semibold px-3 py-1 rounded-full bg-mint text-ink" id="tc">3 open</span></div>
+          <div id="tasks" class="divide-y divide-line"></div>
+        </section>
+
+        <!-- COMMAND (P2) -->
+        <section class="card rise" style="animation-delay:.08s">
+          <h3 class="font-bold text-[15px]">Tell us what to change</h3>
+          <p class="text-[12px] text-ink/60 mb-3">Try “Iced latte to 80”, “Matcha sold out” or “Draft promo”. You confirm before anything changes.</p>
+          <form id="cf" class="flex gap-2"><input id="ci" class="inp" placeholder="Iced latte to 80" autocomplete="off"><button class="btn b1">Preview</button></form>
+          <div id="cr" class="mt-3"></div>
+        </section>
+
+        <!-- 3 QUICK ACTIONS -->
+        <section class="grid grid-cols-2 gap-4 rise" style="animation-delay:.14s">
+          <button class="qa bg-viol text-white hover:shadow-[0_18px_30px_-14px_#6A5DE6]" id="qp"><i class="bi bi-currency-exchange"></i>Edit a price</button>
+          <button class="qa bg-mint text-ink" data-go="Promotions"><i class="bi bi-stars"></i>Start a promo</button>
+          <button class="qa bg-sage text-white" data-go="Photos"><i class="bi bi-camera-fill"></i>Change a photo</button>
+          <button class="qa bg-indi text-white" id="qc"><i class="bi bi-moon-stars-fill"></i>Close today</button>
+        </section>
+
+        <!-- 4 METRICS -->
+        <section class="grid sm:grid-cols-3 gap-4 rise" style="animation-delay:.2s" id="mt"></section>
+
+        <!-- 6 ACTIVITY -->
+        <section class="card rise" style="animation-delay:.26s">
+          <h3 class="font-bold text-[15px] mb-2">Recent activity</h3>
+          <ul id="act" class="divide-y divide-line"></ul>
+        </section>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="grid gap-6 content-start">
+        <button class="card flex items-center gap-3 text-left hover:border-emer transition" data-go="Site health">
+          <span class="w-10 h-10 rounded-full grid place-items-center bg-[#E6FBF5] text-emer"><i class="bi bi-shield-check text-lg"></i></span>
+          <span class="flex-1"><b class="block">Website is healthy</b><span class="text-[12px] text-ink/60">Checked 05:00 · last night’s backup saved</span></span><i class="bi bi-chevron-right text-sage"></i>
+        </button>
+
+        <!-- 7 GROWTH -->
+        <div class="rounded-[22px] p-6 text-white relative overflow-hidden" style="background:linear-gradient(135deg,#222480,#6A5DE6)">
+          <span class="absolute -right-8 -top-8 w-32 h-32 bg-mint/30" style="border-radius:60% 40% 55% 45%"></span>
+          <h3 class="font-bold text-[16px] relative">14 new leads this week</h3>
+          <p class="text-white/80 my-2 relative">Shops that reply within 10 minutes win most of them. Turn on a quick-reply message.</p>
+          <button class="btn b2 relative" data-go="Grow">Set up quick reply</button>
+        </div>
+
+        <!-- PREVIEW -->
+        <section class="card !p-4">
+          <div class="flex items-center justify-between px-2 pb-3"><h3 class="font-bold text-[15px]">Live preview</h3><a href="#" data-go="Your website" class="text-viol font-semibold text-[12px]">Open site</a></div>
+          <div class="mx-auto w-full max-w-[390px] rounded-[26px] border-[6px] border-navy overflow-hidden bg-white">
+            <div id="pb" class="overflow-hidden transition-all duration-500 bg-olive text-white text-center text-[12px]" style="max-height:0"><p class="p-2.5" id="pbt"></p></div>
+            <div class="p-5">
+              <p class="f font-extrabold text-[18px]">Baan Kafe</p><p class="text-[12px] text-ink/60 mb-3">Coffee &amp; brunch</p>
+              <ul id="pv" class="divide-y divide-line"></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8 MISSION -->
+        <section class="card !p-5">
+          <div class="flex justify-between font-semibold mb-2"><span>Demo mission</span><span id="mn">0/3</span></div>
+          <div class="h-2 rounded-full bg-[#F4F2EE] overflow-hidden"><div id="mb" class="h-full bg-mint transition-all duration-700" style="width:0"></div></div>
+          <ul class="mt-3 space-y-1.5 text-[12.5px]" id="ml"></ul>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- CLOSE MODAL -->
+<div class="ov" id="m-close"><div>
+  <button class="x" data-x aria-label="Close"><i class="bi bi-x-lg"></i></button>
+  <h2 class="text-[22px] font-bold">Close the shop</h2><p class="text-ink/60 mb-4">Customers see this on your website right away.</p>
+  <div class="flex flex-wrap gap-2 mb-3" id="chips"><button class="chip on" data-v="today">Today</button><button class="chip" data-v="tomorrow">Tomorrow</button><button class="chip" data-v="until">Until a date…</button></div>
+  <input type="date" id="cd" class="inp mb-3 hidden">
+  <label class="font-semibold block mb-1">Message to customers</label>
+  <textarea id="cm" rows="3" class="inp">Sorry, we're closed today. We'll be back soon — thank you for your patience!</textarea>
+  <button class="btn b1 w-full mt-4" id="cok">Close shop</button>
+</div></div>
+
+<!-- AUTH MODALS -->
+<div class="ov" id="m-login"><div>
+  <button class="x" data-x aria-label="Close"><i class="bi bi-x-lg"></i></button>
+  <h2 class="text-[24px] font-bold">Welcome back</h2><p class="text-ink/60 mb-5">Log in to manage your shop.</p>
+  <form class="space-y-3" data-f="Logged in. Welcome back, Ek!">
+    <input class="inp" type="email" placeholder="Email" required><div class="relative"><input class="inp pr-11" type="password" placeholder="Password" minlength="6" required><button type="button" class="absolute right-3 top-2.5 text-sage" data-eye><i class="bi bi-eye"></i></button></div>
+    <button type="button" class="text-viol font-semibold text-[12px]" data-open="forgot">Forgot password?</button>
+    <button class="btn b1 w-full">Log in</button>
+  </form>
+  <p class="text-center mt-4 text-ink/60">New here? <button class="text-viol font-semibold" data-open="signup">Create an account</button></p>
+</div></div>
+
+<div class="ov" id="m-signup"><div>
+  <button class="x" data-x aria-label="Close"><i class="bi bi-x-lg"></i></button>
+  <h2 class="text-[24px] font-bold">Open your shop online</h2><p class="text-ink/60 mb-5">Free for 14 days. No card needed.</p>
+  <form class="space-y-3" data-f="Account created. Let's set up your shop!">
+    <input class="inp" placeholder="Your name" required><input class="inp" placeholder="Shop name" required><input class="inp" type="email" placeholder="Email" required>
+    <div class="relative"><input class="inp pr-11" type="password" placeholder="Password (6+ characters)" minlength="6" required><button type="button" class="absolute right-3 top-2.5 text-sage" data-eye><i class="bi bi-eye"></i></button></div>
+    <button class="btn b2 w-full">Create account</button>
+  </form>
+  <p class="text-center mt-4 text-ink/60">Have an account? <button class="text-viol font-semibold" data-open="login">Log in</button></p>
+</div></div>
+
+<div class="ov" id="m-forgot"><div>
+  <button class="x" data-x aria-label="Close"><i class="bi bi-x-lg"></i></button>
+  <h2 class="text-[24px] font-bold">Reset password</h2><p class="text-ink/60 mb-5">We'll email you a link to set a new one.</p>
+  <form class="space-y-3" data-f="Reset link sent. Check your inbox.">
+    <input class="inp" type="email" placeholder="Email" required><button class="btn b1 w-full">Send reset link</button>
+  </form>
+  <p class="text-center mt-4"><button class="text-viol font-semibold" data-open="login"><i class="bi bi-arrow-left"></i> Back to log in</button></p>
+</div></div>
+
+<!-- FLOATING: back-to-top (left) + chatbot (right), 5px gap -->
+<div class="fixed bottom-5 right-5 z-50 flex items-center" style="gap:5px">
+  <button id="top" class="w-12 h-12 rounded-full bg-white border border-line text-indi grid place-items-center shadow-lg hover:bg-indi hover:text-white" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+  <div class="relative">
+    <div class="cp" id="cp">
+      <div class="flex items-center gap-3 p-4 border-b border-line"><span class="w-9 h-9 rounded-full bg-viol text-white grid place-items-center"><i class="bi bi-stars"></i></span><div class="flex-1"><b class="block leading-tight">Hearth helper</b><span class="text-[11px] text-emer font-semibold">Online</span></div><button id="cx" aria-label="Close chat"><i class="bi bi-dash-lg"></i></button></div>
+      <div id="cl" class="flex-1 overflow-y-auto p-4 space-y-2"></div>
+      <div class="px-4 pb-2 flex gap-2 flex-wrap" id="cq"><button class="chip !py-1 text-[12px]">Change a price</button><button class="chip !py-1 text-[12px]">Close the shop</button><button class="chip !py-1 text-[12px]">Pricing</button></div>
+      <form id="cff" class="p-3 border-t border-line flex gap-2"><input id="cin" class="inp" placeholder="Type a message…" autocomplete="off"><button class="btn b1 !px-3.5" aria-label="Send"><i class="bi bi-send-fill"></i></button></form>
+    </div>
+    <button id="cb" class="w-12 h-12 rounded-full bg-viol text-white grid place-items-center shadow-lg hover:scale-105 transition" aria-label="Open chat"><i class="bi bi-chat-dots-fill text-lg" id="ci2"></i></button>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],B=n=>'฿'+n;
+const items={'Iced latte':{p:75,s:1},'Flat white':{p:65,s:1},'Matcha latte':{p:80,s:1},'Croissant':{p:55,s:1}};
+let closed=false,msn={price:0,close:0,reopen:0};
+const acts=[
+ {w:'Somchai',t:'changed <b>Iced latte</b> ฿70 → ฿75',tm:'14:05',u:{n:'Iced latte',p:70}},
+ {w:'Ek',t:'marked <b>Croissant</b> as available',tm:'11:32'},
+ {w:'Nok',t:'added a photo to <b>Flat white</b>',tm:'10:48'},
+ {w:'Somchai',t:'drafted the <b>Weekend Brunch</b> promo',tm:'09:15'},
+ {w:'Hearth',t:'saved last night’s backup',tm:'05:00'}];
+let tasks=[
+ {i:'chat-heart-fill',c:'#6A5DE6',t:'5 customers are waiting for your reply',b:'Reply now',go:'Inquiries'},
+ {i:'hourglass-split',c:'#724E40',t:'“Weekend Brunch” promo ends in 2 days',b:'Extend promo',go:'Promotions'},
+ {i:'currency-exchange',c:'#10AE9E',t:'7 items haven’t had a price check in 60+ days',b:'Check prices',go:'Menu items'},
+ {i:'image',c:'#BD9681',t:'2 items are missing a photo',b:'Add photos',go:'Photos'}];
+
+function toast(m,a,f){const e=document.createElement('div');e.className='t';e.innerHTML=`<span>${m}</span>`;if(a){const b=document.createElement('button');b.textContent=a;b.onclick=()=>{f();e.remove()};e.append(b)}$('#toast').append(e);setTimeout(()=>e.remove(),4200)}
+const now=()=>new Date().toTimeString().slice(0,5);
+const log=(w,t,u,tag)=>{acts.unshift({w,t:t+(tag?' <span class="text-[11px] px-2 rounded-full bg-[#F1EFFF] text-viol font-semibold">by text command</span>':''),tm:now(),u});acts.length=Math.min(acts.length,5);rAct()};
+
+/* render */
+function rTasks(){const v=tasks.slice(0,3);$('#tc').textContent=v.length?tasks.length+' open':'All clear';$('#hl').textContent=v.length?`You have ${tasks.length} thing${tasks.length>1?'s':''} waiting.`:'Nothing is waiting. Nice work.';
+ $('#tasks').innerHTML=v.length?v.map((k,n)=>`<div class="tk" data-n="${n}"><span class="w-11 h-11 rounded-2xl grid place-items-center text-white shrink-0" style="background:${k.c}"><i class="bi bi-${k.i} text-lg"></i></span><p class="flex-1 font-semibold text-[14px]">${k.t}</p><button class="btn b1">${k.b}</button></div>`).join(''):'<div class="py-10 text-center"><i class="bi bi-emoji-smile text-3xl text-emer"></i><p class="font-semibold mt-2">No pending tasks today</p><p class="text-ink/60">Enjoy the quiet — we’ll flag anything new.</p></div>'}
+$('#tasks').onclick=e=>{const b=e.target.closest('button'),r=e.target.closest('.tk');if(!b)return;const k=tasks[+r.dataset.n];r.classList.add('out');setTimeout(()=>{tasks.splice(+r.dataset.n,1);rTasks()},350);toast(`Opened ${k.go}. Marked as handled.`)};
+function rAct(){$('#act').innerHTML=acts.map((a,n)=>`<li class="flex items-center gap-3 py-3 rise"><span class="w-8 h-8 rounded-full bg-[#F4F2EE] grid place-items-center font-bold text-[12px] shrink-0">${a.w[0]}</span><p class="flex-1 min-w-0"><b>${a.w}</b> ${a.t}<span class="block text-[11px] text-ink/50">${a.tm}</span></p>${a.u?`<button class="btn b3 !py-1 !px-3 text-[12px]" data-u="${n}"><i class="bi bi-arrow-counterclockwise"></i>Undo</button>`:''}</li>`).join('')}
+$('#act').onclick=e=>{const b=e.target.closest('[data-u]');if(!b)return;const a=acts[+b.dataset.u],u=a.u;a.u=null;const o=items[u.n].p;items[u.n].p=u.p;log('Ek',`undid <b>${u.n}</b> ${B(o)} → ${B(u.p)}`);rPv();toast('Change undone')};
+function rPv(){$('#pv').innerHTML=Object.entries(items).map(([n,v])=>`<li class="flex justify-between py-2.5 ${v.s?'':'opacity-40'}"><span>${n}${v.s?'':' <i class="text-[11px]">(sold out)</i>'}</span><b class="f">${B(v.p)}</b></li>`).join('')}
+function rMs(){const d=Object.values(msn).reduce((a,b)=>a+b,0);$('#mn').textContent=d+'/3';$('#mb').style.width=d/3*100+'%';$('#ml').innerHTML=[['price','Change a price'],['close','Close the shop'],['reopen','Reopen with one tap']].map(([k,t])=>`<li class="flex gap-2 ${msn[k]?'text-emer font-semibold':'text-ink/60'}"><i class="bi bi-${msn[k]?'check-circle-fill':'circle'}"></i>${t}</li>`).join('');if(d==3&&!window._d){window._d=1;toast('Mission complete 🎉')}}
+function rMt(sk){const m=[['Visitors',1284,12,'eye-fill','#6A5DE6'],['Contacts',86,4,'telephone-fill','#10AE9E'],['New leads',14,-2,'person-heart','#724E40']];
+ $('#mt').innerHTML=m.map((x,n)=>`<button class="card text-left hover:-translate-y-1 hover:shadow-[0_20px_30px_-20px_rgba(34,36,128,.5)] transition ${n==0?'sm:col-span-1':''}" data-go="Insights"><i class="bi bi-${x[3]}" style="color:${x[4]}"></i><span class="text-ink/60 ml-2">${x[0]}</span><p class="f font-extrabold text-[34px] leading-none mt-3 ${sk?'sk':''}" data-c="${x[1]}">${sk?'0000':'0'}</p><p class="mt-2 text-[12px] font-semibold ${x[2]>0?'text-emer':'text-olive'} ${sk?'sk':''}"><i class="bi bi-caret-${x[2]>0?'up':'down'}-fill"></i> ${Math.abs(x[2])}% vs yesterday</p></button>`).join('');
+ if(!sk)$$('[data-c]').forEach(e=>{const t=+e.dataset.c,s=performance.now();(function f(n){const p=Math.min((n-s)/900,1);e.textContent=Math.round(t*(1-Math.pow(1-p,3))).toLocaleString();if(p<1)requestAnimationFrame(f)})(s)})}
+
+/* close shop */
+function setClosed(c,msg){closed=c;$('#sw').classList.toggle('on',c);$('#stt').textContent=c?'Closed today':'Shop is open';$('#hb').style.opacity=c?1:0;$('#pb').style.maxHeight=c?'90px':'0';if(msg)$('#pbt').textContent=msg}
+function openShop(){setClosed(false);msn.reopen=1;rMs();log('Ek','reopened the shop');toast('Shop is open again')}
+$('#swb').onclick=()=>closed?openShop():openM('close');$('#qc').onclick=()=>openM('close');
+let mode='today';$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;$$('#chips .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.v;$('#cd').classList.toggle('hidden',mode!='until');$('#cm').value=mode=='today'?"Sorry, we're closed today. We'll be back soon — thank you for your patience!":mode=='tomorrow'?"We're closed tomorrow and will be back the day after. Thank you!":"We're taking a short break and will be back soon. Thank you for waiting!"};
+$('#cok').onclick=()=>{if(mode=='until'&&!$('#cd').value)return toast('Pick a return date first');let m=$('#cm').value;if(mode=='until')m+=' Back on '+new Date($('#cd').value).toLocaleDateString('en-GB',{day:'numeric',month:'short'})+'.';setClosed(true,m);msn.close=1;rMs();closeAll();log('Ek','closed the shop ('+mode+')');toast('Website now shows your closed notice','Reopen',openShop)};
+
+/* command */
+let pend=null;
+$('#qp').onclick=()=>{$('#ci').value='Iced latte to 80';$('#ci').focus();$('#ci').scrollIntoView({block:'center'})};
+$('#cf').onsubmit=e=>{e.preventDefault();const q=$('#ci').value.trim(),l=q.toLowerCase(),r=$('#cr');if(!q)return;
+ const it=Object.keys(items).find(n=>l.includes(n.toLowerCase()))||Object.keys(items).find(n=>n.toLowerCase().split(' ').some(w=>w.length>3&&l.includes(w)));
+ const num=(l.match(/\d+/)||[])[0];let ch=null;
+ if(/close/.test(l)){openM('close');return}
+ if(/promo/.test(l))ch={k:'promo',a:'Promo',f:'—',to:'New draft promo'};
+ else if(it&&/sold out|unavailable|hide/.test(l))ch={k:'st',n:it,a:it+' · status',f:'Available',to:'Sold out'};
+ else if(it&&/available|back/.test(l))ch={k:'st2',n:it,a:it+' · status',f:'Sold out',to:'Available'};
+ else if(it&&num)ch={k:'pr',n:it,v:+num,a:it+' · price',f:B(items[it].p),to:B(num)};
+ if(!ch){r.innerHTML='<p class="text-olive font-medium"><i class="bi bi-info-circle"></i> I can change prices, item status, draft a promo or close the shop. Try “Iced latte to 80”.</p>';return}
+ pend=ch;r.innerHTML=`<div class="rounded-2xl bg-[#F6F5FF] p-4 rise"><p class="text-[12px] text-viol font-semibold mb-1">Please confirm</p><p class="font-semibold">${ch.a}: <s class="text-ink/50">${ch.f}</s> <i class="bi bi-arrow-right"></i> <span class="text-indi">${ch.to}</span></p><div class="flex gap-2 mt-3"><button class="btn b1" id="y">Confirm</button><button class="btn b3" id="n">Cancel</button></div></div>`;
+ $('#n').onclick=()=>{r.innerHTML='';pend=null};
+ $('#y').onclick=()=>{const c=pend,o=c.k=='pr'?items[c.n].p:0;if(c.k=='pr'){items[c.n].p=c.v;msn.price=1;log('Ek',`changed <b>${c.n}</b> ${B(o)} → ${B(c.v)}`,{n:c.n,p:o},1)}else if(c.k=='st'){items[c.n].s=0;log('Ek',`marked <b>${c.n}</b> as sold out`,0,1)}else if(c.k=='st2'){items[c.n].s=1;log('Ek',`marked <b>${c.n}</b> as available`,0,1)}else log('Ek','drafted a new promo',0,1);
+  rPv();rMs();r.innerHTML='';$('#ci').value='';pend=null;toast('Done. Saved to your change log.')}};
+
+/* modals / nav */
+function closeAll(){$$('.ov').forEach(o=>o.classList.remove('on'))}
+function openM(n){closeAll();$('#m-'+n).classList.add('on');$('#dd').classList.remove('on')}
+document.addEventListener('click',e=>{const o=e.target.closest('[data-open]');if(o){e.preventDefault();openM(o.dataset.open)}
+ if(e.target.closest('[data-x]')||e.target.classList.contains('ov'))closeAll();
+ const g=e.target.closest('[data-go]');if(g){e.preventDefault();toast('Opening '+g.dataset.go+'…');if(innerWidth<1024)document.body.classList.remove('sbo')}
+ const ey=e.target.closest('[data-eye]');if(ey){const i=ey.previousElementSibling;i.type=i.type=='password'?'text':'password';ey.firstElementChild.className='bi bi-eye'+(i.type=='text'?'-slash':'')}
+ if(!e.target.closest('#nb,#dd'))$('#dd').classList.remove('on')});
+document.addEventListener('keydown',e=>{if(e.key=='Escape'){closeAll();$('#dd').classList.remove('on');$('#cp').classList.remove('on')}});
+$$('form[data-f]').forEach(f=>f.onsubmit=e=>{e.preventDefault();closeAll();toast(f.dataset.f);f.reset()});
+$('#tg').onclick=()=>document.body.classList.toggle(innerWidth>=1024?'sbh':'sbo');$('#bd').onclick=()=>document.body.classList.remove('sbo');
+$('#nb').onclick=()=>$('#dd').classList.toggle('on');
+$('#cpy').onclick=async()=>{const t=$('#spec').innerText;try{await navigator.clipboard.writeText(t)}catch(_){const a=document.createElement('textarea');a.value=t;document.body.append(a);a.select();document.execCommand('copy');a.remove()}$('#cpy span').textContent='Copied';setTimeout(()=>$('#cpy span').textContent='Copy',1600)};
+$('#nav').onclick=e=>{const b=e.target.closest('.nv');if(!b)return;if(b.dataset.go)toast('Opening '+b.dataset.go+'…')};
+
+/* chatbot */
+const cl=$('#cl');function say(t,u){const d=document.createElement('div');d.className='m '+(u?'u':'b');d.textContent=t;cl.append(d);cl.scrollTop=cl.scrollHeight}
+function reply(q){q=q.toLowerCase();setTimeout(()=>say(/price/.test(q)?'Type something like “Iced latte to 80” in the “Tell us what to change” box. You will see a preview before anything is saved.':/close|holiday/.test(q)?'Use “Close today” at the top. Pick today, tomorrow or a return date, and your website shows the notice within seconds.':/pric|plan|cost/.test(q)?'The Starter plan is ฿299 per month after your free 14 days. Cancel any time.':/hi|hello|hey/.test(q)?'Hi Ek! What would you like to change today?':'I can help with prices, closing the shop and plans. Try one of the shortcuts below.'),450)}
+say('Hi Ek! Need to change a price, close the shop or ask about plans?');
+$('#cb').onclick=()=>{const o=$('#cp').classList.toggle('on');$('#ci2').className='bi text-lg bi-'+(o?'x-lg':'chat-dots-fill');if(o)setTimeout(()=>$('#cin').focus(),300)};$('#cx').onclick=()=>{$('#cp').classList.remove('on');$('#ci2').className='bi bi-chat-dots-fill text-lg'};
+$('#cff').onsubmit=e=>{e.preventDefault();const v=$('#cin').value.trim();if(!v)return;say(v,1);$('#cin').value='';reply(v)};
+$('#cq').onclick=e=>{const b=e.target.closest('.chip');if(b){say(b.textContent,1);reply(b.textContent)}};
+
+/* scroll + connectivity */
+const hero=$('#hero');addEventListener('scroll',()=>$('#top').classList.toggle('on',scrollY>hero.offsetTop+hero.offsetHeight),{passive:true});
+$('#top').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+addEventListener('offline',()=>toast('You’re offline. Showing the last saved data.'));addEventListener('online',()=>toast('Back online'));
+
+/* init */
+$('#date').textContent=new Date().toLocaleDateString('en-GB-u-ca-buddhist',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+rMt(1);$('#tasks').innerHTML='<div class="sk h-16 mb-3"></div><div class="sk h-16 mb-3"></div><div class="sk h-16"></div>';
+setTimeout(()=>{rMt(0);rTasks();rAct();rPv();rMs()},700);
+</script>
+</body>
+</html>
