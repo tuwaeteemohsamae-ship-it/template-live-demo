@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StoreOS — Today at a Glance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+--off:#E3E3DD; --mint:#04E1AB; --emerald:#10AE9E; --violet:#6A5DE6; --olive:#724E40;
+--indigo:#222480; --ink:#291F1B; --navy:#050738; --sage:#BD9681;
+}
+*{scrollbar-width:thin;scrollbar-color:rgba(4,225,171,.55) transparent}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#04E1AB,#10AE9E);border-radius:99px;border:2px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#10AE9E,#04E1AB);background-clip:content-box}
+html,body{height:100%}
+body{font-family:Inter,sans-serif;background:#fff;color:var(--ink);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.02em}
+.card{background:#fff;border:1px solid rgba(41,31,27,.08);border-radius:20px;box-shadow:0 12px 34px rgba(5,7,56,.05);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 20px 48px rgba(5,7,56,.10);border-color:rgba(4,225,171,.35)}
+.pill{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.28rem .65rem;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:12px;font-weight:700;transition:.25s cubic-bezier(.2,.8,.2,1);white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,#04E1AB,#10AE9E);color:#04231d;box-shadow:0 8px 22px rgba(4,225,171,.28)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(4,225,171,.38)}
+.btn-ghost{border:1px solid rgba(41,31,27,.12);color:var(--ink);background:#fff}
+.btn-ghost:hover{border-color:var(--mint);color:#017a5e;background:#f4fffc}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--indigo);transform:translateY(-2px)}
+.sidebar-link{display:flex;align-items:center;gap:.8rem;padding:.72rem .85rem;border-radius:14px;color:rgba(41,31,27,.68);font-weight:600;transition:.25s}
+.sidebar-link:hover{background:rgba(4,225,171,.10);color:#017a5e}
+.sidebar-link.active{background:linear-gradient(135deg,rgba(4,225,171,.16),rgba(16,174,158,.10));color:#017a5e;box-shadow:inset 0 0 0 1px rgba(4,225,171,.28)}
+.overlay{position:fixed;inset:0;background:rgba(5,7,56,.45);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:.3s;z-index:70}
+.overlay.open{opacity:1;pointer-events:auto}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:1rem;z-index:80}
+.modal.open{display:flex}
+.modal-card{width:100%;max-width:430px;background:#fff;border-radius:24px;box-shadow:0 30px 80px rgba(5,7,56,.25);transform:translateY(18px) scale(.97);opacity:0;transition:.35s cubic-bezier(.2,.8,.2,1)}
+.modal.open .modal-card{transform:none;opacity:1}
+.field{width:100%;border:1px solid rgba(41,31,27,.14);border-radius:12px;padding:.8rem 1rem;font-size:14px;transition:.2s;background:#fff}
+.field:focus{outline:none;border-color:var(--mint);box-shadow:0 0 0 4px rgba(4,225,171,.16)}
+.skeleton{background:linear-gradient(90deg,#f1f1ee 25%,#fafaf8 50%,#f1f1ee 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;transition:.7s cubic-bezier(.2,.8,.2,1)}
+.float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.pulse-dot{position:relative}
+.pulse-dot:before{content:"";position:absolute;inset:-5px;border-radius:999px;background:rgba(4,225,171,.28);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+.chat{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:5px}
+.chat-panel{position:fixed;right:18px;bottom:78px;width:min(370px,calc(100vw - 36px));height:min(520px,calc(100vh - 130px));background:#fff;border-radius:24px;box-shadow:0 30px 80px rgba(5,7,56,.24);display:none;flex-direction:column;overflow:hidden;z-index:61;transform:translateY(12px) scale(.98);opacity:0;transition:.3s cubic-bezier(.2,.8,.2,1)}
+.chat-panel.open{display:flex;transform:none;opacity:1}
+.bubble{max-width:82%;padding:.7rem .9rem;border-radius:16px;font-size:13.5px;line-height:1.55}
+.bot{background:#f4fffc;border:1px solid rgba(4,225,171,.28);border-bottom-left-radius:5px}
+.user{background:var(--navy);color:#fff;border-bottom-right-radius:5px;margin-left:auto}
+@media (max-width:1023px){#sidebar{transform:translateX(-104%)}#sidebar.open{transform:none}}
+@media (min-width:1024px){#sidebar{transform:none}}
+</style>
+</head>
+<body class="min-h-screen w-full bg-white">
+
+<div id="overlay" class="overlay"></div>
+
+<!-- APP SHELL -->
+<div class="flex min-h-screen w-full">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="fixed z-50 top-0 left-0 h-screen w-[278px] bg-white border-r border-[rgba(41,31,27,.10)] flex flex-col transition-transform duration-300">
+    <div class="h-[72px] shrink-0 flex items-center justify-between px-5 border-b border-[rgba(41,31,27,.10)]">
+      <a href="#" class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#04E1AB] to-[#10AE9E] grid place-items-center text-[#04231d]"><i class="fa-solid fa-bolt"></i></span>
+        <span class="display font-extrabold text-[17px]">StoreOS</span>
+      </a>
+      <button onclick="toggleSidebar()" class="lg:hidden w-9 h-9 rounded-xl btn-ghost"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="flex-1 overflow-y-auto p-4 space-y-1.5">
+      <p class="px-3 pb-2 text-[11px] font-bold uppercase tracking-[.08em] text-[rgba(41,31,27,.42)]">Store</p>
+      <a class="sidebar-link active" href="#"><i class="fa-solid fa-house w-5"></i>Today at a glance</a>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-utensils w-5"></i>Menu & pricing</a>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-tags w-5"></i>Promotions</a>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-images w-5"></i>Photos & content</a>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-store w-5"></i>Store profile</a>
+      <p class="px-3 pt-4 pb-2 text-[11px] font-bold uppercase tracking-[.08em] text-[rgba(41,31,27,.42)]">Customers</p>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-inbox w-5"></i>Inbox</a>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-calendar-check w-5"></i>Bookings</a>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-chart-line w-5"></i>Performance</a>
+      <p class="px-3 pt-4 pb-2 text-[11px] font-bold uppercase tracking-[.08em] text-[rgba(41,31,27,.42)]">System</p>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-shield-halved w-5"></i>Website health</a>
+      <a class="sidebar-link" href="#"><i class="fa-solid fa-clock-rotate-left w-5"></i>Change log</a>
+    </nav>
+    <div class="shrink-0 p-4 border-t border-[rgba(41,31,27,.10)]">
+      <div class="rounded-2xl p-4 bg-gradient-to-br from-[#050738] to-[#222480] text-white">
+        <p class="text-[11px] font-bold uppercase tracking-[.08em] text-[#04E1AB]">Demo mission</p>
+        <p class="mt-1 font-bold display text-[15px]">1 / 3 completed</p>
+        <button class="mt-3 w-full btn btn-primary py-2 text-[13px]"><i class="fa-solid fa-arrow-right"></i> Continue setup</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 min-w-0 lg:ml-[278px]">
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 h-[72px] bg-white/90 backdrop-blur border-b border-[rgba(41,31,27,.10)] flex items-center justify-between gap-3 px-4 sm:px-6">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="lg:hidden w-10 h-10 rounded-xl btn-ghost"><i class="fa-solid fa-bars"></i></button>
+        <div class="lg:hidden flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#04E1AB] to-[#10AE9E] grid place-items-center text-[#04231d]"><i class="fa-solid fa-bolt"></i></span>
+          <span class="display font-extrabold">StoreOS</span>
+        </div>
+        <div class="hidden sm:block">
+          <p class="text-[11px] font-bold uppercase tracking-[.08em] text-[rgba(41,31,27,.45)]">Owner workspace</p>
+          <p class="display font-bold text-[16px]">Today at a glance</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="openModal('closeModal')" class="hidden sm:inline-flex btn btn-primary px-4 py-2.5 text-[13px]"><i class="fa-solid fa-store-slash"></i> Close store today</button>
+        <div class="relative">
+          <button onclick="toggleInfo(event)" class="w-10 h-10 rounded-xl btn-ghost relative"><i class="fa-solid fa-circle-info"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#04E1AB]"></span></button>
+          <div id="infoMenu" class="hidden absolute right-0 mt-2 w-[min(420px,calc(100vw-32px))] card p-5 z-50">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="display font-bold text-[16px]">About this web app</h3>
+              <button onclick="toggleInfo()" class="w-8 h-8 rounded-lg btn-ghost"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="mt-3 space-y-3 text-[13.5px] text-[rgba(41,31,27,.75)]">
+              <p>StoreOS is the owner-facing control room for a local business website. It turns everyday store updates into simple, reversible actions.</p>
+              <p>The dashboard prioritizes urgent work first: unanswered customer interest, promotions nearing expiry, outdated prices, and missing photos. Each task opens directly in the relevant workspace.</p>
+              <p>Store status changes publish immediately to the public website. Natural-language requests are converted into a structured preview and require owner confirmation before anything is saved.</p>
+              <p>All confirmed changes are recorded in the Change Log with the source marked as “commanded by text.”</p>
+            </div>
+            <button onclick="copyInfo()" class="mt-4 w-full btn btn-dark py-2.5 text-[13px]"><i class="fa-solid fa-copy"></i> Copy app information</button>
+          </div>
+        </div>
+        <button onclick="openModal('loginModal')" class="w-10 h-10 rounded-xl bg-[#050738] text-white"><i class="fa-solid fa-user"></i></button>
+      </div>
+    </header>
+
+    <main class="p-4 sm:p-6 lg:p-8 pb-28">
+      <!-- HERO -->
+      <section class="reveal in relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#050738] via-[#222480] to-[#050738] text-white p-6 sm:p-8">
+        <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-[#04E1AB]/20 blur-3xl"></div>
+        <div class="relative flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="pill bg-[#04E1AB] text-[#04231d]"><span class="w-2 h-2 rounded-full bg-[#04231d] pulse-dot"></span> Store open</span>
+              <span class="pill bg-white/10 text-white">Saturday, 8 November 2569</span>
+            </div>
+            <h1 class="mt-4 text-[30px] sm:text-[40px] font-extrabold leading-[1.08]">Good morning, Ek.<br>Here is what needs you today.</h1>
+            <p class="mt-3 max-w-xl text-white/75">Three urgent items, healthy website status, and one-click shortcuts to the changes that matter most.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="openModal('closeModal')" class="btn btn-primary px-5 py-3.5"><i class="fa-solid fa-power-off"></i> Close store today</button>
+            <button onclick="toast('Opening your public website')" class="btn bg-white/10 border border-white/20 px-5 py-3.5 text-white hover:bg-white/20"><i class="fa-solid fa-up-right-from-square"></i> View website</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PENDING -->
+      <section class="mt-7">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="display text-[22px] font-bold">Pending work</h2>
+            <p class="text-[rgba(41,31,27,.6)]">Sorted by urgency. Handle the top item first.</p>
+          </div>
+          <button class="btn btn-ghost px-4 py-2.5 text-[13px]"><i class="fa-solid fa-list"></i> View all</button>
+        </div>
+        <div class="mt-4 grid gap-4 xl:grid-cols-3">
+          <div class="card p-5 flex items-center gap-4">
+            <span class="w-12 h-12 shrink-0 rounded-2xl bg-[#04E1AB]/15 text-[#017a5e] grid place-items-center"><i class="fa-solid fa-comment-dots text-lg"></i></span>
+            <div class="min-w-0 flex-1"><p class="font-bold display">2 customers awaiting reply</p><p class="text-[13px] text-[rgba(41,31,27,.6)]">Table booking and menu inquiry</p></div>
+            <button onclick="toast('Opening customer inbox')" class="btn btn-primary px-4 py-2.5 text-[13px]">Reply</button>
+          </div>
+          <div class="card p-5 flex items-center gap-4">
+            <span class="w-12 h-12 shrink-0 rounded-2xl bg-[#6A5DE6]/12 text-[#6A5DE6] grid place-items-center"><i class="fa-solid fa-tags text-lg"></i></span>
+            <div class="min-w-0 flex-1"><p class="font-bold display">1 promotion expires in 2 days</p><p class="text-[13px] text-[rgba(41,31,27,.6)]">Iced latte bundle · ends Monday</p></div>
+            <button onclick="toast('Opening promotion renewal')" class="btn btn-ghost px-4 py-2.5 text-[13px]">Renew</button>
+          </div>
+          <div class="card p-5 flex items-center gap-4">
+            <span class="w-12 h-12 shrink-0 rounded-2xl bg-[#BD9681]/20 text-[#724E40] grid place-items-center"><i class="fa-solid fa-baht-sign text-lg"></i></span>
+            <div class="min-w-0 flex-1"><p class="font-bold display">3 prices not reviewed for 61 days</p><p class="text-[13px] text-[rgba(41,31,27,.6)]">Review before customers notice</p></div>
+            <button onclick="toast('Opening price review')" class="btn btn-ghost px-4 py-2.5 text-[13px]">Review</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SHORTCUTS + METRICS -->
+      <section class="mt-7 grid gap-5 xl:grid-cols-[1.35fr_1fr]">
+        <div class="card p-6">
+          <h2 class="display text-[18px] font-bold">Quick actions</h2>
+          <p class="text-[rgba(41,31,27,.6)]">Reach the right editing screen in two taps.</p>
+          <div class="mt-5 grid grid-cols-2 gap-4">
+            <button onclick="toast('Opening price editor')" class="group rounded-2xl border border-[rgba(41,31,27,.10)] p-5 text-left transition hover:border-[#04E1AB] hover:bg-[#f4fffc]">
+              <span class="w-11 h-11 rounded-xl bg-[#04E1AB]/15 text-[#017a5e] grid place-items-center"><i class="fa-solid fa-baht-sign"></i></span>
+              <p class="mt-3 font-bold display">Change price</p><p class="text-[13px] text-[rgba(41,31,27,.6)]">Update an item in seconds</p>
+            </button>
+            <button onclick="toast('Opening promotion builder')" class="group rounded-2xl border border-[rgba(41,31,27,.10)] p-5 text-left transition hover:border-[#6A5DE6] hover:bg-[#f6f5ff]">
+              <span class="w-11 h-11 rounded-xl bg-[#6A5DE6]/12 text-[#6A5DE6] grid place-items-center"><i class="fa-solid fa-bullhorn"></i></span>
+              <p class="mt-3 font-bold display">Start promotion</p><p class="text-[13px] text-[rgba(41,31,27,.6)]">Create a limited offer</p>
+            </button>
+            <button onclick="toast('Opening photo manager')" class="group rounded-2xl border border-[rgba(41,31,27,.10)] p-5 text-left transition hover:border-[#BD9681] hover:bg-[#fdf8f5]">
+              <span class="w-11 h-11 rounded-xl bg-[#BD9681]/20 text-[#724E40] grid place-items-center"><i class="fa-solid fa-image"></i></span>
+              <p class="mt-3 font-bold display">Replace photo</p><p class="text-[13px] text-[rgba(41,31,27,.6)]">Fix missing visuals</p>
+            </button>
+            <button onclick="openModal('closeModal')" class="group rounded-2xl border border-[rgba(41,31,27,.10)] p-5 text-left transition hover:border-[#10AE9E] hover:bg-[#f2fffb]">
+              <span class="w-11 h-11 rounded-xl bg-[#10AE9E]/12 text-[#017a5e] grid place-items-center"><i class="fa-solid fa-store-slash"></i></span>
+              <p class="mt-3 font-bold display">Close store</p><p class="text-[13px] text-[rgba(41,31,27,.6)]">Today or a date range</p>
+            </button>
+          </div>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-3 xl:grid-cols-1">
+          <button onclick="toast('Opening performance details')" class="card p-5 text-left">
+            <p class="text-[11px] font-bold uppercase tracking-[.08em] text-[rgba(41,31,27,.45)]">Visitors today</p>
+            <div class="mt-2 flex items-end gap-2"><span class="display text-[34px] font-extrabold">428</span><span class="pill bg-[#04E1AB]/15 text-[#017a5e]"><i class="fa-solid fa-arrow-up"></i> 12%</span></div>
+            <p class="mt-1 text-[13px] text-[rgba(41,31,27,.55)]">vs. 382 yesterday</p>
+          </button>
+          <button onclick="toast('Opening performance details')" class="card p-5 text-left">
+            <p class="text-[11px] font-bold uppercase tracking-[.08em] text-[rgba(41,31,27,.45)]">Customer contacts</p>
+            <div class="mt-2 flex items-end gap-2"><span class="display text-[34px] font-extrabold">36</span><span class="pill bg-[#04E1AB]/15 text-[#017a5e]"><i class="fa-solid fa-arrow-up"></i> 8%</span></div>
+            <p class="mt-1 text-[13px] text-[rgba(41,31,27,.55)]">Calls, LINE, directions & forms</p>
+          </button>
+          <button onclick="toast('Opening new leads')" class="card p-5 text-left">
+            <p class="text-[11px] font-bold uppercase tracking-[.08em] text-[rgba(41,31,27,.45)]">New interest</p>
+            <div class="mt-2 flex items-end gap-2"><span class="display text-[34px] font-extrabold">9</span><span class="pill bg-[#BD9681]/20 text-[#724E40]"><i class="fa-solid fa-arrow-down"></i> 3%</span></div>
+            <p class="mt-1 text-[13px] text-[rgba(41,31,27,.55)]">vs. 9 yesterday</p>
+          </button>
+        </div>
+      </section>
+
+      <!-- STATUS / ACTIVITY / PREVIEW -->
+      <section class="mt-7 grid gap-5 xl:grid-cols-[1fr_390px]">
+        <div class="space-y-5">
+          <div class="card p-6">
+            <div class="flex items-center justify-between gap-3">
+              <h2 class="display text-[18px] font-bold">Website status</h2>
+              <span class="pill bg-[#04E1AB]/15 text-[#017a5e]"><i class="fa-solid fa-circle-check"></i> Healthy</span>
+            </div>
+            <p class="mt-2 text-[rgba(41,31,27,.65)]">Website is online · last checked 05:00 · last night’s backup completed successfully.</p>
+            <div class="mt-4 grid sm:grid-cols-3 gap-3">
+              <div class="rounded-2xl bg-[#f4fffc] p-4"><p class="text-[11px] font-bold uppercase tracking-[.08em] text-[#017a5e]">Uptime</p><p class="display text-[20px] font-extrabold mt-1">99.98%</p></div>
+              <div class="rounded-2xl bg-[#f6f5ff] p-4"><p class="text-[11px] font-bold uppercase tracking-[.08em] text-[#6A5DE6]">Load time</p><p class="display text-[20px] font-extrabold mt-1">1.2s</p></div>
+              <div class="rounded-2xl bg-[#fdf8f5] p-4"><p class="text-[11px] font-bold uppercase tracking-[.08em] text-[#724E40]">Backup</p><p class="display text-[20px] font-extrabold mt-1">Success</p></div>
+            </div>
+          </div>
+          <div class="card p-6">
+            <h2 class="display text-[18px] font-bold">Recent activity</h2>
+            <div class="mt-4 space-y-3">
+              <div class="flex items-center gap-3 rounded-2xl border border-[rgba(41,31,27,.08)] p-3.5"><span class="w-9 h-9 rounded-xl bg-[#04E1AB]/15 text-[#017a5e] grid place-items-center"><i class="fa-solid fa-baht-sign"></i></span><div class="flex-1"><p>Somchai changed <b>Iced Latte</b> from ฿70 to ฿75.</p><p class="text-[12px] text-[rgba(41,31,27,.5)]">14:05 · commanded by text</p></div><button onclick="toast('Change reversed')" class="btn btn-ghost px-3 py-2 text-[12px]">Undo</button></div>
+              <div class="flex items-center gap-3 rounded-2xl border border-[rgba(41,31,27,.08)] p-3.5"><span class="w-9 h-9 rounded-xl bg-[#6A5DE6]/12 text-[#6A5DE6] grid place-items-center"><i class="fa-solid fa-tags"></i></span><div class="flex-1"><p>Weekend brunch promotion was published.</p><p class="text-[12px] text-[rgba(41,31,27,.5)]">11:32 · owner confirmed</p></div><button onclick="toast('Change reversed')" class="btn btn-ghost px-3 py-2 text-[12px]">Undo</button></div>
+              <div class="flex items-center gap-3 rounded-2xl border border-[rgba(41,31,27,.08)] p-3.5"><span class="w-9 h-9 rounded-xl bg-[#BD9681]/20 text-[#724E40] grid place-items-center"><i class="fa-solid fa-image"></i></span><div class="flex-1"><p>New photo added to <b>Signature Pasta</b>.</p><p class="text-[12px] text-[rgba(41,31,27,.5)]">10:18 · staff account</p></div><button onclick="toast('Change reversed')" class="btn btn-ghost px-3 py-2 text-[12px]">Undo</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="card p-5">
+          <div class="flex items-center justify-between"><h2 class="display text-[18px] font-bold">Live preview</h2><span class="pill bg-[#04E1AB]/15 text-[#017a5e]">Mobile · 390px</span></div>
+          <div class="mt-4 rounded-[22px] border border-[rgba(41,31,27,.10)] bg-[#E3E3DD] p-3">
+            <div class="rounded-[16px] bg-white overflow-hidden">
+              <div class="h-28 bg-gradient-to-br from-[#04E1AB] to-[#10AE9E] p-4 text-[#04231d]">
+                <p class="text-[11px] font-bold uppercase tracking-[.08em]">Open today</p>
+                <p class="display text-[18px] font-extrabold mt-1">Aurora Coffee</p>
+              </div>
+              <div class="p-4 space-y-2.5">
+                <div class="rounded-xl bg-[#f4fffc] p-3"><p class="font-bold text-[13px]">Iced Latte</p><p class="text-[12px] text-[rgba(41,31,27,.6)]">฿75 · updated today</p></div>
+                <div class="rounded-xl bg-[#f6f5ff] p-3"><p class="font-bold text-[13px]">Weekend Brunch</p><p class="text-[12px] text-[rgba(41,31,27,.6)]">2-for-1 until Monday</p></div>
+                <div class="rounded-xl bg-[#fdf8f5] p-3"><p class="font-bold text-[13px]">Signature Pasta</p><p class="text-[12px] text-[rgba(41,31,27,.6)]">฿180 · photo added</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMAND BAR -->
+      <section class="mt-7 card p-6">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-5">
+          <div class="flex-1">
+            <span class="pill bg-[#6A5DE6]/12 text-[#6A5DE6]">Smart command</span>
+            <h2 class="display text-[20px] font-bold mt-3">Tell StoreOS what to change</h2>
+            <p class="text-[rgba(41,31,27,.6)]">Try: “Make iced latte ฿75”, “Close store tomorrow”, or “Create a weekend coffee promotion”.</p>
+          </div>
+          <div class="w-full lg:w-[520px]">
+            <div class="flex gap-2">
+              <input id="commandInput" class="field" placeholder="Type the change you want…">
+              <button onclick="runCommand()" class="btn btn-primary px-5"><i class="fa-solid fa-wand-magic-sparkles"></i> Preview</button>
+            </div>
+            <div id="commandResult" class="hidden mt-4 rounded-2xl border border-[#04E1AB]/35 bg-[#f4fffc] p-4">
+              <p class="text-[11px] font-bold uppercase tracking-[.08em] text-[#017a5e]">Confirm before saving</p>
+              <p id="commandPreview" class="mt-2 font-semibold"></p>
+              <div class="mt-3 flex gap-2"><button onclick="confirmCommand()" class="btn btn-primary px-4 py-2.5 text-[13px]"><i class="fa-solid fa-check"></i> Confirm change</button><button onclick="document.getElementById('commandResult').classList.add('hidden')" class="btn btn-ghost px-4 py-2.5 text-[13px]">Cancel</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- AUTH MODALS -->
+<div id="signupModal" class="modal"><div class="modal-card p-7">
+  <div class="flex items-start justify-between"><div><h2 class="display text-[22px] font-extrabold">Create your store</h2><p class="text-[rgba(41,31,27,.6)]">Start managing your website in minutes.</p></div><button onclick="closeModals()" class="w-9 h-9 rounded-xl btn-ghost"><i class="fa-solid fa-xmark"></i></button></div>
+  <form onsubmit="event.preventDefault();closeModals();toast('Account created — welcome to StoreOS')" class="mt-5 space-y-3">
+    <input required class="field" placeholder="Store name"><input required type="email" class="field" placeholder="Email address"><input required type="password" class="field" placeholder="Password">
+    <button class="w-full btn btn-primary py-3">Create account</button>
+  </form>
+  <p class="mt-4 text-center text-[13px]">Already have an account? <button onclick="switchModal('loginModal')" class="font-bold text-[#017a5e]">Log in</button></p>
+</div></div>
+
+<div id="loginModal" class="modal"><div class="modal-card p-7">
+  <div class="flex items-start justify-between"><div><h2 class="display text-[22px] font-extrabold">Welcome back</h2><p class="text-[rgba(41,31,27,.6)]">Log in to manage your store.</p></div><button onclick="closeModals()" class="w-9 h-9 rounded-xl btn-ghost"><i class="fa-solid fa-xmark"></i></button></div>
+  <form onsubmit="event.preventDefault();closeModals();toast('Logged in successfully')" class="mt-5 space-y-3">
+    <input required type="email" class="field" placeholder="Email address"><input required type="password" class="field" placeholder="Password">
+    <div class="flex justify-end"><button type="button" onclick="switchModal('forgotModal')" class="text-[13px] font-semibold text-[#017a5e]">Forgot password?</button></div>
+    <button class="w-full btn btn-primary py-3">Log in</button>
+  </form>
+  <p class="mt-4 text-center text-[13px]">New to StoreOS? <button onclick="switchModal('signupModal')" class="font-bold text-[#017a5e]">Create an account</button></p>
+</div></div>
+
+<div id="forgotModal" class="modal"><div class="modal-card p-7">
+  <div class="flex items-start justify-between"><div><h2 class="display text-[22px] font-extrabold">Reset password</h2><p class="text-[rgba(41,31,27,.6)]">We’ll email you a secure reset link.</p></div><button onclick="closeModals()" class="w-9 h-9 rounded-xl btn-ghost"><i class="fa-solid fa-xmark"></i></button></div>
+  <form onsubmit="event.preventDefault();closeModals();toast('Reset link sent')" class="mt-5 space-y-3">
+    <input required type="email" class="field" placeholder="Email address"><button class="w-full btn btn-primary py-3">Send reset link</button>
+  </form>
+  <p class="mt-4 text-center text-[13px]"><button onclick="switchModal('loginModal')" class="font-bold text-[#017a5e]">Back to login</button></p>
+</div></div>
+
+<div id="closeModal" class="modal"><div class="modal-card p-7">
+  <div class="flex items-start justify-between"><div><h2 class="display text-[22px] font-extrabold">Close store</h2><p class="text-[rgba(41,31,27,.6)]">This appears on your public website immediately.</p></div><button onclick="closeModals()" class="w-9 h-9 rounded-xl btn-ghost"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="mt-5 grid grid-cols-3 gap-2">
+    <button onclick="pickClose(this,'today')" class="close-opt btn btn-ghost py-3 text-[13px]">Today</button>
+    <button onclick="pickClose(this,'tomorrow')" class="close-opt btn btn-ghost py-3 text-[13px]">Tomorrow</button>
+    <button onclick="pickClose(this,'range')" class="close-opt btn btn-ghost py-3 text-[13px]">Until date</button>
+  </div>
+  <input id="closeDate" type="date" class="field mt-3 hidden">
+  <textarea id="closeMessage" class="field mt-3 h-24">We’re temporarily closed today. Thank you for understanding — see you soon!</textarea>
+  <button onclick="confirmClose()" class="mt-4 w-full btn btn-primary py-3"><i class="fa-solid fa-store-slash"></i> Publish closure</button>
+</div></div>
+
+<!-- FLOATING ACTIONS -->
+<div class="chat">
+  <button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hidden w-12 h-12 rounded-full bg-white border border-[rgba(41,31,27,.10)] shadow-lg text-[#017a5e]"><i class="fa-solid fa-arrow-up"></i></button>
+  <button id="chatBtn" onclick="toggleChat()" class="w-14 h-14 rounded-full bg-gradient-to-br from-[#04E1AB] to-[#10AE9E] text-[#04231d] shadow-xl float"><i class="fa-solid fa-comment-dots text-lg"></i></button>
+</div>
+
+<div id="chatPanel" class="chat-panel">
+  <div class="p-4 bg-gradient-to-br from-[#050738] to-[#222480] text-white flex items-center justify-between">
+    <div><p class="display font-bold">StoreOS Assistant</p><p class="text-[12px] text-white/70">Ask for a change or help</p></div>
+    <button onclick="toggleChat()" class="w-9 h-9 rounded-xl bg-white/10"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="chatBody" class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#fafaf8]">
+    <div class="bubble bot">Hi Ek! I can help you update a price, create a promotion, change an item status, or close the store. What would you like to do?</div>
+  </div>
+  <div class="p-3 border-t border-[rgba(41,31,27,.08)] bg-white">
+    <div class="flex gap-2">
+      <input id="chatInput" class="field" placeholder="Type a request…">
+      <button onclick="sendChat()" class="btn btn-primary w-12 h-12"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-8 z-[90] hidden rounded-full bg-[#050738] px-5 py-3 text-white text-[13px] font-semibold shadow-2xl"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+function toggleSidebar(){const s=$('#sidebar'),o=$('#overlay');s.classList.toggle('open');o.classList.toggle('open',s.classList.contains('open'))}
+function openModal(id){closeModals();$('#'+id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModals(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('open'));document.body.style.overflow=''}
+function switchModal(id){closeModals();setTimeout(()=>openModal(id),80)}
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModals()}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModals();$('#chatPanel').classList.remove('open');$('#infoMenu').classList.add('hidden')}});
+function toggleInfo(e){if(e)e.stopPropagation();$('#infoMenu').classList.toggle('hidden')}
+document.addEventListener('click',e=>{if(!e.target.closest('#infoMenu')&&!e.target.closest('[onclick*="toggleInfo"]'))$('#infoMenu').classList.add('hidden')});
+function copyInfo(){const t=document.querySelector('#infoMenu').innerText;navigator.clipboard.writeText(t).then(()=>toast('App information copied'))}
+let closeChoice='today';
+function pickClose(btn,c){closeChoice=c;document.querySelectorAll('.close-opt').forEach(b=>{b.classList.remove('btn-primary');b.classList.add('btn-ghost')});btn.classList.add('btn-primary');btn.classList.remove('btn-ghost');$('#closeDate').classList.toggle('hidden',c!=='range')}
+function confirmClose(){const msg=$('#closeMessage').value||'We’re temporarily closed today.';closeModals();toast('Store closure published to your website');console.log({closeChoice,message:msg})}
+function runCommand(){const v=$('#commandInput').value.trim();if(!v)return toast('Please describe the change first');const p=$('#commandPreview');p.textContent=`Preview: “${v}” will create a structured change for your confirmation. Nothing is saved until you approve it.`;$('#commandResult').classList.remove('hidden')}
+function confirmCommand(){$('#commandResult').classList.add('hidden');$('#commandInput').value='';toast('Change saved and logged as “commanded by text”')}
+function toggleChat(){const p=$('#chatPanel');p.classList.toggle('open');if(p.classList.contains('open'))setTimeout(()=>$('#chatInput').focus(),250)}
+function sendChat(){const i=$('#chatInput'),v=i.value.trim();if(!v)return;addChat(v,'user');i.value='';setTimeout(()=>{const lower=v.toLowerCase();let r='I can turn that into a structured change. Please review the preview before it is saved.';if(lower.includes('price')||lower.includes('baht')||lower.includes('฿'))r='I can prepare a price change. Which menu item should I update, and what should the new price be?';else if(lower.includes('close')||lower.includes('closed'))r='I can publish a store closure for today, tomorrow, or a selected date range. Which would you like?';else if(lower.includes('promo')||lower.includes('promotion'))r='I can draft a promotion. Tell me the offer, discount, and end date.';addChat(r,'bot')},600)}
+function addChat(text,who){const b=$('#chatBody'),d=document.createElement('div');d.className='bubble '+(who==='user'?'user':'bot');d.textContent=text;b.appendChild(d);b.scrollTop=b.scrollHeight}
+$('#chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(t._x);t._x=setTimeout(()=>t.classList.add('hidden'),2600)}
+window.addEventListener('scroll',()=>{$('#topBtn').classList.toggle('hidden',window.scrollY<420)});
+document.querySelectorAll('.reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),i*90));
+</script>
+</body>
+</html>
