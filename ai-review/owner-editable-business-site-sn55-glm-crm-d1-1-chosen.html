@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopFlow — Today's Overview</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icon Libraries -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+<link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+<link href="https://cdn.boxicons.com/3.0.4/fonts/basic/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'offwhite': '#E3E3DD',
+        'aqua': '#04E1AB',
+        'aqua-dark': '#03C998',
+        'sage': '#BD9681',
+        'emerald2': '#10AE9E',
+        'violet2': '#6A5DE6',
+        'olive': '#724E40',
+        'indigo2': '#222480',
+        'charcoal': '#291F1B',
+        'navy2': '#050738',
+      },
+      fontFamily: {
+        'heading': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'body': ['Inter', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+
+<style>
+:root {
+  --color-off-white: #E3E3DD;
+  --color-aqua: #04E1AB;
+  --color-aqua-dark: #03C998;
+  --color-sage: #BD9681;
+  --color-emerald: #10AE9E;
+  --color-violet: #6A5DE6;
+  --color-olive: #724E40;
+  --color-indigo: #222480;
+  --color-charcoal: #291F1B;
+  --color-navy: #050738;
+  --color-bg: #FFFFFF;
+  --color-text: #291F1B;
+  --color-text-muted: #6B6660;
+  --color-border: rgba(41, 31, 27, 0.07);
+  --color-border-strong: rgba(41, 31, 27, 0.12);
+  --header-h: 64px;
+}
+
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  background: #FFFFFF;
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 1.5;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, .heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ============ Custom Scrollbar (no arrows) ============ */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: rgba(4, 225, 171, 0.06); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #04E1AB, #10AE9E); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #10AE9E; }
+::-webkit-scrollbar-button { display: none !important; width: 0 !important; height: 0 !important; }
+::-webkit-scrollbar-corner { background: transparent; }
+* { scrollbar-width: thin; scrollbar-color: #04E1AB rgba(4,225,171,0.06); -webkit-tap-highlight-color: transparent; }
+
+/* Hide default arrows on number inputs */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ============ Animations ============ */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes ripple { to { transform: scale(2.4); opacity: 0; } }
+
+.reveal { opacity: 0; }
+.reveal.in { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* ============ Card ============ */
+.card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(41,31,27,0.03), 0 8px 24px rgba(41,31,27,0.04);
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(41,31,27,0.04), 0 16px 40px rgba(41,31,27,0.08); border-color: var(--color-border-strong); }
+.card-soft { background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 14px; transition: all 0.25s; }
+.card-soft:hover { border-color: var(--color-border-strong); box-shadow: 0 6px 18px rgba(41,31,27,0.05); }
+
+/* ============ Buttons ============ */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 600; border-radius: 10px; transition: all 0.2s cubic-bezier(0.22,1,0.36,1); cursor: pointer; white-space: nowrap; border: none; outline: none; }
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--color-aqua); color: #FFFFFF; }
+.btn-primary:hover { background: var(--color-aqua-dark); box-shadow: 0 6px 18px rgba(4,225,171,0.35); }
+.btn-violet { background: var(--color-violet); color: #FFFFFF; }
+.btn-violet:hover { background: #5a4dd4; box-shadow: 0 6px 18px rgba(106,93,230,0.35); }
+.btn-ghost { background: #F7F7F4; color: var(--color-charcoal); }
+.btn-ghost:hover { background: #EFEFEB; }
+.btn-outline { background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-charcoal); }
+.btn-outline:hover { background: #FAFAF8; border-color: var(--color-charcoal); }
+
+/* Shortcut button */
+.shortcut-btn {
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between;
+  min-height: 78px; padding: 14px 16px; border-radius: 16px; background: #FFFFFF;
+  border: 1px solid var(--color-border); cursor: pointer; transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
+  position: relative; overflow: hidden; text-align: left;
+}
+.shortcut-btn::before { content: ''; position: absolute; inset: 0; background: var(--accent-bg, transparent); opacity: 0; transition: opacity 0.25s; }
+.shortcut-btn:hover { transform: translateY(-2px); border-color: var(--color-border-strong); box-shadow: 0 10px 26px rgba(41,31,27,0.07); }
+.shortcut-btn:hover::before { opacity: 1; }
+.shortcut-btn:active { transform: scale(0.98); }
+.shortcut-icon { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #FFFFFF; position: relative; z-index: 1; }
+
+/* ============ Status dot ============ */
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; position: relative; }
+.status-dot.live { background: var(--color-aqua); }
+.status-dot.live::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--color-aqua); animation: pulse-dot 1.8s ease-in-out infinite; }
+
+/* ============ Toggle Switch ============ */
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #E2E1DC; border-radius: 30px; transition: 0.3s; }
+.toggle-slider::before { content: ''; position: absolute; height: 18px; width: 18px; left: 3px; top: 3px; background: #FFFFFF; border-radius: 50%; transition: 0.3s cubic-bezier(0.22,1,0.36,1); box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+.toggle input:checked + .toggle-slider { background: var(--color-aqua); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* ============ Sidebar ============ */
+.sidebar { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); }
+.menu-item { display: flex; align-items: center; gap: 11px; padding: 9px 12px; border-radius: 10px; color: var(--color-text-muted); font-weight: 500; font-size: 12.5px; cursor: pointer; transition: all 0.2s; position: relative; }
+.menu-item i { font-size: 16px; width: 18px; text-align: center; }
+.menu-item:hover { background: #F7F7F4; color: var(--color-charcoal); }
+.menu-item.active { background: linear-gradient(135deg, rgba(4,225,171,0.12), rgba(16,174,158,0.08)); color: var(--color-charcoal); font-weight: 600; }
+.menu-item.active::before { content: ''; position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 3px; height: 18px; background: var(--color-aqua); border-radius: 0 3px 3px 0; }
+.menu-item .badge-count { margin-left: auto; background: var(--color-violet); color: #FFF; font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 10px; }
+.menu-label-section { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #A8A39D; padding: 0 12px; margin: 16px 0 6px; }
+
+/* ============ Modal ============ */
+.modal-overlay { position: fixed; inset: 0; background: rgba(5,7,56,0.42); backdrop-filter: blur(4px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal-box { background: #FFFFFF; border-radius: 20px; width: 100%; max-width: 420px; box-shadow: 0 24px 60px rgba(5,7,56,0.25); transform: scale(0.95) translateY(10px); transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); max-height: 92vh; overflow-y: auto; }
+.modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+.modal-close { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: #F5F5F1; color: var(--color-text-muted); cursor: pointer; transition: all 0.2s; border: none; }
+.modal-close:hover { background: #EFEFEB; color: var(--color-charcoal); transform: rotate(90deg); }
+
+/* ============ Form Input ============ */
+.input-field { width: 100%; padding: 11px 14px; border: 1px solid var(--color-border-strong); border-radius: 11px; font-size: 13px; font-family: 'Inter', sans-serif; background: #FCFCFA; transition: all 0.2s; color: var(--color-charcoal); }
+.input-field:focus { outline: none; border-color: var(--color-aqua); background: #FFFFFF; box-shadow: 0 0 0 3px rgba(4,225,171,0.15); }
+.input-field::placeholder { color: #B5B0AA; }
+.input-label { font-size: 11px; font-weight: 600; color: var(--color-text-muted); margin-bottom: 5px; display: block; letter-spacing: 0.02em; }
+
+/* ============ Dropdown ============ */
+.dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 14px; box-shadow: 0 14px 40px rgba(41,31,27,0.14); min-width: 280px; opacity: 0; pointer-events: none; transform: translateY(-6px) scale(0.98); transition: all 0.2s cubic-bezier(0.22,1,0.36,1); z-index: 50; }
+.dropdown.open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+
+/* ============ Chatbot ============ */
+.chat-panel { position: fixed; bottom: 84px; right: 20px; width: 340px; max-width: calc(100vw - 40px); height: 460px; max-height: calc(100vh - 130px); background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 20px; box-shadow: 0 20px 50px rgba(41,31,27,0.18); display: flex; flex-direction: column; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); z-index: 60; overflow: hidden; }
+.chat-panel.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #FAFAF8; }
+.chat-bubble { max-width: 80%; padding: 9px 13px; border-radius: 14px; font-size: 12.5px; line-height: 1.5; }
+.chat-bubble.bot { background: #FFFFFF; border: 1px solid var(--color-border); align-self: flex-start; border-bottom-left-radius: 4px; }
+.chat-bubble.user { background: var(--color-aqua); color: #FFF; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+/* ============ Floating Buttons ============ */
+.floating-row { position: fixed; bottom: 20px; right: 20px; display: flex; align-items: center; gap: 5px; z-index: 55; }
+.fab { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: all 0.25s cubic-bezier(0.22,1,0.36,1); box-shadow: 0 8px 24px rgba(41,31,27,0.18); font-size: 22px; }
+.fab:active { transform: scale(0.92); }
+.fab-chat { background: var(--color-violet); color: #FFFFFF; }
+.fab-chat:hover { background: #5a4dd4; box-shadow: 0 12px 30px rgba(106,93,230,0.4); }
+.fab-chat.active { background: var(--color-charcoal); }
+.fab-top { background: #FFFFFF; color: var(--color-charcoal); border: 1px solid var(--color-border-strong); opacity: 0; pointer-events: none; transform: translateY(10px); }
+.fab-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.fab-top:hover { background: var(--color-aqua); color: #FFFFFF; border-color: var(--color-aqua); }
+
+/* ============ Misc ============ */
+.divider { height: 1px; background: var(--color-border); margin: 14px 0; }
+.trend-up { color: var(--color-emerald); }
+.trend-down { color: #E5544B; }
+.glass-bar { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); }
+
+/* Skeleton */
+.skeleton { background: linear-gradient(90deg, #F0F0EC 25%, #F7F7F4 50%, #F0F0EC 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 8px; }
+
+/* Hero gradient accent */
+.hero-accent { background: linear-gradient(135deg, #04E1AB 0%, #10AE9E 100%); }
+
+/* Activity timeline dot */
+.timeline-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+
+/* Mobile responsive helpers */
+@media (max-width: 1024px) {
+  .sidebar { position: fixed; top: 0; left: 0; height: 100vh; z-index: 40; transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+}
+@media (max-width: 640px) {
+  .chat-panel { right: 12px; bottom: 76px; }
+  .floating-row { right: 12px; bottom: 12px; }
+}
+
+/* Mini browser frame */
+.browser-frame { border: 1px solid var(--color-border-strong); border-radius: 12px; overflow: hidden; background: #FFFFFF; }
+.browser-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: #F5F5F1; border-bottom: 1px solid var(--color-border); }
+.browser-dot { width: 9px; height: 9px; border-radius: 50%; }
+.browser-url { flex: 1; background: #FFFFFF; border-radius: 6px; padding: 4px 10px; font-size: 10px; color: var(--color-text-muted); border: 1px solid var(--color-border); }
+
+/* Toast */
+.toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--color-charcoal); color: #FFF; padding: 11px 20px; border-radius: 12px; font-size: 12.5px; font-weight: 500; z-index: 200; opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); box-shadow: 0 12px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.success { background: var(--color-emerald); }
+.toast.error { background: #E5544B; }
+
+/* Ripple effect */
+.ripple { position: relative; overflow: hidden; }
+.ripple-effect { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.5); transform: scale(0); animation: ripple 0.6s ease-out; pointer-events: none; }
+</style>
+</head>
+<body class="bg-white">
+
+<!-- ============ APP WRAPPER ============ -->
+<div id="app" class="flex h-screen overflow-hidden w-full">
+
+  <!-- Sidebar Overlay (mobile/tablet) -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-charcoal/40 z-30 hidden lg:hidden"></div>
+
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside id="sidebar" class="sidebar flex flex-col w-[244px] flex-shrink-0 bg-white">
+
+    <!-- Logo Section (sticky, height = header) -->
+    <div class="flex items-center gap-2.5 h-[64px] px-5 border-b border-r border-[var(--color-border)] flex-shrink-0 sticky top-0 z-10 bg-white">
+      <div class="w-8 h-8 rounded-[10px] hero-accent flex items-center justify-center text-white shadow-sm">
+        <i class="bi bi-shop text-[16px]"></i>
+      </div>
+      <div class="flex flex-col leading-tight">
+        <span class="font-heading font-extrabold text-[15px] text-charcoal tracking-tight">ShopFlow</span>
+        <span class="text-[9px] font-semibold text-[var(--color-text-muted)] tracking-wider uppercase">Owner Console</span>
+      </div>
+      <button id="sidebarClose" class="lg:hidden ml-auto text-[var(--color-text-muted)] hover:text-charcoal">
+        <i class="bi bi-x-lg text-[14px]"></i>
+      </button>
+    </div>
+
+    <!-- Menu (scrollable, shares border-right with logo) -->
+    <nav class="flex-1 overflow-y-auto border-r border-[var(--color-border)] px-4 py-3">
+      <div class="menu-label-section">Main</div>
+      <div class="menu-item active" data-page="today">
+        <i class="bi bi-grid-1x2-fill"></i><span>Today's Overview</span>
+      </div>
+      <div class="menu-item" data-page="menu">
+        <i class="bi bi-cup-straw"></i><span>Menu & Pricing</span>
+      </div>
+      <div class="menu-item" data-page="promos">
+        <i class="bi bi-tag"></i><span>Promotions</span><span class="badge-count">2</span>
+      </div>
+
+      <div class="menu-label-section">Customers</div>
+      <div class="menu-item" data-page="inquiries">
+        <i class="bi bi-chat-dots"></i><span>Inquiries</span><span class="badge-count">3</span>
+      </div>
+      <div class="menu-item" data-page="orders">
+        <i class="bi bi-bag"></i><span>Orders</span>
+      </div>
+      <div class="menu-item" data-page="customers">
+        <i class="bi bi-people"></i><span>Customers</span>
+      </div>
+
+      <div class="menu-label-section">Insights</div>
+      <div class="menu-item" data-page="analytics">
+        <i class="bi bi-bar-chart-line"></i><span>Analytics</span>
+      </div>
+      <div class="menu-item" data-page="webstatus">
+        <i class="bi bi-globe2"></i><span>Website Status</span>
+      </div>
+      <div class="menu-item" data-page="activity">
+        <i class="bi bi-clock-history"></i><span>Activity Log</span>
+      </div>
+
+      <div class="menu-label-section">System</div>
+      <div class="menu-item" data-page="settings">
+        <i class="bi bi-gear"></i><span>Settings</span>
+      </div>
+      <div class="menu-item" data-page="billing">
+        <i class="bi bi-credit-card-2-front"></i><span>Billing</span>
+      </div>
+
+      <!-- Upgrade Card -->
+      <div class="mt-5 p-3.5 rounded-[14px] hero-accent text-white relative overflow-hidden">
+        <div class="absolute -right-4 -top-4 w-20 h-20 rounded-full bg-white/15"></div>
+        <div class="relative">
+          <i class="bi bi-stars text-[18px]"></i>
+          <p class="font-heading font-bold text-[13px] mt-2 leading-snug">Upgrade to Pro</p>
+          <p class="text-[10.5px] text-white/85 mt-1 leading-relaxed">Unlock AI insights & unlimited revisions.</p>
+          <button class="mt-2.5 w-full bg-white text-emerald2 font-semibold text-[11.5px] py-1.5 rounded-lg hover:bg-white/90 transition" onclick="showToast('Redirecting to upgrade page…','success')">Upgrade</button>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ============ MAIN AREA ============ -->
+  <div class="flex-1 flex flex-col overflow-hidden min-w-0">
+
+    <!-- ============ HEADER ============ -->
+    <header class="h-[64px] flex-shrink-0 border-b border-[var(--color-border)] flex items-center gap-3 px-4 sm:px-6 bg-white sticky top-0 z-20">
+
+      <button id="menuToggle" class="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center hover:bg-[#F7F7F4] text-charcoal">
+        <i class="bi bi-list text-[20px]"></i>
+      </button>
+
+      <div class="flex items-center gap-2 min-w-0">
+        <h1 class="font-heading font-bold text-[16px] sm:text-[17px] text-charcoal truncate">Today's Overview</h1>
+        <span class="hidden sm:inline-flex items-center gap-1 text-[11px] text-[var(--color-text-muted)] bg-[#F7F7F4] px-2 py-0.5 rounded-full">
+          <span class="status-dot live"></span>Live
+        </span>
+      </div>
+
+      <div class="ml-auto flex items-center gap-2 sm:gap-3">
+
+        <!-- Search (desktop) -->
+        <div class="hidden md:flex items-center bg-[#F7F7F4] rounded-xl px-3 py-2 w-[200px] lg:w-[240px] focus-within:bg-white focus-within:ring-2 focus-within:ring-aqua/20 transition">
+          <i class="bi bi-search text-[var(--color-text-muted)] text-[13px]"></i>
+          <input type="text" placeholder="Search anything…" class="bg-transparent border-none outline-none ml-2 text-[12.5px] flex-1 placeholder-[#B5B0AA]">
+          <kbd class="text-[10px] text-[var(--color-text-muted)] bg-white border border-[var(--color-border)] rounded px-1.5 py-0.5 font-mono">⌘K</kbd>
+        </div>
+
+        <!-- Note Icon Dropdown -->
+        <div class="relative">
+          <button id="noteBtn" class="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-[#F7F7F4] text-charcoal transition" title="App Info">
+            <i class="bi bi-info-circle text-[18px]"></i>
+          </button>
+          <div id="noteDropdown" class="dropdown w-[300px]">
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-heading font-bold text-[13px] text-charcoal">Web App Information</h3>
+                <span class="text-[10px] font-semibold text-aqua bg-aqua/10 px-2 py-0.5 rounded-full">v2.4.1</span>
+              </div>
+              <div id="appInfoContent" class="space-y-2 text-[11.5px]">
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">App Name</span><span class="font-medium text-charcoal">ShopFlow Dashboard</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">Version</span><span class="font-medium text-charcoal">2.4.1 (Stable)</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">Build</span><span class="font-medium text-charcoal">2024.11.08</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">Environment</span><span class="font-medium text-charcoal">Production</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">Last Updated</span><span class="font-medium text-charcoal">Nov 8, 2026</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">API Version</span><span class="font-medium text-charcoal">v2</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">Region</span><span class="font-medium text-charcoal">Asia Pacific (Bangkok)</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">Server</span><span class="font-medium text-charcoal">apac-bkk-01</span></div>
+                <div class="flex justify-between"><span class="text-[var(--color-text-muted)]">Support</span><span class="font-medium text-charcoal">support@shopflow.app</span></div>
+              </div>
+              <button id="copyAppInfo" class="mt-3 w-full btn btn-ghost text-[12px] py-2">
+                <i class="bi bi-clipboard"></i> Copy Info
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications -->
+        <button class="relative w-9 h-9 rounded-lg flex items-center justify-center hover:bg-[#F7F7F4] text-charcoal transition">
+          <i class="bi bi-bell text-[17px]"></i>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-violet2 rounded-full ring-2 ring-white"></span>
+        </button>
+
+        <!-- User Menu -->
+        <div class="relative">
+          <button id="userBtn" class="flex items-center gap-2 hover:bg-[#F7F7F4] rounded-lg p-1 pr-2 transition">
+            <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet2 to-indigo2 flex items-center justify-center text-white text-[11px] font-bold">EK</div>
+            <span class="hidden sm:block text-[12px] font-semibold text-charcoal">Ek K.</span>
+            <i class="bi bi-chevron-down text-[10px] text-[var(--color-text-muted)] hidden sm:block"></i>
+          </button>
+          <div id="userDropdown" class="dropdown w-[220px]">
+            <div class="p-3 border-b border-[var(--color-border)]">
+              <p class="font-semibold text-[12.5px] text-charcoal">Ek K.</p>
+              <p class="text-[11px] text-[var(--color-text-muted)]">ek@morningbrew.cafe</p>
+            </div>
+            <div class="p-1.5">
+              <button class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-[#F7F7F4] text-[12px] flex items-center gap-2.5 text-charcoal"><i class="bi bi-person text-[14px] text-[var(--color-text-muted)]"></i> My Profile</button>
+              <button class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-[#F7F7F4] text-[12px] flex items-center gap-2.5 text-charcoal"><i class="bi bi-gear text-[14px] text-[var(--color-text-muted)]"></i> Settings</button>
+              <button class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-[#F7F7F4] text-[12px] flex items-center gap-2.5 text-charcoal" onclick="openModal('loginModal')"><i class="bi bi-box-arrow-in-right text-[14px] text-[var(--color-text-muted)]"></i> Switch Account</button>
+              <button class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-[#F7F7F4] text-[12px] flex items-center gap-2.5 text-charcoal" onclick="openModal('signupModal')"><i class="bi bi-person-plus text-[14px] text-[var(--color-text-muted)]"></i> Invite Team</button>
+              <div class="divider"></div>
+              <button class="w-full text-left px-2.5 py-2 rounded-lg hover:bg-[#FEE] text-[12px] flex items-center gap-2.5 text-[#E5544B]"><i class="bi bi-box-arrow-right text-[14px]"></i> Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main id="mainContent" class="flex-1 overflow-y-auto">
+
+      <!-- Demo Mission Bar -->
+      <div class="px-4 sm:px-6 pt-4">
+        <div class="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-violet2/8 border border-violet2/15">
+          <div class="w-7 h-7 rounded-lg bg-violet2 flex items-center justify-center text-white">
+            <i class="bi bi-flag-fill text-[12px]"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-[12px] font-semibold text-charcoal">Mission 1 of 3 — Set up your first menu item</p>
+            <p class="text-[11px] text-[var(--color-text-muted)] hidden sm:block">Complete this to unlock your first analytics report.</p>
+          </div>
+          <button class="btn btn-violet text-[11px] px-3 py-1.5">Continue</button>
+          <button class="text-[var(--color-text-muted)] hover:text-charcoal" onclick="this.parentElement.style.display='none'"><i class="bi bi-x text-[14px]"></i></button>
+        </div>
+      </div>
+
+      <!-- ============ HERO / GREETING ============ -->
+      <section id="hero" class="px-4 sm:px-6 pt-4 pb-2 reveal">
+        <div class="card p-5 sm:p-6 relative overflow-hidden">
+          <!-- decorative blobs -->
+          <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-gradient-to-br from-aqua/12 to-emerald2/8 blur-2xl pointer-events-none"></div>
+          <div class="absolute right-20 -bottom-10 w-32 h-32 rounded-full bg-violet2/8 blur-2xl pointer-events-none"></div>
+
+          <div class="relative flex flex-col lg:flex-row lg:items-center gap-5">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-[11px] font-semibold text-aqua bg-aqua/10 px-2.5 py-1 rounded-full uppercase tracking-wide" id="dateLabel">Saturday, Nov 8, 2026</span>
+              </div>
+              <h2 class="font-heading font-extrabold text-[22px] sm:text-[26px] text-charcoal leading-tight">
+                Good morning, <span class="text-transparent bg-clip-text bg-gradient-to-r from-aqua to-emerald2">Ek</span> 👋
+              </h2>
+              <p class="text-[12.5px] text-[var(--color-text-muted)] mt-1.5 max-w-lg">Here's a quick snapshot of your shop today. Tap anything to act on it instantly.</p>
+
+              <!-- Shop status + toggle -->
+              <div class="flex items-center gap-3 mt-4">
+                <div id="shopStatusPill" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-aqua/10 border border-aqua/20">
+                  <span class="status-dot live"></span>
+                  <span class="text-[12px] font-semibold text-emerald2" id="shopStatusText">Shop Open</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <label class="toggle">
+                    <input type="checkbox" id="shopToggle" checked>
+                    <span class="toggle-slider"></span>
+                  </label>
+                  <span class="text-[11.5px] text-[var(--color-text-muted)]" id="toggleLabel">Auto-close at 21:00</span>
+                </div>
+                <button id="closeShopBtn" class="btn btn-ghost text-[11px] px-2.5 py-1.5 hidden sm:inline-flex">
+                  <i class="bi bi-calendar-event"></i> Schedule
+                </button>
+              </div>
+            </div>
+
+            <!-- Mini stat -->
+            <div class="flex gap-3 flex-shrink-0">
+              <div class="card-soft p-3.5 w-[120px]">
+                <p class="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide">Today's Revenue</p>
+                <p class="font-heading font-extrabold text-[20px] text-charcoal mt-1">฿12,450</p>
+                <p class="text-[10.5px] trend-up flex items-center gap-1 mt-0.5"><i class="bi bi-arrow-up-short"></i> 18% vs yesterday</p>
+              </div>
+              <div class="card-soft p-3.5 w-[120px]">
+                <p class="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide">Orders</p>
+                <p class="font-heading font-extrabold text-[20px] text-charcoal mt-1">38</p>
+                <p class="text-[10.5px] trend-up flex items-center gap-1 mt-0.5"><i class="bi bi-arrow-up-short"></i> 5 vs yesterday</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ BENTO GRID ============ -->
+      <div class="px-4 sm:px-6 py-4 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
+
+        <!-- ===== LEFT COLUMN ===== -->
+        <div class="space-y-4 sm:space-y-5">
+
+          <!-- Pending Work Cards -->
+          <section class="reveal">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="font-heading font-bold text-[14px] text-charcoal">Pending Work</h3>
+                <p class="text-[11px] text-[var(--color-text-muted)]">Things that need your attention now</p>
+              </div>
+              <span class="text-[11px] font-semibold text-violet2 bg-violet2/10 px-2.5 py-1 rounded-full">3 items</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Card 1: Inquiries -->
+              <div class="card p-4 border-l-[3px] border-l-violet2">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-violet2/10 flex items-center justify-center text-violet2">
+                    <i class="bi bi-chat-left-text-fill text-[15px]"></i>
+                  </div>
+                  <span class="text-[10px] font-bold text-violet2 bg-violet2/8 px-1.5 py-0.5 rounded">URGENT</span>
+                </div>
+                <p class="font-heading font-bold text-[15px] text-charcoal mt-2">3 Inquiries</p>
+                <p class="text-[11px] text-[var(--color-text-muted)] mt-0.5 leading-snug">Customers waiting for your reply via LINE & form.</p>
+                <button class="btn btn-violet text-[11px] px-3 py-1.5 mt-3 w-full" onclick="showToast('Opening inquiries…','success')">
+                  Reply Now <i class="bi bi-arrow-right text-[10px]"></i>
+                </button>
+              </div>
+
+              <!-- Card 2: Promo Expiring -->
+              <div class="card p-4 border-l-[3px] border-l-sage">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-sage/15 flex items-center justify-center text-sage">
+                    <i class="bi bi-hourglass-split text-[15px]"></i>
+                  </div>
+                  <span class="text-[10px] font-bold text-sage bg-sage/10 px-1.5 py-0.5 rounded">2 DAYS</span>
+                </div>
+                <p class="font-heading font-bold text-[15px] text-charcoal mt-2">Summer Promo</p>
+                <p class="text-[11px] text-[var(--color-text-muted)] mt-0.5 leading-snug">Ends in 2 days. Extend to keep 3 featured items live.</p>
+                <button class="btn btn-ghost text-[11px] px-3 py-1.5 mt-3 w-full" style="background:rgba(189,150,129,0.12);color:#8B6B5A" onclick="showToast('Promo extension form opened','success')">
+                  Extend Promo <i class="bi bi-arrow-right text-[10px]"></i>
+                </button>
+              </div>
+
+              <!-- Card 3: Price Review -->
+              <div class="card p-4 border-l-[3px] border-l-emerald2">
+                <div class="flex items-start justify-between mb-2">
+                  <div class="w-9 h-9 rounded-xl bg-emerald2/10 flex items-center justify-center text-emerald2">
+                    <i class="bi bi-currency-exchange text-[15px]"></i>
+                  </div>
+                  <span class="text-[10px] font-bold text-emerald2 bg-emerald2/10 px-1.5 py-0.5 rounded">60+ DAYS</span>
+                </div>
+                <p class="font-heading font-bold text-[15px] text-charcoal mt-2">5 Items</p>
+                <p class="text-[11px] text-[var(--color-text-muted)] mt-0.5 leading-snug">Prices haven't been updated in 60+ days. Time to review?</p>
+                <button class="btn text-[11px] px-3 py-1.5 mt-3 w-full" style="background:rgba(16,174,158,0.12);color:#0C8A7E" onclick="showToast('Opening price review…','success')">
+                  Check Prices <i class="bi bi-arrow-right text-[10px]"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4 Shortcut Buttons (2×2) -->
+          <section class="reveal">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-heading font-bold text-[14px] text-charcoal">Quick Actions</h3>
+              <span class="text-[11px] text-[var(--color-text-muted)]">Tap to jump in ≤ 2 taps</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="shortcut-btn" style="--accent-bg:linear-gradient(135deg,rgba(4,225,171,0.08),rgba(16,174,158,0.04))" onclick="showToast('Opening price editor…','success')">
+                <div class="shortcut-icon hero-accent"><i class="bi bi-pencil-square"></i></div>
+                <div>
+                  <p class="font-heading font-bold text-[13px] text-charcoal">Edit Price</p>
+                  <p class="text-[10.5px] text-[var(--color-text-muted)]">Update item prices</p>
+                </div>
+              </button>
+              <button class="shortcut-btn" style="--accent-bg:linear-gradient(135deg,rgba(106,93,230,0.08),rgba(34,36,128,0.04))" onclick="showToast('Opening promo builder…','success')">
+                <div class="shortcut-icon" style="background:linear-gradient(135deg,#6A5DE6,#222480)"><i class="bi bi-megaphone"></i></div>
+                <div>
+                  <p class="font-heading font-bold text-[13px] text-charcoal">Open Promo</p>
+                  <p class="text-[10.5px] text-[var(--color-text-muted)]">Create a new promotion</p>
+                </div>
+              </button>
+              <button class="shortcut-btn" style="--accent-bg:linear-gradient(135deg,rgba(189,150,129,0.10),rgba(114,78,64,0.04))" onclick="showToast('Opening image manager…','success')">
+                <div class="shortcut-icon" style="background:linear-gradient(135deg,#BD9681,#724E40)"><i class="bi bi-image"></i></div>
+                <div>
+                  <p class="font-heading font-bold text-[13px] text-charcoal">Change Image</p>
+                  <p class="text-[10.5px] text-[var(--color-text-muted)]">Upload or swap photos</p>
+                </div>
+              </button>
+              <button class="shortcut-btn" style="--accent-bg:linear-gradient(135deg,rgba(41,31,27,0.06),rgba(5,7,56,0.03))" onclick="toggleCloseShopModal()">
+                <div class="shortcut-icon" style="background:linear-gradient(135deg,#291F1B,#050738)"><i class="bi bi-shop-window"></i></div>
+                <div>
+                  <p class="font-heading font-bold text-[13px] text-charcoal">Close Today</p>
+                  <p class="text-[10.5px] text-[var(--color-text-muted)]">Temporarily close shop</p>
+                </div>
+              </button>
+            </div>
+          </section>
+
+          <!-- Today's Metrics -->
+          <section class="reveal">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="font-heading font-bold text-[14px] text-charcoal">Today in Numbers</h3>
+                <p class="text-[11px] text-[var(--color-text-muted)]">Compared to yesterday · Tap to view details</p>
+              </div>
+              <button class="text-[11px] font-semibold text-aqua hover:underline flex items-center gap-1" onclick="showToast('Opening analytics…','success')">
+                View report <i class="bi bi-arrow-right text-[10px]"></i>
+              </button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Visitors -->
+              <div class="card p-4 cursor-pointer" onclick="showToast('Opening visitor details…','success')">
+                <div class="flex items-center justify-between">
+                  <div class="w-9 h-9 rounded-xl bg-aqua/10 flex items-center justify-center text-aqua"><i class="bi bi-eye text-[15px]"></i></div>
+                  <span class="text-[10.5px] trend-up font-semibold flex items-center gap-0.5"><i class="bi bi-arrow-up-short text-[12px]"></i>12%</span>
+                </div>
+                <p class="font-heading font-extrabold text-[24px] text-charcoal mt-3" data-count="142">0</p>
+                <p class="text-[11px] text-[var(--color-text-muted)]">Visitors today</p>
+                <div class="mt-2.5 h-1 rounded-full bg-[#F0F0EC] overflow-hidden">
+                  <div class="h-full hero-accent rounded-full" style="width:72%"></div>
+                </div>
+              </div>
+              <!-- Contacts -->
+              <div class="card p-4 cursor-pointer" onclick="showToast('Opening contact breakdown…','success')">
+                <div class="flex items-center justify-between">
+                  <div class="w-9 h-9 rounded-xl bg-violet2/10 flex items-center justify-center text-violet2"><i class="bi bi-telephone-plus text-[15px]"></i></div>
+                  <span class="text-[10.5px] trend-up font-semibold flex items-center gap-0.5"><i class="bi bi-arrow-up-short text-[12px]"></i>8%</span>
+                </div>
+                <p class="font-heading font-extrabold text-[24px] text-charcoal mt-3" data-count="28">0</p>
+                <p class="text-[11px] text-[var(--color-text-muted)]">Contacts (Call+LINE+Nav+Form)</p>
+                <div class="flex gap-1 mt-2.5">
+                  <span class="text-[9px] bg-[#F7F7F4] px-1.5 py-0.5 rounded text-[var(--color-text-muted)]">📞 8</span>
+                  <span class="text-[9px] bg-[#F7F7F4] px-1.5 py-0.5 rounded text-[var(--color-text-muted)]">💬 12</span>
+                  <span class="text-[9px] bg-[#F7F7F4] px-1.5 py-0.5 rounded text-[var(--color-text-muted)]">🧭 5</span>
+                  <span class="text-[9px] bg-[#F7F7F4] px-1.5 py-0.5 rounded text-[var(--color-text-muted)]">📝 3</span>
+                </div>
+              </div>
+              <!-- New Leads -->
+              <div class="card p-4 cursor-pointer" onclick="showToast('Opening leads list…','success')">
+                <div class="flex items-center justify-between">
+                  <div class="w-9 h-9 rounded-xl bg-sage/15 flex items-center justify-center text-olive"><i class="bi bi-person-plus text-[15px]"></i></div>
+                  <span class="text-[10.5px] trend-down font-semibold flex items-center gap-0.5"><i class="bi bi-arrow-down-short text-[12px]"></i>3%</span>
+                </div>
+                <p class="font-heading font-extrabold text-[24px] text-charcoal mt-3" data-count="7">0</p>
+                <p class="text-[11px] text-[var(--color-text-muted)]">New interested customers</p>
+                <div class="mt-2.5 flex items-center gap-1">
+                  <div class="flex -space-x-1.5">
+                    <div class="w-5 h-5 rounded-full bg-aqua border-2 border-white"></div>
+                    <div class="w-5 h-5 rounded-full bg-violet2 border-2 border-white"></div>
+                    <div class="w-5 h-5 rounded-full bg-sage border-2 border-white"></div>
+                  </div>
+                  <span class="text-[10px] text-[var(--color-text-muted)] ml-1">+4 more</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- New Shop Checklist -->
+          <section class="reveal">
+            <div class="card p-4">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald2/10 flex items-center justify-center text-emerald2">
+                  <i class="bi bi-list-check text-[14px]"></i>
+                </div>
+                <div>
+                  <h3 class="font-heading font-bold text-[13px] text-charcoal">Getting Started Checklist</h3>
+                  <p class="text-[10.5px] text-[var(--color-text-muted)]">3 steps to make your shop shine</p>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] cursor-pointer transition group">
+                  <input type="checkbox" class="w-4 h-4 accent-aqua" checked>
+                  <div class="flex-1">
+                    <p class="text-[12px] font-medium text-[var(--color-text-muted)] line-through">Verify your shop information</p>
+                  </div>
+                  <i class="bi bi-check-circle-fill text-emerald2 text-[13px]"></i>
+                </label>
+                <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] cursor-pointer transition">
+                  <input type="checkbox" class="w-4 h-4 accent-aqua">
+                  <div class="flex-1">
+                    <p class="text-[12px] font-medium text-charcoal">Add your first menu item</p>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)]">At least 3 items recommended</p>
+                  </div>
+                  <button class="text-[10.5px] font-semibold text-aqua hover:underline" onclick="event.stopPropagation();showToast('Opening menu builder…','success')">Start</button>
+                </label>
+                <label class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] cursor-pointer transition">
+                  <input type="checkbox" class="w-4 h-4 accent-aqua">
+                  <div class="flex-1">
+                    <p class="text-[12px] font-medium text-charcoal">Try editing a price</p>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)]">Get comfortable with the editor</p>
+                  </div>
+                  <button class="text-[10.5px] font-semibold text-aqua hover:underline" onclick="event.stopPropagation();showToast('Opening price editor…','success')">Try</button>
+                </label>
+              </div>
+              <div class="mt-3 h-1.5 rounded-full bg-[#F0F0EC] overflow-hidden">
+                <div class="h-full hero-accent rounded-full transition-all" style="width:33%"></div>
+              </div>
+              <p class="text-[10.5px] text-[var(--color-text-muted)] mt-1.5">1 of 3 completed · 33%</p>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ===== RIGHT COLUMN ===== -->
+        <div class="space-y-4 sm:space-y-5">
+
+          <!-- Website Status -->
+          <section class="reveal">
+            <div class="card p-4 cursor-pointer" onclick="showToast('Opening website status…','success')">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-aqua/10 flex items-center justify-center text-aqua relative">
+                    <i class="bi bi-globe2 text-[17px]"></i>
+                    <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-aqua border-2 border-white"></span>
+                  </div>
+                  <div>
+                    <p class="font-heading font-bold text-[13px] text-charcoal">Website Status</p>
+                    <p class="text-[11px] text-emerald2 font-medium">All systems normal</p>
+                  </div>
+                </div>
+                <i class="bi bi-chevron-right text-[var(--color-text-muted)] text-[13px]"></i>
+              </div>
+              <div class="divider"></div>
+              <div class="grid grid-cols-3 gap-3 text-center">
+                <div>
+                  <p class="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wide font-semibold">Uptime</p>
+                  <p class="font-heading font-bold text-[14px] text-charcoal mt-1">99.9%</p>
+                </div>
+                <div>
+                  <p class="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wide font-semibold">Last check</p>
+                  <p class="font-heading font-bold text-[14px] text-charcoal mt-1">05:00</p>
+                </div>
+                <div>
+                  <p class="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wide font-semibold">Backup</p>
+                  <p class="font-heading font-bold text-[14px] text-emerald2 mt-1 flex items-center justify-center gap-1"><i class="bi bi-check-circle-fill text-[11px]"></i>OK</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- AI Command: "Tell what to fix" -->
+          <section class="reveal">
+            <div class="card p-4 relative overflow-hidden">
+              <div class="absolute -right-8 -top-8 w-28 h-28 rounded-full bg-violet2/8 blur-2xl pointer-events-none"></div>
+              <div class="relative">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet2 to-indigo2 flex items-center justify-center text-white">
+                    <i class="bi bi-stars text-[13px]"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-heading font-bold text-[13px] text-charcoal">Tell what to fix</h3>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)]">Type in plain English — we'll structure it</p>
+                  </div>
+                  <span class="ml-auto text-[9px] font-bold text-violet2 bg-violet2/10 px-1.5 py-0.5 rounded">BETA</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <input id="aiInput" type="text" class="input-field flex-1" placeholder="e.g., Latte Iced price up to 75">
+                  <button id="aiParseBtn" class="btn btn-violet text-[12px] px-3.5">
+                    <i class="bi bi-magic"></i> Parse
+                  </button>
+                </div>
+
+                <!-- Example chips -->
+                <div class="flex flex-wrap gap-1.5 mt-2.5">
+                  <button class="example-chip text-[10.5px] px-2 py-1 rounded-full bg-[#F7F7F4] hover:bg-violet2/10 hover:text-violet2 transition text-[var(--color-text-muted)]" data-example="Latte Iced price to 75">Latte price → 75</button>
+                  <button class="example-chip text-[10.5px] px-2 py-1 rounded-full bg-[#F7F7F4] hover:bg-violet2/10 hover:text-violet2 transition text-[var(--color-text-muted)]" data-example="Close shop today">Close shop today</button>
+                  <button class="example-chip text-[10.5px] px-2 py-1 rounded-full bg-[#F7F7F4] hover:bg-violet2/10 hover:text-violet2 transition text-[var(--color-text-muted)]" data-example="Create promo: 20% off all coffee">New promo 20% off</button>
+                </div>
+
+                <!-- Parsed result -->
+                <div id="aiResult" class="hidden mt-3 p-3 rounded-xl border border-violet2/20 bg-violet2/4">
+                  <div class="flex items-center gap-2 mb-2">
+                    <i class="bi bi-magic text-violet2 text-[12px]"></i>
+                    <p class="text-[11px] font-semibold text-violet2">Parsed Change</p>
+                  </div>
+                  <div id="aiResultContent" class="text-[12px] text-charcoal"></div>
+                  <div class="flex gap-2 mt-3">
+                    <button id="aiConfirm" class="btn btn-primary text-[11px] px-3 py-1.5 flex-1"><i class="bi bi-check-lg"></i> Confirm & Apply</button>
+                    <button id="aiCancel" class="btn btn-ghost text-[11px] px-3 py-1.5">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Recent Activity -->
+          <section class="reveal">
+            <div class="card p-4">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-heading font-bold text-[13px] text-charcoal">Recent Activity</h3>
+                <button class="text-[11px] font-semibold text-aqua hover:underline" onclick="showToast('Opening full activity log…','success')">View all</button>
+              </div>
+              <div class="space-y-1">
+                <!-- Activity item with revert -->
+                <div class="flex gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] transition group">
+                  <div class="timeline-dot bg-violet2 mt-1"></div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-[12px] text-charcoal"><span class="font-semibold">Somchai</span> updated <span class="font-medium">Latte Iced</span> price <span class="text-[var(--color-text-muted)]">฿70</span> → <span class="font-semibold text-emerald2">฿75</span></p>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)] mt-0.5">14:05 · Today</p>
+                  </div>
+                  <button class="text-[10.5px] font-semibold text-[var(--color-text-muted)] hover:text-violet2 opacity-0 group-hover:opacity-100 transition flex items-center gap-1" onclick="showToast('Reverting: Latte Iced price back to ฿70','success')">
+                    <i class="bi bi-arrow-counterclockwise text-[11px]"></i> Revert
+                  </button>
+                </div>
+
+                <div class="flex gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] transition group">
+                  <div class="timeline-dot bg-aqua mt-1"></div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-[12px] text-charcoal">New customer inquiry via <span class="font-semibold">LINE</span></p>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)] mt-0.5">13:42 · Today</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] transition group">
+                  <div class="timeline-dot bg-sage mt-1"></div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-[12px] text-charcoal">Closed shop for lunch <span class="text-[var(--color-text-muted)]">(12:00–13:00)</span></p>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)] mt-0.5">12:00 · Today</p>
+                  </div>
+                  <button class="text-[10.5px] font-semibold text-[var(--color-text-muted)] hover:text-violet2 opacity-0 group-hover:opacity-100 transition flex items-center gap-1" onclick="showToast('Reverting: shop reopened','success')">
+                    <i class="bi bi-arrow-counterclockwise text-[11px]"></i> Revert
+                  </button>
+                </div>
+
+                <div class="flex gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] transition group">
+                  <div class="timeline-dot bg-emerald2 mt-1"></div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-[12px] text-charcoal">Added <span class="font-semibold">'Summer Promo'</span> to 3 items</p>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)] mt-0.5">11:30 · Today</p>
+                  </div>
+                  <button class="text-[10.5px] font-semibold text-[var(--color-text-muted)] hover:text-violet2 opacity-0 group-hover:opacity-100 transition flex items-center gap-1" onclick="showToast('Reverting: promo removed','success')">
+                    <i class="bi bi-arrow-counterclockwise text-[11px]"></i> Revert
+                  </button>
+                </div>
+
+                <div class="flex gap-3 p-2.5 rounded-lg hover:bg-[#F7F7F4] transition group">
+                  <div class="timeline-dot bg-olive mt-1"></div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-[12px] text-charcoal">Uploaded <span class="font-semibold">2 new photos</span> to gallery</p>
+                    <p class="text-[10.5px] text-[var(--color-text-muted)] mt-0.5">10:15 · Today</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Web Preview (390px) -->
+          <section class="reveal">
+            <div class="card p-4">
+              <div class="flex items-center justify-between mb-3">
+                <div>
+                  <h3 class="font-heading font-bold text-[13px] text-charcoal">Live Website Preview</h3>
+                  <p class="text-[10.5px] text-[var(--color-text-muted)]">How customers see your shop</p>
+                </div>
+                <button class="btn btn-ghost text-[11px] px-2.5 py-1.5" onclick="showToast('Opening live site…','success')">
+                  <i class="bi bi-box-arrow-up-right text-[11px]"></i> Open
+                </button>
+              </div>
+              <div class="browser-frame mx-auto" style="max-width:390px">
+                <div class="browser-bar">
+                  <div class="flex gap-1.5">
+                    <span class="browser-dot bg-[#FF5F57]"></span>
+                    <span class="browser-dot bg-[#FEBC2E]"></span>
+                    <span class="browser-dot bg-[#28C840]"></span>
+                  </div>
+                  <div class="browser-url"><i class="bi bi-lock-fill text-emerald2 text-[9px] mr-1"></i>morningbrew.cafe</div>
+                  <i class="bi bi-arrow-clockwise text-[11px] text-[var(--color-text-muted)]"></i>
+                </div>
+                <div class="bg-white" style="height:260px;overflow:hidden">
+                  <!-- Mini website -->
+                  <div class="hero-accent h-20 relative px-4 py-3 text-white">
+                    <p class="font-heading font-bold text-[12px]">Morning Brew Cafe</p>
+                    <p class="text-[9px] text-white/80 mt-0.5">Open · 07:00–21:00</p>
+                    <div class="absolute right-3 top-3 w-7 h-7 rounded-lg bg-white/20 backdrop-blur flex items-center justify-center">
+                      <i class="bi bi-list text-[14px]"></i>
+                    </div>
+                  </div>
+                  <div class="p-3">
+                    <p class="text-[9px] font-bold text-charcoal uppercase tracking-wide mb-2">Featured Today</p>
+                    <div class="grid grid-cols-2 gap-2">
+                      <div class="rounded-lg overflow-hidden border border-[var(--color-border)]">
+                        <div class="h-14 bg-gradient-to-br from-sage to-olive"></div>
+                        <div class="p-1.5">
+                          <p class="text-[9.5px] font-semibold text-charcoal">Latte Iced</p>
+                          <p class="text-[9px] text-emerald2 font-bold">฿75</p>
+                        </div>
+                      </div>
+                      <div class="rounded-lg overflow-hidden border border-[var(--color-border)]">
+                        <div class="h-14 bg-gradient-to-br from-aqua to-emerald2"></div>
+                        <div class="p-1.5">
+                          <p class="text-[9.5px] font-semibold text-charcoal">Matcha Latte</p>
+                          <p class="text-[9px] text-emerald2 font-bold">฿85</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 p-2 rounded-lg bg-violet2/8 flex items-center gap-1.5">
+                      <i class="bi bi-megaphone text-violet2 text-[10px]"></i>
+                      <p class="text-[9px] text-violet2 font-semibold">Summer Promo · 20% OFF</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-[10.5px] text-[var(--color-text-muted)] text-center mt-2">Preview at 390px (mobile width)</p>
+            </div>
+          </section>
+
+          <!-- Continuation Card (conditional) -->
+          <section class="reveal">
+            <div class="card p-4 border border-violet2/15 bg-gradient-to-br from-violet2/4 to-transparent cursor-pointer" onclick="showToast('Opening growth recommendations…','success')">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-violet2 flex items-center justify-center text-white">
+                  <i class="bi bi-graph-up-arrow text-[16px]"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-heading font-bold text-[13px] text-charcoal">You're ready to grow 🚀</p>
+                  <p class="text-[11px] text-[var(--color-text-muted)] mt-0.5">3 actions could boost your revenue by ~15% this week.</p>
+                </div>
+                <i class="bi bi-chevron-right text-[var(--color-text-muted)] text-[13px]"></i>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============ FLOATING BUTTONS (Back to Top + Chatbot) ============ -->
+<div class="floating-row">
+  <button id="backToTop" class="fab fab-top" title="Back to top">
+    <i class="bi bi-arrow-up text-[20px]"></i>
+  </button>
+  <button id="chatToggle" class="fab fab-chat" title="Open chatbot">
+    <i class="bi bi-chat-dots-fill text-[20px]"></i>
+  </button>
+</div>
+
+<!-- ============ CHAT PANEL ============ -->
+<div id="chatPanel" class="chat-panel">
+  <div class="px-4 py-3 bg-gradient-to-r from-violet2 to-indigo2 text-white flex items-center gap-3 flex-shrink-0">
+    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+      <i class="bi bi-robot text-[15px]"></i>
+    </div>
+    <div class="flex-1">
+      <p class="font-heading font-bold text-[12.5px]">ShopFlow Assistant</p>
+      <p class="text-[10px] text-white/80 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-aqua inline-block"></span>Online · Avg reply 2s</p>
+    </div>
+    <button id="chatClose" class="w-7 h-7 rounded-lg hover:bg-white/20 flex items-center justify-center transition">
+      <i class="bi bi-dash-lg text-[13px]"></i>
+    </button>
+  </div>
+  <div id="chatMessages" class="chat-messages">
+    <div class="chat-bubble bot">👋 Hi Ek! I'm your shop assistant. Ask me about today's sales, pending tasks, or anything else.</div>
+    <div class="chat-bubble bot">Try: <em>"What should I do first today?"</em></div>
+  </div>
+  <div class="p-3 border-t border-[var(--color-border)] flex gap-2 flex-shrink-0">
+    <input id="chatInput" type="text" class="input-field flex-1" placeholder="Type a message…" autocomplete="off">
+    <button id="chatSend" class="btn btn-primary px-3.5" title="Send">
+      <i class="bi bi-send-fill text-[13px]"></i>
+    </button>
+  </div>
+</div>
+
+<!-- ============ CLOSE SHOP MODAL ============ -->
+<div id="closeShopModal" class="modal-overlay">
+  <div class="modal-box" style="max-width:380px">
+    <div class="p-5">
+      <div class="flex items-start justify-between mb-4">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-charcoal flex items-center justify-center text-white">
+            <i class="bi bi-shop-window text-[15px]"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-[15px] text-charcoal">Close Shop</h3>
+            <p class="text-[11px] text-[var(--color-text-muted)]">Customers will see a closed banner</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal('closeShopModal')"><i class="bi bi-x-lg text-[12px]"></i></button>
+      </div>
+
+      <label class="input-label">Duration</label>
+      <div class="grid grid-cols-3 gap-2 mb-4">
+        <button class="close-duration btn btn-primary text-[11px] py-2" data-dur="today">Today</button>
+        <button class="close-duration btn btn-outline text-[11px] py-2" data-dur="tomorrow">Tomorrow</button>
+        <button class="close-duration btn btn-outline text-[11px] py-2" data-dur="until">Until…</button>
+      </div>
+
+      <div id="untilDateWrap" class="hidden mb-4">
+        <label class="input-label">Reopen date</label>
+        <input type="date" class="input-field">
+      </div>
+
+      <label class="input-label">Message to customers</label>
+      <textarea id="closeMsg" class="input-field" rows="3" style="resize:none">We're closed today for a team retreat. See you tomorrow with fresh coffee!</textarea>
+
+      <div class="flex gap-2 mt-4">
+        <button class="btn btn-ghost flex-1 py-2.5 text-[12px]" onclick="closeModal('closeShopModal')">Cancel</button>
+        <button class="btn btn-primary flex-1 py-2.5 text-[12px]" onclick="confirmCloseShop()">
+          <i class="bi bi-check-lg"></i> Close Shop
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LOGIN MODAL ============ -->
+<div id="loginModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="p-6">
+      <div class="flex items-start justify-between mb-5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl hero-accent flex items-center justify-center text-white">
+            <i class="bi bi-shop text-[16px]"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-[16px] text-charcoal">Welcome back</h3>
+            <p class="text-[11px] text-[var(--color-text-muted)]">Sign in to your ShopFlow account</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal('loginModal')"><i class="bi bi-x-lg text-[12px]"></i></button>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="input-label">Email address</label>
+          <input type="email" class="input-field" placeholder="you@example.com" value="ek@morningbrew.cafe">
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="input-label !mb-0">Password</label>
+            <button class="text-[11px] font-semibold text-aqua hover:underline" onclick="closeModal('loginModal');openModal('forgotModal')">Forgot password?</button>
+          </div>
+          <div class="relative">
+            <input id="loginPwd" type="password" class="input-field pr-10" placeholder="••••••••" value="password123">
+            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)] hover:text-charcoal" onclick="togglePwd('loginPwd',this)">
+              <i class="bi bi-eye text-[14px]"></i>
+            </button>
+          </div>
+        </div>
+        <label class="flex items-center gap-2 text-[12px] text-charcoal cursor-pointer">
+          <input type="checkbox" class="w-4 h-4 accent-aqua" checked> Remember me on this device
+        </label>
+        <button class="btn btn-primary w-full py-2.5 text-[13px]" onclick="showToast('Signed in successfully!','success');closeModal('loginModal')">
+          <i class="bi bi-box-arrow-in-right"></i> Sign In
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 my-4">
+        <div class="flex-1 h-px bg-[var(--color-border)]"></div>
+        <span class="text-[10.5px] text-[var(--color-text-muted)] uppercase tracking-wide font-semibold">or</span>
+        <div class="flex-1 h-px bg-[var(--color-border)]"></div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <button class="btn btn-outline py-2.5 text-[12px]" onclick="showToast('Google sign-in…','success')"><i class="bi bi-google text-[13px] text-[#EA4335]"></i> Google</button>
+        <button class="btn btn-outline py-2.5 text-[12px]" onclick="showToast('LINE sign-in…','success')"><i class="bi bi-line text-[13px] text-[#06C755]"></i> LINE</button>
+      </div>
+
+      <p class="text-center text-[12px] text-[var(--color-text-muted)] mt-5">
+        Don't have an account? <button class="font-semibold text-aqua hover:underline" onclick="closeModal('loginModal');openModal('signupModal')">Sign up free</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SIGN UP MODAL ============ -->
+<div id="signupModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="p-6">
+      <div class="flex items-start justify-between mb-5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl hero-accent flex items-center justify-center text-white">
+            <i class="bi bi-person-plus text-[16px]"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-[16px] text-charcoal">Create your account</h3>
+            <p class="text-[11px] text-[var(--color-text-muted)]">Start managing your shop in minutes</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal('signupModal')"><i class="bi bi-x-lg text-[12px]"></i></button>
+      </div>
+
+      <div class="space-y-3">
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="input-label">First name</label>
+            <input type="text" class="input-field" placeholder="Ek">
+          </div>
+          <div>
+            <label class="input-label">Last name</label>
+            <input type="text" class="input-field" placeholder="K.">
+          </div>
+        </div>
+        <div>
+          <label class="input-label">Shop name</label>
+          <input type="text" class="input-field" placeholder="Morning Brew Cafe">
+        </div>
+        <div>
+          <label class="input-label">Email address</label>
+          <input type="email" class="input-field" placeholder="you@example.com">
+        </div>
+        <div>
+          <label class="input-label">Password</label>
+          <div class="relative">
+            <input id="signupPwd" type="password" class="input-field pr-10" placeholder="At least 8 characters">
+            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)] hover:text-charcoal" onclick="togglePwd('signupPwd',this)">
+              <i class="bi bi-eye text-[14px]"></i>
+            </button>
+          </div>
+          <div class="flex gap-1 mt-2">
+            <div class="flex-1 h-1 rounded-full bg-[#F0F0EC]"></div>
+            <div class="flex-1 h-1 rounded-full bg-aqua"></div>
+            <div class="flex-1 h-1 rounded-full bg-[#F0F0EC]"></div>
+            <div class="flex-1 h-1 rounded-full bg-[#F0F0EC]"></div>
+          </div>
+          <p class="text-[10.5px] text-[var(--color-text-muted)] mt-1">Use 8+ characters with a mix of letters, numbers & symbols</p>
+        </div>
+        <label class="flex items-start gap-2 text-[11.5px] text-charcoal cursor-pointer">
+          <input type="checkbox" class="w-4 h-4 accent-aqua mt-0.5">
+          <span>I agree to the <a href="#" class="text-aqua font-semibold">Terms of Service</a> and <a href="#" class="text-aqua font-semibold">Privacy Policy</a></span>
+        </label>
+        <button class="btn btn-primary w-full py-2.5 text-[13px]" onclick="showToast('Account created! Check your email.','success');closeModal('signupModal')">
+          <i class="bi bi-person-plus"></i> Create Account
+        </button>
+      </div>
+
+      <p class="text-center text-[12px] text-[var(--color-text-muted)] mt-5">
+        Already have an account? <button class="font-semibold text-aqua hover:underline" onclick="closeModal('signupModal');openModal('loginModal')">Sign in</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FORGOT PASSWORD MODAL ============ -->
+<div id="forgotModal" class="modal-overlay">
+  <div class="modal-box" style="max-width:380px">
+    <div class="p-6 text-center">
+      <button class="modal-close absolute top-4 right-4" onclick="closeModal('forgotModal')"><i class="bi bi-x-lg text-[12px]"></i></button>
+      <div class="w-14 h-14 rounded-2xl bg-aqua/10 flex items-center justify-center text-aqua mx-auto mb-4">
+        <i class="bi bi-envelope-paper text-[24px]"></i>
+      </div>
+      <h3 class="font-heading font-bold text-[17px] text-charcoal">Reset your password</h3>
+      <p class="text-[12px] text-[var(--color-text-muted)] mt-1.5 mb-5">Enter your email and we'll send you a link to reset your password.</p>
+
+      <div class="text-left">
+        <label class="input-label">Email address</label>
+        <input type="email" class="input-field" placeholder="you@example.com">
+      </div>
+
+      <button class="btn btn-primary w-full py-2.5 text-[13px] mt-4" onclick="showToast('Reset link sent! Check your inbox.','success');closeModal('forgotModal')">
+        <i class="bi bi-send"></i> Send Reset Link
+      </button>
+
+      <button class="mt-4 text-[12px] text-[var(--color-text-muted)] hover:text-charcoal flex items-center justify-center gap-1.5 mx-auto" onclick="closeModal('forgotModal');openModal('loginModal')">
+        <i class="bi bi-arrow-left text-[11px]"></i> Back to sign in
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div id="toast" class="toast"><i class="bi bi-check-circle-fill"></i><span id="toastMsg">Done</span></div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+// ============ Sidebar Toggle ============
+const sidebar = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const menuToggle = document.getElementById('menuToggle');
+const sidebarClose = document.getElementById('sidebarClose');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  sidebarOverlay.classList.remove('hidden');
+}
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  sidebarOverlay.classList.add('hidden');
+}
+menuToggle.addEventListener('click', openSidebar);
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// ============ Menu Item Active State ============
+document.querySelectorAll('.menu-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    if (window.innerWidth < 1024) closeSidebar();
+    const page = item.dataset.page;
+    if (page && page !== 'today') showToast(`Navigating to ${item.querySelector('span').textContent}…`, 'success');
+  });
+});
+
+// ============ Dropdowns (Note + User) ============
+const noteBtn = document.getElementById('noteBtn');
+const noteDropdown = document.getElementById('noteDropdown');
+const userBtn = document.getElementById('userBtn');
+const userDropdown = document.getElementById('userDropdown');
+
+noteBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  noteDropdown.classList.toggle('open');
+  userDropdown.classList.remove('open');
+});
+userBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  userDropdown.classList.toggle('open');
+  noteDropdown.classList.remove('open');
+});
+document.addEventListener('click', (e) => {
+  if (!noteBtn.contains(e.target) && !noteDropdown.contains(e.target)) noteDropdown.classList.remove('open');
+  if (!userBtn.contains(e.target) && !userDropdown.contains(e.target)) userDropdown.classList.remove('open');
+});
+
+// ============ Copy App Info ============
+document.getElementById('copyAppInfo').addEventListener('click', () => {
+  const content = document.getElementById('appInfoContent');
+  let text = 'Web App Information\n' + '='.repeat(30) + '\n';
+  content.querySelectorAll('div').forEach(row => {
+    const spans = row.querySelectorAll('span');
+    if (spans.length === 2) text += `${spans[0].textContent}: ${spans[1].textContent}\n`;
+  });
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('App info copied to clipboard!', 'success');
+  }).catch(() => {
+    showToast('Copy failed — please try again', 'error');
+  });
+});
+
+// ============ Modals ============
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+});
+
+// ============ Password Toggle ============
+function togglePwd(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerHTML = '<i class="bi bi-eye-slash text-[14px]"></i>';
+  } else {
+    input.type = 'password';
+    btn.innerHTML = '<i class="bi bi-eye text-[14px]"></i>';
+  }
+}
+
+// ============ Toast ============
+let toastTimer;
+function showToast(msg, type = 'success') {
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+  toastMsg.textContent = msg;
+  toast.className = 'toast ' + type;
+  const icon = toast.querySelector('i');
+  icon.className = type === 'error' ? 'bi bi-x-circle-fill' : (type === 'success' ? 'bi bi-check-circle-fill' : 'bi bi-info-circle-fill');
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+// ============ Shop Toggle ============
+const shopToggle = document.getElementById('shopToggle');
+const shopStatusPill = document.getElementById('shopStatusPill');
+const shopStatusText = document.getElementById('shopStatusText');
+const toggleLabel = document.getElementById('toggleLabel');
+
+shopToggle.addEventListener('change', () => {
+  if (shopToggle.checked) {
+    shopStatusPill.className = 'inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-aqua/10 border border-aqua/20';
+    shopStatusText.textContent = 'Shop Open';
+    shopStatusText.className = 'text-[12px] font-semibold text-emerald2';
+    toggleLabel.textContent = 'Auto-close at 21:00';
+    showToast('Shop is now OPEN', 'success');
+  } else {
+    shopStatusPill.className = 'inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E5544B]/10 border border-[#E5544B]/20';
+    shopStatusText.textContent = 'Closed Today';
+    shopStatusText.className = 'text-[12px] font-semibold text-[#E5544B]';
+    toggleLabel.textContent = 'Shop manually closed';
+    showToast('Shop is now CLOSED', 'error');
+  }
+});
+
+// ============ Close Shop Modal ============
+function toggleCloseShopModal() {
+  openModal('closeShopModal');
+}
+document.querySelectorAll('.close-duration').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.close-duration').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline'); });
+    btn.classList.remove('btn-outline'); btn.classList.add('btn-primary');
+    document.getElementById('untilDateWrap').classList.toggle('hidden', btn.dataset.dur !== 'until');
+  });
+});
+function confirmCloseShop() {
+  shopToggle.checked = false;
+  shopToggle.dispatchEvent(new Event('change'));
+  closeModal('closeShopModal');
+  showToast('Shop closed — banner live on your website', 'success');
+}
+
+// ============ AI Command Parser ============
+const aiInput = document.getElementById('aiInput');
+const aiParseBtn = document.getElementById('aiParseBtn');
+const aiResult = document.getElementById('aiResult');
+const aiResultContent = document.getElementById('aiResultContent');
+
+document.querySelectorAll('.example-chip').forEach(chip => {
+  chip.addEventListener('click', () => { aiInput.value = chip.dataset.example; aiInput.focus(); });
+});
+
+function parseAICommand() {
+  const text = aiInput.value.trim().toLowerCase();
+  if (!text) { showToast('Please type a command first', 'error'); return; }
+
+  let html = '';
+  // Price change: "latte iced price to 75" or "latte price 75"
+  const priceMatch = text.match(/(.+?)\s*(?:price|ราคา)\s*(?:to|up to|→|->|=)?\s*(฿?(\d+))/);
+  if (priceMatch) {
+    const item = priceMatch[1].replace(/set|change|update|make/g, '').trim();
+    const newPrice = priceMatch[3];
+    const oldPrice = 70;
+    html = `
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[10px] font-bold uppercase tracking-wide text-violet2 bg-violet2/10 px-2 py-0.5 rounded">Edit Price</span>
+      </div>
+      <div class="flex items-center gap-3 p-2.5 rounded-lg bg-white border border-[var(--color-border)]">
+        <div class="w-8 h-8 rounded-lg bg-sage/15 flex items-center justify-center text-olive"><i class="bi bi-cup-straw text-[13px]"></i></div>
+        <div class="flex-1">
+          <p class="font-semibold text-[12px] text-charcoal capitalize">${item}</p>
+          <div class="flex items-center gap-2 mt-0.5">
+            <span class="text-[11px] text-[var(--color-text-muted)] line-through">฿${oldPrice}</span>
+            <i class="bi bi-arrow-right text-[10px] text-[var(--color-text-muted)]"></i>
+            <span class="text-[12px] font-bold text-emerald2">฿${newPrice}</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-[10.5px] text-[var(--color-text-muted)] mt-2 flex items-center gap-1"><i class="bi bi-shield-check text-emerald2"></i> Will be logged in ChangeLog as "commanded by text"</p>`;
+  } else if (text.includes('close')) {
+    html = `
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[10px] font-bold uppercase tracking-wide text-violet2 bg-violet2/10 px-2 py-0.5 rounded">Close Shop</span>
+      </div>
+      <div class="p-2.5 rounded-lg bg-white border border-[var(--color-border)]">
+        <p class="text-[12px] text-charcoal">Set shop status to <span class="font-bold text-[#E5544B]">Closed Today</span></p>
+        <p class="text-[11px] text-[var(--color-text-muted)] mt-0.5">A banner will appear on your website immediately.</p>
+      </div>`;
+  } else if (text.includes('promo') || text.includes('discount')) {
+    const pctMatch = text.match(/(\d+)%/);
+    const pct = pctMatch ? pctMatch[1] : 20;
+    html = `
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-[10px] font-bold uppercase tracking-wide text-violet2 bg-violet2/10 px-2 py-0.5 rounded">Draft Promo</span>
+      </div>
+      <div class="p-2.5 rounded-lg bg-white border border-[var(--color-border)]">
+        <p class="text-[12px] text-charcoal">Create promotion: <span class="font-bold text-violet2">${pct}% OFF</span> selected items</p>
+        <p class="text-[11px] text-[var(--color-text-muted)] mt-0.5">Will be saved as draft — you can review before publishing.</p>
+      </div>`;
+  } else {
+    html = `<p class="text-[12px] text-[var(--color-text-muted)]">I can help with: <strong class="text-charcoal">editing prices</strong>, <strong class="text-charcoal">closing shop</strong>, or <strong class="text-charcoal">drafting promos</strong>. Try one of the example chips above.</p>`;
+  }
+
+  aiResultContent.innerHTML = html;
+  aiResult.classList.remove('hidden');
+  aiResult.style.animation = 'scaleIn 0.3s ease-out';
+}
+aiParseBtn.addEventListener('click', parseAICommand);
+aiInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') parseAICommand(); });
+
+document.getElementById('aiConfirm').addEventListener('click', () => {
+  showToast('Change applied & logged in ChangeLog', 'success');
+  aiResult.classList.add('hidden');
+  aiInput.value = '';
+});
+document.getElementById('aiCancel').addEventListener('click', () => {
+  aiResult.classList.add('hidden');
+  aiInput.value = '';
+});
+
+// ============ Count-up animation ============
+function animateCount(el, target, duration = 1200) {
+  const start = 0;
+  const startTime = performance.now();
+  function update(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(start + (target - start) * eased).toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target.toLocaleString();
+  }
+  requestAnimationFrame(update);
+}
+
+// ============ Reveal on scroll ============
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in'), i * 80);
+      // Animate count-up if has data-count
+      entry.target.querySelectorAll('[data-count]').forEach(el => {
+        if (!el.dataset.animated) {
+          el.dataset.animated = '1';
+          animateCount(el, parseInt(el.dataset.count));
+        }
+      });
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ============ Back to Top ============
+const backToTop = document.getElementById('backToTop');
+const hero = document.getElementById('hero');
+const mainContent = document.getElementById('mainContent');
+
+mainContent.addEventListener('scroll', () => {
+  const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 200;
+  if (mainContent.scrollTop > heroBottom) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+backToTop.addEventListener('click', () => {
+  mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ============ Chatbot ============
+const chatToggle = document.getElementById('chatToggle');
+const chatPanel = document.getElementById('chatPanel');
+const chatClose = document.getElementById('chatClose');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+const chatMessages = document.getElementById('chatMessages');
+
+let chatOpen = false;
+function toggleChat() {
+  chatOpen = !chatOpen;
+  chatPanel.classList.toggle('open', chatOpen);
+  chatToggle.classList.toggle('active', chatOpen);
+  chatToggle.innerHTML = chatOpen ? '<i class="bi bi-x-lg text-[20px]"></i>' : '<i class="bi bi-chat-dots-fill text-[20px]"></i>';
+  if (chatOpen) setTimeout(() => chatInput.focus(), 300);
+}
+chatToggle.addEventListener('click', toggleChat);
+chatClose.addEventListener('click', toggleChat);
+
+function addChatBubble(text, sender = 'user') {
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${sender}`;
+  bubble.textContent = text;
+  bubble.style.animation = 'scaleIn 0.25s ease-out';
+  chatMessages.appendChild(bubble);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function botReply(userText) {
+  const text = userText.toLowerCase();
+  let reply = '';
+  if (text.includes('price') || text.includes('edit')) reply = 'You can edit prices from the Quick Actions panel. Tap "Edit Price" to jump straight in. Want me to open it?';
+  else if (text.includes('close')) reply = 'I can help close your shop. Tap "Close Today" in Quick Actions, or I can close it now — just confirm.';
+  else if (text.includes('promo') || text.includes('discount')) reply = 'Sure! Use the "Open Promo" shortcut or tell me the discount % and I\'ll draft it for you.';
+  else if (text.includes('hello') || text.includes('hi')) reply = 'Hello Ek! 👋 Your shop is open and running smoothly. 3 inquiries are waiting — want to reply now?';
+  else if (text.includes('first') || text.includes('do')) reply = 'I\'d suggest replying to the 3 pending customer inquiries first — they\'re marked urgent. Then review the 5 items with stale prices.';
+  else reply = 'Got it! I\'ve noted that. For specific actions, try the Quick Actions panel or type "edit price", "close shop", or "new promo".';
+  setTimeout(() => addChatBubble(reply, 'bot'), 600);
+}
+
+function sendChat() {
+  const text = chatInput.value.trim();
+  if (!text) return;
+  addChatBubble(text, 'user');
+  chatInput.value = '';
+  botReply(text);
+}
+chatSend.addEventListener('click', sendChat);
+chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendChat(); });
+
+// ============ Ripple effect on buttons ============
+document.querySelectorAll('.btn, .shortcut-btn, .fab').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple-effect';
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+    ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+// ============ Date label ============
+(function setDate() {
+  const now = new Date();
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('dateLabel').textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+})();
+
+// ============ Auto open login demo hint ============
+// (optional — disabled by default so dashboard is the first thing seen)
+console.log('%cShopFlow Dashboard ready ✨', 'color:#04E1AB;font-weight:bold;font-size:13px');
+</script>
+
+</body>
+</html>
