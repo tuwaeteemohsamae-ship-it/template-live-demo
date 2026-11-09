@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Owner Operations Dashboard & Modals</title>
+  
+  <!-- Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              offwhite: '#E3E3DD',
+              bgCanvas: '#FFFFFF',
+              aqua: '#04E1AB',
+              sage: '#BD9681',
+              emerald: '#10AE9E',
+              violet: '#6A5DE6',
+              olive: '#724E40',
+              indigo: '#222480',
+              charcoal: '#291F1B',
+              navy: '#050738'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-off-white-base: #E3E3DD;
+      --color-aqua-mint: #04E1AB;
+      --color-sage-green: #BD9681;
+      --color-emerald-green: #10AE9E;
+      --color-vivid-violet: #6A5DE6;
+      --color-deep-forest-olive: #724E40;
+      --color-deep-royal-indigo: #222480;
+      --color-deep-charcoal: #291F1B;
+      --color-midnight-navy: #050738;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #291F1B;
+      font-size: 13px;
+    }
+
+    h1, h2, h3, h4, .heading-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Custom Scrollbar adhering to palette */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFFFFF;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #BD9681;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #724E40;
+    }
+
+    .transition-all-custom {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hover-lift {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(5, 7, 56, 0.08);
+    }
+
+    .modal-backdrop {
+      background-color: rgba(5, 7, 56, 0.45);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Unified border styling */
+    .border-unified {
+      border-color: rgba(41, 31, 27, 0.08);
+    }
+
+    .gradient-aqua-emerald {
+      background: linear-gradient(135deg, #04E1AB 0%, #10AE9E 100%);
+    }
+
+    /* Equal height header & logo container */
+    .header-h {
+      height: 64px;
+    }
+  </style>
+</head>
+<body class="bg-white text-brand-charcoal min-h-screen flex flex-col antialiased">
+
+  <!-- UNIFIED OUTER CONTAINER -->
+  <div class="flex flex-1 w-full min-h-screen relative">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside id="sidebar" class="fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-white border-r border-unified flex flex-col transition-transform duration-300 -translate-x-full lg:translate-x-0 shrink-0">
+      
+      <!-- LOGO BOX (height exactly equal to header: h-16 / 64px with matching right border) -->
+      <div class="header-h px-6 flex items-center justify-between border-b border-r border-unified shrink-0 bg-white">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl gradient-aqua-emerald flex items-center justify-center text-white font-display font-extrabold text-lg shadow-sm">
+            O
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-extrabold text-base text-brand-navy leading-none">OpsDash</span>
+            <span class="text-[10px] text-brand-sage font-bold tracking-wider uppercase mt-1">Store Owner HQ</span>
+          </div>
+        </div>
+        <button id="close-sidebar-btn" class="lg:hidden text-gray-500 hover:text-brand-navy">
+          <i class="bi bi-x-lg text-lg"></i>
+        </button>
+      </div>
+
+      <!-- SIDEBAR MENU CONTENT (Scrollable & Sticky Container) -->
+      <div class="flex-1 overflow-y-auto px-4 py-6 space-y-6">
+        <div>
+          <div class="text-[11px] font-bold text-brand-sage uppercase tracking-wider px-3 mb-2">Operations Center</div>
+          <nav class="space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-navy text-white font-semibold text-xs shadow-sm transition-all-custom">
+              <i class="bi bi-grid-1x2-fill text-brand-aqua text-sm"></i>
+              <span>Daily Ops (Today)</span>
+            </a>
+            <a href="#sheet-1.2" onclick="triggerShortcut('1.2', 'Menu & Prices')" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-tag-fill text-brand-sage text-sm"></i>
+              <span>Menu & Prices (1.2)</span>
+            </a>
+            <a href="#sheet-1.3" onclick="triggerShortcut('1.3', 'Promotions')" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-percent text-brand-violet text-sm"></i>
+              <span>Promotions (1.3)</span>
+            </a>
+            <a href="#sheet-1.4" onclick="triggerShortcut('1.4', 'Media Gallery')" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-images text-brand-emerald text-sm"></i>
+              <span>Media Gallery (1.4)</span>
+            </a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="text-[11px] font-bold text-brand-sage uppercase tracking-wider px-3 mb-2">Store Management</div>
+          <nav class="space-y-1">
+            <a href="#profile-1.6" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-shop text-sm text-gray-400"></i>
+              <span>Store Profile (1.6)</span>
+            </a>
+            <a href="#schedule-1.7" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-clock-history text-sm text-gray-400"></i>
+              <span>Operating Hours (1.7)</span>
+            </a>
+            <a href="#analytics-1.8" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-graph-up-arrow text-sm text-gray-400"></i>
+              <span>Analytics (1.8)</span>
+            </a>
+            <a href="#health-1.9" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-shield-check text-sm text-gray-400"></i>
+              <span>System Health (1.9)</span>
+            </a>
+            <a href="#growth-1.10" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-brand-charcoal hover:bg-gray-50 font-medium text-xs transition-all-custom">
+              <i class="bi bi-rocket-takeoff text-sm text-gray-400"></i>
+              <span>Growth Hub (1.10)</span>
+            </a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="text-[11px] font-bold text-brand-sage uppercase tracking-wider px-3 mb-2">Authentication Modals</div>
+          <nav class="space-y-1">
+            <button onclick="openModal('modal-login')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-brand-navy hover:bg-gray-50 font-semibold text-xs transition-all-custom">
+              <i class="bi bi-box-arrow-in-right text-brand-indigo text-sm"></i>
+              <span>Login Modal</span>
+            </button>
+            <button onclick="openModal('modal-signup')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-brand-navy hover:bg-gray-50 font-semibold text-xs transition-all-custom">
+              <i class="bi bi-person-plus text-brand-emerald text-sm"></i>
+              <span>Sign-Up Modal</span>
+            </button>
+            <button onclick="openModal('modal-forgot')" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-brand-navy hover:bg-gray-50 font-semibold text-xs transition-all-custom">
+              <i class="bi bi-key text-brand-sage text-sm"></i>
+              <span>Forgot Password Modal</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <!-- SIDEBAR FOOTER (USER LOGGED IN) -->
+      <div class="p-4 border-t border-unified bg-gray-50 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-brand-navy text-white flex items-center justify-center font-bold text-xs">
+            EK
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-xs text-brand-navy">Mr. Ek (Owner)</span>
+            <span class="text-[10px] text-gray-500">Store Administrator</span>
+          </div>
+        </div>
+        <i class="bi bi-gear-fill text-gray-400 hover:text-brand-navy cursor-pointer"></i>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <div class="flex-1 flex flex-col w-full min-w-0">
+      
+      <!-- STICKY HEADER (Aligned border-bottom with sidebar logo box) -->
+      <header class="header-h bg-white border-b border-unified sticky top-0 z-30 px-4 lg:px-8 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button id="toggle-sidebar-btn" class="lg:hidden p-2 text-brand-navy rounded-lg hover:bg-gray-100">
+            <i class="bi bi-list text-xl"></i>
+          </button>
+          <h1 class="font-display font-bold text-base lg:text-lg text-brand-navy hidden sm:block">Dashboard</h1>
+          <span class="text-xs text-gray-300 hidden sm:inline">|</span>
+          <span class="text-xs text-gray-500">Live Store Operations</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <!-- View Public Web Button -->
+          <a href="#preview" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-brand-emerald text-brand-emerald hover:bg-emerald-50 text-xs font-semibold transition-all-custom">
+            <i class="bi bi-globe"></i>
+            <span>View Public Web (2.1)</span>
+          </a>
+
+          <!-- Web App Spec Dropdown Button -->
+          <div class="relative">
+            <button id="notes-dropdown-btn" class="w-9 h-9 rounded-lg border border-unified flex items-center justify-center text-brand-navy hover:bg-gray-100 transition-all-custom" title="Web App Information">
+              <i class="bi bi-info-circle text-base"></i>
+            </button>
+
+            <!-- Dropdown Content Box -->
+            <div id="notes-dropdown" class="hidden absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-unified rounded-xl shadow-xl z-50 p-4 transition-all-custom">
+              <div class="flex items-center justify-between pb-3 border-b border-unified mb-3">
+                <div class="flex items-center gap-2">
+                  <i class="bi bi-file-text-fill text-brand-violet"></i>
+                  <h3 class="font-display font-bold text-xs text-brand-navy uppercase tracking-wider">Web App Specifications</h3>
+                </div>
+                <button id="copy-notes-btn" class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-brand-aqua/20 text-brand-navy text-[11px] font-bold hover:bg-brand-aqua/40 transition-all">
+                  <i class="bi bi-clipboard"></i>
+                  <span>Copy Specs</span>
+                </button>
+              </div>
+              
+              <div id="notes-content" class="text-xs text-brand-charcoal space-y-2 max-h-64 overflow-y-auto pr-1 leading-relaxed">
+                <p><strong>1.1 หลังบ้านเจ้าของร้าน | หน้าแรก "วันนี้ร้านเป็นไง"</strong></p>
+                <p><strong>/app · ผู้ใช้:</strong> เจ้าของ, พนักงาน · ที่มา: D1.1, D1.4, D1.14</p>
+                <p><strong>เป้าหมาย:</strong> เปิดมาแล้วรู้ใน 5 วินาทีว่า (1) มีงานค้างไหม (2) เว็บปกติไหม (3) อยากแก้อะไรกดได้ทันที — ไม่ใช่หน้ากราฟ</p>
+                <p><strong>Function:</strong></p>
+                <ul class="list-disc pl-4 space-y-1">
+                  <li>แสดงงานค้างอัตโนมัติ: ลูกค้าสนใจที่ยังไม่ตอบ · โปรใกล้หมด (≤ 3 วัน) · รายการที่ราคาไม่ถูกแก้เกิน 60 วัน · รายการที่รูปหาย</li>
+                  <li>ทางลัด "งาน" 4 ปุ่ม &rarr; ไปหน้า 1.2 / 1.3 / 1.4 พร้อมเปิด sheet ที่ถูกต้องทันที</li>
+                  <li>ปิดร้านวันนี้ / ปิดตามช่วง (F4): เลือก "วันนี้ · พรุ่งนี้ · ถึงวันที่…" + ข้อความถึงลูกค้า &rarr; ขึ้นบน 2.1 / 2.5 ทันที</li>
+                  <li>สรุป 3 ตัวเลขของวันนี้ (เทียบเมื่อวาน) &rarr; แตะไป 1.8</li>
+                  <li>สถานะเว็บ 1 บรรทัด &rarr; แตะไป 1.9</li>
+                  <li>กิจกรรมล่าสุด 5 รายการ (ภาษาคน) + ปุ่ม "ย้อนกลับ" ต่อรายการที่ย้อนได้</li>
+                  <li>[P2] ช่อง "บอกสิ่งที่อยากแก้": พิมพ์สั่งเปลี่ยนโครงสร้าง</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN CONTAINER FOR CONTENT (100% Width) -->
+      <main class="flex-1 p-4 lg:p-8 w-full max-w-[1600px] mx-auto space-y-6">
+        
+        <!-- SECTION 1: GREETING & STORE STATUS BAR -->
+        <section class="bg-white rounded-xl border border-unified p-5 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all-custom">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="badge-label text-brand-emerald bg-emerald-50 px-2 py-0.5 rounded font-bold">Store HQ</span>
+              <span class="text-xs text-gray-400">• Sunday, November 8, 2026</span>
+            </div>
+            <h2 class="font-display font-extrabold text-xl text-brand-navy">Hello, Mr. Ek</h2>
+            <p class="text-xs text-gray-500 mt-0.5">Here is your store status overview for today.</p>
+          </div>
+
+          <div class="flex items-center gap-4 bg-gray-50 border border-unified p-3 rounded-xl w-full md:w-auto justify-between">
+            <div class="flex items-center gap-3">
+              <span id="store-status-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-aqua text-brand-navy shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-800 animate-pulse"></span>
+                <span>STORE OPEN TODAY</span>
+              </span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold text-brand-navy">Toggle Status:</span>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="store-toggle-switch" class="sr-only peer" checked onchange="toggleStoreStatus()">
+                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-emerald"></div>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- P2 FEATURE: TELL US WHAT YOU WANT TO CHANGE (NLP Text Command Box) -->
+        <section class="bg-gradient-to-r from-brand-indigo/5 to-brand-violet/5 border border-brand-violet/20 rounded-xl p-4 shadow-sm">
+          <div class="flex items-center gap-2 mb-2">
+            <i class="bi bi-magic text-brand-violet text-sm"></i>
+            <span class="font-display font-bold text-xs text-brand-indigo uppercase tracking-wider">Smart Assistant Command (D1.14)</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="text" id="nlp-command-input" placeholder='Type e.g., "Iced Latte price to ฿75" or "Close store tomorrow"' class="flex-1 bg-white border border-unified rounded-lg px-4 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-violet text-brand-navy">
+            <button onclick="processNLPCommand()" class="px-5 py-2.5 rounded-lg bg-brand-violet hover:bg-brand-indigo text-white font-bold text-xs transition-all-custom shrink-0 flex items-center justify-center gap-2">
+              <i class="bi bi-arrow-return-left"></i>
+              <span>Parse & Execute</span>
+            </button>
+          </div>
+          
+          <!-- Structured Change Confirmation Box -->
+          <div id="nlp-preview" class="hidden mt-3 p-3 bg-white border border-brand-aqua rounded-lg text-xs flex items-center justify-between">
+            <div id="nlp-preview-text" class="text-brand-navy"></div>
+            <button onclick="confirmNLPChange()" class="px-3 py-1.5 rounded bg-brand-aqua text-brand-navy font-extrabold text-xs hover:opacity-90 transition-all">Confirm Change</button>
+          </div>
+        </section>
+
+        <!-- BENTO GRID LAYOUT (Desktop: 2 Columns - Left: 1-4, Right: 5-7 + 390px Mobile Preview) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- LEFT COLUMN (Cols 1-7) -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- SECTION 2: PENDING TASKS (Max 3 Cards) -->
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-display font-bold text-sm text-brand-navy flex items-center gap-2">
+                  <i class="bi bi-exclamation-triangle-fill text-brand-sage"></i>
+                  <span>Pending Tasks (Requires Attention)</span>
+                </h3>
+                <span class="badge-label bg-red-100 text-red-600 px-2 py-0.5 rounded font-bold">3 Urgent Items</span>
+              </div>
+
+              <div class="space-y-3">
+                <!-- Task Card 1 -->
+                <div class="bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift flex items-center justify-between gap-3 border-l-4 border-l-brand-sage">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-amber-50 text-brand-sage flex items-center justify-center text-lg shrink-0">
+                      <i class="bi bi-chat-dots-fill"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-xs text-brand-navy">2 Interested Leads Unanswered</h4>
+                      <p class="text-[11px] text-gray-500">Inquired about table reservations & custom orders</p>
+                    </div>
+                  </div>
+                  <a href="#sheet-1.2" onclick="triggerShortcut('1.2', 'Reply Leads')" class="px-3.5 py-2 rounded-lg bg-brand-sage text-white font-bold text-xs hover:opacity-90 transition-all shrink-0">Reply Now</a>
+                </div>
+
+                <!-- Task Card 2 -->
+                <div class="bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift flex items-center justify-between gap-3 border-l-4 border-l-brand-violet">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-purple-50 text-brand-violet flex items-center justify-center text-lg shrink-0">
+                      <i class="bi bi-clock-history"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-xs text-brand-navy">Promo Expiring in 2 Days</h4>
+                      <p class="text-[11px] text-gray-500">"Weekend Special 15% Off" campaign ends soon</p>
+                    </div>
+                  </div>
+                  <a href="#sheet-1.3" onclick="triggerShortcut('1.3', 'Renew Promo')" class="px-3.5 py-2 rounded-lg bg-brand-violet text-white font-bold text-xs hover:opacity-90 transition-all shrink-0">Renew Promo</a>
+                </div>
+
+                <!-- Task Card 3 -->
+                <div class="bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift flex items-center justify-between gap-3 border-l-4 border-l-brand-emerald">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-brand-emerald flex items-center justify-center text-lg shrink-0">
+                      <i class="bi bi-tag-fill"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-xs text-brand-navy">5 Item Prices Unadjusted > 60 Days</h4>
+                      <p class="text-[11px] text-gray-500">Review updated coffee bean cost pricing</p>
+                    </div>
+                  </div>
+                  <a href="#sheet-1.2" onclick="triggerShortcut('1.2', 'Check Prices')" class="px-3.5 py-2 rounded-lg bg-brand-emerald text-white font-bold text-xs hover:opacity-90 transition-all shrink-0">Review Prices</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: 4 TASK SHORTCUT BUTTONS (2x2 Grid, Buttons >= 72px Height) -->
+            <div>
+              <h3 class="font-display font-bold text-sm text-brand-navy mb-3">Direct Task Shortcuts</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <button onclick="triggerShortcut('1.2', 'Edit Price Sheet')" class="min-h-[76px] bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift flex items-center gap-3 text-left transition-all">
+                  <div class="w-12 h-12 rounded-xl bg-teal-50 text-brand-emerald flex items-center justify-center text-xl shrink-0">
+                    <i class="bi bi-currency-dollar"></i>
+                  </div>
+                  <div>
+                    <span class="font-display font-bold text-xs text-brand-navy block">Edit Prices</span>
+                    <span class="text-[11px] text-gray-500">Go to Sheet 1.2</span>
+                  </div>
+                </button>
+
+                <button onclick="triggerShortcut('1.3', 'Promotions Sheet')" class="min-h-[76px] bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift flex items-center gap-3 text-left transition-all">
+                  <div class="w-12 h-12 rounded-xl bg-purple-50 text-brand-violet flex items-center justify-center text-xl shrink-0">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                  </div>
+                  <div>
+                    <span class="font-display font-bold text-xs text-brand-navy block">Launch Promo</span>
+                    <span class="text-[11px] text-gray-500">Go to Sheet 1.3</span>
+                  </div>
+                </button>
+
+                <button onclick="triggerShortcut('1.4', 'Media Gallery Sheet')" class="min-h-[76px] bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift flex items-center gap-3 text-left transition-all">
+                  <div class="w-12 h-12 rounded-xl bg-amber-50 text-brand-sage flex items-center justify-center text-xl shrink-0">
+                    <i class="bi bi-image-fill"></i>
+                  </div>
+                  <div>
+                    <span class="font-display font-bold text-xs text-brand-navy block">Replace Images</span>
+                    <span class="text-[11px] text-gray-500">Go to Sheet 1.4</span>
+                  </div>
+                </button>
+
+                <button onclick="openModal('modal-close-store')" class="min-h-[76px] bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift flex items-center gap-3 text-left transition-all">
+                  <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-xl shrink-0">
+                    <i class="bi bi-power"></i>
+                  </div>
+                  <div>
+                    <span class="font-display font-bold text-xs text-brand-navy block">Close Today (F4)</span>
+                    <span class="text-[11px] text-gray-500">Set schedule notice</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- SECTION 4: TODAY IN NUMBERS (3 Metric Cards) -->
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-display font-bold text-sm text-brand-navy">Today's Performance Summary</h3>
+                <a href="#analytics-1.8" class="text-xs text-brand-violet font-bold hover:underline">Full Analytics (1.8) &rarr;</a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Metric Card 1 -->
+                <div class="bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift">
+                  <span class="text-[11px] font-semibold text-gray-500 block mb-1">Total Visitors</span>
+                  <div class="font-display font-extrabold text-2xl text-brand-navy mb-2">1,420</div>
+                  <div class="inline-flex items-center gap-1 text-[11px] font-bold text-brand-emerald bg-emerald-50 px-2 py-0.5 rounded">
+                    <i class="bi bi-arrow-up-short"></i>
+                    <span>+12.4% vs yesterday</span>
+                  </div>
+                </div>
+
+                <!-- Metric Card 2 -->
+                <div class="bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift">
+                  <span class="text-[11px] font-semibold text-gray-500 block mb-1">Contact Leads (Call/LINE)</span>
+                  <div class="font-display font-extrabold text-2xl text-brand-navy mb-2">84</div>
+                  <div class="inline-flex items-center gap-1 text-[11px] font-bold text-brand-emerald bg-emerald-50 px-2 py-0.5 rounded">
+                    <i class="bi bi-arrow-up-short"></i>
+                    <span>+8.1% vs yesterday</span>
+                  </div>
+                </div>
+
+                <!-- Metric Card 3 -->
+                <div class="bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift">
+                  <span class="text-[11px] font-semibold text-gray-500 block mb-1">New Interested Leads</span>
+                  <div class="font-display font-extrabold text-2xl text-brand-navy mb-2">18</div>
+                  <div class="inline-flex items-center gap-1 text-[11px] font-bold text-red-500 bg-red-50 px-2 py-0.5 rounded">
+                    <i class="bi bi-arrow-down-short"></i>
+                    <span>-2.3% vs yesterday</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN (Cols 8-12) -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <!-- SECTION 5: WEBSITE HEALTH STATUS (1 Line Status) -->
+            <a href="#health-1.9" class="block bg-white border border-unified rounded-xl p-4 shadow-sm hover-lift transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 rounded-full bg-brand-aqua animate-ping"></div>
+                  <div>
+                    <span class="font-bold text-xs text-brand-navy block">Web System Normal</span>
+                    <span class="text-[11px] text-gray-500">Checked 05:00 AM • Nightly backup successful (1.9)</span>
+                  </div>
+                </div>
+                <i class="bi bi-chevron-right text-gray-400"></i>
+              </div>
+            </a>
+
+            <!-- SECTION 6: RECENT ACTIVITIES (5 Human-readable logs with Undo) -->
+            <div class="bg-white border border-unified rounded-xl p-5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-unified pb-3">
+                <h3 class="font-display font-bold text-sm text-brand-navy flex items-center gap-2">
+                  <i class="bi bi-activity text-brand-violet"></i>
+                  <span>Recent Activities</span>
+                </h3>
+                <span class="text-[11px] text-gray-400">Human-Readable Log</span>
+              </div>
+
+              <div id="activity-log-list" class="space-y-3">
+                <!-- Log Item 1 -->
+                <div class="flex items-center justify-between text-xs py-1 border-b border-gray-100 last:border-none">
+                  <div>
+                    <span class="font-semibold text-brand-navy">Somchai</span>
+                    <span class="text-gray-600"> edited Iced Latte </span>
+                    <span class="line-through text-gray-400">฿70</span>
+                    <span class="font-bold text-brand-emerald"> &rarr; ฿75 / $2.15</span>
+                    <span class="text-[10px] text-gray-400 block">14:05 PM • via Command</span>
+                  </div>
+                  <button onclick="undoActivity(this, 'Iced Latte Price Change')" class="px-2 py-1 rounded border border-unified text-[11px] font-semibold text-gray-600 hover:bg-gray-100 transition-all shrink-0">Undo</button>
+                </div>
+
+                <!-- Log Item 2 -->
+                <div class="flex items-center justify-between text-xs py-1 border-b border-gray-100 last:border-none">
+                  <div>
+                    <span class="font-semibold text-brand-navy">System</span>
+                    <span class="text-gray-600"> auto-renewed SSL security certificate</span>
+                    <span class="text-[10px] text-gray-400 block">11:30 AM</span>
+                  </div>
+                  <span class="text-[10px] text-gray-300">Automated</span>
+                </div>
+
+                <!-- Log Item 3 -->
+                <div class="flex items-center justify-between text-xs py-1 border-b border-gray-100 last:border-none">
+                  <div>
+                    <span class="font-semibold text-brand-navy">Nok</span>
+                    <span class="text-gray-600"> added new media photo </span>
+                    <span class="font-bold text-brand-navy">"Matcha Latte"</span>
+                    <span class="text-[10px] text-gray-400 block">09:15 AM</span>
+                  </div>
+                  <button onclick="undoActivity(this, 'Photo Upload')" class="px-2 py-1 rounded border border-unified text-[11px] font-semibold text-gray-600 hover:bg-gray-100 transition-all shrink-0">Undo</button>
+                </div>
+
+                <!-- Log Item 4 -->
+                <div class="flex items-center justify-between text-xs py-1 border-b border-gray-100 last:border-none">
+                  <div>
+                    <span class="font-semibold text-brand-navy">Ek</span>
+                    <span class="text-gray-600"> enabled promo </span>
+                    <span class="font-bold text-brand-violet">"Buy 1 Get 1 Free"</span>
+                    <span class="text-[10px] text-gray-400 block">Yesterday 18:00 PM</span>
+                  </div>
+                  <button onclick="undoActivity(this, 'Promo Activation')" class="px-2 py-1 rounded border border-unified text-[11px] font-semibold text-gray-600 hover:bg-gray-100 transition-all shrink-0">Undo</button>
+                </div>
+
+                <!-- Log Item 5 -->
+                <div class="flex items-center justify-between text-xs py-1">
+                  <div>
+                    <span class="font-semibold text-brand-navy">Somchai</span>
+                    <span class="text-gray-600"> updated opening hours to 08:00 - 20:00</span>
+                    <span class="text-[10px] text-gray-400 block">Yesterday 10:00 AM</span>
+                  </div>
+                  <button onclick="undoActivity(this, 'Operating Hours Update')" class="px-2 py-1 rounded border border-unified text-[11px] font-semibold text-gray-600 hover:bg-gray-100 transition-all shrink-0">Undo</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 7: GROWTH OPPORTUNITY CARD (Conditional 1.10 Trigger) -->
+            <div class="bg-gradient-to-br from-brand-navy to-brand-indigo rounded-xl p-5 text-white shadow-md relative overflow-hidden">
+              <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-brand-aqua/10 rounded-full blur-xl"></div>
+              <span class="badge-label bg-brand-aqua text-brand-navy px-2 py-0.5 rounded font-extrabold mb-2 inline-block">Growth Opportunity</span>
+              <h4 class="font-display font-bold text-sm mb-1">Boost Weekend Sales by 30%</h4>
+              <p class="text-xs text-gray-200 mb-4 leading-relaxed">Activate automated customer messaging workflows for regular clients.</p>
+              <a href="#growth-1.10" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-aqua text-brand-navy font-bold text-xs hover:opacity-90 transition-all">
+                <span>Explore Strategy (1.10)</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+
+            <!-- SECTION 8: DEMO MISSION BAR (Conditional Demo Mode 3.3) -->
+            <div class="bg-amber-50 border border-brand-sage/30 rounded-xl p-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-brand-sage text-white flex items-center justify-center font-bold text-xs">
+                  1/3
+                </div>
+                <div>
+                  <h4 class="font-bold text-xs text-brand-navy">Demo Mission Checklist (3.3)</h4>
+                  <p class="text-[11px] text-gray-600">Try updating a price to complete step 1</p>
+                </div>
+              </div>
+              <a href="#demo-3.3" class="text-xs font-bold text-brand-sage hover:underline">View All &rarr;</a>
+            </div>
+
+            <!-- DESKTOP WEB PREVIEW FRAME (390px Mobile View Simulator) -->
+            <div id="preview" class="bg-white border border-unified rounded-xl p-4 shadow-sm hidden md:block">
+              <div class="flex items-center justify-between mb-3 border-b border-unified pb-2">
+                <span class="font-display font-bold text-xs text-brand-navy flex items-center gap-2">
+                  <i class="bi bi-phone"></i>
+                  <span>Live Mobile Web Preview (390px)</span>
+                </span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-bold">Syncs with 2.1</span>
+              </div>
+              <div class="w-[390px] mx-auto h-[480px] bg-gray-50 rounded-2xl border-4 border-gray-800 shadow-inner overflow-hidden relative flex flex-col">
+                <!-- Mobile Header -->
+                <div class="bg-white px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+                  <span class="font-bold text-xs text-brand-navy">My Coffee & Cafe</span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-brand-aqua"></span>
+                </div>
+                <!-- Banner Notification on Mobile Preview -->
+                <div id="preview-close-banner" class="hidden bg-red-500 text-white text-[11px] p-2 text-center font-bold">
+                  NOTICE: Store closed today. Reopening tomorrow!
+                </div>
+                <!-- Content Simulator -->
+                <div class="p-4 flex-1 space-y-3 overflow-y-auto">
+                  <div class="h-32 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400 text-xs font-semibold">Store Banner (2.1)</div>
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between p-2.5 bg-white rounded border border-gray-200 shadow-sm">
+                      <span class="text-xs font-medium">Iced Latte</span>
+                      <span id="preview-latte-price" class="text-xs font-bold text-brand-emerald">฿75 / $2.15</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 bg-white rounded border border-gray-200 shadow-sm">
+                      <span class="text-xs font-medium">Hot Americano</span>
+                      <span class="text-xs font-bold text-brand-emerald">฿65 / $1.85</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- MODAL: SIGN IN -->
+  <div id="modal-login" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop p-4">
+    <div class="bg-white rounded-2xl border border-unified shadow-2xl w-full max-w-md p-6 relative transition-all-custom">
+      <button onclick="closeModal('modal-login')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-brand-navy flex items-center justify-center">
+        <i class="bi bi-x-lg text-sm"></i>
+      </button>
+      
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-2xl gradient-aqua-emerald mx-auto flex items-center justify-center text-white font-display font-extrabold text-xl shadow-md mb-3">
+          O
+        </div>
+        <h3 class="font-display font-extrabold text-xl text-brand-navy">Welcome Back</h3>
+        <p class="text-xs text-gray-500 mt-1">Sign in to access your store operations dashboard</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); closeModal('modal-login');" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Email Address</label>
+          <input type="email" placeholder="owner@store.com" required class="w-full bg-gray-50 border border-unified rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">
+        </div>
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="text-xs font-bold text-brand-navy">Password</label>
+            <button type="button" onclick="switchModal('modal-login', 'modal-forgot')" class="text-[11px] font-bold text-brand-violet hover:underline">Forgot password?</button>
+          </div>
+          <input type="password" placeholder="••••••••" required class="w-full bg-gray-50 border border-unified rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-lg bg-brand-navy text-white font-bold text-xs hover:bg-brand-indigo transition-all-custom shadow-sm">
+          Sign In
+        </button>
+      </form>
+
+      <div class="mt-6 text-center text-xs text-gray-500 border-t border-unified pt-4">
+        Don't have an account? 
+        <button onclick="switchModal('modal-login', 'modal-signup')" class="text-brand-emerald font-bold hover:underline">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SIGN UP -->
+  <div id="modal-signup" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop p-4">
+    <div class="bg-white rounded-2xl border border-unified shadow-2xl w-full max-w-md p-6 relative transition-all-custom">
+      <button onclick="closeModal('modal-signup')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-brand-navy flex items-center justify-center">
+        <i class="bi bi-x-lg text-sm"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <h3 class="font-display font-extrabold text-xl text-brand-navy">Create Store Account</h3>
+        <p class="text-xs text-gray-500 mt-1">Start optimizing your store operations in minutes</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); closeModal('modal-signup');" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Full Name</label>
+          <input type="text" placeholder="Ekkarat Owner" required class="w-full bg-gray-50 border border-unified rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Store Name</label>
+          <input type="text" placeholder="My Specialty Coffee" required class="w-full bg-gray-50 border border-unified rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Email Address</label>
+          <input type="email" placeholder="owner@store.com" required class="w-full bg-gray-50 border border-unified rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Password</label>
+          <input type="password" placeholder="••••••••" required class="w-full bg-gray-50 border border-unified rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-lg bg-brand-emerald text-white font-bold text-xs hover:opacity-90 transition-all-custom shadow-sm">
+          Register Store Account
+        </button>
+      </form>
+
+      <div class="mt-6 text-center text-xs text-gray-500 border-t border-unified pt-4">
+        Already registered? 
+        <button onclick="switchModal('modal-signup', 'modal-login')" class="text-brand-navy font-bold hover:underline">Sign In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: FORGOT PASSWORD -->
+  <div id="modal-forgot" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop p-4">
+    <div class="bg-white rounded-2xl border border-unified shadow-2xl w-full max-w-md p-6 relative transition-all-custom">
+      <button onclick="closeModal('modal-forgot')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-brand-navy flex items-center justify-center">
+        <i class="bi bi-x-lg text-sm"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-amber-50 text-brand-sage mx-auto flex items-center justify-center text-lg mb-2">
+          <i class="bi bi-key-fill"></i>
+        </div>
+        <h3 class="font-display font-extrabold text-lg text-brand-navy">Reset Password</h3>
+        <p class="text-xs text-gray-500 mt-1">We will send a password recovery link to your email</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Reset link sent!'); closeModal('modal-forgot');" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Registered Email Address</label>
+          <input type="email" placeholder="owner@store.com" required class="w-full bg-gray-50 border border-unified rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-lg bg-brand-sage text-white font-bold text-xs hover:opacity-90 transition-all-custom shadow-sm">
+          Send Recovery Link
+        </button>
+      </form>
+
+      <div class="mt-6 text-center text-xs text-gray-500 border-t border-unified pt-4">
+        Remembered password? 
+        <button onclick="switchModal('modal-forgot', 'modal-login')" class="text-brand-navy font-bold hover:underline">Back to Sign In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: QUICK CLOSE STORE (F4 Quick Action) -->
+  <div id="modal-close-store" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop p-4">
+    <div class="bg-white rounded-2xl border border-unified shadow-2xl w-full max-w-md p-6 relative transition-all-custom">
+      <button onclick="closeModal('modal-close-store')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-brand-navy flex items-center justify-center">
+        <i class="bi bi-x-lg text-sm"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-xl shrink-0">
+          <i class="bi bi-shop-window"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-base text-brand-navy">Set Store Closure Notice</h3>
+          <p class="text-xs text-gray-500">Immediately updates public web view (2.1 / 2.5)</p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Closure Period</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button onclick="selectClosureOption(this, 'today')" class="closure-opt py-2 rounded-lg border border-brand-emerald bg-emerald-50 text-brand-navy font-bold text-xs">Today</button>
+            <button onclick="selectClosureOption(this, 'tomorrow')" class="closure-opt py-2 rounded-lg border border-unified text-gray-600 font-medium text-xs hover:bg-gray-50">Tomorrow</button>
+            <button onclick="selectClosureOption(this, 'range')" class="closure-opt py-2 rounded-lg border border-unified text-gray-600 font-medium text-xs hover:bg-gray-50">Custom Range</button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-brand-navy mb-1">Customer Notice Message</label>
+          <textarea id="closure-message" rows="3" class="w-full bg-gray-50 border border-unified rounded-lg p-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-brand-aqua text-brand-navy">Store closed today for inventory maintenance. Reopening tomorrow at 08:00 AM!</textarea>
+        </div>
+
+        <div class="flex gap-2">
+          <button onclick="closeModal('modal-close-store')" class="flex-1 py-2.5 rounded-lg border border-unified text-gray-600 font-bold text-xs hover:bg-gray-100">Cancel</button>
+          <button onclick="applyStoreClosure()" class="flex-1 py-2.5 rounded-lg bg-red-500 text-white font-bold text-xs hover:bg-red-600 transition-all shadow-sm">Publish Notice</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING WIDGETS: BACK TO TOP & CHATBOT (Aligned on exact same horizontal line with 5px gap) -->
+  <div class="fixed bottom-6 right-6 z-40 flex items-center gap-[5px]">
+    
+    <!-- BACK TO TOP BUTTON (Appears when scrolled past hero section) -->
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hidden w-11 h-11 rounded-full bg-brand-navy text-white shadow-lg flex items-center justify-center hover:bg-brand-indigo transition-all-custom shrink-0">
+      <i class="bi bi-arrow-up text-base"></i>
+    </button>
+
+    <!-- CHATBOT TRIGGER & WINDOW WRAPPER -->
+    <div class="relative shrink-0">
+      
+      <!-- Interactive Chatbot Window -->
+      <div id="chatbot-window" class="hidden absolute bottom-14 right-0 w-80 sm:w-96 bg-white border border-unified rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-all-custom" style="height: 420px;">
+        <!-- Chat Header -->
+        <div class="p-3 bg-brand-navy text-white flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-full bg-brand-aqua text-brand-navy flex items-center justify-center font-bold text-xs">
+              <i class="bi bi-robot"></i>
+            </div>
+            <div>
+              <span class="font-bold text-xs block">AI Operations Assistant</span>
+              <span class="text-[9px] text-brand-aqua flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-aqua"></span> Online
+              </span>
+            </div>
+          </div>
+          <button onclick="toggleChatbot()" class="text-gray-300 hover:text-white">
+            <i class="bi bi-x-lg text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Chat Log Messages -->
+        <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-3 bg-gray-50 text-xs">
+          <div class="flex gap-2">
+            <div class="w-6 h-6 rounded-full bg-brand-navy text-white flex items-center justify-center text-[10px] shrink-0">AI</div>
+            <div class="bg-white p-2.5 rounded-xl border border-unified max-w-[80%] text-brand-navy shadow-sm">
+              Hello Mr. Ek! How can I help you manage your store operations today? Try typing a command to update prices or check pending tasks.
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Chat Suggestion Pills -->
+        <div class="p-2 bg-white border-t border-unified flex gap-1 overflow-x-auto text-[10px]">
+          <button onclick="sendQuickChat('Change Latte price to ฿75')" class="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-brand-navy font-semibold whitespace-nowrap">Change Price</button>
+          <button onclick="sendQuickChat('Close store today')" class="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-brand-navy font-semibold whitespace-nowrap">Close Store</button>
+          <button onclick="sendQuickChat('Show pending tasks')" class="px-2.5 py-1 rounded-full bg-gray-100 hover:bg-gray-200 text-brand-navy font-semibold whitespace-nowrap">Pending Tasks</button>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form onsubmit="handleChatSubmit(event)" class="p-2 bg-white border-t border-unified flex gap-2">
+          <input type="text" id="chat-input" placeholder="Type a message..." class="flex-1 bg-gray-50 border border-unified rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-violet text-brand-navy">
+          <button type="submit" class="w-8 h-8 rounded-lg bg-brand-violet text-white flex items-center justify-center hover:bg-brand-indigo shrink-0">
+            <i class="bi bi-send-fill text-xs"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Floating Chatbot Button (Stays fixed in position) -->
+      <button id="chatbot-toggle-btn" onclick="toggleChatbot()" class="w-11 h-11 rounded-full gradient-aqua-emerald text-brand-navy shadow-lg flex items-center justify-center hover:opacity-90 transition-all-custom shrink-0">
+        <i class="bi bi-chat-dots-fill text-lg"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT FOR INTERACTION & FUNCTIONALITY -->
+  <script>
+    // 1. Sidebar Toggle & Responsiveness
+    const sidebar = document.getElementById('sidebar');
+    const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
+    const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+
+    toggleSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.remove('-translate-x-full');
+    });
+
+    closeSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+    });
+
+    // 2. Web App Specs Dropdown & Copy Function
+    const notesBtn = document.getElementById('notes-dropdown-btn');
+    const notesDropdown = document.getElementById('notes-dropdown');
+    const copyNotesBtn = document.getElementById('copy-notes-btn');
+
+    notesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      notesDropdown.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!notesDropdown.contains(e.target) && e.target !== notesBtn) {
+        notesDropdown.classList.add('hidden');
+      }
+    });
+
+    copyNotesBtn.addEventListener('click', () => {
+      const textToCopy = document.getElementById('notes-content').innerText;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        copyNotesBtn.innerHTML = '<i class="bi bi-check2"></i><span>Copied!</span>';
+        setTimeout(() => {
+          copyNotesBtn.innerHTML = '<i class="bi bi-clipboard"></i><span>Copy Specs</span>';
+        }, 2000);
+      });
+    });
+
+    // 3. Modal Management
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.remove('hidden');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+
+    function switchModal(currentId, targetId) {
+      closeModal(currentId);
+      openModal(targetId);
+    }
+
+    // 4. Store Status Toggle & Closure Notice logic
+    function toggleStoreStatus() {
+      const switchEl = document.getElementById('store-toggle-switch');
+      const badgeEl = document.getElementById('store-status-badge');
+      const previewBanner = document.getElementById('preview-close-banner');
+
+      if (switchEl.checked) {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-aqua text-brand-navy shadow-sm';
+        badgeEl.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-800 animate-pulse"></span><span>STORE OPEN TODAY</span>';
+        previewBanner.classList.add('hidden');
+      } else {
+        badgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-600 shadow-sm';
+        badgeEl.innerHTML = '<span class="w-2 h-2 rounded-full bg-red-600"></span><span>CLOSED TODAY</span>';
+        previewBanner.classList.remove('hidden');
+      }
+    }
+
+    function selectClosureOption(btn, opt) {
+      document.querySelectorAll('.closure-opt').forEach(el => {
+        el.className = 'closure-opt py-2 rounded-lg border border-unified text-gray-600 font-medium text-xs hover:bg-gray-50';
+      });
+      btn.className = 'closure-opt py-2 rounded-lg border border-brand-emerald bg-emerald-50 text-brand-navy font-bold text-xs';
+    }
+
+    function applyStoreClosure() {
+      const msg = document.getElementById('closure-message').value;
+      const switchEl = document.getElementById('store-toggle-switch');
+      switchEl.checked = false;
+      toggleStoreStatus();
+      
+      const previewBanner = document.getElementById('preview-close-banner');
+      previewBanner.innerText = `NOTICE: ${msg}`;
+      previewBanner.classList.remove('hidden');
+
+      closeModal('modal-close-store');
+      addActivityLog("Ek", "closed store and published notice banner");
+    }
+
+    // 5. Task Shortcuts Action
+    function triggerShortcut(sheetId, taskName) {
+      alert(`Navigating directly to Sheet ${sheetId} for: ${taskName}`);
+    }
+
+    // 6. Smart NLP Command Box Processing [P2 Feature]
+    let pendingNLPAction = null;
+
+    function processNLPCommand() {
+      const input = document.getElementById('nlp-command-input').value.trim();
+      const previewBox = document.getElementById('nlp-preview');
+      const previewText = document.getElementById('nlp-preview-text');
+
+      if (!input) return;
+
+      if (input.toLowerCase().includes('latte') || input.includes('75')) {
+        pendingNLPAction = () => {
+          document.getElementById('preview-latte-price').innerText = '฿75 / $2.15';
+          addActivityLog("Ek", "updated Iced Latte ฿70 → ฿75 / $2.15");
+        };
+        previewText.innerHTML = `<strong>Parsed Structured Change:</strong> Update price for <em>Iced Latte</em> from <strong>฿70</strong> &rarr; <strong>฿75 / $2.15</strong>`;
+      } else if (input.toLowerCase().includes('close')) {
+        pendingNLPAction = () => {
+          applyStoreClosure();
+        };
+        previewText.innerHTML = `<strong>Parsed Structured Change:</strong> Close store today & set notice banner.`;
+      } else {
+        pendingNLPAction = () => {
+          addActivityLog("Ek", `executed command: "${input}"`);
+        };
+        previewText.innerHTML = `<strong>Parsed Structured Change:</strong> Execute config change: "${input}"`;
+      }
+
+      previewBox.classList.remove('hidden');
+    }
+
+    function confirmNLPChange() {
+      if (pendingNLPAction) {
+        pendingNLPAction();
+        pendingNLPAction = null;
+      }
+      document.getElementById('nlp-preview').classList.add('hidden');
+      document.getElementById('nlp-command-input').value = '';
+    }
+
+    // 7. Activity Log & Undo System
+    function addActivityLog(user, action) {
+      const list = document.getElementById('activity-log-list');
+      const newLog = document.createElement('div');
+      newLog.className = 'flex items-center justify-between text-xs py-1 border-b border-gray-100 last:border-none';
+      newLog.innerHTML = `
+        <div>
+          <span class="font-semibold text-brand-navy">${user}</span>
+          <span class="text-gray-600"> ${action}</span>
+          <span class="text-[10px] text-gray-400 block">Just now • via Text Command</span>
+        </div>
+        <button onclick="undoActivity(this, '${action}')" class="px-2 py-1 rounded border border-unified text-[11px] font-semibold text-gray-600 hover:bg-gray-100 transition-all shrink-0">Undo</button>
+      `;
+      list.prepend(newLog);
+    }
+
+    function undoActivity(btn, actionName) {
+      const parent = btn.closest('.flex');
+      parent.style.opacity = '0.4';
+      btn.disabled = true;
+      btn.innerText = 'Undone';
+      alert(`Undid action: ${actionName}`);
+    }
+
+    // 8. Scroll Detection for Back to Top Button
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        backToTopBtn.classList.remove('hidden');
+      } else {
+        backToTopBtn.classList.add('hidden');
+      }
+    });
+
+    // 9. Interactive Chatbot Logic
+    function toggleChatbot() {
+      const chatWindow = document.getElementById('chatbot-window');
+      chatWindow.classList.toggle('hidden');
+    }
+
+    function sendQuickChat(text) {
+      document.getElementById('chat-input').value = text;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatLogs = document.getElementById('chat-messages');
+
+      // Add User Message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'flex gap-2 justify-end';
+      userMsg.innerHTML = `
+        <div class="bg-brand-navy text-white p-2.5 rounded-xl max-w-[80%] shadow-sm">
+          ${text}
+        </div>
+      `;
+      chatLogs.appendChild(userMsg);
+
+      input.value = '';
+      chatLogs.scrollTop = chatLogs.scrollHeight;
+
+      // Bot Response Simulation
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'flex gap-2';
+        let botReply = "I have recorded your command! Is there anything else you'd like to adjust?";
+
+        if (text.toLowerCase().includes('latte') || text.toLowerCase().includes('price')) {
+          botReply = "Price updated for Iced Latte to ฿75 / $2.15! Updated on public preview.";
+          document.getElementById('preview-latte-price').innerText = '฿75 / $2.15';
+          addActivityLog("AI Assistant", "updated Iced Latte to ฿75");
+        } else if (text.toLowerCase().includes('close')) {
+          botReply = "Store status set to closed for today. Notice banner published!";
+          applyStoreClosure();
+        } else if (text.toLowerCase().includes('task')) {
+          botReply = "You have 3 pending tasks: 2 unanswered leads, 1 promo ending soon, and 5 unadjusted prices.";
+        }
+
+        botMsg.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-brand-navy text-white flex items-center justify-center text-[10px] shrink-0">AI</div>
+          <div class="bg-white p-2.5 rounded-xl border border-unified max-w-[80%] text-brand-navy shadow-sm">
+            ${botReply}
+          </div>
+        `;
+        chatLogs.appendChild(botMsg);
+        chatLogs.scrollTop = chatLogs.scrollHeight;
+      }, 500);
+    }
+
+    // F4 Keyboard Shortcut for Quick Close Modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'F4') {
+        e.preventDefault();
+        openModal('modal-close-store');
+      }
+    });
+  </script>
+</body>
+</html>
