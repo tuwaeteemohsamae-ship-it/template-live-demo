@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoreHub — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/bootstrap-icons.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{'off-white':'#E3E3DD','aqua':'#04E1AB','sage':'#BD9681','emerald':'#10AE9E','violet':'#6A5DE6','olive':'#724E40','indigo':'#222480','charcoal':'#291F1B','midnight':'#050738'},fontFamily:{display:['"Plus Jakarta Sans"','sans-serif'],body:['Inter','sans-serif']}}}}
+</script>
+<style>
+:root{--bg:#fff;--sub:#F7F7F4;--bd:rgba(0,0,0,.07);--tx:#291F1B;--mt:#7A7570;--ac:#04E1AB;--acd:#02C896;--em:#10AE9E;--vi:#6A5DE6;--sg:#BD9681;--ind:#222480;--nv:#050738;--ol:#724E40;--r:14px;--sh:0 10px 30px rgba(0,0,0,.045);--sw:264px;--hh:64px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-size:13px;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,.dsp{font-family:'Plus Jakarta Sans',sans-serif}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--ac);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--acd)}
+*{scrollbar-width:thin;scrollbar-color:var(--ac) transparent}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(4,225,171,.35)}70%{box-shadow:0 0 0 10px rgba(4,225,171,0)}100%{box-shadow:0 0 0 0 rgba(4,225,171,0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.anim-up{opacity:0;animation:fadeUp .55s cubic-bezier(.22,1,.36,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}.d4{animation-delay:.26s}.d5{animation-delay:.33s}.d6{animation-delay:.40s}.d7{animation-delay:.47s}.d8{animation-delay:.54s}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sw);height:100vh;position:fixed;left:0;top:0;background:#fff;border-right:1px solid var(--bd);z-index:50;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.logo-sec{height:var(--hh);min-height:var(--hh);border-bottom:1px solid var(--bd);border-right:1px solid var(--bd);display:flex;align-items:center;padding:0 20px;gap:10px;background:#fff}
+.nav-scroll{flex:1;overflow-y:auto;padding:16px 12px 24px}
+.nav-item{display:flex;align-items:center;gap:11px;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--mt);cursor:pointer;transition:all .2s ease;text-decoration:none;position:relative}
+.nav-item:hover{background:var(--sub);color:var(--tx)}
+.nav-item.active{background:linear-gradient(135deg,rgba(4,225,171,.12),rgba(16,174,158,.08));color:var(--tx);font-weight:600}
+.nav-item.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:20px;background:var(--ac);border-radius:0 3px 3px 0}
+.nav-item i{font-size:16px;width:20px;text-align:center}
+.nav-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B0ABA6;padding:18px 14px 6px}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sw);min-height:100vh;transition:margin-left .35s cubic-bezier(.22,1,.36,1)}
+.header{height:var(--hh);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 24px;gap:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:40}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);transition:box-shadow .3s ease,transform .3s ease}
+.card:hover{box-shadow:0 14px 40px rgba(0,0,0,.07)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;transition:all .25s ease;border:none;outline:none;font-family:'Inter',sans-serif}
+.btn-primary{background:var(--ac);color:#fff}
+.btn-primary:hover{background:var(--acd);transform:translateY(-1px);box-shadow:0 6px 20px rgba(4,225,171,.3)}
+.btn-outline{background:transparent;color:var(--tx);border:1.5px solid var(--bd)}
+.btn-outline:hover{border-color:var(--ac);color:var(--acd);background:rgba(4,225,171,.06)}
+.btn-ghost{background:transparent;color:var(--mt);border:none}
+.btn-ghost:hover{color:var(--tx);background:var(--sub)}
+.btn-sm{padding:5px 12px;font-size:12px;border-radius:6px}
+
+/* ── BADGES ── */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:30px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.badge-open{background:rgba(4,225,171,.14);color:#029E7A}
+.badge-closed{background:rgba(239,68,68,.12);color:#DC2626}
+.badge-info{background:rgba(106,93,230,.1);color:var(--vi)}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-box{background:#fff;border-radius:18px;width:100%;max-width:440px;padding:32px;transform:scale(.92) translateY(12px);transition:transform .35s cubic-bezier(.22,1,.36,1);max-height:90vh;overflow-y:auto;position:relative}
+.modal-overlay.show .modal-box{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--sub);border:none;color:var(--mt);transition:all .2s}
+.modal-close:hover{background:#fee2e2;color:#dc2626;transform:rotate(90deg)}
+.input{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:10px;font-size:13px;font-family:'Inter',sans-serif;color:var(--tx);background:#fff;transition:border-color .25s;outline:none}
+.input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(4,225,171,.12)}
+.input::placeholder{color:#B0ABA6}
+textarea.input{resize:vertical;min-height:80px}
+
+/* ── FAB ── */
+.fab-row{position:fixed;bottom:24px;right:24px;z-index:60;display:flex;gap:5px;align-items:center}
+.fab{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:18px;transition:all .3s cubic-bezier(.22,1,.36,1);position:relative}
+.fab-chat{background:linear-gradient(135deg,var(--ac),var(--em));color:#fff;box-shadow:0 8px 24px rgba(4,225,171,.35)}
+.fab-chat:hover{transform:scale(1.08);box-shadow:0 12px 32px rgba(4,225,171,.45)}
+.fab-top{background:#fff;color:var(--tx);border:1.5px solid var(--bd);box-shadow:var(--sh);opacity:0;transform:translateY(16px);pointer-events:none;transition:all .35s cubic-bezier(.22,1,.36,1)}
+.fab-top.show{opacity:1;transform:translateY(0);pointer-events:all}
+.fab-top:hover{border-color:var(--ac);color:var(--acd);transform:translateY(-2px)}
+
+/* ── CHATBOT ── */
+.chat-panel{position:fixed;bottom:84px;right:24px;width:360px;max-height:520px;background:#fff;border:1px solid var(--bd);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.12);z-index:59;display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(12px) scale(.96);transition:all .35s cubic-bezier(.22,1,.36,1);overflow:hidden}
+.chat-panel.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1)}
+.chat-header{padding:16px 20px;background:linear-gradient(135deg,var(--ac),var(--em));color:#fff;display:flex;align-items:center;justify-content:space-between}
+.chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;max-height:340px}
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5;animation:fadeUp .3s ease}
+.chat-msg.bot{background:var(--sub);color:var(--tx);border-bottom-left-radius:4px;align-self:flex-start}
+.chat-msg.user{background:linear-gradient(135deg,var(--ac),var(--em));color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.chat-quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 8px}
+.chat-quick button{padding:6px 14px;border-radius:20px;border:1.5px solid var(--bd);background:#fff;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--tx)}
+.chat-quick button:hover{border-color:var(--ac);background:rgba(4,225,171,.08);color:var(--acd)}
+.chat-input-row{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--bd);background:#fff}
+.chat-input-row input{flex:1;padding:10px 14px;border:1.5px solid var(--bd);border-radius:10px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+.chat-input-row input:focus{border-color:var(--ac)}
+.chat-send{width:38px;height:38px;border-radius:10px;background:var(--ac);color:#fff;border:none;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.chat-send:hover{background:var(--acd);transform:scale(1.05)}
+
+/* ── DROPDOWN ── */
+.dropdown{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--bd);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.1);padding:20px;width:340px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:all .3s cubic-bezier(.22,1,.36,1);z-index:60}
+.dropdown.show{opacity:1;pointer-events:all;transform:translateY(0)}
+
+/* ── METRIC ── */
+.metric-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.trend-up{color:var(--em);font-size:12px;font-weight:600}
+.trend-down{color:#EF4444;font-size:12px;font-weight:600}
+
+/* ── TASK CARD ── */
+.task-card{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;border:1px solid var(--bd);background:#fff;transition:all .25s ease;cursor:pointer}
+.task-card:hover{border-color:var(--ac);background:rgba(4,225,171,.03);transform:translateX(3px)}
+
+/* ── QUICK ACTION ── */
+.qa-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:88px;border-radius:14px;border:1.5px solid var(--bd);background:#fff;cursor:pointer;transition:all .3s cubic-bezier(.22,1,.36,1);padding:16px}
+.qa-btn:hover{border-color:var(--ac);background:linear-gradient(135deg,rgba(4,225,171,.06),rgba(16,174,158,.04));transform:translateY(-3px);box-shadow:0 8px 24px rgba(4,225,171,.12)}
+.qa-btn i{font-size:22px;color:var(--ac)}
+.qa-btn span{font-size:12px;font-weight:600;color:var(--tx)}
+
+/* ── ACTIVITY ── */
+.act-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd)}
+.act-item:last-child{border-bottom:none}
+.act-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0}
+
+/* ── TOGGLE ── */
+.toggle{width:46px;height:26px;border-radius:13px;background:#D1D5DB;cursor:pointer;position:relative;transition:background .3s;border:none}
+.toggle.on{background:var(--ac)}
+.toggle::after{content:'';position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform .3s cubic-bezier(.22,1,.36,1);box-shadow:0 2px 4px rgba(0,0,0,.15)}
+.toggle.on::after{transform:translateX(20px)}
+
+/* ── SKELETON ── */
+.skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
+
+/* ── HAMBURGER ── */
+.hamburger{display:none;width:36px;height:36px;border-radius:8px;align-items:center;justify-content:center;cursor:pointer;background:transparent;border:none;color:var(--tx);font-size:18px;transition:background .2s}
+.hamburger:hover{background:var(--sub)}
+
+/* ── MOBILE OVERLAY ── */
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:49;opacity:0;pointer-events:none;transition:opacity .3s}
+.sidebar-overlay.show{opacity:1;pointer-events:all}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1023px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .hamburger{display:flex}
+}
+@media(max-width:640px){
+  .fab{width:44px;height:44px}
+  .chat-panel{width:calc(100vw - 32px);right:16px;bottom:76px}
+  .modal-box{margin:16px;padding:24px}
+  .dropdown{width:calc(100vw - 32px);right:-8px}
+}
+
+/* ── P2 CONFIRM ── */
+.confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(3px);z-index:110;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.confirm-overlay.show{opacity:1;pointer-events:all}
+.confirm-box{background:#fff;border-radius:16px;padding:28px;max-width:420px;width:90%;transform:scale(.93);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.confirm-overlay.show .confirm-box{transform:scale(1)}
+
+/* winner-takes-most emphasis */
+.hero-card{background:linear-gradient(135deg,#fff 0%,#F0FDF9 100%);border:1px solid rgba(4,225,171,.2)}
+.stagger-row{display:flex;flex-direction:column;gap:10px}
+</style>
+</head>
+<body class="font-body">
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar" id="sidebar">
+  <!-- Logo Section (same height as header, border-right matches sidebar) -->
+  <div class="logo-sec">
+    <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#04E1AB,#10AE9E);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;flex-shrink:0">S</div>
+    <div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:15px;letter-spacing:-.02em;color:var(--tx)">StoreHub</div>
+      <div style="font-size:10px;color:var(--mt);font-weight:500">Dashboard v2.1</div>
+    </div>
+  </div>
+
+  <!-- Scrollable Nav -->
+  <nav class="nav-scroll">
+    <div class="nav-label">Main</div>
+    <a class="nav-item active" href="#" onclick="setActive(this)"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-cup-hot-fill"></i> Menu &amp; Prices</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-receipt"></i> Orders <span style="margin-left:auto;background:#04E1AB;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px">12</span></a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-people-fill"></i> Customers</a>
+
+    <div class="nav-label">Growth</div>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-megaphone-fill"></i> Promotions</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-images"></i> Photos</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-globe2"></i> Website</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-graph-up-arrow"></i> Analytics</a>
+
+    <div class="nav-label">System</div>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-clock-history"></i> Change Log</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-gear-fill"></i> Settings</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-person-badge-fill"></i> Staff</a>
+    <a class="nav-item" href="#" onclick="setActive(this)"><i class="bi bi-question-circle-fill"></i> Help Center</a>
+  </nav>
+</aside>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<div class="main" id="mainArea">
+
+  <!-- Header -->
+  <header class="header">
+    <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu"><i class="bi bi-list"></i></button>
+    <div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.01em">Dashboard</div>
+      <div style="font-size:11px;color:var(--mt)" id="headerDate">—</div>
+    </div>
+    <div style="flex:1"></div>
+
+    <!-- Note Icon + Dropdown -->
+    <div style="position:relative">
+      <button onclick="toggleDropdown()" style="width:38px;height:38px;border-radius:10px;border:1.5px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--tx);font-size:16px;transition:all .2s" onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'" aria-label="Notes">
+        <i class="bi bi-journal-text"></i>
+      </button>
+      <div class="dropdown" id="noteDropdown">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px">Web App Information</div>
+          <button onclick="toggleDropdown()" style="background:none;border:none;cursor:pointer;color:var(--mt);font-size:14px"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div id="appInfoContent" style="font-size:12.5px;line-height:1.7;color:var(--tx)">
+          <p style="margin-bottom:10px"><strong>StoreHub Dashboard</strong> is a real-time store management application designed for restaurant owners and their teams. It provides live insights into customer activity, menu performance, promotions, and website health — all from a single, unified interface.</p>
+          <p style="margin-bottom:10px">The platform supports natural-language commands, automated pending-task detection, and one-tap store operations. Every change is logged for full traceability and can be reversed when needed.</p>
+          <p style="margin-bottom:14px"><strong>Version:</strong> 2.1.0 &nbsp;·&nbsp; <strong>Build:</strong> 2026.11.08 &nbsp;·&nbsp; <strong>Region:</strong> Southeast Asia</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="copyAppInfo()" style="width:100%;justify-content:center"><i class="bi bi-clipboard-check"></i> <span id="copyLabel">Copy Info</span></button>
+      </div>
+    </div>
+
+    <!-- Avatar -->
+    <div style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:5px 10px 5px 5px;border-radius:30px;border:1.5px solid var(--bd);transition:all .2s" onmouseover="this.style.borderColor='var(--ac)'" onmouseout="this.style.borderColor='var(--bd)'" onclick="openModal('loginModal')">
+      <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#222480,#6A5DE6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700">EK</div>
+      <span style="font-size:12.5px;font-weight:600" class="hidden sm:inline">Ek</span>
+    </div>
+  </header>
+
+  <!-- ═══════════ CONTENT ═══════════ -->
+  <div style="padding:28px 28px 100px;max-width:1400px">
+
+    <!-- ── HERO: Greeting + Status ── -->
+    <div class="card hero-card anim-up d1" style="padding:26px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px">
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.025em">Good morning, Ek</div>
+        <div style="font-size:13px;color:var(--mt);margin-top:4px" id="greetingDate">—</div>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+          <span class="badge badge-open" id="shopBadge"><i class="bi bi-circle-fill" style="font-size:7px"></i> Shop Open</span>
+          <span style="font-size:12px;color:var(--mt)">Since 8:00 AM</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:12.5px;font-weight:600;color:var(--mt)" id="toggleLabel">Open</span>
+        <button class="toggle on" id="shopToggle" onclick="toggleShop()" aria-label="Toggle shop status"></button>
+      </div>
+    </div>
+
+    <!-- ── P2: Tell us what to change ── -->
+    <div class="card anim-up d2" style="margin-top:18px;padding:20px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="flex-shrink:0;width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,rgba(106,93,230,.12),rgba(34,36,128,.08));display:flex;align-items:center;justify-content:center">
+        <i class="bi bi-magic" style="color:var(--vi);font-size:18px"></i>
+      </div>
+      <div style="flex:1;min-width:200px">
+        <div style="font-size:13px;font-weight:600">Tell us what you'd like to change</div>
+        <div style="font-size:11.5px;color:var(--mt)">Try: "Change Iced Latte to 75" or "Close the shop today"</div>
+      </div>
+      <div style="display:flex;gap:8px;flex:1;min-width:240px">
+        <input class="input" id="p2Input" placeholder="Type a change request…" style="flex:1" onkeydown="if(event.key==='Enter')handleP2()">
+        <button class="btn btn-primary" onclick="handleP2()"><i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- ── BENTO GRID ── -->
+    <div style="display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px" id="bentoGrid">
+
+      <!-- LEFT COLUMN -->
+      <div style="display:flex;flex-direction:column;gap:18px" id="leftCol">
+
+        <!-- Pending Tasks -->
+        <div class="anim-up d3">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px">Pending Tasks</div>
+            <span class="badge badge-info" id="taskCount">3 items</span>
+          </div>
+          <div class="stagger-row" id="taskList">
+            <div class="task-card">
+              <div style="width:36px;height:36px;border-radius:9px;background:rgba(4,225,171,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="bi bi-chat-dots-fill" style="color:var(--ac);font-size:16px"></i></div>
+              <div style="flex:1"><div style="font-size:13px;font-weight:600">3 customers waiting for reply</div><div style="font-size:11.5px;color:var(--mt)">Via LINE &amp; web form</div></div>
+              <button class="btn btn-primary btn-sm" onclick="showToast('Opening inbox…')">Reply Now</button>
+            </div>
+            <div class="task-card">
+              <div style="width:36px;height:36px;border-radius:9px;background:rgba(106,93,230,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="bi bi-lightning-charge-fill" style="color:var(--vi);font-size:16px"></i></div>
+              <div style="flex:1"><div style="font-size:13px;font-weight:600">Promo "Happy Hour" expires in 2 days</div><div style="font-size:11.5px;color:var(--mt)">Ends Nov 10, 2026</div></div>
+              <button class="btn btn-outline btn-sm" onclick="showToast('Opening promotions…')">Renew</button>
+            </div>
+            <div class="task-card">
+              <div style="width:36px;height:36px;border-radius:9px;background:rgba(189,150,129,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="bi bi-tag-fill" style="color:var(--sg);font-size:16px"></i></div>
+              <div style="flex:1"><div style="font-size:13px;font-weight:600">5 items with prices unchanged for 60+ days</div><div style="font-size:11.5px;color:var(--mt)">Review &amp; update pricing</div></div>
+              <button class="btn btn-outline btn-sm" onclick="showToast('Opening price editor…')">Check</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions 2×2 -->
+        <div class="anim-up d4">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px">Quick Actions</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="qa-btn" onclick="showToast('Opening price editor…')"><i class="bi bi-pencil-square"></i><span>Edit Prices</span></div>
+            <div class="qa-btn" onclick="showToast('Opening promotions…')"><i class="bi bi-megaphone-fill"></i><span>Open Promo</span></div>
+            <div class="qa-btn" onclick="showToast('Opening photo manager…')"><i class="bi bi-camera-fill"></i><span>Change Photos</span></div>
+            <div class="qa-btn" onclick="openModal('closeShopModal')"><i class="bi bi-door-closed-fill" style="color:#EF4444"></i><span>Close Shop Today</span></div>
+          </div>
+        </div>
+
+        <!-- Today's Metrics -->
+        <div class="anim-up d5">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px">Today in Numbers</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+            <div class="card" style="padding:18px 20px;cursor:pointer" onclick="showToast('Opening analytics…')">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mt);margin-bottom:8px">Visitors</div>
+              <div class="metric-val" id="metricVisitors">0</div>
+              <div class="trend-up" style="margin-top:6px"><i class="bi bi-arrow-up-right"></i> +12% vs yesterday</div>
+            </div>
+            <div class="card" style="padding:18px 20px;cursor:pointer" onclick="showToast('Opening analytics…')">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mt);margin-bottom:8px">Contacts</div>
+              <div class="metric-val" id="metricContacts">0</div>
+              <div class="trend-up" style="margin-top:6px"><i class="bi bi-arrow-up-right"></i> +5 vs yesterday</div>
+            </div>
+            <div class="card" style="padding:18px 20px;cursor:pointer" onclick="showToast('Opening leads…')">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mt);margin-bottom:8px">New Leads</div>
+              <div class="metric-val" id="metricLeads">0</div>
+              <div class="trend-up" style="margin-top:6px"><i class="bi bi-arrow-up-right"></i> +3 vs yesterday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div style="display:flex;flex-direction:column;gap:18px" id="rightCol">
+
+        <!-- Website Status -->
+        <div class="card anim-up d4" style="padding:18px 22px;display:flex;align-items:center;gap:12px;cursor:pointer" onclick="showToast('Opening website settings…')">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--em);flex-shrink:0;animation:pulse-ring 2s infinite"></div>
+          <div style="flex:1">
+            <div style="font-size:13px;font-weight:600">Website is running normally</div>
+            <div style="font-size:11.5px;color:var(--mt)">Last checked 5:00 AM · Backup completed successfully last night</div>
+          </div>
+          <i class="bi bi-chevron-right" style="color:var(--mt);font-size:14px"></i>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card anim-up d5" style="padding:20px 22px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px">Recent Activity</div>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Opening full activity log…')">View All</button>
+          </div>
+          <div id="activityList">
+            <div class="act-item">
+              <div class="act-dot" style="background:var(--ac)"></div>
+              <div style="flex:1"><div style="font-size:12.5px"><strong>Somchai</strong> edited Iced Latte <span style="color:var(--mt)">฿70 → ฿75</span></div><div style="font-size:11px;color:var(--mt);margin-top:2px">2:05 PM</div></div>
+              <button class="btn btn-ghost btn-sm" onclick="undoActivity(this)" style="font-size:11px"><i class="bi bi-arrow-counterclockwise"></i> Undo</button>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:var(--vi)"></div>
+              <div style="flex:1"><div style="font-size:12.5px">New order <strong>#1042</strong> received — 2 items, ฿185</div><div style="font-size:11px;color:var(--mt);margin-top:2px">1:45 PM</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:#F59E0B"></div>
+              <div style="flex:1"><div style="font-size:12.5px"><strong>Kanya</strong> left a 5-star review on Google</div><div style="font-size:11px;color:var(--mt);margin-top:2px">1:20 PM</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:var(--em)"></div>
+              <div style="flex:1"><div style="font-size:12.5px">Promo <strong>"Happy Hour"</strong> activated successfully</div><div style="font-size:11px;color:var(--mt);margin-top:2px">12:00 PM</div></div>
+            </div>
+            <div class="act-item">
+              <div class="act-dot" style="background:var(--sg)"></div>
+              <div style="flex:1"><div style="font-size:12.5px">Menu photo updated for <strong>Green Tea Latte</strong></div><div style="font-size:11px;color:var(--mt);margin-top:2px">11:30 AM</div></div>
+              <button class="btn btn-ghost btn-sm" onclick="undoActivity(this)" style="font-size:11px"><i class="bi bi-arrow-counterclockwise"></i> Undo</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upsell Card -->
+        <div class="card anim-up d6" style="padding:20px 22px;background:linear-gradient(135deg,#fff 0%,#F0FDF9 50%,#ECFDF5 100%);border-color:rgba(4,225,171,.2);cursor:pointer" onclick="showToast('Opening upgrade page…')">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <div style="width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--ac),var(--em));display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="bi bi-rocket-takeoff-fill" style="color:#fff;font-size:18px"></i></div>
+            <div style="flex:1">
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;margin-bottom:4px">Unlock Auto-Reply for Customers</div>
+              <div style="font-size:12px;color:var(--mt);line-height:1.55">Your store gets 15+ messages daily. Auto-Reply can handle common questions and free up your time.</div>
+              <div style="margin-top:10px"><span class="btn btn-primary btn-sm">Learn More <i class="bi bi-arrow-right"></i></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web Preview -->
+        <div class="card anim-up d7" style="padding:20px 22px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px">Live Preview</div>
+            <button class="btn btn-outline btn-sm" onclick="showToast('Opening live site…')"><i class="bi bi-box-arrow-up-right"></i> View Site</button>
+          </div>
+          <div style="border-radius:10px;overflow:hidden;border:1px solid var(--bd);background:var(--sub);height:200px;display:flex;align-items:center;justify-content:center;position:relative">
+            <div style="text-align:center">
+              <i class="bi bi-globe2" style="font-size:36px;color:var(--mt);opacity:.4"></i>
+              <div style="font-size:12px;color:var(--mt);margin-top:6px">yourstore.com</div>
+            </div>
+            <div style="position:absolute;bottom:10px;left:10px;right:10px;height:6px;background:rgba(4,225,171,.2);border-radius:3px;overflow:hidden">
+              <div style="width:78%;height:100%;background:var(--ac);border-radius:3px"></div>
+            </div>
+            <div style="position:absolute;top:10px;right:10px" class="badge badge-open">LIVE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ FAB ROW: Back-to-Top + Chatbot ═══════════ -->
+<div class="fab-row">
+  <button class="fab fab-top" id="fabTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+  <button class="fab fab-chat" id="fabChat" onclick="toggleChat()" aria-label="Chat">
+    <i class="bi bi-chat-dots-fill" id="fabChatIcon"></i>
+  </button>
+</div>
+
+<!-- ═══════════ CHATBOT PANEL ═══════════ -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center"><i class="bi bi-robot"></i></div>
+      <div><div style="font-weight:700;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif">Store Assistant</div><div style="font-size:11px;opacity:.85">Online · replies instantly</div></div>
+    </div>
+    <button onclick="toggleChat()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">Hi Ek! 👋 I'm your store assistant. Ask me anything about your shop — prices, orders, promos, or just say hello.</div>
+  </div>
+  <div class="chat-quick" id="chatQuick">
+    <button onclick="quickChat('How are sales today?')">📊 Sales today</button>
+    <button onclick="quickChat('Any pending orders?')">📦 Pending orders</button>
+    <button onclick="quickChat('Show my promos')">🎉 My promos</button>
+  </div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()"><i class="bi bi-send-fill"></i></button>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL: LOGIN ═══════════ -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('loginModal')"><i class="bi bi-x-lg"></i></button>
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--ac),var(--em));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;margin-bottom:14px">S</div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em">Welcome back</h2>
+      <p style="font-size:13px;color:var(--mt);margin-top:4px">Sign in to manage your store</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Email</label><input class="input" type="email" placeholder="you@store.com"></div>
+      <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Password</label><input class="input" type="password" placeholder="••••••••"></div>
+      <div style="text-align:right"><a href="#" onclick="switchModal('loginModal','forgotModal')" style="font-size:12px;color:var(--ac);font-weight:600;text-decoration:none">Forgot password?</a></div>
+      <button class="btn btn-primary" style="justify-content:center;padding:12px;font-size:14px" onclick="closeModal('loginModal');showToast('Welcome back, Ek!')">Sign In</button>
+      <div style="text-align:center;font-size:12.5px;color:var(--mt)">Don't have an account? <a href="#" onclick="switchModal('loginModal','signupModal')" style="color:var(--ac);font-weight:600;text-decoration:none">Sign up</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL: SIGN UP ═══════════ -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('signupModal')"><i class="bi bi-x-lg"></i></button>
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--vi),var(--ind));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;margin-bottom:14px">S</div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em">Create your account</h2>
+      <p style="font-size:13px;color:var(--mt);margin-top:4px">Start managing your store in minutes</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">First Name</label><input class="input" placeholder="Ek"></div>
+        <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Last Name</label><input class="input" placeholder="Somsak"></div>
+      </div>
+      <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Email</label><input class="input" type="email" placeholder="you@store.com"></div>
+      <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Store Name</label><input class="input" placeholder="My Awesome Café"></div>
+      <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Password</label><input class="input" type="password" placeholder="Min. 8 characters"></div>
+      <button class="btn btn-primary" style="justify-content:center;padding:12px;font-size:14px;background:linear-gradient(135deg,var(--vi),var(--ind))" onclick="closeModal('signupModal');showToast('Account created! Welcome aboard 🎉')">Create Account</button>
+      <div style="text-align:center;font-size:12.5px;color:var(--mt)">Already have an account? <a href="#" onclick="switchModal('signupModal','loginModal')" style="color:var(--ac);font-weight:600;text-decoration:none">Sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL: FORGOT PASSWORD ═══════════ -->
+<div class="modal-overlay" id="forgotModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('forgotModal')"><i class="bi bi-x-lg"></i></button>
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#EF4444);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:20px;margin-bottom:14px"><i class="bi bi-key-fill"></i></div>
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em">Reset your password</h2>
+      <p style="font-size:13px;color:var(--mt);margin-top:4px">We'll send you a reset link via email</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div><label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Email Address</label><input class="input" type="email" placeholder="you@store.com"></div>
+      <button class="btn btn-primary" style="justify-content:center;padding:12px;font-size:14px" onclick="closeModal('forgotModal');showToast('Reset link sent to your email 📧')">Send Reset Link</button>
+      <div style="text-align:center;font-size:12.5px;color:var(--mt)">Remembered it? <a href="#" onclick="switchModal('forgotModal','loginModal')" style="color:var(--ac);font-weight:600;text-decoration:none">Back to sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL: CLOSE SHOP ═══════════ -->
+<div class="modal-overlay" id="closeShopModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('closeShopModal')"><i class="bi bi-x-lg"></i></button>
+    <div style="margin-bottom:20px">
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.02em"><i class="bi bi-door-closed-fill" style="color:#EF4444;margin-right:8px"></i> Close Shop</h2>
+      <p style="font-size:13px;color:var(--mt);margin-top:4px">Choose when to close and write a message for customers</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div>
+        <label style="font-size:12px;font-weight:600;display:block;margin-bottom:8px">Close Period</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap" id="closeOptions">
+          <label class="close-opt" style="flex:1;min-width:80px;padding:10px 14px;border:1.5px solid var(--ac);border-radius:10px;background:rgba(4,225,171,.08);font-size:13px;font-weight:600;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><input type="radio" name="closePeriod" value="today" checked style="display:none" onchange="updateCloseOpt(this)"> <i class="bi bi-calendar-check"></i> Today</label>
+          <label class="close-opt" style="flex:1;min-width:80px;padding:10px 14px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;font-size:13px;font-weight:500;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><input type="radio" name="closePeriod" value="tomorrow" style="display:none" onchange="updateCloseOpt(this)"> <i class="bi bi-calendar-plus"></i> Tomorrow</label>
+          <label class="close-opt" style="flex:1;min-width:80px;padding:10px 14px;border:1.5px solid var(--bd);border-radius:10px;background:#fff;font-size:13px;font-weight:500;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><input type="radio" name="closePeriod" value="until" style="display:none" onchange="updateCloseOpt(this)"> <i class="bi bi-calendar-range"></i> Until…</label>
+        </div>
+        <div id="untilDateWrap" style="margin-top:10px;display:none">
+          <input class="input" type="date" id="untilDate">
+        </div>
+      </div>
+      <div>
+        <label style="font-size:12px;font-weight:600;display:block;margin-bottom:6px">Message to Customers</label>
+        <textarea class="input" id="closeMsg" rows="3">We're taking a short break and will be back soon. Thank you for your patience — see you shortly!</textarea>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-outline" style="flex:1;justify-content:center;padding:11px" onclick="closeModal('closeShopModal')">Cancel</button>
+        <button class="btn" style="flex:1;justify-content:center;padding:11px;background:#EF4444;color:#fff" onclick="confirmCloseShop()"><i class="bi bi-door-closed"></i> Close Shop</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ P2 CONFIRM OVERLAY ═══════════ -->
+<div class="confirm-overlay" id="p2Confirm">
+  <div class="confirm-box">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="width:36px;height:36px;border-radius:9px;background:rgba(106,93,230,.12);display:flex;align-items:center;justify-content:center"><i class="bi bi-magic" style="color:var(--vi)"></i></div>
+      <div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:15px">Confirm Change</div><div style="font-size:11.5px;color:var(--mt)">Please review before applying</div></div>
+    </div>
+    <div id="p2ConfirmBody" style="background:var(--sub);border-radius:10px;padding:16px;margin-bottom:18px"></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-outline" style="flex:1;justify-content:center" onclick="document.getElementById('p2Confirm').classList.remove('show')">Cancel</button>
+      <button class="btn btn-primary" style="flex:1;justify-content:center" onclick="confirmP2()"><i class="bi bi-check-lg"></i> Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TOAST ═══════════ -->
+<div id="toast" style="position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--tx);color:#fff;padding:12px 24px;border-radius:12px;font-size:13px;font-weight:500;z-index:200;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.22,1,.36,1);box-shadow:0 12px 40px rgba(0,0,0,.18);display:flex;align-items:center;gap:8px"></div>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+// ── Date ──
+const now=new Date();
+const opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+const dateStr=now.toLocaleDateString('en-US',opts);
+document.getElementById('headerDate').textContent=dateStr;
+document.getElementById('greetingDate').textContent=dateStr+' · StoreHub Dashboard';
+
+// ── Sidebar ──
+function toggleSidebar(){
+  const s=document.getElementById('sidebar');
+  const o=document.getElementById('sidebarOverlay');
+  s.classList.toggle('open');
+  o.classList.toggle('show');
+}
+function setActive(el){
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+  if(window.innerWidth<1024)toggleSidebar();
+}
+
+// ── Shop Toggle ──
+let shopOpen=true;
+function toggleShop(){
+  shopOpen=!shopOpen;
+  const t=document.getElementById('shopToggle');
+  const b=document.getElementById('shopBadge');
+  const l=document.getElementById('toggleLabel');
+  t.classList.toggle('on',shopOpen);
+  if(shopOpen){
+    b.className='badge badge-open';
+    b.innerHTML='<i class="bi bi-circle-fill" style="font-size:7px"></i> Shop Open';
+    l.textContent='Open';
+    showToast('Shop is now open ✅');
+  }else{
+    b.className='badge badge-closed';
+    b.innerHTML='<i class="bi bi-circle-fill" style="font-size:7px"></i> Shop Closed';
+    l.textContent='Closed';
+    showToast('Shop closed — banner will appear on your site');
+  }
+}
+
+// ── Modals ──
+function openModal(id){document.getElementById(id).classList.add('show');document.body.style.overflow='hidden'}
+function closeModal(id){document.getElementById(id).classList.remove('show');document.body.style.overflow=''}
+function switchModal(from,to){closeModal(from);setTimeout(()=>openModal(to),200)}
+
+// ── Close Shop Modal ──
+function updateCloseOpt(input){
+  document.querySelectorAll('.close-opt').forEach(l=>{l.style.borderColor='var(--bd)';l.style.background='#fff';l.style.fontWeight='500'});
+  const lbl=input.closest('label');
+  lbl.style.borderColor='var(--ac)';lbl.style.background='rgba(4,225,171,.08)';lbl.style.fontWeight='600';
+  document.getElementById('untilDateWrap').style.display=input.value==='until'?'block':'none';
+}
+function confirmCloseShop(){
+  closeModal('closeShopModal');
+  shopOpen=false;
+  document.getElementById('shopToggle').classList.remove('on');
+  document.getElementById('shopBadge').className='badge badge-closed';
+  document.getElementById('shopBadge').innerHTML='<i class="bi bi-circle-fill" style="font-size:7px"></i> Shop Closed';
+  document.getElementById('toggleLabel').textContent='Closed';
+  showToast('Shop closed — banner is now visible to customers');
+}
+
+// ── Note Dropdown ──
+function toggleDropdown(){document.getElementById('noteDropdown').classList.toggle('show')}
+document.addEventListener('click',e=>{
+  const dd=document.getElementById('noteDropdown');
+  if(!e.target.closest('#noteDropdown')&&!e.target.closest('[onclick*="toggleDropdown"]'))dd.classList.remove('show');
+});
+
+// ── Copy App Info ──
+function copyAppInfo(){
+  const txt=document.getElementById('appInfoContent').innerText;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const l=document.getElementById('copyLabel');
+    l.textContent='Copied!';
+    setTimeout(()=>l.textContent='Copy Info',2000);
+  }).catch(()=>{showToast('Failed to copy')});
+}
+
+// ── Back to Top ──
+const fabTop=document.getElementById('fabTop');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>300)fabTop.classList.add('show');
+  else fabTop.classList.remove('show');
+});
+
+// ── Chatbot ──
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chatPanel').classList.toggle('open',chatOpen);
+  const icon=document.getElementById('fabChatIcon');
+  icon.className=chatOpen?'bi bi-x-lg':'bi bi-chat-dots-fill';
+  if(chatOpen)document.getElementById('chatInput').focus();
+}
+function addMsg(text,cls){
+  const b=document.getElementById('chatBody');
+  const d=document.createElement('div');
+  d.className='chat-msg '+cls;
+  d.textContent=text;
+  b.appendChild(d);
+  b.scrollTop=b.scrollHeight;
+}
+function sendChat(){
+  const inp=document.getElementById('chatInput');
+  const txt=inp.value.trim();
+  if(!txt)return;
+  addMsg(txt,'user');
+  inp.value='';
+  setTimeout(()=>botReply(txt),600);
+}
+function quickChat(txt){
+  addMsg(txt,'user');
+  setTimeout(()=>botReply(txt),500);
+}
+function botReply(txt){
+  const t=txt.toLowerCase();
+  let reply="I understand you'd like help with that. Let me look into it for you! 🔍";
+  if(t.includes('sale')||t.includes('revenue')||t.includes('today'))reply="Today's sales: ฿12,450 from 38 orders. That's +14% compared to yesterday! 📈";
+  else if(t.includes('order')||t.includes('pending'))reply="You have 3 pending orders waiting for confirmation. Would you like me to show them?";
+  else if(t.includes('promo')||t.includes('discount'))reply="You have 1 active promo: \"Happy Hour\" (2-5 PM, 15% off). It expires in 2 days. Want to extend it?";
+  else if(t.includes('price')||t.includes('menu'))reply="5 menu items haven't been priced in 60+ days. I recommend reviewing: Green Tea Latte, Mocha, Croissant, Fresh Orange Juice, and Matcha Cake.";
+  else if(t.includes('hello')||t.includes('hi')||t.includes('hey'))reply="Hey Ek! 👋 Great to see you. What can I help you with today?";
+  else if(t.includes('close')||t.includes('open'))reply="Your shop status is currently: "+(shopOpen?"OPEN":"CLOSED")+". You can toggle it from the switch at the top of your dashboard.";
+  else if(t.includes('customer')||t.includes('lead'))reply="You have 7 new leads today and 3 customers waiting for replies. Want me to open the inbox?";
+  else if(t.includes('thank'))reply="You're welcome! Always happy to help. 😊";
+  addMsg(reply,'bot');
+}
+
+// ── P2 Natural Language → Structured Change ──
+let p2PendingAction=null;
+function handleP2(){
+  const inp=document.getElementById('p2Input');
+  const txt=inp.value.trim();
+  if(!txt)return;
+  const lower=txt.toLowerCase();
+  let action=null;
+
+  // Price change
+  const priceMatch=txt.match(/(?:change|set|update|make)\s+(?:the\s+)?(.+?)\s+(?:to|at|for)\s+[\s]*฿?(\d+)/i);
+  if(priceMatch){
+    action={type:'price',item:priceMatch[1].trim(),price:parseInt(priceMatch[2])};
+  }
+  // Close shop
+  else if(lower.includes('close')&&lower.includes('shop')){
+    action={type:'close'};
+  }
+  // Open shop
+  else if(lower.includes('open')&&lower.includes('shop')){
+    action={type:'open'};
+  }
+  // Promo draft
+  else if(lower.includes('promo')||lower.includes('promotion')||lower.includes('discount')){
+    action={type:'promo',name:txt};
+  }
+  // Status change
+  else if(lower.includes('disable')||lower.includes('hide')||lower.includes('remove')||lower.includes('enable')||lower.includes('show')){
+    action={type:'status',item:txt};
+  }
+
+  if(!action){
+    showToast('I can help with: price changes, shop status, promos, or item status');
+    return;
+  }
+
+  p2PendingAction=action;
+  const body=document.getElementById('p2ConfirmBody');
+  let html='';
+
+  if(action.type==='price'){
+    html=`<div style="font-size:13px"><strong>Change Price</strong></div>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:12px">
+      <div style="flex:1;text-align:center;padding:12px;background:#fff;border-radius:10px;border:1px solid var(--bd)">
+        <div style="font-size:11px;color:var(--mt);margin-bottom:4px">BEFORE</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px;color:var(--mt);text-decoration:line-through">฿70</div>
+      </div>
+      <i class="bi bi-arrow-right" style="color:var(--ac);font-size:18px"></i>
+      <div style="flex:1;text-align:center;padding:12px;background:rgba(4,225,171,.08);border-radius:10px;border:1.5px solid var(--ac)">
+        <div style="font-size:11px;color:var(--ac);margin-bottom:4px;font-weight:600">AFTER</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--tx)">฿${action.price}</div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--mt);margin-top:10px">Item: <strong>${action.item}</strong> · Change will be logged as "Ordered via text"</div>`;
+  }else if(action.type==='close'){
+    html=`<div style="font-size:13px"><strong>Close the shop</strong></div>
+    <div style="font-size:12.5px;color:var(--mt);margin-top:8px">Your shop will be marked as closed. A banner will appear on your website immediately. Customers will see: "We're temporarily closed. Thank you for your patience."</div>
+    <div style="margin-top:10px;font-size:12px">Logged as <span style="background:rgba(106,93,230,.1);color:var(--vi);padding:2px 8px;border-radius:6px;font-weight:600">"Ordered via text"</span></div>`;
+  }else if(action.type==='open'){
+    html=`<div style="font-size:13px"><strong>Open the shop</strong></div>
+    <div style="font-size:12.5px;color:var(--mt);margin-top:8px">Your shop will be marked as open. The closed banner will be removed from your website.</div>
+    <div style="margin-top:10px;font-size:12px">Logged as <span style="background:rgba(106,93,230,.1);color:var(--vi);padding:2px 8px;border-radius:6px;font-weight:600">"Ordered via text"</span></div>`;
+  }else if(action.type==='promo'){
+    html=`<div style="font-size:13px"><strong>Draft a promotion</strong></div>
+    <div style="font-size:12.5px;color:var(--mt);margin-top:8px">A draft promo will be created based on: <em>"${action.name}"</em>. You can review and publish it from the Promotions page.</div>
+    <div style="margin-top:10px;font-size:12px">Logged as <span style="background:rgba(106,93,230,.1);color:var(--vi);padding:2px 8px;border-radius:6px;font-weight:600">"Ordered via text"</span></div>`;
+  }else{
+    html=`<div style="font-size:13px"><strong>Change item status</strong></div>
+    <div style="font-size:12.5px;color:var(--mt);margin-top:8px">Requested change: <em>"${action.item}"</em></div>
+    <div style="margin-top:10px;font-size:12px">Logged as <span style="background:rgba(106,93,230,.1);color:var(--vi);padding:2px 8px;border-radius:6px;font-weight:600">"Ordered via text"</span></div>`;
+  }
+
+  body.innerHTML=html;
+  document.getElementById('p2Confirm').classList.add('show');
+  inp.value='';
+}
+function confirmP2(){
+  document.getElementById('p2Confirm').classList.remove('show');
+  if(!p2PendingAction)return;
+  const a=p2PendingAction;
+  if(a.type==='price')showToast(`✅ ${a.item} price updated to ฿${a.price}`);
+  else if(a.type==='close'){toggleShop();}
+  else if(a.type==='open'){if(!shopOpen)toggleShop();}
+  else if(a.type==='promo')showToast('📝 Promo draft created — check Promotions page');
+  else showToast('✅ Item status updated');
+  p2PendingAction=null;
+}
+
+// ── Activity Undo ──
+function undoActivity(btn){
+  const item=btn.closest('.act-item');
+  item.style.opacity='.4';
+  item.style.textDecoration='line-through';
+  btn.disabled=true;
+  btn.innerHTML='<i class="bi bi-check-lg"></i> Done';
+  showToast('Action undone ↩');
+}
+
+// ── Toast ──
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.innerHTML='<i class="bi bi-info-circle-fill"></i> '+msg;
+  t.style.opacity='1';
+  t.style.transform='translateX(-50%) translateY(0)';
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)'},2800);
+}
+
+// ── Metric Count-Up ──
+function countUp(el,target,dur=1200){
+  let start=0;const step=target/(dur/16);
+  function tick(){start+=step;if(start>=target){el.textContent=target.toLocaleString();return}el.textContent=Math.floor(start).toLocaleString();requestAnimationFrame(tick)}
+  tick();
+}
+setTimeout(()=>{countUp(document.getElementById('metricVisitors'),247);countUp(document.getElementById('metricContacts'),18);countUp(document.getElementById('metricLeads'),7)},600);
+
+// ── Responsive Bento ──
+function layoutBento(){
+  const grid=document.getElementById('bentoGrid');
+  const left=document.getElementById('leftCol');
+  const right=document.getElementById('rightCol');
+  if(window.innerWidth>=1024){
+    grid.style.gridTemplateColumns='1.4fr 1fr';
+    left.style.order='1';right.style.order='2';
+  }else{
+    grid.style.gridTemplateColumns='1fr';
+    left.style.order='';right.style.order='';
+  }
+}
+layoutBento();
+window.addEventListener('resize',layoutBento);
+
+// ── Close modals on backdrop click ──
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)});
+});
+document.getElementById('p2Confirm').addEventListener('click',e=>{if(e.target.id==='p2Confirm')e.target.classList.remove('show')});
+
+// ── Keyboard ──
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal-overlay.show').forEach(m=>closeModal(m.id));
+    document.getElementById('p2Confirm').classList.remove('show');
+    document.getElementById('noteDropdown').classList.remove('show');
+    if(chatOpen)toggleChat();
+  }
+});
+</script>
+</body>
+</html>
