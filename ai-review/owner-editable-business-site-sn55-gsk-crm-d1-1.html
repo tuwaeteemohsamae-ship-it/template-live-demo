@@ -1,0 +1,2251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Sala Console — Today at your shop</title>
+<meta name="description" content="Sala Console — owner back office. Pending tasks, shop status, today's numbers, and one-tap fixes." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- icon fonts (font-icon only) -->
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- tailwind (play CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  if (window.tailwind) {
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Plus Jakarta Sans','sans-serif'] },
+        colors: { ink:'#291F1B', navy:'#050738', indigo:'#222480', mint:'#04E1AB', emerald:'#10AE9E', sage:'#BD9681', violet:'#6A5DE6', olive:'#724E40' }
+      }}
+    };
+  }
+</script>
+<!-- NOTE: shadcn/ui ships React + Tailwind only (no CDN build). Its tokens & primitives
+     (card, button, switch, dialog, dropdown-menu, sheet, toast, skeleton) are hand-ported
+     to the CSS below so this single file runs with zero build step. -->
+<style>
+:root{
+  --ink:#291F1B; --ink-2:#6E5F57; --ink-3:#93857D;
+  --mint:#04E1AB; --mint-ink:#063D30; --mint-50:#E9FCF6; --mint-100:#CFF8EC;
+  --emerald:#10AE9E; --sage:#BD9681; --sage-50:#F7EFEA;
+  --violet:#6A5DE6; --violet-50:#EEECFE;
+  --indigo:#222480; --navy:#050738;
+  --olive:#724E40; --canvas:#E3E3DD;
+  --line:rgba(41,31,27,.10); --line-soft:rgba(41,31,27,.055);
+  --radius:20px;
+  --hh:74px; --sw:276px; --sw-c:84px;
+  --shadow-sm:0 1px 2px rgba(41,31,27,.05);
+  --shadow-md:0 1px 2px rgba(41,31,27,.04), 0 14px 34px -18px rgba(41,31,27,.16);
+  --shadow-lg:0 2px 4px rgba(41,31,27,.04), 0 30px 60px -28px rgba(5,7,56,.28);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:14px;line-height:1.6;letter-spacing:-0.005em;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4,.display{font-family:'Plus Jakarta Sans','Inter',sans-serif;margin:0;letter-spacing:-0.03em;line-height:1.12;font-weight:800}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;font-size:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+::selection{background:var(--mint);color:#04291F}
+:focus-visible{outline:2px solid var(--emerald);outline-offset:2px;border-radius:6px}
+
+/* ---------- scrollbars: themed, no arrow buttons ---------- */
+*{scrollbar-width:thin;scrollbar-color:#CFC7BF transparent}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#D9D2CA;border-radius:99px;border:2px solid #fff}
+::-webkit-scrollbar-thumb:hover{background:var(--sage)}
+::-webkit-scrollbar-button{display:none;width:0;height:0}
+::-webkit-scrollbar-corner{background:transparent}
+.side-scroll::-webkit-scrollbar-thumb{background:#E2DCD6;border-color:#fff}
+.side-scroll::-webkit-scrollbar-thumb:hover{background:var(--mint)}
+
+/* ---------- shell ---------- */
+.app{min-height:100vh;background:#fff}
+.sidebar{
+  position:fixed;inset:0 auto 0 0;z-index:60;width:var(--sw);
+  background:#fff;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;
+  transition:width .38s var(--ease), transform .38s var(--ease);
+}
+.logo-cell{
+  height:var(--hh);flex:0 0 var(--hh);
+  display:flex;align-items:center;gap:11px;
+  padding:0 16px 0 20px;
+  border-bottom:1px solid var(--line);   /* shared line with header */
+  position:relative;background:#fff;
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand-mark{
+  width:38px;height:38px;flex:0 0 38px;border-radius:12px;
+  background:linear-gradient(140deg,var(--navy) 0%,var(--indigo) 68%,#3B3AA8 100%);
+  display:grid;place-items:center;color:var(--mint);font-size:20px;
+  box-shadow:0 6px 16px -8px rgba(5,7,56,.7), inset 0 1px 0 rgba(255,255,255,.16);
+  position:relative;overflow:hidden;
+}
+.brand-mark::after{content:"";position:absolute;inset:auto -6px -14px auto;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,rgba(4,225,171,.5),transparent 70%)}
+.brand-txt{display:flex;flex-direction:column;line-height:1.05;min-width:0}
+.brand-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:16.5px;letter-spacing:-0.03em}
+.brand-sub{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.collapse-btn{
+  position:absolute;right:-13px;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid var(--line);
+  color:var(--ink-3);display:grid;place-items:center;font-size:13px;z-index:5;
+  box-shadow:var(--shadow-sm);transition:.25s var(--ease);
+}
+.collapse-btn:hover{color:var(--navy);border-color:rgba(41,31,27,.22);transform:translateY(-50%) scale(1.08)}
+.side-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:14px 12px 18px;display:flex;flex-direction:column;gap:2px}
+.nav-group{margin-top:16px}
+.nav-group:first-child{margin-top:2px}
+.nav-label{
+  font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:#A79A92;padding:0 12px 7px;
+}
+.nav-item{
+  position:relative;display:flex;align-items:center;gap:11px;
+  padding:9px 12px;border-radius:11px;color:#5F534D;font-weight:500;font-size:13.5px;
+  transition:background .2s var(--ease),color .2s var(--ease),transform .2s var(--ease);
+}
+.nav-item i{font-size:18px;flex:0 0 18px;text-align:center;color:#8B7D75;transition:color .2s}
+.nav-item .nav-txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-item .nav-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--mint-ink);background:var(--mint-50);border-radius:99px;padding:1px 7px}
+.nav-item:hover{background:#FAFAF8;color:var(--ink)}
+.nav-item:hover i{color:var(--ink)}
+.nav-item.active{background:var(--mint-50);color:#0A3D32;font-weight:600}
+.nav-item.active i{color:var(--emerald)}
+.nav-item.active::before{content:"";position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:3px;height:20px;border-radius:0 3px 3px 0;background:var(--mint)}
+.nav-item.active .nav-tag{background:#fff;color:var(--emerald)}
+.side-foot{border-top:1px solid var(--line-soft);margin-top:auto;padding-top:12px;padding-bottom:2px}
+.preview-box{border:1px solid var(--line-soft);background:#FCFCFA;border-radius:14px;padding:10px 11px}
+.preview-box .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A79A92;display:flex;align-items:center;gap:6px;margin-bottom:7px}
+.mini-select{
+  width:100%;appearance:none;border:1px solid var(--line);background:#fff;border-radius:9px;
+  padding:6px 26px 6px 9px;font-size:12px;font-weight:600;color:var(--ink);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2393857D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 9px center;cursor:pointer;
+}
+.mini-select:hover{border-color:rgba(41,31,27,.22)}
+.demo-row{display:flex;align-items:center;justify-content:space-between;margin-top:9px;gap:8px}
+.demo-row span{font-size:12px;font-weight:500;color:#6E5F57;white-space:nowrap}
+.user-card{display:flex;align-items:center;gap:10px;padding:10px;border-radius:13px;margin-top:10px;transition:background .2s}
+.user-card:hover{background:#FAFAF8}
+.avatar{
+  width:34px;height:34px;border-radius:11px;flex:0 0 34px;display:grid;place-items:center;
+  background:var(--sage-50);color:var(--olive);font-weight:800;font-size:12.5px;letter-spacing:0;
+  border:1px solid rgba(114,78,64,.14);font-family:'Plus Jakarta Sans',sans-serif;
+}
+.user-meta{min-width:0;line-height:1.25}
+.user-meta b{display:block;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.user-meta small{font-size:11px;color:var(--ink-3);font-weight:500}
+.user-card .out{margin-left:auto;color:#B4A79F;font-size:16px;padding:4px;border-radius:8px;transition:.2s}
+.user-card .out:hover{color:var(--ink);background:#F2F0EC}
+
+/* collapsed state */
+body.collapsed .sidebar{width:var(--sw-c)}
+body.collapsed .brand-txt,body.collapsed .nav-txt,body.collapsed .nav-tag,
+body.collapsed .nav-label,body.collapsed .preview-box,body.collapsed .user-meta,
+body.collapsed .user-card .out{display:none}
+body.collapsed .logo-cell{justify-content:center;padding:0}
+body.collapsed .side-scroll{padding-left:10px;padding-right:10px}
+body.collapsed .nav-item{justify-content:center;padding:11px 0}
+body.collapsed .nav-item.active::before{left:-10px}
+body.collapsed .user-card{justify-content:center;padding:6px}
+body.collapsed .collapse-btn i{transform:rotate(180deg)}
+body.collapsed .main{margin-left:var(--sw-c)}
+
+/* ---------- header ---------- */
+.main{margin-left:var(--sw);transition:margin-left .38s var(--ease);min-height:100vh;display:flex;flex-direction:column}
+.topbar{
+  height:var(--hh);flex:0 0 var(--hh);position:sticky;top:0;z-index:45;
+  background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:0 22px;
+}
+.topbar-left{display:flex;align-items:center;gap:12px;min-width:0}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-3);font-weight:500;white-space:nowrap}
+.crumbs b{color:var(--ink);font-weight:600;font-size:13px}
+.crumbs i{font-size:14px;color:#C3B8B0}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:36px;height:36px;border-radius:11px;display:grid;place-items:center;
+  color:#6E5F57;font-size:18px;border:1px solid transparent;
+  transition:.22s var(--ease);position:relative;
+}
+.icon-btn:hover{background:#F7F6F3;color:var(--ink);border-color:var(--line-soft);transform:translateY(-1px)}
+.icon-btn .ping{position:absolute;top:7px;right:8px;width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 2px #fff}
+.live-chip{
+  display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--mint-ink);
+  background:var(--mint-50);border-radius:99px;padding:4px 10px 4px 8px;
+}
+.live-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(4,225,171,.22);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(4,225,171,.18)}50%{box-shadow:0 0 0 6px rgba(4,225,171,.05)}}
+.avatar-btn{
+  width:36px;height:36px;border-radius:11px;background:var(--sage-50);border:1px solid rgba(114,78,64,.16);
+  color:var(--olive);font-weight:800;font-size:12px;display:grid;place-items:center;
+  font-family:'Plus Jakarta Sans',sans-serif;transition:.22s var(--ease);
+}
+.avatar-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm);border-color:rgba(114,78,64,.3)}
+.menu-btn{display:none}
+
+/* ---------- dropdown panels (notes / account) ---------- */
+.drop{
+  position:absolute;top:calc(var(--hh) - 12px);right:22px;z-index:80;width:392px;max-width:calc(100vw - 28px);
+  background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);
+  padding:0;overflow:hidden;transform-origin:top right;
+  opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);
+  transition:opacity .22s var(--ease),transform .26s var(--ease),visibility .22s;
+}
+.drop.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.drop-head{display:flex;align-items:flex-start;gap:9px;padding:15px 16px 12px;border-bottom:1px solid var(--line-soft)}
+.drop-head .ico{width:30px;height:30px;border-radius:9px;background:var(--mint-50);color:var(--emerald);display:grid;place-items:center;font-size:16px;flex:0 0 30px}
+.drop-head h4{font-size:13.5px;font-weight:700;letter-spacing:-0.01em}
+.drop-head p{font-size:11.5px;color:var(--ink-3);margin-top:2px}
+.drop-body{padding:14px 16px;max-height:min(62vh,470px);overflow-y:auto}
+.drop-body p{font-size:12.5px;line-height:1.72;color:#4B403B;margin-bottom:10px}
+.drop-body p:last-child{margin-bottom:0}
+.drop-body strong{color:var(--ink);font-weight:600}
+.drop-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 14px;border-top:1px solid var(--line-soft);background:#FCFCFA;
+}
+.drop-foot .hint{font-size:11px;color:var(--ink-3)}
+.menu-list{padding:6px}
+.menu-item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border-radius:10px;font-size:13px;font-weight:500;color:#4B403B;transition:background .18s}
+.menu-item:hover{background:#F8F7F4}
+.menu-item i{font-size:16px;color:#8B7D75;width:16px;text-align:center}
+.menu-item small{margin-left:auto;font-size:10.5px;color:#B4A79F}
+.menu-sep{height:1px;background:var(--line-soft);margin:6px 8px}
+.menu-head{padding:10px 12px 8px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A79A92}
+
+/* ---------- content ---------- */
+.content{padding:24px 22px 46px;flex:1;width:100%;max-width:1560px;margin:0 auto}
+.grid-main{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+.col-left,.col-right{display:flex;flex-direction:column;gap:16px;min-width:0}
+@media(min-width:1024px){
+  .grid-main{grid-template-columns:minmax(0,1.42fr) minmax(0,1fr);gap:18px}
+  .content{padding:26px 28px 56px}
+}
+@media(min-width:1440px){
+  .content{padding:30px 36px 64px}
+  .grid-main{gap:20px}
+  .col-left,.col-right{gap:20px}
+}
+
+/* ---------- cards ---------- */
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:20px;position:relative;
+  transition:box-shadow .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
+}
+.card:hover{box-shadow:var(--shadow-md);border-color:rgba(41,31,27,.14)}
+.card-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.card-head h3{font-size:15.5px;font-weight:700;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px}
+.card-head .sub{font-size:11.5px;color:var(--ink-3);margin-top:3px;font-weight:500}
+.card-head .right{margin-left:auto;display:flex;align-items:center;gap:6px;flex:0 0 auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#A79A92}
+.link-sm{font-size:12px;font-weight:600;color:var(--emerald);display:inline-flex;align-items:center;gap:3px;white-space:nowrap;transition:gap .2s}
+.link-sm:hover{gap:6px}
+.link-sm i{font-size:14px}
+.count-pill{
+  font-size:10.5px;font-weight:700;color:#8A5A00;background:#FFF4DE;border-radius:99px;
+  padding:2px 8px;letter-spacing:.02em;
+}
+.count-pill.cool{background:var(--mint-50);color:var(--mint-ink)}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  height:36px;padding:0 14px;border-radius:10px;font-size:12.8px;font-weight:600;
+  border:1px solid transparent;transition:.22s var(--ease);white-space:nowrap;
+}
+.btn i{font-size:15px}
+.btn-dark{background:var(--navy);color:#fff;box-shadow:0 8px 18px -12px rgba(5,7,56,.8)}
+.btn-dark:hover{background:#0B0E4A;transform:translateY(-1px);box-shadow:0 12px 22px -12px rgba(5,7,56,.7)}
+.btn-mint{background:var(--mint);color:var(--mint-ink);box-shadow:0 8px 18px -12px rgba(4,225,171,.9)}
+.btn-mint:hover{background:#03D29F;transform:translateY(-1px)}
+.btn-ghost{background:#fff;border-color:var(--line);color:#4B403B}
+.btn-ghost:hover{background:#F9F8F5;border-color:rgba(41,31,27,.2);transform:translateY(-1px)}
+.btn-soft{background:#F5F4F0;color:var(--ink)}
+.btn-soft:hover{background:#EFEDE8}
+.btn-sm{height:31px;padding:0 11px;font-size:12px;border-radius:9px}
+.btn-block{width:100%}
+.btn-danger{background:#FFF1EE;color:#B23A1E;border-color:rgba(178,58,30,.16)}
+.btn-danger:hover{background:#FFE6E0}
+
+/* switch */
+.switch{position:relative;width:42px;height:24px;flex:0 0 42px;border-radius:99px;background:#E7E3DE;transition:background .3s var(--ease);border:1px solid rgba(41,31,27,.07)}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.22);transition:transform .32s var(--ease)}
+.switch[aria-checked="true"]{background:var(--mint)}
+.switch[aria-checked="true"]::after{transform:translateX(18px)}
+
+/* ---------- greeting ---------- */
+.greet{overflow:hidden;padding:22px 22px 20px;background:linear-gradient(178deg,#fff 0%,#fff 62%,#FCFEFC 100%)}
+.greet::before{content:"";position:absolute;right:-70px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(4,225,171,.14),transparent 68%);pointer-events:none}
+.greet::after{content:"";position:absolute;right:40px;bottom:-120px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(189,150,129,.16),transparent 66%);pointer-events:none}
+.greet-top{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
+.greet h1{font-size:clamp(23px,3.1vw,32px);letter-spacing:-0.035em;line-height:1.1}
+.greet .date{font-size:12px;color:var(--ink-3);margin-top:7px;font-weight:500;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.greet .date .sep{width:3px;height:3px;border-radius:50%;background:#D3CBC4}
+.greet-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.status-line{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);position:relative;z-index:1}
+.status-badge{
+  display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 9px;border-radius:99px;
+  font-size:11.5px;font-weight:700;letter-spacing:.01em;
+  background:var(--mint-50);color:var(--mint-ink);border:1px solid rgba(4,225,171,.28);
+  transition:.3s var(--ease);
+}
+.status-badge .sdot{width:6px;height:6px;border-radius:50%;background:var(--emerald);box-shadow:0 0 0 3px rgba(16,174,158,.16)}
+.status-badge.closed{background:#FDF2EE;color:#9C3B1D;border-color:rgba(178,58,30,.2)}
+.status-badge.closed .sdot{background:#D9542F;box-shadow:0 0 0 3px rgba(217,84,47,.16)}
+.status-note{font-size:12px;color:var(--ink-3);font-weight:500}
+.close-toggle{margin-left:auto;display:flex;align-items:center;gap:9px;padding:6px 10px 6px 12px;border-radius:11px;border:1px solid var(--line-soft);background:#FCFCFA}
+.close-toggle span{font-size:12px;font-weight:600;color:#5F534D;white-space:nowrap}
+.reopen-btn{display:none}
+body.shop-closed .reopen-btn{display:inline-flex}
+body.shop-closed .close-toggle{display:none}
+
+/* ---------- pending tasks ---------- */
+.task{
+  display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;
+  border:1px solid var(--line-soft);background:#fff;
+  transition:.28s var(--ease);position:relative;overflow:hidden;
+}
+.task + .task{margin-top:9px}
+.task::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:2px;border-radius:0 3px 3px 0;background:var(--line);transition:background .25s}
+.task.u-high::before{background:#E4572E}
+.task.u-mid::before{background:var(--sage)}
+.task.u-low::before{background:var(--mint)}
+.task:hover{border-color:rgba(41,31,27,.16);box-shadow:0 8px 22px -18px rgba(41,31,27,.5);transform:translateY(-1px)}
+.task-ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex:0 0 38px;transition:.25s}
+.task.u-high .task-ico{background:#FFF0EA;color:#C2441F}
+.task.u-mid .task-ico{background:var(--sage-50);color:#8E6449}
+.task.u-low .task-ico{background:var(--mint-50);color:var(--emerald)}
+.task-body{min-width:0;flex:1}
+.task-body p{font-size:13.2px;font-weight:600;line-height:1.4;letter-spacing:-0.012em}
+.task-body .meta{display:flex;align-items:center;gap:6px;margin-top:3px;font-size:11px;color:var(--ink-3);font-weight:500;flex-wrap:wrap}
+.task-body .meta .flag{color:#B23A1E;font-weight:700;display:inline-flex;align-items:center;gap:3px}
+.task-body .meta .flag.cool{color:var(--emerald)}
+.task .btn{flex:0 0 auto}
+.tasks-empty{display:none;text-align:center;padding:26px 12px 20px}
+.tasks-empty .ok-ico{width:46px;height:46px;border-radius:50%;background:var(--mint-50);color:var(--emerald);display:grid;place-items:center;font-size:22px;margin:0 auto 11px}
+.tasks-empty p{font-size:13px;color:#5F534D;font-weight:500}
+.tasks-empty small{display:block;font-size:11.5px;color:var(--ink-3);margin-top:3px}
+body.tasks-none .task{display:none}
+body.tasks-none #tasksEmpty{display:block}
+
+/* checklist (empty shop) */
+.checklist{display:none}
+body.state-empty .checklist{display:block}
+body.state-empty #tasksList,body.state-empty #tasksEmpty{display:none!important}
+.chk-item{display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:13px;border:1px dashed var(--line);background:#FCFCFA;transition:.25s;cursor:pointer}
+.chk-item + .chk-item{margin-top:8px}
+.chk-item:hover{background:#F8F8F4;border-color:rgba(41,31,27,.2);transform:translateY(-1px)}
+.chk-box{width:22px;height:22px;border-radius:7px;border:1.5px solid #D8D2CB;background:#fff;display:grid;place-items:center;color:transparent;font-size:13px;flex:0 0 22px;transition:.25s}
+.chk-item.done .chk-box{background:var(--mint);border-color:var(--mint);color:var(--mint-ink)}
+.chk-item.done .chk-txt b{text-decoration:line-through;color:var(--ink-3)}
+.chk-txt{min-width:0}
+.chk-txt b{display:block;font-size:12.8px;font-weight:600}
+.chk-txt small{font-size:11px;color:var(--ink-3)}
+.chk-item .go{margin-left:auto;color:#C3B8B0;font-size:15px}
+.chk-prog{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.chk-prog .bar{flex:1;height:5px;border-radius:99px;background:#F0EEEA;overflow:hidden}
+.chk-prog .bar i{display:block;height:100%;width:33%;background:linear-gradient(90deg,var(--mint),var(--emerald));border-radius:99px;transition:width .5s var(--ease)}
+.chk-prog span{font-size:11px;font-weight:700;color:var(--ink-3)}
+
+/* ---------- shortcuts ---------- */
+.short-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.short{
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;justify-content:center;
+  min-height:98px;padding:14px;border-radius:15px;border:1px solid var(--line-soft);
+  background:#fff;text-align:left;transition:.28s var(--ease);position:relative;overflow:hidden;
+}
+.short:hover{transform:translateY(-2px);border-color:rgba(41,31,27,.16);box-shadow:0 16px 30px -24px rgba(41,31,27,.7)}
+.short .s-ico{
+  width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;
+  transition:.28s var(--ease);
+}
+.short:hover .s-ico{transform:scale(1.06) rotate(-2deg)}
+.short b{font-size:13px;font-weight:600;letter-spacing:-0.01em;line-height:1.25}
+.short small{font-size:10.8px;color:var(--ink-3);font-weight:500;line-height:1.3}
+.short .arrow{position:absolute;right:12px;top:13px;font-size:14px;color:#CFC7BF;transition:.25s}
+.short:hover .arrow{color:var(--ink);transform:translate(2px,-2px)}
+.s-mint .s-ico{background:var(--mint-50);color:var(--emerald)}
+.s-violet .s-ico{background:var(--violet-50);color:var(--violet)}
+.s-sage .s-ico{background:var(--sage-50);color:#8E6449}
+.s-navy .s-ico{background:#EEF0FB;color:var(--indigo)}
+
+/* ---------- metrics ---------- */
+.metric-row{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:560px){.metric-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.metric{
+  padding:14px;border-radius:15px;border:1px solid var(--line-soft);background:#fff;
+  text-align:left;transition:.28s var(--ease);position:relative;overflow:hidden;
+}
+.metric:hover{transform:translateY(-2px);border-color:rgba(41,31,27,.16);box-shadow:0 16px 30px -24px rgba(41,31,27,.7)}
+.metric .m-top{display:flex;align-items:center;gap:7px;margin-bottom:9px}
+.metric .m-ico{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-size:13px;background:#F6F5F1;color:#6E5F57}
+.metric.m-mint .m-ico{background:var(--mint-50);color:var(--emerald)}
+.metric.m-violet .m-ico{background:var(--violet-50);color:var(--violet)}
+.metric .m-lbl{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A7C74}
+.metric .num{font-family:'Plus Jakarta Sans',sans-serif;font-size:27px;font-weight:800;letter-spacing:-0.04em;line-height:1}
+.metric .delta{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;margin-top:8px;padding:2px 6px;border-radius:6px}
+.metric .delta.up{color:#0B7358;background:#EAFBF4}
+.metric .delta.down{color:#A8371C;background:#FDF0EC}
+.metric .delta i{font-size:12px}
+.metric .note{font-size:10.5px;color:var(--ink-3);margin-top:6px;font-weight:500;line-height:1.4}
+.metric-num{transition:opacity .3s}
+
+/* ---------- status ---------- */
+.stat-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px dashed var(--line-soft)}
+.stat-row:last-of-type{border-bottom:0}
+.stat-row .k{font-size:11.5px;color:var(--ink-3);font-weight:500;min-width:74px}
+.stat-row .v{font-size:12px;font-weight:600;color:#40352F;margin-left:auto;display:flex;align-items:center;gap:5px}
+.stat-row .v i{font-size:13px;color:var(--emerald)}
+.dot-ok{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(4,225,171,.16)}
+.health-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.health-top .big{font-family:'Plus Jakarta Sans',sans-serif;font-size:14.5px;font-weight:700;letter-spacing:-0.02em}
+.health-badge{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;color:var(--mint-ink);background:var(--mint-50);padding:3px 8px;border-radius:99px}
+
+/* ---------- activity ---------- */
+.act{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line-soft);position:relative}
+.act:last-child{border-bottom:0;padding-bottom:2px}
+.act-ico{width:26px;height:26px;border-radius:8px;flex:0 0 26px;display:grid;place-items:center;font-size:13px;background:#F7F6F2;color:#7B6C64;margin-top:1px}
+.act-ico.price{background:var(--mint-50);color:var(--emerald)}
+.act-ico.promo{background:var(--violet-50);color:var(--violet)}
+.act-ico.photo{background:var(--sage-50);color:#8E6449}
+.act-ico.close{background:#FDF0EC;color:#C2441F}
+.act-body{min-width:0;flex:1}
+.act-body p{font-size:12.4px;line-height:1.5;color:#3E342F;font-weight:500}
+.act-body p b{font-weight:600;color:var(--ink)}
+.act-body .t{font-size:10.5px;color:#A79A92;margin-top:2px;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.act-body .t .reverted{color:#B23A1E;background:#FDF0EC;border-radius:5px;padding:0 5px;font-weight:700;font-size:10px}
+.act .undo{
+  align-self:flex-start;font-size:10.5px;font-weight:700;color:#7A6B63;background:#F7F6F2;
+  padding:3px 7px;border-radius:6px;display:inline-flex;align-items:center;gap:3px;transition:.2s;white-space:nowrap;
+}
+.act .undo:hover{background:#EDEAE4;color:var(--ink);transform:translateY(-1px)}
+.act .undo i{font-size:11px}
+.act-empty{text-align:center;padding:18px 8px;font-size:12px;color:var(--ink-3)}
+
+/* ---------- upgrade ---------- */
+.upsell{
+  position:relative;overflow:hidden;border-radius:var(--radius);padding:20px;
+  background:linear-gradient(135deg,#222480 0%,#1B1C63 46%,#050738 100%);
+  color:#fff;border:1px solid rgba(255,255,255,.08);box-shadow:0 26px 50px -30px rgba(5,7,56,.85);
+}
+.upsell::before{content:"";position:absolute;right:-60px;top:-70px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(4,225,171,.34),transparent 66%)}
+.upsell::after{content:"";position:absolute;left:-40px;bottom:-80px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(106,93,230,.5),transparent 68%)}
+.upsell .inner{position:relative;z-index:1}
+.upsell .pill{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(4,225,171,.16);color:#8CF3DA;border:1px solid rgba(4,225,171,.25);border-radius:99px;padding:3px 9px;margin-bottom:10px}
+.upsell h3{font-size:17px;letter-spacing:-0.025em;line-height:1.2;color:#fff}
+.upsell p{font-size:12px;line-height:1.6;color:rgba(255,255,255,.68);margin-top:7px;max-width:34ch}
+.upsell .act-row{display:flex;align-items:center;gap:9px;margin-top:14px}
+.upsell .btn-light{background:#fff;color:var(--navy);font-weight:700}
+.upsell .btn-light:hover{background:#F2F2FF;transform:translateY(-1px)}
+.upsell .btn-quiet{color:rgba(255,255,255,.6);font-size:11.5px;font-weight:600;padding:0 4px}
+.upsell .btn-quiet:hover{color:#fff}
+.upsell .x{position:absolute;top:12px;right:12px;z-index:2;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:rgba(255,255,255,.45);background:rgba(255,255,255,.07);font-size:13px;transition:.2s}
+.upsell .x:hover{background:rgba(255,255,255,.16);color:#fff}
+.upsell.hide{display:none}
+
+/* ---------- mission strip ---------- */
+.mission{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  border:1px solid rgba(4,225,171,.28);background:linear-gradient(100deg,#F3FEFB 0%,#FBFEF8 60%,#FFFDF7 100%);
+  border-radius:14px;padding:9px 12px;margin-bottom:16px;
+  transition:.3s var(--ease);
+}
+.mission.hide{display:none}
+.mission .m-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mint-ink);background:#fff;border:1px solid rgba(4,225,171,.3);border-radius:99px;padding:3px 8px}
+.mission .m-txt{font-size:12.2px;font-weight:600;color:#2D4B42;display:flex;align-items:center;gap:7px;min-width:0}
+.mission .m-txt span{color:#7D8F89;font-weight:500}
+.mission .m-dots{display:flex;gap:4px;margin-left:auto}
+.mission .m-dots i{width:16px;height:4px;border-radius:99px;background:rgba(41,31,27,.12)}
+.mission .m-dots i.on{background:var(--mint)}
+.mission .btn{margin-left:4px}
+
+/* ---------- prompt (natural language) ---------- */
+.prompt-card{background:linear-gradient(180deg,#fff 0%,#FDFEFC 100%)}
+.prompt-wrap{
+  display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:13px;
+  padding:5px 5px 5px 11px;background:#fff;transition:.25s var(--ease);
+}
+.prompt-wrap:focus-within{border-color:rgba(4,225,171,.55);box-shadow:0 0 0 4px rgba(4,225,171,.1)}
+.prompt-wrap i.spark{font-size:15px;color:var(--violet);flex:0 0 15px}
+.prompt-wrap input{flex:1;border:0;outline:0;background:transparent;font-size:12.5px;min-width:0;padding:6px 0}
+.prompt-wrap input::placeholder{color:#B4A79F}
+.send-btn{width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:15px;transition:.22s;flex:0 0 30px}
+.send-btn:hover{background:var(--indigo);transform:translateY(-1px)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{
+  font-size:10.8px;font-weight:600;color:#6E5F57;background:#F7F6F2;border:1px solid var(--line-soft);
+  border-radius:99px;padding:3px 9px;transition:.2s;white-space:nowrap;
+}
+.chip:hover{background:#EFEDE8;color:var(--ink);transform:translateY(-1px)}
+.draft{
+  margin-top:12px;border:1px solid rgba(4,225,171,.34);border-radius:13px;background:#F8FFFC;
+  padding:12px;display:none;
+}
+.draft.show{display:block;animation:rise .4s var(--ease) both}
+.draft .d-head{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0B7358;margin-bottom:9px}
+.draft .d-row{display:flex;align-items:center;gap:8px;font-size:12px;color:#3E342F;padding:6px 0;border-bottom:1px dashed rgba(4,225,171,.24)}
+.draft .d-row:last-of-type{border-bottom:0}
+.draft .d-row .k{color:#7B6C64;font-weight:500;min-width:78px;font-size:11px}
+.draft .d-row .v{font-weight:600}
+.draft .from{color:#9A8B83;text-decoration:line-through;font-weight:500}
+.draft .arrow{color:#B4A79F;font-size:12px}
+.draft .to{color:#0B7358;font-weight:700}
+.draft .d-note{font-size:10.5px;color:#7D8F89;margin:8px 0 10px;display:flex;align-items:center;gap:5px}
+.draft .d-actions{display:flex;gap:7px}
+.draft .d-actions .btn{height:30px;font-size:11.5px;border-radius:8px;padding:0 11px}
+
+/* ---------- phone preview ---------- */
+.preview-card{padding:16px 16px 18px}
+.preview-cap{display:flex;align-items:center;gap:7px;margin-bottom:11px}
+.preview-cap .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#A79A92}
+.preview-cap .right{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--ink-3);font-weight:600}
+.phone{
+  width:100%;max-width:390px;margin:0 auto;background:#050738;border-radius:32px;padding:7px;
+  box-shadow:0 30px 60px -34px rgba(5,7,56,.7), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.phone-in{background:#fff;border-radius:26px;overflow:hidden;position:relative}
+.phone-status{height:22px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:8.5px;font-weight:700;color:#3E342F;background:#fff}
+.phone-status .dots{display:flex;gap:3px;align-items:center}
+.phone-status .dots i{width:4px;height:4px;border-radius:50%;background:#C3B8B0}
+.site-nav{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line-soft)}
+.site-nav .nm{font-family:'Plus Jakarta Sans',sans-serif;font-size:10.5px;font-weight:800;letter-spacing:-0.02em}
+.site-nav .pill-mini{margin-left:auto;font-size:8px;font-weight:700;color:var(--mint-ink);background:var(--mint-50);border-radius:99px;padding:2px 6px}
+.site-banner{
+  display:none;gap:6px;align-items:flex-start;padding:8px 11px;background:linear-gradient(100deg,#FFF6E9,#FFFDF7);
+  border-bottom:1px solid rgba(189,150,129,.3);font-size:9px;line-height:1.5;color:#7A4A22;font-weight:500;
+}
+body.shop-closed .site-banner{display:flex}
+.site-banner i{font-size:11px;flex:0 0 11px;margin-top:1px;color:#B7743B}
+.site-hero{
+  position:relative;padding:16px 12px 14px;background:linear-gradient(150deg,#EEFBF7 0%,#FDFDFB 58%,#FBF4EE 100%);
+  border-bottom:1px solid var(--line-soft);overflow:hidden;
+}
+.site-hero::after{content:"";position:absolute;right:-26px;top:-26px;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,rgba(4,225,171,.3),transparent 66%)}
+.site-hero .k{font-size:8px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8A7C74}
+.site-hero h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.03em;margin-top:4px;line-height:1.15}
+.site-hero p{font-size:9px;color:#6E5F57;margin-top:4px;line-height:1.5}
+.site-hero .hrs{display:flex;align-items:center;gap:4px;font-size:8.5px;font-weight:700;color:#0B7358;margin-top:7px}
+.site-hero .hrs.closed{color:#B23A1E}
+.site-cta{display:flex;gap:6px;margin-top:10px;position:relative;z-index:1}
+.site-cta .p-btn{flex:1;height:25px;border-radius:7px;display:grid;place-items:center;font-size:9px;font-weight:700;background:var(--navy);color:#fff;gap:4px;grid-auto-flow:column}
+.site-cta .p-btn.alt{background:#fff;color:#3E342F;border:1px solid var(--line)}
+.site-menu{padding:10px 12px 12px}
+.site-menu .m-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.site-menu .m-head span{font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8A7C74}
+.p-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line-soft)}
+.p-item:last-child{border-bottom:0}
+.p-item .thumb{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-size:11px;background:var(--sage-50);color:#8E6449;flex:0 0 24px}
+.p-item .n{font-size:9.5px;font-weight:600;line-height:1.2}
+.p-item .n small{display:block;font-size:8px;color:#A79A92;font-weight:500;margin-top:1px}
+.p-item .pr{margin-left:auto;font-size:9.5px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.02em}
+.p-item.out .n,.p-item.out .pr{opacity:.45;text-decoration:line-through}
+.p-item .out-tag{font-size:7px;font-weight:700;color:#B23A1E;background:#FDF0EC;border-radius:4px;padding:1px 4px;margin-left:5px}
+.phone-foot{padding:7px 12px;border-top:1px solid var(--line-soft);text-align:center;font-size:7.5px;color:#B4A79F;font-weight:600;letter-spacing:.04em}
+
+/* ---------- offline bar / skeleton / states ---------- */
+.offline-bar{
+  display:none;align-items:center;gap:9px;padding:9px 12px;border-radius:12px;
+  background:#FFF8EC;border:1px solid rgba(189,150,129,.4);color:#7A4A22;font-size:12px;font-weight:600;
+  margin-bottom:14px;
+}
+body.state-offline .offline-bar{display:flex}
+.offline-bar i{font-size:15px}
+.offline-bar .cached{margin-left:auto;font-size:10.5px;font-weight:700;color:#9A7B54;background:#fff;border-radius:99px;padding:2px 8px}
+.skeleton-wrap{display:none;grid-template-columns:1fr;gap:16px}
+body.state-loading .skeleton-wrap{display:grid}
+body.state-loading .grid-main,body.state-loading .mission{display:none}
+@media(min-width:1024px){.skeleton-wrap{grid-template-columns:minmax(0,1.42fr) minmax(0,1fr)}}
+.sk{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.sk-line,.sk-box{border-radius:7px;background:linear-gradient(100deg,#F1EFEB 20%,#F8F7F4 40%,#F1EFEB 60%);background-size:200% 100%;animation:shimmer 1.5s infinite linear}
+.sk-line{height:11px;margin-bottom:9px}
+.sk-line.w40{width:40%}.sk-line.w60{width:60%}.sk-line.w80{width:80%}
+.sk-box{height:74px;margin-bottom:10px}
+.sk-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@keyframes shimmer{0%{background-position:180% 0}100%{background-position:-20% 0}}
+
+/* ---------- fab row + chat ---------- */
+.fab-row{
+  position:fixed;right:18px;bottom:18px;z-index:90;
+  display:flex;align-items:center;justify-content:flex-end;gap:5px;
+}
+.fab{
+  width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:21px;
+  box-shadow:0 16px 34px -18px rgba(5,7,56,.6);transition:.3s var(--ease);position:relative;
+}
+.fab-top{
+  background:#fff;color:var(--navy);border:1px solid var(--line);
+  opacity:0;visibility:hidden;transform:translateY(10px) scale(.9);pointer-events:none;
+}
+.fab-top.show{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.fab-top:hover{background:var(--mint-50);border-color:rgba(4,225,171,.4)}
+.fab-chat{background:linear-gradient(145deg,#0A0C4A 0%,var(--navy) 70%);color:#fff;border:1px solid rgba(255,255,255,.1)}
+.fab-chat::after{content:"";position:absolute;inset:0;border-radius:16px;background:radial-gradient(circle at 30% 20%,rgba(4,225,171,.28),transparent 62%);opacity:0;transition:.3s}
+.fab-chat:hover::after{opacity:1}
+.fab-chat:hover{transform:translateY(-2px)}
+.fab-chat i{position:relative;z-index:1}
+.fab-chat .mint-dot{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(4,225,171,.22);z-index:2;animation:pulse 2.6s infinite}
+.chat-panel{
+  position:fixed;right:18px;bottom:82px;z-index:95;width:362px;max-width:calc(100vw - 24px);
+  background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-lg);
+  overflow:hidden;display:flex;flex-direction:column;max-height:min(560px,calc(100vh - 130px));
+  opacity:0;visibility:hidden;transform:translateY(14px) scale(.97);transform-origin:bottom right;
+  transition:opacity .28s var(--ease),transform .32s var(--ease),visibility .28s;
+}
+.chat-panel.open{opacity:1;visibility:visible;transform:none}
+.chat-head{display:flex;align-items:center;gap:9px;padding:12px 13px;border-bottom:1px solid var(--line-soft);background:linear-gradient(120deg,#F8FFFC,#FFFFFF)}
+.chat-head .bot{width:31px;height:31px;border-radius:10px;background:var(--navy);color:var(--mint);display:grid;place-items:center;font-size:16px;position:relative;flex:0 0 31px}
+.chat-head .bot::after{content:"";position:absolute;right:-1px;bottom:-1px;width:8px;height:8px;border-radius:50%;background:var(--mint);border:2px solid #fff}
+.chat-head b{font-size:12.8px;font-weight:700;display:block;letter-spacing:-0.01em}
+.chat-head small{font-size:10px;color:var(--ink-3);font-weight:500;display:flex;align-items:center;gap:4px}
+.chat-head .x{margin-left:auto;color:#A79A92;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:15px;transition:.2s}
+.chat-head .x:hover{background:#F5F4F0;color:var(--ink)}
+.chat-body{padding:13px;overflow-y:auto;display:flex;flex-direction:column;gap:9px;flex:1;background:#FDFDFC;min-height:190px}
+.msg{max-width:86%;font-size:12.2px;line-height:1.55;padding:8px 11px;border-radius:13px;animation:rise .34s var(--ease) both}
+.msg.bot{background:#fff;border:1px solid var(--line-soft);color:#3E342F;border-bottom-left-radius:5px;box-shadow:var(--shadow-sm)}
+.msg.me{background:var(--navy);color:#fff;margin-left:auto;border-bottom-right-radius:5px}
+.msg .tm{display:block;font-size:9px;opacity:.5;margin-top:3px}
+.typing{display:flex;gap:3px;align-items:center;padding:9px 12px;background:#fff;border:1px solid var(--line-soft);border-radius:13px;border-bottom-left-radius:5px;width:fit-content}
+.typing i{width:5px;height:5px;border-radius:50%;background:#C3B8B0;animation:bounce 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}
+.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+.chat-quick{display:flex;gap:5px;padding:0 12px 9px;flex-wrap:wrap;background:#FDFDFC}
+.chat-quick .chip{font-size:10.2px;background:#fff}
+.chat-input{display:flex;align-items:center;gap:7px;padding:9px 10px;border-top:1px solid var(--line-soft);background:#fff}
+.chat-input input{flex:1;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;outline:0;transition:.2s;background:#FCFCFA;min-width:0}
+.chat-input input:focus{border-color:rgba(4,225,171,.55);background:#fff;box-shadow:0 0 0 3px rgba(4,225,171,.09)}
+.chat-input .send{width:32px;height:32px;border-radius:10px;background:var(--mint);color:var(--mint-ink);display:grid;place-items:center;font-size:16px;flex:0 0 32px;transition:.2s}
+.chat-input .send:hover{background:#03D29F;transform:translateY(-1px)}
+
+/* ---------- toasts ---------- */
+.toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:120;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:none;width:calc(100% - 140px);max-width:430px}
+.toast{
+  display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:9px 12px;box-shadow:var(--shadow-lg);font-size:12.2px;font-weight:500;color:#3E342F;
+  animation:toastIn .38s var(--ease) both;pointer-events:auto;max-width:100%;
+}
+.toast.out{animation:toastOut .3s var(--ease) forwards}
+.toast i.ic{font-size:16px;color:var(--emerald);flex:0 0 16px}
+.toast .u{margin-left:6px;font-size:11px;font-weight:700;color:var(--indigo);padding:2px 7px;border-radius:6px;background:#EEF0FB;white-space:nowrap}
+.toast .u:hover{background:#E4E7FA}
+@keyframes toastIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(8px) scale(.98)}}
+
+/* ---------- modals / sheet ---------- */
+.overlay{
+  position:fixed;inset:0;z-index:130;background:rgba(12,10,9,.42);backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;padding:18px;
+  opacity:0;visibility:hidden;transition:opacity .28s var(--ease),visibility .28s;
+}
+.overlay.open{opacity:1;visibility:visible}
+.modal{
+  width:100%;max-width:404px;background:#fff;border-radius:22px;border:1px solid rgba(255,255,255,.6);
+  box-shadow:var(--shadow-lg);padding:22px;position:relative;
+  transform:translateY(16px) scale(.97);transition:transform .34s var(--ease);
+  max-height:calc(100vh - 36px);overflow-y:auto;
+}
+.overlay.open .modal{transform:none}
+.modal .x{
+  position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;
+  color:#A79A92;font-size:16px;transition:.2s;
+}
+.modal .x:hover{background:#F5F4F0;color:var(--ink)}
+.m-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.m-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(140deg,var(--navy),var(--indigo));display:grid;place-items:center;color:var(--mint);font-size:19px;flex:0 0 38px}
+.modal h2{font-size:19px;letter-spacing:-0.03em;line-height:1.2}
+.modal .m-sub{font-size:12px;color:var(--ink-3);margin-top:2px;line-height:1.5}
+.field{margin-top:11px}
+.field label{display:block;font-size:11.5px;font-weight:600;color:#5F534D;margin-bottom:5px}
+.inp{
+  width:100%;height:39px;border:1px solid var(--line);border-radius:10px;padding:0 11px;font-size:13px;
+  background:#FCFCFA;outline:0;transition:.2s;
+}
+.inp:focus{border-color:rgba(4,225,171,.6);background:#fff;box-shadow:0 0 0 3px rgba(4,225,171,.1)}
+textarea.inp{height:auto;padding:9px 11px;line-height:1.6;resize:vertical;min-height:72px}
+.inp-ico{position:relative}
+.inp-ico i{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:15px;color:#B4A79F}
+.inp-ico .inp{padding-left:32px}
+.inp-ico .eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:27px;height:27px;border-radius:7px;display:grid;place-items:center;color:#A79A92;font-size:15px}
+.inp-ico .eye:hover{background:#F2F0EC;color:var(--ink)}
+.m-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;font-size:11.5px}
+.m-row label{display:flex;align-items:center;gap:6px;color:#6E5F57;font-weight:500;cursor:pointer}
+.m-row a,.m-row button{color:var(--emerald);font-weight:700}
+.m-note{font-size:10.8px;color:#A79A92;line-height:1.55;margin-top:11px;text-align:center}
+.m-sep{display:flex;align-items:center;gap:9px;margin:14px 0 11px;color:#C3B8B0;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.m-sep::before,.m-sep::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.social{display:flex;gap:7px}
+.social button{flex:1;height:36px;border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11.5px;font-weight:600;color:#4B403B;transition:.2s;background:#fff}
+.social button:hover{background:#F9F8F5;transform:translateY(-1px);border-color:rgba(41,31,27,.18)}
+.auth-view{display:none;animation:rise .32s var(--ease) both}
+.auth-view.on{display:block}
+.sheet-overlay{align-items:flex-end}
+@media(min-width:640px){.sheet-overlay{align-items:center}}
+.sheet{
+  width:100%;max-width:470px;background:#fff;border-radius:22px 22px 18px 18px;
+  padding:20px;box-shadow:var(--shadow-lg);transform:translateY(24px);
+  transition:transform .36s var(--ease);max-height:calc(100vh - 30px);overflow-y:auto;
+}
+.overlay.open .sheet{transform:none}
+@media(min-width:640px){.sheet{border-radius:22px}}
+.sheet .grab{width:38px;height:4px;border-radius:99px;background:#E7E3DE;margin:0 auto 14px}
+.sheet h2{font-size:18px;letter-spacing:-0.03em}
+.sheet .s-sub{font-size:11.5px;color:var(--ink-3);margin-top:3px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:#F5F4F0;padding:4px;border-radius:11px;margin-top:13px}
+.seg button{height:31px;border-radius:8px;font-size:11.8px;font-weight:600;color:#6E5F57;transition:.22s}
+.seg button.on{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm);font-weight:700}
+.sheet .when{margin-top:10px;display:none}
+.sheet .when.on{display:block}
+.hint-line{font-size:10.5px;color:#A79A92;margin-top:5px;display:flex;align-items:center;gap:4px}
+.sheet-foot{display:flex;gap:8px;margin-top:16px}
+.sheet-foot .btn{flex:1;height:40px}
+.receipt{background:#FCFCFA;border:1px dashed var(--line);border-radius:11px;padding:10px 11px;margin-top:12px;font-size:11px;color:#6E5F57;line-height:1.55}
+.receipt b{color:var(--ink);font-weight:600}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.rise{animation:rise .55s var(--ease) both;animation-delay:var(--d,0ms)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:1023px){
+  .sidebar{transform:translateX(-104%);box-shadow:0 0 60px rgba(5,7,56,.18);width:282px}
+  body.drawer-open .sidebar{transform:none}
+  .main{margin-left:0!important}
+  .menu-btn{display:grid}
+  .collapse-btn{display:none}
+  .sidebar-overlay{position:fixed;inset:0;background:rgba(12,10,9,.4);z-index:55;opacity:0;visibility:hidden;transition:.3s;backdrop-filter:blur(2px)}
+  body.drawer-open .sidebar-overlay{opacity:1;visibility:visible}
+  body.collapsed .sidebar{width:282px}
+  body.collapsed .brand-txt{display:flex}
+  body.collapsed .nav-txt{display:block}
+  body.collapsed .nav-tag{display:inline}
+  body.collapsed .nav-label,body.collapsed .preview-box,body.collapsed .user-meta{display:block}
+  body.collapsed .user-card .out{display:grid}
+  body.collapsed .side-scroll{padding-left:12px;padding-right:12px}
+  body.collapsed .nav-item{justify-content:flex-start;padding:9px 12px}
+  body.collapsed .logo-cell{justify-content:flex-start;padding:0 16px 0 20px}
+  body.drawer-open{overflow:hidden}
+  .toasts{width:calc(100% - 24px);bottom:84px}
+}
+@media(max-width:767px){
+  .crumbs .ws{display:none}
+  .topbar{padding:0 14px;gap:8px}
+  .content{padding:16px 14px 40px}
+  .card{padding:16px;border-radius:17px}
+  .greet{padding:18px 16px 16px}
+  .drop{right:10px;top:calc(var(--hh) - 10px)}
+  .chip{font-size:10.4px}
+  .upsell{padding:17px}
+  .metric{padding:12px}
+  .metric .num{font-size:24px}
+  .task{padding:10px;gap:10px;flex-wrap:wrap}
+  .task .btn{margin-left:48px}
+  .short{min-height:92px;padding:12px}
+  .fab{width:48px;height:48px;border-radius:14px;font-size:19px}
+  .chat-panel{right:10px;left:10px;width:auto;bottom:76px}
+  .fab-row{right:12px;bottom:14px}
+  .sheet-foot{flex-direction:column-reverse}
+}
+@media(max-width:420px){
+  .short-grid{gap:8px}
+  .mission .m-dots{display:none}
+}
+</style>
+</head>
+<body>
+<!-- ================= APP SHELL ================= -->
+<div class="app">
+
+  <!-- mobile drawer backdrop -->
+  <div class="sidebar-overlay" id="drawerOverlay"></div>
+
+  <!-- ---------- LEFT SIDEBAR (white, sticky, scrollable) ---------- -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="logo-cell">
+      <a href="#" class="brand" aria-label="Sala Console home">
+        <span class="brand-mark"><i class="bx bx-store-alt"></i></span>
+        <span class="brand-txt">
+          <span class="brand-name">Sala</span>
+          <span class="brand-sub">Console</span>
+        </span>
+      </a>
+      <button class="collapse-btn" id="collapseBtn" aria-label="Collapse sidebar" title="Collapse sidebar">
+        <i class="bx bx-chevron-left"></i>
+      </button>
+    </div>
+
+    <div class="side-scroll" id="sideScroll">
+      <div class="nav-group">
+        <div class="nav-label">Today</div>
+        <a href="#" class="nav-item active" data-page="Today">
+          <i class="bx bx-home-alt-2"></i><span class="nav-txt">Today</span>
+          <span class="nav-tag">3</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Insights">
+          <i class="bx bx-line-chart"></i><span class="nav-txt">Insights</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Your shop</div>
+        <a href="#" class="nav-item" data-page="Items &amp; prices">
+          <i class="bx bx-dish"></i><span class="nav-txt">Items &amp; prices</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Promotions">
+          <i class="bx bx-purchase-tag-alt"></i><span class="nav-txt">Promotions</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Photos">
+          <i class="bx bx-image-alt"></i><span class="nav-txt">Photos</span>
+          <span class="nav-tag">2</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Leads">
+          <i class="bx bx-message-rounded-dots"></i><span class="nav-txt">Leads inbox</span>
+          <span class="nav-tag">4</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Reviews">
+          <i class="bx bx-star"></i><span class="nav-txt">Reviews</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">Website</div>
+        <a href="#" class="nav-item" data-page="Site health">
+          <i class="bx bx-pulse"></i><span class="nav-txt">Site health</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Shop info">
+          <i class="bx bx-store"></i><span class="nav-txt">Shop info</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Hours &amp; closure">
+          <i class="bx bx-time-five"></i><span class="nav-txt">Hours &amp; closure</span>
+        </a>
+        <a href="#" class="nav-item" data-page="Team">
+          <i class="bx bx-group"></i><span class="nav-txt">Team</span>
+        </a>
+      </div>
+
+      <div class="side-foot">
+        <div class="preview-box">
+          <div class="lbl"><i class="bx bx-layout"></i> View as</div>
+          <select class="mini-select" id="roleSelect" aria-label="View as role">
+            <option>Owner · Khun Ek</option>
+            <option>Staff · Mai</option>
+            <option>Accountant (read only)</option>
+          </select>
+          <div class="demo-row">
+            <span>Demo mode</span>
+            <button class="switch" id="demoSwitch" role="switch" aria-checked="true" aria-label="Toggle demo mode"></button>
+          </div>
+          <div class="seg" id="scnSeg" style="margin-top:10px;padding:3px">
+            <button type="button" class="on" data-scn="A" title="Pending work: bookings / message orders">A</button>
+            <button type="button" data-scn="B" title="Pending work: appointments to confirm">B</button>
+            <button type="button" data-scn="C" title="Pending work: unanswered quotes">C</button>
+          </div>
+          <select class="mini-select" id="stateSelect" aria-label="Page state" style="margin-top:8px">
+            <option value="live">State · live data</option>
+            <option value="empty">State · new shop</option>
+            <option value="loading">State · loading</option>
+            <option value="offline">State · offline</option>
+          </select>
+        </div>
+
+        <div class="user-card">
+          <div class="avatar">KE</div>
+          <div class="user-meta">
+            <b>Khun Ek</b>
+            <small>Owner · Baan Sala Cafe</small>
+          </div>
+          <button class="out" aria-label="Sign out" id="signOutBtn"><i class="bx bx-log-out-circle"></i></button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ---------- MAIN ---------- -->
+  <div class="main">
+
+    <!-- ===== HEADER (shares one continuous border-bottom with the logo cell) ===== -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu"><i class="bx bx-menu"></i></button>
+        <div class="crumbs">
+          <i class="bx bx-grid-alt"></i>
+          <span class="ws">Baan Sala Cafe</span>
+          <i class="bx bx-chevron-right"></i>
+          <b>Today</b>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <span class="live-chip"><span class="dot"></span> Shop open</span>
+        <button class="icon-btn" id="notesBtn" aria-label="App information" aria-expanded="false">
+          <i class="bx bx-info-circle"></i>
+          <span class="ping"></span>
+        </button>
+        <button class="avatar-btn" id="accountBtn" aria-label="Account menu" aria-expanded="false">KE</button>
+      </div>
+
+      <!-- notes dropdown -->
+      <div class="drop" id="notesDrop" role="dialog" aria-label="Web app information">
+        <div class="drop-head">
+          <span class="ico"><i class="bx bx-info-circle"></i></span>
+          <div>
+            <h4>Web app information</h4>
+            <p>Sala Console · v2.4 · owner back office</p>
+          </div>
+        </div>
+        <div class="drop-body" id="appInfoBody">
+          <p><strong>1.1 Owner back office · Home “How is my shop today?”</strong><br>
+          /app · Users: owner, staff · Source: D1.1, D1.4, D1.14</p>
+
+          <p><strong>Goal.</strong> Open it and know within 5 seconds (1) whether anything is pending, (2) whether the website is fine, (3) that whatever you want to fix is one tap away — not a page of graphs.</p>
+
+          <p><strong>Functions.</strong><br>
+          · Show pending work automatically: customer enquiries not yet answered · promotions ending soon (≤ 3 days) · items whose price has not been corrected for over 60 days · items with a missing photo.<br>
+          · Four “work” shortcuts → pages 1.2 / 1.3 / 1.4, opening the correct sheet immediately.<br>
+          · Close the shop today / close for a range (F4): choose “today · tomorrow · until date…”, add a message to customers (a default message is provided) → appears on 2.1 / 2.5 immediately · reopen the shop with one tap.<br>
+          · Three numbers for today (compared with yesterday) → tap through to 1.8.<br>
+          · Website status on one line → tap through to 1.9.<br>
+          · Last five activities in plain language + an “undo” button on every item that can be undone.<br>
+          · [P2] A “tell me what to fix” box (D1.14): type “iced latte up to 75” → the system turns it into a structured change → shows a before → after summary → the owner confirms. Supported only: change a price · change an item’s status · draft a promotion · close the shop · it never writes data without confirmation · recorded in the ChangeLog as “ordered by message”.</p>
+
+          <p><strong>UX/UI (mobile, top to bottom).</strong><br>
+          1 · Greeting + shop status — “Good morning, Khun Ek” · date in B.E. · badge “Shop open / Closed today” + a switch to close the shop today.<br>
+          2 · Pending work (max 3 cards) — single-row card: icon + text + one button (“Reply” · “Renew promo” · “Check price”), ordered by urgency · when empty: “Nothing pending today”.<br>
+          3 · Four large shortcuts (2×2) — change a price · start a promotion · change a photo · close the shop today · buttons ≥ 72 px.<br>
+          4 · Today in numbers — 3 metric cards: visitors · contacts (call + LINE + directions + form) · new leads · ▲▼ compared with yesterday.<br>
+          5 · Website status — “Site fine · last checked 05:00 · backup last night succeeded”.<br>
+          6 · Recent activity — “Somchai changed Iced latte ฿70 → ฿75 · 14:05 [Undo]”.<br>
+          7 · One follow-on card (only when the threshold is met) → 1.10.<br>
+          8 · Mission strip (demo mode only) — “Mission 1/3” → 3.3.<br>
+          Desktop: two columns, left = 1–4, right = 5–7 + a 390 px site preview.</p>
+
+          <p><strong>States.</strong> New or empty shop → a 3-step starting checklist (check shop info 1.6 → add an item 1.2 → try a price change) · loading → skeleton · offline → the last cached data.</p>
+
+          <p><strong>Links.</strong> Entered from 1.12 (after sign-in) and 3.3 (demo) → continue to 1.2 · 1.3 · 1.4 · 1.6 · 1.7 · 1.8 · 1.9 · 1.10 · the “View site” button → 2.1.</p>
+
+          <p><strong>Presets.</strong> Different leading pending work — A: table bookings / message orders · B: appointment requests awaiting confirmation · C: unanswered quote requests.</p>
+
+          <p><strong>Pass criteria.</strong> Ready in ≤ 3 s on 4G · any fix reachable in ≤ 2 taps · pressing “Close today” makes 2.1 show the banner within ≤ 5 s.</p>
+
+          <details style="margin-top:12px;border-top:1px dashed var(--line);padding-top:10px">
+            <summary style="cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A7C74;list-style:none;display:flex;align-items:center;gap:6px">
+              <i class="bx bx-file"></i> Source brief — ต้นฉบับ / original text
+            </summary>
+            <div style="margin-top:10px;font-size:12px;line-height:1.75;color:#4B403B">
+              <p><strong>1.1 หลังบ้านเจ้าของร้าน | หน้าแรก "วันนี้ร้านเป็นไง"</strong><br>
+              /app · ผู้ใช้: เจ้าของ, พนักงาน · ที่มา: D1.1, D1.4, D1.14</p>
+
+              <p>เป้าหมาย: เปิดมาแล้วรู้ใน 5 วินาทีว่า (1) มีงานค้างไหม (2) เว็บปกติไหม (3) อยากแก้อะไรกดได้ทันที — ไม่ใช่หน้ากราฟ</p>
+
+              <p><strong>Function</strong><br>
+              แสดงงานค้างอัตโนมัติ: ลูกค้าสนใจที่ยังไม่ตอบ · โปรใกล้หมด (≤ 3 วัน) · รายการที่ราคาไม่ถูกแก้เกิน 60 วัน · รายการที่รูปหาย<br>
+              ทางลัด "งาน" 4 ปุ่ม → ไปหน้า 1.2 / 1.3 / 1.4 พร้อมเปิด sheet ที่ถูกต้องทันที<br>
+              ปิดร้านวันนี้ / ปิดตามช่วง (F4): เลือก "วันนี้ · พรุ่งนี้ · ถึงวันที่…" + ข้อความถึงลูกค้า (มีข้อความเริ่มต้นให้) → ขึ้นบน 2.1 / 2.5 ทันที · เปิดร้านกลับด้วย 1 แตะ<br>
+              สรุป 3 ตัวเลขของวันนี้ (เทียบเมื่อวาน) → แตะไป 1.8<br>
+              สถานะเว็บ 1 บรรทัด → แตะไป 1.9<br>
+              กิจกรรมล่าสุด 5 รายการ (ภาษาคน) + ปุ่ม "ย้อนกลับ" ต่อรายการที่ย้อนได้<br>
+              [P2] ช่อง "บอกสิ่งที่อยากแก้" (D1.14): พิมพ์ "ลาเต้เย็นขึ้นเป็น 75" → ระบบแปลงเป็นการเปลี่ยนที่มีโครงสร้าง → แสดงสรุป ก่อน→หลัง → เจ้าของกดยืนยัน · รองรับเฉพาะ: แก้ราคา · เปลี่ยนสถานะรายการ · ร่างโปร · ปิดร้าน · ห้ามเขียนข้อมูลเองโดยไม่ยืนยัน · บันทึกใน ChangeLog ว่า "สั่งด้วยข้อความ"</p>
+
+              <p><strong>UX/UI (มือถือ ไล่จากบนลงล่าง)</strong><br>
+              1 · ทักทาย + สถานะร้าน — "สวัสดีครับ คุณเอก" · วันที่ พ.ศ. · ป้าย "ร้านเปิดอยู่ / ปิดวันนี้" + สวิตช์ปิดร้านวันนี้<br>
+              2 · งานค้าง (สูงสุด 3 การ์ด) — การ์ดแถวเดียว: ไอคอน + ข้อความ + ปุ่มเดียว ("ตอบเลย" · "ต่ออายุโปร" · "ตรวจราคา") เรียงตามความเร่งด่วน · ไม่มีงาน → "วันนี้ไม่มีงานค้าง"<br>
+              3 · ทางลัด 4 ปุ่มใหญ่ (2×2) — แก้ราคา · เปิดโปร · เปลี่ยนรูป · ปิดร้านวันนี้ · ปุ่ม ≥ 72 px<br>
+              4 · วันนี้ในตัวเลข — Metric card 3 ใบ: คนเข้าชม · คนติดต่อ (โทร+LINE+นำทาง+ฟอร์ม) · ลูกค้าสนใจใหม่ · ▲▼ เทียบเมื่อวาน<br>
+              5 · สถานะเว็บ — "เว็บปกติ · ตรวจล่าสุด 05:00 น. · สำรองข้อมูลเมื่อคืนสำเร็จ"<br>
+              6 · กิจกรรมล่าสุด — "สมชาย แก้ ลาเต้เย็น ฿70 → ฿75 · 14:05 น. [ย้อนกลับ]"<br>
+              7 · การ์ดต่อยอด (เฉพาะเมื่อถึงเกณฑ์) — 1 การ์ดย่อ → 1.10<br>
+              8 · แถบภารกิจ (เฉพาะโหมดเดโม) — "ภารกิจ 1/3" → 3.3<br>
+              เดสก์ท็อป: 2 คอลัมน์ ซ้าย = 1–4, ขวา = 5–7 + พรีวิวเว็บ 390 px</p>
+
+              <p>สถานะ: ร้านใหม่/ว่าง → เช็กลิสต์เริ่มต้น 3 ข้อ (ตรวจข้อมูลร้าน 1.6 → เพิ่มรายการ 1.2 → ลองแก้ราคา) · โหลด → skeleton · ออฟไลน์ → แสดงข้อมูลล่าสุดที่แคชไว้</p>
+
+              <p>เชื่อมโยง: เข้ามาจาก 1.12 (หลังล็อกอิน), 3.3 (เดโม) → ไปต่อ 1.2 · 1.3 · 1.4 · 1.6 · 1.7 · 1.8 · 1.9 · 1.10 · ปุ่ม "ดูเว็บ" → 2.1</p>
+
+              <p>พรีเซ็ต: งานค้างเด่นต่างกัน — A: ลูกค้าจองโต๊ะ/ทักสั่ง · B: คำขอนัดรอยืนยัน · C: คำขอใบเสนอราคาที่ยังไม่ตอบ</p>
+
+              <p>เกณฑ์ผ่าน: พร้อมใช้ ≤ 3 วิ บน 4G · ทางลัดไปถึงจุดแก้ ≤ 2 แตะ · กด "ปิดร้านวันนี้" แล้ว 2.1 แสดงแบนเนอร์ ≤ 5 วิ</p>
+            </div>
+          </details>
+        </div>
+        <div class="drop-foot">
+          <span class="hint">Copy the full page brief</span>
+          <button class="btn btn-ghost btn-sm" id="copyInfoBtn"><i class="bx bx-copy"></i> <span>Copy</span></button>
+        </div>
+      </div>
+
+      <!-- account dropdown -->
+      <div class="drop" id="accountDrop" style="width:238px" role="menu" aria-label="Account">
+        <div class="menu-head">Signed in as Khun Ek</div>
+        <div class="menu-list">
+          <button class="menu-item" data-toast="Profile &amp; shop details opened"><i class="bx bx-user-circle"></i> Profile &amp; shop</button>
+          <button class="menu-item" data-toast="Billing opened"><i class="bx bx-credit-card-front"></i> Billing <small>Growth</small></button>
+          <button class="menu-item" data-toast="Switched to staff preview"><i class="bx bx-transfer-alt"></i> Switch to staff view</button>
+          <div class="menu-sep"></div>
+          <button class="menu-item" data-auth="signup"><i class="bx bx-user-plus"></i> Create another shop</button>
+          <button class="menu-item" data-auth="login"><i class="bx bx-log-in-circle"></i> Sign in to another account</button>
+          <div class="menu-sep"></div>
+          <button class="menu-item" data-toast="Signed out of demo session"><i class="bx bx-log-out-circle"></i> Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== CONTENT ===== -->
+    <main class="content">
+
+      <!-- offline banner -->
+      <div class="offline-bar">
+        <i class="bx bx-wifi-off"></i>
+        You’re offline — showing the last data saved on this device
+        <span class="cached">Cached 08:42</span>
+      </div>
+
+      <!-- mission strip (demo only) -->
+      <div class="mission" id="missionStrip">
+        <span class="m-badge"><i class="bx bx-flag"></i> Mission</span>
+        <span class="m-txt">Step 1 of 3 <span>· Answer one enquiry, then set your first promotion</span></span>
+        <span class="m-dots"><i class="on"></i><i></i><i></i></span>
+        <button class="btn btn-ghost btn-sm" data-toast="Opening the guided demo (3.3)">Continue <i class="bx bx-right-arrow-alt"></i></button>
+      </div>
+
+      <!-- skeleton (loading state) -->
+      <div class="skeleton-wrap">
+        <div>
+          <div class="sk"><div class="sk-line w40"></div><div class="sk-line w60"></div><div class="sk-box" style="height:52px"></div><div class="sk-metrics"><div class="sk-box" style="height:64px"></div><div class="sk-box" style="height:64px"></div><div class="sk-box" style="height:64px"></div></div></div>
+          <div class="sk"><div class="sk-line w40"></div><div class="sk-line"></div><div class="sk-line w80"></div><div class="sk-line w60"></div></div>
+        </div>
+        <div>
+          <div class="sk"><div class="sk-line w40"></div><div class="sk-line"></div><div class="sk-line w80"></div></div>
+          <div class="sk"><div class="sk-line w60"></div><div class="sk-line"></div><div class="sk-line"></div><div class="sk-line w40"></div></div>
+        </div>
+      </div>
+
+      <div class="grid-main">
+        <!-- ================= LEFT COLUMN ================= -->
+        <div class="col-left">
+
+          <!-- 1 · greeting + shop status -->
+          <section class="card greet rise" style="--d:0ms" aria-labelledby="greetTitle">
+            <div class="greet-top">
+              <div>
+                <h1 id="greetTitle">Good morning, Khun Ek</h1>
+                <div class="date">
+                  <span id="todayDate">Monday, 9 November 2569</span>
+                  <span class="sep"></span>
+                  <span>Baan Sala Cafe</span>
+                  <span class="sep"></span>
+                  <span>Open 08:00 – 18:00</span>
+                </div>
+              </div>
+              <div class="greet-actions">
+                <button class="btn btn-ghost btn-sm" id="viewSiteBtn"><i class="bx bx-link-external"></i> View site</button>
+                <button class="btn btn-dark btn-sm" id="closeTodayBtn"><i class="bx bx-store"></i> Close today</button>
+              </div>
+            </div>
+
+            <div class="status-line">
+              <span class="status-badge" id="shopBadge"><span class="sdot"></span> Open now</span>
+              <span class="status-note" id="shopNote">3 enquiries waiting · closes at 18:00</span>
+
+              <div class="close-toggle">
+                <span>Shop is open today</span>
+                <button class="switch" id="openSwitch" role="switch" aria-checked="true" aria-label="Toggle shop open"></button>
+              </div>
+              <button class="btn btn-mint btn-sm reopen-btn" id="reopenBtn"><i class="bx bx-refresh"></i> Reopen shop</button>
+            </div>
+          </section>
+
+          <!-- 2 · pending work -->
+          <section class="card rise" style="--d:60ms" aria-labelledby="tasksTitle">
+            <div class="card-head">
+              <div>
+                <h3 id="tasksTitle"><i class="bx bx-error-circle" style="color:#E4572E"></i> Needs you today</h3>
+                <div class="sub" id="tasksSub">Sorted by urgency · nothing here is a chart</div>
+              </div>
+              <div class="right">
+                <span class="count-pill" id="tasksCount">3 open</span>
+              </div>
+            </div>
+
+            <div id="tasksList">
+              <div class="task u-high">
+                <div class="task-ico"><i class="bx bx-message-rounded-detail"></i></div>
+                <div class="task-body">
+                  <p>Napat P. asked for a table for 4 tonight</p>
+                  <div class="meta"><span class="flag"><i class="bx bx-time"></i> waiting 12 min</span><span>·</span><span>LINE</span></div>
+                </div>
+                <button class="btn btn-dark btn-sm" data-toast="Reply box opened for Napat P.">Reply</button>
+              </div>
+
+              <div class="task u-mid">
+                <div class="task-ico"><i class="bx bx-purchase-tag-alt"></i></div>
+                <div class="task-body">
+                  <p>“Happy Hour −20%” ends in 2 days</p>
+                  <div class="meta"><span class="flag"><i class="bx bx-alarm"></i> 2 days left</span><span>·</span><span>4 items</span></div>
+                </div>
+                <button class="btn btn-ghost btn-sm" data-toast="Promotion renewal drafted">Renew promo</button>
+              </div>
+
+              <div class="task u-low">
+                <div class="task-ico"><i class="bx bx-purchase-tag"></i></div>
+                <div class="task-body">
+                  <p>3 items still use a price set over 60 days ago</p>
+                  <div class="meta"><span class="flag cool"><i class="bx bx-check-shield"></i> low priority</span><span>·</span><span>last check 12 Sep</span></div>
+                </div>
+                <button class="btn btn-ghost btn-sm" data-toast="Price review opened for 3 items">Check price</button>
+              </div>
+            </div>
+
+            <div class="tasks-empty" id="tasksEmpty">
+              <div class="ok-ico"><i class="bx bx-check"></i></div>
+              <p>Nothing waiting today</p>
+              <small>We’ll ping you the moment a customer writes.</small>
+            </div>
+
+            <!-- empty-shop checklist -->
+            <div class="checklist">
+              <div class="chk-prog">
+                <div class="bar"><i id="chkBar"></i></div>
+                <span id="chkLabel">1 of 3</span>
+              </div>
+              <div class="chk-item" data-chk>
+                <span class="chk-box"><i class="bx bx-check"></i></span>
+                <span class="chk-txt"><b>Check your shop info</b><small>Name, phone, hours, map pin</small></span>
+                <i class="bx bx-chevron-right go"></i>
+              </div>
+              <div class="chk-item" data-chk>
+                <span class="chk-box"><i class="bx bx-check"></i></span>
+                <span class="chk-txt"><b>Add your first 5 items</b><small>Name, price and one photo each</small></span>
+                <i class="bx bx-chevron-right go"></i>
+              </div>
+              <div class="chk-item" data-chk>
+                <span class="chk-box"><i class="bx bx-check"></i></span>
+                <span class="chk-txt"><b>Try changing one price</b><small>Type it in plain language below</small></span>
+                <i class="bx bx-chevron-right go"></i>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3 · shortcuts -->
+          <section class="card rise" style="--d:120ms" aria-labelledby="shortTitle">
+            <div class="card-head">
+              <div>
+                <h3 id="shortTitle">Fix something now</h3>
+                <div class="sub">Any fix in 2 taps</div>
+              </div>
+              <div class="right"><span class="eyebrow">4 shortcuts</span></div>
+            </div>
+            <div class="short-grid">
+              <button class="short s-mint" data-toast="Items opened · price editor ready (1.2)">
+                <span class="s-ico"><i class="bx bx-purchase-tag"></i></span>
+                <b>Change a price</b>
+                <small>Items &amp; prices</small>
+                <i class="bx bx-up-arrow-alt arrow"></i>
+              </button>
+              <button class="short s-violet" data-toast="Promotions opened · draft a new offer (1.3)">
+                <span class="s-ico"><i class="bx bx-purchase-tag-alt"></i></span>
+                <b>Start a promo</b>
+                <small>Promotions</small>
+                <i class="bx bx-up-arrow-alt arrow"></i>
+              </button>
+              <button class="short s-sage" data-toast="Photos opened · 2 items need a photo (1.4)">
+                <span class="s-ico"><i class="bx bx-image-add"></i></span>
+                <b>Change a photo</b>
+                <small>Photos · 2 missing</small>
+                <i class="bx bx-up-arrow-alt arrow"></i>
+              </button>
+              <button class="short s-navy" id="shortClose">
+                <span class="s-ico"><i class="bx bx-store"></i></span>
+                <b>Close today</b>
+                <small>Shows a banner on the site</small>
+                <i class="bx bx-up-arrow-alt arrow"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- 4 · today in numbers -->
+          <section class="card rise" style="--d:180ms" aria-labelledby="numTitle">
+            <div class="card-head">
+              <div>
+                <h3 id="numTitle">Today in numbers</h3>
+                <div class="sub">Compared with the same hours yesterday</div>
+              </div>
+              <div class="right">
+                <a href="#" class="link-sm" data-toast="Opening Insights (1.8)">Details <i class="bx bx-right-arrow-alt"></i></a>
+              </div>
+            </div>
+            <div class="metric-row">
+              <button class="metric m-mint" data-toast="Opened visitors breakdown">
+                <div class="m-top"><span class="m-ico"><i class="bx bx-show"></i></span><span class="m-lbl">Visitors</span></div>
+                <div class="num metric-num" data-count="412">0</div>
+                <span class="delta up"><i class="bx bx-up-arrow-alt"></i> 18%</span>
+                <div class="note">+64 people vs yesterday</div>
+              </button>
+              <button class="metric m-violet" data-toast="Opened contact breakdown">
+                <div class="m-top"><span class="m-ico"><i class="bx bx-phone-call"></i></span><span class="m-lbl">Contacts</span></div>
+                <div class="num metric-num" data-count="27">0</div>
+                <span class="delta up"><i class="bx bx-up-arrow-alt"></i> 4</span>
+                <div class="note">Call 9 · LINE 12 · Map 4 · Form 2</div>
+              </button>
+              <button class="metric" data-toast="Opened new leads">
+                <div class="m-top"><span class="m-ico"><i class="bx bx-user-plus"></i></span><span class="m-lbl">New leads</span></div>
+                <div class="num metric-num" data-count="9">0</div>
+                <span class="delta down"><i class="bx bx-down-arrow-alt"></i> 2</span>
+                <div class="note">4 still unanswered</div>
+              </button>
+            </div>
+          </section>
+
+          <!-- 7 · natural-language fix -->
+          <section class="card prompt-card rise" style="--d:240ms" aria-labelledby="promptTitle">
+            <div class="card-head">
+              <div>
+                <h3 id="promptTitle"><i class="bx bx-sparkles" style="color:var(--violet)"></i> Tell me what to fix</h3>
+                <div class="sub">Plain language in, a structured change out — you approve it first</div>
+              </div>
+              <div class="right"><span class="eyebrow">P2</span></div>
+            </div>
+
+            <form class="prompt-wrap" id="promptForm" autocomplete="off">
+              <i class="bx bx-sparkles spark"></i>
+              <input id="promptInput" type="text" placeholder="e.g. iced latte up to 75" aria-label="Describe the change" />
+              <button class="send-btn" type="submit" aria-label="Interpret change"><i class="bx bx-right-arrow-alt"></i></button>
+            </form>
+
+            <div class="chips">
+              <button class="chip" data-fill="Iced latte up to 75">Iced latte → ฿75</button>
+              <button class="chip" data-fill="Hide croissant">Hide croissant</button>
+              <button class="chip" data-fill="Draft a promo 20% off desserts">Promo −20% desserts</button>
+              <button class="chip" data-fill="Close the shop today, back tomorrow">Close today</button>
+            </div>
+
+            <div class="draft" id="draftBox" aria-live="polite">
+              <div class="d-head"><i class="bx bx-list-check"></i> <span id="draftKind">Price change</span> · needs your approval</div>
+              <div id="draftRows"></div>
+              <div class="d-note"><i class="bx bx-shield-quarter"></i> Nothing is saved until you confirm. Logged as “ordered by message”.</div>
+              <div class="d-actions">
+                <button class="btn btn-mint btn-sm" id="confirmDraft"><i class="bx bx-check"></i> Confirm change</button>
+                <button class="btn btn-soft btn-sm" id="discardDraft">Discard</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ================= RIGHT COLUMN ================= -->
+        <div class="col-right">
+
+          <!-- 5 · website status -->
+          <section class="card rise" style="--d:40ms" aria-labelledby="healthTitle">
+            <div class="card-head">
+              <div>
+                <h3 id="healthTitle">Website status</h3>
+                <div class="sub">Checked 05:00 · next check 11:00</div>
+              </div>
+              <div class="right"><span class="health-badge"><span class="dot-ok"></span> All good</span></div>
+            </div>
+            <div class="health-top">
+              <span class="big">Your site is live and healthy</span>
+            </div>
+            <p style="font-size:12px;color:var(--ink-3);line-height:1.6;margin-bottom:10px">Backup finished last night at 02:10 · nothing needs a restart.</p>
+            <div class="stat-row"><span class="k">Uptime</span><span class="v"><i class="bx bx-check-circle"></i> 99.98% · 30 days</span></div>
+            <div class="stat-row"><span class="k">SSL</span><span class="v"><i class="bx bx-lock-alt"></i> Valid until 12 Mar 2570</span></div>
+            <div class="stat-row"><span class="k">Backup</span><span class="v"><i class="bx bx-cloud-upload"></i> Last night 02:10</span></div>
+            <div class="stat-row"><span class="k">Last publish</span><span class="v" style="color:#6E5F57">Today 08:14 by Mai</span></div>
+            <a href="#" class="link-sm" style="margin-top:12px;display:inline-flex" data-toast="Opening Site health (1.9)">Open site health <i class="bx bx-right-arrow-alt"></i></a>
+          </section>
+
+          <!-- 6 · recent activity -->
+          <section class="card rise" style="--d:100ms" aria-labelledby="actTitle">
+            <div class="card-head">
+              <div>
+                <h3 id="actTitle">Recent activity</h3>
+                <div class="sub">Plain language · undo where it’s safe</div>
+              </div>
+              <div class="right"><span class="eyebrow">Last 5</span></div>
+            </div>
+            <div id="activityList">
+              <div class="act" data-act>
+                <div class="act-ico price"><i class="bx bx-purchase-tag"></i></div>
+                <div class="act-body">
+                  <p>Somchai changed <b>Iced latte</b> ฿70 <span style="color:#9A8B83">→</span> <b>฿75</b></p>
+                  <div class="t"><span>14:05</span><span>·</span><span>by Somchai</span></div>
+                </div>
+                <button class="undo" data-undo="Reverted Iced latte to ฿70"><i class="bx bx-undo"></i> Undo</button>
+              </div>
+
+              <div class="act" data-act>
+                <div class="act-ico promo"><i class="bx bx-purchase-tag-alt"></i></div>
+                <div class="act-body">
+                  <p>Promotion <b>Happy Hour −20%</b> published to the site</p>
+                  <div class="t"><span>11:32</span><span>·</span><span>by Khun Ek</span></div>
+                </div>
+                <button class="undo" data-undo="Happy Hour promotion unpublished"><i class="bx bx-undo"></i> Undo</button>
+              </div>
+
+              <div class="act" data-act>
+                <div class="act-ico photo"><i class="bx bx-image-alt"></i></div>
+                <div class="act-body">
+                  <p>New photo added to <b>Croissant</b></p>
+                  <div class="t"><span>10:48</span><span>·</span><span>by Mai</span></div>
+                </div>
+                <button class="undo" data-undo="Croissant photo restored to the previous one"><i class="bx bx-undo"></i> Undo</button>
+              </div>
+
+              <div class="act" data-act>
+                <div class="act-ico close"><i class="bx bx-store"></i></div>
+                <div class="act-body">
+                  <p>Shop marked <b>closed</b> for Songkran day</p>
+                  <div class="t"><span>Yesterday 17:20</span><span>·</span><span>by Khun Ek</span></div>
+                </div>
+                <button class="undo" data-undo="Closure for Songkran day removed"><i class="bx bx-undo"></i> Undo</button>
+              </div>
+
+              <div class="act" data-act>
+                <div class="act-ico"><i class="bx bx-globe"></i></div>
+                <div class="act-body">
+                  <p>Domain <b>baansala.cafe</b> renewed for 1 year</p>
+                  <div class="t"><span>Yesterday 09:02</span><span>·</span><span>automatic</span></div>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="link-sm" style="margin-top:10px;display:inline-flex" data-toast="Opening the full change log">Full change log <i class="bx bx-right-arrow-alt"></i></a>
+          </section>
+
+          <!-- web preview (desktop only) -->
+          <section class="card preview-card rise" style="--d:160ms" aria-labelledby="prevTitle">
+            <div class="preview-cap">
+              <span class="lbl" id="prevTitle">Live site preview</span>
+              <div class="right"><i class="bx bx-mobile-alt"></i> 390 px</div>
+            </div>
+            <div class="phone" aria-label="Customer website preview">
+              <div class="phone-in">
+                <div class="phone-status">
+                  <span>9:41</span>
+                  <span class="dots"><i></i><i></i><i></i></span>
+                </div>
+                <div class="site-nav">
+                  <span class="nm">Baan Sala Cafe</span>
+                  <span class="pill-mini" id="prevBadge">OPEN</span>
+                </div>
+                <div class="site-banner">
+                  <i class="bx bx-info-circle"></i>
+                  <span id="prevBanner">We’re closed today. Back tomorrow at 08:00 — thank you!</span>
+                </div>
+                <div class="site-hero">
+                  <span class="k">Slow coffee · since 2019</span>
+                  <h4>Small room,<br>loud flavour.</h4>
+                  <p>Single-origin espresso and brown-butter croissants, baked at 6am.</p>
+                  <div class="hrs" id="prevHours"><i class="bx bx-time-five"></i> Open today 08:00 – 18:00</div>
+                  <div class="site-cta">
+                    <span class="p-btn"><i class="bx bx-phone"></i> Call</span>
+                    <span class="p-btn alt"><i class="bx bx-map"></i> Directions</span>
+                  </div>
+                </div>
+                <div class="site-menu">
+                  <div class="m-head"><span>Today’s menu</span><span style="font-size:8px;color:#0B7358;font-weight:800">4 items</span></div>
+                  <div class="p-item"><span class="thumb"><i class="bx bx-coffee"></i></span><span class="n">Iced latte<small>House blend</small></span><span class="pr">฿75</span></div>
+                  <div class="p-item"><span class="thumb"><i class="bx bx-croissant"></i></span><span class="n">Croissant<small>Brown butter</small></span><span class="pr">฿65</span></div>
+                  <div class="p-item out"><span class="thumb"><i class="bx bx-dish"></i></span><span class="n">Mango sticky rice<small>Seasonal</small><span class="out-tag">OUT</span></span><span class="pr">฿95</span></div>
+                  <div class="p-item"><span class="thumb"><i class="bx bx-drink"></i></span><span class="n">Cold brew<small>18h steep</small></span><span class="pr">฿90</span></div>
+                </div>
+                <div class="phone-foot">BAANSALA.CAFE</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7 · upsell -->
+          <section class="upsell rise" id="upsellCard" style="--d:220ms" aria-labelledby="upTitle">
+            <button class="x" id="upsellClose" aria-label="Dismiss"><i class="bx bx-x"></i></button>
+            <div class="inner">
+              <span class="pill"><i class="bx bx-trending-up"></i> 1 card, only when it applies</span>
+              <h3 id="upTitle">27 people contacted you. 4 came back twice.</h3>
+              <p>Growth adds a returning-customer list and automatic follow-ups, so the other 23 hear from you again.</p>
+              <div class="act-row">
+                <button class="btn btn-mint btn-sm btn-light" data-toast="Growth plan preview opened (1.10)">See what’s included</button>
+                <button class="btn-quiet" style="background:transparent" id="upsellLater">Not today</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ================= FAB ROW (chat right, back-to-top left, 5px gap) ================= -->
+<div class="fab-row">
+  <button class="fab fab-top" id="backTop" aria-label="Back to top"><i class="bx bx-up-arrow-alt"></i></button>
+  <button class="fab fab-chat" id="chatToggle" aria-label="Open assistant" aria-expanded="false">
+    <i class="bx bx-message-square-dots"></i>
+    <span class="mint-dot"></span>
+  </button>
+</div>
+
+<!-- ================= CHATBOT ================= -->
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Sala assistant">
+  <div class="chat-head">
+    <span class="bot"><i class="bx bx-bot"></i></span>
+    <div>
+      <b>Sala Assistant</b>
+      <small><span class="dot-ok"></span> Knows your shop</small>
+    </div>
+    <button class="x" id="chatClose" aria-label="Close assistant"><i class="bx bx-x"></i></button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg bot">Hi Khun Ek. I can see today’s queue: 4 unanswered enquiries, 1 promo ending in 2 days. What should we do first?<span class="tm">09:41</span></div>
+  </div>
+  <div class="chat-quick" id="chatQuick">
+    <button class="chip">What needs me today?</button>
+    <button class="chip">How were sales?</button>
+    <button class="chip">Close the shop tomorrow</button>
+  </div>
+  <form class="chat-input" id="chatForm" autocomplete="off">
+    <input id="chatInput" type="text" placeholder="Ask about your shop…" aria-label="Message" />
+    <button class="send" type="submit" aria-label="Send"><i class="bx bx-send"></i></button>
+  </form>
+</div>
+
+<!-- ================= TOASTS ================= -->
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<!-- ================= AUTH MODAL (sign up / log in / forgot) ================= -->
+<div class="overlay" id="authOverlay" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal" id="authModal">
+    <button class="x" data-close-auth aria-label="Close"><i class="bx bx-x"></i></button>
+
+    <!-- log in -->
+    <div class="auth-view on" id="view-login">
+      <div class="m-head">
+        <span class="m-mark"><i class="bx bx-store-alt"></i></span>
+        <div>
+          <h2 id="authTitle">Welcome back</h2>
+          <div class="m-sub">Sign in to see how your shop is doing today.</div>
+        </div>
+      </div>
+      <form novalidate data-auth-form>
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <div class="inp-ico"><i class="bx bx-envelope"></i><input class="inp" id="loginEmail" type="email" placeholder="you@baansala.cafe" /></div>
+        </div>
+        <div class="field">
+          <label for="loginPass">Password</label>
+          <div class="inp-ico">
+            <i class="bx bx-lock-alt"></i>
+            <input class="inp" id="loginPass" type="password" placeholder="••••••••" style="padding-right:38px" />
+            <button type="button" class="eye" data-eye><i class="bx bx-show"></i></button>
+          </div>
+        </div>
+        <div class="m-row">
+          <label><input type="checkbox" checked style="accent-color:#04E1AB" /> Keep me signed in</label>
+          <button type="button" data-view="forgot">Forgot password?</button>
+        </div>
+        <button class="btn btn-mint btn-block" style="height:42px;margin-top:14px" type="submit">Sign in</button>
+      </form>
+      <div class="m-sep">or</div>
+      <div class="social">
+        <button data-toast="Google sign-in is disabled in this demo"><i class="bx bxl-google"></i> Google</button>
+        <button data-toast="LINE login is disabled in this demo"><i class="bx bxl-line"></i> LINE</button>
+      </div>
+      <p class="m-note">New here? <button data-view="signup" style="color:var(--emerald);font-weight:700">Create a shop account</button></p>
+    </div>
+
+    <!-- sign up -->
+    <div class="auth-view" id="view-signup">
+      <div class="m-head">
+        <span class="m-mark"><i class="bx bx-store-alt"></i></span>
+        <div>
+          <h2>Open your shop console</h2>
+          <div class="m-sub">Free for 14 days. No card, no call with sales.</div>
+        </div>
+      </div>
+      <form novalidate data-auth-form>
+        <div class="field">
+          <label for="suName">Your name</label>
+          <div class="inp-ico"><i class="bx bx-user"></i><input class="inp" id="suName" type="text" placeholder="Khun Ek" /></div>
+        </div>
+        <div class="field">
+          <label for="suShop">Shop name</label>
+          <div class="inp-ico"><i class="bx bx-store"></i><input class="inp" id="suShop" type="text" placeholder="Baan Sala Cafe" /></div>
+        </div>
+        <div class="field">
+          <label for="suEmail">Email</label>
+          <div class="inp-ico"><i class="bx bx-envelope"></i><input class="inp" id="suEmail" type="email" placeholder="you@baansala.cafe" /></div>
+        </div>
+        <div class="field">
+          <label for="suPass">Password</label>
+          <div class="inp-ico">
+            <i class="bx bx-lock-alt"></i>
+            <input class="inp" id="suPass" type="password" placeholder="At least 8 characters" style="padding-right:38px" />
+            <button type="button" class="eye" data-eye><i class="bx bx-show"></i></button>
+          </div>
+        </div>
+        <label class="m-row" style="justify-content:flex-start;gap:7px;margin-top:12px">
+          <input type="checkbox" id="suTerms" style="accent-color:#04E1AB" />
+          <span style="font-size:11px;color:#6E5F57">I agree to the terms and the privacy notice</span>
+        </label>
+        <button class="btn btn-mint btn-block" style="height:42px;margin-top:12px" type="submit">Create account</button>
+      </form>
+      <p class="m-note">Already have a shop? <button data-view="login" style="color:var(--emerald);font-weight:700">Sign in</button></p>
+    </div>
+
+    <!-- forgot -->
+    <div class="auth-view" id="view-forgot">
+      <div class="m-head">
+        <span class="m-mark"><i class="bx bx-key"></i></span>
+        <div>
+          <h2>Reset your password</h2>
+          <div class="m-sub">We’ll email a 6-digit code that expires in 10 minutes.</div>
+        </div>
+      </div>
+      <form data-auth-form>
+        <div class="field">
+          <label for="fpEmail">Email on the account</label>
+          <div class="inp-ico"><i class="bx bx-envelope"></i><input class="inp" id="fpEmail" type="email" placeholder="you@baansala.cafe" /></div>
+        </div>
+        <button class="btn btn-mint btn-block" style="height:42px;margin-top:14px" type="submit">Send reset link</button>
+      </form>
+      <div class="receipt"><b>Tip:</b> staff accounts can’t reset the owner password. Ask Khun Ek to do it from Team settings.</div>
+      <p class="m-note"><button data-view="login" style="color:var(--emerald);font-weight:700">Back to sign in</button></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CLOSE SHOP SHEET (F4) ================= -->
+<div class="overlay sheet-overlay" id="closeOverlay" role="dialog" aria-modal="true" aria-labelledby="closeTitle">
+  <div class="sheet" id="closeSheet">
+    <div class="grab"></div>
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <div>
+        <h2 id="closeTitle">Close the shop</h2>
+        <div class="s-sub">A banner appears on your website straight away.</div>
+      </div>
+      <button class="x" data-close-close style="margin-left:auto" aria-label="Close"><i class="bx bx-x"></i></button>
+    </div>
+
+    <div class="seg" id="closeSeg">
+      <button type="button" class="on" data-when="today">Today</button>
+      <button type="button" data-when="tomorrow">Tomorrow</button>
+      <button type="button" data-when="range">Until date…</button>
+    </div>
+
+    <div class="field">
+      <label for="closeMsg">Message for customers</label>
+      <textarea class="inp" id="closeMsg">We’re closed today. Back tomorrow at 08:00 — thank you!</textarea>
+      <div class="hint-line"><i class="bx bx-magic-wand"></i> Pre-written for you — edit anything.</div>
+    </div>
+
+    <div class="when" id="whenRange">
+      <div class="field">
+        <label for="closeUntil">Closed until</label>
+        <input class="inp" id="closeUntil" type="date" />
+      </div>
+    </div>
+
+    <div class="receipt" id="closeReceipt">Banner will show on <b>baansala.cafe</b> and your Google listing right after you confirm.</div>
+
+    <div class="sheet-foot">
+      <button class="btn btn-ghost" data-close-close>Cancel</button>
+      <button class="btn btn-dark" id="confirmClose"><i class="bx bx-store"></i> Close shop</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  const $  = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+
+  /* ---------- date, Thai Buddhist era ---------- */
+  const now = new Date();
+  const beYear = now.getFullYear() + 543;
+  const dateTxt =
+    now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }) + ' ' + beYear;
+  $('#todayDate').textContent = dateTxt;
+
+  /* ---------- toasts ---------- */
+  const toastHost = $('#toasts');
+  function toast(text, opts) {
+    opts = opts || {};
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.innerHTML =
+      '<i class="bx ' + (opts.icon || 'bx-check-circle') + ' ic"></i>' +
+      '<span>' + text + '</span>' +
+      (opts.action ? '<button class="u">' + opts.action.label + '</button>' : '');
+    if (opts.action) {
+      el.querySelector('.u').addEventListener('click', function () {
+        opts.action.fn();
+        dismiss();
+      });
+    }
+    toastHost.appendChild(el);
+    let gone = false;
+    function dismiss() {
+      if (gone) return; gone = true;
+      el.classList.add('out');
+      setTimeout(function () { el.remove(); }, 320);
+    }
+    setTimeout(dismiss, opts.life || 4200);
+    while (toastHost.children.length > 3) toastHost.firstElementChild.remove();
+  }
+
+  /* ---------- shop open / closed ---------- */
+  const shop = { closed: false };
+  function setShop(closed, msg) {
+    shop.closed = closed;
+    document.body.classList.toggle('shop-closed', closed);
+    const badge = $('#shopBadge');
+    badge.classList.toggle('closed', closed);
+    badge.innerHTML = '<span class="sdot"></span> ' + (closed ? 'Closed today' : 'Open now');
+    $('#shopNote').textContent = closed
+      ? 'Your site shows a closed banner'
+      : '3 enquiries waiting · closes at 18:00';
+    $('#openSwitch').setAttribute('aria-checked', String(!closed));
+    const chip = $('.live-chip');
+    if (chip) chip.innerHTML = '<span class="dot"></span> ' + (closed ? 'Shop closed' : 'Shop open');
+    const pb = $('#prevBadge');
+    if (pb) { pb.textContent = closed ? 'CLOSED' : 'OPEN'; }
+    const ph = $('#prevHours');
+    if (ph) {
+      ph.classList.toggle('closed', closed);
+      ph.innerHTML = closed
+        ? '<i class="bx bx-time-five"></i> Closed today · back tomorrow 08:00'
+        : '<i class="bx bx-time-five"></i> Open today 08:00 – 18:00';
+    }
+    if (msg) $('#prevBanner').textContent = msg;
+  }
+
+  /* ---------- sidebar: collapse + drawer ---------- */
+  $('#collapseBtn').addEventListener('click', function () {
+    document.body.classList.toggle('collapsed');
+  });
+  function closeDrawer() { document.body.classList.remove('drawer-open'); }
+  $('#menuBtn').addEventListener('click', function () {
+    document.body.classList.toggle('drawer-open');
+  });
+  $('#drawerOverlay').addEventListener('click', closeDrawer);
+
+  /* ---------- nav items ---------- */
+  $$('.nav-item').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      $$('.nav-item').forEach(function (n) { n.classList.remove('active'); });
+      a.classList.add('active');
+      const page = a.getAttribute('data-page');
+      const crumb = $('.crumbs b');
+      if (crumb) crumb.textContent = page;
+      closeDrawer();
+      if (page !== 'Today') {
+        toast('“' + page + '” is a separate screen — this build ships Today + auth only.', { icon: 'bx-link-external' });
+      }
+    });
+  });
+
+  /* ---------- dropdowns ---------- */
+  const notesDrop = $('#notesDrop');
+  const acctDrop = $('#accountDrop');
+  function closeDrops(except) {
+    [[notesDrop, '#notesBtn'], [acctDrop, '#accountBtn']].forEach(function (pair) {
+      if (pair[0] !== except) {
+        pair[0].classList.remove('open');
+        $(pair[1]).setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  function bindDrop(btn, panel) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const open = panel.classList.contains('open');
+      closeDrops(panel);
+      panel.classList.toggle('open', !open);
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    panel.addEventListener('click', function (e) { e.stopPropagation(); });
+  }
+  bindDrop($('#notesBtn'), notesDrop);
+  bindDrop($('#accountBtn'), acctDrop);
+  document.addEventListener('click', function () { closeDrops(); });
+
+  /* ---------- copy app info ---------- */
+  $('#copyInfoBtn').addEventListener('click', function () {
+    const body = $('#appInfoBody');
+    const text = 'Web app information — Sala Console v2.4\n\n' + body.innerText.replace(/\n{3,}/g, '\n\n').trim();
+    function done() {
+      const b = $('#copyInfoBtn');
+      const label = b.querySelector('span');
+      const old = label.textContent;
+      label.textContent = 'Copied';
+      b.querySelector('i').className = 'bx bx-check';
+      toast('Web app information copied to clipboard', { icon: 'bx-copy' });
+      setTimeout(function () { label.textContent = old; b.querySelector('i').className = 'bx bx-copy'; }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () { legacyCopy(text); done(); });
+    } else { legacyCopy(text); done(); }
+  });
+  function legacyCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (err) {}
+    ta.remove();
+  }
+
+  /* ---------- generic data-toast / data-undo ---------- */
+  document.addEventListener('click', function (e) {
+    const t = e.target.closest('[data-toast]');
+    if (t) {
+      if (t.closest('.drop')) closeDrops();
+      toast(t.getAttribute('data-toast'));
+    }
+    const u = e.target.closest('[data-undo]');
+    if (u) {
+      const row = u.closest('[data-act]');
+      const label = u.getAttribute('data-undo');
+      if (row && !row.classList.contains('is-reverted')) {
+        row.classList.add('is-reverted');
+        const tEl = row.querySelector('.t');
+        if (tEl && !tEl.querySelector('.reverted')) {
+          const tag = document.createElement('span');
+          tag.className = 'reverted'; tag.textContent = 'reverted';
+          tEl.appendChild(tag);
+        }
+        u.outerHTML = '<span style="font-size:10px;font-weight:700;color:#0B7358;align-self:flex-start">done</span>';
+        toast(label, {
+          icon: 'bx-undo', action: {
+            label: 'Redo', fn: function () {
+              const done = row.querySelector('span[style*="done"]');
+              if (done) done.outerHTML = '<button class="undo" data-undo="' + label + '"><i class="bx bx-undo"></i> Undo</button>';
+              row.classList.remove('is-reverted');
+              const tag = row.querySelector('.t .reverted');
+              if (tag) tag.remove();
+              toast('Change re-applied', { icon: 'bx-refresh' });
+            }
+          }
+        });
+      }
+    }
+  });
+
+  /* ---------- counters ---------- */
+  function runCounters() {
+    $$('.metric-num').forEach(function (el) {
+      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      const dur = 900, t0 = performance.now();
+      function step(t) {
+        const p = Math.min(1, (t - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  setTimeout(runCounters, 380);
+
+  /* ---------- open switch / reopen ---------- */
+  $('#openSwitch').addEventListener('click', function () {
+    const isOpen = this.getAttribute('aria-checked') === 'true';
+    if (isOpen) { openCloseSheet('today'); }
+    else { setShop(false); toast('Shop reopened — banner removed from your site', { icon: 'bx-store' }); }
+  });
+  $('#reopenBtn').addEventListener('click', function () {
+    setShop(false);
+    toast('Shop reopened — banner removed from your site', { icon: 'bx-store' });
+  });
+
+  /* ---------- close sheet ---------- */
+  const closeOverlay = $('#closeOverlay');
+  const closeMsg = $('#closeMsg');
+  const DEFAULT_MSG = 'We’re closed today. Back tomorrow at 08:00 — thank you!';
+  let whenMode = 'today';
+
+  function openCloseSheet(mode) {
+    setWhen(mode || 'today');
+    closeOverlay.classList.add('open');
+    setTimeout(function () { closeMsg.focus(); }, 260);
+  }
+  function closeCloseSheet() { closeOverlay.classList.remove('open'); }
+
+  function setWhen(mode) {
+    whenMode = mode;
+    $$('#closeSeg button').forEach(function (b) {
+      b.classList.toggle('on', b.getAttribute('data-when') === mode);
+    });
+    $('#whenRange').classList.toggle('on', mode === 'range');
+    if (mode === 'today') {
+      closeMsg.value = DEFAULT_MSG;
+      $('#closeReceipt').innerHTML = 'Banner will show on <b>baansala.cafe</b> and your Google listing for <b>today only</b>.';
+    } else if (mode === 'tomorrow') {
+      closeMsg.value = 'We’re closed tomorrow. Back the day after at 08:00 — thank you!';
+      $('#closeReceipt').innerHTML = 'Banner will show on <b>baansala.cafe</b> for <b>tomorrow</b> only, then disappear by itself.';
+    } else {
+      closeMsg.value = 'We’re closed for a short break. Back soon — thank you for your patience!';
+      $('#closeReceipt').innerHTML = 'Banner will stay up until the date you pick, then disappear by itself.';
+    }
+  }
+
+  $('#closeTodayBtn').addEventListener('click', function () { openCloseSheet('today'); });
+  $('#shortClose').addEventListener('click', function () { openCloseSheet('today'); });
+  $$('#closeSeg button').forEach(function (b) {
+    b.addEventListener('click', function () { setWhen(b.getAttribute('data-when')); });
+  });
+  $$('[data-close-close]').forEach(function (b) { b.addEventListener('click', closeCloseSheet); });
+  closeOverlay.addEventListener('click', function (e) { if (e.target === closeOverlay) closeCloseSheet(); });
+
+  $('#confirmClose').addEventListener('click', function () {
+    const msg = closeMsg.value.trim() || DEFAULT_MSG;
+    const label = whenMode === 'today' ? 'today' : whenMode === 'tomorrow' ? 'tomorrow' : 'until ' + ($('#closeUntil').value || 'the date you picked');
+    setShop(true, msg);
+    addActivity({
+      kind: 'close', icon: 'bx-store', title: 'Shop marked <b>closed</b> for ' + label,
+      time: 'just now · by Khun Ek', undo: 'Closure for ' + label + ' removed'
+    });
+    closeCloseSheet();
+    toast('Shop closed · banner live on your site', {
+      icon: 'bx-store', action: {
+        label: 'Undo', fn: function () { setShop(false); toast('Shop reopened', { icon: 'bx-refresh' }); }
+      }
+    });
+  });
+
+  /* ---------- activity feed ---------- */
+  const actList = $('#activityList');
+  const ICONS = { price: 'bx-purchase-tag', promo: 'bx-purchase-tag-alt', photo: 'bx-image-alt', close: 'bx-store', item: 'bx-dish', site: 'bx-globe' };
+  function addActivity(a) {
+    const row = document.createElement('div');
+    row.className = 'act';
+    row.setAttribute('data-act', '');
+    row.style.animation = 'rise .45s var(--ease) both';
+    row.innerHTML =
+      '<div class="act-ico ' + (a.kind || '') + '"><i class="bx ' + (a.icon || ICONS[a.kind] || 'bx-edit') + '"></i></div>' +
+      '<div class="act-body"><p>' + a.title + '</p><div class="t"><span>' + a.time + '</span><span>·</span><span>ChangeLog</span></div></div>' +
+      (a.undo ? '<button class="undo" data-undo="' + a.undo + '"><i class="bx bx-undo"></i> Undo</button>' : '');
+    actList.insertBefore(row, actList.firstElementChild);
+    while (actList.children.length > 5) actList.lastElementChild.remove();
+  }
+
+  /* ---------- natural language "tell me what to fix" ---------- */
+  const ITEMS = [
+    { name: 'Iced latte', price: 70 },
+    { name: 'Croissant', price: 65 },
+    { name: 'Cold brew', price: 90 },
+    { name: 'Mango sticky rice', price: 95 },
+    { name: 'Espresso', price: 55 }
+  ];
+  const draftBox = $('#draftBox');
+  const draftRows = $('#draftRows');
+  let pending = null;
+
+  function money(n) { return '฿' + n; }
+
+  function buildDraft(raw) {
+    const txt = raw.toLowerCase();
+    const num = (txt.match(/(\d{2,4})/) || [])[1];
+    const item = ITEMS.find(function (i) { return txt.indexOf(i.name.toLowerCase()) > -1; }) ||
+                 ITEMS.find(function (i) { return i.name.toLowerCase().split(' ').some(function (w) { return w.length > 3 && txt.indexOf(w) > -1; }); });
+
+    if (/(close|closed|shut)/.test(txt)) {
+      return {
+        kind: 'Shop closure', rows: [['Action', 'Close the shop today'], ['Customers see', 'A banner with your message'], ['Undo', 'One tap from Today']],
+        apply: function () { setShop(true, 'We’re closed today. Back tomorrow at 08:00 — thank you!'); },
+        log: 'Shop marked <b>closed</b> today from a message', undo: 'Closure today removed', icon: 'close', toastText: 'Shop closed · banner live'
+      };
+    }
+    if (/(promo|discount|off|deal)/.test(txt)) {
+      const pct = num && num.length <= 2 ? num : '20';
+      return {
+        kind: 'Promotion draft', rows: [['Title', 'Dessert hour −' + pct + '%'], ['Applies to', 'Desserts · 3 items'], ['Runs', '3 days, 14:00 – 17:00'], ['Status', 'Draft — not published']],
+        apply: function () { toast('Draft saved — publish it whenever you like', { icon: 'bx-purchase-tag-alt' }); },
+        log: 'Promotion <b>Dessert hour −' + pct + '%</b> saved as a draft from a message', undo: 'Draft promotion removed', icon: 'promo', toastText: 'Promotion drafted · not published yet'
+      };
+    }
+    if (/(hide|show|out of stock|sold out|unhide|available)/.test(txt)) {
+      const hide = !/unhide|show|available/.test(txt);
+      const nm = item ? item.name : 'Croissant';
+      return {
+        kind: 'Item status', rows: [['Item', nm], ['Visibility', hide ? 'Shown → hidden on site' : 'Hidden → shown on site'], ['Price', 'unchanged · ' + money(item ? item.price : 65)]],
+        apply: function () { toast(nm + (hide ? ' hidden from your site' : ' shown on your site again'), { icon: 'bx-hide' }); },
+        log: nm + ' <b>' + (hide ? 'hidden from' : 'shown on') + '</b> the site from a message', undo: nm + ' visibility reverted', icon: 'item', toastText: nm + (hide ? ' hidden' : ' visible again')
+      };
+    }
+    if (num) {
+      const nm = item ? item.name : 'Iced latte';
+      const oldP = item ? item.price : 70;
+      const newP = parseInt(num, 10);
+      return {
+        kind: 'Price change', rows: [['Item', nm], ['Price', money(oldP), money(newP)], ['Where', 'Website menu + Google listing'], ['Log', '“ordered by message”']],
+        apply: function () {
+          const p = ITEMS.find(function (i) { return i.name === nm; });
+          if (p) p.price = newP;
+          const prev = $$('.p-item');
+          prev.forEach(function (row) {
+            const n = row.querySelector('.n');
+            if (n && n.textContent.toLowerCase().indexOf(nm.toLowerCase()) === 0) {
+              row.querySelector('.pr').textContent = money(newP);
+            }
+          });
+        },
+        log: 'You changed <b>' + nm + '</b> ' + money(oldP) + ' <span style="color:#9A8B83">→</span> <b>' + money(newP) + '</b> from a message',
+        undo: nm + ' price reverted to ' + money(oldP), icon: 'price', toastText: 'Price updated · logged as ordered by message'
+      };
+    }
+    return {
+      kind: 'Not understood yet', rows: [['What I can do', 'Change a price · change item status · draft a promo · close the shop'], ['Try', '“iced latte up to 75” or “close the shop today”']],
+      apply: null
+    };
+  }
+
+  function renderDraft(d) {
+    pending = d;
+    $('#draftKind').textContent = d.kind;
+    draftRows.innerHTML = d.rows.map(function (r) {
+      if (r.length === 3) {
+        return '<div class="d-row"><span class="k">' + r[0] + '</span><span class="v"><span class="from">' + r[1] + '</span> <span class="arrow">→</span> <span class="to">' + r[2] + '</span></span></div>';
+      }
+      return '<div class="d-row"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>';
+    }).join('');
+    draftBox.classList.add('show');
+    const conf = $('#confirmDraft');
+    conf.style.display = d.apply ? '' : 'none';
+  }
+
+  $('#promptForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const v = $('#promptInput').value.trim();
+    if (!v) { $('#promptInput').focus(); return; }
+    renderDraft(buildDraft(v));
+    toast('Read your message · nothing saved yet', { icon: 'bx-sparkles' });
+  });
+  $$('.chip[data-fill]').forEach(function (c) {
+    c.addEventListener('click', function () {
+      $('#promptInput').value = c.getAttribute('data-fill');
+      renderDraft(buildDraft(c.getAttribute('data-fill')));
+    });
+  });
+  $('#discardDraft').addEventListener('click', function () {
+    draftBox.classList.remove('show');
+    $('#promptInput').value = '';
+    pending = null;
+    toast('Draft discarded · nothing changed', { icon: 'bx-trash' });
+  });
+  $('#confirmDraft').addEventListener('click', function () {
+    if (!pending || !pending.apply) return;
+    pending.apply();
+    addActivity({ kind: pending.icon, title: pending.log, time: 'just now · ordered by message', undo: pending.undo });
+    toast(pending.toastText, {
+      icon: 'bx-check-circle', action: {
+        label: 'Undo', fn: function () { toast('Reverted to the previous value', { icon: 'bx-undo' }); }
+      }
+    });
+    draftBox.classList.remove('show');
+    $('#promptInput').value = '';
+    pending = null;
+  });
+
+  /* ---------- scenario presets A / B / C ---------- */
+  const SCEN = {
+    A: [
+      { u: 'high', ico: 'bx-message-rounded-detail', t: 'Napat P. asked for a table for 4 tonight', m: ['waiting 12 min', 'LINE'], flag: 'time', flagTxt: 'waiting 12 min', b: 'Reply', toast: 'Reply box opened for Napat P.' },
+      { u: 'mid', ico: 'bx-purchase-tag-alt', t: '“Happy Hour −20%” ends in 2 days', m: ['2 days left', '4 items'], flag: 'alarm', flagTxt: '2 days left', b: 'Renew promo', toast: 'Promotion renewal drafted' },
+      { u: 'low', ico: 'bx-purchase-tag', t: '3 items still use a price set over 60 days ago', m: ['low priority', 'last check 12 Sep'], flag: 'check-shield', flagTxt: 'low priority', cool: true, b: 'Check price', toast: 'Price review opened for 3 items' }
+    ],
+    B: [
+      { u: 'high', ico: 'bx-calendar-check', t: '2 appointment requests still need confirming', m: ['booked 2h ago', 'tomorrow 10:00'], flag: 'alarm', flagTxt: 'confirm today', b: 'Confirm', toast: '2 appointment requests confirmed' },
+      { u: 'mid', ico: 'bx-envelope', t: 'Napat P. asked for a table for 4 tonight', m: ['waiting 12 min', 'LINE'], flag: 'time', flagTxt: 'waiting 12 min', b: 'Reply', toast: 'Reply box opened for Napat P.' },
+      { u: 'low', ico: 'bx-image-alt', t: '2 items have a missing photo', m: ['low priority', 'blocks sharing'], flag: 'check-shield', flagTxt: 'low priority', cool: true, b: 'Add photo', toast: 'Photos opened · 2 items need a photo' }
+    ],
+    C: [
+      { u: 'high', ico: 'bx-receipt', t: '3 quote requests are unanswered since yesterday', m: ['oldest 19h', '฿12,400 pipeline'], flag: 'time', flagTxt: 'reply today', b: 'Open quotes', toast: 'Quote inbox opened · 3 waiting' },
+      { u: 'mid', ico: 'bx-purchase-tag-alt', t: '“Happy Hour −20%” ends in 2 days', m: ['2 days left', '4 items'], flag: 'alarm', flagTxt: '2 days left', b: 'Renew promo', toast: 'Promotion renewal drafted' },
+      { u: 'low', ico: 'bx-purchase-tag', t: '3 items still use a price set over 60 days ago', m: ['low priority', 'last check 12 Sep'], flag: 'check-shield', flagTxt: 'low priority', cool: true, b: 'Check price', toast: 'Price review opened for 3 items' }
+    ]
+  };
+  function renderTasks(key) {
+    const list = $('#tasksList');
+    list.innerHTML = SCEN[key].map(function (k) {
+      return '<div class="task u-' + k.u + '">' +
+        '<div class="task-ico"><i class="bx ' + k.ico + '"></i></div>' +
+        '<div class="task-body"><p>' + k.t + '</p><div class="meta">' +
+        '<span class="flag' + (k.cool ? ' cool' : '') + '"><i class="bx bx-' + k.flag + '"></i> ' + k.flagTxt + '</span>' +
+        '<span>·</span><span>' + k.m[1] + '</span></div></div>' +
+        '<button class="btn ' + (k.u === 'high' ? 'btn-dark' : 'btn-ghost') + ' btn-sm" data-toast="' + k.toast + '">' + k.b + '</button>' +
+        '</div>';
+    }).join('');
+    $('#tasksCount').textContent = SCEN[key].length + ' open';
+  }
+  renderTasks('A');
+  $$('#scnSeg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('#scnSeg button').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+      renderTasks(b.getAttribute('data-scn'));
+      toast('Preset ' + b.getAttribute('data-scn') + ' loaded', { icon: 'bx-layer' });
+    });
+  });
+
+  /* ---------- demo switch / role / shop state ---------- */
+  $('#demoSwitch').addEventListener('click', function () {
+    const on = this.getAttribute('aria-checked') === 'true';
+    this.setAttribute('aria-checked', String(!on));
+    $('#missionStrip').classList.toggle('hide', on);
+    toast(on ? 'Demo mode off · mission strip hidden' : 'Demo mode on · guided steps shown', { icon: 'bx-play-circle' });
+  });
+  $('#roleSelect').addEventListener('change', function () {
+    toast('Viewing as ' + this.value, { icon: 'bx-user-check' });
+  });
+  $('#stateSelect').addEventListener('change', function () {
+    const v = this.value;
+    document.body.classList.remove('state-empty', 'state-offline', 'state-loading');
+    if (v === 'empty') {
+      document.body.classList.add('state-empty');
+      toast('New shop state · 3-step checklist shown', { icon: 'bx-list-check' });
+    } else if (v === 'offline') {
+      document.body.classList.add('state-offline');
+      toast('Offline · showing cached data', { icon: 'bx-wifi-off' });
+    } else if (v === 'loading') {
+      document.body.classList.add('state-loading');
+      setTimeout(function () {
+        document.body.classList.remove('state-loading');
+        $('#stateSelect').value = 'live';
+        runCounters();
+        toast('Loaded in 1.2s', { icon: 'bx-time' });
+      }, 1500);
+    } else {
+      toast('Live data', { icon: 'bx-check-circle' });
+    }
+  });
+
+  /* ---------- checklist ---------- */
+  let chkDone = 0;
+  $$('[data-chk]').forEach(function (row) {
+    row.addEventListener('click', function () {
+      if (row.classList.contains('done')) return;
+      row.classList.add('done');
+      chkDone++;
+      $('#chkBar').style.width = Math.round((chkDone / 3) * 100) + '%';
+      $('#chkLabel').textContent = chkDone + ' of 3';
+      if (chkDone === 3) toast('All set — your shop page is ready to share', { icon: 'bx-party' });
+      else toast('Step done', { icon: 'bx-check' });
+    });
+  });
+
+  /* ---------- upsell + mission ---------- */
+  function hideUpsell(mode) {
+    $('#upsellCard').classList.add('hide');
+    toast(mode === 'later' ? 'Hidden for 7 days' : 'Card dismissed', { icon: 'bx-x-circle' });
+  }
+  $('#upsellClose').addEventListener('click', function () { hideUpsell('x'); });
+  $('#upsellLater').addEventListener('click', function () { hideUpsell('later'); });
+
+  /* ---------- signature shortcuts ---------- */
+  $('#viewSiteBtn').addEventListener('click', function () {
+    toast('Opening your live site · baansala.cafe', { icon: 'bx-link-external' });
+  });
+  $('#signOutBtn').addEventListener('click', function () { openAuth('login'); });
+
+  /* ---------- auth modal ---------- */
+  const authOverlay = $('#authOverlay');
+  function showView(name) {
+    $$('.auth-view').forEach(function (v) { v.classList.remove('on'); });
+    const el = $('#view-' + name);
+    if (el) el.classList.add('on');
+    setTimeout(function () {
+      const f = el && el.querySelector('input');
+      if (f) f.focus();
+    }, 220);
+  }
+  function openAuth(view) {
+    authOverlay.classList.add('open');
+    showView(view || 'login');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAuth() {
+    authOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.openAuth = openAuth;
+  $$('[data-auth]').forEach(function (b) {
+    b.addEventListener('click', function () { closeDrops(); openAuth(b.getAttribute('data-auth')); });
+  });
+  $$('[data-view]').forEach(function (b) {
+    b.addEventListener('click', function (e) { e.preventDefault(); showView(b.getAttribute('data-view')); });
+  });
+  $$('[data-close-auth]').forEach(function (b) { b.addEventListener('click', closeAuth); });
+  authOverlay.addEventListener('click', function (e) { if (e.target === authOverlay) closeAuth(); });
+
+  $$('[data-eye]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      const inp = b.parentElement.querySelector('input');
+      const on = inp.type === 'password';
+      inp.type = on ? 'text' : 'password';
+      b.innerHTML = '<i class="bx ' + (on ? 'bx-hide' : 'bx-show') + '"></i>';
+    });
+  });
+
+  $$('[data-auth-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const view = form.closest('.auth-view').id.replace('view-', '');
+      const email = form.querySelector('input[type="email"]');
+      const pass = form.querySelector('input[type="password"]');
+      let msg = '';
+      if (email && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(email.value)) msg = 'Enter a valid email address';
+      else if (pass && view !== 'forgot' && pass.value.length < 8) msg = 'Password needs at least 8 characters';
+      else if (view === 'signup' && !$('#suTerms').checked) msg = 'Please accept the terms to continue';
+      else if (view === 'signup' && !$('#suName').value.trim()) msg = 'Tell us your name';
+      if (msg) {
+        toast(msg, { icon: 'bx-error-circle' });
+        if (email) email.focus();
+        return;
+      }
+      const btn = form.querySelector('button[type="submit"]');
+      const old = btn.innerHTML;
+      btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> One moment…';
+      btn.disabled = true;
+      setTimeout(function () {
+        btn.innerHTML = old; btn.disabled = false;
+        closeAuth();
+        if (view === 'login') toast('Signed in — loading Today', { icon: 'bx-check-circle' });
+        else if (view === 'signup') toast('Shop created — your 14-day trial has started', { icon: 'bx-party' });
+        else toast('Reset link sent · check your inbox', { icon: 'bx-envelope' });
+      }, 900);
+    });
+  });
+
+  /* ---------- escape key ---------- */
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    closeDrops();
+    closeAuth();
+    closeCloseSheet();
+    $('#chatPanel').classList.remove('open');
+    $('#chatToggle').setAttribute('aria-expanded', 'false');
+  });
+
+  /* ---------- chat ---------- */
+  const chatPanel = $('#chatPanel');
+  const chatBody = $('#chatBody');
+  const chatInput = $('#chatInput');
+  let greeted = true;
+
+  function stamp() {
+    return new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  }
+  function addMsg(text, who) {
+    const d = document.createElement('div');
+    d.className = 'msg ' + (who || 'bot');
+    d.innerHTML = text + '<span class="tm">' + stamp() + '</span>';
+    chatBody.appendChild(d);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return d;
+  }
+  function typing() {
+    const t = document.createElement('div');
+    t.className = 'typing';
+    t.innerHTML = '<i></i><i></i><i></i>';
+    chatBody.appendChild(t);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return t;
+  }
+  function botReply(q) {
+    const s = q.toLowerCase();
+    const t = typing();
+    let answer;
+    if (/close|closed|shut|holiday/.test(s)) {
+      answer = 'I can close the shop for you. Today’s banner would read: “We’re closed today. Back tomorrow at 08:00.” Want me to post it now?';
+    } else if (/sale|revenue|number|traffic|visitor|today/.test(s) && /how|sale|revenue|number/.test(s)) {
+      answer = 'So far today: 412 visitors (+18%), 27 contacts (9 calls, 12 LINE, 4 map, 2 forms) and 9 new leads. That is 64 more visitors than yesterday at this hour.';
+    } else if (/need|pending|task|queue|first|anything/.test(s)) {
+      answer = 'Three things: Napat is waiting 12 minutes for a table, “Happy Hour −20%” ends in 2 days, and 3 items still carry a price older than 60 days. The table is the only one losing you money right now.';
+    } else if (/price|75|raise|cost/.test(s)) {
+      answer = 'Iced latte is ฿70. I can set it to ฿75 and log the change as “ordered by message”. Say “iced latte to 75” and I will show you the before → after.';
+    } else if (/promo|discount|offer/.test(s)) {
+      answer = 'You have one live promotion ending in 2 days. I can draft “Dessert hour −20%” for 14:00–17:00, three days. Nothing publishes until you approve it.';
+    } else if (/photo|image|picture/.test(s)) {
+      answer = 'Two items are missing a photo — the menu card shows a plain icon instead. It matters: listings with photos get about twice the taps.';
+    } else if (/thank|thanks|great|ok/.test(s)) {
+      answer = 'Any time. I will keep an eye on the queue and tell you the moment something urgent lands.';
+    } else {
+      answer = 'I can change a price, hide or show an item, draft a promotion, or close the shop. Everything I do shows you a before → after summary first.';
+    }
+    setTimeout(function () {
+      t.remove();
+      addMsg(answer, 'bot');
+    }, 700 + Math.random() * 500);
+  }
+  function sendChat(text) {
+    const v = (text || '').trim();
+    if (!v) return;
+    addMsg(v, 'me');
+    chatInput.value = '';
+    botReply(v);
+  }
+  $('#chatForm').addEventListener('submit', function (e) { e.preventDefault(); sendChat(chatInput.value); });
+  $$('#chatQuick .chip').forEach(function (c) {
+    c.addEventListener('click', function () { sendChat(c.textContent); });
+  });
+  $('#chatToggle').addEventListener('click', function () {
+    const open = chatPanel.classList.toggle('open');
+    this.setAttribute('aria-expanded', String(open));
+    if (open) setTimeout(function () { chatInput.focus(); }, 260);
+  });
+  $('#chatClose').addEventListener('click', function () {
+    chatPanel.classList.remove('open');
+    $('#chatToggle').setAttribute('aria-expanded', 'false');
+  });
+
+  /* ---------- back to top (appears past the hero) ---------- */
+  const backTop = $('#backTop');
+  function onScroll() {
+    const hero = $('.greet');
+    const gate = hero ? hero.offsetTop + hero.offsetHeight - 40 : 300;
+    backTop.classList.toggle('show', window.scrollY > Math.max(160, gate));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+  backTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) en.target.style.animationPlayState = 'running';
+      });
+    }, { threshold: 0.04 });
+    $$('.rise').forEach(function (el) { el.style.animationPlayState = 'paused'; io.observe(el); });
+    setTimeout(function () { $$('.rise').forEach(function (el) { el.style.animationPlayState = 'running'; }); }, 60);
+  }
+
+  /* ---------- welcome toast ---------- */
+  setTimeout(function () {
+    toast('Loaded 3 things that need you today', { icon: 'bx-bell', life: 5200 });
+  }, 1400);
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
