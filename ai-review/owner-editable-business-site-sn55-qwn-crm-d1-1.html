@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Owner Dashboard | How's the Shop Today?</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'off-white': '#E3E3DD',
+                        'aqua-mint': '#04E1AB',
+                        'sage-green': '#BD9681',
+                        'emerald-green': '#10AE9E',
+                        'vivid-violet': '#6A5DE6',
+                        'deep-forest': '#724E40',
+                        'royal-indigo': '#222480',
+                        'deep-charcoal': '#291F1B',
+                        'midnight-navy': '#050738',
+                    },
+                    fontFamily: {
+                        'heading': ['"Plus Jakarta Sans"', 'sans-serif'],
+                        'body': ['"Inter"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px rgba(0, 0, 0, 0.04)',
+                        'glow': '0 8px 24px rgba(4, 225, 171, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E3E3DD;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #BD9681;
+        }
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        /* Typography Refinements */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #291F1B;
+            background-color: #FFFFFF;
+        }
+        h1, h2, h3, .heading-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.03em;
+        }
+        
+        /* Smooth Micro-animations */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+        .btn-press {
+            transition: transform 0.1s ease;
+        }
+        .btn-press:active {
+            transform: scale(0.96);
+        }
+
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background: rgba(5, 7, 56, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Chatbot Animation */
+        .chatbot-window {
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: bottom right;
+        }
+        .chatbot-hidden {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            pointer-events: none;
+        }
+        .chatbot-visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* NLP Input Focus */
+        .nlp-input:focus {
+            box-shadow: 0 0 0 3px rgba(4, 225, 171, 0.15);
+        }
+    </style>
+</head>
+<body class="antialiased h-screen flex overflow-hidden selection:bg-aqua-mint selection:text-white">
+
+    <!-- Left Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white border-r border-off-white flex flex-col sticky top-0 h-screen z-30 transition-all duration-300 absolute md:relative -translate-x-full md:translate-x-0">
+        <!-- Logo Section (Height matches header) -->
+        <div class="h-16 flex items-center px-6 border-b border-off-white shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-aqua-mint to-emerald-green flex items-center justify-center text-white font-heading font-bold text-lg">S</div>
+                <span class="font-heading font-bold text-lg text-deep-charcoal tracking-tight">ShopOS</span>
+            </div>
+            <!-- Close sidebar on mobile -->
+            <button onclick="toggleSidebar()" class="md:hidden ml-auto text-deep-charcoal">
+                <i class="bi bi-x-lg text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu -->
+        <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-off-white/30 text-aqua-mint font-medium text-[14px] transition-colors">
+                <i class="bi bi-grid-1x2-fill text-lg"></i> Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-deep-charcoal/70 hover:bg-off-white/30 hover:text-deep-charcoal font-medium text-[14px] transition-colors">
+                <i class="bi bi-box-seam text-lg"></i> Items & Pricing
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-deep-charcoal/70 hover:bg-off-white/30 hover:text-deep-charcoal font-medium text-[14px] transition-colors">
+                <i class="bi bi-megaphone-fill text-lg"></i> Promotions
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-deep-charcoal/70 hover:bg-off-white/30 hover:text-deep-charcoal font-medium text-[14px] transition-colors">
+                <i class="bi bi-chat-left-text-fill text-lg"></i> Messages <span class="ml-auto bg-aqua-mint text-white text-[11px] font-bold px-2 py-0.5 rounded-full">3</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-deep-charcoal/70 hover:bg-off-white/30 hover:text-deep-charcoal font-medium text-[14px] transition-colors">
+                <i class="bi bi-bar-chart-line-fill text-lg"></i> Analytics
+            </a>
+            
+            <div class="pt-4 mt-4 border-t border-off-white">
+                <p class="px-4 text-[11px] font-bold text-deep-charcoal/40 uppercase tracking-wider mb-2">Settings</p>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-deep-charcoal/70 hover:bg-off-white/30 hover:text-deep-charcoal font-medium text-[14px] transition-colors">
+                    <i class="bi bi-gear-fill text-lg"></i> Shop Settings
+                </a>
+                <button onclick="openModal('loginModal')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-royal-indigo hover:bg-royal-indigo/5 font-medium text-[14px] transition-colors text-left">
+                    <i class="bi bi-box-arrow-right text-lg"></i> Switch Account
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <header class="h-16 border-b border-off-white flex items-center justify-between px-4 md:px-8 bg-white shrink-0 z-20">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleSidebar()" class="md:hidden text-deep-charcoal p-2 hover:bg-off-white/50 rounded-lg transition-colors">
+                    <i class="bi bi-list text-xl"></i>
+                </button>
+                <div>
+                    <h1 class="font-heading font-bold text-[18px] text-deep-charcoal">Hello, Owner</h1>
+                    <p class="text-[11px] text-deep-charcoal/60 font-medium" id="currentDate">Loading date...</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Shop Status Toggle -->
+                <div class="hidden sm:flex items-center gap-3 bg-off-white/30 px-4 py-2 rounded-full border border-off-white">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-deep-charcoal/60" id="statusText">Shop Open</span>
+                    <button onclick="toggleShopStatus()" id="statusToggle" class="w-10 h-5 bg-aqua-mint rounded-full relative transition-colors duration-300 btn-press">
+                        <div class="absolute right-1 top-1 w-3 h-3 bg-white rounded-full shadow-sm transition-transform duration-300"></div>
+                    </button>
+                </div>
+
+                <!-- Info Dropdown -->
+                <div class="relative">
+                    <button onclick="toggleInfoDropdown()" class="w-10 h-10 rounded-full hover:bg-off-white/50 flex items-center justify-center text-deep-charcoal/70 hover:text-vivid-violet transition-colors btn-press">
+                        <i class="bi bi-info-circle text-xl"></i>
+                    </button>
+                    <div id="infoDropdown" class="hidden absolute right-0 top-12 w-80 bg-white rounded-2xl shadow-soft border border-off-white p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                        <h4 class="font-heading font-bold text-[14px] text-deep-charcoal mb-2">Web App Information</h4>
+                        <p class="text-[12px] text-deep-charcoal/70 leading-relaxed mb-4">
+                            ShopOS Dashboard v2.4.1<br>
+                            Optimized for 4G networks (&lt;3s load).<br>
+                            Features: NLP Command Processing, Real-time Sync, CRO-optimized layout.
+                        </p>
+                        <button onclick="copyAppInfo()" class="w-full py-2.5 bg-off-white/50 hover:bg-aqua-mint hover:text-white text-deep-charcoal text-[12px] font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 btn-press">
+                            <i class="bi bi-clipboard"></i> Copy Info
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Download Template Button -->
+                <button onclick="downloadTemplate()" class="hidden md:flex items-center gap-2 px-4 py-2.5 bg-deep-charcoal text-white text-[12px] font-bold rounded-xl hover:bg-midnight-navy transition-colors btn-press">
+                    <i class="bi bi-download"></i> Download HTML
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content (Scrollable) -->
+        <div id="mainScroll" class="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Left Column (Main Actions) -->
+                <div class="lg:col-span-2 space-y-6">
+                    
+                    <!-- 1. Pending Tasks -->
+                    <section>
+                        <div class="flex items-center justify-between mb-3">
+                            <h2 class="font-heading font-bold text-[18px] text-deep-charcoal">Pending Tasks</h2>
+                            <span class="text-[11px] font-bold text-aqua-mint bg-aqua-mint/10 px-2 py-1 rounded-md">3 Urgent</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <!-- Task 1 -->
+                            <div class="bg-white border border-off-white rounded-2xl p-4 hover-lift cursor-pointer group">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div class="w-8 h-8 rounded-full bg-vivid-violet/10 text-vivid-violet flex items-center justify-center">
+                                        <i class="bi bi-chat-quote-fill"></i>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-deep-charcoal/40">2m ago</span>
+                                </div>
+                                <p class="text-[13px] font-semibold text-deep-charcoal mb-3 leading-snug">2 customers waiting for table reservation reply.</p>
+                                <button class="w-full py-2 bg-vivid-violet text-white text-[12px] font-bold rounded-lg hover:bg-royal-indigo transition-colors btn-press">Reply Now</button>
+                            </div>
+                            <!-- Task 2 -->
+                            <div class="bg-white border border-off-white rounded-2xl p-4 hover-lift cursor-pointer group">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div class="w-8 h-8 rounded-full bg-sage-green/20 text-sage-green flex items-center justify-center">
+                                        <i class="bi bi-tag-fill"></i>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-deep-charcoal/40">2 days left</span>
+                                </div>
+                                <p class="text-[13px] font-semibold text-deep-charcoal mb-3 leading-snug">"Summer Splash" promo expires soon.</p>
+                                <button class="w-full py-2 bg-sage-green text-white text-[12px] font-bold rounded-lg hover:bg-deep-forest transition-colors btn-press">Renew Promo</button>
+                            </div>
+                            <!-- Task 3 -->
+                            <div class="bg-white border border-off-white rounded-2xl p-4 hover-lift cursor-pointer group">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div class="w-8 h-8 rounded-full bg-royal-indigo/10 text-royal-indigo flex items-center justify-center">
+                                        <i class="bi bi-image-alt"></i>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-deep-charcoal/40">60+ days</span>
+                                </div>
+                                <p class="text-[13px] font-semibold text-deep-charcoal mb-3 leading-snug">3 items have missing or outdated images.</p>
+                                <button class="w-full py-2 bg-royal-indigo text-white text-[12px] font-bold rounded-lg hover:bg-midnight-navy transition-colors btn-press">Check Images</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 2. 4 Large Shortcut Buttons (2x2) -->
+                    <section>
+                        <h2 class="font-heading font-bold text-[18px] text-deep-charcoal mb-3">Quick Actions</h2>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="min-h-[72px] bg-white border border-off-white rounded-2xl p-4 flex items-center gap-4 hover-lift btn-press group">
+                                <div class="w-10 h-10 rounded-xl bg-aqua-mint/10 text-aqua-mint flex items-center justify-center group-hover:bg-aqua-mint group-hover:text-white transition-colors">
+                                    <i class="bi bi-currency-dollar text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="font-heading font-bold text-[15px] text-deep-charcoal">Edit Prices</p>
+                                    <p class="text-[11px] text-deep-charcoal/50">Update menu costs</p>
+                                </div>
+                            </button>
+                            <button class="min-h-[72px] bg-white border border-off-white rounded-2xl p-4 flex items-center gap-4 hover-lift btn-press group">
+                                <div class="w-10 h-10 rounded-xl bg-vivid-violet/10 text-vivid-violet flex items-center justify-center group-hover:bg-vivid-violet group-hover:text-white transition-colors">
+                                    <i class="bi bi-megaphone text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="font-heading font-bold text-[15px] text-deep-charcoal">Open Promo</p>
+                                    <p class="text-[11px] text-deep-charcoal/50">Create new campaign</p>
+                                </div>
+                            </button>
+                            <button class="min-h-[72px] bg-white border border-off-white rounded-2xl p-4 flex items-center gap-4 hover-lift btn-press group">
+                                <div class="w-10 h-10 rounded-xl bg-sage-green/20 text-sage-green flex items-center justify-center group-hover:bg-sage-green group-hover:text-white transition-colors">
+                                    <i class="bi bi-images text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="font-heading font-bold text-[15px] text-deep-charcoal">Change Images</p>
+                                    <p class="text-[11px] text-deep-charcoal/50">Upload new photos</p>
+                                </div>
+                            </button>
+                            <button onclick="toggleShopStatus()" class="min-h-[72px] bg-white border border-off-white rounded-2xl p-4 flex items-center gap-4 hover-lift btn-press group">
+                                <div class="w-10 h-10 rounded-xl bg-deep-charcoal/5 text-deep-charcoal flex items-center justify-center group-hover:bg-deep-charcoal group-hover:text-white transition-colors">
+                                    <i class="bi bi-power text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="font-heading font-bold text-[15px] text-deep-charcoal">Close Shop Today</p>
+                                    <p class="text-[11px] text-deep-charcoal/50">Instant holiday mode</p>
+                                </div>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- 3. Today in Numbers -->
+                    <section>
+                        <h2 class="font-heading font-bold text-[18px] text-deep-charcoal mb-3">Today's Metrics</h2>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="bg-white border border-off-white rounded-2xl p-4 hover-lift cursor-pointer">
+                                <p class="text-[11px] font-bold text-deep-charcoal/50 uppercase tracking-wider mb-1">Visitors</p>
+                                <p class="font-heading font-extrabold text-[28px] text-deep-charcoal">142</p>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <i class="bi bi-arrow-up-short text-emerald-green text-lg"></i>
+                                    <span class="text-[11px] font-bold text-emerald-green">12% vs yesterday</span>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-off-white rounded-2xl p-4 hover-lift cursor-pointer">
+                                <p class="text-[11px] font-bold text-deep-charcoal/50 uppercase tracking-wider mb-1">Contacts</p>
+                                <p class="font-heading font-extrabold text-[28px] text-deep-charcoal">28</p>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <i class="bi bi-arrow-up-short text-emerald-green text-lg"></i>
+                                    <span class="text-[11px] font-bold text-emerald-green">5% vs yesterday</span>
+                                </div>
+                            </div>
+                            <div class="bg-white border border-off-white rounded-2xl p-4 hover-lift cursor-pointer">
+                                <p class="text-[11px] font-bold text-deep-charcoal/50 uppercase tracking-wider mb-1">New Leads</p>
+                                <p class="font-heading font-extrabold text-[28px] text-deep-charcoal">8</p>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <i class="bi bi-dash text-deep-charcoal/30 text-lg"></i>
+                                    <span class="text-[11px] font-bold text-deep-charcoal/40">Same as yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 4. NLP "Tell me what to fix" -->
+                    <section class="bg-gradient-to-br from-off-white/30 to-white border border-off-white rounded-2xl p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="bi bi-magic text-vivid-violet"></i>
+                            <h2 class="font-heading font-bold text-[15px] text-deep-charcoal">Smart Command: Tell me what to fix</h2>
+                        </div>
+                        <div class="relative">
+                            <input type="text" id="nlpInput" placeholder="e.g., 'Latte Cold price to 75' or 'Close shop tomorrow'" 
+                                class="nlp-input w-full bg-white border border-off-white rounded-xl px-4 py-3.5 text-[14px] text-deep-charcoal placeholder:text-deep-charcoal/30 focus:outline-none focus:border-aqua-mint transition-all"
+                                onkeypress="handleNLP(event)">
+                            <button onclick="processNLP()" class="absolute right-2 top-2 bottom-2 px-4 bg-deep-charcoal text-white text-[12px] font-bold rounded-lg hover:bg-midnight-navy transition-colors btn-press">
+                                Process
+                            </button>
+                        </div>
+                        <!-- NLP Result Container (Hidden by default) -->
+                        <div id="nlpResult" class="hidden mt-4 bg-white border border-aqua-mint/30 rounded-xl p-4 animate-in fade-in slide-in-from-top-2">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-aqua-mint/10 text-aqua-mint flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="bi bi-check-lg"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-[12px] font-bold text-deep-charcoal mb-2">Proposed Change Detected</p>
+                                    <div class="flex items-center gap-3 text-[13px] mb-3">
+                                        <span class="text-deep-charcoal/50 line-through">Latte Cold: ฿70</span>
+                                        <i class="bi bi-arrow-right text-deep-charcoal/30"></i>
+                                        <span class="font-bold text-aqua-mint">Latte Cold: ฿75</span>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button onclick="confirmNLP()" class="flex-1 py-2 bg-aqua-mint text-white text-[12px] font-bold rounded-lg hover:bg-emerald-green transition-colors btn-press">Confirm Change</button>
+                                        <button onclick="cancelNLP()" class="px-4 py-2 bg-off-white text-deep-charcoal text-[12px] font-bold rounded-lg hover:bg-deep-charcoal/10 transition-colors btn-press">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 5. Recent Activities -->
+                    <section>
+                        <h2 class="font-heading font-bold text-[18px] text-deep-charcoal mb-3">Recent Activities</h2>
+                        <div class="bg-white border border-off-white rounded-2xl divide-y divide-off-white">
+                            <div class="p-4 flex items-center justify-between group hover:bg-off-white/20 transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-sage-green/20 text-sage-green flex items-center justify-center text-[12px] font-bold">S</div>
+                                    <div>
+                                        <p class="text-[13px] font-medium text-deep-charcoal"><span class="font-bold">Somchai</span> changed <span class="font-bold">Latte Cold</span> ฿70 → ฿75</p>
+                                        <p class="text-[11px] text-deep-charcoal/50">14:05 PM · Ordered by message</p>
+                                    </div>
+                                </div>
+                                <button onclick="undoAction(this)" class="text-[11px] font-bold text-vivid-violet hover:bg-vivid-violet/10 px-3 py-1.5 rounded-lg transition-colors btn-press opacity-0 group-hover:opacity-100">
+                                    Undo
+                                </button>
+                            </div>
+                            <div class="p-4 flex items-center justify-between group hover:bg-off-white/20 transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-royal-indigo/10 text-royal-indigo flex items-center justify-center text-[12px] font-bold">A</div>
+                                    <div>
+                                        <p class="text-[13px] font-medium text-deep-charcoal"><span class="font-bold">Admin</span> closed shop for holiday</p>
+                                        <p class="text-[11px] text-deep-charcoal/50">Yesterday · Manual toggle</p>
+                                    </div>
+                                </div>
+                                <button onclick="undoAction(this)" class="text-[11px] font-bold text-vivid-violet hover:bg-vivid-violet/10 px-3 py-1.5 rounded-lg transition-colors btn-press opacity-0 group-hover:opacity-100">
+                                    Undo
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 6. Demo Mission Bar -->
+                    <section class="bg-midnight-navy rounded-2xl p-4 flex items-center justify-between text-white">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                                <i class="bi bi-trophy-fill text-aqua-mint"></i>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-[14px]">Demo Mission 1/3</p>
+                                <p class="text-[11px] text-white/60">Complete setup to unlock premium features</p>
+                            </div>
+                        </div>
+                        <button class="px-4 py-2 bg-aqua-mint text-midnight-navy text-[12px] font-bold rounded-lg hover:bg-emerald-green transition-colors btn-press">
+                            View
+                        </button>
+                    </section>
+                </div>
+
+                <!-- Right Column (Status & Preview) -->
+                <div class="space-y-6">
+                    <!-- Website Status -->
+                    <section class="bg-white border border-off-white rounded-2xl p-5 hover-lift cursor-pointer">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-2 h-2 rounded-full bg-emerald-green animate-pulse"></div>
+                            <h3 class="font-heading font-bold text-[15px] text-deep-charcoal">System Status</h3>
+                        </div>
+                        <p class="text-[13px] text-deep-charcoal/80 leading-relaxed">
+                            Website normal · Last checked 05:00 AM · Backup successful last night.
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-off-white flex items-center justify-between text-[11px] text-deep-charcoal/50 font-medium">
+                            <span>Uptime: 99.9%</span>
+                            <span class="text-aqua-mint">View Details →</span>
+                        </div>
+                    </section>
+
+                    <!-- Web Preview -->
+                    <section>
+                        <h3 class="font-heading font-bold text-[15px] text-deep-charcoal mb-3">Live Preview</h3>
+                        <div class="bg-deep-charcoal rounded-[24px] p-3 shadow-soft">
+                            <div class="bg-white rounded-[18px] overflow-hidden aspect-[9/16] max-h-[500px] relative">
+                                <!-- Mock Mobile UI -->
+                                <div class="h-8 bg-deep-charcoal flex items-center justify-center">
+                                    <div class="w-16 h-4 bg-black rounded-b-xl"></div>
+                                </div>
+                                <div class="p-4 space-y-3">
+                                    <div class="h-32 bg-off-white rounded-xl animate-pulse"></div>
+                                    <div class="h-4 bg-off-white rounded w-3/4 animate-pulse"></div>
+                                    <div class="h-4 bg-off-white rounded w-1/2 animate-pulse"></div>
+                                    <div class="grid grid-cols-2 gap-2 mt-4">
+                                        <div class="h-20 bg-off-white rounded-lg animate-pulse"></div>
+                                        <div class="h-20 bg-off-white rounded-lg animate-pulse"></div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <button class="w-full py-3 bg-aqua-mint text-white font-bold rounded-xl text-[13px]">Order Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Upsell Card -->
+                    <section class="bg-gradient-to-br from-vivid-violet to-royal-indigo rounded-2xl p-5 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+                        <h3 class="font-heading font-bold text-[16px] mb-2 relative z-10">Grow Faster</h3>
+                        <p class="text-[12px] text-white/80 mb-4 relative z-10">Enable automated SMS reminders for pending reservations.</p>
+                        <button class="w-full py-2.5 bg-white text-royal-indigo text-[12px] font-bold rounded-xl hover:bg-off-white transition-colors btn-press relative z-10">
+                            Enable Automation
+                        </button>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- Bottom spacer for FABs -->
+            <div class="h-24"></div>
+        </div>
+    </main>
+
+    <!-- Floating Action Buttons (Back to Top & Chatbot) -->
+    <div class="fixed bottom-6 right-6 flex gap-[5px] z-40">
+        <button id="backToTop" onclick="scrollToTop()" class="hidden w-12 h-12 rounded-full bg-white border border-off-white shadow-soft flex items-center justify-center text-deep-charcoal hover:bg-off-white transition-all btn-press">
+            <i class="bi bi-arrow-up text-lg"></i>
+        </button>
+        <button id="chatbotToggle" onclick="toggleChatbot()" class="w-14 h-14 rounded-full bg-aqua-mint text-white shadow-glow flex items-center justify-center hover:scale-105 transition-all btn-press">
+            <i class="bi bi-chat-dots-fill text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Chatbot Window -->
+    <div id="chatbotWindow" class="chatbot-hidden chatbot-window fixed bottom-24 right-6 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-off-white z-40 flex flex-col overflow-hidden">
+        <div class="bg-deep-charcoal p-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-aqua-mint flex items-center justify-center text-white">
+                    <i class="bi bi-robot"></i>
+                </div>
+                <div>
+                    <p class="font-heading font-bold text-[14px] text-white">Shop Assistant</p>
+                    <p class="text-[11px] text-white/60 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-green rounded-full"></span> Online</p>
+                </div>
+            </div>
+            <button onclick="toggleChatbot()" class="text-white/60 hover:text-white transition-colors">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div id="chatMessages" class="flex-1 h-80 overflow-y-auto p-4 space-y-3 bg-off-white/20">
+            <div class="flex gap-2">
+                <div class="w-6 h-6 rounded-full bg-aqua-mint flex items-center justify-center text-white text-[10px] shrink-0">AI</div>
+                <div class="bg-white border border-off-white rounded-2xl rounded-tl-none p-3 text-[13px] text-deep-charcoal shadow-sm">
+                    Hello! How can I help you manage your shop today?
+                </div>
+            </div>
+        </div>
+        <div class="p-3 bg-white border-t border-off-white">
+            <form onsubmit="sendChat(event)" class="flex gap-2">
+                <input type="text" id="chatInput" placeholder="Type a message..." class="flex-1 bg-off-white/30 border border-off-white rounded-xl px-3 py-2.5 text-[13px] focus:outline-none focus:border-aqua-mint transition-colors">
+                <button type="submit" class="w-10 h-10 bg-aqua-mint text-white rounded-xl flex items-center justify-center hover:bg-emerald-green transition-colors btn-press">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 relative animate-in fade-in zoom-in-95 duration-200">
+            <button onclick="closeModal('loginModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-off-white flex items-center justify-center text-deep-charcoal/50 transition-colors">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-xl bg-aqua-mint/10 text-aqua-mint flex items-center justify-center mx-auto mb-4">
+                    <i class="bi bi-box-arrow-in-right text-2xl"></i>
+                </div>
+                <h2 class="font-heading font-bold text-[24px] text-deep-charcoal">Welcome Back</h2>
+                <p class="text-[13px] text-deep-charcoal/60 mt-1">Sign in to manage your shop</p>
+            </div>
+            <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('loginModal'); showToast('Logged in successfully!');">
+                <div>
+                    <label class="block text-[12px] font-bold text-deep-charcoal mb-1.5">Email Address</label>
+                    <input type="email" class="w-full bg-off-white/30 border border-off-white rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-aqua-mint transition-colors" placeholder="owner@shop.com">
+                </div>
+                <div>
+                    <label class="block text-[12px] font-bold text-deep-charcoal mb-1.5">Password</label>
+                    <input type="password" class="w-full bg-off-white/30 border border-off-white rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-aqua-mint transition-colors" placeholder="••••••••">
+                </div>
+                <div class="flex items-center justify-between text-[12px]">
+                    <label class="flex items-center gap-2 text-deep-charcoal/70 cursor-pointer">
+                        <input type="checkbox" class="rounded border-off-white text-aqua-mint focus:ring-aqua-mint"> Remember me
+                    </label>
+                    <button type="button" onclick="closeModal('loginModal'); openModal('forgotModal')" class="text-vivid-violet font-bold hover:underline">Forgot password?</button>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-deep-charcoal text-white font-bold rounded-xl hover:bg-midnight-navy transition-colors btn-press">Sign In</button>
+            </form>
+            <p class="text-center text-[12px] text-deep-charcoal/60 mt-6">
+                Don't have an account? <button onclick="closeModal('loginModal'); openModal('signupModal')" class="text-aqua-mint font-bold hover:underline">Sign up</button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 relative animate-in fade-in zoom-in-95 duration-200">
+            <button onclick="closeModal('signupModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-off-white flex items-center justify-center text-deep-charcoal/50 transition-colors">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-xl bg-vivid-violet/10 text-vivid-violet flex items-center justify-center mx-auto mb-4">
+                    <i class="bi bi-person-plus-fill text-2xl"></i>
+                </div>
+                <h2 class="font-heading font-bold text-[24px] text-deep-charcoal">Create Account</h2>
+                <p class="text-[13px] text-deep-charcoal/60 mt-1">Start optimizing your shop today</p>
+            </div>
+            <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('signupModal'); showToast('Account created successfully!');">
+                <div>
+                    <label class="block text-[12px] font-bold text-deep-charcoal mb-1.5">Full Name</label>
+                    <input type="text" class="w-full bg-off-white/30 border border-off-white rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-aqua-mint transition-colors" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block text-[12px] font-bold text-deep-charcoal mb-1.5">Email Address</label>
+                    <input type="email" class="w-full bg-off-white/30 border border-off-white rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-aqua-mint transition-colors" placeholder="owner@shop.com">
+                </div>
+                <div>
+                    <label class="block text-[12px] font-bold text-deep-charcoal mb-1.5">Password</label>
+                    <input type="password" class="w-full bg-off-white/30 border border-off-white rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-aqua-mint transition-colors" placeholder="••••••••">
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-aqua-mint text-white font-bold rounded-xl hover:bg-emerald-green transition-colors btn-press">Create Account</button>
+            </form>
+            <p class="text-center text-[12px] text-deep-charcoal/60 mt-6">
+                Already have an account? <button onclick="closeModal('signupModal'); openModal('loginModal')" class="text-aqua-mint font-bold hover:underline">Sign in</button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotModal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-8 relative animate-in fade-in zoom-in-95 duration-200">
+            <button onclick="closeModal('forgotModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full hover:bg-off-white flex items-center justify-center text-deep-charcoal/50 transition-colors">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-xl bg-sage-green/20 text-sage-green flex items-center justify-center mx-auto mb-4">
+                    <i class="bi bi-shield-lock-fill text-2xl"></i>
+                </div>
+                <h2 class="font-heading font-bold text-[24px] text-deep-charcoal">Reset Password</h2>
+                <p class="text-[13px] text-deep-charcoal/60 mt-1">Enter your email to receive reset instructions</p>
+            </div>
+            <form class="space-y-4" onsubmit="event.preventDefault(); closeModal('forgotModal'); showToast('Reset link sent to your email!');">
+                <div>
+                    <label class="block text-[12px] font-bold text-deep-charcoal mb-1.5">Email Address</label>
+                    <input type="email" class="w-full bg-off-white/30 border border-off-white rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-aqua-mint transition-colors" placeholder="owner@shop.com">
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-deep-charcoal text-white font-bold rounded-xl hover:bg-midnight-navy transition-colors btn-press">Send Reset Link</button>
+            </form>
+            <button onclick="closeModal('forgotModal'); openModal('loginModal')" class="w-full text-center text-[12px] text-deep-charcoal/60 mt-6 hover:text-deep-charcoal transition-colors">
+                ← Back to Sign In
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-6 right-6 bg-deep-charcoal text-white px-6 py-3 rounded-xl shadow-2xl transform translate-y-[-150%] transition-transform duration-300 z-[60] flex items-center gap-3">
+        <i class="bi bi-check-circle-fill text-aqua-mint"></i>
+        <span id="toastMessage" class="text-[13px] font-medium">Action successful</span>
+    </div>
+
+    <script>
+        // Date Initialization
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+        // Sidebar Toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        // Shop Status Toggle
+        let isShopOpen = true;
+        function toggleShopStatus() {
+            isShopOpen = !isShopOpen;
+            const toggle = document.getElementById('statusToggle');
+            const statusText = document.getElementById('statusText');
+            const dot = toggle.querySelector('div');
+            
+            if (isShopOpen) {
+                toggle.classList.remove('bg-deep-charcoal/30');
+                toggle.classList.add('bg-aqua-mint');
+                dot.style.transform = 'translateX(0)';
+                statusText.textContent = 'Shop Open';
+                statusText.classList.remove('text-deep-charcoal/40');
+                statusText.classList.add('text-deep-charcoal/60');
+                showToast('Shop is now OPEN');
+            } else {
+                toggle.classList.remove('bg-aqua-mint');
+                toggle.classList.add('bg-deep-charcoal/30');
+                dot.style.transform = 'translateX(-20px)';
+                statusText.textContent = 'Closed Today';
+                statusText.classList.remove('text-deep-charcoal/60');
+                statusText.classList.add('text-deep-charcoal/40');
+                showToast('Shop is now CLOSED');
+            }
+        }
+
+        // Info Dropdown
+        function toggleInfoDropdown() {
+            const dropdown = document.getElementById('infoDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+        
+        function copyAppInfo() {
+            const info = "ShopOS Dashboard v2.4.1\nOptimized for 4G networks (<3s load).\nFeatures: NLP Command Processing, Real-time Sync, CRO-optimized layout.";
+            navigator.clipboard.writeText(info).then(() => {
+                showToast('Information copied to clipboard!');
+                document.getElementById('infoDropdown').classList.add('hidden');
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('infoDropdown');
+            const button = event.target.closest('button');
+            if (!dropdown.contains(event.target) && (!button || !button.querySelector('.bi-info-circle'))) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // NLP Processing
+        function handleNLP(event) {
+            if (event.key === 'Enter') processNLP();
+        }
+
+        function processNLP() {
+            const input = document.getElementById('nlpInput').value.toLowerCase();
+            if (input.includes('latte') || input.includes('price') || input.includes('75') || input.includes('close')) {
+                document.getElementById('nlpResult').classList.remove('hidden');
+            } else {
+                showToast('Command not recognized. Try "Latte price to 75"');
+            }
+        }
+
+        function confirmNLP() {
+            document.getElementById('nlpResult').classList.add('hidden');
+            document.getElementById('nlpInput').value = '';
+            showToast('Change confirmed and logged!');
+            
+            // Add to recent activities
+            const activities = document.querySelector('.divide-y');
+            const newActivity = document.createElement('div');
+            newActivity.className = 'p-4 flex items-center justify-between group hover:bg-off-white/20 transition-colors animate-in fade-in slide-in-from-top-2';
+            newActivity.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-aqua-mint/10 text-aqua-mint flex items-center justify-center text-[12px] font-bold">AI</div>
+                    <div>
+                        <p class="text-[13px] font-medium text-deep-charcoal"><span class="font-bold">You</span> changed <span class="font-bold">Latte Cold</span> to ฿75</p>
+                        <p class="text-[11px] text-deep-charcoal/50">Just now · Ordered by message</p>
+                    </div>
+                </div>
+                <button onclick="undoAction(this)" class="text-[11px] font-bold text-vivid-violet hover:bg-vivid-violet/10 px-3 py-1.5 rounded-lg transition-colors btn-press opacity-0 group-hover:opacity-100">Undo</button>
+            `;
+            activities.insertBefore(newActivity, activities.firstChild);
+        }
+
+        function cancelNLP() {
+            document.getElementById('nlpResult').classList.add('hidden');
+            document.getElementById('nlpInput').value = '';
+        }
+
+        function undoAction(btn) {
+            btn.textContent = 'Undoing...';
+            setTimeout(() => {
+                btn.closest('.group').style.opacity = '0.5';
+                btn.textContent = 'Undone';
+                btn.disabled = true;
+                showToast('Action reverted successfully');
+            }, 600);
+        }
+
+        // Chatbot Functions
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbotWindow');
+            if (chatWindow.classList.contains('chatbot-hidden')) {
+                chatWindow.classList.remove('chatbot-hidden');
+                chatWindow.classList.add('chatbot-visible');
+            } else {
+                chatWindow.classList.remove('chatbot-visible');
+                chatWindow.classList.add('chatbot-hidden');
+            }
+        }
+
+        function sendChat(event) {
+            event.preventDefault();
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // User message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'flex gap-2 justify-end';
+            userDiv.innerHTML = `
+                <div class="bg-aqua-mint text-white rounded-2xl rounded-tr-none p-3 text-[13px] shadow-sm max-w-[80%]">
+                    ${message}
+                </div>
+            `;
+            chatMessages.appendChild(userDiv);
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Bot response simulation
+            setTimeout(() => {
+                const botDiv = document.createElement('div');
+                botDiv.className = 'flex gap-2 animate-in fade-in slide-in-from-bottom-2';
+                botDiv.innerHTML = `
+                    <div class="w-6 h-6 rounded-full bg-aqua-mint flex items-center justify-center text-white text-[10px] shrink-0">AI</div>
+                    <div class="bg-white border border-off-white rounded-2xl rounded-tl-none p-3 text-[13px] text-deep-charcoal shadow-sm max-w-[80%]">
+                        I've noted that. Would you like me to draft a quick response or update the system for you?
+                    </div>
+                `;
+                chatMessages.appendChild(botDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+
+        // Scroll to Top Logic
+        const mainScroll = document.getElementById('mainScroll');
+        const backToTopBtn = document.getElementById('backToTop');
+
+        mainScroll.addEventListener('scroll', () => {
+            if (mainScroll.scrollTop > 300) {
+                backToTopBtn.classList.remove('hidden');
+                backToTopBtn.classList.add('flex');
+            } else {
+                backToTopBtn.classList.add('hidden');
+                backToTopBtn.classList.remove('flex');
+            }
+        });
+
+        function scrollToTop() {
+            mainScroll.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                toast.style.transform = 'translateY(-150%)';
+            }, 3000);
+        }
+
+        // Download Template Function
+        function downloadTemplate() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'shop-dashboard-template.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Template downloaded successfully!');
+        }
+
+        // Close modals on backdrop click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-backdrop')) {
+                event.target.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
+</body>
+</html>
