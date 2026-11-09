@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Lucky Cup · Owner Dashboard</title>
+<meta name="description" content="Lucky Cup — a calm, fast back office for independent food &amp; beverage shops." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        offwhite:  '#E3E3DD',
+        mint:     '#04E1AB',
+        sage:     '#BD9681',
+        emerald:  '#10AE9E',
+        violet:   '#6A5DE6',
+        forest:   '#724E40',
+        indigo:   '#222480',
+        charcoal: '#291F1B',
+        midnight: '#050738',
+      },
+      fontFamily: {
+        sans: ['Inter','ui-sans-serif','system-ui','sans-serif'],
+        display: ['"Plus Jakarta Sans"','Inter','sans-serif'],
+      },
+      boxShadow: {
+        card: '0 10px 30px rgba(0,0,0,.045), 0 1px 2px rgba(0,0,0,.04)',
+        lift: '0 22px 50px rgba(5,7,56,.10), 0 2px 6px rgba(0,0,0,.05)',
+        soft: '0 8px 24px rgba(41,31,27,.06)',
+      },
+      borderRadius: { '4xl': '28px' },
+      keyframes: {
+        riseIn: { '0%': {opacity:'0', transform:'translateY(14px)'}, '100%': {opacity:'1', transform:'translateY(0)'} },
+        popIn:  { '0%': {opacity:'0', transform:'translateY(10px) scale(.97)'}, '100%': {opacity:'1', transform:'translateY(0) scale(1)'} },
+        fadeIn: { '0%': {opacity:'0'}, '100%': {opacity:'1'} },
+        slideLeft: { '0%': {transform:'translateX(100%)'}, '100%': {transform:'translateX(0)'} },
+        blob: { '0%,100%': {transform:'translate3d(0,0,0) scale(1)'}, '50%': {transform:'translate3d(14px,-10px,0) scale(1.06)'} },
+        shimmer: { '0%': {backgroundPosition:'-500px 0'}, '100%': {backgroundPosition:'500px 0'} },
+        floatUp: { '0%': {opacity:'0', transform:'translateY(10px) scale(.96)'}, '15%': {opacity:'1'}, '85%': {opacity:'1'}, '100%': {opacity:'0', transform:'translateY(-6px) scale(1)'} },
+      },
+      animation: {
+        riseIn:'riseIn .55s cubic-bezier(.22,1,.36,1) both',
+        popIn:'popIn .35s cubic-bezier(.22,1,.36,1) both',
+        fadeIn:'fadeIn .3s ease both',
+        slideLeft:'slideLeft .38s cubic-bezier(.22,1,.36,1) both',
+        blob:'blob 16s ease-in-out infinite',
+        shimmer:'shimmer 1.6s linear infinite',
+        floatUp:'floatUp .4s ease both',
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root{
+    --line: rgba(41,31,27,.10);
+    --line-strong: rgba(41,31,27,.16);
+  }
+  html{ scroll-behavior:smooth; }
+  body{ -webkit-font-smoothing:antialiased; background:#fff; color:#291F1B; }
+
+  /* custom scrollbars — no arrows, palette-tinted */
+  *{ scrollbar-width: thin; scrollbar-color: #BD9681 rgba(41,31,27,.06); }
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background: rgba(41,31,27,.05); border-radius:999px; }
+  ::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg,#04E1AB 0%, #10AE9E 55%, #6A5DE6 130%);
+    border-radius:999px; border:3px solid #fff;
+  }
+  ::-webkit-scrollbar-thumb:hover{ background: linear-gradient(180deg,#10AE9E,#6A5DE6); }
+  .scroll-thin::-webkit-scrollbar{ width:6px; height:6px; }
+  .scroll-thin::-webkit-scrollbar-thumb{ border:2px solid #fff; }
+
+  .heading-display, h1,h2,h3{ font-family:'Plus Jakarta Sans',sans-serif; letter-spacing:-.025em; }
+  .track-tight{ letter-spacing:-.035em; }
+
+  .organic{ border-radius: 28px 28px 28px 10px; }
+  .organic-alt{ border-radius: 28px 10px 28px 28px; }
+  .blob-shape{ border-radius: 46% 54% 38% 62% / 52% 42% 58% 48%; }
+
+  .focus-ring:focus-visible{ outline:2px solid #6A5DE6; outline-offset:2px; }
+  .btn-press{ transition: transform .18s cubic-bezier(.22,1,.36,1), box-shadow .18s ease, background-color .18s ease, color .18s ease; }
+  .btn-press:active{ transform: scale(.965); }
+  .lift{ transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease; }
+  .lift:hover{ transform: translateY(-3px); box-shadow:0 22px 50px rgba(5,7,56,.10); }
+  .fade-swap{ transition: opacity .22s ease, transform .22s ease; }
+
+  .stagger > *{ opacity:0; animation: riseIn .6s cubic-bezier(.22,1,.36,1) forwards; }
+  .stagger > *:nth-child(1){ animation-delay:.04s } .stagger > *:nth-child(2){ animation-delay:.10s }
+  .stagger > *:nth-child(3){ animation-delay:.16s } .stagger > *:nth-child(4){ animation-delay:.22s }
+  .stagger > *:nth-child(5){ animation-delay:.28s } .stagger > *:nth-child(6){ animation-delay:.34s }
+  .stagger > *:nth-child(7){ animation-delay:.40s } .stagger > *:nth-child(8){ animation-delay:.46s }
+  .stagger > *:nth-child(9){ animation-delay:.52s }
+
+  .skeleton{ background: linear-gradient(90deg,#EFEDE8 25%,#F7F6F3 50%,#EFEDE8 75%); background-size:1000px 100%; animation: shimmer 1.6s linear infinite; }
+  .switch-track{ transition: background-color .25s ease; }
+  .switch-knob{ transition: transform .28s cubic-bezier(.22,1,.36,1); }
+  .no-scrollbar::-webkit-scrollbar{ display:none; }
+  .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+  .grid-dots{ background-image: radial-gradient(rgba(41,31,27,.09) 1px, transparent 1px); background-size:16px 16px; }
+  .tabnum{ font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="min-h-full font-sans text-charcoal">
+
+<!-- ambient organic background -->
+<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+  <div class="absolute -top-32 -left-24 h-[420px] w-[420px] blob-shape bg-mint/20 animate-blob"></div>
+  <div class="absolute top-1/3 -right-28 h-[360px] w-[360px] blob-shape bg-violet/10 animate-blob" style="animation-delay:-6s"></div>
+  <div class="absolute -bottom-32 left-1/3 h-[300px] w-[300px] blob-shape bg-sage/15 animate-blob" style="animation-delay:-10s"></div>
+</div>
+
+<div class="flex min-h-screen">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside id="sidebar" class="group/side fixed inset-y-0 left-0 z-50 flex w-[264px] flex-col border-r border-charcoal/10 bg-white transition-[width,transform] duration-300 ease-out lg:translate-x-0 max-lg:translate-x-[-100%] max-lg:shadow-lift">
+    <!-- logo block : same height as header, sticky, border-b aligns with header border-b -->
+    <div class="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-3 border-b border-charcoal/10 bg-white px-4">
+      <div class="relative grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-mint to-emerald text-white shadow-soft">
+        <i class="bi bi-cup-hot-fill text-[17px]"></i>
+        <span class="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald"></span>
+      </div>
+      <div class="sidebar-copy min-w-0 flex-1 transition-opacity duration-200">
+        <p class="truncate font-display text-[15px] font-extrabold tracking-tight text-charcoal">Lucky Cup</p>
+        <p class="truncate text-[11px] font-medium text-charcoal/45">Owner back office</p>
+      </div>
+      <button id="collapseBtn" class="focus-ring grid h-8 w-8 shrink-0 place-items-center rounded-lg text-charcoal/45 transition hover:bg-charcoal/5 hover:text-charcoal max-lg:hidden" title="Collapse menu">
+        <i class="bi bi-layout-sidebar-inset text-[15px]"></i>
+      </button>
+    </div>
+
+    <!-- scrollable menu -->
+    <nav class="scroll-thin flex-1 overflow-y-auto px-3 py-4" aria-label="Main menu">
+      <p class="sidebar-copy px-3 pb-2 text-[10px] font-bold uppercase tracking-[.14em] text-charcoal/35">Workspace</p>
+      <ul class="space-y-1" id="menuList"></ul>
+
+      <p class="sidebar-copy px-3 pb-2 pt-6 text-[10px] font-bold uppercase tracking-[.14em] text-charcoal/35">Account</p>
+      <ul class="space-y-1" id="menuList2"></ul>
+
+      <!-- store mini-status (desktop) -->
+      <div class="sidebar-copy mt-6 rounded-2xl border border-charcoal/8 bg-offwhite/60 p-3.5">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-bold uppercase tracking-[.12em] text-charcoal/45">Store status</span>
+          <span id="sideStatusDot" class="h-2 w-2 rounded-full bg-mint shadow-[0_0_0_3px_rgba(4,225,171,.18)]"></span>
+        </div>
+        <p id="sideStatusText" class="mt-1.5 text-[13px] font-semibold text-charcoal">Open until 21:00</p>
+        <p id="sideStatusSub" class="mt-0.5 text-[11px] text-charcoal/50">Today · 08:00 – 21:00</p>
+        <button data-modal="closeShop" class="btn-press mt-3 w-full rounded-xl bg-charcoal px-3 py-2 text-[12px] font-semibold text-white hover:bg-charcoal/90">
+          <i class="bi bi-pause-circle me-1.5"></i>Close shop
+        </button>
+      </div>
+    </nav>
+
+    <!-- user block -->
+    <div class="shrink-0 border-t border-charcoal/10 p-3">
+      <button id="userBtn" class="focus-ring flex w-full items-center gap-3 rounded-2xl px-2 py-2 text-left transition hover:bg-charcoal/5">
+        <div class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-indigo text-[12px] font-bold text-white">EK</div>
+        <div class="sidebar-copy min-w-0 flex-1">
+          <p class="truncate text-[13px] font-semibold text-charcoal">Ek Somsiri</p>
+          <p class="truncate text-[11px] text-charcoal/45">Owner · Lucky Cup</p>
+        </div>
+        <i class="bi bi-three-dots-vertical sidebar-copy text-[14px] text-charcoal/35"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- mobile backdrop -->
+  <div id="backdrop" class="fixed inset-0 z-40 hidden bg-charcoal/35 backdrop-blur-[2px] lg:hidden"></div>
+
+  <!-- ============ MAIN COLUMN ============ -->
+  <div id="mainCol" class="flex min-h-screen min-w-0 flex-1 flex-col transition-[padding] duration-300 ease-out lg:pl-[264px]">
+
+    <!-- ============ HEADER ============ -->
+    <header class="sticky top-0 z-30 flex h-16 shrink-0 items-center gap-3 border-b border-charcoal/10 bg-white/85 px-4 backdrop-blur-xl sm:px-6">
+      <button id="hamburger" class="focus-ring grid h-9 w-9 shrink-0 place-items-center rounded-xl text-charcoal/70 transition hover:bg-charcoal/5 lg:hidden" aria-label="Open menu">
+        <i class="bi bi-list text-[20px]"></i>
+      </button>
+
+      <div class="flex min-w-0 items-center gap-2">
+        <span class="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-mint to-emerald text-white shadow-soft lg:hidden"><i class="bi bi-cup-hot-fill text-[14px]"></i></span>
+        <span class="hidden truncate text-[12px] text-charcoal/45 sm:block"><i class="bi bi-house-door text-[13px]"></i></span>
+        <i class="bi bi-chevron-right hidden text-[10px] opacity-50 sm:block"></i>
+        <span class="hidden font-semibold text-charcoal sm:block">Today at a glance</span>
+        <span class="truncate font-display text-[13.5px] font-bold text-charcoal lg:hidden">Lucky Cup</span>
+      </div>
+
+      <div class="flex-1"></div>
+
+      <!-- search -->
+      <div class="relative hidden md:block">
+        <i class="bi bi-search pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[13px] text-charcoal/35"></i>
+        <input id="globalSearch" type="text" placeholder="Search items, leads, promos…"
+          class="focus-ring w-56 rounded-xl border border-charcoal/10 bg-offwhite/50 py-2 pl-9 pr-9 text-[13px] text-charcoal placeholder:text-charcoal/35 transition-all duration-300 focus:w-72 focus:border-violet/40 focus:bg-white" />
+        <kbd class="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 rounded-md border border-charcoal/10 bg-white px-1.5 py-0.5 text-[10px] font-semibold text-charcoal/40">⌘K</kbd>
+      </div>
+
+      <!-- notes dropdown (top-right) -->
+      <div class="relative">
+        <button id="notesBtn" class="focus-ring relative grid h-9 w-9 place-items-center rounded-xl text-charcoal/60 transition hover:bg-charcoal/5 hover:text-charcoal" aria-haspopup="true" aria-expanded="false" title="App notes">
+          <i class="bi bi-sticky text-[17px]"></i>
+          <span class="absolute right-1.5 top-1.5 h-2 w-2 rounded-full border-2 border-white bg-violet"></span>
+        </button>
+        <div id="notesPanel" class="absolute right-0 top-11 z-50 hidden w-[320px] origin-top-right animate-popIn rounded-2xl border border-charcoal/10 bg-white p-4 shadow-lift sm:w-[360px]">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="font-display text-[13px] font-bold text-charcoal">About this web app</p>
+              <p class="mt-0.5 text-[11px] text-charcoal/45">Owner documentation</p>
+            </div>
+            <button data-close="notesPanel" class="grid h-7 w-7 place-items-center rounded-lg text-charcoal/40 transition hover:bg-charcoal/5 hover:text-charcoal"><i class="bi bi-x-lg text-[12px]"></i></button>
+          </div>
+          <div id="notesBody" class="scroll-thin mt-3 max-h-[46vh] space-y-3 overflow-y-auto pr-1 text-[12.5px] leading-relaxed text-charcoal/75">
+            <p>Lucky Cup is a back office for independent food and beverage shops. It keeps the public menu, pricing, photos, promotions and customer leads in one place, and publishes changes to your storefront the moment you confirm them.</p>
+            <p>Every action you take is written to a Change Log with your name and the time, so any staff member can see what changed, who changed it, and undo it if it was a mistake. Changes made by voice or quick command are tagged <span class="font-semibold text-charcoal">“ordered by message”</span> so they stay easy to audit.</p>
+            <p>The dashboard opens with the three things that need attention today, one-tap shortcuts into the exact screen you need, and a plain-language box where you can type what you want changed in your own words. Nothing is saved until you confirm the before-and-after summary.</p>
+            <p>Store status is shared instantly with your public page. Closing the shop shows a banner to visitors within five seconds, and reopening takes one tap.</p>
+          </div>
+          <button id="copyNotes" class="btn-press mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-indigo px-4 py-2.5 text-[13px] font-semibold text-white hover:bg-midnight">
+            <i class="bi bi-clipboard-check text-[14px]"></i><span id="copyLabel">Copy app information</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- account / sign-in -->
+      <button data-modal="login" class="focus-ring hidden rounded-xl border border-charcoal/12 px-3.5 py-2 text-[12.5px] font-semibold text-charcoal transition hover:border-charcoal/25 hover:bg-charcoal/[.03] sm:inline-flex sm:items-center sm:gap-2">
+        <i class="bi bi-person-circle text-[15px]"></i> Sign in
+      </button>
+
+      <div class="hidden h-6 w-px bg-charcoal/10 sm:block"></div>
+      <div class="hidden items-center gap-2.5 sm:flex">
+        <div class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-violet to-indigo text-[12px] font-bold text-white shadow-soft">EK</div>
+        <div class="hidden xl:block">
+          <p class="text-[12.5px] font-semibold leading-tight text-charcoal">Ek Somsiri</p>
+          <p class="text-[11px] leading-tight text-charcoal/45">Owner</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ PAGE ============ -->
+    <main class="flex-1 px-4 pb-28 pt-5 sm:px-6 lg:pb-10" id="top">
+      <div class="mx-auto w-full max-w-[1500px]">
+
+        <!-- section order (mobile): 1..8 -->
+        <div class="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_400px] xl:items-start">
+
+          <!-- ======== LEFT COLUMN (sections 1-4 + D1.14) ======== -->
+          <div class="flex flex-col gap-4">
+
+            <!-- 1. Greeting + store status -->
+            <section class="lift organic relative overflow-hidden border border-charcoal/8 bg-white p-5 shadow-card sm:p-6" style="border-radius:28px 28px 28px 10px;">
+              <div class="pointer-events-none absolute -right-14 -top-16 h-52 w-52 blob-shape bg-mint/25"></div>
+              <div class="pointer-events-none absolute -bottom-24 right-40 h-40 w-40 blob-shape bg-violet/10"></div>
+              <div class="relative flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <p class="text-[12px] font-medium text-charcoal/50">Friday, 8 November 2025 · 09:24</p>
+                  <h1 class="mt-1 font-display text-[26px] font-extrabold tracking-tight text-charcoal sm:text-[30px]">
+                    Good morning, Ek <span class="inline-block origin-bottom-right animate-[wave_2.4s_ease-in-out_infinite]">👋</span>
+                  </h1>
+                  <p class="mt-1.5 max-w-[46ch] text-[13.5px] leading-relaxed text-charcoal/60">
+                    Two things need you today: a customer reply and a promo that ends in two days.
+                  </p>
+                </div>
+                <div class="flex flex-col items-stretch gap-2.5">
+                  <div id="storeBadge" class="flex items-center justify-center gap-2 rounded-full bg-mint px-4 py-2 text-[12.5px] font-bold text-charcoal shadow-soft">
+                    <span class="h-2 w-2 rounded-full bg-charcoal"></span><span id="storeBadgeText">Shop is open</span>
+                  </div>
+                  <label class="flex cursor-pointer select-none items-center justify-between gap-3 rounded-2xl border border-charcoal/10 bg-offwhite/60 px-3.5 py-2.5 transition hover:border-charcoal/20">
+                    <span class="text-[12.5px] font-semibold text-charcoal">Close shop today</span>
+                    <span class="relative inline-flex h-6 w-11 shrink-0">
+                      <input id="storeSwitch" type="checkbox" class="peer sr-only">
+                      <span class="switch-track absolute inset-0 rounded-full bg-charcoal/15 peer-checked:bg-mint"></span>
+                      <span class="switch-knob absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform peer-checked:translate-x-5"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2. Pending tasks -->
+            <section class="lift organic-alt border border-charcoal/8 bg-white p-5 shadow-card sm:p-6" style="border-radius:28px 10px 28px 28px;">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="grid h-8 w-8 place-items-center rounded-xl bg-violet/10 text-violet"><i class="bi bi-lightning-charge-fill text-[15px]"></i></span>
+                  <h2 class="font-display text-[17px] font-bold text-charcoal">Waiting on you</h2>
+                  <span id="taskCount" class="rounded-full bg-charcoal/6 px-2 py-0.5 text-[11px] font-bold text-charcoal/55">3</span>
+                </div>
+                <button data-modal="allTasks" class="focus-ring rounded-lg px-2 py-1 text-[12px] font-semibold text-charcoal/50 transition hover:bg-charcoal/5 hover:text-charcoal">View all</button>
+              </div>
+              <div id="taskList" class="mt-4 space-y-2.5"></div>
+            </section>
+
+            <!-- 3. Shortcuts 2x2 -->
+            <section class="lift border border-charcoal/8 bg-white p-5 shadow-card sm:p-6">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="grid h-8 w-8 place-items-center rounded-xl bg-mint/20 text-emerald"><i class="bi bi-grid-3x3-gap-fill text-[15px]"></i></span>
+                  <h2 class="font-display text-[17px] font-bold text-charcoal">Jump straight in</h2>
+                </div>
+                <span class="text-[11px] font-medium text-charcoal/40">One tap to the right screen</span>
+              </div>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <button data-sheet="items" class="btn-press lift group flex min-h-[92px] flex-col items-start justify-between rounded-2xl border border-charcoal/8 bg-gradient-to-br from-offwhite/70 to-white p-4 text-left hover:border-mint/50">
+                  <span class="grid h-10 w-10 place-items-center rounded-xl bg-white text-emerald shadow-soft transition group-hover:scale-105"><i class="bi bi-tags-fill text-[18px]"></i></span>
+                  <span class="mt-3 block">
+                    <span class="block font-display text-[14px] font-bold text-charcoal">Edit prices</span>
+                    <span class="mt-0.5 block text-[11.5px] text-charcoal/50">4 items need a look</span>
+                  </span>
+                </button>
+                <button data-sheet="promos" class="btn-press lift group flex min-h-[92px] flex-col items-start justify-between rounded-2xl border border-charcoal/8 bg-gradient-to-br from-offwhite/70 to-white p-4 text-left hover:border-violet/50">
+                  <span class="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet shadow-soft transition group-hover:scale-105"><i class="bi bi-megaphone-fill text-[18px]"></i></span>
+                  <span class="mt-3 block">
+                    <span class="block font-display text-[14px] font-bold text-charcoal">Open a promo</span>
+                    <span class="mt-0.5 block text-[11.5px] text-charcoal/50">Draft in 30 seconds</span>
+                  </span>
+                </button>
+                <button data-sheet="photos" class="btn-press lift group flex min-h-[92px] flex-col items-start justify-between rounded-2xl border border-charcoal/8 bg-gradient-to-br from-offwhite/70 to-white p-4 text-left hover:border-sage/60">
+                  <span class="grid h-10 w-10 place-items-center rounded-xl bg-white text-forest shadow-soft transition group-hover:scale-105"><i class="bi bi-image-fill text-[18px]"></i></span>
+                  <span class="mt-3 block">
+                    <span class="block font-display text-[14px] font-bold text-charcoal">Change photos</span>
+                    <span class="mt-0.5 block text-[11.5px] text-charcoal/50">2 items missing a photo</span>
+                  </span>
+                </button>
+                <button data-modal="closeShop" class="btn-press lift group flex min-h-[92px] flex-col items-start justify-between rounded-2xl border border-charcoal/8 bg-gradient-to-br from-offwhite/70 to-white p-4 text-left hover:border-charcoal/40">
+                  <span class="grid h-10 w-10 place-items-center rounded-xl bg-white text-charcoal shadow-soft transition group-hover:scale-105"><i class="bi bi-moon-stars-fill text-[18px]"></i></span>
+                  <span class="mt-3 block">
+                    <span class="block font-display text-[14px] font-bold text-charcoal">Close shop today</span>
+                    <span class="mt-0.5 block text-[11.5px] text-charcoal/50">Tells customers instantly</span>
+                  </span>
+                </button>
+              </div>
+            </section>
+
+            <!-- 4. Metrics -->
+            <section class="lift border border-charcoal/8 bg-white p-5 shadow-card sm:p-6">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="grid h-8 w-8 place-items-center rounded-xl bg-emerald/12 text-emerald"><i class="bi bi-graph-up-arrow text-[16px]"></i></span>
+                  <h2 class="font-display text-[17px] font-bold text-charcoal">Today in numbers</h2>
+                </div>
+                <button data-sheet="analytics" class="focus-ring rounded-lg px-2 py-1 text-[12px] font-semibold text-charcoal/50 transition hover:bg-charcoal/5 hover:text-charcoal">Details</button>
+              </div>
+              <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <div id="m1" class="group relative overflow-hidden rounded-2xl border border-charcoal/8 bg-offwhite/50 p-4 transition hover:border-mint/50 hover:bg-white"></div>
+                <div id="m2" class="group relative overflow-hidden rounded-2xl border border-charcoal/8 bg-offwhite/50 p-4 transition hover:border-violet/50 hover:bg-white"></div>
+                <div id="m3" class="group relative overflow-hidden rounded-2xl border border-charcoal/8 bg-offwhite/50 p-4 transition hover:border-sage/60 hover:bg-white"></div>
+              </div>
+            </section>
+
+            <!-- D1.14 — tell us what to change -->
+            <section class="lift border border-charcoal/8 bg-white p-5 shadow-card sm:p-6">
+              <div class="flex items-center gap-2.5">
+                <span class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-violet to-indigo text-white"><i class="bi bi-stars text-[15px]"></i></span>
+                <div>
+                  <h2 class="font-display text-[17px] font-bold text-charcoal">Tell us what to change</h2>
+                  <p class="text-[11.5px] text-charcoal/45">Plain words are fine. We confirm before anything is saved.</p>
+                </div>
+              </div>
+              <div class="relative mt-4">
+                <textarea id="nlInput" rows="2" placeholder="e.g. raise the iced latte to ฿75, or close the shop tomorrow"
+                  class="focus-ring w-full resize-none rounded-2xl border border-charcoal/10 bg-offwhite/40 px-4 py-3 pr-16 text-[13.5px] leading-relaxed text-charcoal placeholder:text-charcoal/35 transition focus:border-violet/45 focus:bg-white"></textarea>
+                <button id="nlSend" class="btn-press absolute bottom-2.5 right-2.5 grid h-9 w-9 place-items-center rounded-xl bg-charcoal text-white transition hover:bg-indigo" title="Send">
+                  <i class="bi bi-arrow-up text-[15px]"></i>
+                </button>
+              </div>
+              <div class="mt-2.5 flex flex-wrap gap-1.5">
+                <button class="nl-chip btn-press rounded-full border border-charcoal/10 bg-white px-3 py-1.5 text-[11.5px] font-medium text-charcoal/60 transition hover:border-violet/40 hover:text-charcoal">Raise iced latte to ฿75</button>
+                <button class="nl-chip btn-press rounded-full border border-charcoal/10 bg-white px-3 py-1.5 text-[11.5px] font-medium text-charcoal/60 transition hover:border-violet/40 hover:text-charcoal">Mark matcha latte as sold out</button>
+                <button class="nl-chip btn-press rounded-full border border-charcoal/10 bg-white px-3 py-1.5 text-[11.5px] font-medium text-charcoal/60 transition hover:border-violet/40 hover:text-charcoal">Draft a weekend promo</button>
+                <button class="nl-chip btn-press rounded-full border border-charcoal/10 bg-white px-3 py-1.5 text-[11.5px] font-medium text-charcoal/60 transition hover:border-violet/40 hover:text-charcoal">Close the shop tomorrow</button>
+              </div>
+              <div id="nlPreview" class="mt-3"></div>
+            </section>
+          </div>
+
+          <!-- ======== RIGHT COLUMN (sections 5-8 + preview) ======== -->
+          <div class="flex flex-col gap-4">
+
+            <!-- 5. Site status -->
+            <section class="lift flex items-center gap-3 rounded-2xl border border-charcoal/8 bg-white px-4 py-3.5 shadow-card">
+              <span class="relative grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-emerald/12 text-emerald">
+                <i class="bi bi-shield-check text-[17px]"></i>
+                <span class="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-emerald"></span>
+              </span>
+              <div class="min-w-0 flex-1">
+                <p class="text-[13px] font-semibold text-charcoal">Website is healthy</p>
+                <p class="mt-0.5 truncate text-[11.5px] text-charcoal/50">Last check 05:00 · backup completed last night</p>
+              </div>
+              <button data-sheet="health" class="focus-ring shrink-0 rounded-lg border border-charcoal/10 px-2.5 py-1.5 text-[11.5px] font-semibold text-charcoal/60 transition hover:bg-charcoal/5 hover:text-charcoal">Open</button>
+            </section>
+
+            <!-- 6. Recent activity -->
+            <section class="lift border border-charcoal/8 bg-white p-5 shadow-card">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="grid h-8 w-8 place-items-center rounded-xl bg-sage/25 text-forest"><i class="bi bi-activity text-[15px]"></i></span>
+                  <h2 class="font-display text-[17px] font-bold text-charcoal">Recent activity</h2>
+                </div>
+                <button data-sheet="activity" class="focus-ring rounded-lg px-2 py-1 text-[12px] font-semibold text-charcoal/50 transition hover:bg-charcoal/5 hover:text-charcoal">Full log</button>
+              </div>
+              <ul id="activityList" class="mt-4 space-y-3.5"></ul>
+            </section>
+
+            <!-- 7. Upsell card (conditional) -->
+            <section id="upsellCard" class="lift relative overflow-hidden border-0 bg-indigo p-5 text-white shadow-lift">
+              <div class="pointer-events-none absolute -right-10 -top-12 h-44 w-44 blob-shape bg-mint/30"></div>
+              <div class="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 blob-shape bg-violet/40"></div>
+              <div class="relative">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[.12em] text-mint">
+                  <i class="bi bi-stars text-[11px]"></i>Recommended
+                </span>
+                <h3 class="mt-3 font-display text-[17px] font-bold leading-snug text-white">31 contacts today — 4× your usual weekday</h3>
+                <p class="mt-1.5 text-[12.5px] leading-relaxed text-white/70">People are asking for the seasonal menu. Publishing it takes about 2 minutes and usually adds ฿2,400–3,100 a week.</p>
+                <div class="mt-4 flex items-center gap-2">
+                  <button data-sheet="promos" class="btn-press rounded-xl bg-mint px-4 py-2.5 text-[13px] font-bold text-charcoal hover:bg-white">Draft the menu</button>
+                  <button id="dismissUpsell" class="btn-press rounded-xl border border-white/25 px-4 py-2.5 text-[13px] font-semibold text-white/80 hover:bg-white/10">Not now</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Web preview 390px -->
+            <section class="lift border border-charcoal/8 bg-white p-5 shadow-card">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="grid h-8 w-8 place-items-center rounded-xl bg-charcoal/8 text-charcoal"><i class="bi bi-phone text-[15px]"></i></span>
+                  <h2 class="font-display text-[15px] font-bold text-charcoal">Live storefront</h2>
+                </div>
+                <a href="#" data-open-store class="focus-ring rounded-lg border border-charcoal/10 px-2.5 py-1.5 text-[11.5px] font-semibold text-charcoal/60 transition hover:bg-charcoal/5 hover:text-charcoal">Open</a>
+              </div>
+              <div class="mt-4 flex justify-center">
+                <div class="w-full max-w-[390px] overflow-hidden rounded-[26px] border-[6px] border-charcoal bg-white shadow-lift">
+                  <div class="flex items-center justify-between bg-charcoal px-4 py-1.5 text-[9px] font-semibold text-white/80">
+                    <span>09:24</span><span class="flex items-center gap-1"><i class="bi bi-reception-4 text-[9px]"></i> Lucky Cup</span><span><i class="bi bi-wifi text-[9px]"></i></span>
+                  </div>
+                  <div id="storePreview" class="max-h-[420px] overflow-y-auto bg-offwhite/40 scroll-thin"></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 8. Demo mission bar -->
+            <section id="missionBar" class="lift flex items-center gap-3 rounded-2xl border border-dashed border-violet/35 bg-violet/[.06] px-4 py-3.5">
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-violet text-white"><i class="bi bi-flag-fill text-[15px]"></i></span>
+              <div class="min-w-0 flex-1">
+                <p class="text-[13px] font-semibold text-charcoal">Mission 1 / 3 · Publish your first promo</p>
+                <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-charcoal/10">
+                  <div class="h-full w-1/3 rounded-full bg-gradient-to-r from-mint to-emerald transition-all duration-700"></div>
+                </div>
+              </div>
+              <button data-sheet="promos" class="btn-press shrink-0 rounded-xl bg-violet px-3.5 py-2 text-[12.5px] font-semibold text-white hover:bg-indigo">Continue</button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<!-- ================= SHEET OVERLAY ================= -->
+<div id="sheetBackdrop" class="fixed inset-0 z-[60] hidden bg-charcoal/40 backdrop-blur-[3px]"></div>
+<aside id="sheet" class="fixed inset-y-0 right-0 z-[70] flex w-full max-w-[520px] translate-x-full flex-col border-l border-charcoal/10 bg-white shadow-lift transition-transform duration-300 ease-out">
+  <header class="flex shrink-0 items-center justify-between gap-3 border-b border-charcoal/10 px-5 py-4">
+    <div>
+      <h3 id="sheetTitle" class="font-display text-[17px] font-bold text-charcoal">Items</h3>
+      <p id="sheetSub" class="mt-0.5 text-[12px] text-charcoal/50">Manage your menu</p>
+    </div>
+    <button data-close="sheet" class="focus-ring grid h-9 w-9 place-items-center rounded-xl text-charcoal/45 transition hover:bg-charcoal/5 hover:text-charcoal"><i class="bi bi-x-lg text-[15px]"></i></button>
+  </header>
+  <div id="sheetBody" class="scroll-thin flex-1 overflow-y-auto px-5 py-5"></div>
+</aside>
+
+<!-- ================= MODALS ================= -->
+<!-- LOGIN -->
+<div id="modal-login" class="fixed inset-0 z-[80] hidden items-center justify-center p-4">
+  <div data-modal-backdrop class="absolute inset-0 bg-charcoal/45 backdrop-blur-[3px]"></div>
+  <div class="relative w-full max-w-[420px] animate-popIn rounded-[26px] border border-charcoal/10 bg-white p-6 shadow-lift sm:p-7">
+    <button data-close="modal-login" class="focus-ring absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-lg text-charcoal/40 transition hover:bg-charcoal/5 hover:text-charcoal" aria-label="Close"><i class="bi bi-x-lg text-[14px]"></i></button>
+    <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-mint to-emerald text-white shadow-soft"><i class="bi bi-cup-hot-fill text-[19px]"></i></div>
+    <h3 class="mt-4 font-display text-[22px] font-extrabold tracking-tight text-charcoal">Welcome back</h3>
+    <p class="mt-1 text-[13px] text-charcoal/55">Sign in to manage your shop.</p>
+    <form id="loginForm" class="mt-5 space-y-3.5" novalidate>
+      <label class="block">
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Email</span>
+        <input type="email" required placeholder="you@yourshop.com" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] transition focus:border-mint/60 focus:bg-white">
+      </label>
+      <label class="block">
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Password</span>
+        <span class="relative block">
+          <input type="password" required placeholder="••••••••" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 pr-11 text-[13.5px] transition focus:border-mint/60 focus:bg-white">
+          <button type="button" data-toggle-pw class="focus-ring absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-lg text-charcoal/40 transition hover:text-charcoal"><i class="bi bi-eye text-[15px]"></i></button>
+        </span>
+      </label>
+      <div class="flex items-center justify-between">
+        <label class="flex cursor-pointer items-center gap-2 text-[12.5px] text-charcoal/65">
+          <input type="checkbox" class="h-4 w-4 rounded border-charcoal/25 text-mint focus:ring-mint/40"> Remember me
+        </label>
+        <button type="button" data-modal="forgot" class="focus-ring rounded-lg text-[12.5px] font-semibold text-violet transition hover:text-indigo">Forgot password?</button>
+      </div>
+      <button type="submit" class="btn-press w-full rounded-xl bg-charcoal py-3 text-[14px] font-bold text-white transition hover:bg-indigo">Sign in</button>
+    </form>
+    <div class="my-5 flex items-center gap-3"><span class="h-px flex-1 bg-charcoal/10"></span><span class="text-[11px] font-medium uppercase tracking-wider text-charcoal/35">or</span><span class="h-px flex-1 bg-charcoal/10"></span></div>
+    <button class="btn-press flex w-full items-center justify-center gap-2 rounded-xl border border-charcoal/12 py-2.5 text-[13.5px] font-semibold text-charcoal transition hover:bg-charcoal/[.03]"><i class="bi bi-google text-[15px]"></i>Continue with Google</button>
+    <p class="mt-5 text-center text-[12.5px] text-charcoal/55">New to Lucky Cup? <button data-modal="signup" class="focus-ring rounded-lg font-bold text-violet transition hover:text-indigo">Create an account</button></p>
+  </div>
+</div>
+
+<!-- SIGN UP -->
+<div id="modal-signup" class="fixed inset-0 z-[80] hidden items-center justify-center p-4">
+  <div data-modal-backdrop class="absolute inset-0 bg-charcoal/45 backdrop-blur-[3px]"></div>
+  <div class="relative max-h-[92vh] w-full max-w-[440px] animate-popIn overflow-y-auto rounded-[26px] border border-charcoal/10 bg-white p-6 shadow-lift scroll-thin sm:p-7">
+    <button data-close="modal-signup" class="focus-ring absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-lg text-charcoal/40 transition hover:bg-charcoal/5 hover:text-charcoal" aria-label="Close"><i class="bi bi-x-lg text-[14px]"></i></button>
+    <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet to-indigo text-white shadow-soft"><i class="bi bi-stars text-[18px]"></i></div>
+    <h3 class="mt-4 font-display text-[22px] font-extrabold tracking-tight text-charcoal">Create your shop account</h3>
+    <p class="mt-1 text-[13px] text-charcoal/55">Free while you set up. No card needed.</p>
+    <form id="signupForm" class="mt-5 space-y-3.5" novalidate>
+      <label class="block">
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Shop name</span>
+        <input type="text" required placeholder="Lucky Cup" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] transition focus:border-violet/50 focus:bg-white">
+      </label>
+      <label class="block">
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Your name</span>
+        <input type="text" required placeholder="Ek Somsiri" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] transition focus:border-violet/50 focus:bg-white">
+      </label>
+      <label class="block">
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Email</span>
+        <input type="email" required placeholder="you@yourshop.com" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] transition focus:border-violet/50 focus:bg-white">
+      </label>
+      <label class="block">
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Password</span>
+        <span class="relative block">
+          <input type="password" required minlength="8" placeholder="At least 8 characters" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 pr-11 text-[13.5px] transition focus:border-violet/50 focus:bg-white">
+          <button type="button" data-toggle-pw class="focus-ring absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-lg text-charcoal/40 transition hover:text-charcoal"><i class="bi bi-eye text-[15px]"></i></button>
+        </span>
+        <span class="mt-1.5 flex items-center gap-1.5 text-[11px] text-charcoal/40"><i class="bi bi-shield-lock text-[11px]"></i>Encrypted at rest. Never shared.</span>
+      </label>
+      <label class="flex cursor-pointer items-start gap-2 text-[12px] leading-relaxed text-charcoal/60">
+        <input type="checkbox" required class="mt-0.5 h-4 w-4 rounded border-charcoal/25 text-mint focus:ring-mint/40">
+        <span>I agree to the Terms of Service and Privacy Policy.</span>
+      </label>
+      <button type="submit" class="btn-press w-full rounded-xl bg-charcoal py-3 text-[14px] font-bold text-white transition hover:bg-indigo">Create account</button>
+    </form>
+    <p class="mt-5 text-center text-[12.5px] text-charcoal/55">Already have an account? <button data-modal="login" class="focus-ring rounded-lg font-bold text-violet transition hover:text-indigo">Sign in</button></p>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div id="modal-forgot" class="fixed inset-0 z-[80] hidden items-center justify-center p-4">
+  <div data-modal-backdrop class="absolute inset-0 bg-charcoal/45 backdrop-blur-[3px]"></div>
+  <div class="relative w-full max-w-[400px] animate-popIn rounded-[26px] border border-charcoal/10 bg-white p-6 shadow-lift sm:p-7">
+    <button data-close="modal-forgot" class="focus-ring absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-lg text-charcoal/40 transition hover:bg-charcoal/5 hover:text-charcoal" aria-label="Close"><i class="bi bi-x-lg text-[14px]"></i></button>
+    <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-sage to-forest text-white shadow-soft"><i class="bi bi-key-fill text-[17px]"></i></div>
+    <h3 class="mt-4 font-display text-[22px] font-extrabold tracking-tight text-charcoal">Reset your password</h3>
+    <p class="mt-1 text-[13px] leading-relaxed text-charcoal/55">Enter the email on your account and we'll send you a secure reset link.</p>
+    <form id="forgotForm" class="mt-5 space-y-3.5" novalidate>
+      <label class="block">
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Email</span>
+        <input type="email" required placeholder="you@yourshop.com" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] transition focus:border-sage/60 focus:bg-white">
+      </label>
+      <button type="submit" class="btn-press w-full rounded-xl bg-charcoal py-3 text-[14px] font-bold text-white transition hover:bg-forest">Send reset link</button>
+    </form>
+    <p class="mt-5 text-center text-[12.5px] text-charcoal/55">Remembered it? <button data-modal="login" class="focus-ring rounded-lg font-bold text-violet transition hover:text-indigo">Back to sign in</button></p>
+  </div>
+</div>
+
+<!-- CLOSE SHOP (F4) -->
+<div id="modal-closeShop" class="fixed inset-0 z-[80] hidden items-center justify-center p-4">
+  <div data-modal-backdrop class="absolute inset-0 bg-charcoal/45 backdrop-blur-[3px]"></div>
+  <div class="relative w-full max-w-[460px] animate-popIn rounded-[26px] border border-charcoal/10 bg-white p-6 shadow-lift sm:p-7">
+    <button data-close="modal-closeShop" class="focus-ring absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-lg text-charcoal/40 transition hover:bg-charcoal/5 hover:text-charcoal" aria-label="Close"><i class="bi bi-x-lg text-[14px]"></i></button>
+    <div class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-charcoal to-midnight text-white shadow-soft"><i class="bi bi-moon-stars-fill text-[17px]"></i></div>
+    <h3 class="mt-4 font-display text-[22px] font-extrabold tracking-tight text-charcoal">Close the shop</h3>
+    <p class="mt-1 text-[13px] text-charcoal/55">Visitors see the notice within 5 seconds.</p>
+    <form id="closeShopForm" class="mt-5 space-y-4">
+      <div>
+        <span class="mb-2 block text-[12px] font-semibold text-charcoal/70">When?</span>
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" data-when="today"   class="when-btn btn-press rounded-xl border border-charcoal/12 px-3 py-2.5 text-[13px] font-semibold text-charcoal transition hover:bg-charcoal/5">Today</button>
+          <button type="button" data-when="tomorrow" class="when-btn btn-press rounded-xl border border-charcoal/12 px-3 py-2.5 text-[13px] font-semibold text-charcoal transition hover:bg-charcoal/5">Tomorrow</button>
+          <button type="button" data-when="until"   class="when-btn btn-press rounded-xl border border-charcoal/12 px-3 py-2.5 text-[13px] font-semibold text-charcoal transition hover:bg-charcoal/5">Until…</button>
+        </div>
+        <input id="untilDate" type="date" class="focus-ring mt-2 hidden w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] focus:border-mint/60 focus:bg-white">
+      </div>
+      <div>
+        <span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Message to customers</span>
+        <textarea id="closeMessage" rows="3" class="focus-ring w-full resize-none rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] leading-relaxed transition focus:border-mint/60 focus:bg-white">Hi! We are resting today and will be back tomorrow at 8:00 AM. Thanks for your patience!</textarea>
+        <p class="mt-1.5 text-[11px] text-charcoal/40">This message appears on your storefront banner.</p>
+      </div>
+      <div class="flex gap-2.5">
+        <button type="button" data-close="modal-closeShop" class="btn-press flex-1 rounded-xl border border-charcoal/12 py-3 text-[13.5px] font-semibold text-charcoal transition hover:bg-charcoal/5">Cancel</button>
+        <button type="submit" class="btn-press flex-1 rounded-xl bg-charcoal py-3 text-[13.5px] font-bold text-white transition hover:bg-indigo">Close shop</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ALL TASKS -->
+<div id="modal-allTasks" class="fixed inset-0 z-[80] hidden items-center justify-center p-4">
+  <div data-modal-backdrop class="absolute inset-0 bg-charcoal/45 backdrop-blur-[3px]"></div>
+  <div class="relative max-h-[88vh] w-full max-w-[520px] animate-popIn overflow-hidden rounded-[26px] border border-charcoal/10 bg-white shadow-lift">
+    <div class="flex items-center justify-between gap-3 border-b border-charcoal/10 px-6 py-4">
+      <div>
+        <h3 class="font-display text-[18px] font-bold text-charcoal">All waiting tasks</h3>
+        <p class="mt-0.5 text-[12px] text-charcoal/50">Ordered by urgency</p>
+      </div>
+      <button data-close="modal-allTasks" class="focus-ring grid h-9 w-9 place-items-center rounded-xl text-charcoal/40 transition hover:bg-charcoal/5 hover:text-charcoal"><i class="bi bi-x-lg text-[15px]"></i></button>
+    </div>
+    <div id="allTasksBody" class="scroll-thin max-h-[68vh] space-y-2.5 overflow-y-auto px-6 py-5"></div>
+  </div>
+</div>
+
+<!-- ================= FLOATING ACTION ROW ================= -->
+<div class="fixed bottom-4 right-4 z-[90] flex items-center gap-[5px] sm:bottom-6 sm:right-6">
+  <button id="backTop" class="focus-ring grid h-12 w-12 translate-y-3 place-items-center rounded-2xl border border-charcoal/10 bg-white/90 text-charcoal opacity-0 shadow-lift backdrop-blur transition-all duration-300 hover:bg-charcoal hover:text-white" aria-label="Back to top">
+    <i class="bi bi-arrow-up text-[17px]"></i>
+  </button>
+  <button id="chatFab" class="focus-ring relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-mint to-emerald text-charcoal shadow-lift transition-all duration-300 hover:scale-105" aria-label="Open assistant" aria-expanded="false">
+    <i class="bi bi-chat-dots-fill text-[21px]"></i>
+    <span class="absolute -right-0.5 -top-0.5 grid h-5 w-5 place-items-center rounded-full border-2 border-white bg-violet text-[9px] font-bold text-white">1</span>
+  </button>
+</div>
+
+<!-- ================= CHATBOT ================= -->
+<div id="chatPanel" class="fixed bottom-[88px] right-4 z-[89] flex h-[min(520px,72vh)] w-[min(370px,calc(100vw-2rem))] translate-y-4 flex-col overflow-hidden rounded-[26px] border border-charcoal/10 bg-white opacity-0 shadow-lift transition-all duration-300 sm:bottom-[96px] sm:right-6">
+  <header class="flex shrink-0 items-center gap-3 bg-gradient-to-br from-indigo to-midnight px-4 py-3.5 text-white">
+    <div class="relative grid h-9 w-9 place-items-center rounded-xl bg-white/15">
+      <i class="bi bi-cup-hot-fill text-[16px]"></i>
+      <span class="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-indigo bg-mint"></span>
+    </div>
+    <div class="min-w-0 flex-1">
+      <p class="font-display text-[14px] font-bold leading-tight">Lucky Assistant</p>
+      <p class="text-[11px] leading-tight text-white/60">Online · replies instantly</p>
+    </div>
+    <button id="chatMinimize" class="focus-ring grid h-8 w-8 place-items-center rounded-lg text-white/70 transition hover:bg-white/10 hover:text-white"><i class="bi bi-chevron-down text-[14px]"></i></button>
+    <button id="chatClose" class="focus-ring grid h-8 w-8 place-items-center rounded-lg text-white/70 transition hover:bg-white/10 hover:text-white"><i class="bi bi-x-lg text-[13px]"></i></button>
+  </header>
+  <div id="chatBody" class="scroll-thin flex-1 space-y-3 overflow-y-auto bg-offwhite/30 px-4 py-4"></div>
+  <div id="chatChips" class="flex shrink-0 gap-1.5 overflow-x-auto border-t border-charcoal/8 bg-white px-3 py-2.5 no-scrollbar"></div>
+  <form id="chatForm" class="flex shrink-0 items-center gap-2 border-t border-charcoal/8 bg-white p-3">
+    <input id="chatInput" type="text" autocomplete="off" placeholder="Ask about today…"
+      class="focus-ring min-w-0 flex-1 rounded-xl border border-charcoal/12 bg-offwhite/50 px-3.5 py-2.5 text-[13.5px] transition focus:border-mint/60 focus:bg-white" />
+    <button type="submit" class="btn-press grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-charcoal text-white transition hover:bg-indigo"><i class="bi bi-send-fill text-[14px]"></i></button>
+  </form>
+</div>
+
+<!-- ================= TOASTS ================= -->
+<div id="toasts" class="pointer-events-none fixed left-1/2 top-4 z-[95] flex w-full max-w-[420px] -translate-x-1/2 flex-col items-center gap-2 px-4"></div>
+
+<script>
+/* =====================================================================
+   LUCKY CUP — OWNER DASHBOARD  ·  single-file interactive prototype
+   ===================================================================== */
+(function(){
+'use strict';
+
+const $  = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+const money = n => '฿' + Number(n).toLocaleString('en-US');
+
+/* ---------------------------------------------------------------- state */
+const state = {
+  store: { open:true, until:null, message:'' },
+  menu: [
+    { id:'latte',  name:'Iced Latte',        price:70,  status:'Available', photo:true,  updated:74 },
+    { id:'matcha', name:'Matcha Latte',      price:85,  status:'Available', photo:false, updated:12 },
+    { id:'thai',   name:'Thai Iced Coffee',  price:60,  status:'Available', photo:true,  updated:31 },
+    { id:'capp',   name:'Cappuccino',        price:75,  status:'Sold out',  photo:true,  updated:8  },
+    { id:'crois',  name:'Butter Croissant',  price:55,  status:'Available', photo:false, updated:96 },
+    { id:'amri',   name:'Americano',         price:55,  status:'Available', photo:true,  updated:45 }
+  ],
+  metrics: [
+    { key:'visitors', label:'Visitors',        value:428, prev:391, icon:'bi-eye-fill',        tone:'mint',   note:'Storefront views' },
+    { key:'contacts', label:'Contacts',        value:31,  prev:12,  icon:'bi-telephone-fill',  tone:'violet', note:'Call · LINE · Maps · Form' },
+    { key:'leads',    label:'New interests',   value:9,   prev:14,  icon:'bi-stars',           tone:'sage',   note:'People asking about items' }
+  ],
+  tasks: [
+    { id:'t1', kind:'lead',    icon:'bi-chat-dots-fill', tone:'violet',
+      text:'Niran asked about iced latte delivery — no reply yet',
+      hint:'Waiting 6 hours', cta:'Reply now', action:'reply', urgent:true },
+    { id:'t2', kind:'promo',   icon:'bi-megaphone-fill', tone:'mint',
+      text:'“Morning Brew” promo ends in 2 days and already did 11 orders',
+      hint:'Until Sunday', cta:'Extend promo', action:'extend', urgent:true },
+    { id:'t3', kind:'price',   icon:'bi-tag-fill', tone:'sage',
+      text:'Iced latte price was not updated in 74 days — costs moved 18%',
+      hint:'Last set ฿70', cta:'Check price', action:'price', urgent:true },
+    { id:'t4', kind:'photo',   icon:'bi-image-fill', tone:'forest',
+      text:'2 items have no photo — customers skip them 3× more often',
+      hint:'Matcha latte · Croissant', cta:'Add photos', action:'photo', urgent:false },
+    { id:'t5', kind:'lead',    icon:'bi-envelope-fill', tone:'violet',
+      text:'Quote request for a 30-cup office order is unanswered',
+      hint:'Waiting 1 day', cta:'Send quote', action:'quote', urgent:false }
+  ],
+  activity: [
+    { id:'a1', who:'Somchai', what:'changed Iced Latte ฿70 → ฿75', time:'14:05', undo:true,  tag:'Price' },
+    { id:'a2', who:'You',    what:'extended “Morning Brew” to Sunday', time:'13:20', undo:true, tag:'Promo' },
+    { id:'a3', who:'Praew',  what:'replied to Niran about delivery', time:'12:48', undo:false, tag:'Lead' },
+    { id:'a4', who:'You',    what:'uploaded a photo for Thai Iced Coffee', time:'11:02', undo:true, tag:'Media' },
+    { id:'a5', who:'Backup', what:'nightly backup finished in 42s', time:'05:00', undo:false, tag:'System' }
+  ],
+  changelog: []
+};
+
+/* ---------------------------------------------------------- toast system */
+const toastHost = $('#toasts');
+function toast(msg, opts={}){
+  const el = document.createElement('div');
+  el.className = 'pointer-events-auto flex w-full items-start gap-3 rounded-2xl border border-charcoal/10 bg-white px-4 py-3 shadow-lift animate-popIn';
+  const tone = opts.tone || 'mint';
+  const map = { mint:'bg-mint/15 text-emerald', violet:'bg-violet/12 text-violet', rose:'bg-rose-100 text-rose-600', amber:'bg-amber-100 text-amber-700' };
+  el.innerHTML = `<span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg ${map[tone]}"><i class="bi ${opts.icon||'bi-check-lg'} text-[13px]"></i></span>
+    <p class="min-w-0 flex-1 text-[13px] leading-snug text-charcoal">${msg}</p>
+    ${opts.undo ? '<button data-undo class="focus-ring shrink-0 rounded-lg bg-charcoal px-2.5 py-1 text-[11.5px] font-bold text-white">Undo</button>' : ''}`;
+  toastHost.appendChild(el);
+  const t = setTimeout(()=>{ el.style.transition='opacity .25s, transform .25s'; el.style.opacity='0'; el.style.transform='translateY(-8px)'; setTimeout(()=>el.remove(),260); }, opts.undo ? 6000 : 3600);
+  el.addEventListener('click', e=>{ if(e.target.closest('[data-undo]')){ opts.onUndo && opts.onUndo(); clearTimeout(t); el.remove(); } });
+}
+
+/* ------------------------------------------------------- modal utilities */
+const openModals = [];
+function openModal(id){
+  const m = document.getElementById('modal-'+id); if(!m) return;
+  m.classList.remove('hidden'); m.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+  openModals.push(id);
+  const f = m.querySelector('input, button:not([data-close])');
+  setTimeout(()=>{ if(f) f.focus({preventScroll:true}); }, 60);
+}
+function closeModal(id){
+  const m = document.getElementById('modal-'+id); if(!m) return;
+  m.classList.add('hidden'); m.classList.remove('flex');
+  const i = openModals.indexOf(id); if(i>-1) openModals.splice(i,1);
+  if(!openModals.length) document.body.style.overflow = '';
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-modal]');
+  if(o){ e.preventDefault(); openModal(o.dataset.modal); return; }
+  const c = e.target.closest('[data-close]');
+  if(c){ const t = c.dataset.close; if(t.startsWith('modal-')) closeModal(t.replace('modal-','')); else closePanel(t); return; }
+  if(e.target.matches('[data-modal-backdrop]')) closeModal(openModals[openModals.length-1]);
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    if(openModals.length) closeModal(openModals[openModals.length-1]);
+    if($('#sheet').classList.contains('translate-x-0')) closePanel('sheet');
+    if($('#notesPanel').classList.contains('hidden') === false) closePanel('notesPanel');
+  }
+  if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); $('#globalSearch').focus(); }
+});
+
+/* ---------------------------------------------------------- sheet system */
+const SHEETS = {
+  items: {
+    title:'Edit prices', sub:'6 items · 4 need a look',
+    render(){
+      return `<p class="text-[13px] leading-relaxed text-charcoal/60">Change a price and the storefront updates the moment you confirm.</p>
+      <div class="mt-4 space-y-2.5">` + state.menu.map(m => {
+        const stale = m.updated > 60;
+        return `<div class="flex items-center gap-3 rounded-2xl border ${stale?'border-amber-200 bg-amber-50/50':'border-charcoal/8 bg-white'} p-3">
+          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl ${m.photo?'bg-offwhite text-charcoal/55':'bg-forest/10 text-forest'}"><i class="bi ${m.photo?'bi-cup-hot':'bi-image'}"></i></span>
+          <div class="min-w-0 flex-1">
+            <p class="truncate text-[13.5px] font-semibold text-charcoal">${m.name}</p>
+            <p class="text-[11.5px] ${stale?'text-amber-700':'text-charcoal/45'}">${stale?'Price set '+m.updated+' days ago':'Updated '+m.updated+' days ago'}</p>
+          </div>
+          <div class="flex shrink-0 items-center gap-1.5">
+            <input data-price="${m.id}" type="number" value="${m.price}" class="focus-ring tabnum w-20 rounded-xl border border-charcoal/12 bg-offwhite/40 px-2.5 py-2 text-right text-[13.5px] font-semibold transition focus:border-mint/60 focus:bg-white">
+            <button data-save-price="${m.id}" class="btn-press grid h-9 w-9 place-items-center rounded-xl bg-charcoal text-white transition hover:bg-emerald" title="Save"><i class="bi bi-check-lg text-[14px]"></i></button>
+          </div>
+        </div>`;
+      }).join('') + `</div>`;
+    }
+  },
+  promos: {
+    title:'Promotions', sub:'Draft one in about 30 seconds',
+    render(){
+      return `<div class="grid grid-cols-2 gap-3">
+        ${[
+          {t:'Free size up', d:'All day, every weekday', tone:'mint', on:true},
+          {t:'Weekend brunch', d:'Sat–Sun 09:00–12:00', tone:'violet', on:false},
+          {t:'Morning Brew', d:'Ends in 2 days', tone:'sage', on:true},
+          {t:'Student 15%', d:'Needs a QR code', tone:'forest', on:false}
+        ].map(p=>`<button data-promo="${p.t}" class="btn-press lift rounded-2xl border border-charcoal/8 bg-white p-3.5 text-left hover:border-mint/50">
+          <span class="inline-flex rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${p.on?'bg-mint/25 text-emerald':'bg-charcoal/6 text-charcoal/45'}">${p.on?'Live':'Off'}</span>
+          <p class="mt-2 font-display text-[13.5px] font-bold text-charcoal">${p.t}</p>
+          <p class="mt-0.5 text-[11.5px] text-charcoal/50">${p.d}</p>
+        </button>`).join('')}
+      </div>
+      <button id="newPromo" class="btn-press mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-charcoal py-3 text-[13.5px] font-bold text-white transition hover:bg-indigo"><i class="bi bi-plus-lg"></i>Create a promo</button>
+      <div id="promoForm" class="mt-4 hidden space-y-3 rounded-2xl border border-charcoal/10 bg-offwhite/40 p-4">
+        <input id="promoName" placeholder="Promo name" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-white px-3.5 py-2.5 text-[13.5px]">
+        <input id="promoDiscount" placeholder="Discount, e.g. 15% off" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-white px-3.5 py-2.5 text-[13.5px]">
+        <div class="flex gap-2">
+          <input id="promoStart" type="date" class="focus-ring min-w-0 flex-1 rounded-xl border border-charcoal/12 bg-white px-3 py-2.5 text-[13px]">
+          <input id="promoEnd" type="date" class="focus-ring min-w-0 flex-1 rounded-xl border border-charcoal/12 bg-white px-3 py-2.5 text-[13.">
+        </div>
+        <button id="promoSave" class="btn-press w-full rounded-xl bg-mint py-2.5 text-[13.5px] font-bold text-charcoal transition hover:bg-emerald">Publish promo</button>
+      </div>`;
+    }
+  },
+  photos: {
+    title:'Photos', sub:'2 items are missing an image',
+    render(){
+      return `<div class="grid grid-cols-2 gap-3">` + state.menu.map(m=>`
+        <div class="overflow-hidden rounded-2xl border border-charcoal/8 bg-white">
+          <div class="relative grid h-28 place-items-center ${m.photo?'bg-gradient-to-br from-offwhite to-sage/25':'bg-forest/[.07] grid-dots'}">
+            ${m.photo?`<i class="bi bi-cup-hot-fill text-[26px] text-charcoal/35"></i>`:`<div class="text-center"><i class="bi bi-cloud-arrow-up text-[22px] text-forest/70"></i><p class="mt-1 text-[10.5px] font-semibold text-forest/80">Upload</p></div>`}
+            ${m.status==='Sold out'?'<span class="absolute left-2 top-2 rounded-full bg-charcoal/85 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wide text-white">Sold out</span>':''}
+          </div>
+          <div class="p-3">
+            <p class="truncate text-[12.5px] font-semibold text-charcoal">${m.name}</p>
+            <p class="mt-0.5 text-[11px] ${m.photo?'text-emerald':'text-amber-700'}">${m.photo?'Photo live':'No photo yet'}</p>
+            <button data-photo="${m.id}" class="btn-press mt-2 w-full rounded-lg ${m.photo?'border border-charcoal/12 text-charcoal':'bg-charcoal text-white'} py-1.5 text-[11.5px] font-semibold transition hover:bg-emerald hover:text-white">${m.photo?'Replace':'Upload photo'}</button>
+          </div>
+        </div>`).join('') + `</div>`;
+    }
+  },
+  analytics: {
+    title:'Today in numbers', sub:'Compared with yesterday',
+    render(){
+      return `<div class="space-y-3">` + state.metrics.map(m=>{
+        const d = m.value - m.prev, up = d>=0;
+        const pct = Math.round(Math.abs(d)/m.prev*100);
+        return `<div class="rounded-2xl border border-charcoal/8 bg-offwhite/40 p-4">
+          <div class="flex items-center justify-between">
+            <p class="text-[13px] font-semibold text-charcoal">${m.label}</p>
+            <span class="inline-flex items-center gap-1 rounded-full ${up?'bg-mint/25 text-emerald':'bg-rose-100 text-rose-600'} px-2 py-0.5 text-[11px] font-bold">
+              <i class="bi bi-caret-${up?'up':'down'}-fill"></i>${up?'+':''}${d} (${pct}%)</span>
+          </div>
+          <p class="mt-2 font-display text-[34px] font-extrabold tracking-tight text-charcoal tabnum">${m.value}</p>
+          <p class="text-[11.5px] text-charcoal/45">Yesterday: ${m.prev} · ${m.note}</p>
+          <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-charcoal/8"><div class="h-full rounded-full bg-gradient-to-r from-mint to-emerald" style="width:${Math.min(100, Math.round(m.value/ (m.prev*1.6) *100))}%"></div></div>
+        </div>`;
+      }).join('') + `</div>
+      <p class="mt-4 text-[12px] leading-relaxed text-charcoal/50">Contacts jumped because two posts about the new seasonal menu were shared this morning. It is the single biggest change today.</p>`;
+    }
+  },
+  health: {
+    title:'Website health', sub:'Checked every 5 minutes',
+    render(){
+      const rows = [
+        ['Public page','bi-globe','Operational','mint'],
+        ['Menu & pricing API','bi-tags','Operational','mint'],
+        ['Image storage','bi-images','Operational','mint'],
+        ['Nightly backup','bi-database-check','Completed 05:00','mint'],
+        ['SSL certificate','bi-shield-lock','Valid for 74 days','violet']
+      ];
+      return `<div class="space-y-2.5">` + rows.map(r=>`
+        <div class="flex items-center gap-3 rounded-2xl border border-charcoal/8 bg-white p-3.5">
+          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-${r[3]==='mint'?'mint/20':'violet/12'} text-${r[3]==='mint'?'emerald':'violet'}"><i class="bi ${r[1]} text-[15px]"></i></span>
+          <div class="min-w-0 flex-1"><p class="text-[13px] font-semibold text-charcoal">${r[0]}</p><p class="text-[11.5px] text-charcoal/45">${r[2]}</p></div>
+          <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-${r[3]==='mint'?'emerald':'violet'}"></span>
+        </div>`).join('') + `</div>
+        <p class="mt-4 text-[12px] leading-relaxed text-charcoal/50">Nothing to fix right now. We will email you if anything needs attention.</p>`;
+    }
+  },
+  activity: {
+    title:'Full activity log', sub:'Everything your team changed',
+    render(){
+      return `<div class="relative space-y-4 border-l border-charcoal/10 pl-5">` + state.activity.map(a=>`
+        <div class="relative">
+          <span class="absolute -left-[26px] top-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-mint"></span>
+          <p class="text-[13px] leading-snug text-charcoal"><span class="font-semibold">${a.who}</span> ${a.what}</p>
+          <p class="mt-0.5 text-[11.5px] text-charcoal/45">${a.time} · ${a.tag}</p>
+        </div>`).join('') + `</div>
+        ${state.changelog.length?`<p class="mt-6 mb-2 text-[11px] font-bold uppercase tracking-wider text-charcoal/40">Changes ordered by message</p>
+        <div class="space-y-2">${state.changelog.map(c=>`<div class="rounded-xl border border-violet/25 bg-violet/[.06] p-3"><p class="text-[12.5px] text-charcoal">${c.summary}</p><p class="mt-0.5 text-[11px] text-charcoal/45">${c.time} · ordered by message</p></div>`).join('')}</div>`:''}`;
+    }
+  }
+};
+function openSheet(key){
+  const s = SHEETS[key]; if(!s) return;
+  $('#sheetTitle').textContent = s.title;
+  $('#sheetSub').textContent = s.sub;
+  $('#sheetBody').innerHTML = s.render();
+  $('#sheet').classList.remove('translate-x-full');
+  $('#sheet').classList.add('translate-x-0');
+  $('#sheetBackdrop').classList.remove('hidden');
+  bindSheet(key);
+}
+function closePanel(which){
+  if(which === 'sheet'){
+    $('#sheet').classList.add('translate-x-full'); $('#sheet').classList.remove('translate-x-0');
+    $('#sheetBackdrop').classList.add('hidden');
+  } else if(which === 'notesPanel'){
+    $('#notesPanel').classList.add('hidden'); $('#notesBtn').setAttribute('aria-expanded','false');
+  }
+}
+$('#sheetBackdrop').addEventListener('click', ()=>closePanel('sheet'));
+
+function bindSheet(key){
+  $$('#sheetBody [data-save-price]').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const id = b.dataset.savePrice, input = $(`[data-price="${id}"]`);
+      const item = state.menu.find(m=>m.id===id);
+      const next = Number(input.value);
+      if(!next || next < 0) { toast('Enter a valid price', {tone:'rose', icon:'bi-exclamation-lg'}); return; }
+      const prev = item.price;
+      item.price = next; item.updated = 0;
+      state.activity.unshift({ id:'x'+Date.now(), who:'You', what:`changed ${item.name} ${money(prev)} → ${money(next)}`, time:'now', undo:true, tag:'Price' });
+      renderActivity(); renderStorePreview();
+      toast(`${item.name} is now ${money(next)}`, { icon:'bi-tag-fill', undo:true, onUndo(){ item.price = prev; renderActivity(); renderStorePreview(); toast('Price change undone'); } });
+      openSheet(key);
+    });
+  });
+  $$('#sheetBody [data-photo]').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const item = state.menu.find(m=>m.id===b.dataset.photo);
+      item.photo = true;
+      state.activity.unshift({ id:'x'+Date.now(), who:'You', what:`uploaded a photo for ${item.name}`, time:'now', undo:true, tag:'Media' });
+      renderActivity(); renderStorePreview(); openSheet(key);
+      toast(`Photo published for ${item.name}`, { icon:'bi-image-fill' });
+    });
+  });
+  $$('#sheetBody [data-promo]').forEach(b=>{
+    b.addEventListener('click', ()=>{ toast(`“${b.dataset.promo}” selected — review before publishing`, { icon:'bi-megaphone-fill', tone:'violet' }); });
+  });
+  const np = $('#newPromo');
+  if(np) np.addEventListener('click', ()=>{ $('#promoForm').classList.remove('hidden'); $('#promoName').focus(); });
+  const ps = $('#promoSave');
+  if(ps) ps.addEventListener('click', ()=>{
+    const n = $('#promoName').value.trim() || 'New promo';
+    state.activity.unshift({ id:'x'+Date.now(), who:'You', what:`published promo “${n}”`, time:'now', undo:true, tag:'Promo' });
+    renderActivity(); toast(`Promo “${n}” is live`, { icon:'bi-megaphone-fill' });
+    openSheet('promos');
+  });
+}
+
+/* ------------------------------------------------------------ rendering */
+function renderTasks(){
+  const top = state.tasks.slice(0,3);
+  $('#taskCount').textContent = state.tasks.length;
+  $('#taskList').innerHTML = top.map((t,i)=>{
+    const tones = {
+      violet:['bg-violet/12','text-violet'],
+      mint:['bg-mint/20','text-emerald'],
+      sage:['bg-sage/25','text-forest'],
+      forest:['bg-forest/12','text-forest']
+    }[t.tone];
+    return `<div class="group flex flex-col items-stretch gap-3 rounded-2xl border border-charcoal/8 bg-offwhite/40 p-3 transition hover:border-charcoal/20 hover:bg-white sm:flex-row sm:items-center" style="animation-delay:${i*60}ms">
+      <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl ${tones[0]} ${tones[1]}"><i class="bi ${t.icon} text-[16px]"></i></span>
+      <div class="min-w-0 flex-1">
+        <p class="text-[13.5px] font-semibold leading-snug text-charcoal">${t.text}</p>
+        <p class="mt-0.5 text-[11.5px] text-charcoal/45">${t.hint}</p>
+      </div>
+      <button data-task="${t.id}" class="btn-press w-full shrink-0 rounded-xl bg-charcoal px-3.5 py-2.5 text-[12.5px] font-semibold text-white transition hover:bg-violet sm:w-auto sm:py-2">${t.cta}</button>
+    </div>`;
+  }).join('');
+  $('#allTasksBody').innerHTML = state.tasks.map(t=>{
+    const tones = { violet:'bg-violet/12 text-violet', mint:'bg-mint/20 text-emerald', sage:'bg-sage/25 text-forest', forest:'bg-forest/12 text-forest' };
+    return `<div class="flex items-start gap-3 rounded-2xl border border-charcoal/8 bg-offwhite/40 p-3.5">
+      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl ${tones[t.tone]}"><i class="bi ${t.icon} text-[15px]"></i></span>
+      <div class="min-w-0 flex-1"><p class="text-[13px] font-semibold leading-snug text-charcoal">${t.text}</p><p class="mt-0.5 text-[11.5px] text-charcoal/45">${t.hint}</p></div>
+      <button data-task="${t.id}" class="btn-press shrink-0 rounded-lg border border-charcoal/12 px-3 py-1.5 text-[12px] font-semibold text-charcoal transition hover:bg-charcoal hover:text-white">${t.cta}</button>
+    </div>`;
+  }).join('');
+  $$('[data-task]').forEach(b=> b.addEventListener('click', ()=>handleTask(b.dataset.task)));
+}
+function handleTask(id){
+  const t = state.tasks.find(x=>x.id===id); if(!t) return;
+  if(t.action==='price'){ openSheet('items'); toast('Opening prices — iced latte is highlighted', {icon:'bi-tag-fill'}); return; }
+  if(t.action==='photo'){ openSheet('photos'); return; }
+  if(t.action==='extend'){ openSheet('promos'); toast('“Morning Brew” is ready to extend', {icon:'bi-megaphone-fill', tone:'violet'}); return; }
+  // reply / quote → leads sheet
+  openSheet('leads');
+  toast(`Reply box opened for ${t.text.split(' ')[0]}`, {icon:'bi-chat-dots-fill'});
+}
+function renderActivity(){
+  $('#activityList').innerHTML = state.activity.slice(0,5).map(a=>{
+    const initials = a.who.slice(0,2).toUpperCase();
+    const colors = ['bg-violet/12 text-violet','bg-mint/25 text-emerald','bg-sage/30 text-forest','bg-charcoal/8 text-charcoal'];
+    const ci = a.id.charCodeAt(1) % colors.length;
+    return `<li class="flex items-start gap-3">
+      <span class="grid h-8 w-8 shrink-0 place-items-center rounded-xl ${colors[ci]} text-[10.5px] font-bold">${initials}</span>
+      <div class="min-w-0 flex-1">
+        <p class="text-[13px] leading-snug text-charcoal"><span class="font-semibold">${a.who}</span> ${a.what}</p>
+        <p class="mt-0.5 text-[11.5px] text-charcoal/40">${a.time}${a.tag?' · '+a.tag:''}</p>
+      </div>
+      ${a.undo?`<button data-undo-act="${a.id}" class="focus-ring shrink-0 rounded-lg border border-charcoal/12 px-2.5 py-1 text-[11.5px] font-semibold text-charcoal/55 transition hover:border-charcoal/30 hover:text-charcoal">Undo</button>`:''}
+    </li>`;
+  }).join('');
+  $$('[data-undo-act]').forEach(b=> b.addEventListener('click', ()=>{
+    const item = state.activity.find(a=>a.id===b.dataset.undoAct);
+    state.activity = state.activity.filter(a=>a.id!==b.dataset.undoAct);
+    renderActivity(); toast('Change reverted', { icon:'bi-arrow-counterclockwise' });
+  }));
+}
+function renderMetrics(animate){
+  state.metrics.forEach((m,i)=>{
+    const host = document.getElementById('m'+[1,2,3][i]);
+    const d = m.value - m.prev, up = d >= 0;
+    const tones = {
+      mint:  ['bg-mint/20 text-emerald','from-mint/60'],
+      violet:['bg-violet/12 text-violet','from-violet/50'],
+      sage:  ['bg-sage/30 text-forest','from-sage/60']
+    }[m.tone];
+    host.innerHTML = `<div class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${tones[1]} to-transparent"></div>
+      <div class="flex items-start justify-between">
+        <span class="grid h-9 w-9 place-items-center rounded-xl ${tones[0]}"><i class="bi ${m.icon} text-[16px]"></i></span>
+        <span class="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-bold ${up?'bg-mint/20 text-emerald':'bg-rose-50 text-rose-600'}">
+          <i class="bi bi-caret-${up?'up':'down'}-fill"></i>${up?'+':''}${d}</span>
+      </div>
+      <p class="mt-3 font-display text-[30px] font-extrabold leading-none tracking-tight text-charcoal tabnum" data-count="${m.value}" data-anim="${animate?'1':'0'}">0</p>
+      <p class="mt-1.5 text-[12.5px] font-semibold text-charcoal">${m.label}</p>
+      <p class="mt-0.5 text-[11px] text-charcoal/45">${m.note}</p>
+      <p class="mt-2 text-[11px] text-charcoal/40">Yesterday ${m.prev}</p>`;
+  });
+  if(animate) setTimeout(runCounters, 260);
+}
+function runCounters(){
+  $$('[data-count]').forEach(el=>{
+    const target = Number(el.dataset.count), dur = 900, t0 = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now-t0)/dur), e = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(target*e).toLocaleString('en-US');
+      if(p<1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+}
+function renderStorePreview(){
+  const closed = !state.store.open;
+  const banner = closed
+    ? `<div class="bg-charcoal px-4 py-3 text-center text-white">
+         <p class="text-[11.5px] font-bold">We are closed right now</p>
+         <p class="mt-0.5 text-[10.5px] leading-snug text-white/70">${state.store.message||'We will be back soon.'}</p>
+       </div>`
+    : `<div class="bg-gradient-to-br from-mint to-emerald px-4 py-3 text-center text-charcoal">
+         <p class="text-[11.5px] font-bold">Open now · until 21:00</p>
+         <p class="mt-0.5 text-[10.5px] opacity-70">Free delivery inside the district</p>
+       </div>`;
+  const items = state.menu.slice(0,5).map(m=>`
+    <div class="flex items-center gap-3 border-b border-charcoal/6 px-4 py-3 last:border-0">
+      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl ${m.photo?'bg-white text-charcoal/40':'bg-forest/10 text-forest/70'}"><i class="bi ${m.photo?'bi-cup-hot-fill':'bi-image'} text-[14px]"></i></span>
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-[12px] font-semibold text-charcoal ${m.status==='Sold out'?'line-through opacity-50':''}">${m.name}</p>
+        <p class="text-[10.5px] ${m.status==='Sold out'?'text-rose-500':'text-charcoal/45'}">${m.status}</p>
+      </div>
+      <span class="text-[12.5px] font-bold text-charcoal tabnum">${money(m.price)}</span>
+    </div>`).join('');
+  $('#storePreview').innerHTML = banner + `
+    <div class="border-b border-charcoal/8 bg-white px-4 py-3.5">
+      <div class="flex items-center gap-2">
+        <span class="grid h-7 w-7 place-items-center rounded-lg bg-charcoal text-[10px] font-bold text-white">LC</span>
+        <p class="font-display text-[13px] font-extrabold text-charcoal">Lucky Cup</p>
+      </div>
+      <p class="mt-1 text-[10.5px] text-charcoal/45">12 Soi 7, Nimmanhaemin · 08:00–21:00</p>
+    </div>
+    <div class="bg-white">${items}</div>
+    <div class="bg-white px-4 py-3"><button class="w-full rounded-xl bg-charcoal py-2 text-[11.5px] font-bold text-white">Order on LINE</button></div>`;
+}
+function setStoreStatus(open, msg){
+  state.store.open = open;
+  if(msg) state.store.message = msg;
+  const badge = $('#storeBadge'), txt = $('#storeBadgeText'), sw = $('#storeSwitch');
+  if(open){
+    badge.className = 'flex items-center justify-center gap-2 rounded-full bg-mint px-4 py-2 text-[12.5px] font-bold text-charcoal shadow-soft';
+    txt.textContent = 'Shop is open';
+    sw.checked = false;
+    $('#sideStatusText').textContent = 'Open until 21:00';
+    $('#sideStatusSub').textContent = 'Today · 08:00 – 21:00';
+    $('#sideStatusDot').className = 'h-2 w-2 rounded-full bg-mint shadow-[0_0_0_3px_rgba(4,225,171,.18)]';
+  } else {
+    badge.className = 'flex items-center justify-center gap-2 rounded-full bg-charcoal px-4 py-2 text-[12.5px] font-bold text-white shadow-soft';
+    txt.textContent = 'Closed today';
+    sw.checked = true;
+    $('#sideStatusText').textContent = 'Closed';
+    $('#sideStatusSub').textContent = 'Visitors see a notice';
+    $('#sideStatusDot').className = 'h-2 w-2 rounded-full bg-charcoal/60';
+  }
+  renderStorePreview();
+}
+
+/* --------------------------------------------------------------- menu */
+const MENU = [
+  { icon:'bi-grid-1x2-fill', label:'Dashboard', key:'dashboard' },
+  { icon:'bi-box-seam-fill',  label:'Items',      key:'items' },
+  { icon:'bi-megaphone-fill', label:'Promotions', key:'promos' },
+  { icon:'bi-images',         label:'Photos',     key:'photos' },
+  { icon:'bi-graph-up-arrow', label:'Analytics',  key:'analytics' },
+  { icon:'bi-people-fill',    label:'Customers',  key:'leads' },
+  { icon:'bi-chat-square-text-fill', label:'Messages', key:'leads' },
+  { icon:'bi-globe2',         label:'Website',    key:'health' }
+];
+const MENU2 = [
+  { icon:'bi-gear-fill', label:'Settings', key:'settings' },
+  { icon:'bi-life-preserver', label:'Help & support', key:'support' }
+];
+function buildMenu(){
+  const item = (m,i) => `<li><button data-menu="${m.key}" data-idx="${i}" class="menu-item focus-ring group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[13.5px] font-medium text-charcoal/70 transition hover:bg-charcoal/5 hover:text-charcoal">
+      <span class="menu-icon grid h-7 w-7 shrink-0 place-items-center rounded-lg transition"><i class="bi ${m.icon} text-[15px]"></i></span>
+      <span class="menu-copy flex-1 truncate">${m.label}</span>
+      ${m.key==='leads'?'<span class="menu-copy rounded-full bg-violet/12 px-1.5 py-0.5 text-[10px] font-bold text-violet">3</span>':''}
+    </button></li>`;
+  $('#menuList').innerHTML  = MENU.map(item).join('');
+  $('#menuList2').innerHTML = MENU2.map(item).join('');
+  $$('[data-menu]').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      $$('[data-menu]').forEach(x=>{ x.classList.remove('bg-charcoal/8','text-charcoal','font-semibold'); x.querySelector('.menu-icon').classList.remove('bg-mint','text-charcoal'); });
+      b.classList.add('bg-charcoal/8','text-charcoal','font-semibold');
+      b.querySelector('.menu-icon').classList.add('bg-mint','text-charcoal');
+      route(b.dataset.menu);
+      if(window.innerWidth < 1024) toggleSidebar(false);
+    });
+  });
+  const dash = $('[data-menu="dashboard"]');
+  dash.classList.add('bg-charcoal/8','text-charcoal','font-semibold');
+  dash.querySelector('.menu-icon').classList.add('bg-mint','text-charcoal');
+}
+function route(key){
+  const map = { items:'items', promos:'promos', photos:'photos', analytics:'analytics', health:'health', leads:'leads', settings:'settings', support:'support' };
+  if(key === 'dashboard'){ window.scrollTo({top:0, behavior:'smooth'}); return; }
+  if(key === 'leads'){ openLeadsSheet(); return; }
+  if(key === 'settings' || key === 'support'){ openInfoSheet(key); return; }
+  const s = map[key]; if(s) openSheet(s);
+}
+function openLeadsSheet(){
+  const leads = [
+    { n:'Niran P.', m:'Does iced latte come in 1-litre?', t:'6 h ago', hot:true },
+    { n:'Chai Corporate', m:'Need 30 cups on Friday morning', t:'1 d ago', hot:true },
+    { n:'Mai', m:'Is the matcha latte sweet?', t:'2 d ago', hot:false },
+    { n:'Book — 4 people', m:'Table at 18:30 on Saturday', t:'2 d ago', hot:true },
+    { n:'Nok', m:'Do you have gluten free croissant?', t:'3 d ago', hot:false }
+  ];
+  $('#sheetTitle').textContent = 'Customers & messages';
+  $('#sheetSub').textContent = '5 open conversations · 3 need a reply';
+  $('#sheetBody').innerHTML = `<div class="space-y-2.5">${leads.map(l=>`
+    <div class="rounded-2xl border ${l.hot?'border-violet/30 bg-violet/[.05]':'border-charcoal/8 bg-white'} p-3.5">
+      <div class="flex items-center justify-between gap-2">
+        <p class="text-[13px] font-semibold text-charcoal">${l.n}</p>
+        <span class="text-[11px] text-charcoal/40">${l.t}</span>
+      </div>
+      <p class="mt-1 text-[12.5px] leading-relaxed text-charcoal/65">${l.m}</p>
+      <div class="mt-2.5 flex gap-2">
+        <button class="btn-press rounded-lg bg-charcoal px-3 py-1.5 text-[11.5px] font-semibold text-white transition hover:bg-violet">Reply</button>
+        <button class="btn-press rounded-lg border border-charcoal/12 px-3 py-1.5 text-[11.5px] font-semibold text-charcoal transition hover:bg-charcoal/5">Mark done</button>
+      </div>
+    </div>`).join('')}</div>`;
+  $('#sheet').classList.remove('translate-x-full'); $('#sheet').classList.add('translate-x-0');
+  $('#sheetBackdrop').classList.remove('hidden');
+}
+function openInfoSheet(key){
+  const isSettings = key === 'settings';
+  $('#sheetTitle').textContent = isSettings ? 'Settings' : 'Help & support';
+  $('#sheetSub').textContent = isSettings ? 'Shop profile and preferences' : 'We reply within one hour';
+  $('#sheetBody').innerHTML = isSettings
+    ? `<div class="space-y-4">
+        <label class="block"><span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Shop name</span>
+          <input value="Lucky Cup" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] focus:border-mint/60 focus:bg-white"></label>
+        <label class="block"><span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Address</span>
+          <input value="12 Soi 7, Nimmanhaemin" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px] focus:border-mint/60 focus:bg-white"></label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block"><span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Open</span><input type="time" value="08:00" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px]"></label>
+          <label class="block"><span class="mb-1.5 block text-[12px] font-semibold text-charcoal/70">Close</span><input type="time" value="21:00" class="focus-ring w-full rounded-xl border border-charcoal/12 bg-offwhite/40 px-3.5 py-2.5 text-[13.5px]"></label>
+        </div>
+        <button class="btn-press w-full rounded-xl bg-charcoal py-3 text-[13.5px] font-bold text-white transition hover:bg-indigo">Save changes</button>
+       </div>`
+    : `<div class="space-y-3">
+        ${[['Getting started','Set prices, photos and hours in one afternoon.','bi-rocket-takeoff-fill'],
+           ['Getting customers','Publish a promo and share it on LINE.','bi-megaphone-fill'],
+           ['Closing the shop','One tap shows a notice to every visitor.','bi-moon-stars-fill']].map(r=>`
+          <div class="rounded-2xl border border-charcoal/8 bg-offwhite/40 p-4">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-mint/20 text-emerald"><i class="bi ${r[2]} text-[16px]"></i></span>
+            <p class="mt-2.5 font-display text-[13.5px] font-bold text-charcoal">${r[0]}</p>
+            <p class="mt-1 text-[12.5px] leading-relaxed text-charcoal/60">${r[1]}</p>
+          </div>`).join('')}
+        <button class="btn-press flex w-full items-center justify-center gap-2 rounded-xl bg-charcoal py-3 text-[13.5px] font-bold text-white transition hover:bg-indigo"><i class="bi bi-chat-dots-fill"></i>Chat with support</button>
+       </div>`;
+  $('#sheet').classList.remove('translate-x-full'); $('#sheet').classList.add('translate-x-0');
+  $('#sheetBackdrop').classList.remove('hidden');
+}
+
+/* ------------------------------------------------------------ sidebar */
+const sidebar = $('#sidebar'), mainCol = $('#mainCol');
+let collapsed = false;
+function setCollapsed(v){
+  collapsed = v;
+  if(v){
+    sidebar.classList.add('w-[76px]'); mainCol.classList.remove('lg:pl-[264px]'); mainCol.classList.add('lg:pl-[76px]');
+    $$('.sidebar-copy').forEach(e=> e.classList.add('hidden'));
+    $('#collapseBtn i').className = 'bi bi-layout-sidebar-inset-reverse text-[15px]';
+  } else {
+    sidebar.classList.remove('w-[76px]'); mainCol.classList.remove('lg:pl-[76px]'); mainCol.classList.add('lg:pl-[264px]');
+    $$('.sidebar-copy').forEach(e=> e.classList.remove('hidden'));
+    $('#collapseBtn i').className = 'bi bi-layout-sidebar-inset text-[15px]';
+  }
+}
+$('#collapseBtn').addEventListener('click', ()=> setCollapsed(!collapsed));
+function toggleSidebar(force){
+  const willOpen = force !== undefined ? force : sidebar.classList.contains('max-lg:translate-x-[-100%]');
+  sidebar.classList.toggle('max-lg:translate-x-[-100%]', !willOpen);
+  $('#backdrop').classList.toggle('hidden', !willOpen);
+}
+$('#hamburger').addEventListener('click', ()=>toggleSidebar());
+$('#backdrop').addEventListener('click', ()=>toggleSidebar(false));
+
+/* ------------------------------------------------------ notes + copy */
+const notesBtn = $('#notesBtn'), notesPanel = $('#notesPanel');
+notesBtn.addEventListener('click', e=>{
+  e.stopPropagation();
+  const open = notesPanel.classList.contains('hidden');
+  notesPanel.classList.toggle('hidden', !open);
+  notesBtn.setAttribute('aria-expanded', String(open));
+});
+document.addEventListener('click', e=>{
+  if(!notesPanel.contains(e.target) && !notesBtn.contains(e.target)) closePanel('notesPanel');
+});
+$('#copyNotes').addEventListener('click', async ()=>{
+  const text = $('#notesBody').innerText.trim() + '\n\n— Lucky Cup owner back office';
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch(_){
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); }catch(__){}
+    ta.remove();
+  }
+  const lbl = $('#copyLabel'), i = $('#copyNotes').querySelector('i');
+  lbl.textContent = 'Copied to clipboard'; i.className = 'bi bi-check-lg text-[14px]';
+  setTimeout(()=>{ lbl.textContent = 'Copy app information'; i.className = 'bi bi-clipboard-check text-[14px]'; }, 2000);
+  toast('App information copied', { icon:'bi-clipboard-check' });
+});
+
+/* --------------------------------------------------------- auth forms */
+$$('[data-toggle-pw]').forEach(b=> b.addEventListener('click', ()=>{
+  const inp = b.parentElement.querySelector('input');
+  const show = inp.type === 'password';
+  inp.type = show ? 'text' : 'password';
+  b.querySelector('i').className = show ? 'bi bi-eye-slash text-[15px]' : 'bi bi-eye text-[15px]';
+}));
+$('#loginForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.innerHTML = '<span class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"></span>';
+  setTimeout(()=>{ btn.innerHTML = 'Sign in'; closeModal('login'); toast('Welcome back, Ek — your shop is ready', {icon:'bi-check-circle-fill'}); }, 800);
+});
+$('#signupForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.innerHTML = '<span class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"></span>';
+  setTimeout(()=>{ btn.innerHTML = 'Create account'; closeModal('signup'); toast('Account created — welcome to Lucky Cup', {icon:'bi-stars', tone:'violet'}); }, 900);
+});
+$('#forgotForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.innerHTML = '<span class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"></span>';
+  setTimeout(()=>{ btn.innerHTML = 'Send reset link'; closeModal('forgot'); toast('Reset link sent — check your inbox', {icon:'bi-envelope-check-fill'}); }, 800);
+});
+
+/* ------------------------------------------------------- close shop */
+$$('.when-btn').forEach(b=> b.addEventListener('click', ()=>{
+  $$('.when-btn').forEach(x=>{ x.classList.remove('border-mint','bg-mint/10','ring-2','ring-mint/30'); });
+  b.classList.add('border-mint','bg-mint/10','ring-2','ring-mint/30');
+  $('#untilDate').classList.toggle('hidden', b.dataset.when !== 'until');
+  const msgs = {
+    today:'Hi! We are resting today and will be back tomorrow at 8:00 AM. Thanks for your patience!',
+    tomorrow:'Hi! We are closed tomorrow. See you again on Friday at 8:00 AM!',
+    until:'Hi! We are away for a short break and will be back as soon as we can. Thank you!'
+  };
+  $('#closeMessage').value = msgs[b.dataset.when];
+}));
+$('#closeShopForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const sel = $('.when-btn.border-mint');
+  const when = sel ? sel.dataset.when : 'today';
+  const msg = $('#closeMessage').value.trim() || 'We are closed for a short break. See you soon!';
+  setStoreStatus(false, msg);
+  closeModal('closeShop');
+  state.activity.unshift({ id:'x'+Date.now(), who:'You', what:`closed the shop (${when})`, time:'now', undo:true, tag:'Status' });
+  renderActivity();
+  toast('Shop closed — your storefront banner is live', { icon:'bi-moon-stars-fill', undo:true, onUndo(){ setStoreStatus(true); toast('Shop is open again'); } });
+});
+$('#storeSwitch').addEventListener('change', e=>{
+  if(e.target.checked) openModal('closeShop');
+  else { setStoreStatus(true); toast('Shop is open again — the banner is gone', {icon:'bi-sun-fill'}); }
+});
+
+/* --------------------------------------------- natural language (D1.14) */
+const NL_SUGGESTIONS = {
+  price:{ icon:'bi-tag-fill', tone:'violet', title:'Price change', confirm:'Update price' },
+  status:{icon:'bi-toggle-on-fill', tone:'mint', title:'Item status', confirm:'Update status' },
+  promo:{ icon:'bi-megaphone-fill', tone:'sage', title:'New promo', confirm:'Create promo' },
+  close:{ icon:'bi-moon-stars-fill', tone:'forest', title:'Store status', confirm:'Apply schedule' }
+};
+function parseNL(text){
+  const t = text.toLowerCase();
+  const amountRe = /(\d{2,4})/;
+  // price
+  if(/(price|raise|set|change|cost|baht|฿)/.test(t) && amountRe.test(t)){
+    const amount = Number(text.match(/(\d{2,4})/)[1]);
+    const item = state.menu.find(m => t.includes(m.name.toLowerCase()) || t.includes(m.id)) ||
+                 state.menu.find(m => t.includes(m.name.split(' ')[0].toLowerCase()));
+    if(item) return { type:'price', item, amount,
+      before:`${item.name} — ${money(item.price)}`,
+      after:`${item.name} — ${money(amount)}` };
+  }
+  // status
+  if(/(sold out|sold-out|out of stock|unavailable|available again|in stock)/.test(t)){
+    const soldOut = /(sold out|out of stock|unavailable)/.test(t);
+    const item = state.menu.find(m => t.includes(m.name.toLowerCase()) || t.includes(m.id.split('')[0])) ||
+                 state.menu.find(m => t.includes(m.name.split(' ')[0].toLowerCase()));
+    if(item) return { type:'status', item, value: soldOut ? 'Sold out' : 'Available',
+      before:`${item.name} — ${item.status}`,
+      after:`${item.name} — ${soldOut ? 'Sold out' : 'Available'}` };
+  }
+  // promo
+  if(/(promo|discount|offer|เสา|ส่วนลด)/.test(t)){
+    const pct = text.match(/(\d{1,2})\s*%/); 
+    const name = t.includes('weekend') ? 'Weekend brunch' : t.includes('morning') ? 'Morning Brew' : 'New promo';
+    return { type:'promo', name, pct: pct ? pct[1] : null,
+      before:'No promo running',
+      after:`“${name}” · ${pct? pct[1]+'% off' : 'draft, not published'}` };
+  }
+  // close
+  if(/(close|closed|rest|shut|ปิด|หยุด)/.test(t)){
+    const when = /tomorrow|พรุ่งนี้/.test(t) ? 'tomorrow' : /today|วันนี้/.test(t) ? 'today' : 'until';
+    return { type:'close', when,
+      before: state.store.open ? 'Shop open today' : 'Shop closed today',
+      after: `Shop closed — ${when === 'today' ? 'today' : when === 'tomorrow' ? 'tomorrow' : 'until a date you pick'}` };
+  }
+  return null;
+}
+function renderNLPreview(){
+  const host = $('#nlPreview'), raw = $('#nlInput').value.trim();
+  if(!raw){ host.innerHTML = ''; return; }
+  const p = parseNL(raw);
+  if(!p){
+    host.innerHTML = `<div class="flex items-start gap-2.5 rounded-2xl border border-amber-200 bg-amber-50/60 p-3.5">
+      <i class="bi bi-info-circle-fill mt-0.5 text-[14px] text-amber-600"></i>
+      <p class="text-[12.5px] leading-relaxed text-amber-900">I can change a price, switch an item on or off, draft a promo, or close the shop. Try “raise iced latte to ฿75”.</p></div>`;
+    return;
+  }
+  const cfg = NL_SUGGESTIONS[p.type];
+  host.innerHTML = `<div class="animate-popIn rounded-2xl border border-charcoal/10 bg-white p-4 shadow-soft">
+    <div class="flex items-center gap-2.5">
+      <span class="grid h-8 w-8 place-items-center rounded-xl bg-${cfg.tone}/12 text-${cfg.tone}"><i class="bi ${cfg.icon} text-[14px]"></i></span>
+      <div><p class="font-display text-[13.5px] font-bold text-charcoal">${cfg.title}</p><p class="text-[11px] text-charcoal/45">Nothing is saved until you confirm</p></div>
+    </div>
+    <div class="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-xl bg-offwhite/50 p-3">
+      <div><p class="text-[10px] font-bold uppercase tracking-wider text-charcoal/35">Before</p><p class="mt-0.5 text-[12.5px] font-semibold text-charcoal/70">${p.before}</p></div>
+      <i class="bi bi-arrow-right text-[14px] text-charcoal/30"></i>
+      <div><p class="text-[10px] font-bold uppercase tracking-wider text-charcoal/35">After</p><p class="mt-0.5 text-[12.5px] font-bold text-charcoal">${p.after}</p></div>
+    </div>
+    <div class="mt-3 flex items-center gap-2">
+      <button id="nlConfirm" class="btn-press rounded-xl bg-charcoal px-4 py-2.5 text-[12.5px] font-bold text-white transition hover:bg-emerald">${cfg.confirm}</button>
+      <button id="nlCancel" class="btn-press rounded-xl border border-charcoal/12 px-4 py-2.5 text-[12.5px] font-semibold text-charcoal transition hover:bg-charcoal/5">Cancel</button>
+      <span class="ml-auto text-[10.5px] font-medium text-charcoal/35">ordered by message</span>
+    </div>
+  </div>`;
+  $('#nlConfirm').addEventListener('click', ()=> applyNL(p));
+  $('#nlCancel').addEventListener('click', ()=>{ $('#nlInput').value=''; renderNLPreview(); });
+}
+function applyNL(p){
+  let summary = '';
+  if(p.type === 'price'){
+    const before = p.item.price; p.item.price = p.amount; p.item.updated = 0;
+    summary = `changed ${p.item.name} ${money(before)} → ${money(p.amount)}`;
+    state.activity.unshift({ id:'x'+Date.now(), who:'You (ordered by message)', what: summary, time:'now', undo:true, tag:'Price' });
+    renderStorePreview(); openSheet && setTimeout(()=>{},0);
+  } else if(p.type === 'status'){
+    const before = p.item.status; p.item.status = p.value;
+    summary = `marked ${p.item.name} as ${p.value.toLowerCase()}`;
+    state.activity.unshift({ id:'x'+Date.now(), who:'You (ordered by message)', what: summary, time:'now', undo:true, tag:'Item' });
+    renderStorePreview();
+  } else if(p.type === 'promo'){
+    summary = `created promo draft “${p.name}”${p.pct?` with ${p.pct}% off`:''}`;
+    state.activity.unshift({ id:'x'+Date.now(), who:'You (ordered by message)', what: summary, time:'now', undo:true, tag:'Promo' });
+    openSheet('promos');
+  } else if(p.type === 'close'){
+    if(p.when === 'until'){ openModal('closeShop'); }
+    else {
+      const msg = p.when==='today' ? 'Hi! We are resting today and will be back tomorrow at 8:00 AM. Thanks for your patience!'
+                                   : 'Hi! We are closed tomorrow. See you again on Friday at 8:00 AM!';
+      setStoreStatus(false, msg);
+      summary = `closed the shop (${p.when})`;
+    }
+    state.activity.unshift({ id:'x'+Date.now(), who:'You (ordered by message)', what: summary, time:'now', undo:true, tag:'Status' });
+  }
+  state.changelog.push({ summary, time:'now' });
+  renderActivity();
+  $('#nlInput').value=''; renderNLPreview();
+  toast('Done — change saved to the change log', { icon:'bi-check-circle-fill', tone:'violet' });
+}
+$('#nlInput').addEventListener('input', renderNLPreview);
+$('#nlSend').addEventListener('click', ()=>{ if(!$('#nlInput').value.trim()) $('#nlInput').focus(); else renderNLPreview(); });
+$('#nlInput').addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); renderNLPreview(); } });
+$$('.nl-chip').forEach(c=> c.addEventListener('click', ()=>{ $('#nlInput').value = c.textContent.trim(); renderNLPreview(); $('#nlInput').focus(); }));
+
+/* ------------------------------------------------------------ chatbot */
+const chatBody = $('#chatBody'), chatPanel = $('#chatPanel'), chatFab = $('#chatFab');
+let chatOpen = false;
+function chatMsg(text, who='bot'){
+  const el = document.createElement('div');
+  if(who === 'bot'){
+    el.className = 'flex gap-2.5 animate-popIn';
+    el.innerHTML = `<span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-mint to-emerald text-charcoal"><i class="bi bi-cup-hot-fill text-[12px]"></i></span>
+      <div class="max-w-[80%] rounded-2xl rounded-tl-md bg-white px-3.5 py-2.5 text-[13px] leading-relaxed text-charcoal shadow-soft">${text}</div>`;
+  } else {
+    el.className = 'flex justify-end animate-popIn';
+    el.innerHTML = `<div class="max-w-[80%] rounded-2xl rounded-br-md bg-charcoal px-3.5 py-2.5 text-[13px] leading-relaxed text-white">${text}</div>`;
+  }
+  chatBody.appendChild(el); chatBody.scrollTop = chatBody.scrollHeight;
+}
+function typing(){
+  const el = document.createElement('div');
+  el.className = 'flex gap-2.5';
+  el.id = 'typing';
+  el.innerHTML = `<span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-mint to-emerald text-charcoal"><i class="bi bi-cup-hot-fill text-[12px]"></i></span>
+    <div class="flex items-center gap-1 rounded-2xl rounded-tl-md bg-white px-4 py-3 shadow-soft">
+      <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-charcoal/40" style="animation-delay:0ms"></span>
+      <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-charcoal/40" style="animation-delay:120ms"></span>
+      <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-charcoal/40" style="animation-delay:240ms"></span>
+    </div>`;
+  chatBody.appendChild(el); chatBody.scrollTop = chatBody.scrollHeight;
+}
+function botReply(q){
+  const t = q.toLowerCase();
+  const nums = q.match(/(\d{2,4})/);
+  if(/(hello|hi|hey|สวัสดี)/.test(t)) return 'Hello Ek 👋 Two things need you today: a customer reply and a promo ending in two days. Want me to open either one?';
+  if(/(task|pending|wait|ค้าง)/.test(t)) return 'You have <b>3</b> open tasks — Niran is waiting for a reply, “Morning Brew” ends in 2 days, and the iced latte price is 74 days old. Shall I open the first one?';
+  if(/(price|฿|ราคา)/.test(t)){
+    const item = state.menu.find(m=>t.includes(m.name.toLowerCase())) || state.menu[0];
+    return `Right now <b>${item.name}</b> is <b>${money(item.price)}</b>${item.updated>60?' and it has not been touched for '+item.updated+' days':''}. Tap <b>Edit prices</b> to change it.`;
+  }
+  if(/(promo|discount)/.test(t)) return '“Morning Brew” is live and ends in 2 days — it already brought 11 orders. I can draft a weekend promo for you in about 30 seconds. Shall I?';
+  if(/(close|closed|open|ปิด|เปิด)/.test(t)) return state.store.open
+    ? 'The shop is open until 21:00. If you need to rest, I can close it for today or tomorrow and the banner appears in about 5 seconds.'
+    : 'The shop is closed right now. Tap <b>Open shop</b> whenever you are ready — I will take the banner down immediately.';
+  if(/(lead|customer|contact|message)/.test(t)) return 'You have <b>3</b> conversations waiting for a reply. The most recent one is a 30-cup office order request — those convert about 3× better when answered the same day.';
+  if(/(traffic|visitor|view)/.test(t)) return 'Today <b>428</b> people visited the storefront, up from 391 yesterday. Most of the traffic came from the LINE share at 08:12.';
+  if(/(error|broken|down|health|website)/.test(t)) return 'Everything is healthy. Last check was 05:00 and the nightly backup finished in 42 seconds. Nothing needs your attention.';
+  if(/(undo|revert)/.test(t)) return 'Recent changes can be undone from the activity list — hover a row and press Undo. I can undo the last one for you if you say “undo last change”.';
+  if(/(thank|thanks|ok|cool)/.test(t)) return 'Any time, Ek. Anything else you want to check?';
+  if(nums && /(set|change|make|raise)/.test(t)) return `I can do that. Tap the <b>Edit prices</b> card and I will pre-fill ${money(nums[1])} for you.`;
+  return 'I can help with tasks, prices, promos, customer messages and the store status. Try “what needs my attention?” or “close the shop tomorrow”.';
+}
+function sendChat(text){
+  if(!text.trim()) return;
+  chatMsg(text.replace(/</g,'&lt;'), 'user');
+  const t = document.getElementById('typing'); if(t) t.remove();
+  setTimeout(()=>{ typing(); }, 260);
+  setTimeout(()=>{
+    const t2 = document.getElementById('typing'); if(t2) t2.remove();
+    chatMsg(botReply(text));
+  }, 950);
+}
+$('#chatForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const inp = $('#chatInput'); const v = inp.value; inp.value=''; sendChat(v);
+});
+function toggleChat(force){
+  chatOpen = force !== undefined ? force : !chatOpen;
+  if(chatOpen){
+    chatPanel.classList.remove('opacity-0','translate-y-4');
+    chatPanel.classList.add('opacity-100','translate-y-0');
+    chatFab.setAttribute('aria-expanded','true');
+    chatFab.querySelector('i').className = 'bi bi-x-lg text-[21px]';
+    if(!chatBody.dataset.seeded){
+      chatBody.dataset.seeded = '1';
+      setTimeout(()=>{ chatMsg('Hi Ek 👋 I am your shop assistant. I can see today’s numbers, open tasks and your menu. What do you need?'); }, 220);
+    }
+    setTimeout(()=>$('#chatInput').focus(), 350);
+  } else {
+    chatPanel.classList.add('opacity-0','translate-y-4');
+    chatPanel.classList.remove('opacity-100','translate-y-0');
+    chatFab.setAttribute('aria-expanded','false');
+    chatFab.querySelector('i').className = 'bi bi-chat-dots-fill text-[21px]';
+  }
+}
+chatFab.addEventListener('click', ()=>toggleChat());
+$('#chatClose').addEventListener('click', ()=>toggleChat(false));
+$('#chatMinimize').addEventListener('click', ()=>toggleChat(false));
+const CHIPS = ['What needs my attention?','Close the shop tomorrow','How many visitors today?','Draft a weekend promo'];
+$('#chatChips').innerHTML = CHIPS.map(c=>`<button data-chip="${c}" class="btn-press shrink-0 rounded-full border border-charcoal/10 bg-white px-3 py-1.5 text-[11.5px] font-medium text-charcoal/60 transition hover:border-mint/50 hover:text-charcoal">${c}</button>`).join('');
+$$('[data-chip]').forEach(b=> b.addEventListener('click', ()=>{ toggleChat(true); setTimeout(()=>sendChat(b.dataset.chip), 120); }));
+
+/* -------------------------------------------------------- back to top */
+const backTop = $('#backTop');
+window.addEventListener('scroll', ()=>{
+  const past = window.scrollY > 240;
+  backTop.classList.toggle('opacity-0', !past);
+  backTop.classList.toggle('translate-y-3', !past);
+  backTop.classList.toggle('opacity-100', past);
+  backTop.classList.toggle('translate-y-0', past);
+}, { passive:true });
+backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ------------------------------------------------------- misc handlers */
+$$('[data-sheet]').forEach(b=> b.addEventListener('click', ()=>{
+  if(b.dataset.sheet === 'promos') toast('Draft a promo — customers see it in seconds', { icon:'bi-megaphone-fill', tone:'violet' });
+  openSheet(b.dataset.sheet);
+}));
+$('#dismissUpsell').addEventListener('click', ()=>{
+  const c = $('#upsellCard');
+  c.style.transition='opacity .3s, transform .3s'; c.style.opacity='0'; c.style.transform='scale(.96)';
+  setTimeout(()=>{ c.classList.add('hidden'); }, 320);
+});
+$('#userBtn').addEventListener('click', ()=> openModal('login'));
+$('[data-open-store]').addEventListener('click', e=>{ e.preventDefault(); openSheet('health'); toast('Opening your public page', { icon:'bi-box-arrow-up-right' }); });
+$('#globalSearch').addEventListener('keydown', e=>{
+  if(e.key === 'Enter' && e.target.value.trim()){
+    toast(`Searching for “${e.target.value.trim()}”…`, { icon:'bi-search' });
+  }
+});
+
+/* ------------------------------------------------------------- boot */
+function boot(){
+  buildMenu();
+  renderTasks();
+  renderActivity();
+  renderMetrics(false);
+  renderStorePreview();
+  // skeleton → content
+  setTimeout(()=>{
+    renderMetrics(true);
+  }, 260);
+  window.addEventListener('resize', ()=>{ if(window.innerWidth>=1024) $('#backdrop').classList.add('hidden'); });
+}
+boot();
+})();
+</script>
+</body>
+</html>
