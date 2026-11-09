@@ -1,0 +1,1310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rimjai Shop Manager · Today at the Shop</title>
+<meta name="description" content="Owner backend dashboard: know in 5 seconds if there is pending work, if the website is healthy, and what to fix right now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        mint: '#04E1AB', emr: '#10AE9E', sage: '#BD9681', oliv: '#724E40',
+        viol: '#6A5DE6', indg: '#222480', charcoal: '#291F1B', navy: '#050738', offwhite: '#E3E3DD'
+      },
+      fontFamily: {
+        display: ['"Plus Jakarta Sans"','sans-serif'],
+        body: ['Inter','sans-serif']
+      },
+      boxShadow: {
+        soft: '0 10px 30px rgba(0,0,0,0.04)',
+        lift: '0 18px 44px rgba(5,7,56,0.10)',
+        glow: '0 8px 24px rgba(4,225,171,0.35)'
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root{ --sbw: 256px; --line: rgba(41,31,27,0.08); }
+  body.sb-collapsed{ --sbw: 84px; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter',sans-serif; background:#fff; color:#291F1B; }
+  h1,h2,h3,h4,.font-display{ font-family:'Plus Jakarta Sans',sans-serif; }
+
+  /* ---------- custom scrollbar (no arrows, palette colors) ---------- */
+  *{ scrollbar-width: thin; scrollbar-color:#c9c9bd transparent; }
+  ::-webkit-scrollbar{ width:8px; height:8px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  ::-webkit-scrollbar-thumb{ background:#d4d4c8; border-radius:99px; border:2px solid #ffffff; }
+  ::-webkit-scrollbar-thumb:hover{ background:#10AE9E; }
+  ::-webkit-scrollbar-button{ display:none; width:0; height:0; }
+
+  /* ---------- surfaces ---------- */
+  .card{ background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,0.04); }
+  .card-hover{ transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s cubic-bezier(.22,1,.36,1), border-color .28s; }
+  .card-hover:hover{ transform: translateY(-3px); box-shadow:0 18px 44px rgba(5,7,56,0.10); border-color:rgba(4,225,171,0.35); }
+  .btn-press{ transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease; }
+  .btn-press:active{ transform: scale(0.96); }
+  .grad-mint{ background:linear-gradient(135deg,#04E1AB 0%,#10AE9E 100%); }
+  .grad-indigo{ background:linear-gradient(135deg,#222480 0%,#050738 100%); }
+  .grad-violet{ background:linear-gradient(135deg,#6A5DE6 0%,#222480 100%); }
+
+  .input{ width:100%; border:1px solid rgba(41,31,27,0.14); border-radius:12px; padding:10px 12px; font-size:13px; background:#fff; transition:border-color .2s, box-shadow .2s; }
+  .input:focus{ outline:none; border-color:#04E1AB; box-shadow:0 0 0 3px rgba(4,225,171,0.18); }
+  .input::placeholder{ color:rgba(41,31,27,0.35); }
+
+  /* ---------- switch ---------- */
+  .switch{ position:relative; display:inline-block; width:46px; height:26px; flex-shrink:0; cursor:pointer; }
+  .switch input{ opacity:0; width:0; height:0; }
+  .switch .track{ position:absolute; inset:0; background:#E3E3DD; border-radius:99px; transition:background .3s cubic-bezier(.22,1,.36,1); }
+  .switch .knob{ position:absolute; top:3px; left:3px; width:20px; height:20px; background:#fff; border-radius:99px; box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:transform .3s cubic-bezier(.22,1,.36,1); }
+  .switch input:checked + .track{ background:#10AE9E; }
+  .switch input:checked + .track .knob{ transform:translateX(20px); }
+
+  /* ---------- animations ---------- */
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
+  @keyframes popIn{ from{opacity:0; transform:translateY(14px) scale(.96);} to{opacity:1; transform:none;} }
+  @keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
+  @keyframes toastIn{ from{opacity:0; transform:translateX(24px);} to{opacity:1; transform:none;} }
+  @keyframes toastOut{ to{opacity:0; transform:translateX(24px);} }
+  @keyframes shimmer{ from{background-position:200% 0;} to{background-position:-200% 0;} }
+  @keyframes pulseDot{ 0%,100%{ box-shadow:0 0 0 0 rgba(16,174,158,0.5);} 70%{ box-shadow:0 0 0 7px rgba(16,174,158,0);} }
+  @keyframes typing{ 0%,60%,100%{ transform:translateY(0);} 30%{ transform:translateY(-4px);} }
+  .anim-up{ animation: fadeUp .55s cubic-bezier(.22,1,.36,1) both; }
+  .skel{ border-radius:14px; background:linear-gradient(90deg,#F1F1EC 25%,#E7E7E0 50%,#F1F1EC 75%); background-size:200% 100%; animation:shimmer 1.4s infinite linear; }
+  .pulse-dot{ animation:pulseDot 2s infinite; }
+  .typing-dot{ width:6px; height:6px; border-radius:99px; background:#9b9b8f; display:inline-block; animation:typing 1.2s infinite; }
+  .typing-dot:nth-child(2){ animation-delay:.15s; } .typing-dot:nth-child(3){ animation-delay:.3s; }
+
+  #content.in > * > * { animation: fadeUp .55s cubic-bezier(.22,1,.36,1) both; }
+  #content.in > * > *:nth-child(2){ animation-delay:.06s; }
+  #content.in > * > *:nth-child(3){ animation-delay:.12s; }
+  #content.in > * > *:nth-child(4){ animation-delay:.18s; }
+  #content.in > * > *:nth-child(5){ animation-delay:.24s; }
+  #content.in > * > *:nth-child(6){ animation-delay:.3s; }
+  #content.in > * > *:nth-child(7){ animation-delay:.36s; }
+
+  /* ---------- modals ---------- */
+  .modal{ position:fixed; inset:0; z-index:80; display:none; align-items:center; justify-content:center; padding:16px; }
+  .modal.open{ display:flex; }
+  .modal-backdrop{ position:absolute; inset:0; background:rgba(5,7,56,0.45); backdrop-filter:blur(4px); animation:fadeIn .25s ease both; }
+  .modal-card{ position:relative; margin:auto; width:100%; max-width:420px; background:#fff; border-radius:20px; border:1px solid var(--line); box-shadow:0 30px 80px rgba(5,7,56,0.25); animation:popIn .32s cubic-bezier(.22,1,.36,1) both; max-height:calc(100vh - 48px); overflow-y:auto; }
+  .modal-card.wide{ max-width:480px; }
+
+  /* ---------- dropdowns ---------- */
+  .dd{ position:absolute; top:calc(100% + 10px); right:0; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:0 18px 50px rgba(5,7,56,0.14); animation:popIn .22s cubic-bezier(.22,1,.36,1) both; }
+  .dd-item{ transition:background-color .15s ease; }
+
+  /* ---------- toast ---------- */
+  #toastBox{ position:fixed; top:76px; right:16px; z-index:90; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
+  .toast{ display:flex; align-items:center; gap:10px; background:#050738; color:#fff; font-size:12.5px; font-weight:500; padding:11px 16px; border-radius:12px; box-shadow:0 14px 40px rgba(5,7,56,0.35); animation:toastIn .3s cubic-bezier(.22,1,.36,1) both; max-width:340px; }
+  .toast.bye{ animation:toastOut .3s ease both; }
+  .toast i{ color:#04E1AB; font-size:16px; }
+
+  /* ---------- sidebar ---------- */
+  #sidebar{ width:var(--sbw); transition:width .3s cubic-bezier(.22,1,.36,1), transform .3s cubic-bezier(.22,1,.36,1); }
+  #logoZone{ width:var(--sbw); transition:width .3s cubic-bezier(.22,1,.36,1); }
+  .nav-label{ transition:opacity .2s ease; white-space:nowrap; }
+  body.sb-collapsed .nav-label{ opacity:0; pointer-events:none; }
+  body.sb-collapsed .nav-group-title{ opacity:0; height:0; overflow:hidden; margin:0 !important; }
+  .nav-link{ display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:12px; font-size:13px; font-weight:500; color:rgba(41,31,27,0.65); position:relative; transition:background-color .18s ease, color .18s ease, padding .18s ease; }
+  .nav-link i{ font-size:17px; }
+  .nav-link:hover{ background:#F4F4EF; color:#291F1B; }
+  .nav-link.active{ background:rgba(4,225,171,0.12); color:#0B8F76; font-weight:600; }
+  .nav-link.active::before{ content:''; position:absolute; left:0; top:20%; bottom:20%; width:3px; border-radius:99px; background:#04E1AB; }
+  body.sb-collapsed .nav-link{ justify-content:center; padding-left:0; padding-right:0; }
+  @media (max-width:1023px){
+    #logoZone{ width:auto !important; }
+    #sidebar{ transform:translateX(-105%); width:256px !important; z-index:60; }
+    body.sb-open #sidebar{ transform:none; box-shadow:0 24px 70px rgba(5,7,56,0.25); }
+    body.sb-collapsed .nav-label{ opacity:1; pointer-events:auto; }
+    body.sb-collapsed .nav-group-title{ opacity:1; height:auto; }
+    body.sb-collapsed .nav-link{ justify-content:flex-start; padding-left:14px; padding-right:14px; }
+  }
+  #sbOverlay{ position:fixed; inset:0; background:rgba(5,7,56,0.4); backdrop-filter:blur(2px); z-index:55; opacity:0; pointer-events:none; transition:opacity .3s ease; }
+  body.sb-open #sbOverlay{ opacity:1; pointer-events:auto; }
+
+  /* ---------- chat ---------- */
+  #chatPanel{ position:fixed; right:16px; bottom:84px; width:min(340px, calc(100vw - 32px)); z-index:70; transform-origin:bottom right; transform:scale(.85) translateY(10px); opacity:0; pointer-events:none; transition:transform .3s cubic-bezier(.22,1,.36,1), opacity .25s ease; }
+  #chatPanel.open{ transform:none; opacity:1; pointer-events:auto; }
+  .bubble-bot{ background:#F1F1EC; color:#291F1B; border-radius:14px 14px 14px 4px; }
+  .bubble-me{ background:linear-gradient(135deg,#04E1AB,#10AE9E); color:#fff; border-radius:14px 14px 4px 14px; }
+
+  .fab{ width:48px; height:48px; border-radius:99px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+  #toTop{ opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity .3s ease, transform .3s ease; }
+  #toTop.show{ opacity:1; transform:none; pointer-events:auto; }
+
+  .task-card{ animation:fadeUp .45s cubic-bezier(.22,1,.36,1) both; transition:opacity .35s ease, transform .35s ease; }
+  .task-card.gone{ opacity:0; transform:translateX(24px); }
+  .act-row:hover .undo-btn{ opacity:1; transform:none; }
+  .undo-btn{ opacity:0; transform:translateX(4px); transition:opacity .2s ease, transform .2s ease; }
+  @media (hover:none){ .undo-btn{ opacity:1; transform:none; } }
+
+  .check-item{ transition:all .25s ease; }
+  .check-item.done .check-box{ background:#04E1AB; border-color:#04E1AB; color:#fff; }
+  .check-item.done .check-label{ text-decoration:line-through; color:rgba(41,31,27,0.4); }
+
+  .menu-row{ transition:opacity .3s ease, transform .3s ease; }
+  .grad-text{ background:linear-gradient(135deg,#04E1AB,#10AE9E); -webkit-background-clip:text; background-clip:text; color:transparent; }
+</style>
+</head>
+<body class="bg-white text-charcoal">
+
+<!-- ============ OFFLINE BANNER ============ -->
+<div id="offlineBanner" class="hidden fixed top-16 inset-x-0 z-50 bg-navy text-white text-[12px] font-medium px-4 py-2 flex items-center gap-2">
+  <i class="bi bi-wifi-off text-mint"></i> You're offline. Showing the latest cached data. Changes will sync when you're back online.
+</div>
+
+<!-- ============ TOPBAR (logo zone + header share one border) ============ -->
+<div id="topbar" class="fixed top-0 inset-x-0 z-50 h-16 bg-white border-b border-black/[0.08] flex items-stretch">
+  <!-- logo zone: height equals header, border-right matches the sidebar line -->
+  <div id="logoZone" class="h-16 flex items-center gap-2.5 px-4 border-r border-black/[0.08] shrink-0 overflow-hidden">
+    <div class="w-9 h-9 rounded-xl grad-mint flex items-center justify-center shadow-glow shrink-0">
+      <i class="bi bi-cup-hot text-white text-[18px]"></i>
+    </div>
+    <div class="nav-label leading-tight">
+      <div class="font-display font-extrabold text-[15px] tracking-tight">Rimjai</div>
+      <div class="text-[10px] font-semibold tracking-[0.12em] uppercase text-charcoal/40">Shop Manager</div>
+    </div>
+  </div>
+  <!-- header content -->
+  <header class="flex-1 flex items-center gap-2 px-3 sm:px-5 min-w-0">
+    <button id="hamburger" class="lg:hidden btn-press w-10 h-10 rounded-xl hover:bg-offwhite flex items-center justify-center text-[20px]" title="Menu"><i class="bi bi-list"></i></button>
+    <button id="collapseBtn" class="hidden lg:flex btn-press w-10 h-10 rounded-xl hover:bg-offwhite items-center justify-center text-[18px]" title="Collapse sidebar"><i class="bi bi-chevron-double-left" id="collapseIcon"></i></button>
+    <div class="min-w-0">
+      <h1 class="font-display font-bold text-[15px] tracking-tight truncate">Today at the Shop</h1>
+      <p id="dateLine" class="text-[11px] text-charcoal/50 truncate">Saturday, 7 November 2026 · Kaffe Ruamjai</p>
+    </div>
+    <div class="flex-1"></div>
+    <!-- demo toggle -->
+    <label class="hidden sm:flex items-center gap-2 bg-offwhite/70 rounded-full px-3 py-1.5 cursor-pointer select-none" title="Guided demo mode">
+      <span class="text-[11px] font-bold tracking-wider uppercase text-charcoal/60">Demo</span>
+      <span class="switch scale-[0.82]"><input type="checkbox" id="demoToggle"><span class="track"><span class="knob"></span></span></span>
+    </label>
+    <!-- note button -->
+    <div class="relative">
+      <button id="noteBtn" class="btn-press w-10 h-10 rounded-xl hover:bg-offwhite flex items-center justify-center text-[18px] text-charcoal/70" title="Web app information"><i class="bi bi-sticky"></i></button>
+      <div id="noteDrop" class="dd hidden w-[min(400px,calc(100vw-24px))] p-5">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-lg grad-violet flex items-center justify-center"><i class="bi bi-info-circle text-white text-[15px]"></i></span>
+            <h3 class="font-display font-bold text-[14px]">Web App Information</h3>
+          </div>
+          <button id="copyInfoBtn" class="btn-press flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider bg-mint/15 text-emr px-3 py-1.5 rounded-lg hover:bg-mint/25"><i class="bi bi-clipboard"></i><span id="copyInfoLabel">Copy</span></button>
+        </div>
+        <div id="webAppInfo" class="text-[12px] leading-relaxed text-charcoal/75 space-y-3 max-h-[320px] overflow-y-auto pr-1">
+          <p><b class="text-charcoal">Rimjai Shop Manager · Owner Console</b><br>Version 2.4.1 · Standalone HTML template · Page 1.1 "Today at the Shop"</p>
+          <p><b class="text-charcoal">Users:</b> Shop owner and staff. The page answers three questions in five seconds: are there pending tasks, is the website healthy, and what can be fixed right now.</p>
+          <p><b class="text-charcoal">Key features:</b> automatic pending-task detection (unanswered customer leads, promos ending within 3 days, prices not reviewed for 60+ days, items missing photos), four big shortcuts (edit price, start promo, change photo, close store today), store closure for today, tomorrow, or until a chosen date with a customer message that appears on the storefront instantly and one-tap reopen, today's three key numbers with day-over-day comparison (visitors, contacts, new interested customers), website status line with last check and nightly backup result, recent activity feed with one-tap undo, quick command box that converts plain text into a structured change that must be confirmed before saving, demo mode with guided missions, onboarding checklist for new stores, skeleton loading, and an offline cached-data banner.</p>
+          <p><b class="text-charcoal">Technical summary:</b> single-file standalone HTML, Tailwind CSS with a shadcn-style component system, Plus Jakarta Sans and Inter from Google Fonts, Bootstrap Icons font icons, vanilla JavaScript. Fully responsive for desktop, tablet, and mobile. Currency is displayed in Thai baht (฿).</p>
+        </div>
+      </div>
+    </div>
+    <!-- avatar -->
+    <div class="relative">
+      <button id="avatarBtn" class="btn-press flex items-center gap-2 pl-1 pr-2 py-1 rounded-full hover:bg-offwhite">
+        <span class="w-9 h-9 rounded-full grad-indigo text-white flex items-center justify-center font-display font-bold text-[13px]">E</span>
+        <span class="hidden md:block text-left leading-tight">
+          <span class="block text-[12.5px] font-semibold">Ek</span>
+          <span class="block text-[10.5px] text-charcoal/45">Owner</span>
+        </span>
+        <i class="bi bi-chevron-down text-[12px] text-charcoal/40 hidden md:block"></i>
+      </button>
+      <div id="avatarDrop" class="dd hidden w-56 p-2">
+        <div class="px-3 py-2.5 border-b border-black/[0.06] mb-1">
+          <p class="text-[12.5px] font-semibold">Ek Suriyawong</p>
+          <p class="text-[11px] text-charcoal/45">ek@kafferuamjai.com · Owner</p>
+        </div>
+        <button class="dd-item w-full text-left px-3 py-2 rounded-lg text-[12.5px] hover:bg-offwhite flex items-center gap-2.5"><i class="bi bi-person-gear text-charcoal/50"></i>Account settings</button>
+        <button class="dd-item w-full text-left px-3 py-2 rounded-lg text-[12.5px] hover:bg-offwhite flex items-center gap-2.5"><i class="bi bi-people text-charcoal/50"></i>Team & permissions</button>
+        <button data-open-modal="loginModal" class="dd-item w-full text-left px-3 py-2 rounded-lg text-[12.5px] hover:bg-offwhite flex items-center gap-2.5 text-emr font-semibold"><i class="bi bi-box-arrow-right"></i>Sign out</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div id="sbOverlay"></div>
+
+<!-- ============ LEFT SIDEBAR ============ -->
+<aside id="sidebar" class="fixed top-16 bottom-0 left-0 z-40 bg-white border-r border-black/[0.08] flex flex-col">
+  <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-4">
+    <div>
+      <p class="nav-group-title px-3 mb-1 text-[10.5px] font-bold tracking-[0.14em] uppercase text-charcoal/35">Overview</p>
+      <div class="space-y-0.5">
+        <a href="#" class="nav-link active"><i class="bi bi-grid-1x2-fill"></i><span class="nav-label">Today</span></a>
+        <a href="#" class="nav-link" data-nav="Insights (1.8)"><i class="bi bi-graph-up"></i><span class="nav-label">Insights</span></a>
+        <a href="#" class="nav-link" data-nav="Website status (1.9)"><i class="bi bi-shield-check"></i><span class="nav-label">Website status</span></a>
+      </div>
+    </div>
+    <div>
+      <p class="nav-group-title px-3 mb-1 text-[10.5px] font-bold tracking-[0.14em] uppercase text-charcoal/35">Manage</p>
+      <div class="space-y-0.5">
+        <a href="#" class="nav-link" data-nav="Items & prices (1.2)"><i class="bi bi-tags"></i><span class="nav-label">Items & prices</span></a>
+        <a href="#" class="nav-link" data-nav="Promotions (1.3)"><i class="bi bi-megaphone"></i><span class="nav-label">Promotions</span></a>
+        <a href="#" class="nav-link" data-nav="Photos (1.4)"><i class="bi bi-images"></i><span class="nav-label">Photos</span></a>
+        <a href="#" class="nav-link" data-nav="Reservations (Preset A)"><i class="bi bi-calendar2-check"></i><span class="nav-label">Reservations</span></a>
+        <a href="#" class="nav-link" data-nav="Customer leads (1.7)"><i class="bi bi-person-plus"></i><span class="nav-label">Customer leads</span></a>
+      </div>
+    </div>
+    <div>
+      <p class="nav-group-title px-3 mb-1 text-[10.5px] font-bold tracking-[0.14em] uppercase text-charcoal/35">Grow</p>
+      <div class="space-y-0.5">
+        <a href="#" class="nav-link" data-nav="Growth (1.10)"><i class="bi bi-rocket-takeoff"></i><span class="nav-label">Growth</span></a>
+        <a href="#" class="nav-link" data-nav="Store info (1.6)"><i class="bi bi-shop"></i><span class="nav-label">Store info</span></a>
+        <a href="#" class="nav-link" data-nav="Settings"><i class="bi bi-gear"></i><span class="nav-label">Settings</span></a>
+      </div>
+    </div>
+  </nav>
+  <div class="p-3 border-t border-black/[0.06]">
+    <button data-nav="Storefront (2.1)" class="btn-press w-full flex items-center justify-center gap-2 grad-mint text-white font-semibold text-[12.5px] py-2.5 rounded-xl shadow-glow">
+      <i class="bi bi-box-arrow-up-right"></i><span class="nav-label">View website</span>
+    </button>
+  </div>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main class="pt-16 lg:pl-[var(--sbw)] transition-[padding] duration-300 w-full">
+  <div class="w-full px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- skeleton -->
+    <div id="skeleton" class="grid lg:grid-cols-2 gap-5">
+      <div class="space-y-5"><div class="skel h-40"></div><div class="skel h-36"></div><div class="skel h-64"></div></div>
+      <div class="space-y-5"><div class="skel h-24"></div><div class="skel h-40"></div><div class="skel h-72"></div></div>
+    </div>
+
+    <!-- content -->
+    <div id="content" class="hidden grid lg:grid-cols-[1.08fr_0.92fr] gap-5 items-start">
+
+      <!-- ================= LEFT COLUMN ================= -->
+      <div class="space-y-5 min-w-0">
+
+        <!-- 1 · greeting + store status -->
+        <section id="hero" class="rounded-[20px] grad-indigo text-white p-6 sm:p-7 shadow-lift relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-mint/20 blur-2xl"></div>
+          <div class="absolute -bottom-16 -left-10 w-52 h-52 rounded-full bg-viol/25 blur-3xl"></div>
+          <div class="relative flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p class="text-[11px] font-bold tracking-[0.14em] uppercase text-mint mb-1.5">Saturday, 7 November 2026</p>
+              <h2 id="greeting" class="font-display font-extrabold text-[26px] sm:text-[30px] leading-tight tracking-tight">Good afternoon, Ek <span class="inline-block">👋</span></h2>
+              <p class="text-white/70 text-[12.5px] mt-1.5">Here's how Kaffe Ruamjai is doing today.</p>
+            </div>
+            <div class="text-right space-y-3">
+              <div class="flex items-center gap-3 justify-end">
+                <span id="statusBadge" class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider bg-mint/20 text-mint px-3 py-1.5 rounded-full"><span id="statusDot" class="w-2 h-2 rounded-full bg-mint pulse-dot"></span><span id="statusText">Store open</span></span>
+                <label class="switch" title="Close today">
+                  <input type="checkbox" id="closeTodaySwitch">
+                  <span class="track"><span class="knob"></span></span>
+                </label>
+              </div>
+              <p id="statusHint" class="text-[11px] text-white/50">Open today · 08:00 - 20:00</p>
+            </div>
+          </div>
+          <div class="relative mt-5 flex flex-wrap gap-2.5">
+            <button data-nav="Storefront (2.1)" class="btn-press text-[12px] font-semibold bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-2 rounded-xl flex items-center gap-2"><i class="bi bi-globe2"></i>Storefront</button>
+            <button data-nav="Store info (1.6)" class="btn-press text-[12px] font-semibold bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-2 rounded-xl flex items-center gap-2"><i class="bi bi-shop"></i>Store info</button>
+            <button id="heroRefresh" class="btn-press text-[12px] font-semibold bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-2 rounded-xl flex items-center gap-2"><i class="bi bi-arrow-clockwise"></i>Refresh</button>
+          </div>
+        </section>
+
+        <!-- new store onboarding checklist -->
+        <section id="checklistCard" class="card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-9 h-9 rounded-xl bg-viol/12 text-viol flex items-center justify-center text-[16px]"><i class="bi bi-stars"></i></span>
+              <div>
+                <h3 class="font-display font-bold text-[14px]">Finish setting up your store</h3>
+                <p id="checklistProgress" class="text-[11px] text-charcoal/50">0 of 3 done</p>
+              </div>
+            </div>
+            <button id="checklistDismiss" class="btn-press w-8 h-8 rounded-lg hover:bg-offwhite text-charcoal/40 text-[14px]" title="Dismiss"><i class="bi bi-x-lg"></i></button>
+          </div>
+          <div class="space-y-2">
+            <button class="check-item w-full flex items-center gap-3 p-2.5 rounded-xl border border-black/[0.06] hover:border-viol/40 text-left" data-check>
+              <span class="check-box w-5 h-5 rounded-md border-2 border-charcoal/20 flex items-center justify-center text-[11px] shrink-0"><i class="bi bi-check-lg"></i></span>
+              <span class="check-label text-[12.5px] flex-1">Check your store info</span>
+              <span class="text-[11px] text-charcoal/40 flex items-center gap-1"><i class="bi bi-arrow-up-right"></i>1.6</span>
+            </button>
+            <button class="check-item w-full flex items-center gap-3 p-2.5 rounded-xl border border-black/[0.06] hover:border-viol/40 text-left" data-check>
+              <span class="check-box w-5 h-5 rounded-md border-2 border-charcoal/20 flex items-center justify-center text-[11px] shrink-0"><i class="bi bi-check-lg"></i></span>
+              <span class="check-label text-[12.5px] flex-1">Add your first menu item</span>
+              <span class="text-[11px] text-charcoal/40 flex items-center gap-1"><i class="bi bi-arrow-up-right"></i>1.2</span>
+            </button>
+            <button class="check-item w-full flex items-center gap-3 p-2.5 rounded-xl border border-black/[0.06] hover:border-viol/40 text-left" data-check>
+              <span class="check-box w-5 h-5 rounded-md border-2 border-charcoal/20 flex items-center justify-center text-[11px] shrink-0"><i class="bi bi-check-lg"></i></span>
+              <span class="check-label text-[12.5px] flex-1">Try editing a price</span>
+              <span class="text-[11px] text-charcoal/40 flex items-center gap-1"><i class="bi bi-arrow-up-right"></i>1.2</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2 · pending tasks -->
+        <section class="card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-9 h-9 rounded-xl bg-mint/12 text-emr flex items-center justify-center text-[16px]"><i class="bi bi-bell"></i></span>
+              <div>
+                <h3 class="font-display font-bold text-[14px]">Needs your attention</h3>
+                <p class="text-[11px] text-charcoal/50">Auto-detected · sorted by urgency</p>
+              </div>
+            </div>
+            <span id="taskCount" class="text-[11px] font-bold bg-sage/20 text-oliv px-2.5 py-1 rounded-full">3 tasks</span>
+          </div>
+          <div id="taskList" class="space-y-2.5">
+            <div class="task-card flex items-center gap-3 p-3.5 rounded-2xl border border-viol/25 bg-viol/[0.06]">
+              <span class="w-10 h-10 rounded-xl bg-viol text-white flex items-center justify-center text-[17px] shrink-0"><i class="bi bi-chat-left-text"></i></span>
+              <div class="flex-1 min-w-0">
+                <p class="text-[12.5px] font-semibold leading-snug">2 customer leads waiting for a reply</p>
+                <p class="text-[11.5px] text-charcoal/50">Niran asked about the party set · 2h ago</p>
+              </div>
+              <button class="btn-press shrink-0 text-[12px] font-bold bg-viol text-white px-3.5 py-2 rounded-xl" data-task data-nav="Customer leads (1.7)">Reply now</button>
+            </div>
+            <div class="task-card flex items-center gap-3 p-3.5 rounded-2xl border border-sage/30 bg-sage/[0.08]" style="animation-delay:.08s">
+              <span class="w-10 h-10 rounded-xl bg-sage text-white flex items-center justify-center text-[17px] shrink-0"><i class="bi bi-percent"></i></span>
+              <div class="flex-1 min-w-0">
+                <p class="text-[12.5px] font-semibold leading-snug">Promo "Cool Summer" ends in 2 days</p>
+                <p class="text-[11.5px] text-charcoal/50">Iced latte ฿65 · 412 views this week</p>
+              </div>
+              <button class="btn-press shrink-0 text-[12px] font-bold bg-sage text-white px-3.5 py-2 rounded-xl" data-task data-nav="Promotions (1.3)">Extend promo</button>
+            </div>
+            <div class="task-card flex items-center gap-3 p-3.5 rounded-2xl border border-oliv/25 bg-oliv/[0.05]" style="animation-delay:.14s">
+              <span class="w-10 h-10 rounded-xl bg-oliv text-white flex items-center justify-center text-[17px] shrink-0"><i class="bi bi-cash-coin"></i></span>
+              <div class="flex-1 min-w-0">
+                <p class="text-[12.5px] font-semibold leading-snug">4 prices not reviewed in 60+ days</p>
+                <p class="text-[11.5px] text-charcoal/50">Thai Tea, Americano, and 2 more</p>
+              </div>
+              <button class="btn-press shrink-0 text-[12px] font-bold bg-oliv text-white px-3.5 py-2 rounded-xl" data-task data-nav="Items & prices (1.2)">Check prices</button>
+            </div>
+          </div>
+          <div id="taskEmpty" class="hidden py-6 text-center">
+            <span class="inline-flex w-12 h-12 rounded-full bg-mint/12 text-emr items-center justify-center text-[20px] mb-2"><i class="bi bi-check2-circle"></i></span>
+            <p class="font-display font-bold text-[13.5px]">No pending tasks today</p>
+            <p class="text-[11.5px] text-charcoal/50">You're all caught up. Nice work ✨</p>
+          </div>
+        </section>
+
+        <!-- 3 · big shortcuts 2×2 -->
+        <section>
+          <h3 class="font-display font-bold text-[14px] mb-3 px-1">Quick fixes</h3>
+          <div class="grid grid-cols-2 gap-3">
+            <button data-nav="Items & prices (1.2)" class="btn-press card card-hover !rounded-2xl h-[76px] flex items-center gap-3 px-4 text-left group">
+              <span class="w-11 h-11 rounded-2xl bg-viol/12 text-viol flex items-center justify-center text-[19px] group-hover:scale-110 transition-transform"><i class="bi bi-tag"></i></span>
+              <span class="text-[12.5px] font-bold leading-tight">Edit price<br><span class="font-medium text-charcoal/45">12 items</span></span>
+            </button>
+            <button data-nav="Promotions (1.3)" class="btn-press card card-hover !rounded-2xl h-[76px] flex items-center gap-3 px-4 text-left group">
+              <span class="w-11 h-11 rounded-2xl bg-emr/12 text-emr flex items-center justify-center text-[19px] group-hover:scale-110 transition-transform"><i class="bi bi-megaphone"></i></span>
+              <span class="text-[12.5px] font-bold leading-tight">Start a promo<br><span class="font-medium text-charcoal/45">2 drafts</span></span>
+            </button>
+            <button data-nav="Photos (1.4)" class="btn-press card card-hover !rounded-2xl h-[76px] flex items-center gap-3 px-4 text-left group">
+              <span class="w-11 h-11 rounded-2xl bg-sage/15 text-sage flex items-center justify-center text-[19px] group-hover:scale-110 transition-transform"><i class="bi bi-image"></i></span>
+              <span class="text-[12.5px] font-bold leading-tight">Change photo<br><span class="font-medium text-charcoal/45">1 photo missing</span></span>
+            </button>
+            <button id="shortcutClose" class="btn-press card card-hover !rounded-2xl h-[76px] flex items-center gap-3 px-4 text-left group">
+              <span class="w-11 h-11 rounded-2xl bg-oliv/10 text-oliv flex items-center justify-center text-[19px] group-hover:scale-110 transition-transform"><i class="bi bi-shop-window"></i></span>
+              <span class="text-[12.5px] font-bold leading-tight">Close store<br><span class="font-medium text-charcoal/45">Today or a range</span></span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 4 · today's numbers -->
+        <section>
+          <div class="flex items-center justify-between mb-3 px-1">
+            <h3 class="font-display font-bold text-[14px]">Today in numbers</h3>
+            <button data-nav="Insights (1.8)" class="btn-press text-[11.5px] font-semibold text-emr flex items-center gap-1">Full insights <i class="bi bi-arrow-up-right"></i></button>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <button data-nav="Insights (1.8)" class="btn-press card card-hover p-4 text-left">
+              <p class="text-[10.5px] font-bold tracking-wider uppercase text-charcoal/45 flex items-center gap-1.5"><i class="bi bi-people text-charcoal/30"></i>Visitors</p>
+              <p class="font-display font-extrabold text-[26px] sm:text-[30px] tracking-tight mt-1.5"><span class="count" data-target="248">0</span></p>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emr bg-mint/12 px-2 py-1 rounded-full mt-1.5"><i class="bi bi-arrow-up-short"></i>12%</span>
+              <p class="text-[10.5px] text-charcoal/40 mt-1">vs yesterday</p>
+            </button>
+            <button data-nav="Insights (1.8)" class="btn-press card card-hover p-4 text-left">
+              <p class="text-[10.5px] font-bold tracking-wider uppercase text-charcoal/45 flex items-center gap-1.5"><i class="bi bi-telephone text-charcoal/30"></i>Contacts</p>
+              <p class="font-display font-extrabold text-[26px] sm:text-[30px] tracking-tight mt-1.5"><span class="count" data-target="37">0</span></p>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emr bg-mint/12 px-2 py-1 rounded-full mt-1.5"><i class="bi bi-arrow-up-short"></i>8%</span>
+              <p class="text-[10.5px] text-charcoal/40 mt-1">call · LINE · map · form</p>
+            </button>
+            <button data-nav="Customer leads (1.7)" class="btn-press card card-hover p-4 text-left">
+              <p class="text-[10.5px] font-bold tracking-wider uppercase text-charcoal/45 flex items-center gap-1.5"><i class="bi bi-person-plus text-charcoal/30"></i>New leads</p>
+              <p class="font-display font-extrabold text-[26px] sm:text-[30px] tracking-tight mt-1.5"><span class="count" data-target="6">0</span></p>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-oliv bg-sage/15 px-2 py-1 rounded-full mt-1.5"><i class="bi bi-arrow-down-short"></i>1</span>
+              <p class="text-[10.5px] text-charcoal/40 mt-1">vs yesterday</p>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= RIGHT COLUMN ================= -->
+      <div class="space-y-5 min-w-0">
+
+        <!-- 5 · website status -->
+        <button data-nav="Website status (1.9)" class="btn-press card card-hover w-full p-4 flex items-center gap-3 text-left">
+          <span class="relative flex w-2.5 h-2.5 shrink-0"><span class="w-2.5 h-2.5 rounded-full bg-emr pulse-dot"></span></span>
+          <div class="flex-1 min-w-0">
+            <p class="text-[12.5px] font-semibold">Website normal · Last checked <span id="lastCheck">05:00</span> · Backup completed last night</p>
+            <p class="text-[11px] text-charcoal/45">Tap to open website status</p>
+          </div>
+          <i class="bi bi-chevron-right text-charcoal/30"></i>
+        </button>
+
+        <!-- P2 · quick command -->
+        <section class="card p-5 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-40 h-40 rounded-full bg-mint/10 blur-2xl"></div>
+          <div class="relative">
+            <div class="flex items-center gap-2.5 mb-1">
+              <span class="w-9 h-9 rounded-xl grad-mint text-white flex items-center justify-center text-[15px] shadow-glow"><i class="bi bi-magic"></i></span>
+              <div>
+                <h3 class="font-display font-bold text-[14px]">Tell us what to change</h3>
+                <p class="text-[11px] text-charcoal/50">Plain English, no forms. Nothing is saved before you confirm.</p>
+              </div>
+            </div>
+            <form id="cmdForm" class="mt-3.5 flex gap-2">
+              <input id="cmdInput" class="input !rounded-xl" autocomplete="off" placeholder='e.g. "Iced latte to ฿75" or "Close store today"'>
+              <button type="submit" class="btn-press shrink-0 grad-mint text-white w-11 rounded-xl flex items-center justify-center text-[16px] shadow-glow" title="Parse command"><i class="bi bi-arrow-right"></i></button>
+            </form>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <button type="button" class="cmd-chip btn-press text-[11px] font-semibold bg-offwhite/70 hover:bg-offwhite px-2.5 py-1.5 rounded-full text-charcoal/65">Iced latte to ฿75</button>
+              <button type="button" class="cmd-chip btn-press text-[11px] font-semibold bg-offwhite/70 hover:bg-offwhite px-2.5 py-1.5 rounded-full text-charcoal/65">Close store today</button>
+              <button type="button" class="cmd-chip btn-press text-[11px] font-semibold bg-offwhite/70 hover:bg-offwhite px-2.5 py-1.5 rounded-full text-charcoal/65">Promo: Thai tea 10% off</button>
+            </div>
+            <p class="text-[10.5px] text-charcoal/40 mt-3 flex items-center gap-1.5"><i class="bi bi-shield-check text-emr"></i>Supports: edit price · item status · draft promo · close store · logged in ChangeLog as "via text command"</p>
+          </div>
+        </section>
+
+        <!-- 6 · recent activity -->
+        <section class="card p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-display font-bold text-[14px]">Recent activity</h3>
+            <span class="text-[11px] text-charcoal/40 flex items-center gap-1.5"><i class="bi bi-clock-history"></i>Today</span>
+          </div>
+          <div id="activityList" class="divide-y divide-black/[0.05]">
+            <div class="act-row flex items-center gap-3 py-2.5">
+              <span class="w-8 h-8 rounded-lg bg-viol/10 text-viol flex items-center justify-center text-[13px] shrink-0"><i class="bi bi-pencil"></i></span>
+              <p class="flex-1 text-[12px] leading-snug">Somchai changed <b>Iced Latte</b> ฿70 → <b>฿75</b> <span class="text-charcoal/40">· 14:05</span></p>
+              <button class="undo-btn btn-press text-[11px] font-bold text-viol hover:underline shrink-0" data-undo-price>Undo</button>
+            </div>
+            <div class="act-row flex items-center gap-3 py-2.5">
+              <span class="w-8 h-8 rounded-lg bg-emr/10 text-emr flex items-center justify-center text-[13px] shrink-0"><i class="bi bi-plus-lg"></i></span>
+              <p class="flex-1 text-[12px] leading-snug">Boong added new item <b>Mango Sticky Rice ฿90</b> <span class="text-charcoal/40">· 12:40</span></p>
+            </div>
+            <div class="act-row flex items-center gap-3 py-2.5">
+              <span class="w-8 h-8 rounded-lg bg-sage/15 text-sage flex items-center justify-center text-[13px] shrink-0"><i class="bi bi-arrow-repeat"></i></span>
+              <p class="flex-1 text-[12px] leading-snug">Ek extended promo <b>"Cool Summer"</b> by 7 days <span class="text-charcoal/40">· 10:15</span></p>
+              <button class="undo-btn btn-press text-[11px] font-bold text-sage hover:underline shrink-0" data-undo-promo>Undo</button>
+            </div>
+            <div class="act-row flex items-center gap-3 py-2.5">
+              <span class="w-8 h-8 rounded-lg bg-mint/12 text-emr flex items-center justify-center text-[13px] shrink-0"><i class="bi bi-chat-quote"></i></span>
+              <p class="flex-1 text-[12px] leading-snug">New customer review: <b>"Best latte in town!"</b> <span class="text-charcoal/40">· 09:30</span></p>
+              <span class="shrink-0 text-sage"><i class="bi bi-star-fill text-[11px]"></i><i class="bi bi-star-fill text-[11px]"></i><i class="bi bi-star-fill text-[11px]"></i><i class="bi bi-star-fill text-[11px]"></i><i class="bi bi-star-fill text-[11px]"></i></span>
+            </div>
+            <div class="act-row flex items-center gap-3 py-2.5">
+              <span class="w-8 h-8 rounded-lg bg-charcoal/[0.06] text-charcoal/50 flex items-center justify-center text-[13px] shrink-0"><i class="bi bi-cloud-check"></i></span>
+              <p class="flex-1 text-[12px] leading-snug">Nightly backup completed successfully <span class="text-charcoal/40">· 05:00</span></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7 · growth card (shown when threshold is met) -->
+        <section id="growthCard" class="rounded-[20px] grad-mint p-5 text-charcoal shadow-glow relative overflow-hidden">
+          <div class="absolute -right-8 -top-8 w-36 h-36 rounded-full bg-white/25 blur-xl"></div>
+          <div class="relative flex items-center gap-4">
+            <span class="w-12 h-12 rounded-2xl bg-white/30 flex items-center justify-center text-[20px] shrink-0"><i class="bi bi-rocket-takeoff"></i></span>
+            <div class="flex-1 min-w-0">
+              <p class="text-[10.5px] font-bold tracking-[0.14em] uppercase text-charcoal/60">Growth milestone</p>
+              <p class="font-display font-bold text-[14px] leading-snug mt-0.5">6 new leads this week, your best in a month. See what's working.</p>
+            </div>
+            <button data-nav="Growth (1.10)" class="btn-press shrink-0 bg-charcoal text-white text-[12px] font-bold px-4 py-2.5 rounded-xl flex items-center gap-1.5">Open Growth <i class="bi bi-arrow-up-right"></i></button>
+          </div>
+        </section>
+
+        <!-- website preview 390px -->
+        <section class="card p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="font-display font-bold text-[14px]">Storefront preview</h3>
+              <p class="text-[11px] text-charcoal/50">Live · updates instantly when you close the store</p>
+            </div>
+            <span class="text-[10.5px] font-bold tracking-wider uppercase bg-offwhite text-charcoal/50 px-2.5 py-1 rounded-full">390 px</span>
+          </div>
+          <div class="flex justify-center">
+            <div class="w-full max-w-[340px] rounded-[28px] border-[6px] border-navy/90 bg-offwhite overflow-hidden shadow-lift">
+              <div class="bg-navy text-white px-4 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-7 h-7 rounded-lg grad-mint flex items-center justify-center text-[13px]"><i class="bi bi-cup-hot"></i></span>
+                  <span class="font-display font-bold text-[12.5px]">Kaffe Ruamjai</span>
+                </div>
+                <span id="pvOpenPill" class="text-[9.5px] font-bold uppercase tracking-wider bg-mint/20 text-mint px-2 py-1 rounded-full">Open · 08:00-20:00</span>
+              </div>
+              <div id="pvClosedBanner" class="hidden bg-oliv text-white px-4 py-3">
+                <p class="text-[11.5px] font-bold flex items-center gap-1.5"><i class="bi bi-moon-stars"></i>We're closed today</p>
+                <p id="pvClosedMsg" class="text-[10.5px] text-white/80 mt-0.5 leading-snug">We're taking a short break. See you soon!</p>
+                <p id="pvClosedUntil" class="text-[10px] text-white/60 mt-1">Back tomorrow at 08:00</p>
+              </div>
+              <div class="p-4 space-y-2.5">
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5 border border-black/[0.05]">
+                  <span class="flex items-center gap-2 text-[12px] font-semibold"><span class="w-7 h-7 rounded-lg bg-mint/15 flex items-center justify-center text-[12px]"><i class="bi bi-cup-straw"></i></span>Iced Latte</span>
+                  <span class="menu-price text-[12px] font-bold" data-item="Iced Latte">฿70</span>
+                </div>
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5 border border-black/[0.05]">
+                  <span class="flex items-center gap-2 text-[12px] font-semibold"><span class="w-7 h-7 rounded-lg bg-sage/15 flex items-center justify-center text-[12px]"><i class="bi bi-cup"></i></span>Thai Tea</span>
+                  <span class="menu-price text-[12px] font-bold" data-item="Thai Tea">฿55</span>
+                </div>
+                <div class="flex items-center justify-between bg-white rounded-xl px-3 py-2.5 border border-black/[0.05]">
+                  <span class="flex items-center gap-2 text-[12px] font-semibold"><span class="w-7 h-7 rounded-lg bg-viol/12 flex items-center justify-center text-[12px]"><i class="bi bi-egg-fried"></i></span>Mango Sticky Rice</span>
+                  <span class="menu-price text-[12px] font-bold" data-item="Mango Sticky Rice">฿90</span>
+                </div>
+                <div class="flex items-center justify-center gap-1.5 pt-1 text-[10.5px] text-charcoal/40"><i class="bi bi-phone"></i>What customers see on your website (2.1)</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8 · demo mission bar -->
+        <section id="missionBar" class="hidden rounded-[20px] grad-violet text-white p-4 flex items-center gap-4 shadow-lift">
+          <span class="w-11 h-11 rounded-2xl bg-white/15 flex items-center justify-center text-[18px] shrink-0"><i class="bi bi-flag"></i></span>
+          <div class="flex-1 min-w-0">
+            <p class="text-[10.5px] font-bold tracking-[0.14em] uppercase text-mint">Demo · Mission <span id="missionNum">1</span>/3</p>
+            <p id="missionText" class="font-display font-bold text-[13.5px] mt-0.5 truncate">Update your first price</p>
+            <div class="mt-2 h-1.5 rounded-full bg-white/20 overflow-hidden"><div id="missionProg" class="h-full bg-mint rounded-full transition-all duration-500" style="width:33%"></div></div>
+          </div>
+          <button data-nav="Demo center (3.3)" class="btn-press shrink-0 bg-white/15 border border-white/25 text-[12px] font-bold px-3.5 py-2 rounded-xl">Continue</button>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============ FLOATING BUTTONS: back-to-top (left) + chatbot (right) ============ -->
+<div class="fixed bottom-4 right-4 z-50 flex items-end gap-[5px]">
+  <button id="toTop" class="fab bg-white border border-black/[0.1] text-charcoal shadow-lift hover:bg-offwhite" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+  <button id="chatBtn" class="fab grad-mint text-white shadow-glow" title="Chat with us"><i class="bi bi-chat-dots-fill"></i></button>
+</div>
+
+<!-- ============ CHAT PANEL (button stays in place) ============ -->
+<div id="chatPanel" class="card !rounded-3xl overflow-hidden flex flex-col">
+  <div class="grad-indigo text-white px-4 py-3.5 flex items-center gap-3">
+    <span class="w-9 h-9 rounded-full grad-mint flex items-center justify-center text-[15px]"><i class="bi bi-cup-hot"></i></span>
+    <div class="flex-1 min-w-0">
+      <p class="font-display font-bold text-[13px] leading-tight">Kaffe Assistant</p>
+      <p class="text-[10.5px] text-white/60 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-mint"></span>Online · replies instantly</p>
+    </div>
+    <button id="chatClose" class="btn-press w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center"><i class="bi bi-x-lg text-[13px]"></i></button>
+  </div>
+  <div id="chatBody" class="h-[280px] overflow-y-auto p-4 space-y-3 bg-offwhite/50"></div>
+  <div class="px-3 pt-2 pb-3 space-y-2 bg-white border-t border-black/[0.05]">
+    <div class="flex flex-wrap gap-1.5">
+      <button type="button" class="chat-quick btn-press text-[10.5px] font-semibold bg-offwhite rounded-full px-2.5 py-1.5 text-charcoal/65 hover:bg-mint/15 hover:text-emr">How do I edit a price?</button>
+      <button type="button" class="chat-quick btn-press text-[10.5px] font-semibold bg-offwhite rounded-full px-2.5 py-1.5 text-charcoal/65 hover:bg-mint/15 hover:text-emr">How do I close the store?</button>
+      <button type="button" class="chat-quick btn-press text-[10.5px] font-semibold bg-offwhite rounded-full px-2.5 py-1.5 text-charcoal/65 hover:bg-mint/15 hover:text-emr">What needs my attention?</button>
+    </div>
+    <form id="chatForm" class="flex gap-2">
+      <input id="chatInput" class="input !rounded-xl !py-2.5" placeholder="Type a message..." autocomplete="off">
+      <button type="submit" class="btn-press shrink-0 grad-mint text-white w-10 rounded-xl flex items-center justify-center" title="Send"><i class="bi bi-send"></i></button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+<!-- LOGIN -->
+<div class="modal" id="loginModal" data-modal>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card p-6 sm:p-7">
+    <div class="flex items-start justify-between mb-1">
+      <span class="w-12 h-12 rounded-2xl grad-mint flex items-center justify-center text-[20px] shadow-glow"><i class="bi bi-cup-hot text-white"></i></span>
+      <button class="btn-press w-9 h-9 rounded-xl hover:bg-offwhite flex items-center justify-center text-charcoal/50" data-close-modal title="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <h3 class="font-display font-extrabold text-[19px] tracking-tight mt-3">Welcome back</h3>
+    <p class="text-[12.5px] text-charcoal/55 mb-5">Sign in to manage your shop.</p>
+    <form id="loginForm" class="space-y-3.5" novalidate>
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55 mb-1.5">Email</label>
+        <input type="email" id="loginEmail" class="input" placeholder="you@shop.com" autocomplete="email">
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55">Password</label>
+          <button type="button" class="text-[11px] font-semibold text-emr hover:underline" data-open-modal="forgotModal">Forgot password?</button>
+        </div>
+        <div class="relative">
+          <input type="password" id="loginPass" class="input pr-10" placeholder="••••••••" autocomplete="current-password">
+          <button type="button" class="eye absolute right-3 top-1/2 -translate-y-1/2 text-charcoal/40 hover:text-charcoal" data-eye="loginPass"><i class="bi bi-eye"></i></button>
+        </div>
+      </div>
+      <p id="loginError" class="hidden text-[11.5px] text-red-600 font-medium flex items-center gap-1.5"><i class="bi bi-exclamation-circle"></i><span></span></p>
+      <button type="submit" class="btn-press w-full grad-mint text-white font-bold text-[13px] py-3 rounded-xl shadow-glow">Sign in</button>
+    </form>
+    <p class="text-center text-[12px] text-charcoal/55 mt-5">New here? <button class="font-bold text-emr hover:underline" data-open-modal="signupModal">Create an account</button></p>
+  </div>
+</div>
+
+<!-- SIGN UP -->
+<div class="modal" id="signupModal" data-modal>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card p-6 sm:p-7">
+    <div class="flex items-start justify-between mb-1">
+      <span class="w-12 h-12 rounded-2xl grad-violet flex items-center justify-center text-white text-[20px] shadow-lift"><i class="bi bi-person-plus"></i></span>
+      <button class="btn-press w-9 h-9 rounded-xl hover:bg-offwhite flex items-center justify-center text-charcoal/50" data-close-modal title="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <h3 class="font-display font-extrabold text-[19px] tracking-tight mt-3">Create your account</h3>
+    <p class="text-[12.5px] text-charcoal/55 mb-5">Set up your shop in under two minutes.</p>
+    <form id="signupForm" class="space-y-3.5" novalidate>
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55 mb-1.5">Your name</label>
+        <input type="text" id="suName" class="input" placeholder="Ek Suriyawong" autocomplete="name">
+      </div>
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55 mb-1.5">Email</label>
+        <input type="email" id="suEmail" class="input" placeholder="you@shop.com" autocomplete="email">
+      </div>
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55 mb-1.5">Password</label>
+        <div class="relative">
+          <input type="password" id="suPass" class="input pr-10" placeholder="At least 6 characters" autocomplete="new-password">
+          <button type="button" class="eye absolute right-3 top-1/2 -translate-y-1/2 text-charcoal/40 hover:text-charcoal" data-eye="suPass"><i class="bi bi-eye"></i></button>
+        </div>
+      </div>
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55 mb-1.5">Confirm password</label>
+        <input type="password" id="suPass2" class="input" placeholder="Repeat your password" autocomplete="new-password">
+      </div>
+      <p id="signupError" class="hidden text-[11.5px] text-red-600 font-medium flex items-center gap-1.5"><i class="bi bi-exclamation-circle"></i><span></span></p>
+      <button type="submit" class="btn-press w-full grad-violet text-white font-bold text-[13px] py-3 rounded-xl shadow-lift">Create account</button>
+      <p class="text-[10.5px] text-charcoal/45 text-center leading-relaxed">By signing up you agree to our friendly Terms and Privacy Policy.</p>
+    </form>
+    <p class="text-center text-[12px] text-charcoal/55 mt-4">Already have an account? <button class="font-bold text-emr hover:underline" data-open-modal="loginModal">Sign in</button></p>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div class="modal" id="forgotModal" data-modal>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card p-6 sm:p-7">
+    <div class="flex items-start justify-between mb-1">
+      <span class="w-12 h-12 rounded-2xl bg-mint/15 text-emr flex items-center justify-center text-[20px]"><i class="bi bi-key"></i></span>
+      <button class="btn-press w-9 h-9 rounded-xl hover:bg-offwhite flex items-center justify-center text-charcoal/50" data-close-modal title="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div id="forgotFormWrap">
+      <h3 class="font-display font-extrabold text-[19px] tracking-tight mt-3">Forgot your password?</h3>
+      <p class="text-[12.5px] text-charcoal/55 mb-5">No worries. We'll email you a reset link.</p>
+      <form id="forgotForm" class="space-y-3.5" novalidate>
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55 mb-1.5">Email</label>
+          <input type="email" id="fpEmail" class="input" placeholder="you@shop.com" autocomplete="email">
+        </div>
+        <p id="forgotError" class="hidden text-[11.5px] text-red-600 font-medium flex items-center gap-1.5"><i class="bi bi-exclamation-circle"></i><span></span></p>
+        <button type="submit" class="btn-press w-full grad-mint text-white font-bold text-[13px] py-3 rounded-xl shadow-glow">Send reset link</button>
+      </form>
+    </div>
+    <div id="forgotDone" class="hidden text-center py-4">
+      <span class="inline-flex w-14 h-14 rounded-full bg-mint/15 text-emr items-center justify-center text-[26px] mb-3"><i class="bi bi-envelope-check"></i></span>
+      <h3 class="font-display font-extrabold text-[16px]">Check your inbox</h3>
+      <p class="text-[12px] text-charcoal/55 mt-1.5">If <b id="fpEcho">your email</b> is registered, a reset link is on its way.</p>
+    </div>
+    <p class="text-center text-[12px] text-charcoal/55 mt-4">Remembered it? <button class="font-bold text-emr hover:underline" data-open-modal="loginModal">Back to sign in</button></p>
+  </div>
+</div>
+
+<!-- CLOSE STORE (F4) -->
+<div class="modal" id="closeModal" data-modal>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card wide p-6 sm:p-7">
+    <div class="flex items-start justify-between mb-1">
+      <span class="w-12 h-12 rounded-2xl bg-oliv/10 text-oliv flex items-center justify-center text-[20px]"><i class="bi bi-shop-window"></i></span>
+      <button class="btn-press w-9 h-9 rounded-xl hover:bg-offwhite flex items-center justify-center text-charcoal/50" data-close-modal title="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <h3 class="font-display font-extrabold text-[19px] tracking-tight mt-3">Close the store</h3>
+    <p class="text-[12.5px] text-charcoal/55 mb-5">Your storefront shows the banner instantly. Reopen anytime with one tap.</p>
+    <div class="space-y-2 mb-4">
+      <label class="flex items-center gap-3 p-3 rounded-xl border border-black/[0.08] cursor-pointer transition-all hover:border-oliv/40 has-[:checked]:border-oliv has-[:checked]:bg-oliv/[0.06]">
+        <input type="radio" name="closeRange" value="today" class="accent-oliv w-4 h-4" checked>
+        <span><span class="block text-[12.5px] font-semibold">Today</span><span class="block text-[11px] text-charcoal/45">Closed for the rest of today</span></span>
+      </label>
+      <label class="flex items-center gap-3 p-3 rounded-xl border border-black/[0.08] cursor-pointer transition-all hover:border-oliv/40 has-[:checked]:border-oliv has-[:checked]:bg-oliv/[0.06]">
+        <input type="radio" name="closeRange" value="tomorrow" class="accent-oliv w-4 h-4">
+        <span><span class="block text-[12.5px] font-semibold">Tomorrow</span><span class="block text-[11px] text-charcoal/45">Closed all day tomorrow</span></span>
+      </label>
+      <label class="flex items-center gap-3 p-3 rounded-xl border border-black/[0.08] cursor-pointer transition-all hover:border-oliv/40 has-[:checked]:border-oliv has-[:checked]:bg-oliv/[0.06]">
+        <input type="radio" name="closeRange" value="until" class="accent-oliv w-4 h-4" id="untilRadio">
+        <span class="flex-1"><span class="block text-[12.5px] font-semibold">Until a date</span><span class="block text-[11px] text-charcoal/45">Closed through the date you pick</span></span>
+        <input type="date" id="closeDate" class="input !w-auto !py-1.5 !text-[11.5px]" onclick="document.getElementById('untilRadio').checked=true">
+      </label>
+    </div>
+    <label class="block text-[11px] font-bold uppercase tracking-wider text-charcoal/55 mb-1.5">Message to customers</label>
+    <textarea id="closeMsg" rows="2" class="input resize-none">We're taking a short break. See you soon!</textarea>
+    <div class="flex gap-2.5 mt-5">
+      <button class="btn-press flex-1 border border-black/[0.12] font-semibold text-[13px] py-3 rounded-xl hover:bg-offwhite" data-close-modal>Cancel</button>
+      <button id="closeApply" class="btn-press flex-1 bg-oliv text-white font-bold text-[13px] py-3 rounded-xl">Apply closure</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMMAND CONFIRM -->
+<div class="modal" id="confirmModal" data-modal>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card p-6 sm:p-7">
+    <div class="flex items-start justify-between mb-1">
+      <span class="w-12 h-12 rounded-2xl grad-mint flex items-center justify-center text-white text-[20px] shadow-glow"><i class="bi bi-magic"></i></span>
+      <button class="btn-press w-9 h-9 rounded-xl hover:bg-offwhite flex items-center justify-center text-charcoal/50" data-close-modal title="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <h3 class="font-display font-extrabold text-[19px] tracking-tight mt-3">Confirm this change</h3>
+    <p class="text-[12.5px] text-charcoal/55 mb-5">We translated your text into a structured change. Nothing is saved until you confirm.</p>
+    <div class="rounded-2xl border border-black/[0.07] divide-y divide-black/[0.06] mb-5">
+      <div class="flex justify-between items-center px-4 py-2.5"><span class="text-[11.5px] text-charcoal/50">Type</span><span id="cfType" class="text-[12px] font-bold"></span></div>
+      <div class="flex justify-between items-center px-4 py-2.5"><span class="text-[11.5px] text-charcoal/50">Item</span><span id="cfItem" class="text-[12px] font-bold"></span></div>
+      <div class="flex justify-between items-center px-4 py-2.5"><span class="text-[11.5px] text-charcoal/50">Before</span><span id="cfBefore" class="text-[12px] font-bold text-charcoal/45"></span></div>
+      <div class="flex justify-between items-center px-4 py-2.5"><span class="text-[11.5px] text-charcoal/50">After</span><span id="cfAfter" class="text-[12px] font-extrabold grad-text"></span></div>
+      <div class="flex justify-between items-center px-4 py-2.5"><span class="text-[11.5px] text-charcoal/50">Source</span><span class="text-[12px] font-bold flex items-center gap-1.5"><i class="bi bi-chat-left-text text-viol"></i>Text command</span></div>
+    </div>
+    <div class="flex gap-2.5">
+      <button class="btn-press flex-1 border border-black/[0.12] font-semibold text-[13px] py-3 rounded-xl hover:bg-offwhite" data-close-modal>Cancel</button>
+      <button id="cfApply" class="btn-press flex-1 grad-mint text-white font-bold text-[13px] py-3 rounded-xl shadow-glow">Yes, apply</button>
+    </div>
+  </div>
+</div>
+
+<div id="toastBox"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  /* ---------------- state ---------------- */
+  var state = {
+    closed:false, closeRange:'today', closeMsg:"We're taking a short break. See you soon!",
+    items:{ 'Iced Latte':70, 'Thai Tea':55, 'Mango Sticky Rice':90, 'Americano':60 },
+    missions:['Update your first price','Run your first promo','Close the store once'],
+    missionIdx:0, demo:false
+  };
+
+  /* ---------------- toast ---------------- */
+  function toast(msg, icon){
+    var box = document.getElementById('toastBox');
+    var t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = '<i class="bi ' + (icon || 'check2-circle') + '"></i><span>' + msg + '</span>';
+    box.appendChild(t);
+    setTimeout(function(){ t.classList.add('bye'); setTimeout(function(){ t.remove(); }, 320); }, 2800);
+  }
+
+  /* ---------------- greeting & date ---------------- */
+  (function(){
+    var now = new Date();
+    var h = now.getHours();
+    var g = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+    document.getElementById('greeting').innerHTML = g + ', Ek <span class="inline-block">👋</span>';
+    document.getElementById('dateLine').textContent = now.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}) + ' · Kaffe Ruamjai';
+    var pad = function(n){ return n < 10 ? '0'+n : ''+n; };
+    var m = now.getMinutes();
+    document.getElementById('lastCheck').textContent = pad(now.getHours()) + ':' + pad(m > 7 ? (m - 7) : m);
+  })();
+
+  /* ---------------- dropdowns ---------------- */
+  function bindDropdown(btnId, dropId){
+    var btn = document.getElementById(btnId), drop = document.getElementById(dropId);
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      $$('.dd').forEach(function(d){ if(d!==drop) d.classList.add('hidden'); });
+      drop.classList.toggle('hidden');
+    });
+  }
+  bindDropdown('noteBtn','noteDrop');
+  bindDropdown('avatarBtn','avatarDrop');
+  document.addEventListener('click', function(){ $$('.dd').forEach(function(d){ d.classList.add('hidden'); }); });
+  $$('.dd').forEach(function(d){ d.addEventListener('click', function(e){ e.stopPropagation(); }); });
+
+  /* ---------------- copy web app info ---------------- */
+  function fallbackCopy(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    ta.remove();
+  }
+  document.getElementById('copyInfoBtn').addEventListener('click', function(){
+    var text = document.getElementById('webAppInfo').innerText.replace(/\n{2,}/g,'\n\n').trim();
+    var done = function(){
+      var lbl = document.getElementById('copyInfoLabel');
+      lbl.textContent = 'Copied!'; toast('Web app information copied to clipboard');
+      setTimeout(function(){ lbl.textContent = 'Copy'; }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+    } else { fallbackCopy(text); done(); }
+  });
+
+  /* ---------------- sidebar ---------------- */
+  document.getElementById('hamburger').addEventListener('click', function(){ document.body.classList.toggle('sb-open'); });
+  document.getElementById('sbOverlay').addEventListener('click', function(){ document.body.classList.remove('sb-open'); });
+  document.getElementById('collapseBtn').addEventListener('click', function(){
+    document.body.classList.toggle('sb-collapsed');
+    var collapsed = document.body.classList.contains('sb-collapsed');
+    document.getElementById('collapseIcon').className = collapsed ? 'bi bi-chevron-double-right' : 'bi bi-chevron-double-left';
+  });
+
+  /* nav links (placeholder navigation) */
+  $$('[data-nav]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      toast('Opening ' + el.getAttribute('data-nav') + ' ...', 'arrow-right-circle');
+      if (window.innerWidth < 1024) document.body.classList.remove('sb-open');
+    });
+  });
+
+  /* ---------------- modals ---------------- */
+  function openModal(id){
+    var m = document.getElementById(id);
+    if(!m) return;
+    $$('[data-modal]').forEach(function(x){ if(x!==m) x.classList.remove('open'); });
+    m.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(m){
+    m.classList.remove('open');
+    if(!$$('[data-modal].open').length) document.body.style.overflow = '';
+  }
+  document.addEventListener('click', function(e){
+    var opener = e.target.closest('[data-open-modal]');
+    if(opener){
+      $$('.dd').forEach(function(d){ d.classList.add('hidden'); });
+      openModal(opener.getAttribute('data-open-modal'));
+    }
+    var closer = e.target.closest('[data-close-modal]');
+    if(closer) closeModal(closer.closest('[data-modal]'));
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      var open = document.querySelector('[data-modal].open');
+      if(open) closeModal(open);
+      else { document.body.classList.remove('sb-open'); }
+    }
+  });
+
+  /* password eyes */
+  $$('.eye').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var input = document.getElementById(btn.getAttribute('data-eye'));
+      var show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      btn.innerHTML = show ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+    });
+  });
+
+  function showErr(id, msg){
+    var p = document.getElementById(id);
+    p.classList.remove('hidden');
+    p.querySelector('span').textContent = msg;
+  }
+  var emailOk = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+
+  /* login */
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('loginError').classList.add('hidden');
+    var em = document.getElementById('loginEmail').value.trim();
+    var pw = document.getElementById('loginPass').value;
+    if(!emailOk(em)) return showErr('loginError','Please enter a valid email address.');
+    if(pw.length < 6) return showErr('loginError','Password must be at least 6 characters.');
+    closeModal(document.getElementById('loginModal'));
+    toast('Signed in. Welcome back, Ek!');
+  });
+
+  /* signup */
+  document.getElementById('signupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('signupError').classList.add('hidden');
+    var n = document.getElementById('suName').value.trim();
+    var em = document.getElementById('suEmail').value.trim();
+    var p1 = document.getElementById('suPass').value, p2 = document.getElementById('suPass2').value;
+    if(n.length < 2) return showErr('signupError','Please tell us your name.');
+    if(!emailOk(em)) return showErr('signupError','Please enter a valid email address.');
+    if(p1.length < 6) return showErr('signupError','Password must be at least 6 characters.');
+    if(p1 !== p2) return showErr('signupError','Passwords do not match.');
+    closeModal(document.getElementById('signupModal'));
+    toast('Account created. Let\'s set up your shop!', 'stars');
+  });
+
+  /* forgot */
+  document.getElementById('forgotForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('forgotError').classList.add('hidden');
+    var em = document.getElementById('fpEmail').value.trim();
+    if(!emailOk(em)) return showErr('forgotError','Please enter a valid email address.');
+    document.getElementById('fpEcho').textContent = em;
+    document.getElementById('forgotFormWrap').classList.add('hidden');
+    document.getElementById('forgotDone').classList.remove('hidden');
+    toast('Reset link sent to ' + em, 'envelope-check');
+  });
+
+  /* ---------------- store open/close ---------------- */
+  var switchEl = document.getElementById('closeTodaySwitch');
+  function setStore(closed, range, msg, silent){
+    state.closed = closed;
+    if(range) state.closeRange = range;
+    if(msg !== undefined && msg !== null) state.closeMsg = msg;
+    switchEl.checked = closed;
+    var badge = document.getElementById('statusBadge');
+    var dot = document.getElementById('statusDot');
+    if(closed){
+      badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider bg-oliv/40 text-white px-3 py-1.5 rounded-full';
+      dot.className = 'w-2 h-2 rounded-full bg-white';
+      document.getElementById('statusText').textContent = range === 'tomorrow' ? 'Closed tomorrow' : 'Closed today';
+      document.getElementById('statusHint').textContent = state.closeMsg;
+      document.getElementById('pvClosedBanner').classList.remove('hidden');
+      document.getElementById('pvOpenPill').textContent = 'Closed';
+      document.getElementById('pvOpenPill').className = 'text-[9.5px] font-bold uppercase tracking-wider bg-sage/30 text-white px-2 py-1 rounded-full';
+      document.getElementById('pvClosedMsg').textContent = state.closeMsg;
+      document.getElementById('pvClosedUntil').textContent = range === 'tomorrow' ? 'Back the day after tomorrow at 08:00' : 'Back tomorrow at 08:00';
+      if(!silent) toast('Storefront banner is live. Reopen anytime with one tap.', 'shop-window');
+    } else {
+      badge.className = 'inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider bg-mint/20 text-mint px-3 py-1.5 rounded-full';
+      dot.className = 'w-2 h-2 rounded-full bg-mint pulse-dot';
+      document.getElementById('statusText').textContent = 'Store open';
+      document.getElementById('statusHint').textContent = 'Open today · 08:00 - 20:00';
+      document.getElementById('pvClosedBanner').classList.add('hidden');
+      document.getElementById('pvOpenPill').textContent = 'Open · 08:00-20:00';
+      document.getElementById('pvOpenPill').className = 'text-[9.5px] font-bold uppercase tracking-wider bg-mint/20 text-mint px-2 py-1 rounded-full';
+      if(!silent) toast('Store reopened. Welcome back!', 'check2-circle');
+    }
+  }
+  switchEl.addEventListener('change', function(){
+    if(switchEl.checked){ openModal('closeModal'); }
+    else { setStore(false); }
+  });
+  document.getElementById('shortcutClose').addEventListener('click', function(){ openModal('closeModal'); });
+  document.getElementById('closeApply').addEventListener('click', function(){
+    var range = document.querySelector('input[name="closeRange"]:checked').value;
+    var msg = document.getElementById('closeMsg').value.trim() || state.closeMsg;
+    closeModal(document.getElementById('closeModal'));
+    setStore(true, range === 'until' ? 'today' : range, msg, false);
+    advanceMission(2);
+  });
+
+  /* ---------------- pending tasks ---------------- */
+  function refreshTasks(){
+    var cards = $$('#taskList .task-card').filter(function(c){ return c.style.display !== 'none'; });
+    document.getElementById('taskCount').textContent = cards.length + (cards.length === 1 ? ' task' : ' tasks');
+    if(!cards.length){
+      document.getElementById('taskEmpty').classList.remove('hidden');
+    }
+  }
+  $$('[data-task]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var card = btn.closest('.task-card');
+      card.classList.add('gone');
+      setTimeout(function(){ card.style.display = 'none'; refreshTasks(); }, 380);
+      toast('Opening ' + btn.getAttribute('data-nav') + ' with the right sheet open', 'arrow-right-circle');
+    });
+  });
+
+  /* ---------------- undo buttons ---------------- */
+  $$('[data-undo-price]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.replaceWith('Reverted');
+      toast('Undone: Iced Latte is back to ฿70', 'arrow-counterclockwise');
+    });
+  });
+  $$('[data-undo-promo]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btn.replaceWith('Reverted');
+      toast('Undone: promo extension removed', 'arrow-counterclockwise');
+    });
+  });
+
+  /* ---------------- quick command (P2) ---------------- */
+  var pending = null;
+  function findItem(text){
+    var words = text.toLowerCase().split(/[^a-z0-9]+/).filter(function(w){ return w.length > 2; });
+    var keys = Object.keys(state.items);
+    for(var i=0;i<keys.length;i++){
+      if(text.toLowerCase().indexOf(keys[i].toLowerCase()) > -1) return keys[i];
+    }
+    for(var j=0;j<keys.length;j++){
+      var parts = keys[j].toLowerCase().split(' ');
+      for(var k=0;k<parts.length;k++){
+        if(parts[k].length > 2 && words.indexOf(parts[k]) > -1) return keys[j];
+      }
+    }
+    return null;
+  }
+  function parseCommand(raw){
+    var t = raw.toLowerCase().replace(/["']/g,'');
+    if(t.indexOf('close') > -1 && t.indexOf('store') > -1){
+      var when = t.indexOf('tomorrow') > -1 ? 'tomorrow' : 'today';
+      return { type:'close-store', label:'Close store', item:'Whole store', before:'Open', after: when === 'tomorrow' ? 'Closed tomorrow' : 'Closed today', range:when };
+    }
+    var m = t.match(/(.*?)\s+to\s+฿?(\d+)/);
+    if(m){
+      var name = findItem(m[1].replace(/\bprice\b|\bmake\b|\bset\b|\bchange\b|\bupdate\b|\braise\b|\bincrease\b|\blower\b|\bup\b|\bdown\b/g,'').trim());
+      if(name) return { type:'price', label:'Edit price', item:name, before:'฿'+state.items[name], after:'฿'+(+m[2]), to:+m[2] };
+      return { type:'price-new', label:'Edit price', item:(m[1].trim() || 'New item'), before:'Not on menu', after:'฿'+(+m[2]), to:+m[2] };
+    }
+    if(t.indexOf('promo') > -1){
+      var mm = raw.match(/promo[:\s]+(.+)/i);
+      return { type:'promo', label:'Draft promo', item:'New promotion', before:'No promo', after:(mm ? mm[1] : 'New promo draft') };
+    }
+    if(t.indexOf('hide') > -1 || t.indexOf('unavailable') > -1 || t.indexOf('sold out') > -1){
+      var hname = findItem(t);
+      return { type:'status', label:'Change item status', item:(hname || 'Item'), before:'Available', after:'Sold out today' };
+    }
+    return null;
+  }
+  document.getElementById('cmdForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var raw = document.getElementById('cmdInput').value.trim();
+    if(!raw) return;
+    var cmd = parseCommand(raw);
+    if(!cmd){
+      toast('I can help with: edit a price, item status, draft a promo, or close the store.', 'question-circle');
+      return;
+    }
+    pending = cmd;
+    document.getElementById('cfType').textContent = cmd.label;
+    document.getElementById('cfItem').textContent = cmd.item;
+    document.getElementById('cfBefore').textContent = cmd.before;
+    document.getElementById('cfAfter').textContent = cmd.after;
+    openModal('confirmModal');
+  });
+  $$('.cmd-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      document.getElementById('cmdInput').value = chip.textContent.trim();
+      document.getElementById('cmdForm').dispatchEvent(new Event('submit'));
+    });
+  });
+  document.getElementById('cfApply').addEventListener('click', function(){
+    if(!pending) return;
+    var cmd = pending; pending = null;
+    closeModal(document.getElementById('confirmModal'));
+    var time = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    if(cmd.type === 'price' || cmd.type === 'price-new'){
+      if(cmd.type === 'price'){
+        var before = state.items[cmd.item];
+        state.items[cmd.item] = cmd.to;
+        $$('[data-item]').forEach(function(el){
+          if(el.getAttribute('data-item') === cmd.item) el.textContent = '฿' + cmd.to;
+        });
+        addActivity('pencil','bg-viol/10 text-viol','Ek changed <b>'+cmd.item+'</b> ฿'+before+' → <b>฿'+cmd.to+'</b> via text command','· '+time,true,cmd.item,before);
+        toast(cmd.item + ' updated to ฿' + cmd.to + '. Logged as "via text command".');
+        advanceMission(0);
+      } else {
+        addActivity('plus-lg','bg-emr/10 text-emr','Ek drafted a new item <b>'+cmd.item+' '+cmd.after+'</b> via text command','· '+time,false);
+        toast('Draft item created. Review it in Items & prices (1.2).','stars');
+      }
+    } else if(cmd.type === 'close-store'){
+      setStore(true, cmd.range, state.closeMsg, false);
+      addActivity('shop-window','bg-oliv/10 text-oliv','Ek closed the store ('+cmd.after.toLowerCase()+') via text command','· '+time,true);
+      advanceMission(2);
+    } else if(cmd.type === 'promo'){
+      addActivity('megaphone','bg-sage/15 text-sage','Ek drafted a promo <b>'+cmd.after+'</b> via text command','· '+time,true);
+      toast('Promo draft created. Review and publish it in Promotions (1.3).','megaphone');
+      advanceMission(1);
+    } else if(cmd.type === 'status'){
+      addActivity('dash-circle','bg-oliv/10 text-oliv','Ek marked <b>'+cmd.item+'</b> as sold out via text command','· '+time,true);
+      toast(cmd.item + ' marked as sold out on the storefront.','dash-circle');
+    }
+    document.getElementById('cmdInput').value = '';
+  });
+
+  function addActivity(icon, iconCls, html, time, undo, itemName, oldPrice){
+    var list = document.getElementById('activityList');
+    var row = document.createElement('div');
+    row.className = 'act-row flex items-center gap-3 py-2.5 anim-up';
+    row.innerHTML =
+      '<span class="w-8 h-8 rounded-lg '+iconCls+' flex items-center justify-center text-[13px] shrink-0"><i class="bi bi-'+icon+'"></i></span>'+
+      '<p class="flex-1 text-[12px] leading-snug">'+html+' <span class="text-charcoal/40">'+time+'</span></p>';
+    if(undo){
+      var b = document.createElement('button');
+      b.className = 'undo-btn btn-press text-[11px] font-bold text-emr hover:underline shrink-0';
+      b.textContent = 'Undo';
+      b.addEventListener('click', function(){
+        if(itemName && oldPrice !== undefined){
+          state.items[itemName] = oldPrice;
+          $$('[data-item]').forEach(function(el){
+            if(el.getAttribute('data-item') === itemName) el.textContent = '฿' + oldPrice;
+          });
+          toast('Undone: '+itemName+' is back to ฿'+oldPrice, 'arrow-counterclockwise');
+        } else {
+          setStore(false);
+        }
+        b.replaceWith('Reverted');
+      });
+      row.appendChild(b);
+    }
+    list.insertBefore(row, list.firstChild);
+    if(list.children.length > 6) list.removeChild(list.lastChild);
+  }
+
+  /* ---------------- checklist ---------------- */
+  var checks = $$('[data-check]');
+  function hideChecklist(){
+    var card = document.getElementById('checklistCard');
+    card.style.transition = 'opacity .4s ease, transform .4s ease';
+    card.style.opacity = '0'; card.style.transform = 'translateY(-8px)';
+    setTimeout(function(){ card.style.display = 'none'; }, 420);
+  }
+  checks.forEach(function(c){
+    c.addEventListener('click', function(){
+      c.classList.toggle('done');
+      var done = checks.filter(function(x){ return x.classList.contains('done'); }).length;
+      document.getElementById('checklistProgress').textContent = done + ' of 3 done';
+      if(done === 3){
+        toast('Store setup complete. Great start! ✨','stars');
+        hideChecklist();
+      }
+    });
+  });
+  document.getElementById('checklistDismiss').addEventListener('click', hideChecklist);
+
+  /* ---------------- demo mode + missions ---------------- */
+  document.getElementById('demoToggle').addEventListener('change', function(e){
+    state.demo = e.target.checked;
+    document.getElementById('missionBar').classList.toggle('hidden', !state.demo);
+    if(state.demo) toast('Demo mode on. Follow the missions to learn the app.','flag');
+    else toast('Demo mode off.','flag');
+  });
+  function advanceMission(idx){
+    if(!state.demo || state.missionIdx >= 3) return;
+    if(state.missionIdx !== idx) return;
+    state.missionIdx++;
+    if(state.missionIdx >= 3){
+      document.getElementById('missionNum').textContent = 3;
+      document.getElementById('missionProg').style.width = '100%';
+      document.getElementById('missionText').textContent = 'All missions complete 🎉';
+      toast('Demo complete! You now know the essentials.','trophy');
+    } else {
+      document.getElementById('missionNum').textContent = state.missionIdx + 1;
+      document.getElementById('missionProg').style.width = Math.round(state.missionIdx/3*100) + '%';
+      document.getElementById('missionText').textContent = state.missions[state.missionIdx];
+      toast('Mission ' + state.missionIdx + '/3 complete!','flag');
+    }
+  }
+
+  /* ---------------- metrics count-up ---------------- */
+  function countUp(el, target){
+    var start = null, dur = 900;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start)/dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------------- skeleton → content ---------------- */
+  setTimeout(function(){
+    document.getElementById('skeleton').style.display = 'none';
+    var c = document.getElementById('content');
+    c.classList.remove('hidden');
+    void c.offsetWidth;
+    c.classList.add('in');
+    $$('.count').forEach(function(el){ countUp(el, +el.getAttribute('data-target')); });
+  }, 850);
+
+  /* ---------------- back to top ---------------- */
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    var hero = document.getElementById('hero');
+    var past = hero && (window.scrollY > hero.offsetTop + hero.offsetHeight - 100);
+    toTop.classList.toggle('show', past);
+  }, { passive:true });
+  toTop.addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
+
+  /* ---------------- offline ---------------- */
+  function updateOnline(){
+    document.getElementById('offlineBanner').classList.toggle('hidden', navigator.onLine);
+  }
+  window.addEventListener('online', function(){ updateOnline(); toast('Back online. Data synced.','wifi'); });
+  window.addEventListener('offline', function(){ updateOnline(); });
+  updateOnline();
+
+  /* hero refresh */
+  document.getElementById('heroRefresh').addEventListener('click', function(){
+    toast('Data refreshed just now','arrow-clockwise');
+  });
+
+  /* ---------------- chatbot ---------------- */
+  var chatBtn = document.getElementById('chatBtn');
+  var chatPanel = document.getElementById('chatPanel');
+  var chatBody = document.getElementById('chatBody');
+  chatBtn.addEventListener('click', function(){ chatPanel.classList.toggle('open'); });
+  document.getElementById('chatClose').addEventListener('click', function(){ chatPanel.classList.remove('open'); });
+
+  function addBubble(html, mine){
+    var wrap = document.createElement('div');
+    wrap.className = mine ? 'flex justify-end' : 'flex justify-start';
+    var b = document.createElement('div');
+    b.className = (mine ? 'bubble-me' : 'bubble-bot') + ' text-[12px] leading-relaxed px-3.5 py-2.5 max-w-[85%] anim-up';
+    b.innerHTML = html;
+    wrap.appendChild(b);
+    chatBody.appendChild(wrap);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+  function botReply(text){
+    var typing = document.createElement('div');
+    typing.className = 'flex justify-start';
+    typing.innerHTML = '<div class="bubble-bot px-4 py-3 flex gap-1 items-center"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+    chatBody.appendChild(typing);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    setTimeout(function(){
+      typing.remove();
+      addBubble(text, false);
+    }, 750);
+  }
+  function answer(q){
+    var t = q.toLowerCase();
+    if(t.indexOf('price') > -1 || t.indexOf('edit') > -1){
+      return 'To change a price, open <b>Items & prices</b> from the sidebar and tap the item. Or just type <b>"Iced latte to ฿75"</b> in the quick command box above, review the before → after summary, and confirm. Nothing saves without your confirmation.';
+    }
+    if(t.indexOf('close') > -1){
+      return 'Use the <b>Close store</b> shortcut card, or flip the switch in the greeting. Pick today, tomorrow, or until a date, add a message for customers, then apply. The storefront banner appears instantly and you can reopen with one tap.';
+    }
+    if(t.indexOf('attention') > -1 || t.indexOf('task') > -1 || t.indexOf('lead') > -1){
+      return 'Right now you have <b>3 pending tasks</b>: 2 customer leads waiting for a reply, the "Cool Summer" promo ending in 2 days, and 4 prices not reviewed in 60+ days.';
+    }
+    if(t.indexOf('hello') > -1 || t.indexOf('hi') === 0){
+      return 'Hello! I can help with prices, promos, closing the store, or pending tasks. Try one of the buttons below 👇';
+    }
+    return 'I can help with <b>prices</b>, <b>promos</b>, <b>closing the store</b>, and <b>pending tasks</b>. Try one of the buttons below 👇';
+  }
+  document.getElementById('chatForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var input = document.getElementById('chatInput');
+    var v = input.value.trim();
+    if(!v) return;
+    addBubble(v, true);
+    input.value = '';
+    botReply(answer(v));
+  });
+  $$('.chat-quick').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var q = btn.textContent.trim();
+      addBubble(q, true);
+      botReply(answer(q));
+    });
+  });
+
+  /* welcome message */
+  setTimeout(function(){
+    if(!chatBody.children.length){
+      addBubble('Hi Ek 👋 I\'m your shop assistant. Ask me anything, or tap a shortcut below.', false);
+    }
+  }, 1600);
+
+  /* initial task count */
+  refreshTasks();
+})();
+</script>
+</body>
+</html>
