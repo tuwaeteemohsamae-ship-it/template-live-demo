@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StoreHub — Owner Dashboard · How's the shop today</title>
+
+<!-- Fonts: Plus Jakarta Sans (display) + Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icon fonts (font-icon only) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link href='https://cdn.boxicons.com/3.0.4/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
+<!-- Tailwind CSS (Play CDN, latest v3) + forms plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          canvas: '#E3E3DD',
+          aqua: '#04E1AB',
+          sage: '#BD9681',
+          emerald2: '#10AE9E',
+          violet2: '#6A5DE6',
+          olive: '#724E40',
+          indigo2: '#222480',
+          ink: '#291F1B',
+          navy: '#050738',
+        },
+        fontFamily: {
+          display: ['"Plus Jakarta Sans"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+        boxShadow: {
+          soft: '0 10px 30px rgba(5,7,56,0.06)',
+          lift: '0 18px 44px rgba(5,7,56,0.12)',
+          glow: '0 0 0 4px rgba(4,225,171,0.18)',
+        },
+        borderRadius: {
+          '2xl': '18px',
+          '3xl': '24px',
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --sidebar-w: 264px;
+    --sidebar-w-collapsed: 78px;
+    --header-h: 68px;
+    --line: rgba(41,31,27,0.10);
+  }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior: smooth; }
+  body{
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: #291F1B;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  h1,h2,h3,.font-display{ font-family:'Plus Jakarta Sans', sans-serif; letter-spacing:-0.02em; }
+
+  /* ---------- Custom scrollbar (no arrows, palette-matched) ---------- */
+  ::-webkit-scrollbar{ width:9px; height:9px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  ::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg,#04E1AB,#10AE9E);
+    border-radius:99px;
+    border:2px solid #ffffff;
+  }
+  ::-webkit-scrollbar-thumb:hover{ background:#10AE9E; }
+  ::-webkit-scrollbar-button{ display:none; width:0; height:0; }
+  *{ scrollbar-width:thin; scrollbar-color:#10AE9E transparent; }
+
+  /* ---------- Layout shell ---------- */
+  .app-shell{ display:flex; min-height:100vh; width:100%; }
+  .left-rail{
+    width:var(--sidebar-w);
+    flex:0 0 var(--sidebar-w);
+    display:flex; flex-direction:column;
+    border-right:1px solid var(--line);
+    background:#ffffff;
+    transition: width .35s cubic-bezier(.4,0,.2,1), flex-basis .35s cubic-bezier(.4,0,.2,1), transform .35s cubic-bezier(.4,0,.2,1);
+    position:sticky; top:0; height:100vh; z-index:40;
+  }
+  .logo-cell{
+    height:var(--header-h);
+    flex:0 0 var(--header-h);
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:10px;
+    padding:0 18px;
+    position:sticky; top:0; z-index:5;
+    background:#ffffff;
+    overflow:hidden; white-space:nowrap;
+  }
+  .sidebar-menu{
+    flex:1; overflow-y:auto; overflow-x:hidden;
+    padding:14px 12px 20px;
+  }
+  .nav-item{
+    display:flex; align-items:center; gap:12px;
+    padding:11px 14px; border-radius:12px;
+    color:#5b514c; font-weight:500; font-size:13.5px;
+    cursor:pointer; transition: all .22s ease;
+    margin-bottom:2px; position:relative; white-space:nowrap;
+  }
+  .nav-item i{ width:20px; text-align:center; font-size:16px; flex:0 0 20px; }
+  .nav-item:hover{ background:#F4F7F6; color:#291F1B; transform:translateX(2px); }
+  .nav-item.active{
+    background: linear-gradient(135deg, rgba(4,225,171,.16), rgba(16,174,158,.10));
+    color:#0a7a6e; font-weight:600;
+  }
+  .nav-item.active::before{
+    content:''; position:absolute; left:-12px; top:50%; transform:translateY(-50%);
+    width:4px; height:22px; border-radius:0 4px 4px 0;
+    background: linear-gradient(180deg,#04E1AB,#10AE9E);
+  }
+  .nav-badge{
+    margin-left:auto; background:#04E1AB; color:#291F1B;
+    font-size:10px; font-weight:700; padding:2px 7px; border-radius:99px;
+  }
+  .rail-collapsed .left-rail{ width:var(--sidebar-w-collapsed); flex-basis:var(--sidebar-w-collapsed); }
+  .rail-collapsed .nav-label, .rail-collapsed .logo-text, .rail-collapsed .nav-badge{ display:none; }
+  .rail-collapsed .nav-item{ justify-content:center; padding:11px 0; }
+  .rail-collapsed .logo-cell{ justify-content:center; padding:0; }
+
+  .main-col{ flex:1; min-width:0; display:flex; flex-direction:column; }
+  .top-header{
+    height:var(--header-h); flex:0 0 var(--header-h);
+    border-bottom:1px solid var(--line);
+    background:#ffffff;
+    display:flex; align-items:center; gap:14px;
+    padding:0 22px; position:sticky; top:0; z-index:30;
+  }
+
+  /* ---------- Cards (bento / modular, soft organic) ---------- */
+  .card{
+    background:#ffffff;
+    border:1px solid rgba(41,31,27,0.08);
+    border-radius:18px;
+    box-shadow: 0 10px 30px rgba(5,7,56,0.05);
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .3s ease;
+    position:relative; overflow:hidden;
+  }
+  .card:hover{ transform:translateY(-3px); box-shadow:0 18px 44px rgba(5,7,56,0.10); border-color:rgba(4,225,171,0.35); }
+  .card-press:active{ transform:translateY(-1px) scale(.99); }
+
+  .winner-card{
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(106,93,230,.55) 0%, transparent 55%),
+      radial-gradient(90% 120% at 0% 100%, rgba(4,225,171,.35) 0%, transparent 50%),
+      linear-gradient(135deg,#050738 0%, #222480 60%, #1a1c6e 100%);
+    color:#fff; border:none;
+  }
+  .winner-card::after{
+    content:''; position:absolute; right:-60px; top:-60px; width:220px; height:220px;
+    background: radial-gradient(circle, rgba(4,225,171,.35), transparent 70%);
+    border-radius:50%; filter:blur(6px); pointer-events:none;
+  }
+  .soft-organic{
+    border-radius:22px 26px 20px 28px / 26px 20px 28px 22px;
+  }
+
+  /* ---------- Buttons (shadcn-style) ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    height:42px; padding:0 18px; border-radius:12px;
+    font-weight:600; font-size:13.5px; font-family:'Inter',sans-serif;
+    transition: all .22s cubic-bezier(.2,.8,.2,1);
+    cursor:pointer; border:1px solid transparent; white-space:nowrap;
+    user-select:none;
+  }
+  .btn:active{ transform:scale(.97); }
+  .btn-primary{ background:#04E1AB; color:#291F1B; box-shadow:0 6px 18px rgba(4,225,171,.35); }
+  .btn-primary:hover{ background:#02d19d; box-shadow:0 10px 26px rgba(4,225,171,.45); transform:translateY(-1px); }
+  .btn-ghost{ background:#fff; color:#291F1B; border-color:rgba(41,31,27,.14); }
+  .btn-ghost:hover{ border-color:#04E1AB; color:#0a7a6e; background:#F4FBF9; }
+  .btn-dark{ background:#291F1B; color:#fff; }
+  .btn-dark:hover{ background:#050738; }
+  .icon-btn{
+    width:40px; height:40px; border-radius:12px; display:inline-flex; align-items:center; justify-content:center;
+    color:#5b514c; cursor:pointer; transition:all .2s ease; border:1px solid transparent; background:transparent;
+  }
+  .icon-btn:hover{ background:#F4F7F6; color:#0a7a6e; border-color:rgba(4,225,171,.3); }
+
+  /* Toggle switch */
+  .switch{ position:relative; width:52px; height:28px; border-radius:99px; background:rgba(255,255,255,.25); cursor:pointer; transition:background .3s; flex:0 0 52px; }
+  .switch .knob{ position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; background:#fff; transition:all .3s cubic-bezier(.2,.8,.2,1); box-shadow:0 2px 6px rgba(0,0,0,.25); }
+  .switch.on{ background:#04E1AB; }
+  .switch.on .knob{ left:27px; }
+
+  /* ---------- Animations ---------- */
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+  .fade-up{ animation: fadeUp .6s cubic-bezier(.2,.8,.2,1) both; }
+  .d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}.d4{animation-delay:.26s}.d5{animation-delay:.33s}.d6{animation-delay:.4s}
+
+  @keyframes pulseDot{ 0%,100%{box-shadow:0 0 0 0 rgba(4,225,171,.6);} 50%{box-shadow:0 0 0 6px rgba(4,225,171,0);} }
+  .live-dot{ animation: pulseDot 2s infinite; }
+
+  @keyframes shimmer{ 0%{background-position:-400px 0;} 100%{background-position:400px 0;} }
+  .skeleton{ background:linear-gradient(90deg,#f0efea 25%,#e6e5df 50%,#f0efea 75%); background-size:800px 100%; animation:shimmer 1.4s infinite; border-radius:10px; }
+
+  @keyframes floaty{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+  .floaty{ animation: floaty 4s ease-in-out infinite; }
+
+  /* Ripple */
+  .ripple{ position:relative; overflow:hidden; }
+  .ripple .rp{ position:absolute; border-radius:50%; background:rgba(255,255,255,.5); transform:scale(0); animation:rip .6s linear; pointer-events:none; }
+  @keyframes rip{ to{ transform:scale(4); opacity:0; } }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(5,7,56,.45); backdrop-filter:blur(6px);
+    z-index:100; display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+  }
+  .modal-overlay.open{ opacity:1; pointer-events:auto; }
+  .modal-card{
+    background:#fff; border-radius:22px; width:100%; max-width:420px;
+    box-shadow:0 30px 80px rgba(5,7,56,.35);
+    transform:translateY(24px) scale(.96); transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    max-height:92vh; overflow-y:auto; position:relative;
+  }
+  .modal-overlay.open .modal-card{ transform:translateY(0) scale(1); }
+  .modal-close{
+    position:absolute; top:14px; right:14px; z-index:5;
+    width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:#8a817c; transition:all .2s; background:#f5f4f0;
+  }
+  .modal-close:hover{ background:#291F1B; color:#fff; transform:rotate(90deg); }
+
+  .field{
+    width:100%; height:46px; padding:0 14px 0 44px; border-radius:12px;
+    border:1px solid rgba(41,31,27,.14); background:#fafaf8; font-size:14px;
+    transition:all .2s; font-family:'Inter',sans-serif;
+  }
+  .field:focus{ outline:none; border-color:#04E1AB; background:#fff; box-shadow:0 0 0 4px rgba(4,225,171,.15); }
+  .field-wrap{ position:relative; }
+  .field-wrap i{ position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#9a918c; font-size:15px; }
+
+  /* ---------- Dropdown (note / app info) ---------- */
+  .dropdown{
+    position:absolute; top:calc(100% + 10px); right:0; width:340px; max-width:90vw;
+    background:#fff; border:1px solid rgba(41,31,27,.1); border-radius:16px;
+    box-shadow:0 24px 60px rgba(5,7,56,.18); padding:18px;
+    opacity:0; transform:translateY(-8px) scale(.98); pointer-events:none;
+    transition:all .25s cubic-bezier(.2,.8,.2,1); z-index:50;
+  }
+  .dropdown.open{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+
+  /* ---------- Chatbot + back-to-top (same row, gap 5px) ---------- */
+  .fixed-row{
+    position:fixed; bottom:22px; right:22px; z-index:80;
+    display:flex; align-items:flex-end; gap:5px;
+  }
+  .fab{
+    width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:all .3s cubic-bezier(.2,.8,.2,1); box-shadow:0 10px 26px rgba(5,7,56,.25);
+    border:none; color:#fff; font-size:18px;
+  }
+  .fab:hover{ transform:translateY(-3px) scale(1.05); }
+  .fab-chat{ background:linear-gradient(135deg,#04E1AB,#10AE9E); }
+  .fab-top{ background:#291F1B; opacity:0; transform:translateY(16px); pointer-events:none; }
+  .fab-top.show{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  .chat-panel{
+    position:absolute; bottom:70px; right:0; width:340px; max-width:calc(100vw - 40px);
+    height:460px; max-height:70vh; background:#fff; border-radius:20px;
+    box-shadow:0 30px 70px rgba(5,7,56,.3); border:1px solid rgba(41,31,27,.08);
+    display:flex; flex-direction:column; overflow:hidden;
+    opacity:0; transform:translateY(14px) scale(.96); transform-origin:bottom right;
+    pointer-events:none; transition:all .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .chat-panel.open{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+  .chat-msg{ max-width:82%; padding:9px 13px; border-radius:14px; font-size:13px; line-height:1.5; margin-bottom:8px; animation:fadeUp .35s ease both; }
+  .chat-bot{ background:#F4F7F6; color:#291F1B; border-bottom-left-radius:4px; align-self:flex-start; }
+  .chat-user{ background:linear-gradient(135deg,#04E1AB,#10AE9E); color:#083a33; border-bottom-right-radius:4px; align-self:flex-end; font-weight:500; }
+  .chat-chip{
+    padding:6px 12px; border-radius:99px; border:1px solid rgba(4,225,171,.4); color:#0a7a6e;
+    font-size:12px; font-weight:600; cursor:pointer; transition:all .2s; background:#F4FBF9; white-space:nowrap;
+  }
+  .chat-chip:hover{ background:#04E1AB; color:#291F1B; transform:translateY(-1px); }
+
+  /* ---------- Activity undo ---------- */
+  .undo-btn{ font-size:11px; font-weight:600; color:#6A5DE6; cursor:pointer; padding:3px 8px; border-radius:6px; transition:all .2s; white-space:nowrap; }
+  .undo-btn:hover{ background:rgba(106,93,230,.1); }
+  .activity-item.undone{ opacity:.35; text-decoration:line-through; }
+
+  /* ---------- Phone preview ---------- */
+  .phone-frame{
+    width:100%; max-width:300px; aspect-ratio:9/19; border-radius:32px;
+    background:#050738; padding:10px; box-shadow:0 24px 50px rgba(5,7,56,.25);
+    margin:0 auto;
+  }
+  .phone-screen{ width:100%; height:100%; border-radius:24px; background:#fff; overflow:hidden; position:relative; }
+
+  /* ---------- Mobile drawer ---------- */
+  .scrim{ position:fixed; inset:0; background:rgba(5,7,56,.4); z-index:35; opacity:0; pointer-events:none; transition:opacity .3s; }
+  .scrim.open{ opacity:1; pointer-events:auto; }
+  @media (max-width:1023px){
+    .left-rail{ position:fixed; left:0; top:0; transform:translateX(-105%); box-shadow:20px 0 50px rgba(5,7,56,.2); }
+    .left-rail.drawer-open{ transform:translateX(0); }
+    .app-shell.rail-collapsed .left-rail{ width:var(--sidebar-w); flex-basis:var(--sidebar-w); }
+  }
+
+  /* KPI sparkline bars */
+  .spark-bar{ width:6px; border-radius:3px; background:linear-gradient(180deg,#04E1AB,#10AE9E); align-self:flex-end; transition:height .8s cubic-bezier(.2,.8,.2,1); }
+
+  .toast{
+    position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:#291F1B; color:#fff; padding:12px 22px; border-radius:14px; font-size:13.5px; font-weight:500;
+    box-shadow:0 16px 40px rgba(5,7,56,.3); z-index:200; opacity:0; pointer-events:none; transition:all .35s cubic-bezier(.2,.8,.2,1);
+    display:flex; align-items:center; gap:10px; max-width:90vw;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  .section-label{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9a918c; }
+</style>
+</head>
+<body>
+
+<div class="app-shell" id="appShell">
+
+  <!-- ================= LEFT RAIL (logo + sidebar, continuous border-right) ================= -->
+  <aside class="left-rail" id="leftRail">
+    <div class="logo-cell">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white flex-shrink-0" style="background:linear-gradient(135deg,#04E1AB,#222480);">
+        <i class="fa-solid fa-store text-sm"></i>
+      </div>
+      <div class="logo-text leading-tight">
+        <div class="font-display font-extrabold text-[15px] text-ink">StoreHub</div>
+        <div class="text-[10px] text-[#9a918c] font-semibold tracking-wider uppercase">Owner Console</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-menu">
+      <div class="section-label px-3 mb-2 logo-text">Main</div>
+      <div class="nav-item active" data-nav="dashboard"><i class="fa-solid fa-gauge-high"></i><span class="nav-label">Today's Overview</span><span class="nav-badge">3</span></div>
+      <div class="nav-item" data-nav="menu"><i class="fa-solid fa-utensils"></i><span class="nav-label">Menu &amp; Prices</span></div>
+      <div class="nav-item" data-nav="promo"><i class="fa-solid fa-bolt"></i><span class="nav-label">Promotions</span><span class="nav-badge">2</span></div>
+      <div class="nav-item" data-nav="media"><i class="fa-solid fa-images"></i><span class="nav-label">Photos &amp; Media</span></div>
+      <div class="nav-item" data-nav="inbox"><i class="fa-solid fa-inbox"></i><span class="nav-label">Inbox &amp; Orders</span><span class="nav-badge">5</span></div>
+
+      <div class="section-label px-3 mt-5 mb-2 logo-text">Insights</div>
+      <div class="nav-item" data-nav="analytics"><i class="fa-solid fa-chart-line"></i><span class="nav-label">Analytics</span></div>
+      <div class="nav-item" data-nav="webstatus"><i class="fa-solid fa-globe"></i><span class="nav-label">Web Status</span></div>
+      <div class="nav-item" data-nav="shopinfo"><i class="fa-solid fa-circle-info"></i><span class="nav-label">Shop Profile</span></div>
+
+      <div class="section-label px-3 mt-5 mb-2 logo-text">Account</div>
+      <div class="nav-item" data-nav="settings"><i class="fa-solid fa-gear"></i><span class="nav-label">Settings</span></div>
+      <div class="nav-item" id="openLoginNav"><i class="fa-solid fa-right-to-bracket"></i><span class="nav-label">Sign in / Switch</span></div>
+    </nav>
+
+    <div class="p-3 logo-text border-t border-[rgba(41,31,27,.08)]">
+      <div class="card p-3 flex items-center gap-3" style="box-shadow:none; border-radius:14px; background:linear-gradient(135deg,rgba(4,225,171,.12),rgba(106,93,230,.10));">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style="background:linear-gradient(135deg,#6A5DE6,#222480);">E</div>
+        <div class="leading-tight min-w-0">
+          <div class="font-semibold text-[13px] text-ink truncate">Ek (Owner)</div>
+          <div class="text-[11px] text-[#9a918c]">Pro plan · Active</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="scrim" id="scrim"></div>
+
+  <!-- ================= MAIN COLUMN ================= -->
+  <div class="main-col">
+
+    <!-- ============ HEADER (continuous border-bottom) ============ -->
+    <header class="top-header">
+      <button class="icon-btn lg:hidden" id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars text-lg"></i></button>
+      <button class="icon-btn hidden lg:inline-flex" id="collapseBtn" aria-label="Collapse sidebar"><i class="fa-solid fa-bars-staggered text-base"></i></button>
+
+      <div class="hidden md:block">
+        <h1 class="font-display font-bold text-[17px] text-ink leading-none">How's the shop today</h1>
+        <div class="text-[11px] text-[#9a918c] mt-1" id="todayDate">—</div>
+      </div>
+
+      <div class="flex-1"></div>
+
+      <!-- Search (desktop) -->
+      <div class="field-wrap hidden xl:block w-64">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input class="field !pl-10 !h-10 !rounded-xl" placeholder="Search menu, orders…" />
+      </div>
+
+      <!-- Note / App-info dropdown trigger -->
+      <div class="relative">
+        <button class="icon-btn relative" id="noteBtn" aria-label="App info">
+          <i class="fa-regular fa-note-sticky text-lg"></i>
+          <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-aqua live-dot"></span>
+        </button>
+        <div class="dropdown" id="noteDropdown">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white" style="background:linear-gradient(135deg,#04E1AB,#10AE9E);"><i class="fa-solid fa-circle-info text-xs"></i></div>
+            <div>
+              <div class="font-display font-bold text-[14px] text-ink leading-tight">App Information</div>
+              <div class="text-[10px] text-[#9a918c] font-semibold tracking-wider uppercase">StoreHub Console</div>
+            </div>
+          </div>
+          <div class="text-[12.5px] text-[#5b514c] leading-relaxed space-y-2 max-h-56 overflow-y-auto pr-1" id="appInfoText">
+            <p><strong class="text-ink">StoreHub Owner Console</strong> v2.4.1 (build 2026.11) — a real-time storefront management dashboard for café and restaurant owners.</p>
+            <p>Monitor pending tasks, update menu prices, launch promotions, swap photos, and toggle shop opening status — all from one screen. Changes sync to your public web page and LINE booking within 5 seconds.</p>
+            <p><strong class="text-ink">Plan:</strong> Pro (monthly) · <strong class="text-ink">Workspace:</strong> Ek's Coffee · <strong class="text-ink">Region:</strong> Thailand (฿ THB). Last backup completed successfully at 03:00 this morning.</p>
+            <p>Need help? Reach support via the chat bubble below or email support@storehub.app. Average first reply: under 12 minutes during business hours.</p>
+          </div>
+          <button class="btn btn-ghost w-full mt-3 !h-9 text-[12.5px]" id="copyInfoBtn"><i class="fa-regular fa-copy"></i> Copy app info</button>
+        </div>
+      </div>
+
+      <button class="icon-btn relative" aria-label="Notifications">
+        <i class="fa-regular fa-bell text-lg"></i>
+        <span class="absolute top-1.5 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-[#6A5DE6] text-white text-[9px] font-bold flex items-center justify-center">5</span>
+      </button>
+
+      <button class="btn btn-primary !h-10 !px-4 text-[12.5px] hidden sm:inline-flex" id="openLoginBtn"><i class="fa-regular fa-user"></i> Account</button>
+
+      <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm cursor-pointer hover:scale-105 transition-transform" style="background:linear-gradient(135deg,#6A5DE6,#222480);">E</div>
+    </header>
+
+    <!-- ============ MAIN CONTENT (bento grid) ============ -->
+    <main class="p-5 md:p-7 lg:p-8 max-w-[1400px] w-full mx-auto" id="mainContent">
+
+      <!-- Row A: Winner card + Web status -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+
+        <!-- WINNER CARD (takes most) -->
+        <section class="card winner-card soft-organic lg:col-span-8 p-6 md:p-7 fade-up d1" id="heroCard">
+          <div class="relative z-10 flex flex-col md:flex-row md:items-start gap-6">
+            <div class="flex-1">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold mb-4" style="background:rgba(255,255,255,.14); backdrop-filter:blur(4px);">
+                <span class="w-2 h-2 rounded-full bg-aqua live-dot"></span>
+                <span id="openBadge">Shop is OPEN now</span>
+              </div>
+              <h2 class="font-display font-extrabold text-[28px] md:text-[34px] leading-[1.1] mb-2">Good morning, Ek.</h2>
+              <p class="text-white/70 text-[13.5px] max-w-md mb-5">Here's everything that needs your attention today — sorted so the urgent stuff is one tap away.</p>
+
+              <div class="flex flex-wrap gap-2.5">
+                <button class="btn btn-primary !h-10 text-[12.5px] ripple" data-close-preset="today"><i class="fa-solid fa-moon"></i> Close today</button>
+                <button class="btn !h-10 text-[12.5px] ripple" style="background:rgba(255,255,255,.14); color:#fff; backdrop-filter:blur(4px);" data-close-preset="tomorrow"><i class="fa-regular fa-calendar"></i> Close tomorrow</button>
+                <button class="btn !h-10 text-[12.5px] ripple" style="background:rgba(255,255,255,.14); color:#fff; backdrop-filter:blur(4px);" data-close-preset="range"><i class="fa-regular fa-calendar-range"></i> Close until date…</button>
+              </div>
+            </div>
+
+            <div class="md:w-[240px] flex-shrink-0 p-4 rounded-2xl floaty" style="background:rgba(255,255,255,.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.14);">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-white/60">Shop status</span>
+                <div class="switch on" id="shopSwitch"><div class="knob"></div></div>
+              </div>
+              <div class="text-[12px] text-white/70 leading-relaxed mb-3">
+                Toggle to close the shop. A banner will appear on your public page instantly.
+              </div>
+              <div class="text-[11px] text-white/50">Customer message (editable):</div>
+              <div class="mt-1.5 p-2.5 rounded-lg text-[11.5px] text-white/85 leading-relaxed" style="background:rgba(0,0,0,.22);" id="closeMsg">
+                "Sorry, we're closed today. We'll be back tomorrow — see you then! ☕"
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WEB STATUS -->
+        <section class="card lg:col-span-4 p-5 fade-up d2 flex flex-col">
+          <div class="flex items-center justify-between mb-4">
+            <span class="section-label">Web status</span>
+            <span class="text-[10px] font-bold px-2 py-1 rounded-full text-[#0a7a6e]" style="background:rgba(4,225,171,.15);">ALL NORMAL</span>
+          </div>
+          <div class="space-y-3 flex-1">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center text-[#0a7a6e]" style="background:rgba(4,225,171,.14);"><i class="fa-solid fa-circle-check"></i></div>
+              <div class="flex-1">
+                <div class="text-[13px] font-semibold text-ink">Site online</div>
+                <div class="text-[11px] text-[#9a918c]">Last check · 05:00 AM · 142 ms</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center text-[#6A5DE6]" style="background:rgba(106,93,230,.12);"><i class="fa-solid fa-database"></i></div>
+              <div class="flex-1">
+                <div class="text-[13px] font-semibold text-ink">Backup succeeded</div>
+                <div class="text-[11px] text-[#9a918c]">Last night · 03:00 AM · 48.2 MB</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center text-[#BD9681]"><i class="fa-brands fa-line" style="color:#06C755;"></i></div>
+              <div class="flex-1">
+                <div class="text-[13px] font-semibold text-ink">LINE &amp; forms connected</div>
+                <div class="text-[11px] text-[#9a918c]">4 channels · synced 2 min ago</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-ghost w-full mt-4 !h-9 text-[12px]">Open full status →</button>
+        </section>
+      </div>
+
+      <!-- Row B: Pending tasks + Quick shortcuts -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+
+        <!-- PENDING TASKS -->
+        <section class="card lg:col-span-8 p-5 md:p-6 fade-up d3">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="font-display font-bold text-[17px] text-ink">Pending tasks</h3>
+              <p class="text-[12px] text-[#9a918c] mt-0.5">Sorted by urgency · 3 need your action</p>
+            </div>
+            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full text-white" style="background:linear-gradient(135deg,#6A5DE6,#222480);">3 OPEN</span>
+          </div>
+
+          <div class="space-y-3">
+            <!-- task 1 -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl transition-all hover:translate-x-1 cursor-pointer" style="background:linear-gradient(90deg,rgba(4,225,171,.10),rgba(4,225,171,0) 70%); border:1px solid rgba(4,225,171,.25);">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white flex-shrink-0" style="background:linear-gradient(135deg,#04E1AB,#10AE9E); box-shadow:0 6px 16px rgba(4,225,171,.4);"><i class="fa-regular fa-comment-dots"></i></div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13.5px] font-semibold text-ink">5 customer inquiries not replied yet</div>
+                <div class="text-[11.5px] text-[#9a918c] mt-0.5">Oldest waiting 2h 14m · LINE + form</div>
+              </div>
+              <button class="btn btn-primary !h-9 !px-4 text-[12px] flex-shrink-0 ripple">Reply now</button>
+            </div>
+            <!-- task 2 -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl transition-all hover:translate-x-1 cursor-pointer" style="background:linear-gradient(90deg,rgba(106,93,230,.10),rgba(106,93,230,0) 70%); border:1px solid rgba(106,93,230,.22);">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white flex-shrink-0" style="background:linear-gradient(135deg,#6A5DE6,#222480); box-shadow:0 6px 16px rgba(106,93,230,.35);"><i class="fa-solid fa-hourglass-half"></i></div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13.5px] font-semibold text-ink">"Buy 1 Get 1" promo expires in 2 days</div>
+                <div class="text-[11.5px] text-[#9a918c] mt-0.5">128 redeemed so far · ends Fri 23:59</div>
+              </div>
+              <button class="btn btn-dark !h-9 !px-4 text-[12px] flex-shrink-0 ripple">Renew promo</button>
+            </div>
+            <!-- task 3 -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl transition-all hover:translate-x-1 cursor-pointer" style="background:linear-gradient(90deg,rgba(189,150,129,.14),rgba(189,150,129,0) 70%); border:1px solid rgba(189,150,129,.35);">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white flex-shrink-0" style="background:linear-gradient(135deg,#BD9681,#724E40);"><i class="fa-solid fa-tag"></i></div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[13.5px] font-semibold text-ink">14 menu prices unchanged for 60+ days</div>
+                <div class="text-[11.5px] text-[#9a918c] mt-0.5">Cost of milk +9% · review recommended</div>
+              </div>
+              <button class="btn btn-ghost !h-9 !px-4 text-[12px] flex-shrink-0 ripple">Check prices</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUICK SHORTCUTS 2x2 (>=72px) -->
+        <section class="card lg:col-span-4 p-5 md:p-6 fade-up d4">
+          <h3 class="font-display font-bold text-[17px] text-ink mb-1">Quick actions</h3>
+          <p class="text-[12px] text-[#9a918c] mb-4">One tap to the right screen</p>
+          <div class="grid grid-cols-2 gap-3">
+            <button class="card-press rounded-2xl p-4 flex flex-col items-start gap-3 text-left transition-all hover:-translate-y-1" style="background:linear-gradient(135deg,rgba(4,225,171,.14),rgba(16,174,158,.06)); border:1px solid rgba(4,225,171,.3); min-height:96px;">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#04E1AB,#10AE9E);"><i class="fa-solid fa-pen-to-square text-sm"></i></div>
+              <span class="font-semibold text-[13px] text-ink leading-tight">Edit<br>prices</span>
+            </button>
+            <button class="card-press rounded-2xl p-4 flex flex-col items-start gap-3 text-left transition-all hover:-translate-y-1" style="background:linear-gradient(135deg,rgba(106,93,230,.14),rgba(34,36,128,.06)); border:1px solid rgba(106,93,230,.3); min-height:96px;">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#6A5DE6,#222480);"><i class="fa-solid fa-bolt text-sm"></i></div>
+              <span class="font-semibold text-[13px] text-ink leading-tight">Launch<br>promo</span>
+            </button>
+            <button class="card-press rounded-2xl p-4 flex flex-col items-start gap-3 text-left transition-all hover:-translate-y-1" style="background:linear-gradient(135deg,rgba(189,150,129,.20),rgba(114,78,64,.06)); border:1px solid rgba(189,150,129,.4); min-height:96px;">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#BD9681,#724E40);"><i class="fa-solid fa-camera text-sm"></i></div>
+              <span class="font-semibold text-[13px] text-ink leading-tight">Change<br>photos</span>
+            </button>
+            <button class="card-press rounded-2xl p-4 flex flex-col items-start gap-3 text-left transition-all hover:-translate-y-1" style="background:linear-gradient(135deg,rgba(5,7,56,.08),rgba(34,36,128,.04)); border:1px solid rgba(5,7,56,.15); min-height:96px;">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#050738,#222480);"><i class="fa-solid fa-door-closed text-sm"></i></div>
+              <span class="font-semibold text-[13px] text-ink leading-tight">Close shop<br>today</span>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Row C: KPI metrics + Recent activity -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+
+        <!-- TODAY IN NUMBERS (3 KPI) -->
+        <section class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <!-- KPI 1 -->
+          <div class="card p-5 fade-up d3">
+            <div class="flex items-center justify-between mb-3">
+              <span class="section-label">Visitors</span>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center text-[#0a7a6e]" style="background:rgba(4,225,171,.14);"><i class="fa-solid fa-eye text-xs"></i></div>
+            </div>
+            <div class="font-display font-extrabold text-[32px] text-ink leading-none count-up" data-target="1284">0</div>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded-full text-white" style="background:#10AE9E;"><i class="fa-solid fa-arrow-up mr-1 text-[9px]"></i>12.4%</span>
+              <span class="text-[11px] text-[#9a918c]">vs yesterday</span>
+            </div>
+            <div class="flex items-end gap-1 h-8 mt-4">
+              <div class="spark-bar" style="height:40%"></div><div class="spark-bar" style="height:65%"></div><div class="spark-bar" style="height:50%"></div><div class="spark-bar" style="height:80%"></div><div class="spark-bar" style="height:60%"></div><div class="spark-bar" style="height:90%"></div><div class="spark-bar" style="height:75%"></div>
+            </div>
+          </div>
+          <!-- KPI 2 -->
+          <div class="card p-5 fade-up d4">
+            <div class="flex items-center justify-between mb-3">
+              <span class="section-label">Contacts</span>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white" style="background:linear-gradient(135deg,#6A5DE6,#222480);"><i class="fa-solid fa-phone-volume text-xs"></i></div>
+            </div>
+            <div class="font-display font-extrabold text-[32px] text-ink leading-none count-up" data-target="86">0</div>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded-full text-white" style="background:#10AE9E;"><i class="fa-solid fa-arrow-up mr-1 text-[9px]"></i>8.1%</span>
+              <span class="text-[11px] text-[#9a918c]">calls · LINE · maps · form</span>
+            </div>
+            <div class="flex items-end gap-1 h-8 mt-4">
+              <div class="spark-bar" style="height:55%; background:linear-gradient(180deg,#6A5DE6,#222480);"></div><div class="spark-bar" style="height:40%; background:linear-gradient(180deg,#6A5DE6,#222480);"></div><div class="spark-bar" style="height:70%; background:linear-gradient(180deg,#6A5DE6,#222480);"></div><div class="spark-bar" style="height:50%; background:linear-gradient(180deg,#6A5DE6,#222480);"></div><div class="spark-bar" style="height:85%; background:linear-gradient(180deg,#6A5DE6,#222480);"></div><div class="spark-bar" style="height:65%; background:linear-gradient(180deg,#6A5DE6,#222480);"></div><div class="spark-bar" style="height:95%; background:linear-gradient(180deg,#6A5DE6,#222480);"></div>
+            </div>
+          </div>
+          <!-- KPI 3 -->
+          <div class="card p-5 fade-up d5">
+            <div class="flex items-center justify-between mb-3">
+              <span class="section-label">New leads</span>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white" style="background:linear-gradient(135deg,#BD9681,#724E40);"><i class="fa-solid fa-user-plus text-xs"></i></div>
+            </div>
+            <div class="font-display font-extrabold text-[32px] text-ink leading-none count-up" data-target="17">0</div>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(220,60,60,.12); color:#c43; "><i class="fa-solid fa-arrow-down mr-1 text-[9px]"></i>3.2%</span>
+              <span class="text-[11px] text-[#9a918c]">vs yesterday</span>
+            </div>
+            <div class="flex items-end gap-1 h-8 mt-4">
+              <div class="spark-bar" style="height:70%; background:linear-gradient(180deg,#BD9681,#724E40);"></div><div class="spark-bar" style="height:85%; background:linear-gradient(180deg,#BD9681,#724E40);"></div><div class="spark-bar" style="height:60%; background:linear-gradient(180deg,#BD9681,#724E40);"></div><div class="spark-bar" style="height:75%; background:linear-gradient(180deg,#BD9681,#724E40);"></div><div class="spark-bar" style="height:50%; background:linear-gradient(180deg,#BD9681,#724E40);"></div><div class="spark-bar" style="height:65%; background:linear-gradient(180deg,#BD9681,#724E40);"></div><div class="spark-bar" style="height:55%; background:linear-gradient(180deg,#BD9681,#724E40);"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RECENT ACTIVITY -->
+        <section class="card lg:col-span-4 p-5 md:p-6 fade-up d6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-display font-bold text-[17px] text-ink">Recent activity</h3>
+            <span class="text-[11px] text-[#9a918c]">last 5</span>
+          </div>
+          <div class="space-y-3.5" id="activityList">
+            <div class="activity-item flex items-start gap-3">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background:linear-gradient(135deg,#04E1AB,#10AE9E);">S</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[12.5px] text-ink leading-snug"><strong>Somchai</strong> changed <strong>Iced Latte</strong> ฿70 → ฿75</div>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-[10.5px] text-[#9a918c]">14:05 · via text command</span>
+                  <span class="undo-btn" data-undo>Undo</span>
+                </div>
+              </div>
+            </div>
+            <div class="activity-item flex items-start gap-3">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background:linear-gradient(135deg,#6A5DE6,#222480);">E</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[12.5px] text-ink leading-snug"><strong>You</strong> launched promo <strong>"Happy Hour 20%"</strong></div>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-[10.5px] text-[#9a918c]">13:22</span>
+                  <span class="undo-btn" data-undo>Undo</span>
+                </div>
+              </div>
+            </div>
+            <div class="activity-item flex items-start gap-3">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background:linear-gradient(135deg,#BD9681,#724E40);">A</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[12.5px] text-ink leading-snug"><strong>Aey</strong> replaced photo of <strong>Signature Cake</strong></div>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-[10.5px] text-[#9a918c]">11:48</span>
+                  <span class="undo-btn" data-undo>Undo</span>
+                </div>
+              </div>
+            </div>
+            <div class="activity-item flex items-start gap-3">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background:#050738;">S</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[12.5px] text-ink leading-snug"><strong>System</strong> auto-backed up all data</div>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-[10.5px] text-[#9a918c]">03:00 · automatic</span>
+                </div>
+              </div>
+            </div>
+            <div class="activity-item flex items-start gap-3">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white text-[10px] font-bold" style="background:linear-gradient(135deg,#04E1AB,#10AE9E);">S</div>
+              <div class="flex-1 min-w-0">
+                <div class="text-[12.5px] text-ink leading-snug"><strong>Somchai</strong> marked <strong>3 orders</strong> as completed</div>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-[10.5px] text-[#9a918c]">Yesterday 21:10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Row D: Upsell card + Phone preview (390) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+        <!-- Upsell / tip card -->
+        <section class="card lg:col-span-7 p-6 md:p-7 fade-up d6 flex flex-col md:flex-row items-center gap-6" style="background:linear-gradient(120deg,#050738 0%, #222480 55%, rgba(106,93,230,.9) 100%); border:none; color:#fff;">
+          <div class="flex-1">
+            <span class="text-[10px] font-bold tracking-[.15em] uppercase text-aqua">Pro tip · unlocked</span>
+            <h3 class="font-display font-extrabold text-[22px] md:text-[26px] leading-tight mt-2 mb-2">Turn today's 17 leads into regulars</h3>
+            <p class="text-white/70 text-[13px] max-w-md mb-4">Stores that send a "thank you, come back for 10% off" message within 1 hour see 2.3× repeat visits. Draft it now.</p>
+            <button class="btn btn-primary !h-10 text-[12.5px] ripple"><i class="fa-solid fa-wand-magic-sparkles"></i> Draft auto-message</button>
+          </div>
+          <div class="w-24 h-24 rounded-full flex items-center justify-center floaty flex-shrink-0" style="background:rgba(4,225,171,.18); border:1px solid rgba(4,225,171,.4);">
+            <i class="fa-solid fa-gift text-3xl text-aqua"></i>
+          </div>
+        </section>
+
+        <!-- Web preview 390px -->
+        <section class="card lg:col-span-5 p-5 fade-up d6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="section-label">Your public page · live preview</span>
+            <button class="text-[11px] font-semibold text-[#0a7a6e] hover:underline">View site →</button>
+          </div>
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="h-6 flex items-center justify-between px-4 text-[9px] font-bold text-ink bg-white">9:41 <span><i class="fa-solid fa-signal mr-1"></i><i class="fa-solid fa-wifi mr-1"></i><i class="fa-solid fa-battery-full"></i></span></div>
+              <div class="h-20 flex items-center justify-center text-white font-display font-bold text-[15px]" style="background:linear-gradient(135deg,#050738,#222480);">Ek's Coffee ☕</div>
+              <div class="px-3 py-2">
+                <div class="h-3 rounded-full skeleton w-3/4 mb-2"></div>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                  <div class="h-14 rounded-xl skeleton"></div>
+                  <div class="h-14 rounded-xl skeleton"></div>
+                  <div class="h-14 rounded-xl skeleton"></div>
+                  <div class="h-14 rounded-xl skeleton"></div>
+                </div>
+                <div class="mt-3 p-2 rounded-lg text-[9px] font-semibold text-center text-white" style="background:linear-gradient(135deg,#04E1AB,#10AE9E);">Order via LINE</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="h-16"></div><!-- breathing room above fixed row -->
+    </main>
+  </div>
+</div>
+
+<!-- ================= FIXED ROW: back-to-top (left) + chatbot (right), gap 5px ================= -->
+<div class="fixed-row">
+  <button class="fab fab-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <div style="position:relative;">
+    <div class="chat-panel" id="chatPanel">
+      <div class="p-4 text-white flex items-center gap-3" style="background:linear-gradient(135deg,#050738,#222480);">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#04E1AB,#10AE9E);"><i class="fa-solid fa-robot text-sm text-white"></i></div>
+        <div class="flex-1">
+          <div class="font-display font-bold text-[14px] leading-tight">StoreHub Assistant</div>
+          <div class="text-[10.5px] text-white/60 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-aqua live-dot inline-block"></span>Online · replies instantly</div>
+        </div>
+        <button class="text-white/70 hover:text-white text-lg" id="chatClose" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-3 flex flex-col" id="chatBody">
+        <div class="chat-msg chat-bot">Hi Ek! 👋 I can help with prices, promos, closing the shop, or checking stats. Try me!</div>
+        <div class="chat-msg chat-bot">Quick examples: <em>"Raise iced latte to 75 baht"</em> or <em>"Close shop tomorrow"</em>.</div>
+      </div>
+      <div class="px-3 pb-2 flex gap-1.5 overflow-x-auto" id="chatChips">
+        <span class="chat-chip">Today's sales</span>
+        <span class="chat-chip">Raise latte to ฿75</span>
+        <span class="chat-chip">Close shop today</span>
+        <span class="chat-chip">New promo</span>
+      </div>
+      <div class="p-3 border-t border-[rgba(41,31,27,.08)] flex gap-2">
+        <input id="chatInput" class="field !pl-4 !h-10 !rounded-xl flex-1 !text-[13px]" placeholder="Type a message…" />
+        <button class="btn btn-primary !h-10 !w-10 !p-0 !rounded-xl" id="chatSend" aria-label="Send"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+      </div>
+    </div>
+    <button class="fab fab-chat" id="chatToggle" aria-label="Chat"><i class="fa-solid fa-comment-dots"></i></button>
+  </div>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check text-aqua"></i><span id="toastMsg">Done</span></div>
+
+<!-- ================= MODALS: LOGIN / SIGNUP / FORGOT ================= -->
+<div class="modal-overlay" id="modalLogin">
+  <div class="modal-card p-7">
+    <div class="modal-close" data-close><i class="fa-solid fa-xmark"></i></div>
+    <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white mb-4" style="background:linear-gradient(135deg,#04E1AB,#10AE9E); box-shadow:0 8px 20px rgba(4,225,171,.4);"><i class="fa-solid fa-right-to-bracket"></i></div>
+    <h3 class="font-display font-extrabold text-[22px] text-ink mb-1">Welcome back</h3>
+    <p class="text-[12.5px] text-[#9a918c] mb-6">Sign in to your StoreHub owner console.</p>
+    <form class="space-y-3.5" onsubmit="event.preventDefault(); showToast('Signed in successfully'); closeAllModals();">
+      <div class="field-wrap"><i class="fa-regular fa-envelope"></i><input class="field" type="email" placeholder="Email address" required /></div>
+      <div class="field-wrap"><i class="fa-solid fa-lock"></i><input class="field" type="password" placeholder="Password" required /></div>
+      <div class="flex items-center justify-between text-[12px]">
+        <label class="flex items-center gap-2 text-[#5b514c] cursor-pointer"><input type="checkbox" class="rounded" style="accent-color:#04E1AB;"> Remember me</label>
+        <a class="text-[#6A5DE6] font-semibold cursor-pointer hover:underline" data-goto="modalForgot">Forgot password?</a>
+      </div>
+      <button class="btn btn-primary w-full ripple" type="submit">Sign in</button>
+    </form>
+    <div class="flex items-center gap-3 my-5"><div class="flex-1 h-px bg-[rgba(41,31,27,.1)]"></div><span class="text-[11px] text-[#9a918c] font-semibold">OR</span><div class="flex-1 h-px bg-[rgba(41,31,27,.1)]"></div></div>
+    <button class="btn btn-ghost w-full !h-11 text-[13px]" onclick="showToast('Continue with Google (demo)')"><i class="fa-brands fa-google" style="color:#EA4335;"></i> Continue with Google</button>
+    <p class="text-center text-[12.5px] text-[#5b514c] mt-5">No account yet? <a class="text-[#0a7a6e] font-bold cursor-pointer hover:underline" data-goto="modalSignup">Create one free</a></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalSignup">
+  <div class="modal-card p-7">
+    <div class="modal-close" data-close><i class="fa-solid fa-xmark"></i></div>
+    <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white mb-4" style="background:linear-gradient(135deg,#6A5DE6,#222480); box-shadow:0 8px 20px rgba(106,93,230,.4);"><i class="fa-solid fa-user-plus"></i></div>
+    <h3 class="font-display font-extrabold text-[22px] text-ink mb-1">Create your shop</h3>
+    <p class="text-[12.5px] text-[#9a918c] mb-6">Free 14-day Pro trial · no card required.</p>
+    <form class="space-y-3.5" onsubmit="event.preventDefault(); showToast('Account created — check your email'); closeAllModals();">
+      <div class="field-wrap"><i class="fa-solid fa-store"></i><input class="field" placeholder="Shop name" required /></div>
+      <div class="field-wrap"><i class="fa-regular fa-envelope"></i><input class="field" type="email" placeholder="Email address" required /></div>
+      <div class="field-wrap"><i class="fa-solid fa-lock"></i><input class="field" type="password" placeholder="Create password (min. 8 chars)" required /></div>
+      <label class="flex items-start gap-2 text-[11.5px] text-[#5b514c] cursor-pointer"><input type="checkbox" class="mt-0.5 rounded" style="accent-color:#04E1AB;" required> I agree to the Terms &amp; Privacy Policy and accept ฿ THB as billing currency.</label>
+      <button class="btn btn-primary w-full ripple" type="submit">Create free account</button>
+    </form>
+    <p class="text-center text-[12.5px] text-[#5b514c] mt-5">Already have an account? <a class="text-[#0a7a6e] font-bold cursor-pointer hover:underline" data-goto="modalLogin">Sign in</a></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalForgot">
+  <div class="modal-card p-7">
+    <div class="modal-close" data-close><i class="fa-solid fa-xmark"></i></div>
+    <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white mb-4" style="background:linear-gradient(135deg,#BD9681,#724E40);"><i class="fa-solid fa-key"></i></div>
+    <h3 class="font-display font-extrabold text-[22px] text-ink mb-1">Reset password</h3>
+    <p class="text-[12.5px] text-[#9a918c] mb-6">Enter your email and we'll send a reset link within 2 minutes.</p>
+    <form class="space-y-3.5" onsubmit="event.preventDefault(); showToast('Reset link sent — check your inbox'); closeAllModals();">
+      <div class="field-wrap"><i class="fa-regular fa-envelope"></i><input class="field" type="email" placeholder="Email address" required /></div>
+      <button class="btn btn-primary w-full ripple" type="submit"><i class="fa-regular fa-paper-plane"></i> Send reset link</button>
+    </form>
+    <p class="text-center text-[12.5px] text-[#5b514c] mt-5">Remembered it? <a class="text-[#0a7a6e] font-bold cursor-pointer hover:underline" data-goto="modalLogin">Back to sign in</a></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Date ---------- */
+  var d = new Date();
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('todayDate').textContent =
+    days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+  /* ---------- Sidebar: collapse (desktop) + drawer (mobile) ---------- */
+  var shell = document.getElementById('appShell');
+  var rail = document.getElementById('leftRail');
+  var scrim = document.getElementById('scrim');
+  document.getElementById('collapseBtn').addEventListener('click', function(){
+    shell.classList.toggle('rail-collapsed');
+  });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    rail.classList.add('drawer-open'); scrim.classList.add('open');
+  });
+  scrim.addEventListener('click', function(){
+    rail.classList.remove('drawer-open'); scrim.classList.remove('open');
+  });
+
+  /* Nav active state */
+  document.querySelectorAll('.nav-item[data-nav]').forEach(function(n){
+    n.addEventListener('click', function(){
+      document.querySelectorAll('.nav-item').forEach(function(x){x.classList.remove('active');});
+      n.classList.add('active');
+      rail.classList.remove('drawer-open'); scrim.classList.remove('open');
+      showToast('Opened: ' + n.querySelector('.nav-label').textContent);
+    });
+  });
+
+  /* ---------- Note dropdown + copy ---------- */
+  var noteBtn = document.getElementById('noteBtn'), noteDd = document.getElementById('noteDropdown');
+  noteBtn.addEventListener('click', function(e){ e.stopPropagation(); noteDd.classList.toggle('open'); });
+  document.addEventListener('click', function(e){ if(!noteDd.contains(e.target) && e.target!==noteBtn && !noteBtn.contains(e.target)) noteDd.classList.remove('open'); });
+  document.getElementById('copyInfoBtn').addEventListener('click', function(){
+    var txt = document.getElementById('appInfoText').innerText;
+    if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(function(){ showToast('App info copied to clipboard'); }); }
+    else { showToast('Copied (fallback)'); }
+  });
+
+  /* ---------- Shop status toggle + close presets ---------- */
+  var sw = document.getElementById('shopSwitch'), badge = document.getElementById('openBadge');
+  sw.addEventListener('click', function(){
+    sw.classList.toggle('on');
+    var on = sw.classList.contains('on');
+    badge.textContent = on ? 'Shop is OPEN now' : 'Shop CLOSED today';
+    showToast(on ? 'Shop re-opened · banner removed from public page' : 'Shop closed · banner live on public page');
+  });
+  document.querySelectorAll('[data-close-preset]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p = b.getAttribute('data-close-preset');
+      var msg = {today:'Closing today · banner live in 5s', tomorrow:'Shop will be closed tomorrow', range:'Pick a date range in the next screen'};
+      if(p==='today'){ sw.classList.remove('on'); badge.textContent='Shop CLOSED today'; }
+      showToast(msg[p] || 'Done');
+    });
+  });
+
+  /* ---------- Modals ---------- */
+  function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeAllModals(){
+    document.querySelectorAll('.modal-overlay').forEach(function(m){ m.classList.remove('open'); });
+    document.body.style.overflow='';
+  }
+  window.closeAllModals = closeAllModals;
+  document.getElementById('openLoginBtn').addEventListener('click', function(){ openModal('modalLogin'); });
+  document.getElementById('openLoginNav').addEventListener('click', function(){ openModal('modalLogin'); rail.classList.remove('drawer-open'); scrim.classList.remove('open'); });
+  document.querySelectorAll('[data-close]').forEach(function(x){ x.addEventListener('click', closeAllModals); });
+  document.querySelectorAll('.modal-overlay').forEach(function(m){
+    m.addEventListener('click', function(e){ if(e.target===m) closeAllModals(); });
+  });
+  document.querySelectorAll('[data-goto]').forEach(function(a){
+    a.addEventListener('click', function(){
+      closeAllModals(); setTimeout(function(){ openModal(a.getAttribute('data-goto')); }, 180);
+    });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeAllModals(); noteDd.classList.remove('open'); } });
+
+  /* ---------- Toast ---------- */
+  var toastEl = document.getElementById('toast'), toastT;
+  window.showToast = function(msg){
+    document.getElementById('toastMsg').textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 2600);
+  };
+
+  /* ---------- Count-up KPIs ---------- */
+  var counted = false;
+  function runCountUp(){
+    if(counted) return; counted = true;
+    document.querySelectorAll('.count-up').forEach(function(el){
+      var target = +el.getAttribute('data-target'), start = null, dur = 1200;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/dur, 1);
+        var eased = 1 - Math.pow(1-p, 3);
+        el.textContent = Math.round(target*eased).toLocaleString();
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  setTimeout(runCountUp, 400);
+
+  /* ---------- Activity undo ---------- */
+  document.querySelectorAll('[data-undo]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var item = b.closest('.activity-item');
+      item.classList.add('undone');
+      b.textContent = 'Undone'; b.style.pointerEvents='none';
+      showToast('Action reverted · logged in ChangeLog');
+    });
+  });
+
+  /* ---------- Ripple effect ---------- */
+  document.querySelectorAll('.ripple').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var r = document.createElement('span'); r.className='rp';
+      var rect = btn.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      r.style.width = r.style.height = size+'px';
+      r.style.left = (e.clientX - rect.left - size/2)+'px';
+      r.style.top = (e.clientY - rect.top - size/2)+'px';
+      btn.appendChild(r); setTimeout(function(){ r.remove(); }, 600);
+    });
+  });
+
+  /* ---------- Back-to-top (appears after hero) ---------- */
+  var btt = document.getElementById('backToTop');
+  var heroH = document.getElementById('heroCard').offsetTop + 300;
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > heroH) btt.classList.add('show'); else btt.classList.remove('show');
+  }, {passive:true});
+  btt.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- Chatbot (button stays in place; panel opens above) ---------- */
+  var chatTog = document.getElementById('chatToggle'), chatPanel = document.getElementById('chatPanel');
+  chatTog.addEventListener('click', function(){ chatPanel.classList.toggle('open'); });
+  document.getElementById('chatClose').addEventListener('click', function(){ chatPanel.classList.remove('open'); });
+  var chatBody = document.getElementById('chatBody'), chatInput = document.getElementById('chatInput');
+  function addMsg(text, who){
+    var m = document.createElement('div');
+    m.className = 'chat-msg ' + (who==='user' ? 'chat-user' : 'chat-bot');
+    m.textContent = text;
+    chatBody.appendChild(m);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+  function botReply(userText){
+    var t = userText.toLowerCase();
+    var r = "Got it! I've logged that as a draft — you'll see a before→after summary to confirm before it goes live.";
+    if(t.indexOf('sale')>-1 || t.indexOf('sales')>-1) r = "Today so far: ฿18,420 across 86 contacts — up 12% vs yesterday. Want the full breakdown?";
+    else if(t.indexOf('latte')>-1 || t.indexOf('price')>-1 || t.indexOf('฿')>-1 || t.indexOf('baht')>-1) r = "Draft: Iced Latte ฿70 → ฿75. Confirm to apply; it syncs to menu + LINE in 5s.";
+    else if(t.indexOf('close')>-1) r = "Draft: close shop today with default customer message. Confirm to publish the banner now.";
+    else if(t.indexOf('promo')>-1) r = "Let's draft a promo: name, discount %, dates. Try: 'Create 20% off evenings, Mon–Thu'.";
+    setTimeout(function(){ addMsg(r, 'bot'); }, 650);
+  }
+  function sendChat(){
+    var v = chatInput.value.trim();
+    if(!v) return;
+    addMsg(v, 'user'); chatInput.value='';
+    botReply(v);
+  }
+  document.getElementById('chatSend').addEventListener('click', sendChat);
+  chatInput.addEventListener('keydown', function(e){ if(e.key==='Enter') sendChat(); });
+  document.querySelectorAll('.chat-chip').forEach(function(c){
+    c.addEventListener('click', function(){ addMsg(c.textContent, 'user'); botReply(c.textContent); });
+  });
+
+})();
+</script>
+</body>
+</html>
