@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store Owner Dashboard — Today’s Store</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'off-white': '#E3E3DD',
+            'aqua-mint': '#04E1AB',
+            'sage': '#BD9681',
+            'emerald': '#10AE9E',
+            'violet': '#6A5DE6',
+            'forest': '#724E40',
+            'indigo': '#222480',
+            'charcoal': '#291F1B',
+            'navy': '#050738',
+          },
+          fontFamily: {
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 10px 30px rgba(0,0,0,0.04)',
+            'card': '0 4px 20px rgba(0,0,0,0.05)',
+            'elevated': '0 12px 40px rgba(0,0,0,0.08)',
+          },
+          borderRadius: {
+            '2xl': '16px',
+            '3xl': '20px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-off-white-base: #E3E3DD;
+      --color-aqua-mint: #04E1AB;
+      --color-sage-green: #BD9681;
+      --color-emerald-green: #10AE9E;
+      --color-vivid-violet: #6A5DE6;
+      --color-deep-forest-olive: #724E40;
+      --color-deep-royal-indigo: #222480;
+      --color-deep-charcoal: #291F1B;
+      --color-midnight-navy: #050738;
+    }
+
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #04E1AB #f1f1f1;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f5f5f5;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #04E1AB;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10AE9E;
+    }
+    ::-webkit-scrollbar-button {
+      display: none;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #291F1B;
+      font-size: 14px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Sidebar transition */
+    .sidebar {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s ease;
+    }
+    .sidebar-collapsed {
+      transform: translateX(-100%);
+    }
+    @media (min-width: 1024px) {
+      .sidebar-collapsed {
+        transform: translateX(0);
+        width: 72px;
+      }
+      .sidebar-collapsed .nav-label,
+      .sidebar-collapsed .logo-text {
+        opacity: 0;
+        width: 0;
+        overflow: hidden;
+      }
+      .sidebar-collapsed .nav-item {
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    /* Smooth micro animations */
+    .fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scale-press:active {
+      transform: scale(0.97);
+    }
+
+    .card-hover {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    /* Toggle switch */
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: #d1d5db;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .toggle-switch.active {
+      background: #04E1AB;
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .toggle-switch.active::after {
+      transform: translateX(20px);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      background: rgba(41, 31, 27, 0.45);
+      backdrop-filter: blur(4px);
+    }
+    .modal-enter {
+      animation: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Chatbot */
+    .chatbot-panel {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: bottom right;
+    }
+    .chatbot-panel.hidden-panel {
+      opacity: 0;
+      transform: scale(0.9) translateY(12px);
+      pointer-events: none;
+    }
+
+    /* Skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Continuous border alignment */
+    .header-border {
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .sidebar-border {
+      border-right: 1px solid #e5e5e5;
+    }
+
+    /* Soft organic touches */
+    .organic-blob {
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+
+    /* Activity undo button */
+    .undo-btn {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .activity-row:hover .undo-btn {
+      opacity: 1;
+    }
+
+    /* Back to top + chatbot row */
+    .float-actions {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Info dropdown */
+    .info-dropdown {
+      animation: dropdownIn 0.2s ease-out;
+    }
+    @keyframes dropdownIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Input focus */
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(4, 225, 171, 0.25);
+      border-color: #04E1AB;
+    }
+
+    /* Bento grid helpers */
+    .bento-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    /* Prevent layout shift */
+    .main-content {
+      min-height: calc(100vh - 64px);
+    }
+
+    /* Mobile sidebar overlay */
+    .sidebar-overlay {
+      background: rgba(0,0,0,0.35);
+      transition: opacity 0.3s;
+    }
+  </style>
+</head>
+<body class="bg-white text-charcoal antialiased">
+
+  <!-- ==================== APP SHELL ==================== -->
+  <div class="flex h-screen overflow-hidden">
+
+    <!-- Mobile Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 z-40 sidebar-overlay opacity-0 pointer-events-none lg:hidden" onclick="toggleSidebar()"></div>
+
+    <!-- LEFT SIDEBAR -->
+    <aside id="sidebar" class="sidebar fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white sidebar-border flex flex-col h-full">
+      <!-- Logo (same height as header) -->
+      <div class="h-16 flex items-center px-5 border-b border-r border-[#e5e5e5] bg-white shrink-0">
+        <div class="flex items-center gap-3 overflow-hidden">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-aqua-mint to-emerald flex items-center justify-center shrink-0 shadow-sm">
+            <i class="bi bi-shop text-white text-lg"></i>
+          </div>
+          <div class="logo-text whitespace-nowrap">
+            <div class="font-display font-bold text-[15px] tracking-tight text-charcoal leading-none">StoreOS</div>
+            <div class="text-[10px] text-gray-400 font-medium tracking-wide mt-0.5">OWNER PANEL</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+        <div class="px-3 mb-2">
+          <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Main</p>
+        </div>
+
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl bg-aqua-mint/10 text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-house-door text-lg text-aqua-mint"></i>
+          <span class="nav-label">Today’s Store</span>
+        </a>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-list-ul text-lg"></i>
+          <span class="nav-label">Menu & Prices</span>
+        </a>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-tag text-lg"></i>
+          <span class="nav-label">Promotions</span>
+        </a>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-image text-lg"></i>
+          <span class="nav-label">Photos</span>
+        </a>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-clock-history text-lg"></i>
+          <span class="nav-label">Hours & Status</span>
+        </a>
+
+        <div class="px-3 mt-6 mb-2">
+          <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Insights</p>
+        </div>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-bar-chart text-lg"></i>
+          <span class="nav-label">Analytics</span>
+        </a>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-globe text-lg"></i>
+          <span class="nav-label">Website Health</span>
+        </a>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-people text-lg"></i>
+          <span class="nav-label">Customers</span>
+        </a>
+
+        <div class="px-3 mt-6 mb-2">
+          <p class="text-[10px] font-semibold uppercase tracking-wider text-gray-400">Settings</p>
+        </div>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-gear text-lg"></i>
+          <span class="nav-label">Store Settings</span>
+        </a>
+        <a href="#" class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-50 hover:text-charcoal font-medium text-[13px] transition-all">
+          <i class="bi bi-person-circle text-lg"></i>
+          <span class="nav-label">Account</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar footer user -->
+      <div class="p-4 border-t border-[#e5e5e5]">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-indigo flex items-center justify-center text-white text-sm font-semibold shrink-0">
+            EK
+          </div>
+          <div class="nav-label overflow-hidden">
+            <div class="text-[13px] font-semibold text-charcoal truncate">Ek Chaiwat</div>
+            <div class="text-[11px] text-gray-400">Owner · Coffee House</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN COLUMN -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+      <!-- HEADER -->
+      <header class="h-16 bg-white header-border flex items-center justify-between px-4 lg:px-6 shrink-0 z-30">
+        <div class="flex items-center gap-3">
+          <!-- Hamburger / Toggle -->
+          <button onclick="toggleSidebar()" class="w-10 h-10 rounded-xl flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors lg:hidden">
+            <i class="bi bi-list text-xl"></i>
+          </button>
+          <button onclick="toggleSidebar()" class="hidden lg:flex w-10 h-10 rounded-xl items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors">
+            <i class="bi bi-layout-sidebar-inset text-lg"></i>
+          </button>
+
+          <div class="hidden sm:block">
+            <h1 class="font-display font-bold text-[17px] text-charcoal tracking-tight">Today’s Store</h1>
+            <p class="text-[11px] text-gray-400 -mt-0.5">Sunday, 8 Nov 2026 · B.E. 2569</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- View website -->
+          <button class="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl text-[13px] font-medium text-charcoal bg-gray-50 hover:bg-gray-100 transition-colors">
+            <i class="bi bi-box-arrow-up-right text-sm"></i>
+            View Website
+          </button>
+
+          <!-- Info icon -->
+          <div class="relative">
+            <button onclick="toggleInfoDropdown()" class="w-10 h-10 rounded-xl flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors relative">
+              <i class="bi bi-info-circle text-lg"></i>
+            </button>
+            <div id="infoDropdown" class="hidden absolute right-0 top-12 w-[340px] sm:w-[400px] bg-white rounded-2xl shadow-elevated border border-gray-100 p-5 z-50 info-dropdown">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="font-display font-bold text-[15px] text-charcoal">ข้อมูลของเว็บแอพ</h3>
+                <button onclick="toggleInfoDropdown()" class="text-gray-400 hover:text-charcoal">
+                  <i class="bi bi-x-lg text-sm"></i>
+                </button>
+              </div>
+              <div id="appInfoText" class="text-[12px] leading-relaxed text-gray-600 max-h-[280px] overflow-y-auto pr-1 space-y-2">
+                <p><strong>1.1 หลังบ้านเจ้าของร้าน | หน้าแรก "วันนี้ร้านเป็นไง"</strong></p>
+                <p>/app · ผู้ใช้: เจ้าของ, พนักงาน · ที่มา: D1.1, D1.4, D1.14</p>
+                <p><strong>เป้าหมาย:</strong> เปิดมาแล้วรู้ใน 5 วินาทีว่า (1) มีงานค้างไหม (2) เว็บปกติไหม (3) อยากแก้อะไรกดได้ทันที — ไม่ใช่หน้ากราฟ</p>
+                <p><strong>Function</strong></p>
+                <ul class="list-disc pl-4 space-y-1">
+                  <li>แสดงงานค้างอัตโนมัติ: ลูกค้าสนใจที่ยังไม่ตอบ · โปรใกล้หมด (≤ 3 วัน) · รายการที่ราคาไม่ถูกแก้เกิน 60 วัน · รายการที่รูปหาย</li>
+                  <li>ทางลัด "งาน" 4 ปุ่ม → ไปหน้า 1.2 / 1.3 / 1.4 พร้อมเปิด sheet ที่ถูกต้องทันที</li>
+                  <li>ปิดร้านวันนี้ / ปิดตามช่วง (F4): เลือก "วันนี้ · พรุ่งนี้ · ถึงวันที่…" + ข้อความถึงลูกค้า (มีข้อความเริ่มต้นให้) → ขึ้นบน 2.1 / 2.5 ทันที · เปิดร้านกลับด้วย 1 แตะ</li>
+                  <li>สรุป 3 ตัวเลขของวันนี้ (เทียบเมื่อวาน) → แตะไป 1.8</li>
+                  <li>สถานะเว็บ 1 บรรทัด → แตะไป 1.9</li>
+                  <li>กิจกรรมล่าสุด 5 รายการ (ภาษาคน) + ปุ่ม "ย้อนกลับ" ต่อรายการที่ย้อนได้</li>
+                  <li>[P2] ช่อง "บอกสิ่งที่อยากแก้" (D1.14): พิมพ์ "ลาเต้เย็นขึ้นเป็น 75" → ระบบแปลงเป็นการเปลี่ยนที่มีโครงสร้าง → แสดงสรุป ก่อน→หลัง → เจ้าของกดยืนยัน · รองรับเฉพาะ: แก้ราคา · เปลี่ยนสถานะรายการ · ร่างโปร · ปิดร้าน · ห้ามเขียนข้อมูลเองโดยไม่ยืนยัน · บันทึกใน ChangeLog ว่า "สั่งด้วยข้อความ"</li>
+                </ul>
+                <p><strong>UX/UI (มือถือ ไล่จากบนลงล่าง)</strong></p>
+                <p>1 ทักทาย + สถานะร้าน · 2 งานค้าง · 3 ทางลัด 4 ปุ่ม · 4 วันนี้ในตัวเลข · 5 สถานะเว็บ · 6 กิจกรรมล่าสุด · 7 การ์ดต่อยอด · 8 แถบภารกิจ</p>
+                <p>เดสก์ท็อป: 2 คอลัมน์ ซ้าย = 1–4, ขวา = 5–7 + พรีวิวเว็บ 390 px</p>
+                <p>สถานะ: ร้านใหม่/ว่าง → เช็กลิสต์เริ่มต้น 3 ข้อ · โหลด → skeleton · ออฟไลน์ → แสดงข้อมูลล่าสุดที่แคชไว้</p>
+              </div>
+              <button onclick="copyAppInfo()" class="mt-4 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-aqua-mint text-white text-[13px] font-semibold hover:bg-emerald transition-colors">
+                <i class="bi bi-clipboard"></i>
+                <span id="copyBtnText">Copy Info</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <button class="w-10 h-10 rounded-xl flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors relative">
+            <i class="bi bi-bell text-lg"></i>
+            <span class="absolute top-2 right-2 w-2 h-2 bg-aqua-mint rounded-full"></span>
+          </button>
+
+          <!-- Avatar / Auth trigger -->
+          <button onclick="openModal('loginModal')" class="w-9 h-9 rounded-full bg-indigo text-white text-sm font-semibold flex items-center justify-center ml-1 hover:opacity-90 transition-opacity">
+            EK
+          </button>
+        </div>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main class="flex-1 overflow-y-auto bg-[#FAFAF9] main-content">
+        <div class="p-4 lg:p-6 max-w-[1400px] mx-auto">
+
+          <!-- Desktop 2-column layout -->
+          <div class="grid grid-cols-1 xl:grid-cols-12 gap-5">
+
+            <!-- LEFT COLUMN (1–4) -->
+            <div class="xl:col-span-7 space-y-5">
+
+              <!-- 1. Greeting + Store Status -->
+              <section class="bg-white rounded-2xl border border-gray-100 shadow-soft p-5 fade-in">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <h2 class="font-display font-bold text-[20px] text-charcoal tracking-tight">
+                      Hello, Ek <span class="inline-block animate-pulse">👋</span>
+                    </h2>
+                    <p class="text-[13px] text-gray-500 mt-0.5">Sunday, 8 November 2026 · B.E. 2569</p>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span id="storeStatusBadge" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-semibold bg-aqua-mint/15 text-emerald">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald"></span>
+                      Store is Open
+                    </span>
+                    <div class="flex items-center gap-2">
+                      <span class="text-[12px] text-gray-500 font-medium">Close today</span>
+                      <div id="closeTodayToggle" class="toggle-switch" onclick="toggleStoreStatus()"></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 2. Pending Work -->
+              <section class="bg-white rounded-2xl border border-gray-100 shadow-soft p-5 fade-in" style="animation-delay: 0.05s">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="font-display font-bold text-[15px] text-charcoal">Pending Work</h3>
+                  <span class="text-[11px] font-semibold text-violet bg-violet/10 px-2.5 py-1 rounded-full">3 items</span>
+                </div>
+
+                <div class="space-y-3" id="pendingWorkList">
+                  <!-- Card 1 -->
+                  <div class="flex items-center gap-3 p-3.5 rounded-xl bg-amber-50/60 border border-amber-100 card-hover">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
+                      <i class="bi bi-chat-dots text-amber-600 text-lg"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] font-semibold text-charcoal truncate">New customer inquiry waiting</p>
+                      <p class="text-[11px] text-gray-500">Somchai asked about catering · 2h ago</p>
+                    </div>
+                    <button class="px-3.5 py-2 rounded-lg bg-white border border-amber-200 text-[12px] font-semibold text-amber-700 hover:bg-amber-50 transition-colors scale-press shrink-0">
+                      Reply now
+                    </button>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div class="flex items-center gap-3 p-3.5 rounded-xl bg-rose-50/60 border border-rose-100 card-hover">
+                    <div class="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center shrink-0">
+                      <i class="bi bi-tag text-rose-600 text-lg"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] font-semibold text-charcoal truncate">Promo ending soon</p>
+                      <p class="text-[11px] text-gray-500">“Buy 2 Get 1 Free” ends in 2 days</p>
+                    </div>
+                    <button class="px-3.5 py-2 rounded-lg bg-white border border-rose-200 text-[12px] font-semibold text-rose-700 hover:bg-rose-50 transition-colors scale-press shrink-0">
+                      Extend
+                    </button>
+                  </div>
+
+                  <!-- Card 3 -->
+                  <div class="flex items-center gap-3 p-3.5 rounded-xl bg-violet/5 border border-violet/15 card-hover">
+                    <div class="w-10 h-10 rounded-xl bg-violet/10 flex items-center justify-center shrink-0">
+                      <i class="bi bi-currency-exchange text-violet text-lg"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] font-semibold text-charcoal truncate">Price not updated > 60 days</p>
+                      <p class="text-[11px] text-gray-500">Iced Latte · last change 78 days ago</p>
+                    </div>
+                    <button class="px-3.5 py-2 rounded-lg bg-white border border-violet/20 text-[12px] font-semibold text-violet hover:bg-violet/5 transition-colors scale-press shrink-0">
+                      Review
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 3. Quick Actions (4 big buttons) -->
+              <section class="bg-white rounded-2xl border border-gray-100 shadow-soft p-5 fade-in" style="animation-delay: 0.1s">
+                <h3 class="font-display font-bold text-[15px] text-charcoal mb-4">Quick Actions</h3>
+                <div class="grid grid-cols-2 gap-3">
+                  <button class="flex flex-col items-center justify-center gap-2 h-[76px] rounded-2xl bg-gradient-to-br from-aqua-mint/10 to-emerald/5 border border-aqua-mint/20 hover:border-aqua-mint/40 transition-all scale-press group">
+                    <i class="bi bi-cash-coin text-xl text-emerald group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[12px] font-semibold text-charcoal">Edit Prices</span>
+                  </button>
+                  <button class="flex flex-col items-center justify-center gap-2 h-[76px] rounded-2xl bg-gradient-to-br from-violet/10 to-violet/5 border border-violet/15 hover:border-violet/30 transition-all scale-press group">
+                    <i class="bi bi-percent text-xl text-violet group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[12px] font-semibold text-charcoal">Launch Promo</span>
+                  </button>
+                  <button class="flex flex-col items-center justify-center gap-2 h-[76px] rounded-2xl bg-gradient-to-br from-sage/15 to-sage/5 border border-sage/20 hover:border-sage/40 transition-all scale-press group">
+                    <i class="bi bi-image text-xl text-forest group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[12px] font-semibold text-charcoal">Change Photos</span>
+                  </button>
+                  <button onclick="openCloseStoreModal()" class="flex flex-col items-center justify-center gap-2 h-[76px] rounded-2xl bg-gradient-to-br from-rose-50 to-orange-50 border border-rose-100 hover:border-rose-200 transition-all scale-press group">
+                    <i class="bi bi-shop-window text-xl text-rose-500 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[12px] font-semibold text-charcoal">Close Store</span>
+                  </button>
+                </div>
+              </section>
+
+              <!-- 4. Today’s Numbers -->
+              <section class="bg-white rounded-2xl border border-gray-100 shadow-soft p-5 fade-in" style="animation-delay: 0.15s">
+                <div class="flex items-center justify-between mb-4">
+                  <h3 class="font-display font-bold text-[15px] text-charcoal">Today in Numbers</h3>
+                  <button class="text-[12px] font-medium text-aqua-mint hover:text-emerald transition-colors">View details →</button>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                  <!-- Visitors -->
+                  <div class="p-4 rounded-2xl bg-[#FAFAF9] border border-gray-100 text-center card-hover cursor-pointer">
+                    <p class="text-[11px] font-medium text-gray-500 mb-1">Visitors</p>
+                    <p class="font-display font-extrabold text-[26px] text-charcoal tracking-tight leading-none">248</p>
+                    <p class="text-[11px] font-semibold text-emerald mt-1.5 flex items-center justify-center gap-0.5">
+                      <i class="bi bi-arrow-up-short text-sm"></i> 12% vs yesterday
+                    </p>
+                  </div>
+                  <!-- Contacts -->
+                  <div class="p-4 rounded-2xl bg-[#FAFAF9] border border-gray-100 text-center card-hover cursor-pointer">
+                    <p class="text-[11px] font-medium text-gray-500 mb-1">Contacts</p>
+                    <p class="font-display font-extrabold text-[26px] text-charcoal tracking-tight leading-none">37</p>
+                    <p class="text-[11px] font-semibold text-emerald mt-1.5 flex items-center justify-center gap-0.5">
+                      <i class="bi bi-arrow-up-short text-sm"></i> 8% vs yesterday
+                    </p>
+                  </div>
+                  <!-- New Interest -->
+                  <div class="p-4 rounded-2xl bg-[#FAFAF9] border border-gray-100 text-center card-hover cursor-pointer">
+                    <p class="text-[11px] font-medium text-gray-500 mb-1">New Interest</p>
+                    <p class="font-display font-extrabold text-[26px] text-charcoal tracking-tight leading-none">9</p>
+                    <p class="text-[11px] font-semibold text-rose-500 mt-1.5 flex items-center justify-center gap-0.5">
+                      <i class="bi bi-arrow-down-short text-sm"></i> 3% vs yesterday
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN (5–7 + Preview) -->
+            <div class="xl:col-span-5 space-y-5">
+
+              <!-- 5. Website Status -->
+              <section class="bg-white rounded-2xl border border-gray-100 shadow-soft p-5 fade-in" style="animation-delay: 0.1s">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-emerald/10 flex items-center justify-center shrink-0">
+                    <i class="bi bi-check-circle text-emerald text-lg"></i>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-[13px] font-semibold text-charcoal">Website is healthy</p>
+                    <p class="text-[12px] text-gray-500 mt-0.5">Last checked 05:00 · Backup completed last night</p>
+                  </div>
+                  <button class="text-[12px] font-medium text-aqua-mint hover:text-emerald transition-colors shrink-0">Details</button>
+                </div>
+              </section>
+
+              <!-- 6. Recent Activity -->
+              <section class="bg-white rounded-2xl border border-gray-100 shadow-soft p-5 fade-in" style="animation-delay: 0.15s">
+                <h3 class="font-display font-bold text-[15px] text-charcoal mb-4">Recent Activity</h3>
+                <div class="space-y-1">
+                  <div class="activity-row flex items-center gap-3 py-2.5 px-2 rounded-xl hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-aqua-mint/15 flex items-center justify-center shrink-0">
+                      <i class="bi bi-person text-emerald text-sm"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] text-charcoal"><span class="font-semibold">Somchai</span> updated Iced Latte ฿70 → ฿75</p>
+                      <p class="text-[11px] text-gray-400">14:05</p>
+                    </div>
+                    <button class="undo-btn text-[11px] font-semibold text-violet px-2 py-1 rounded-md hover:bg-violet/10 transition-colors">Undo</button>
+                  </div>
+                  <div class="activity-row flex items-center gap-3 py-2.5 px-2 rounded-xl hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-violet/10 flex items-center justify-center shrink-0">
+                      <i class="bi bi-tag text-violet text-sm"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] text-charcoal"><span class="font-semibold">You</span> launched “Weekend Special”</p>
+                      <p class="text-[11px] text-gray-400">12:40</p>
+                    </div>
+                    <button class="undo-btn text-[11px] font-semibold text-violet px-2 py-1 rounded-md hover:bg-violet/10 transition-colors">Undo</button>
+                  </div>
+                  <div class="activity-row flex items-center gap-3 py-2.5 px-2 rounded-xl hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-sage/20 flex items-center justify-center shrink-0">
+                      <i class="bi bi-image text-forest text-sm"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] text-charcoal"><span class="font-semibold">Nid</span> uploaded 3 new photos</p>
+                      <p class="text-[11px] text-gray-400">11:18</p>
+                    </div>
+                  </div>
+                  <div class="activity-row flex items-center gap-3 py-2.5 px-2 rounded-xl hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center shrink-0">
+                      <i class="bi bi-shop text-rose-500 text-sm"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] text-charcoal"><span class="font-semibold">You</span> set store hours for public holiday</p>
+                      <p class="text-[11px] text-gray-400">09:55</p>
+                    </div>
+                    <button class="undo-btn text-[11px] font-semibold text-violet px-2 py-1 rounded-md hover:bg-violet/10 transition-colors">Undo</button>
+                  </div>
+                  <div class="activity-row flex items-center gap-3 py-2.5 px-2 rounded-xl hover:bg-gray-50 transition-colors">
+                    <div class="w-8 h-8 rounded-full bg-indigo/10 flex items-center justify-center shrink-0">
+                      <i class="bi bi-chat-left-text text-indigo text-sm"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-[13px] text-charcoal"><span class="font-semibold">System</span> replied to LINE inquiry</p>
+                      <p class="text-[11px] text-gray-400">08:22</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 7. Growth Card (optional) -->
+              <section class="bg-gradient-to-br from-indigo to-navy rounded-2xl p-5 text-white shadow-elevated fade-in" style="animation-delay: 0.2s">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                    <i class="bi bi-lightning-charge text-aqua-mint text-lg"></i>
+                  </div>
+                  <div class="flex-1">
+                    <p class="font-display font-bold text-[15px]">Ready to grow?</p>
+                    <p class="text-[12px] text-white/70 mt-1 leading-relaxed">Your weekend traffic is up 18%. Try a limited-time bundle to convert more visitors.</p>
+                    <button class="mt-3 px-4 py-2 rounded-xl bg-aqua-mint text-charcoal text-[12px] font-bold hover:bg-white transition-colors scale-press">
+                      Create Bundle
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Website Preview (desktop) -->
+              <section class="hidden xl:block bg-white rounded-2xl border border-gray-100 shadow-soft overflow-hidden fade-in" style="animation-delay: 0.25s">
+                <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                  <p class="text-[12px] font-semibold text-charcoal">Live Website Preview</p>
+                  <span class="text-[10px] text-gray-400">390 px</span>
+                </div>
+                <div class="bg-gray-50 p-4 flex justify-center">
+                  <div class="w-[280px] h-[480px] bg-white rounded-[28px] border-[6px] border-gray-800 shadow-xl overflow-hidden relative">
+                    <!-- Fake phone UI -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-gray-800 rounded-b-xl z-10"></div>
+                    <div class="h-full overflow-hidden pt-6">
+                      <div class="px-3 py-2 bg-aqua-mint text-white text-center text-[10px] font-semibold">
+                        Open today · 08:00 – 20:00
+                      </div>
+                      <div class="p-3 space-y-2">
+                        <div class="h-24 rounded-xl bg-gradient-to-br from-emerald/20 to-aqua-mint/10 flex items-center justify-center">
+                          <i class="bi bi-cup-hot text-3xl text-emerald"></i>
+                        </div>
+                        <div class="space-y-1.5">
+                          <div class="h-3 bg-gray-200 rounded w-3/4"></div>
+                          <div class="h-2.5 bg-gray-100 rounded w-1/2"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-3">
+                          <div class="h-16 rounded-lg bg-gray-100"></div>
+                          <div class="h-16 rounded-lg bg-gray-100"></div>
+                        </div>
+                        <div class="h-8 rounded-lg bg-aqua-mint/20 mt-2"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+          </div>
+
+          <!-- Natural Language Command (P2) -->
+          <section class="mt-5 bg-white rounded-2xl border border-gray-100 shadow-soft p-5 fade-in" style="animation-delay: 0.3s">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="bi bi-magic text-violet"></i>
+              <h3 class="font-display font-bold text-[15px] text-charcoal">Tell us what to change</h3>
+              <span class="text-[10px] font-semibold text-violet bg-violet/10 px-2 py-0.5 rounded-full">P2</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input id="nlCommand" type="text" placeholder='e.g. “Iced Latte to 75 baht” or “Close store tomorrow”' class="flex-1 px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white transition-colors" />
+              <button onclick="processNLCommand()" class="px-5 py-3 rounded-xl bg-charcoal text-white text-[13px] font-semibold hover:bg-navy transition-colors scale-press shrink-0">
+                Preview Change
+              </button>
+            </div>
+            <div id="nlPreview" class="hidden mt-4 p-4 rounded-xl bg-aqua-mint/5 border border-aqua-mint/20">
+              <p class="text-[12px] text-gray-500 mb-2">System understood:</p>
+              <div class="flex items-center gap-3 text-[13px]">
+                <span class="font-medium text-charcoal" id="nlBefore">Iced Latte · ฿70</span>
+                <i class="bi bi-arrow-right text-aqua-mint"></i>
+                <span class="font-semibold text-emerald" id="nlAfter">Iced Latte · ฿75</span>
+              </div>
+              <div class="flex gap-2 mt-3">
+                <button onclick="confirmNLCommand()" class="px-4 py-2 rounded-lg bg-aqua-mint text-white text-[12px] font-semibold hover:bg-emerald transition-colors">Confirm</button>
+                <button onclick="cancelNLCommand()" class="px-4 py-2 rounded-lg bg-gray-100 text-gray-600 text-[12px] font-semibold hover:bg-gray-200 transition-colors">Cancel</button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================== FLOAT ACTIONS ==================== -->
+  <div class="float-actions">
+    <button id="backToTop" onclick="scrollToTop()" class="hidden w-11 h-11 rounded-full bg-white border border-gray-200 shadow-elevated flex items-center justify-center text-charcoal hover:bg-gray-50 transition-all scale-press">
+      <i class="bi bi-arrow-up text-lg"></i>
+    </button>
+    <button id="chatbotToggle" onclick="toggleChatbot()" class="w-11 h-11 rounded-full bg-gradient-to-br from-aqua-mint to-emerald text-white shadow-elevated flex items-center justify-center hover:opacity-90 transition-all scale-press relative">
+      <i class="bi bi-chat-dots-fill text-lg" id="chatbotIcon"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-violet rounded-full border-2 border-white"></span>
+    </button>
+  </div>
+
+  <!-- CHATBOT PANEL -->
+  <div id="chatbotPanel" class="chatbot-panel hidden-panel fixed bottom-20 right-6 w-[340px] max-w-[calc(100vw-32px)] bg-white rounded-2xl shadow-elevated border border-gray-100 z-50 overflow-hidden flex flex-col" style="height: 420px;">
+    <div class="px-4 py-3 bg-gradient-to-r from-aqua-mint to-emerald text-white flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+          <i class="bi bi-robot text-sm"></i>
+        </div>
+        <div>
+          <p class="text-[13px] font-semibold">Store Assistant</p>
+          <p class="text-[10px] text-white/80">Always here to help</p>
+        </div>
+      </div>
+      <button onclick="toggleChatbot()" class="w-8 h-8 rounded-lg hover:bg-white/20 flex items-center justify-center transition-colors">
+        <i class="bi bi-x-lg text-sm"></i>
+      </button>
+    </div>
+    <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#FAFAF9]">
+      <div class="flex gap-2">
+        <div class="w-7 h-7 rounded-full bg-aqua-mint/20 flex items-center justify-center shrink-0">
+          <i class="bi bi-robot text-emerald text-xs"></i>
+        </div>
+        <div class="bg-white rounded-2xl rounded-tl-md px-3.5 py-2.5 text-[13px] text-charcoal shadow-sm max-w-[85%]">
+          Hi Ek! How can I help with your store today?
+        </div>
+      </div>
+    </div>
+    <div class="p-3 border-t border-gray-100 bg-white">
+      <div class="flex gap-2">
+        <input id="chatInput" type="text" placeholder="Type a message..." class="flex-1 px-3.5 py-2.5 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" onkeydown="if(event.key==='Enter')sendChat()" />
+        <button onclick="sendChat()" class="w-10 h-10 rounded-xl bg-aqua-mint text-white flex items-center justify-center hover:bg-emerald transition-colors scale-press">
+          <i class="bi bi-send-fill text-sm"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 modal-overlay">
+    <div class="bg-white rounded-3xl shadow-elevated w-full max-w-[400px] modal-enter overflow-hidden">
+      <div class="flex items-center justify-between px-6 pt-6 pb-2">
+        <h2 class="font-display font-bold text-[20px] text-charcoal">Welcome back</h2>
+        <button onclick="closeModal('loginModal')" class="w-9 h-9 rounded-xl flex items-center justify-center text-gray-400 hover:bg-gray-100 transition-colors">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="px-6 pb-6">
+        <p class="text-[13px] text-gray-500 mb-5">Sign in to manage your store</p>
+        <form onsubmit="event.preventDefault(); closeModal('loginModal');" class="space-y-4">
+          <div>
+            <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Email</label>
+            <input type="email" required placeholder="you@store.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" />
+          </div>
+          <div>
+            <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Password</label>
+            <input type="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" />
+          </div>
+          <div class="flex items-center justify-between">
+            <label class="flex items-center gap-2 text-[12px] text-gray-500 cursor-pointer">
+              <input type="checkbox" class="rounded border-gray-300 text-aqua-mint focus:ring-aqua-mint" />
+              Remember me
+            </label>
+            <button type="button" onclick="switchModal('loginModal','forgotModal')" class="text-[12px] font-medium text-aqua-mint hover:text-emerald">Forgot password?</button>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-aqua-mint text-white text-[14px] font-semibold hover:bg-emerald transition-colors scale-press">
+            Sign In
+          </button>
+        </form>
+        <p class="text-center text-[13px] text-gray-500 mt-5">
+          Don’t have an account?
+          <button onclick="switchModal('loginModal','signupModal')" class="font-semibold text-aqua-mint hover:text-emerald">Sign up</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN UP MODAL -->
+  <div id="signupModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 modal-overlay">
+    <div class="bg-white rounded-3xl shadow-elevated w-full max-w-[400px] modal-enter overflow-hidden">
+      <div class="flex items-center justify-between px-6 pt-6 pb-2">
+        <h2 class="font-display font-bold text-[20px] text-charcoal">Create account</h2>
+        <button onclick="closeModal('signupModal')" class="w-9 h-9 rounded-xl flex items-center justify-center text-gray-400 hover:bg-gray-100 transition-colors">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="px-6 pb-6">
+        <p class="text-[13px] text-gray-500 mb-5">Start managing your store in minutes</p>
+        <form onsubmit="event.preventDefault(); closeModal('signupModal');" class="space-y-4">
+          <div>
+            <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Full name</label>
+            <input type="text" required placeholder="Ek Chaiwat" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" />
+          </div>
+          <div>
+            <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Email</label>
+            <input type="email" required placeholder="you@store.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" />
+          </div>
+          <div>
+            <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Password</label>
+            <input type="password" required placeholder="Min. 8 characters" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" />
+          </div>
+          <div>
+            <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Store name</label>
+            <input type="text" required placeholder="Coffee House" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" />
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-aqua-mint text-white text-[14px] font-semibold hover:bg-emerald transition-colors scale-press">
+            Create Account
+          </button>
+        </form>
+        <p class="text-center text-[13px] text-gray-500 mt-5">
+          Already have an account?
+          <button onclick="switchModal('signupModal','loginModal')" class="font-semibold text-aqua-mint hover:text-emerald">Sign in</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD MODAL -->
+  <div id="forgotModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 modal-overlay">
+    <div class="bg-white rounded-3xl shadow-elevated w-full max-w-[400px] modal-enter overflow-hidden">
+      <div class="flex items-center justify-between px-6 pt-6 pb-2">
+        <h2 class="font-display font-bold text-[20px] text-charcoal">Reset password</h2>
+        <button onclick="closeModal('forgotModal')" class="w-9 h-9 rounded-xl flex items-center justify-center text-gray-400 hover:bg-gray-100 transition-colors">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="px-6 pb-6">
+        <p class="text-[13px] text-gray-500 mb-5">We’ll send a reset link to your email</p>
+        <form onsubmit="event.preventDefault(); alert('Reset link sent!'); closeModal('forgotModal');" class="space-y-4">
+          <div>
+            <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Email address</label>
+            <input type="email" required placeholder="you@store.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white" />
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-aqua-mint text-white text-[14px] font-semibold hover:bg-emerald transition-colors scale-press">
+            Send Reset Link
+          </button>
+        </form>
+        <p class="text-center text-[13px] text-gray-500 mt-5">
+          <button onclick="switchModal('forgotModal','loginModal')" class="font-semibold text-aqua-mint hover:text-emerald">← Back to sign in</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSE STORE MODAL -->
+  <div id="closeStoreModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 modal-overlay">
+    <div class="bg-white rounded-3xl shadow-elevated w-full max-w-[420px] modal-enter overflow-hidden">
+      <div class="flex items-center justify-between px-6 pt-6 pb-2">
+        <h2 class="font-display font-bold text-[18px] text-charcoal">Close Store</h2>
+        <button onclick="closeModal('closeStoreModal')" class="w-9 h-9 rounded-xl flex items-center justify-center text-gray-400 hover:bg-gray-100 transition-colors">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="px-6 pb-6 space-y-4">
+        <p class="text-[13px] text-gray-500">Choose how long the store will be closed. A banner will appear on your public website immediately.</p>
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" onclick="selectClosePeriod(this,'today')" class="close-period-btn py-2.5 rounded-xl border border-gray-200 text-[12px] font-semibold hover:border-aqua-mint hover:bg-aqua-mint/5 transition-colors">Today</button>
+          <button type="button" onclick="selectClosePeriod(this,'tomorrow')" class="close-period-btn py-2.5 rounded-xl border border-gray-200 text-[12px] font-semibold hover:border-aqua-mint hover:bg-aqua-mint/5 transition-colors">Tomorrow</button>
+          <button type="button" onclick="selectClosePeriod(this,'range')" class="close-period-btn py-2.5 rounded-xl border border-gray-200 text-[12px] font-semibold hover:border-aqua-mint hover:bg-aqua-mint/5 transition-colors">Until date…</button>
+        </div>
+        <div>
+          <label class="block text-[12px] font-semibold text-charcoal mb-1.5">Message to customers</label>
+          <textarea rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-[13px] bg-gray-50 focus:bg-white resize-none" placeholder="We’re closed today for a private event. See you tomorrow!">We’re closed today. Thank you for your understanding — we’ll be back soon!</textarea>
+        </div>
+        <button onclick="confirmCloseStore()" class="w-full py-3 rounded-xl bg-rose-500 text-white text-[14px] font-semibold hover:bg-rose-600 transition-colors scale-press">
+          Confirm Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Sidebar toggle
+    let sidebarOpen = true;
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const isMobile = window.innerWidth < 1024;
+
+      if (isMobile) {
+        sidebar.classList.toggle('-translate-x-full');
+        if (sidebar.classList.contains('-translate-x-full')) {
+          overlay.classList.add('opacity-0', 'pointer-events-none');
+          overlay.classList.remove('opacity-100');
+        } else {
+          overlay.classList.remove('opacity-0', 'pointer-events-none');
+          overlay.classList.add('opacity-100');
+        }
+      } else {
+        sidebar.classList.toggle('sidebar-collapsed');
+      }
+    }
+
+    // Init mobile sidebar hidden
+    if (window.innerWidth < 1024) {
+      document.getElementById('sidebar').classList.add('-translate-x-full');
+    }
+
+    // Store status toggle
+    let storeOpen = true;
+    function toggleStoreStatus() {
+      const toggle = document.getElementById('closeTodayToggle');
+      const badge = document.getElementById('storeStatusBadge');
+      storeOpen = !storeOpen;
+      toggle.classList.toggle('active', !storeOpen);
+      if (storeOpen) {
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald"></span> Store is Open';
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-semibold bg-aqua-mint/15 text-emerald';
+      } else {
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Closed Today';
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-semibold bg-rose-50 text-rose-600';
+      }
+    }
+
+    // Info dropdown
+    function toggleInfoDropdown() {
+      const dd = document.getElementById('infoDropdown');
+      dd.classList.toggle('hidden');
+    }
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('infoDropdown');
+      if (!e.target.closest('#infoDropdown') && !e.target.closest('[onclick="toggleInfoDropdown()"]')) {
+        dd.classList.add('hidden');
+      }
+    });
+
+    function copyAppInfo() {
+      const text = document.getElementById('appInfoText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtnText');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Info', 2000);
+      });
+    }
+
+    // Modals
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    function switchModal(from, to) {
+      closeModal(from);
+      setTimeout(() => openModal(to), 150);
+    }
+    function openCloseStoreModal() {
+      openModal('closeStoreModal');
+    }
+
+    // Close period selection
+    function selectClosePeriod(btn, period) {
+      document.querySelectorAll('.close-period-btn').forEach(b => {
+        b.classList.remove('border-aqua-mint', 'bg-aqua-mint/10', 'text-emerald');
+        b.classList.add('border-gray-200');
+      });
+      btn.classList.add('border-aqua-mint', 'bg-aqua-mint/10', 'text-emerald');
+      btn.classList.remove('border-gray-200');
+    }
+    function confirmCloseStore() {
+      closeModal('closeStoreModal');
+      // Simulate closing
+      if (storeOpen) toggleStoreStatus();
+      // Show toast-like feedback
+      showToast('Store closed. Banner is now live on your website.');
+    }
+
+    // Natural language command
+    function processNLCommand() {
+      const input = document.getElementById('nlCommand').value.trim();
+      if (!input) return;
+      const preview = document.getElementById('nlPreview');
+      // Simple demo parsing
+      if (input.toLowerCase().includes('latte') || input.toLowerCase().includes('75')) {
+        document.getElementById('nlBefore').textContent = 'Iced Latte · ฿70';
+        document.getElementById('nlAfter').textContent = 'Iced Latte · ฿75';
+      } else if (input.toLowerCase().includes('close')) {
+        document.getElementById('nlBefore').textContent = 'Store · Open';
+        document.getElementById('nlAfter').textContent = 'Store · Closed today';
+      } else {
+        document.getElementById('nlBefore').textContent = 'Current state';
+        document.getElementById('nlAfter').textContent = input;
+      }
+      preview.classList.remove('hidden');
+    }
+    function confirmNLCommand() {
+      document.getElementById('nlPreview').classList.add('hidden');
+      document.getElementById('nlCommand').value = '';
+      showToast('Change confirmed and logged.');
+    }
+    function cancelNLCommand() {
+      document.getElementById('nlPreview').classList.add('hidden');
+    }
+
+    // Chatbot
+    let chatbotOpen = false;
+    function toggleChatbot() {
+      const panel = document.getElementById('chatbotPanel');
+      const icon = document.getElementById('chatbotIcon');
+      chatbotOpen = !chatbotOpen;
+      if (chatbotOpen) {
+        panel.classList.remove('hidden-panel');
+        icon.className = 'bi bi-x-lg text-lg';
+      } else {
+        panel.classList.add('hidden-panel');
+        icon.className = 'bi bi-chat-dots-fill text-lg';
+      }
+    }
+    function sendChat() {
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+      const container = document.getElementById('chatMessages');
+
+      // User message
+      const userDiv = document.createElement('div');
+      userDiv.className = 'flex gap-2 justify-end';
+      userDiv.innerHTML = `<div class="bg-aqua-mint text-white rounded-2xl rounded-tr-md px-3.5 py-2.5 text-[13px] max-w-[85%]">${escapeHtml(msg)}</div>`;
+      container.appendChild(userDiv);
+      input.value = '';
+      container.scrollTop = container.scrollHeight;
+
+      // Bot reply
+      setTimeout(() => {
+        const replies = [
+          "Got it! I’ll note that for you.",
+          "Sure — would you like me to prepare a price change preview?",
+          "Your store is looking healthy today. Anything specific you want to adjust?",
+          "I can help with prices, promos, photos or closing hours. Just tell me.",
+          "Done. The change has been queued for confirmation."
+        ];
+        const reply = replies[Math.floor(Math.random() * replies.length)];
+        const botDiv = document.createElement('div');
+        botDiv.className = 'flex gap-2';
+        botDiv.innerHTML = `
+          <div class="w-7 h-7 rounded-full bg-aqua-mint/20 flex items-center justify-center shrink-0">
+            <i class="bi bi-robot text-emerald text-xs"></i>
+          </div>
+          <div class="bg-white rounded-2xl rounded-tl-md px-3.5 py-2.5 text-[13px] text-charcoal shadow-sm max-w-[85%]">${reply}</div>`;
+        container.appendChild(botDiv);
+        container.scrollTop = container.scrollHeight;
+      }, 600 + Math.random() * 400);
+    }
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 280) {
+        backToTop.classList.remove('hidden');
+      } else {
+        backToTop.classList.add('hidden');
+      }
+    }, { passive: true });
+    // Also listen on main scroll container
+    document.querySelector('main').addEventListener('scroll', () => {
+      const main = document.querySelector('main');
+      if (main.scrollTop > 280) {
+        backToTop.classList.remove('hidden');
+      } else {
+        backToTop.classList.add('hidden');
+      }
+    }, { passive: true });
+
+    function scrollToTop() {
+      document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Toast helper
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] px-5 py-3 rounded-xl bg-charcoal text-white text-[13px] font-medium shadow-elevated fade-in';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s';
+        setTimeout(() => toast.remove(), 300);
+      }, 2800);
+    }
+
+    // Close modals on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        ['loginModal','signupModal','forgotModal','closeStoreModal'].forEach(id => {
+          const m = document.getElementById(id);
+          if (!m.classList.contains('hidden')) closeModal(id);
+        });
+        document.getElementById('infoDropdown').classList.add('hidden');
+      }
+    });
+
+    // Close modal on overlay click
+    ['loginModal','signupModal','forgotModal','closeStoreModal'].forEach(id => {
+      document.getElementById(id).addEventListener('click', (e) => {
+        if (e.target.id === id) closeModal(id);
+      });
+    });
+  </script>
+</body>
+</html>
