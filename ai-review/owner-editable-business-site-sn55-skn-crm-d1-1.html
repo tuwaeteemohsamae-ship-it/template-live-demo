@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today at the Shop — Owner Dashboard</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+      colors: {
+        offwhite: '#E3E3DD',
+        aquamint: '#04E1AB',
+        sage: '#BD9681',
+        emerald: '#10AE9E',
+        violet: '#6A5DE6',
+        olive: '#724E40',
+        royal: '#222480',
+        charcoal: '#291F1B',
+        midnight: '#050738',
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  :root {
+    --color-off-white-base: #E3E3DD;
+    --color-aqua-mint: #04E1AB;
+    --color-sage-green: #BD9681;
+    --color-emerald-green: #10AE9E;
+    --color-vivid-violet: #6A5DE6;
+    --color-deep-forest-olive: #724E40;
+    --color-deep-royal-indigo: #222480;
+    --color-deep-charcoal: #291F1B;
+    --color-midnight-navy: #050738;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #E3E3DD;
+    color: #291F1B;
+    font-size: 14px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .heading-display {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: rgba(0,0,0,0.04); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #04E1AB, #10AE9E); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #10AE9E, #04E1AB); }
+  ::-webkit-scrollbar-button { display: none; }
+
+  /* Card Surface */
+  .card-surface {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+  }
+  .card-surface:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.07);
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, #04E1AB, #10AE9E);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(4,225,171,0.35);
+  }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .btn-ghost {
+    background: rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 10px;
+    color: #291F1B;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-ghost:hover { background: rgba(0,0,0,0.06); }
+
+  /* Badge Pill */
+  .badge-pill {
+    background: linear-gradient(135deg, #04E1AB, #10AE9E);
+    color: #fff;
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #04E1AB, #6A5DE6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+    opacity: 0;
+  }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .animate-slide-in-right {
+    animation: slideInRight 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+    opacity: 0;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,7,56,0.55);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .modal-overlay.active { display: flex; opacity: 1; }
+  .modal-content {
+    background: #fff;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    transform: scale(0.96) translateY(10px);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-overlay.active .modal-content {
+    transform: scale(1) translateY(0);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    background: #fff;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    z-index: 90;
+    transform: translateX(0);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar.hidden-sidebar {
+    transform: translateX(-100%);
+  }
+  @media (min-width: 1024px) {
+    .sidebar.hidden-sidebar { transform: translateX(0); }
+  }
+
+  /* Sidebar scrollable menu */
+  .sidebar-menu {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px 20px;
+  }
+
+  /* Menu Item */
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    color: #291F1B;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    margin-bottom: 4px;
+    text-decoration: none;
+  }
+  .menu-item:hover { background: rgba(4,225,171,0.08); color: #10AE9E; }
+  .menu-item.active {
+    background: linear-gradient(135deg, rgba(4,225,171,0.12), rgba(16,174,158,0.08));
+    color: #10AE9E;
+  }
+  .menu-item i { width: 20px; text-align: center; font-size: 15px; }
+
+  /* Header */
+  .main-header {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  /* Logo area in sidebar */
+  .logo-area {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    border-right: 1px solid rgba(0,0,0,0.08);
+    gap: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #222480;
+    letter-spacing: -0.02em;
+  }
+
+  /* Floating buttons container */
+  .floating-actions {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 70;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .fab {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    font-size: 20px;
+  }
+  .fab:hover { transform: translateY(-3px) scale(1.05); }
+  .fab:active { transform: scale(0.95); }
+
+  .fab-backtop {
+    background: #fff;
+    color: #222480;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+  }
+  .fab-backtop.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .fab-chat {
+    background: linear-gradient(135deg, #6A5DE6, #222480);
+    color: #fff;
+  }
+
+  /* Chatbot Panel */
+  .chatbot-panel {
+    position: fixed;
+    bottom: 84px;
+    right: 22px;
+    width: 360px;
+    max-width: calc(100vw - 44px);
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    z-index: 71;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    height: 520px;
+  }
+  .chatbot-panel.open {
+    display: flex;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .chatbot-header {
+    background: linear-gradient(135deg, #6A5DE6, #222480);
+    color: #fff;
+    padding: 16px 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f8f8f6;
+  }
+
+  .chat-bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    animation: fadeInUp 0.25s ease forwards;
+  }
+  .chat-bubble.bot {
+    align-self: flex-start;
+    background: #fff;
+    color: #291F1B;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-bottom-left-radius: 4px;
+  }
+  .chat-bubble.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #6A5DE6, #222480);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+
+  .chatbot-input-area {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    background: #fff;
+    display: flex;
+    gap: 8px;
+  }
+  .chatbot-input {
+    flex: 1;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+  }
+  .chatbot-input:focus { border-color: #6A5DE6; }
+
+  /* Quick Action Big Buttons */
+  .quick-action-btn {
+    height: 84px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #291F1B;
+    text-decoration: none;
+  }
+  .quick-action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    border-color: rgba(4,225,171,0.4);
+  }
+  .quick-action-btn i { font-size: 22px; }
+  .quick-action-btn:nth-child(1) i { color: #04E1AB; }
+  .quick-action-btn:nth-child(2) i { color: #6A5DE6; }
+  .quick-action-btn:nth-child(3) i { color: #BD9681; }
+  .quick-action-btn:nth-child(4) i { color: #724E40; }
+
+  /* Metric Card */
+  .metric-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
+  }
+  .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.07);
+  }
+  .metric-value {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 8px;
+  }
+  .metric-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(41,31,27,0.55);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .metric-delta {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .metric-delta.up { color: #10AE9E; }
+  .metric-delta.down { color: #e04e4e; }
+
+  /* Toggle Switch */
+  .toggle-switch {
+    width: 48px;
+    height: 28px;
+    background: #e0e0da;
+    border-radius: 14px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+  }
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .toggle-switch.active {
+    background: linear-gradient(135deg, #04E1AB, #10AE9E);
+  }
+  .toggle-switch.active::after {
+    transform: translateX(20px);
+  }
+
+  /* Activity Item */
+  .activity-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 13px;
+    transition: background 0.2s;
+  }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-text { color: #291F1B; font-weight: 500; }
+  .activity-meta { color: rgba(41,31,27,0.45); font-size: 12px; margin-top: 2px; }
+  .btn-undo {
+    font-size: 11px;
+    font-weight: 700;
+    color: #6A5DE6;
+    background: rgba(106,93,230,0.08);
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-undo:hover { background: rgba(106,93,230,0.15); }
+
+  /* Task Card */
+  .task-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: all 0.25s ease;
+  }
+  .task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.07);
+  }
+  .task-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .task-icon.warning { background: rgba(224,78,78,0.08); color: #e04e4e; }
+  .task-icon.info { background: rgba(106,93,230,0.08); color: #6A5DE6; }
+  .task-icon.caution { background: rgba(189,150,129,0.12); color: #724E40; }
+
+  /* Quick Edit Box */
+  .quick-edit-card {
+    background: linear-gradient(135deg, #222480, #6A5DE6);
+    border-radius: 16px;
+    padding: 22px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .quick-edit-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .quick-edit-input {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    margin-top: 12px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+  }
+  .quick-edit-input::placeholder { color: rgba(255,255,255,0.5); }
+  .quick-edit-input:focus {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  /* Info Dropdown */
+  .info-dropdown {
+    position: relative;
+  }
+  .info-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .info-dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .info-dropdown-header {
+    background: linear-gradient(135deg, #04E1AB, #10AE9E);
+    color: #fff;
+    padding: 14px 18px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .info-dropdown-body {
+    padding: 16px 18px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #291F1B;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  .info-dropdown-body p { margin: 0 0 10px; }
+  .info-dropdown-body p:last-child { margin-bottom: 0; }
+  .btn-copy {
+    margin-top: 10px;
+    width: 100%;
+    padding: 9px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: #f8f8f6;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #291F1B;
+  }
+  .btn-copy:hover { background: #eee; }
+  .btn-copy.copied {
+    background: linear-gradient(135deg, #04E1AB, #10AE9E);
+    color: #fff;
+    border-color: transparent;
+  }
+
+  /* Demo mission bar */
+  .demo-bar {
+    background: linear-gradient(90deg, rgba(4,225,171,0.12), rgba(106,93,230,0.08));
+    border: 1px dashed rgba(4,225,171,0.4);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* Skeleton */
+  @keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .skeleton {
+    background: linear-gradient(90deg, #eee 25%, #e5e5e0 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 8px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1023px) {
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.show-mobile { transform: translateX(0); }
+    .main-content { margin-left: 0 !important; }
+  }
+
+  @media (min-width: 1024px) {
+    .main-content { margin-left: 260px; }
+  }
+
+  /* Desktop 2-col layout */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media (min-width: 1024px) {
+    .dashboard-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: start;
+    }
+  }
+
+  /* Mobile sidebar overlay */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,7,56,0.4);
+    backdrop-filter: blur(2px);
+    z-index: 85;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .sidebar-overlay.show { display: block; opacity: 1; }
+
+  /* Web preview mock */
+  .web-preview-frame {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  }
+  .web-preview-header {
+    height: 36px;
+    background: #f0f0ec;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+  }
+  .web-preview-dot { width: 10px; height: 10px; border-radius: 50%; background: #ddd; }
+
+  /* Close store modal options */
+  .close-option {
+    padding: 12px 14px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .close-option:hover { border-color: #04E1AB; background: rgba(4,225,171,0.05); }
+  .close-option.selected {
+    border-color: #04E1AB;
+    background: rgba(4,225,171,0.1);
+  }
+
+  /* Growth card */
+  .growth-card {
+    background: linear-gradient(135deg, #fff, #f8fffd);
+    border: 1px solid rgba(4,225,171,0.25);
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .growth-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(4,225,171,0.12);
+  }
+
+  /* Input fields in modals */
+  .form-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .form-input:focus { border-color: #04E1AB; box-shadow: 0 0 0 3px rgba(4,225,171,0.12); }
+  .form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #291F1B;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Confirm change summary box */
+  .change-summary {
+    background: #f8f8f6;
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    display: none;
+  }
+  .change-summary.show { display: block; animation: fadeInUp 0.3s ease; }
+  .change-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .change-row:last-child { border-bottom: none; }
+  .change-arrow { color: #04E1AB; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- Mobile Sidebar Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- Left Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="logo-area">
+    <i class="fa-solid fa-mug-hot" style="color:#04E1AB; font-size:20px;"></i>
+    <span style="color:#222480;">Sala Olive</span>
+  </div>
+  <div class="sidebar-menu">
+    <a href="#" class="menu-item active" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-house"></i> Today at the Shop
+    </a>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-tag"></i> Edit Prices
+    </a>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-percent"></i> Promotions
+    </a>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-images"></i> Change Photos
+    </a>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-clock-rotate-left"></i> Activity Log
+    </a>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-globe"></i> Website Status
+    </a>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-chart-line"></i> Insights
+    </a>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-store"></i> Shop Settings
+    </a>
+    <div style="height:1px; background:rgba(0,0,0,0.06); margin:12px 0;"></div>
+    <a href="#" class="menu-item" onclick="setActiveMenu(this)">
+      <i class="fa-solid fa-user-gear"></i> Account
+    </a>
+    <a href="#" class="menu-item" onclick="openModal('loginModal')">
+      <i class="fa-solid fa-right-from-bracket"></i> Log Out
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<div class="main-content" id="mainContent">
+
+  <!-- Header -->
+  <header class="main-header">
+    <button class="btn-ghost" style="width:40px; height:40px; padding:0; display:flex; align-items:center; justify-content:center;" onclick="toggleSidebar()">
+      <i class="fa-solid fa-bars" style="font-size:18px;"></i>
+    </button>
+
+    <div style="flex:1;"></div>
+
+    <!-- Info Dropdown -->
+    <div class="info-dropdown">
+      <button class="btn-ghost" style="width:40px; height:40px; padding:0; display:flex; align-items:center; justify-content:center;" onclick="toggleInfoDropdown()">
+        <i class="fa-solid fa-circle-info" style="font-size:18px; color:#6A5DE6;"></i>
+      </button>
+      <div class="info-dropdown-menu" id="infoDropdown">
+        <div class="info-dropdown-header">
+          <i class="fa-solid fa-circle-info" style="margin-right:8px;"></i> Web App Information
+        </div>
+        <div class="info-dropdown-body">
+          <p><strong>App Name:</strong> Sala Olive Studio — Owner Back Office</p>
+          <p><strong>Version:</strong> 1.0.0-beta</p>
+          <p><strong>Build:</strong> 2026.11.08.1</p>
+          <p><strong>Environment:</strong> Production</p>
+          <p><strong>Last Deploy:</strong> 8 Nov 2026 at 04:30 AM</p>
+          <p><strong>Data Region:</strong> Southeast Asia (Singapore)</p>
+          <p><strong>Support:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a292f2a2a35282e1a293b363b3536332c3f74292e2f3e3335">[email&#160;protected]</a></p>
+          <p><strong>Web App Details:</strong><br>This dashboard is designed for shop owners and staff to monitor daily operations, manage pending tasks, update pricing, promotions, and media, control store open/close status, review website health, and track recent activity. All changes are logged and reversible where applicable.</p>
+          <button class="btn-copy" id="copyInfoBtn" onclick="copyAppInfo()">
+            <i class="fa-regular fa-copy"></i> Copy App Information
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:1px; height:28px; background:rgba(0,0,0,0.1); margin:0 4px;"></div>
+
+    <button class="btn-ghost" style="padding:8px 16px; font-size:13px; display:flex; align-items:center; gap:8px;" onclick="openModal('loginModal')">
+      <i class="fa-solid fa-user" style="font-size:14px;"></i>
+      <span class="hidden sm:inline">Sign In</span>
+    </button>
+  </header>
+
+  <!-- Dashboard Content -->
+  <main style="padding: 20px; max-width: 1280px; margin: 0 auto;">
+
+    <div class="dashboard-grid">
+      <!-- LEFT COLUMN -->
+      <div style="display:flex; flex-direction:column; gap:20px;">
+
+        <!-- 1. Greeting + Store Status -->
+        <section class="card-surface animate-fade-in-up" style="padding:22px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+            <div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:22px; font-weight:800; letter-spacing:-0.02em; color:#222480;">
+                Good evening, Ek <span style="font-size:22px;">👋</span>
+              </div>
+              <div style="font-size:12px; color:rgba(41,31,27,0.55); margin-top:4px; font-weight:500;">
+                Sunday, 8 November 2568 · Buddhist Era
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; background:#f8f8f6; border-radius:30px; padding:6px 18px 6px 14px;">
+              <span class="badge-pill" id="storeStatusBadge" style="background:linear-gradient(135deg,#04E1AB,#10AE9E);">
+                <i class="fa-solid fa-door-open"></i> Open Now
+              </span>
+              <div style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:#291F1B;">
+                Close Today
+                <div class="toggle-switch" id="closeStoreToggle" onclick="toggleStoreClose()"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Pending Tasks (max 3 cards) -->
+        <section class="animate-fade-in-up delay-100">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <h2 style="font-size:16px; font-weight:800; color:#222480; letter-spacing:-0.01em;">
+              <i class="fa-solid fa-circle-exclamation" style="color:#e04e4e; margin-right:8px;"></i>Pending Tasks
+            </h2>
+            <span style="font-size:11px; font-weight:700; color:rgba(41,31,27,0.45); text-transform:uppercase; letter-spacing:0.06em;">3 items</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <!-- Task 1 -->
+            <div class="task-card animate-slide-in-right" style="animation-delay:0.1s;">
+              <div class="task-icon warning"><i class="fa-solid fa-reply"></i></div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:700; font-size:13px; color:#291F1B;">2 interested customers waiting for reply</div>
+                <div style="font-size:12px; color:rgba(41,31,27,0.5); margin-top:2px;">Last message 3 hours ago</div>
+              </div>
+              <button class="btn-primary" style="padding:9px 16px; font-size:12px; white-space:nowrap;">
+                Reply Now
+              </button>
+            </div>
+            <!-- Task 2 -->
+            <div class="task-card animate-slide-in-right" style="animation-delay:0.2s;">
+              <div class="task-icon info"><i class="fa-solid fa-hourglass-half"></i></div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:700; font-size:13px; color:#291F1B;">Promotion "Free Delivery" expires in 2 days</div>
+                <div style="font-size:12px; color:rgba(41,31,27,0.5); margin-top:2px;">Ends 10 Nov 2026</div>
+              </div>
+              <button class="btn-primary" style="padding:9px 16px; font-size:12px; white-space:nowrap;">
+                Extend Promo
+              </button>
+            </div>
+            <!-- Task 3 -->
+            <div class="task-card animate-slide-in-right" style="animation-delay:0.3s;">
+              <div class="task-icon caution"><i class="fa-solid fa-tags"></i></div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-weight:700; font-size:13px; color:#291F1B;">3 items have not had prices updated for 60+ days</div>
+                <div style="font-size:12px; color:rgba(41,31,27,0.5); margin-top:2px;">Iced Latte, Cappuccino, Mocha</div>
+              </div>
+              <button class="btn-primary" style="padding:9px 16px; font-size:12px; white-space:nowrap;">
+                Check Prices
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Quick Actions 2x2 -->
+        <section class="animate-fade-in-up delay-200">
+          <h2 style="font-size:16px; font-weight:800; color:#222480; margin-bottom:12px; letter-spacing:-0.01em;">
+            <i class="fa-solid fa-bolt" style="color:#04E1AB; margin-right:8px;"></i>Quick Actions
+          </h2>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <a href="#" class="quick-action-btn" onclick="showToast('Opening price editor...')">
+              <i class="fa-solid fa-tag"></i>
+              <span>Edit Prices</span>
+            </a>
+            <a href="#" class="quick-action-btn" onclick="showToast('Opening promotion sheet...')">
+              <i class="fa-solid fa-percent"></i>
+              <span>New Promo</span>
+            </a>
+            <a href="#" class="quick-action-btn" onclick="showToast('Opening media manager...')">
+              <i class="fa-solid fa-images"></i>
+              <span>Change Photos</span>
+            </a>
+            <a href="#" class="quick-action-btn" onclick="openCloseStoreModal()">
+              <i class="fa-solid fa-store-slash"></i>
+              <span>Close Today</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 4. Today's Metrics -->
+        <section class="animate-fade-in-up delay-300">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <h2 style="font-size:16px; font-weight:800; color:#222480; letter-spacing:-0.01em;">
+              <i class="fa-solid fa-chart-simple" style="color:#6A5DE6; margin-right:8px;"></i>Today in Numbers
+            </h2>
+            <span style="font-size:11px; color:rgba(41,31,27,0.45); font-weight:600;">vs yesterday</span>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px;">
+            <div class="metric-card">
+              <div class="metric-label">Visitors</div>
+              <div class="metric-value" style="color:#222480;">248</div>
+              <div class="metric-delta up">
+                <i class="fa-solid fa-arrow-trend-up"></i> 12%
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Contacts</div>
+              <div class="metric-value" style="color:#222480;">18</div>
+              <div class="metric-delta up">
+                <i class="fa-solid fa-arrow-trend-up"></i> 5%
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">New Leads</div>
+              <div class="metric-value" style="color:#222480;">7</div>
+              <div class="metric-delta down">
+                <i class="fa-solid fa-arrow-trend-down"></i> 2
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. Demo Mission Bar -->
+        <section class="demo-bar animate-fade-in-up delay-400">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <i class="fa-solid fa-rocket" style="color:#04E1AB; font-size:16px;"></i>
+            <span style="color:#222480; font-weight:700;">Demo Mission <span style="color:#6A5DE6;">1 / 3</span></span>
+          </div>
+          <button class="btn-primary" style="padding:7px 16px; font-size:12px;">Continue</button>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div style="display:flex; flex-direction:column; gap:20px;">
+
+        <!-- 5. Website Status -->
+        <section class="card-surface animate-fade-in-up delay-200" style="padding:20px;">
+          <h2 style="font-size:16px; font-weight:800; color:#222480; margin-bottom:14px; letter-spacing:-0.01em;">
+            <i class="fa-solid fa-server" style="color:#10AE9E; margin-right:8px;"></i>Website Status
+          </h2>
+          <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:#291F1B; font-weight:500;">
+            <div style="width:10px; height:10px; border-radius:50%; background:#04E1AB; box-shadow:0 0 0 4px rgba(4,225,171,0.2);"></div>
+            <span>All systems normal</span>
+            <span style="color:rgba(41,31,27,0.4);">· Checked 05:00 · Backup success</span>
+          </div>
+          <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(0,0,0,0.06);">
+            <div style="font-size:12px; font-weight:600; color:rgba(41,31,27,0.5); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.05em;">Live Preview</div>
+            <div class="web-preview-frame">
+              <div class="web-preview-header">
+                <div class="web-preview-dot" style="background:#e04e4e;"></div>
+                <div class="web-preview-dot" style="background:#f5a623;"></div>
+                <div class="web-preview-dot" style="background:#04E1AB;"></div>
+                <div style="flex:1; text-align:center; font-size:10px; color:#999; font-weight:600;">salaolive.studio</div>
+              </div>
+              <div style="padding:18px; text-align:center;">
+                <div style="width:48px; height:48px; background:linear-gradient(135deg,#04E1AB,#10AE9E); border-radius:12px; margin:0 auto 10px; display:flex; align-items:center; justify-content:center;">
+                  <i class="fa-solid fa-mug-hot" style="color:#fff; font-size:20px;"></i>
+                </div>
+                <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; color:#222480;">Sala Olive Studio</div>
+                <div style="font-size:11px; color:rgba(41,31,27,0.5); margin-top:4px;">Coffee · Bakery · Workspace</div>
+                <div style="margin-top:12px; padding:8px; background:#f8f8f6; border-radius:8px; font-size:11px; color:#10AE9E; font-weight:700;">
+                  <i class="fa-solid fa-check-circle"></i> Store is open
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Recent Activity -->
+        <section class="card-surface animate-fade-in-up delay-300" style="padding:20px;">
+          <h2 style="font-size:16px; font-weight:800; color:#222480; margin-bottom:8px; letter-spacing:-0.01em;">
+            <i class="fa-solid fa-list-ul" style="color:#BD9681; margin-right:8px;"></i>Recent Activity
+          </h2>
+          <div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-text">Somchai updated <strong>Iced Latte</strong> price</div>
+                <div class="activity-meta">70 THB → 75 THB · 14:05</div>
+              </div>
+              <button class="btn-undo" onclick="undoActivity(this)">Undo</button>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-text">System auto-renewed <strong>Free Delivery</strong></div>
+                <div class="activity-meta">Extended 7 days · 12:30</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-text">New lead from <strong>LINE</strong></div>
+                <div class="activity-meta">Khun Nida · 11:18</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-text">You closed the shop temporarily</div>
+                <div class="activity-meta">Reason: staff training · Yesterday</div>
+              </div>
+              <button class="btn-undo" onclick="undoActivity(this)">Undo</button>
+            </div>
+            <div class="activity-item">
+              <div>
+                <div class="activity-text">Backup completed successfully</div>
+                <div class="activity-meta">Auto backup · Yesterday 02:00</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Growth Card (conditional) -->
+        <section class="growth-card animate-fade-in-up delay-400">
+          <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#04E1AB,#10AE9E); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <i class="fa-solid fa-wand-magic-sparkles" style="color:#fff; font-size:18px;"></i>
+          </div>
+          <div style="flex:1;">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; color:#222480;">You are ready to grow</div>
+            <div style="font-size:12px; color:rgba(41,31,27,0.55); margin-top:2px;">Explore marketing tools and reach more customers.</div>
+          </div>
+          <i class="fa-solid fa-chevron-right" style="color:#04E1AB; font-size:14px;"></i>
+        </section>
+      </div>
+    </div>
+
+    <!-- Quick Edit Card (Full Width) -->
+    <section class="quick-edit-card animate-fade-in-up delay-500" style="margin-top:20px;">
+      <div style="position:relative; z-index:1;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+          <i class="fa-solid fa-wand-magic-sparkles" style="font-size:18px; opacity:0.9;"></i>
+          <h2 style="font-size:16px; font-weight:700;">Tell us what you want to change</h2>
+        </div>
+        <p style="margin:0; font-size:13px; opacity:0.75; font-weight:400;">Type naturally. We will turn it into a structured change for you to confirm.</p>
+        <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+          <input type="text" class="quick-edit-input" id="quickEditInput" placeholder='e.g. "Raise iced latte to 75 baht"' onkeypress="if(event.key==='Enter')processQuickEdit()">
+          <button class="btn-primary" style="padding:12px 22px; white-space:nowrap;" onclick="processQuickEdit()">
+            <i class="fa-solid fa-check"></i> Confirm
+          </button>
+        </div>
+        <!-- Change Summary -->
+        <div class="change-summary" id="changeSummary">
+          <div style="font-weight:700; font-size:13px; margin-bottom:8px; color:#222480;">Review your change</div>
+          <div class="change-row">
+            <span>Action</span>
+            <span style="font-weight:700; color:#6A5DE6;">Update Price</span>
+          </div>
+          <div class="change-row">
+            <span>Item</span>
+            <span style="font-weight:700;">Iced Latte</span>
+          </div>
+          <div class="change-row">
+            <span>Before</span>
+            <span style="font-weight:700;">70 THB</span>
+          </div>
+          <div class="change-row">
+            <span>After</span>
+            <span style="font-weight:700; color:#04E1AB;">75 THB</span>
+          </div>
+          <div style="display:flex; gap:8px; margin-top:12px;">
+            <button class="btn-primary" style="flex:1; padding:10px; font-size:13px;" onclick="confirmChange()">
+              <i class="fa-solid fa-check"></i> Apply Change
+            </button>
+            <button class="btn-ghost" style="flex:1; padding:10px; font-size:13px; background:rgba(255,255,255,0.9);" onclick="cancelChange()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty state / checklist for new shop (hidden by default, demo only) -->
+    <section class="card-surface animate-fade-in-up delay-500" style="padding:22px; margin-top:20px; display:none;" id="newShopChecklist">
+      <h2 style="font-size:16px; font-weight:800; color:#222480; margin-bottom:14px;">
+        <i class="fa-solid fa-clipboard-check" style="color:#04E1AB; margin-right:8px;"></i>Getting Started Checklist
+      </h2>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8fffd; border-radius:10px; border:1px solid rgba(4,225,171,0.15);">
+          <div style="width:24px; height:24px; border-radius:50%; border:2px solid #04E1AB; display:flex; align-items:center; justify-content:center;">
+            <div style="width:10px; height:10px; background:#04E1AB; border-radius:50%;"></div>
+          </div>
+          <div style="flex:1; font-size:13px; font-weight:600;">Verify shop information</div>
+          <i class="fa-solid fa-chevron-right" style="color:#04E1AB; font-size:12px;"></i>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8f8f6; border-radius:10px; border:1px solid rgba(0,0,0,0.06);">
+          <div style="width:24px; height:24px; border-radius:50%; border:2px solid rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:center;"></div>
+          <div style="flex:1; font-size:13px; font-weight:600; color:rgba(41,31,27,0.6);">Add your first menu item</div>
+          <i class="fa-solid fa-chevron-right" style="color:rgba(41,31,27,0.25); font-size:12px;"></i>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px; background:#f8f8f6; border-radius:10px; border:1px solid rgba(0,0,0,0.06);">
+          <div style="width:24px; height:24px; border-radius:50%; border:2px solid rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:center;"></div>
+          <div style="flex:1; font-size:13px; font-weight:600; color:rgba(41,31,27,0.6);">Try editing a price</div>
+          <i class="fa-solid fa-chevron-right" style="color:rgba(41,31,27,0.25); font-size:12px;"></i>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= MODALS ================= -->
+
+<!-- Login Modal -->
+<div class="modal-overlay" id="loginModal" onclick="closeModalOnOverlay(event,'loginModal')">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div style="padding:28px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <h2 style="font-size:22px; font-weight:800; color:#222480; letter-spacing:-0.02em;">Welcome back</h2>
+        <button onclick="closeModal('loginModal')" style="background:none; border:none; cursor:pointer; width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='none'">
+          <i class="fa-solid fa-xmark" style="font-size:18px; color:#291F1B;"></i>
+        </button>
+      </div>
+      <p style="font-size:13px; color:rgba(41,31,27,0.55); margin:0 0 22px;">Sign in to your shop dashboard to manage your store.</p>
+      <div style="margin-bottom:16px;">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="you@example.com">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" placeholder="Enter your password">
+      </div>
+      <button class="btn-primary" style="width:100%; padding:13px; font-size:14px; margin-bottom:14px;" onclick="showToast('Signing in...'); closeModal('loginModal')">
+        <i class="fa-solid fa-right-to-bracket"></i> Sign In
+      </button>
+      <div style="display:flex; align-items:center; justify-content:space-between; font-size:12px; font-weight:600;">
+        <a href="#" style="color:#6A5DE6; text-decoration:none;" onclick="switchModal('loginModal','signupModal')">Create account</a>
+        <a href="#" style="color:rgba(41,31,27,0.5); text-decoration:none;" onclick="switchModal('loginModal','forgotModal')">Forgot password?</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div class="modal-overlay" id="signupModal" onclick="closeModalOnOverlay(event,'signupModal')">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div style="padding:28px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <h2 style="font-size:22px; font-weight:800; color:#222480; letter-spacing:-0.02em;">Create account</h2>
+        <button onclick="closeModal('signupModal')" style="background:none; border:none; cursor:pointer; width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='none'">
+          <i class="fa-solid fa-xmark" style="font-size:18px; color:#291F1B;"></i>
+        </button>
+      </div>
+      <p style="font-size:13px; color:rgba(41,31,27,0.55); margin:0 0 22px;">Set up your shop dashboard in under 2 minutes.</p>
+      <div style="margin-bottom:14px;">
+        <label class="form-label">Shop Name</label>
+        <input type="text" class="form-input" placeholder="e.g. Sala Olive Studio">
+      </div>
+      <div style="margin-bottom:14px;">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="you@example.com">
+      </div>
+      <div style="margin-bottom:14px;">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" placeholder="Min 8 characters">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-input" placeholder="Repeat password">
+      </div>
+      <button class="btn-primary" style="width:100%; padding:13px; font-size:14px; margin-bottom:14px;" onclick="showToast('Account created successfully'); closeModal('signupModal')">
+        <i class="fa-solid fa-user-plus"></i> Get Started
+      </button>
+      <div style="text-align:center; font-size:12px; font-weight:600; color:rgba(41,31,27,0.5);">
+        Already have an account? <a href="#" style="color:#6A5DE6; text-decoration:none;" onclick="switchModal('signupModal','loginModal')">Sign in</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Forgot Password Modal -->
+<div class="modal-overlay" id="forgotModal" onclick="closeModalOnOverlay(event,'forgotModal')">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div style="padding:28px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <h2 style="font-size:22px; font-weight:800; color:#222480; letter-spacing:-0.02em;">Reset password</h2>
+        <button onclick="closeModal('forgotModal')" style="background:none; border:none; cursor:pointer; width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='none'">
+          <i class="fa-solid fa-xmark" style="font-size:18px; color:#291F1B;"></i>
+        </button>
+      </div>
+      <p style="font-size:13px; color:rgba(41,31,27,0.55); margin:0 0 22px;">We will send a reset link to your email address.</p>
+      <div style="margin-bottom:20px;">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="you@example.com">
+      </div>
+      <button class="btn-primary" style="width:100%; padding:13px; font-size:14px; margin-bottom:14px;" onclick="showToast('Reset link sent to your email'); closeModal('forgotModal')">
+        <i class="fa-solid fa-paper-plane"></i> Send Reset Link
+      </button>
+      <div style="text-align:center; font-size:12px; font-weight:600;">
+        <a href="#" style="color:#6A5DE6; text-decoration:none;" onclick="switchModal('forgotModal','loginModal')">Back to sign in</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Close Store Modal -->
+<div class="modal-overlay" id="closeStoreModal" onclick="closeModalOnOverlay(event,'closeStoreModal')">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <div style="padding:28px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+        <h2 style="font-size:22px; font-weight:800; color:#222480; letter-spacing:-0.02em;">Close Shop</h2>
+        <button onclick="closeModal('closeStoreModal')" style="background:none; border:none; cursor:pointer; width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(0,0,0,0.05)'" onmouseout="this.style.background='none'">
+          <i class="fa-solid fa-xmark" style="font-size:18px; color:#291F1B;"></i>
+        </button>
+      </div>
+      <p style="font-size:13px; color:rgba(41,31,27,0.55); margin:0 0 18px;">Choose when to close and what customers will see.</p>
+      <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+        <div class="close-option selected" onclick="selectCloseOption(this)">
+          <i class="fa-regular fa-calendar"></i> Today only
+        </div>
+        <div class="close-option" onclick="selectCloseOption(this)">
+          <i class="fa-regular fa-calendar"></i> Tomorrow
+        </div>
+        <div class="close-option" onclick="selectCloseOption(this)">
+          <i class="fa-regular fa-calendar-range"></i> Until a specific date…
+        </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label class="form-label">Message to customers</label>
+        <textarea class="form-input" rows="3" style="resize:none; font-family:'Inter',sans-serif;">We are temporarily closed today. Thank you for your understanding and see you soon!</textarea>
+      </div>
+      <button class="btn-primary" style="width:100%; padding:13px; font-size:14px;" onclick="confirmCloseStore()">
+        <i class="fa-solid fa-store-slash"></i> Confirm Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FLOATING BUTTONS ================= -->
+<div class="floating-actions">
+  <button class="fab fab-backtop" id="backToTopBtn" onclick="scrollToTop()" title="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  <button class="fab fab-chat" id="chatbotToggle" onclick="toggleChatbot()" title="Chat with assistant">
+    <i class="fa-solid fa-robot" id="chatbotIcon"></i>
+  </button>
+</div>
+
+<!-- Chatbot Panel -->
+<div class="chatbot-panel" id="chatbotPanel">
+  <div class="chatbot-header">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <i class="fa-solid fa-robot" style="font-size:18px;"></i>
+      <span>Shop Assistant</span>
+    </div>
+    <button onclick="toggleChatbot()" style="background:none; border:none; color:#fff; cursor:pointer; width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='none'">
+      <i class="fa-solid fa-xmark" style="font-size:16px;"></i>
+    </button>
+  </div>
+  <div class="chatbot-messages" id="chatbotMessages">
+    <div class="chat-bubble bot">
+      Hi Ek! I can help you change prices, check orders, or close the shop. What would you like to do today?
+    </div>
+  </div>
+  <div class="chatbot-input-area">
+    <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendChatbotMessage()">
+    <button class="btn-primary" style="padding:10px 14px; font-size:14px;" onclick="sendChatbotMessage()">
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" style="position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px); background:#222480; color:#fff; padding:12px 22px; border-radius:10px; font-size:13px; font-weight:600; z-index:110; opacity:0; pointer-events:none; transition:all 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:0 8px24px rgba(0,0,0,0.2); white-space:nowrap;"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ========== Sidebar ==========
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (window.innerWidth < 1024) {
+    sidebar.classList.toggle('show-mobile');
+    overlay.classList.toggle('show');
+  } else {
+    sidebar.classList.toggle('hidden-sidebar');
+  }
+}
+
+function setActiveMenu(el) {
+  document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  if (window.innerWidth < 1024) toggleSidebar();
+}
+
+// ========== Modals ==========
+function openModal(id) {
+  const modal = document.getElementById(id);
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id);
+}
+function switchModal(from, to) {
+  closeModal(from);
+  setTimeout(() => openModal(to), 220);
+}
+
+// ========== Store Close ==========
+function toggleStoreClose() {
+  const toggle = document.getElementById('closeStoreToggle');
+  const badge = document.getElementById('storeStatusBadge');
+  toggle.classList.toggle('active');
+  if (toggle.classList.contains('active')) {
+    badge.style.background = 'linear-gradient(135deg,#e04e4e,#c0392b)';
+    badge.innerHTML = '<i class="fa-solid fa-door-closed"></i> Closed Today';
+    showToast('Shop is now marked as closed today');
+  } else {
+    badge.style.background = 'linear-gradient(135deg,#04E1AB,#10AE9E)';
+    badge.innerHTML = '<i class="fa-solid fa-door-open"></i> Open Now';
+    showToast('Shop is now open');
+  }
+}
+
+function openCloseStoreModal() {
+  openModal('closeStoreModal');
+}
+
+function selectCloseOption(el) {
+  document.querySelectorAll('.close-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function confirmCloseStore() {
+  const toggle = document.getElementById('closeStoreToggle');
+  const badge = document.getElementById('storeStatusBadge');
+  toggle.classList.add('active');
+  badge.style.background = 'linear-gradient(135deg,#e04e4e,#c0392b)';
+  badge.innerHTML = '<i class="fa-solid fa-door-closed"></i> Closed Today';
+  closeModal('closeStoreModal');
+  showToast('Store closed. Customers will see your message.');
+}
+
+// ========== Info Dropdown ==========
+function toggleInfoDropdown() {
+  const menu = document.getElementById('infoDropdown');
+  menu.classList.toggle('show');
+}
+document.addEventListener('click', function(e) {
+  const dropdown = document.querySelector('.info-dropdown');
+  if (!dropdown.contains(e.target)) {
+    document.getElementById('infoDropdown').classList.remove('show');
+  }
+});
+
+function copyAppInfo() {
+  const text = `App Name: Sala Olive Studio — Owner Back Office
+Version: 1.0.0-beta
+Build: 2026.11.08.1
+Environment: Production
+Last Deploy: 8 Nov 2026 at 04:30 AM
+Data Region: Southeast Asia (Singapore)
+Support: support@salaolive.studio`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyInfoBtn');
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ========== Quick Edit ==========
+function processQuickEdit() {
+  const input = document.getElementById('quickEditInput').value.trim();
+  if (!input) return;
+  const summary = document.getElementById('changeSummary');
+  summary.classList.add('show');
+  summary.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function confirmChange() {
+  showToast('Change applied and logged to ChangeLog');
+  document.getElementById('changeSummary').classList.remove('show');
+  document.getElementById('quickEditInput').value = '';
+}
+
+function cancelChange() {
+  document.getElementById('changeSummary').classList.remove('show');
+}
+
+// ========== Activity ==========
+function undoActivity(btn) {
+  const item = btn.closest('.activity-item');
+  item.style.opacity = '0.5';
+  btn.innerText = 'Undone';
+  btn.disabled = true;
+  showToast('Action undone');
+}
+
+// ========== Chatbot ==========
+function toggleChatbot() {
+  const panel = document.getElementById('chatbotPanel');
+  const icon = document.getElementById('chatbotIcon');
+  panel.classList.toggle('open');
+  icon.className = panel.classList.contains('open') ? 'fa-solid fa-chevron-down' : 'fa-solid fa-robot';
+}
+
+function sendChatbotMessage() {
+  const input = document.getElementById('chatbotInput');
+  const messages = document.getElementById('chatbotMessages');
+  const text = input.value.trim();
+  if (!text) return;
+
+  // User bubble
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble user';
+  userBubble.textContent = text;
+  messages.appendChild(userBubble);
+  input.value = '';
+  messages.scrollTop = messages.scrollHeight;
+
+  // Bot response simulation
+  setTimeout(() => {
+    const botBubble = document.createElement('div');
+    botBubble.className = 'chat-bubble bot';
+    const replies = [
+      "I have noted that. You can review and confirm the change before it goes live.",
+      "Got it. I have prepared a summary for you to verify.",
+      "Understood. This will be logged as a text command in the ChangeLog.",
+      "I can help with that. Would you like to see the preview before applying?"
+    ];
+    botBubble.textContent = replies[Math.floor(Math.random() * replies.length)];
+    messages.appendChild(botBubble);
+    messages.scrollTop = messages.scrollHeight;
+  }, 600);
+}
+
+// ========== Back to Top ==========
+const backToTopBtn = document.getElementById('backToTopBtn');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add('visible');
+  } else {
+    backToTopBtn.classList.remove('visible');
+  }
+});
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ========== Toast ==========
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 2500);
+}
+
+// ========== Close dropdown on scroll (optional polish) ==========
+window.addEventListener('scroll', () => {
+  document.getElementById('infoDropdown').classList.remove('show');
+}, { passive: true });
+</script>
+
+</body>
+</html>
